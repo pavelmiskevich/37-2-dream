@@ -73,3 +73,55 @@ export {
 } from './scenes';
 
 export { findScene, generateDream, timelineSeed, type Dream, type DreamTransition, type TransitionKind } from './dream';
+
+export {
+  ACTION_BUTTONS,
+  ALL_BUTTONS,
+  IDLE_INPUT,
+  LOOK_UNITS,
+  MAX_LOOK_PER_TICK,
+  MOVE_UNITS,
+  buttonBit,
+  buttonMask,
+  inputFromUnits,
+  inputToUnits,
+  isHeld,
+  quantizeInput,
+  type ActionButton,
+  type SimInput,
+  type Vec2,
+} from './input';
+
+export {
+  INPUT_LOG_FORMAT,
+  createInputRecorder,
+  inputsOf,
+  parseInputLog,
+  serializeInputLog,
+  type InputChange,
+  type InputLog,
+  type InputRecorder,
+} from './input-log';
+
+export {
+  EYE_HEIGHT,
+  MAX_PITCH,
+  SCENE_RULES,
+  SIMULATION_CHANNEL,
+  TICK_DT,
+  TICK_RATE,
+  WALK_SPEED,
+  createInitialState,
+  movePlayer,
+  replay,
+  runInputs,
+  sceneDurationTicks,
+  step,
+  type PlayerState,
+  type SceneContext,
+  type SceneRules,
+  type SceneRulesMap,
+  type SceneVars,
+  type SimState,
+  type Vec3,
+} from './simulation';
