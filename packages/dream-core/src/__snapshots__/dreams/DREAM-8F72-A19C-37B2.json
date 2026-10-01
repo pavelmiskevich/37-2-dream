@@ -1,0 +1,152 @@
+{
+  "engineVersion": 1,
+  "seed": "DREAM-8F72-A19C-37B2",
+  "profile": {
+    "temperature": 37.2,
+    "absurdity": 0.916,
+    "anxiety": 0.325,
+    "medicalIntensity": 0.907,
+    "sovietIntensity": 0.479,
+    "domesticIntensity": 0.131,
+    "physicsInstability": 0.389,
+    "jumpscareIntensity": 0.82,
+    "dreamLength": 3.21
+  },
+  "scenes": [
+    {
+      "id": "apartment",
+      "index": 0,
+      "seed": "DREAM-8F72-A19C-37B2/scene/0",
+      "duration": 17.1,
+      "intensity": 0,
+      "echoes": [],
+      "params": {
+        "thermometer": 37.2,
+        "roomLight": "lamp",
+        "sleepDelay": 1.9
+      }
+    },
+    {
+      "id": "yard",
+      "index": 1,
+      "seed": "DREAM-8F72-A19C-37B2/scene/1",
+      "duration": 68,
+      "intensity": 0.409,
+      "echoes": [
+        {
+          "motif": "monitor",
+          "at": 0.28
+        },
+        {
+          "motif": "ventilator",
+          "at": 0.32
+        }
+      ],
+      "params": {
+        "timeOfDay": "night",
+        "buildingFloors": 5,
+        "homeFloor": 2,
+        "fog": 0.37,
+        "swingCreakPitch": 0.99,
+        "vacuumPasses": 1
+      }
+    },
+    {
+      "id": "fall",
+      "index": 2,
+      "seed": "DREAM-8F72-A19C-37B2/scene/2",
+      "duration": 38.9,
+      "intensity": 0.566,
+      "echoes": [],
+      "params": {
+        "height": 74,
+        "tumble": 0.27,
+        "willPages": [
+          "tv_remote",
+          "balcony_jars",
+          "sofa_side",
+          "cat",
+          "wifi_password",
+          "soup_in_fridge"
+        ]
+      }
+    },
+    {
+      "id": "jam",
+      "index": 3,
+      "seed": "DREAM-8F72-A19C-37B2/scene/3",
+      "duration": 48,
+      "intensity": 0.938,
+      "echoes": [
+        {
+          "motif": "ventilator",
+          "at": 0.28
+        },
+        {
+          "motif": "monitor",
+          "at": 0.37
+        }
+      ],
+      "params": {
+        "flavor": "blackcurrant",
+        "viscosity": 0.55,
+        "bubbleRate": 3.22,
+        "gravity": "forward",
+        "gravityFlipAt": 0.35
+      }
+    },
+    {
+      "id": "awakening",
+      "index": 4,
+      "seed": "DREAM-8F72-A19C-37B2/scene/4",
+      "duration": 20.6,
+      "intensity": 0,
+      "echoes": [],
+      "params": {
+        "reason": "tea_brought",
+        "temperature": 36.9,
+        "reveals": [
+          {
+            "motif": "vacuum",
+            "source": "cleaning"
+          },
+          {
+            "motif": "swing_creak",
+            "source": "bed_creak"
+          },
+          {
+            "motif": "monitor",
+            "source": "microwave"
+          },
+          {
+            "motif": "ventilator",
+            "source": "snoring"
+          }
+        ]
+      }
+    }
+  ],
+  "transitions": [
+    {
+      "from": "apartment",
+      "to": "yard",
+      "kind": "fall_asleep"
+    },
+    {
+      "from": "yard",
+      "to": "fall",
+      "kind": "swing_release"
+    },
+    {
+      "from": "fall",
+      "to": "jam",
+      "kind": "splash"
+    },
+    {
+      "from": "jam",
+      "to": "awakening",
+      "kind": "wake_up"
+    }
+  ],
+  "duration": 192.6
+}
