@@ -1,0 +1,144 @@
+{
+  "engineVersion": 1,
+  "seed": "DREAM-0000-0000-0000",
+  "profile": {
+    "temperature": 37.2,
+    "absurdity": 0.066,
+    "anxiety": 0.216,
+    "medicalIntensity": 0.202,
+    "sovietIntensity": 0.711,
+    "domesticIntensity": 0.825,
+    "physicsInstability": 0.833,
+    "jumpscareIntensity": 0.077,
+    "dreamLength": 3.11
+  },
+  "scenes": [
+    {
+      "id": "apartment",
+      "index": 0,
+      "seed": "DREAM-0000-0000-0000/scene/0",
+      "duration": 20.9,
+      "intensity": 0.335,
+      "echoes": [],
+      "params": {
+        "thermometer": 37.2,
+        "roomLight": "tv_glow",
+        "sleepDelay": 3.3
+      }
+    },
+    {
+      "id": "yard",
+      "index": 1,
+      "seed": "DREAM-0000-0000-0000/scene/1",
+      "duration": 66.8,
+      "intensity": 0.401,
+      "echoes": [],
+      "params": {
+        "timeOfDay": "night",
+        "buildingFloors": 9,
+        "homeFloor": 5,
+        "fog": 0.29,
+        "swingCreakPitch": 1.22,
+        "vacuumPasses": 1
+      }
+    },
+    {
+      "id": "fall",
+      "index": 2,
+      "seed": "DREAM-0000-0000-0000/scene/2",
+      "duration": 37.3,
+      "intensity": 0.702,
+      "echoes": [
+        {
+          "motif": "monitor",
+          "at": 0.3
+        }
+      ],
+      "params": {
+        "height": 130,
+        "tumble": 0.54,
+        "willPages": [
+          "tv_remote",
+          "cat",
+          "balcony_jars",
+          "phone_charger",
+          "neighbor_debt",
+          "wifi_password"
+        ]
+      }
+    },
+    {
+      "id": "jam",
+      "index": 3,
+      "seed": "DREAM-0000-0000-0000/scene/3",
+      "duration": 44.7,
+      "intensity": 0.895,
+      "echoes": [
+        {
+          "motif": "ventilator",
+          "at": 0.3
+        }
+      ],
+      "params": {
+        "flavor": "raspberry",
+        "viscosity": 0.77,
+        "bubbleRate": 0.74,
+        "gravity": "right",
+        "gravityFlipAt": 0.34
+      }
+    },
+    {
+      "id": "awakening",
+      "index": 4,
+      "seed": "DREAM-0000-0000-0000/scene/4",
+      "duration": 17,
+      "intensity": 0.225,
+      "echoes": [],
+      "params": {
+        "reason": "tea_brought",
+        "temperature": 36.9,
+        "reveals": [
+          {
+            "motif": "vacuum",
+            "source": "cleaning"
+          },
+          {
+            "motif": "swing_creak",
+            "source": "bed_creak"
+          },
+          {
+            "motif": "monitor",
+            "source": "microwave"
+          },
+          {
+            "motif": "ventilator",
+            "source": "snoring"
+          }
+        ]
+      }
+    }
+  ],
+  "transitions": [
+    {
+      "from": "apartment",
+      "to": "yard",
+      "kind": "fall_asleep"
+    },
+    {
+      "from": "yard",
+      "to": "fall",
+      "kind": "swing_release"
+    },
+    {
+      "from": "fall",
+      "to": "jam",
+      "kind": "splash"
+    },
+    {
+      "from": "jam",
+      "to": "awakening",
+      "kind": "wake_up"
+    }
+  ],
+  "duration": 186.7
+}

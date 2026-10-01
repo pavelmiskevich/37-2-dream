@@ -1,0 +1,150 @@
+{
+  "engineVersion": 1,
+  "seed": "DREAM-C0DE-BEEF-0451",
+  "profile": {
+    "temperature": 37.2,
+    "absurdity": 0.148,
+    "anxiety": 0.821,
+    "medicalIntensity": 0.262,
+    "sovietIntensity": 0.522,
+    "domesticIntensity": 0.89,
+    "physicsInstability": 0.919,
+    "jumpscareIntensity": 0.666,
+    "dreamLength": 3.2
+  },
+  "scenes": [
+    {
+      "id": "apartment",
+      "index": 0,
+      "seed": "DREAM-C0DE-BEEF-0451/scene/0",
+      "duration": 22.8,
+      "intensity": 0.228,
+      "echoes": [],
+      "params": {
+        "thermometer": 37.2,
+        "roomLight": "tv_glow",
+        "sleepDelay": 2.2
+      }
+    },
+    {
+      "id": "yard",
+      "index": 1,
+      "seed": "DREAM-C0DE-BEEF-0451/scene/1",
+      "duration": 64.3,
+      "intensity": 0.471,
+      "echoes": [
+        {
+          "motif": "monitor",
+          "at": 0.41
+        },
+        {
+          "motif": "ventilator",
+          "at": 0.46
+        }
+      ],
+      "params": {
+        "timeOfDay": "noon",
+        "buildingFloors": 12,
+        "homeFloor": 7,
+        "fog": 0.86,
+        "swingCreakPitch": 0.86,
+        "vacuumPasses": 3
+      }
+    },
+    {
+      "id": "fall",
+      "index": 2,
+      "seed": "DREAM-C0DE-BEEF-0451/scene/2",
+      "duration": 30.5,
+      "intensity": 0.815,
+      "echoes": [],
+      "params": {
+        "height": 128,
+        "tumble": 0.62,
+        "willPages": [
+          "tv_remote",
+          "cat",
+          "balcony_jars",
+          "wifi_password",
+          "soup_in_fridge",
+          "garage_key",
+          "slippers",
+          "sofa_side"
+        ]
+      }
+    },
+    {
+      "id": "jam",
+      "index": 3,
+      "seed": "DREAM-C0DE-BEEF-0451/scene/3",
+      "duration": 54.2,
+      "intensity": 0.926,
+      "echoes": [
+        {
+          "motif": "ventilator",
+          "at": 0.39
+        }
+      ],
+      "params": {
+        "flavor": "raspberry",
+        "viscosity": 0.85,
+        "bubbleRate": 0.78,
+        "gravity": "up",
+        "gravityFlipAt": 0.3
+      }
+    },
+    {
+      "id": "awakening",
+      "index": 4,
+      "seed": "DREAM-C0DE-BEEF-0451/scene/4",
+      "duration": 20.2,
+      "intensity": 0.277,
+      "echoes": [],
+      "params": {
+        "reason": "tea_brought",
+        "temperature": 36.9,
+        "reveals": [
+          {
+            "motif": "vacuum",
+            "source": "cleaning"
+          },
+          {
+            "motif": "swing_creak",
+            "source": "bed_creak"
+          },
+          {
+            "motif": "monitor",
+            "source": "microwave"
+          },
+          {
+            "motif": "ventilator",
+            "source": "snoring"
+          }
+        ]
+      }
+    }
+  ],
+  "transitions": [
+    {
+      "from": "apartment",
+      "to": "yard",
+      "kind": "fall_asleep"
+    },
+    {
+      "from": "yard",
+      "to": "fall",
+      "kind": "swing_release"
+    },
+    {
+      "from": "fall",
+      "to": "jam",
+      "kind": "splash"
+    },
+    {
+      "from": "jam",
+      "to": "awakening",
+      "kind": "wake_up"
+    }
+  ],
+  "duration": 192
+}
