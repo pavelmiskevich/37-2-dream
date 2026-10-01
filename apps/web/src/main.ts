@@ -1,5 +1,6 @@
 import * as THREE from 'three';
 import { ENGINE_VERSION } from '@dream/core';
+import { createDreamSession, seedFromQuery } from './loop';
 import { createPs1Renderer } from './render';
 import './style.css';
 
@@ -41,8 +42,13 @@ function startSkeleton(canvas: HTMLCanvasElement) {
   );
   scene.add(placeholder);
 
+  // Fixed-step dream simulation; the input layer will pass `readInput` (#4).
+  const session = createDreamSession({ seed: seedFromQuery(window.location.search) });
+  document.documentElement.dataset.seed = session.dream.seed;
+
   ps1.renderer.setAnimationLoop((timeMs) => {
-    placeholder.rotation.set(timeMs * 0.0003, timeMs * 0.0005, 0);
+    const view = session.frame(timeMs);
+    placeholder.rotation.set(view.time * 0.3, view.time * 0.5, 0);
     ps1.render(scene, camera);
   });
 }
