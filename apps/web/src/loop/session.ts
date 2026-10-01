@@ -29,12 +29,19 @@ export interface DreamSessionOptions {
   readInput?: (tick: number) => SimInput;
   /** Scene rules; default: the core's `SCENE_RULES`. */
   rules?: SceneRulesMap;
+  /**
+   * Index of the scene to start in (playtest entry `?scene=`, D-013).
+   * Default 0. Replaying such a run needs the same `startScene`.
+   */
+  startScene?: number;
   /** Passed to the fixed-step loop. */
   maxFrameTime?: FixedStepOptions['maxFrameTime'];
 }
 
 export interface DreamSession {
   readonly dream: Dream;
+  /** Scene index the run started in; pass it to `replay` with the input log. */
+  readonly startScene: number;
   /** State after the latest tick. */
   readonly state: SimState;
   /** State one tick earlier (equal to `state` before the first tick). */
@@ -53,11 +60,12 @@ export function createDreamSession({
   seed,
   readInput = () => IDLE_INPUT,
   rules = SCENE_RULES,
+  startScene = 0,
   maxFrameTime,
 }: DreamSessionOptions): DreamSession {
   const dream = generateDream(seed);
   const recorder = createInputRecorder();
-  let state = createInitialState(dream, rules);
+  let state = createInitialState(dream, rules, { startScene });
   let previous = state;
 
   const loop = createFixedStepLoop({
@@ -75,6 +83,7 @@ export function createDreamSession({
 
   return {
     dream,
+    startScene,
     get state() {
       return state;
     },
