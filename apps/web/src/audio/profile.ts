@@ -1,3 +1,4 @@
+import type { CreakCharacter } from './creak';
 import type { BreathBands } from './ventilator';
 import type { VacuumCharacter } from './vacuum';
 import { deriveRng, randomIn, type AudioSeed } from './rng';
@@ -22,6 +23,8 @@ export interface SoundProfile {
     /** Upper harmonic content, 0…1. */
     brightness: number;
   };
+  /** The yard swing's creak. Drawn last, so adding it left the other sounds as they were. */
+  swing: CreakCharacter;
 }
 
 export function soundProfileFromSeed(seed: AudioSeed): SoundProfile {
@@ -43,6 +46,10 @@ export function soundProfileFromSeed(seed: AudioSeed): SoundProfile {
     hum: {
       mainsHz: randomIn(rng, 49.7, 50.3),
       brightness: randomIn(rng, 0.3, 0.8),
+    },
+    swing: {
+      rubHz: randomIn(rng, 150, 260),
+      ringHz: randomIn(rng, 700, 1100),
     },
   };
 }

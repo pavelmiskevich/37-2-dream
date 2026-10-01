@@ -27,6 +27,9 @@ const seed = normalizeSeed('DREAM-8F72-A19C-37B2');
 const dream = generateDream(seed);
 const totalTicks = dream.scenes.reduce((sum, scene) => sum + sceneDurationTicks(scene), 0);
 
+/** No scene rules: every scene simply lasts its `duration` (the real yard waits for its swing). */
+const timed: SceneRulesMap = {};
+
 const forward: SimInput = { move: [0, 1], look: [0, 0], buttons: 0 };
 const repeat = (input: SimInput, ticks: number): SimInput[] => Array.from({ length: ticks }, () => input);
 
@@ -153,10 +156,10 @@ describe('step', () => {
 
 describe('scene timeline', () => {
   it('moves to the next scene when its duration has elapsed, then finishes', () => {
-    let state = createInitialState(dream);
+    let state = createInitialState(dream, timed);
     const changes: number[] = [];
     for (let i = 0; i < totalTicks + 10; i++) {
-      const next = step(dream, state, IDLE_INPUT);
+      const next = step(dream, state, IDLE_INPUT, timed);
       if (next.sceneIndex !== state.sceneIndex) {
         changes.push(next.tick);
         expect(next.sceneTick).toBe(0);
@@ -181,8 +184,8 @@ describe('scene timeline', () => {
   });
 
   it('freezes everything but the tick counter after the end', () => {
-    const end = runInputs(dream, createInitialState(dream), repeat(IDLE_INPUT, totalTicks));
-    const after = runInputs(dream, end, randomInputs(100));
+    const end = runInputs(dream, createInitialState(dream, timed), repeat(IDLE_INPUT, totalTicks), timed);
+    const after = runInputs(dream, end, randomInputs(100), timed);
     expect(after).toEqual({ ...end, tick: end.tick + 100 });
   });
 });
@@ -191,13 +194,24 @@ describe('replay', () => {
   it.each(testSeeds(3, 'test/replay-seeds'))('reproduces a random run of %s through the whole dream', (s) => {
     const live = generateDream(s);
     const recorder = createInputRecorder();
-    let state = createInitialState(live);
-    for (const input of randomInputs(totalTicks + 600, `replay/${s}`)) state = step(live, state, recorder.record(input));
+    let state = createInitialState(live, timed);
+    for (const input of randomInputs(totalTicks + 600, `replay/${s}`)) {
+      state = step(live, state, recorder.record(input), timed);
+    }
 
     const log = parseInputLog(serializeInputLog(recorder.toLog()));
-    const replayed = replay(s, log);
+    const replayed = replay(s, log, timed);
     expect(replayed).toEqual(state);
     expect(replayed.finished).toBe(true);
+  });
+
+  it.each(testSeeds(3, 'test/replay-seeds'))('reproduces a random run of %s with the real scene rules', (s) => {
+    const live = generateDream(s);
+    const recorder = createInputRecorder();
+    let state = createInitialState(live);
+    for (const input of randomInputs(totalTicks, `replay-rules/${s}`)) state = step(live, state, recorder.record(input));
+    expect(state.sceneIndex).toBeGreaterThan(0);
+    expect(replay(s, parseInputLog(serializeInputLog(recorder.toLog())))).toEqual(state);
   });
 
   it('notices a single changed tick', () => {

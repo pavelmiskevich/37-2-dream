@@ -164,12 +164,14 @@ describe('temperature in step', () => {
   });
 
   it('drifts during the dream but holds when nobody touches it; the dream runs its course', () => {
-    let state = createInitialState(dream);
+    // No scene rules: every scene lasts its duration (the real yard waits for its swing).
+    const timed: SceneRulesMap = {};
+    let state = createInitialState(dream, timed);
     let low = Infinity;
     let high = -Infinity;
     let moved = false;
     while (!state.finished) {
-      const next = step(dream, state, IDLE_INPUT);
+      const next = step(dream, state, IDLE_INPUT, timed);
       if (isDreamingScene(dream.scenes[next.sceneIndex]!.id)) {
         low = Math.min(low, next.temperature);
         high = Math.max(high, next.temperature);

@@ -28,6 +28,12 @@ export type SoundEvent =
   /** One lone "пип." — works whether the monitor is playing or not. */
   | { type: 'monitor.beep' }
   | { type: 'ventilator.rate'; breathsPerMinute: number }
+  /**
+   * One "скрип" of the yard swing, played at once in the location layer.
+   * `strength` 0…1 follows the swing's amplitude; `pitch` is the scene's
+   * `swingCreakPitch` (1 = nominal).
+   */
+  | { type: 'swing.creak'; strength: number; pitch?: number }
   /** Vacuum → turbine, 0…1. */
   | { type: 'vacuum.turbine'; value: number }
   | { type: 'layer.volume'; layer: LayerName; value: number }

@@ -1,5 +1,6 @@
 import { PeriodicClock } from '../clock';
 import { humHarmonics } from '../hum';
+import { creakShape } from '../creak';
 import { clamp, clamp01 } from '../math';
 import { BEEP_HARMONICS, beepShape, monitorPeriod, type BeepShape } from '../monitor';
 import type { SoundProfile } from '../profile';
@@ -383,4 +384,63 @@ export class HumVoice implements Voice {
   resume(): void {}
 
   schedule(): void {}
+}
+
+/** Overall level of the swing creak before layers. */
+const CREAK_LEVEL = 0.5;
+
+/**
+ * The swing's creak: one-shot, so not a `Voice`. Each call builds a small
+ * graph — a gliding sawtooth through narrow resonances, plus a breath of
+ * grit — that frees itself when the creak is over.
+ */
+export class CreakVoice {
+  constructor(private readonly env: VoiceEnv) {}
+
+  play(strength: number, pitch: number, destination: AudioNode): void {
+    const shape = creakShape(strength, pitch, this.env.profile.swing);
+    if (!shape) return;
+    const { ctx, noise } = this.env;
+    const at = ctx.currentTime + 0.01;
+    const peakAt = at + shape.duration * shape.attack;
+    const end = at + shape.duration;
+
+    const envelope = ctx.createGain();
+    envelope.gain.setValueAtTime(0, at);
+    envelope.gain.linearRampToValueAtTime(shape.gain * CREAK_LEVEL, peakAt);
+    envelope.gain.exponentialRampToValueAtTime(0.001, end);
+    envelope.connect(destination);
+
+    const rub = ctx.createOscillator();
+    rub.type = 'sawtooth';
+    rub.frequency.setValueAtTime(shape.rubStartHz, at);
+    rub.frequency.linearRampToValueAtTime(shape.rubPeakHz, peakAt);
+    rub.frequency.linearRampToValueAtTime(shape.rubEndHz, end);
+
+    for (const band of shape.bands) {
+      const filter = ctx.createBiquadFilter();
+      filter.type = 'bandpass';
+      filter.frequency.value = band.hz;
+      filter.Q.value = band.q;
+      const gain = ctx.createGain();
+      // Narrow bands pass little energy; lift them back to a usable level.
+      gain.gain.value = band.gain * band.q * 0.35;
+      rub.connect(filter).connect(gain).connect(envelope);
+    }
+
+    // Rust: a little noise in the lowest resonance.
+    const grit = noise.source('white', (at * 0.37) % 1);
+    const gritBand = ctx.createBiquadFilter();
+    gritBand.type = 'bandpass';
+    gritBand.frequency.value = shape.bands[0]?.hz ?? 900;
+    gritBand.Q.value = 3;
+    const gritGain = ctx.createGain();
+    gritGain.gain.value = 0.25;
+    grit.connect(gritBand).connect(gritGain).connect(envelope);
+
+    rub.start(at);
+    rub.stop(end + 0.05);
+    grit.stop(end + 0.05);
+    rub.onended = () => envelope.disconnect();
+  }
 }

@@ -12,7 +12,7 @@ import { soundProfileFromSeed, type SoundProfile } from '../profile';
 import type { AudioSeed } from '../rng';
 import { NoiseBank } from './noise-bank';
 import { MIN_FADE, rampParam } from './params';
-import { HumVoice, MonitorVoice, VacuumVoice, VentilatorVoice, type Voice, type VoiceEnv } from './voices';
+import { CreakVoice, HumVoice, MonitorVoice, VacuumVoice, VentilatorVoice, type Voice, type VoiceEnv } from './voices';
 
 export interface AudioEngineOptions {
   /** Dream seed: noise buffers and sound character derive from it. */
@@ -63,6 +63,8 @@ class WebAudioEngine implements AudioEngine {
     vacuum: VacuumVoice;
     hum: HumVoice;
   };
+  /** One-shot creaks of the swing; not a looping sound, so not in `SOUNDS`. */
+  private readonly creak: CreakVoice;
   private readonly voiceLayer = new Map<SoundId, LayerName>();
   private timer: ReturnType<typeof setInterval> | null;
   private disposed = false;
@@ -101,6 +103,7 @@ class WebAudioEngine implements AudioEngine {
       vacuum: new VacuumVoice(env),
       hum: new HumVoice(env),
     };
+    this.creak = new CreakVoice(env);
 
     this.timer = setInterval(() => this.tick(), TICK_MS);
   }
@@ -128,6 +131,9 @@ class WebAudioEngine implements AudioEngine {
         break;
       case 'vacuum.turbine':
         this.voices.vacuum.setTurbine(event.value);
+        break;
+      case 'swing.creak':
+        this.creak.play(event.strength, event.pitch ?? 1, this.layers.location);
         break;
       case 'layer.volume':
         this.volumes[event.layer] = clamp01(event.value);

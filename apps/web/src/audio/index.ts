@@ -4,4 +4,5 @@ export { DEFAULT_SOUND_LAYER, SOUNDS, type SoundEvent, type SoundId } from './ev
 export { DEFAULT_LAYER_VOLUMES, LAYERS, LAYER_RULES, type LayerGains, type LayerName } from './layers';
 export { soundProfileFromSeed, type SoundProfile } from './profile';
 export type { AudioSeed } from './rng';
+export { CREAK_SILENT_BELOW, creakShape, type CreakCharacter, type CreakShape } from './creak';
 export { FEVER_SOUND, feverSoundEvents, feverSoundMix, type FeverSoundMix } from './fever';
