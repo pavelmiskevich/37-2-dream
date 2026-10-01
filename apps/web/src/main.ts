@@ -3,6 +3,11 @@ import { ENGINE_VERSION } from '@dream/core';
 import { verticalFovFor } from './viewport';
 import './style.css';
 
+// Dev benches: ?sandbox=audio overlays the sound test panel (#7).
+if (new URLSearchParams(location.search).get('sandbox') === 'audio') {
+  void import('./sandbox/audio').then(({ mountAudioSandbox }) => mountAudioSandbox());
+}
+
 const canvas = document.querySelector<HTMLCanvasElement>('#dream');
 if (!canvas) throw new Error('Canvas #dream not found');
 
