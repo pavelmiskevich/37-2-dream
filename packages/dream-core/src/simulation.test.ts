@@ -107,8 +107,8 @@ describe('step', () => {
     expect(isHeld(next.buttons, 'jump')).toBe(true);
   });
 
-  it('keeps the temperature until the temperature model exists', () => {
-    const end = runInputs(dream, createInitialState(dream), randomInputs(600));
+  it('keeps the temperature in the apartment, before the hero falls asleep (model: temperature.test.ts)', () => {
+    const end = runInputs(dream, createInitialState(dream), randomInputs(sceneDurationTicks(dream.scenes[0]!) - 1));
     expect(end.temperature).toBe(DREAM_TEMPERATURE);
   });
 

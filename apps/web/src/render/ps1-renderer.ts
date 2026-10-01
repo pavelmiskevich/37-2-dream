@@ -24,6 +24,12 @@ export interface Ps1Renderer {
   readonly grid: PixelGrid;
   /** Renders a scene in the PS1 style; call once per frame. */
   render(scene: THREE.Scene, camera: THREE.Camera): void;
+  /**
+   * Fever level 0..1 from `feverLevel(state.temperature)`: chromatic
+   * aberration and heat-haze distortion in the final pass. Stays until
+   * changed; 0 (the default) leaves the picture untouched.
+   */
+  setFever(fever: number): void;
   dispose(): void;
 }
 
@@ -78,6 +84,7 @@ export function createPs1Renderer(
 
   let grid = pixelGridFor(1, 1, quality.shortSide);
   let lastSize = '';
+  let fever = 0;
 
   function resize(): void {
     const width = canvas.clientWidth;
@@ -163,7 +170,12 @@ export function createPs1Renderer(
       fit(camera);
       renderer.setRenderTarget(target);
       renderer.render(scene, camera);
+      // The haze only animates; its clock never reaches the simulation.
+      post.setFever(fever, performance.now() / 1000);
       post.render(renderer, target.texture, grid.scale, grid.offsetX, grid.offsetY);
+    },
+    setFever(level) {
+      fever = Number.isFinite(level) ? Math.min(1, Math.max(0, level)) : 0;
     },
     dispose() {
       target.dispose();

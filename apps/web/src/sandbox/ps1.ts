@@ -60,9 +60,8 @@ const brick = paintTexture(16, (x, y) => {
   return mortar ? [150, 146, 136] : shade([142, 58, 44], 0.85 + noise(x, y) * 0.3);
 });
 
-export function startPs1Sandbox(canvas: HTMLCanvasElement): void {
-  const ps1 = createPs1Renderer(canvas);
-
+/** The bench yard, shared with `?sandbox=fever`. `spinner` is a crate to rotate. */
+export function createYardScene(): { scene: THREE.Scene; spinner: THREE.Mesh } {
   const scene = new THREE.Scene();
   scene.background = new THREE.Color(0x2b3140);
 
@@ -102,6 +101,12 @@ export function startPs1Sandbox(canvas: HTMLCanvasElement): void {
 
   const spinner = box(0.8, 0.8, 0.8, new THREE.MeshLambertMaterial({ map: crate }), 0, -1.5);
   spinner.position.y = 1.4;
+  return { scene, spinner };
+}
+
+export function startPs1Sandbox(canvas: HTMLCanvasElement): void {
+  const ps1 = createPs1Renderer(canvas);
+  const { scene, spinner } = createYardScene();
 
   const camera = new THREE.PerspectiveCamera(70, 1, 0.1, 60);
   const stats = createStatsOverlay();
