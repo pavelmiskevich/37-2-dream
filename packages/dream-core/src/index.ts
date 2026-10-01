@@ -139,3 +139,16 @@ export {
   thermometerReading,
   type TemperatureModel,
 } from './temperature';
+
+export { FALL_DRIFT, FALL_HEAT, FALL_TUMBLE, createFallRules, fallMonitorIntensity, fallenFraction, type FallEnv } from './fall';
+
+export {
+  WILL_CHANNEL,
+  WILL_PAPERS,
+  generateWill,
+  willOfScene,
+  willPageText,
+  willVariantCount,
+  type WillPage,
+  type WillPaper,
+} from './will';

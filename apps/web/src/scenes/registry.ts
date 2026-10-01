@@ -8,4 +8,6 @@ type SceneViewLoaders = { readonly [Id in SceneId]?: () => Promise<SceneViewFact
  * e.g. `fall: () => import('./fall').then((m) => m.createFallView)`.
  * A scene without a view is drawn by the runtime's placeholder.
  */
-export const SCENE_VIEWS: SceneViewLoaders = {};
+export const SCENE_VIEWS: SceneViewLoaders = {
+  fall: () => import('./fall').then((m) => m.createFallView),
+};

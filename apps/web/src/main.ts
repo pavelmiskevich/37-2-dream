@@ -11,6 +11,7 @@ document.documentElement.dataset.engine = String(ENGINE_VERSION);
 const sandboxes = new Map<string, (canvas: HTMLCanvasElement) => Promise<void>>([
   ['ps1', async (c) => (await import('./sandbox/ps1')).startPs1Sandbox(c)],
   ['fever', async (c) => (await import('./sandbox/fever')).startFeverSandbox(c)],
+  ['fall', async (c) => (await import('./sandbox/fall')).startFallSandbox(c)],
   // The sound panel overlays a plain PS1 backdrop.
   [
     'audio',

@@ -12,6 +12,7 @@
  * the current scene is kept inside it as an `RngState`.
  */
 import { generateDream, type Dream } from './dream';
+import { createFallRules } from './fall';
 import { IDLE_INPUT, quantizeInput, type SimInput } from './input';
 import { inputsOf, type InputLog } from './input-log';
 import { rngFromState, type Rng, type RngState } from './rng';
@@ -115,8 +116,10 @@ export interface SceneRules {
 
 export type SceneRulesMap = Readonly<Partial<Record<SceneId, SceneRules>>>;
 
-/** Rules of the slice scenes. Empty for now: every scene simply lasts its `duration`. */
-export const SCENE_RULES: SceneRulesMap = {};
+/** Rules of the slice scenes. A scene without rules simply lasts its `duration`. */
+export const SCENE_RULES: SceneRulesMap = {
+  fall: createFallRules({ tickDt: TICK_DT, eyeHeight: EYE_HEIGHT, durationTicks: sceneDurationTicks }),
+};
 
 /** Number of whole ticks the scene lasts by default. */
 export function sceneDurationTicks(scene: DreamScene): number {
