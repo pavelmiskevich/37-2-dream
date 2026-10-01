@@ -7,6 +7,7 @@ import { normalizeSeed } from './seed';
 import {
   EYE_HEIGHT,
   MAX_PITCH,
+  SCENE_RULES,
   SIMULATION_CHANNEL,
   TICK_DT,
   WALK_SPEED,
@@ -159,7 +160,10 @@ describe('scene timeline', () => {
       if (next.sceneIndex !== state.sceneIndex) {
         changes.push(next.tick);
         expect(next.sceneTick).toBe(0);
-        expect(next.rng).toEqual(sceneRng(seed, next.sceneIndex, SIMULATION_CHANNEL).state());
+        // A scene whose `enter` draws from the stream starts further along it.
+        if (!SCENE_RULES[dream.scenes[next.sceneIndex]!.id]?.enter) {
+          expect(next.rng).toEqual(sceneRng(seed, next.sceneIndex, SIMULATION_CHANNEL).state());
+        }
       }
       if (next.finished && !state.finished) expect(next.tick).toBe(totalTicks);
       state = next;
