@@ -3,11 +3,6 @@ import { ENGINE_VERSION } from '@dream/core';
 import { createPs1Renderer } from './render';
 import './style.css';
 
-// Dev benches: ?sandbox=audio overlays the sound test panel (#7).
-if (new URLSearchParams(location.search).get('sandbox') === 'audio') {
-  void import('./sandbox/audio').then(({ mountAudioSandbox }) => mountAudioSandbox());
-}
-
 const canvas = document.querySelector<HTMLCanvasElement>('#dream');
 if (!canvas) throw new Error('Canvas #dream not found');
 
@@ -16,6 +11,14 @@ document.documentElement.dataset.engine = String(ENGINE_VERSION);
 // Dev test benches: `?sandbox=<name>` opens one instead of the game.
 const sandboxes = new Map<string, (canvas: HTMLCanvasElement) => Promise<void>>([
   ['ps1', async (c) => (await import('./sandbox/ps1')).startPs1Sandbox(c)],
+  // The sound panel overlays the skeleton scene.
+  [
+    'audio',
+    async (c) => {
+      startSkeleton(c);
+      (await import('./sandbox/audio')).mountAudioSandbox();
+    },
+  ],
 ]);
 const sandbox = sandboxes.get(new URLSearchParams(window.location.search).get('sandbox') ?? '');
 
