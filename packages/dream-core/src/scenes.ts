@@ -123,7 +123,13 @@ export interface JamParams {
   gravityFlipAt: number;
 }
 
-export type AwakeningReason = 'tea_brought';
+/**
+ * Why the hero woke up. The generator always plans `tea_brought` (the dream
+ * runs its course); the temperature model (temperature.ts) wakes him up early
+ * with `malingerer` (recovered: "ПРИЧИНА: СИМУЛЯНТ") or `overheated` (the
+ * brain decided it had had enough). Ids only: texts live in the app.
+ */
+export type AwakeningReason = 'tea_brought' | 'malingerer' | 'overheated';
 
 export interface MotifReveal {
   motif: DreamMotif;

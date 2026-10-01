@@ -15,9 +15,10 @@ import { generateDream, type Dream } from './dream';
 import { IDLE_INPUT, quantizeInput, type SimInput } from './input';
 import { inputsOf, type InputLog } from './input-log';
 import { rngFromState, type Rng, type RngState } from './rng';
-import type { DreamScene, SceneId } from './scenes';
+import type { AwakeningReason, DreamScene, SceneId } from './scenes';
 import type { DreamSeed } from './seed';
 import { sceneRng } from './streams';
+import { driftTemperature, isDreamingScene, temperatureWakeReason } from './temperature';
 import { ENGINE_VERSION } from './version';
 
 /** Simulation ticks per second. */
@@ -61,8 +62,9 @@ export interface SimState {
   /** Ticks spent in the current scene; time in the scene is `sceneTick * TICK_DT`. */
   sceneTick: number;
   /**
-   * Hero's temperature, °C. Starts at `dream.profile.temperature`; it does not
-   * change yet: the temperature model is a separate task and plugs into `step`.
+   * Hero's temperature, °C. Starts at `dream.profile.temperature`; in dreaming
+   * scenes it drifts, scene rules heat or cool it with `applyHeat`, and leaving
+   * the safe range wakes the hero up (temperature.ts, D-014).
    */
   temperature: number;
   player: PlayerState;
@@ -74,6 +76,12 @@ export interface SimState {
   sceneVars: SceneVars;
   /** True once the last scene has completed; further steps only count ticks. */
   finished: boolean;
+  /**
+   * Why the hero woke up; absent while he is asleep. Set on entering the
+   * awakening scene: the planned reason of that scene when the dream ran its
+   * course, or the temperature's verdict when it woke him up early.
+   */
+  wakeReason?: AwakeningReason;
 }
 
 /** Everything a scene rule may look at during one tick. */
@@ -189,11 +197,17 @@ export function step(dream: Dream, state: SimState, rawInput: SimInput, rules: S
     buttons: input.buttons,
   };
 
-  // The temperature model (vision: "температура — главная механика") goes
-  // here, before the scene rules, so that scenes can react to the new value.
+  // Temperature model (D-014): the drift runs before the scene rules, so that
+  // scenes see the new value and their heat sources add on top of it.
+  const dreaming = isDreamingScene(scene.id);
+  if (dreaming) next = { ...next, temperature: driftTemperature(state.temperature, state.tick * TICK_DT, TICK_DT) };
 
   if (sceneRules?.update) next = sceneRules.update(next, context);
   next = { ...next, rng: rng.state() };
+
+  // Leaving the safe range wakes the hero up, whatever the scene had planned.
+  const verdict = dreaming ? temperatureWakeReason(next.temperature) : null;
+  if (verdict) return wakeUp(dream, next, verdict, input, rules);
 
   const complete = sceneRules?.isComplete
     ? sceneRules.isComplete(next, context)
@@ -202,7 +216,21 @@ export function step(dream: Dream, state: SimState, rawInput: SimInput, rules: S
 
   const nextIndex = state.sceneIndex + 1;
   if (nextIndex >= dream.scenes.length) return { ...next, finished: true };
-  return enterScene(dream, next, nextIndex, input, rules);
+  const entered = enterScene(dream, next, nextIndex, input, rules);
+  const nextScene = sceneAt(dream, nextIndex);
+  if (nextScene.id !== 'awakening' || entered.wakeReason !== undefined) return entered;
+  return { ...entered, wakeReason: nextScene.params.reason };
+}
+
+/**
+ * Early awakening: jumps to the dream's awakening scene with `reason`, or
+ * finishes the dream when there is none ahead.
+ */
+function wakeUp(dream: Dream, state: SimState, reason: AwakeningReason, input: SimInput, rules: SceneRulesMap): SimState {
+  const woken: SimState = { ...state, wakeReason: reason };
+  const awakening = dream.scenes.findIndex((scene, index) => index > state.sceneIndex && scene.id === 'awakening');
+  if (awakening < 0) return { ...woken, finished: true };
+  return enterScene(dream, woken, awakening, input, rules);
 }
 
 /** Steps `state` through `inputs`, one tick per input. */

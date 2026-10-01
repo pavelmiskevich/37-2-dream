@@ -125,3 +125,16 @@ export {
   type SimState,
   type Vec3,
 } from './simulation';
+
+export {
+  DREAMING_SCENES,
+  TEMPERATURE_MODEL,
+  applyHeat,
+  driftTemperature,
+  isDreamingScene,
+  temperatureAtLeast,
+  temperatureWakeReason,
+  temperatureWobble,
+  thermometerReading,
+  type TemperatureModel,
+} from './temperature';

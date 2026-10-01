@@ -12,6 +12,7 @@ document.documentElement.dataset.engine = String(ENGINE_VERSION);
 // Dev test benches: `?sandbox=<name>` opens one instead of the game.
 const sandboxes = new Map<string, (canvas: HTMLCanvasElement) => Promise<void>>([
   ['ps1', async (c) => (await import('./sandbox/ps1')).startPs1Sandbox(c)],
+  ['fever', async (c) => (await import('./sandbox/fever')).startFeverSandbox(c)],
   // The sound panel overlays the skeleton scene.
   [
     'audio',

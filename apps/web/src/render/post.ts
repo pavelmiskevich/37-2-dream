@@ -1,11 +1,13 @@
 import * as THREE from 'three';
 import { ditherMatrixGlsl } from './dither';
+import { feverPostParams } from './fever';
 
 /**
  * Final pass: nearest-neighbour upscale of the internal image by an integer
- * factor, linear → sRGB, PS1 ordered dither and colour-depth reduction.
- * Dither and quantisation run on the internal pixel grid, so the pattern
- * scales together with the big pixels.
+ * factor, fever distortion and chromatic aberration (render/fever.ts),
+ * linear → sRGB, PS1 ordered dither and colour-depth reduction. Dither and
+ * quantisation run on the internal pixel grid, so the pattern scales together
+ * with the big pixels and stays put while the fever bends the picture.
  */
 export class Ps1PostPass {
   readonly material: THREE.ShaderMaterial;
@@ -26,6 +28,10 @@ export class Ps1PostPass {
         uOffset: { value: new THREE.Vector2() },
         uLevels: { value: 31 },
         uDither: { value: 1 },
+        uTime: { value: 0 },
+        uAberration: { value: 0 },
+        uWarp: { value: 0 },
+        uBreath: { value: 0 },
       },
       vertexShader: /* glsl */ `
         void main() {
@@ -38,8 +44,16 @@ export class Ps1PostPass {
         uniform vec2 uOffset;
         uniform float uLevels;
         uniform float uDither;
+        uniform float uTime;
+        uniform float uAberration;
+        uniform float uWarp;
+        uniform float uBreath;
 
         const float DITHER[16] = ${ditherMatrixGlsl()};
+
+        vec3 fetchAt( vec2 point, ivec2 size ) {
+          return texelFetch( tSource, clamp( ivec2( floor( point ) ), ivec2( 0 ), size - 1 ), 0 ).rgb;
+        }
 
         vec3 linearToSrgb( vec3 c ) {
           return mix( c * 12.92, 1.055 * pow( c, vec3( 1.0 / 2.4 ) ) - 0.055, step( 0.0031308, c ) );
@@ -48,7 +62,21 @@ export class Ps1PostPass {
         void main() {
           ivec2 size = textureSize( tSource, 0 );
           ivec2 texel = clamp( ivec2( floor( ( gl_FragCoord.xy + uOffset ) / uScale ) ), ivec2( 0 ), size - 1 );
-          vec3 color = linearToSrgb( clamp( texelFetch( tSource, texel, 0 ).rgb, 0.0, 1.0 ) );
+
+          // Fever. With all three uniforms at 0 the point lands on the texel itself.
+          float height = float( size.y );
+          vec2 center = vec2( size ) * 0.5;
+          vec2 point = vec2( texel ) + 0.5;
+          vec2 bent = center + ( point - center ) * ( 1.0 - uBreath * sin( uTime * 0.9 ) );
+          bent.x += sin( point.y / height * 19.0 + uTime * 1.9 ) * uWarp * height;
+          bent.y += sin( point.x / height * 13.0 + uTime * 1.3 ) * uWarp * height * 0.6;
+          vec2 split = ( point - center ) / center.y * uAberration * height;
+          vec3 source = vec3(
+            fetchAt( bent + split, size ).r,
+            fetchAt( bent, size ).g,
+            fetchAt( bent - split, size ).b
+          );
+          vec3 color = linearToSrgb( clamp( source, 0.0, 1.0 ) );
 
           // 8-bit value + dither table, truncated to the reduced bit depth.
           float stepSize = 256.0 / ( uLevels + 1.0 );
@@ -79,6 +107,16 @@ export class Ps1PostPass {
     (uniforms.uOffset!.value as THREE.Vector2).set(offsetX, offsetY);
     renderer.setRenderTarget(null);
     renderer.render(this.scene, this.camera);
+  }
+
+  /** Fever level 0..1 (see `feverLevel`); `time` in seconds drives the haze. */
+  setFever(fever: number, time: number): void {
+    const params = feverPostParams(fever);
+    const uniforms = this.material.uniforms;
+    uniforms.uAberration!.value = params.aberration;
+    uniforms.uWarp!.value = params.warp;
+    uniforms.uBreath!.value = params.breath;
+    uniforms.uTime!.value = time;
   }
 
   configure(colorBits: number, dither: boolean): void {
