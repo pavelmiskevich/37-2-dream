@@ -73,6 +73,38 @@ describe('createInitialState', () => {
   });
 });
 
+describe('createInitialState with startScene', () => {
+  const yard = dream.scenes.findIndex((scene) => scene.id === 'yard');
+
+  it('starts the dream in the given scene with its own stream and enter hook', () => {
+    const entered: number[] = [];
+    const rules: SceneRulesMap = {
+      yard: { enter: (state) => (entered.push(state.sceneIndex), { ...state, sceneVars: { entered: 1 } }) },
+    };
+    const state = createInitialState(dream, rules, { startScene: yard });
+    expect(state).toMatchObject({ tick: 0, sceneIndex: yard, sceneTick: 0, sceneVars: { entered: 1 } });
+    expect(state.rng).toEqual(sceneRng(seed, yard, SIMULATION_CHANNEL).state());
+    expect(entered).toEqual([yard]);
+  });
+
+  it('defaults to the first scene', () => {
+    expect(createInitialState(dream, undefined, {})).toEqual(createInitialState(dream));
+  });
+
+  it('refuses a scene the dream does not have', () => {
+    expect(() => createInitialState(dream, undefined, { startScene: dream.scenes.length })).toThrow(RangeError);
+    expect(() => createInitialState(dream, undefined, { startScene: -1 })).toThrow(RangeError);
+    expect(() => createInitialState(dream, undefined, { startScene: 0.5 })).toThrow(RangeError);
+  });
+
+  it('replays a run that began in a later scene', () => {
+    const recorder = createInputRecorder();
+    let state = createInitialState(dream, undefined, { startScene: yard });
+    for (const input of randomInputs(900, 'start-scene')) state = step(dream, state, recorder.record(input));
+    expect(replay(seed, recorder.toLog(), undefined, { startScene: yard })).toEqual(state);
+  });
+});
+
 describe('step', () => {
   it('advances by exactly one tick and never mutates its input', () => {
     const state = deepFreeze(createInitialState(dream));

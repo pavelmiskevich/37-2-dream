@@ -82,6 +82,18 @@ describe('frame rate independence', () => {
   });
 });
 
+describe('startScene', () => {
+  it('starts in the given scene and replays with the same option', () => {
+    const session = createDreamSession({ seed, startScene: 2, readInput: scriptedInput(600) });
+    expect(session.startScene).toBe(2);
+    expect(session.state.sceneIndex).toBe(2);
+    session.frame(0);
+    session.frame(5000);
+    expect(session.state.tick).toBeGreaterThan(0);
+    expect(replay(seed, session.inputLog(), undefined, { startScene: 2 })).toEqual(session.state);
+  });
+});
+
 describe('interpolateFrame', () => {
   const { session } = play(1, () => 1 / 60);
   const a = session.previous;

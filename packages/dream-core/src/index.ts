@@ -118,6 +118,7 @@ export {
   sceneDurationTicks,
   step,
   type PlayerState,
+  type InitialStateOptions,
   type SceneContext,
   type SceneRules,
   type SceneRulesMap,

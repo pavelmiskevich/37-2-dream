@@ -140,8 +140,22 @@ function enterScene(dream: Dream, state: SimState, index: number, input: SimInpu
   return { ...next, rng: rng.state() };
 }
 
-/** State at tick 0: the first scene has just begun. */
-export function createInitialState(dream: Dream, rules: SceneRulesMap = SCENE_RULES): SimState {
+export interface InitialStateOptions {
+  /**
+   * Index of the scene the dream starts in, for playtesting a scene directly
+   * (`?scene=`, D-013). Default 0. A run started elsewhere replays only with
+   * the same option: the input log does not store it.
+   */
+  startScene?: number;
+}
+
+/** State at tick 0: the first scene (or `options.startScene`) has just begun. */
+export function createInitialState(
+  dream: Dream,
+  rules: SceneRulesMap = SCENE_RULES,
+  { startScene = 0 }: InitialStateOptions = {},
+): SimState {
+  if (!Number.isInteger(startScene)) throw new RangeError(`Start scene must be an index, got ${startScene}.`);
   const state: SimState = {
     engineVersion: ENGINE_VERSION,
     seed: dream.seed,
@@ -155,7 +169,7 @@ export function createInitialState(dream: Dream, rules: SceneRulesMap = SCENE_RU
     sceneVars: {},
     finished: false,
   };
-  return enterScene(dream, state, 0, IDLE_INPUT, rules);
+  return enterScene(dream, state, startScene, IDLE_INPUT, rules);
 }
 
 /** Default first-person movement: turn, then walk on the horizontal plane. */
@@ -247,13 +261,19 @@ export function runInputs(
 
 /**
  * Replays a recorded run: the dream of `seed` from its first tick through
- * every tick of `log`. Gives a state deeply equal to the one the live run
- * ended with. Throws if the log was recorded by another engine version.
+ * every tick of `log` (or from `options.startScene`, if the run began there).
+ * Gives a state deeply equal to the one the live run ended with. Throws if
+ * the log was recorded by another engine version.
  */
-export function replay(seed: DreamSeed, log: InputLog, rules: SceneRulesMap = SCENE_RULES): SimState {
+export function replay(
+  seed: DreamSeed,
+  log: InputLog,
+  rules: SceneRulesMap = SCENE_RULES,
+  options: InitialStateOptions = {},
+): SimState {
   if (log.engineVersion !== ENGINE_VERSION) {
     throw new RangeError(`Input log is from engine ${log.engineVersion}, this is engine ${ENGINE_VERSION}.`);
   }
   const dream = generateDream(seed);
-  return runInputs(dream, createInitialState(dream, rules), inputsOf(log), rules);
+  return runInputs(dream, createInitialState(dream, rules, options), inputsOf(log), rules);
 }
