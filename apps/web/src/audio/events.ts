@@ -42,4 +42,6 @@ export type SoundEvent =
   /** Vacuum → turbine, 0…1. */
   | { type: 'vacuum.turbine'; value: number }
   | { type: 'layer.volume'; layer: LayerName; value: number }
-  | { type: 'master.volume'; value: number };
+  | { type: 'master.volume'; value: number }
+  /** Low-pass muffling of the whole mix, 0 (open) … 1 (heard through jam); see `muffleCutoff`. */
+  | { type: 'master.muffle'; value: number };
