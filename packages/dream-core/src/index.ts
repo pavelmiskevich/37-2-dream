@@ -44,6 +44,7 @@ export {
   ECHO_CATALOG,
   ECHO_SCENES,
   MOTIF_SOURCES,
+  NIGHTSTAND_ITEMS,
   SCENE_IDS,
   SLICE_SCENE_ORDER,
   WILL_PAGES,
@@ -60,7 +61,11 @@ export {
   type GravityDirection,
   type JamFlavor,
   type JamParams,
+  type LastWords,
+  type LastWordsOpening,
+  type LastWordsTrail,
   type MotifReveal,
+  type NightstandItem,
   type RealSource,
   type RoomLight,
   type SceneId,
@@ -126,6 +131,19 @@ export {
   type SimState,
   type Vec3,
 } from './simulation';
+
+export {
+  APARTMENT,
+  APARTMENT_PHASES,
+  apartmentPhase,
+  apartmentPhaseAt,
+  apartmentSleep,
+  apartmentTimeline,
+  createApartmentRules,
+  type ApartmentEnv,
+  type ApartmentPhase,
+  type ApartmentTimeline,
+} from './apartment';
 
 export {
   DREAMING_SCENES,

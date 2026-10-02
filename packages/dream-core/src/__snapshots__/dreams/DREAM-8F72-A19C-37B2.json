@@ -1,5 +1,5 @@
 {
-  "engineVersion": 4,
+  "engineVersion": 5,
   "seed": "DREAM-8F72-A19C-37B2",
   "profile": {
     "temperature": 37.2,
@@ -23,7 +23,16 @@
       "params": {
         "thermometer": 37.2,
         "roomLight": "lamp",
-        "sleepDelay": 1.9
+        "sleepDelay": 1.9,
+        "lastWords": {
+          "opening": "this_is_the_end",
+          "trail": "none"
+        },
+        "nightstand": [
+          "pill_blister",
+          "water_glass",
+          "phone"
+        ]
       }
     },
     {

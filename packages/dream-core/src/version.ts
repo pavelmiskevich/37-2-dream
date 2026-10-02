@@ -13,5 +13,9 @@
  * - 4 — yard rules (D-016): the swing, its heat and the transition to the
  *   fall. Dreams are generated as before; logs of version 3 would replay
  *   differently.
+ * - 5 — apartment prologue (#8, D-017): the apartment gains `lastWords` and
+ *   `nightstand` (drawn after its old parameters, which keep their values);
+ *   its rules keep the hero in bed and time the scene by the prologue, so
+ *   every log would replay differently.
  */
-export const ENGINE_VERSION = 4;
+export const ENGINE_VERSION = 5;

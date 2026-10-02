@@ -23,8 +23,12 @@ export interface SoundProfile {
     /** Upper harmonic content, 0…1. */
     brightness: number;
   };
-  /** The yard swing's creak. Drawn last, so adding it left the other sounds as they were. */
+  /** The yard swing's creak. Drawn after the older sounds, so adding it left them as they were. */
   swing: CreakCharacter;
+  /** The hero's own breathing in the apartment: lower and softer than the ventilator it turns into. */
+  breath: BreathBands & {
+    breathsPerMinute: number;
+  };
 }
 
 export function soundProfileFromSeed(seed: AudioSeed): SoundProfile {
@@ -50,6 +54,12 @@ export function soundProfileFromSeed(seed: AudioSeed): SoundProfile {
     swing: {
       rubHz: randomIn(rng, 150, 260),
       ringHz: randomIn(rng, 700, 1100),
+    },
+    // Drawn after the others, so adding it kept every older value of the profile.
+    breath: {
+      breathsPerMinute: randomIn(rng, 16, 19),
+      inhaleHz: randomIn(rng, 380, 520),
+      exhaleHz: randomIn(rng, 650, 900),
     },
   };
 }

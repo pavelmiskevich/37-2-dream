@@ -25,6 +25,8 @@ const SOUND_TITLES: Record<SoundId, string> = {
   ventilator: 'ИВЛ',
   vacuum: 'Пылесос → турбина',
   hum: 'Электрический гул',
+  breath: 'Дыхание героя',
+  kitchen: 'Кухня за дверью',
 };
 
 const LAYER_TITLES: Record<LayerName, string> = {
@@ -119,7 +121,14 @@ export function mountAudioSandbox(root: HTMLElement = document.body): void {
   let context: AudioContext | null = null;
   let engine: AudioEngine | null = null;
 
-  const on: Record<SoundId, boolean> = { monitor: false, ventilator: false, vacuum: false, hum: false };
+  const on: Record<SoundId, boolean> = {
+    monitor: false,
+    ventilator: false,
+    vacuum: false,
+    hum: false,
+    breath: false,
+    kitchen: false,
+  };
   const layerOf: Record<SoundId, LayerName> = { ...DEFAULT_SOUND_LAYER };
   const scripts: Record<'monitor' | 'vacuum', Script> = { monitor: new Script(), vacuum: new Script() };
 
@@ -235,6 +244,18 @@ export function mountAudioSandbox(root: HTMLElement = document.body): void {
     el('p', { class: 'hint' }, ['50 Гц и гармоники. На ноутбучных динамиках слышны в основном 150–300 Гц.']),
   ]);
 
+  const breathRate = slider('Дыханий в мин', { min: 6, max: 30, step: 0.5, value: 17 }, (v) => v.toFixed(1), (v) =>
+    send({ type: 'breath.rate', breathsPerMinute: v }),
+  );
+  const breath = section('breath', [
+    breathRate.element,
+    el('p', { class: 'hint' }, ['Квартира: ниже и мягче ИВЛ. При засыпании замедляется и уступает место ИВЛ.']),
+  ]);
+
+  const kitchen = section('kitchen', [
+    el('p', { class: 'hint' }, ['Ложка в стакане, чашка, дверца шкафа, кран — редко и глухо, через закрытую дверь.']),
+  ]);
+
   // --- Layers --------------------------------------------------------------
   const layerSliders = {} as Record<LayerName, Slider>;
   const layerRows = LAYERS.map((layer) => {
@@ -287,6 +308,8 @@ export function mountAudioSandbox(root: HTMLElement = document.body): void {
     send({ type: 'master.volume', value: master.value() });
     send({ type: 'monitor.intensity', value: monitorTempo.value() });
     send({ type: 'ventilator.rate', breathsPerMinute: ventilatorRate.value() });
+    breathRate.set(Math.round(p.breath.breathsPerMinute * 2) / 2);
+    send({ type: 'breath.rate', breathsPerMinute: breathRate.value() });
     send({ type: 'vacuum.turbine', value: turbine.value() });
     for (const sound of SOUNDS) if (on[sound]) send({ type: 'sound.start', sound, layer: layerOf[sound] });
   }
@@ -313,6 +336,8 @@ export function mountAudioSandbox(root: HTMLElement = document.body): void {
       ventilator,
       vacuum,
       hum,
+      breath,
+      kitchen,
       layers,
     ]),
   );

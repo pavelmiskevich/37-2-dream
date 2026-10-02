@@ -61,12 +61,48 @@ export const ECHO_CATALOG: Catalog<EchoMotif> = [
 
 export type RoomLight = 'lamp' | 'tv_glow' | 'daylight';
 
+/** What the hero says before "Передайте коту…"; `none` — he starts with it. */
+export type LastWordsOpening =
+  | 'none'
+  | 'if_i_dont_wake_up'
+  | 'this_is_the_end'
+  | 'remember_my_words'
+  | 'too_late_for_doctors'
+  | 'last_request';
+
+/** How far he gets after "Передайте коту…" before sleep cuts him off; `none` — not a word. */
+export type LastWordsTrail = 'none' | 'that_i' | 'the_bowl' | 'not_to_wait' | 'that_everything';
+
+/** The hero's last words in the apartment (vision, slice item 1). Ids only: texts live in the app. */
+export interface LastWords {
+  opening: LastWordsOpening;
+  trail: LastWordsTrail;
+}
+
+/** Things on the bedside table, next to the thermometer. */
+export type NightstandItem =
+  | 'water_glass'
+  | 'pill_blister'
+  | 'tea_mug'
+  | 'jam_jar'
+  | 'lemon_saucer'
+  | 'tissues'
+  | 'mustard_plasters'
+  | 'tv_remote'
+  | 'phone';
+
+/** Bounds of the number of things on the bedside table (the thermometer aside). */
+export const NIGHTSTAND_ITEMS = { min: 2, max: 3 } as const;
+
 export interface ApartmentParams {
   /** What the bedside thermometer shows, °C. */
   thermometer: number;
   roomLight: RoomLight;
   /** Seconds between "Передайте коту…" and falling asleep. */
   sleepDelay: number;
+  lastWords: LastWords;
+  /** Things on the bedside table, from the pillow outwards; none repeats. */
+  nightstand: NightstandItem[];
 }
 
 export type TimeOfDay = 'dawn' | 'noon' | 'dusk' | 'night';
@@ -184,6 +220,35 @@ const ROOM_LIGHT_CATALOG: Catalog<RoomLight> = [
   { id: 'daylight', baseWeight: 1, rarity: 0.2, cooldownScenes: 0 },
 ];
 
+const OPENING_CATALOG: Catalog<LastWordsOpening> = [
+  { id: 'none', baseWeight: 2, rarity: 0, cooldownScenes: 0 },
+  { id: 'if_i_dont_wake_up', baseWeight: 1, rarity: 0, cooldownScenes: 0 },
+  { id: 'this_is_the_end', baseWeight: 1, rarity: 0, cooldownScenes: 0 },
+  { id: 'remember_my_words', baseWeight: 1, rarity: 0.2, cooldownScenes: 0 },
+  { id: 'too_late_for_doctors', baseWeight: 1, rarity: 0.3, cooldownScenes: 0 },
+  { id: 'last_request', baseWeight: 1, rarity: 0.2, cooldownScenes: 0 },
+];
+
+const TRAIL_CATALOG: Catalog<LastWordsTrail> = [
+  { id: 'none', baseWeight: 2, rarity: 0, cooldownScenes: 0 },
+  { id: 'that_i', baseWeight: 1, rarity: 0, cooldownScenes: 0 },
+  { id: 'the_bowl', baseWeight: 1, rarity: 0.2, cooldownScenes: 0 },
+  { id: 'not_to_wait', baseWeight: 1, rarity: 0.2, cooldownScenes: 0 },
+  { id: 'that_everything', baseWeight: 1, rarity: 0.3, cooldownScenes: 0 },
+];
+
+const NIGHTSTAND_CATALOG: Catalog<NightstandItem> = [
+  { id: 'water_glass', baseWeight: 3, rarity: 0, cooldownScenes: 0 },
+  { id: 'pill_blister', baseWeight: 3, rarity: 0, cooldownScenes: 0 },
+  { id: 'tea_mug', baseWeight: 2, rarity: 0, cooldownScenes: 0 },
+  { id: 'jam_jar', baseWeight: 2, rarity: 0.1, cooldownScenes: 0 },
+  { id: 'tissues', baseWeight: 2, rarity: 0, cooldownScenes: 0 },
+  { id: 'lemon_saucer', baseWeight: 1, rarity: 0.2, cooldownScenes: 0 },
+  { id: 'mustard_plasters', baseWeight: 1, rarity: 0.4, cooldownScenes: 0 },
+  { id: 'tv_remote', baseWeight: 1, rarity: 0.3, cooldownScenes: 0 },
+  { id: 'phone', baseWeight: 1, rarity: 0.2, cooldownScenes: 0 },
+];
+
 const TIME_OF_DAY_CATALOG: Catalog<TimeOfDay> = [
   { id: 'dawn', baseWeight: 1, rarity: 0.3, cooldownScenes: 0 },
   { id: 'noon', baseWeight: 1, rarity: 0, cooldownScenes: 0 },
@@ -250,11 +315,15 @@ function favour<Id extends CatalogId>(favoured: readonly Id[], level: number) {
 // order of draws inside it is part of the engine contract.
 
 export function generateApartmentParams(profile: DreamProfile, rng: Rng): ApartmentParams {
-  return {
-    thermometer: profile.temperature,
-    roomLight: pick(ROOM_LIGHT_CATALOG, rng, favour<RoomLight>(['tv_glow'], profile.domesticIntensity)),
-    sleepDelay: round(rng.range(1.5, 4), 1),
-  };
+  const roomLight = pick(ROOM_LIGHT_CATALOG, rng, favour<RoomLight>(['tv_glow'], profile.domesticIntensity));
+  const sleepDelay = round(rng.range(1.5, 4), 1);
+  // Draws added in engine 3 come after the original ones, so those keep their values.
+  const lastWords: LastWords = { opening: pick(OPENING_CATALOG, rng), trail: pick(TRAIL_CATALOG, rng) };
+  const count = rng.int(NIGHTSTAND_ITEMS.min, NIGHTSTAND_ITEMS.max);
+  const nightstand = weightedSample(NIGHTSTAND_CATALOG, count, (item) => item.baseWeight * (1 - item.rarity), rng).map(
+    (item) => item.id,
+  );
+  return { thermometer: profile.temperature, roomLight, sleepDelay, lastWords, nightstand };
 }
 
 export function generateYardParams(profile: DreamProfile, rng: Rng): YardParams {

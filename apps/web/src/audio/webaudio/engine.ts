@@ -12,7 +12,17 @@ import { soundProfileFromSeed, type SoundProfile } from '../profile';
 import type { AudioSeed } from '../rng';
 import { NoiseBank } from './noise-bank';
 import { MIN_FADE, rampParam } from './params';
-import { CreakVoice, HumVoice, MonitorVoice, VacuumVoice, VentilatorVoice, type Voice, type VoiceEnv } from './voices';
+import {
+  createBreathVoice,
+  CreakVoice,
+  HumVoice,
+  KitchenVoice,
+  MonitorVoice,
+  VacuumVoice,
+  VentilatorVoice,
+  type Voice,
+  type VoiceEnv,
+} from './voices';
 
 export interface AudioEngineOptions {
   /** Dream seed: noise buffers and sound character derive from it. */
@@ -62,6 +72,8 @@ class WebAudioEngine implements AudioEngine {
     ventilator: VentilatorVoice;
     vacuum: VacuumVoice;
     hum: HumVoice;
+    breath: VentilatorVoice;
+    kitchen: KitchenVoice;
   };
   /** One-shot creaks of the swing; not a looping sound, so not in `SOUNDS`. */
   private readonly creak: CreakVoice;
@@ -96,12 +108,19 @@ class WebAudioEngine implements AudioEngine {
     }
     this.layers = layers;
 
-    const env: VoiceEnv = { ctx: context, profile: this.profile, noise: new NoiseBank(context, options.seed) };
+    const env: VoiceEnv = {
+      ctx: context,
+      seed: options.seed,
+      profile: this.profile,
+      noise: new NoiseBank(context, options.seed),
+    };
     this.voices = {
       monitor: new MonitorVoice(env),
       ventilator: new VentilatorVoice(env),
       vacuum: new VacuumVoice(env),
       hum: new HumVoice(env),
+      breath: createBreathVoice(env),
+      kitchen: new KitchenVoice(env),
     };
     this.creak = new CreakVoice(env);
 
@@ -128,6 +147,9 @@ class WebAudioEngine implements AudioEngine {
         break;
       case 'ventilator.rate':
         this.voices.ventilator.setRate(event.breathsPerMinute);
+        break;
+      case 'breath.rate':
+        this.voices.breath.setRate(event.breathsPerMinute);
         break;
       case 'vacuum.turbine':
         this.voices.vacuum.setTurbine(event.value);

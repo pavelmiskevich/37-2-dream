@@ -1,6 +1,6 @@
 import type { LayerName } from './layers';
 
-export const SOUNDS = ['monitor', 'ventilator', 'vacuum', 'hum'] as const;
+export const SOUNDS = ['monitor', 'ventilator', 'vacuum', 'hum', 'breath', 'kitchen'] as const;
 export type SoundId = (typeof SOUNDS)[number];
 
 /** Layer a sound plays in unless its start event says otherwise. */
@@ -9,6 +9,9 @@ export const DEFAULT_SOUND_LAYER: Readonly<Record<SoundId, LayerName>> = {
   ventilator: 'recurring',
   vacuum: 'recurring',
   hum: 'ambient',
+  // The hero's own breathing and the kitchen behind the door: the apartment, before the dream.
+  breath: 'location',
+  kitchen: 'location',
 };
 
 /**
@@ -28,6 +31,8 @@ export type SoundEvent =
   /** One lone "пип." — works whether the monitor is playing or not. */
   | { type: 'monitor.beep' }
   | { type: 'ventilator.rate'; breathsPerMinute: number }
+  /** Tempo of the hero's own breathing; slows down as he falls asleep. */
+  | { type: 'breath.rate'; breathsPerMinute: number }
   /**
    * One "скрип" of the yard swing, played at once in the location layer.
    * `strength` 0…1 follows the swing's amplitude; `pitch` is the scene's
