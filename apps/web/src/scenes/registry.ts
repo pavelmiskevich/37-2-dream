@@ -12,4 +12,5 @@ export const SCENE_VIEWS: SceneViewLoaders = {
   apartment: () => import('./apartment').then((m) => m.createApartmentView),
   yard: () => import('./yard').then((m) => m.createYardView),
   fall: () => import('./fall').then((m) => m.createFallView),
+  jam: () => import('./jam').then((m) => m.createJamView),
 };
