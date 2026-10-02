@@ -161,6 +161,24 @@ export {
 export { FALL_DRIFT, FALL_HEAT, FALL_TUMBLE, createFallRules, fallMonitorIntensity, fallenFraction, type FallEnv } from './fall';
 
 export {
+  JAM_CEILING,
+  JAM_EXIT,
+  JAM_GRAVITY,
+  JAM_GRAVITY_DIRECTIONS,
+  JAM_JAR,
+  JAM_MOTION,
+  JAM_TURN,
+  createJamRules,
+  frameAngle,
+  jamCarry,
+  jamLidOpensAt,
+  jamMotion,
+  rotateByQuat,
+  type JamEnv,
+  type JamGravity,
+} from './jam';
+
+export {
   WILL_CHANNEL,
   WILL_PAPERS,
   generateWill,

@@ -17,5 +17,9 @@
  *   `nightstand` (drawn after its old parameters, which keep their values);
  *   its rules keep the hero in bed and time the scene by the prologue, so
  *   every log would replay differently.
+ * - 6 — rules of the jam scene (#11, D-018): viscous swimming, turns of
+ *   gravity, the lid and the carry to it. Dreams are generated as before;
+ *   logs that reach the jam would replay differently, and a player can now
+ *   leave the jam before its nominal end.
  */
-export const ENGINE_VERSION = 5;
+export const ENGINE_VERSION = 6;

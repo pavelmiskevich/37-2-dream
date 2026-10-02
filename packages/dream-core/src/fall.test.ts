@@ -71,10 +71,11 @@ describe('fall rules', () => {
       expect(v(state, 'altitude')).toBeLessThan(previous);
       previous = v(state, 'altitude');
     }
-    const landed = step(dream, state, IDLE_INPUT, skipToFall);
+    // The jam starts in a space of its own (jam.ts); without its rules the
+    // landing pose carries over and shows where the fall ended.
+    const landed = step(dream, state, IDLE_INPUT, { ...skipToFall, jam: {} });
     expect(landed.sceneIndex).toBe(fall.index + 1);
     expect(dream.scenes[landed.sceneIndex]!.id).toBe('jam');
-    // The landing pose carries over into the jam.
     expect(landed.player.position[1]).toBeCloseTo(EYE_HEIGHT, 9);
   });
 

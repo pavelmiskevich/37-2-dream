@@ -8,10 +8,11 @@ import {
   type LayerVolumes,
 } from '../layers';
 import { clamp01 } from '../math';
+import { MUFFLE, muffleCutoff } from '../muffle';
 import { soundProfileFromSeed, type SoundProfile } from '../profile';
 import type { AudioSeed } from '../rng';
 import { NoiseBank } from './noise-bank';
-import { MIN_FADE, rampParam } from './params';
+import { MIN_FADE, glideParam, rampParam } from './params';
 import {
   createBreathVoice,
   CreakVoice,
@@ -64,6 +65,8 @@ class WebAudioEngine implements AudioEngine {
   readonly seed: AudioSeed;
   private readonly lookahead: number;
   private readonly limiter: DynamicsCompressorNode;
+  /** Low-pass in front of the limiter; open (transparent) unless a scene muffles the dream. */
+  private readonly muffle: BiquadFilterNode;
   private readonly layers: Record<LayerName, GainNode>;
   private readonly volumes: LayerVolumes = { ...DEFAULT_LAYER_VOLUMES };
   private master = 1;
@@ -98,12 +101,18 @@ class WebAudioEngine implements AudioEngine {
     this.limiter.release.value = 0.25;
     this.limiter.connect(context.destination);
 
+    this.muffle = context.createBiquadFilter();
+    this.muffle.type = 'lowpass';
+    this.muffle.frequency.value = muffleCutoff(0);
+    this.muffle.Q.value = MUFFLE.q;
+    this.muffle.connect(this.limiter);
+
     const gains = this.mix();
     const layers = {} as Record<LayerName, GainNode>;
     for (const layer of LAYERS) {
       const node = context.createGain();
       node.gain.value = gains[layer];
-      node.connect(this.limiter);
+      node.connect(this.muffle);
       layers[layer] = node;
     }
     this.layers = layers;
@@ -165,6 +174,9 @@ class WebAudioEngine implements AudioEngine {
         this.master = clamp01(event.value);
         this.applyMix();
         break;
+      case 'master.muffle':
+        glideParam(this.muffle.frequency, muffleCutoff(event.value), this.context.currentTime, MUFFLE.glide);
+        break;
     }
     this.tick();
   }
@@ -189,7 +201,10 @@ class WebAudioEngine implements AudioEngine {
     this.timer = null;
     const length = Math.max(fade, MIN_FADE);
     for (const layer of LAYERS) rampParam(this.layers[layer].gain, 0, this.context.currentTime, length);
-    setTimeout(() => this.limiter.disconnect(), (length + 0.5) * 1000);
+    setTimeout(() => {
+      this.muffle.disconnect();
+      this.limiter.disconnect();
+    }, (length + 0.5) * 1000);
   }
 
   private start(sound: SoundId, layer: LayerName, fade: number | undefined): void {
