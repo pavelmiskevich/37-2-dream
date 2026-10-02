@@ -21,6 +21,7 @@ import type { DreamSeed } from './seed';
 import { sceneRng } from './streams';
 import { driftTemperature, isDreamingScene, temperatureWakeReason } from './temperature';
 import { ENGINE_VERSION } from './version';
+import { createYardRules } from './yard';
 
 /** Simulation ticks per second. */
 export const TICK_RATE = 60;
@@ -118,6 +119,7 @@ export type SceneRulesMap = Readonly<Partial<Record<SceneId, SceneRules>>>;
 
 /** Rules of the slice scenes. A scene without rules simply lasts its `duration`. */
 export const SCENE_RULES: SceneRulesMap = {
+  yard: createYardRules({ tickDt: TICK_DT, eyeHeight: EYE_HEIGHT, maxPitch: MAX_PITCH }),
   fall: createFallRules({ tickDt: TICK_DT, eyeHeight: EYE_HEIGHT, durationTicks: sceneDurationTicks }),
 };
 

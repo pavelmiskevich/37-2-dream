@@ -10,5 +10,8 @@
  * - 3 — rules of the fall scene (#10, D-015): drift in the air, tumble, panic
  *   heat. Dreams are generated as before; logs that reach the fall would
  *   replay differently.
+ * - 4 — yard rules (D-016): the swing, its heat and the transition to the
+ *   fall. Dreams are generated as before; logs of version 3 would replay
+ *   differently.
  */
-export const ENGINE_VERSION = 3;
+export const ENGINE_VERSION = 4;
