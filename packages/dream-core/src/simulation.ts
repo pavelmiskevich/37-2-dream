@@ -14,6 +14,7 @@
 import { createApartmentRules } from './apartment';
 import { generateDream, type Dream } from './dream';
 import { createFallRules } from './fall';
+import { createJamRules } from './jam';
 import { IDLE_INPUT, quantizeInput, type SimInput } from './input';
 import { inputsOf, type InputLog } from './input-log';
 import { rngFromState, type Rng, type RngState } from './rng';
@@ -123,6 +124,7 @@ export const SCENE_RULES: SceneRulesMap = {
   apartment: createApartmentRules({ tickDt: TICK_DT, eyeHeight: EYE_HEIGHT }),
   yard: createYardRules({ tickDt: TICK_DT, eyeHeight: EYE_HEIGHT, maxPitch: MAX_PITCH }),
   fall: createFallRules({ tickDt: TICK_DT, eyeHeight: EYE_HEIGHT, durationTicks: sceneDurationTicks }),
+  jam: createJamRules({ tickDt: TICK_DT, durationTicks: sceneDurationTicks }),
 };
 
 /** Number of whole ticks the scene lasts by default. */
