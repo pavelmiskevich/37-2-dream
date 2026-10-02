@@ -5,12 +5,22 @@ import { clamp, clamp01 } from '../math';
 import { BEEP_HARMONICS, beepShape, monitorPeriod, type BeepShape } from '../monitor';
 import type { SoundProfile } from '../profile';
 import { VACUUM_SPIN_FACTOR, vacuumParams, type VacuumParams } from '../vacuum';
-import { breathCycle, breathPeriod, MAX_BREATHS_PER_MINUTE, MIN_BREATHS_PER_MINUTE } from '../ventilator';
+import { drawKitchenSound, KITCHEN_PARTIALS, type KitchenHit, type KitchenSound } from '../kitchen';
+import { deriveRng, type AudioSeed, type Rng } from '../rng';
+import {
+  breathCycle,
+  breathPeriod,
+  MAX_BREATHS_PER_MINUTE,
+  MIN_BREATHS_PER_MINUTE,
+  type BreathBands,
+} from '../ventilator';
 import type { NoiseBank } from './noise-bank';
 import { createFadeIn, createHarmonicWave, glideParam, releaseInstance } from './params';
 
 export interface VoiceEnv {
   ctx: BaseAudioContext;
+  /** Dream seed: voices that draw random events derive their own stream from it. */
+  seed: AudioSeed;
   profile: SoundProfile;
   noise: NoiseBank;
 }
@@ -37,6 +47,9 @@ const MONITOR_LEVEL = 0.45;
 const VENTILATOR_LEVEL = 0.55;
 const VACUUM_LEVEL = 0.45;
 const HUM_LEVEL = 0.2;
+/** The hero's breathing is close, but quiet; the kitchen is behind a closed door. */
+const BREATH_LEVEL = 0.5;
+const KITCHEN_LEVEL = 0.3;
 
 export class MonitorVoice implements Voice {
   readonly defaultFadeIn = 0.05;
@@ -124,6 +137,21 @@ export class MonitorVoice implements Voice {
   }
 }
 
+/** Character of a breathing voice. */
+export interface BreathingCharacter {
+  bands: BreathBands;
+  breathsPerMinute: number;
+  /** Level of the instance before layers. */
+  level: number;
+  /** Weight of the low "body" noise under the air, 0…1. */
+  body: number;
+}
+
+/**
+ * Filtered-noise breathing: the ventilator by default; with the hero's own,
+ * lower and softer character (`createBreathVoice`) it is his breathing in the
+ * apartment, the sound that turns into the ventilator as he falls asleep.
+ */
 export class VentilatorVoice implements Voice {
   readonly defaultFadeIn = 0.4;
   readonly defaultFadeOut = 0.8;
@@ -134,10 +162,20 @@ export class VentilatorVoice implements Voice {
     sources: AudioScheduledSourceNode[];
   } | null = null;
   private readonly clock = new PeriodicClock();
+  private readonly character: BreathingCharacter;
   private breathsPerMinute: number;
 
-  constructor(private readonly env: VoiceEnv) {
-    this.breathsPerMinute = env.profile.ventilator.breathsPerMinute;
+  constructor(
+    private readonly env: VoiceEnv,
+    character?: BreathingCharacter,
+  ) {
+    this.character = character ?? {
+      bands: env.profile.ventilator,
+      breathsPerMinute: env.profile.ventilator.breathsPerMinute,
+      level: VENTILATOR_LEVEL,
+      body: 0.35,
+    };
+    this.breathsPerMinute = this.character.breathsPerMinute;
   }
 
   get playing(): boolean {
@@ -146,7 +184,7 @@ export class VentilatorVoice implements Voice {
 
   start(destination: AudioNode, fade: number): void {
     const { ctx, noise } = this.env;
-    const out = createFadeIn(ctx, destination, fade, VENTILATOR_LEVEL);
+    const out = createFadeIn(ctx, destination, fade, this.character.level);
     const envelope = ctx.createGain();
     envelope.gain.value = 0;
     envelope.connect(out);
@@ -155,7 +193,7 @@ export class VentilatorVoice implements Voice {
     const air = noise.source('white', 0.1);
     const band = ctx.createBiquadFilter();
     band.type = 'bandpass';
-    band.frequency.value = this.env.profile.ventilator.inhaleHz;
+    band.frequency.value = this.character.bands.inhaleHz;
     air.connect(band).connect(envelope);
 
     // Body: a little low noise so the breath has weight, not just hiss.
@@ -164,7 +202,7 @@ export class VentilatorVoice implements Voice {
     bodyFilter.type = 'lowpass';
     bodyFilter.frequency.value = 350;
     const bodyGain = ctx.createGain();
-    bodyGain.gain.value = 0.35;
+    bodyGain.gain.value = this.character.body;
     body.connect(bodyFilter).connect(bodyGain).connect(envelope);
 
     this.instance = { out, envelope, band, sources: [air, body] };
@@ -190,7 +228,7 @@ export class VentilatorVoice implements Voice {
     if (!instance) return;
     const period = () => breathPeriod(this.breathsPerMinute);
     for (const start of this.clock.take(now, until, period)) {
-      const points = breathCycle(start, period(), this.env.profile.ventilator);
+      const points = breathCycle(start, period(), this.character.bands);
       points.forEach((point, i) => {
         if (i === 0) {
           instance.envelope.gain.setValueAtTime(point.gain, point.time);
@@ -442,5 +480,163 @@ export class CreakVoice {
     rub.stop(end + 0.05);
     grit.stop(end + 0.05);
     rub.onended = () => envelope.disconnect();
+  }
+}
+
+/** The hero's own breathing in the apartment ("breath"). */
+export function createBreathVoice(env: VoiceEnv): VentilatorVoice {
+  const { breath } = env.profile;
+  return new VentilatorVoice(env, {
+    bands: breath,
+    breathsPerMinute: breath.breathsPerMinute,
+    level: BREATH_LEVEL,
+    body: 0.9,
+  });
+}
+
+/** Cut-off of the closed kitchen door, Hz: the door takes the air out of every sound. */
+const DOOR_HZ = 1900;
+/** First kitchen sound after the start, seconds. */
+const KITCHEN_FIRST = 1.5;
+
+/**
+ * Someone quietly making tea behind the closed door: sparse sounds drawn by
+ * `drawKitchenSound` from the dream's own audio stream, muffled by the door.
+ */
+export class KitchenVoice implements Voice {
+  readonly defaultFadeIn = 1;
+  readonly defaultFadeOut = 1.5;
+  private instance: { out: GainNode; door: BiquadFilterNode } | null = null;
+  private readonly rng: Rng;
+  private next: { at: number; sound: KitchenSound } | null = null;
+
+  constructor(private readonly env: VoiceEnv) {
+    this.rng = deriveRng(env.seed, 'kitchen');
+  }
+
+  get playing(): boolean {
+    return this.instance !== null;
+  }
+
+  start(destination: AudioNode, fade: number): void {
+    const { ctx } = this.env;
+    const out = createFadeIn(ctx, destination, fade, KITCHEN_LEVEL);
+    const door = ctx.createBiquadFilter();
+    door.type = 'lowpass';
+    door.frequency.value = DOOR_HZ;
+    door.Q.value = 0.5;
+    door.connect(out);
+    this.instance = { out, door };
+    this.next = { at: ctx.currentTime + KITCHEN_FIRST, sound: drawKitchenSound(this.rng) };
+  }
+
+  stop(fade: number): void {
+    if (!this.instance) return;
+    releaseInstance(this.env.ctx, this.instance.out, [], fade);
+    this.instance = null;
+    this.next = null;
+  }
+
+  resume(): void {}
+
+  schedule(now: number, until: number): void {
+    const instance = this.instance;
+    let next = this.next;
+    if (!instance || !next) return;
+    // A throttled tab skips what it missed instead of playing it in a burst.
+    while (next.at < now) next = { at: next.at + next.sound.gap, sound: drawKitchenSound(this.rng) };
+    while (next.at < until) {
+      this.play(next.sound, next.at, instance.door);
+      next = { at: next.at + next.sound.gap, sound: drawKitchenSound(this.rng) };
+    }
+    this.next = next;
+  }
+
+  private play(sound: KitchenSound, at: number, target: AudioNode): void {
+    switch (sound.kind) {
+      case 'stir':
+      case 'clink':
+        for (const hit of sound.hits) this.ring(hit, at, target);
+        break;
+      case 'cupboard':
+        this.thud(sound.gain, at, target);
+        break;
+      case 'tap':
+        this.water(sound.duration, sound.frequency, at, target);
+        break;
+    }
+  }
+
+  /** Struck china or glass: a few inharmonic sines dying away together. */
+  private ring(hit: KitchenHit, at: number, target: AudioNode): void {
+    const { ctx } = this.env;
+    const start = at + hit.offset;
+    const end = start + hit.decay + 0.05;
+    const env = ctx.createGain();
+    env.gain.setValueAtTime(0, start);
+    env.gain.linearRampToValueAtTime(hit.gain, start + 0.003);
+    env.gain.setTargetAtTime(0, start + 0.003, hit.decay / 4);
+    env.connect(target);
+    KITCHEN_PARTIALS.forEach(([ratio, gain], i) => {
+      const osc = ctx.createOscillator();
+      osc.frequency.value = hit.frequency * ratio;
+      const partial = ctx.createGain();
+      partial.gain.value = gain;
+      osc.connect(partial).connect(env);
+      osc.start(start);
+      osc.stop(end);
+      osc.onended = () => {
+        partial.disconnect();
+        if (i === 0) env.disconnect();
+      };
+    });
+  }
+
+  /** A cupboard door: a short low knock with a puff of air. */
+  private thud(gain: number, at: number, target: AudioNode): void {
+    const { ctx, noise } = this.env;
+    const env = ctx.createGain();
+    env.gain.setValueAtTime(0, at);
+    env.gain.linearRampToValueAtTime(gain, at + 0.005);
+    env.gain.setTargetAtTime(0, at + 0.005, 0.05);
+    env.connect(target);
+
+    const knock = ctx.createOscillator();
+    knock.frequency.setValueAtTime(140, at);
+    knock.frequency.exponentialRampToValueAtTime(80, at + 0.15);
+    knock.connect(env);
+    knock.start(at);
+    knock.stop(at + 0.35);
+
+    const air = noise.source('brown', 0.3);
+    const airFilter = ctx.createBiquadFilter();
+    airFilter.type = 'lowpass';
+    airFilter.frequency.value = 500;
+    const airGain = ctx.createGain();
+    airGain.gain.value = 0.6;
+    air.connect(airFilter).connect(airGain).connect(env);
+    air.stop(at + 0.35);
+    air.onended = () => {
+      airGain.disconnect();
+      env.disconnect();
+    };
+  }
+
+  /** Water from the tap: band-passed noise that swells in and dies down. */
+  private water(duration: number, frequency: number, at: number, target: AudioNode): void {
+    const { ctx, noise } = this.env;
+    const source = noise.source('pink', 0.55);
+    const band = ctx.createBiquadFilter();
+    band.type = 'bandpass';
+    band.frequency.value = frequency;
+    band.Q.value = 0.9;
+    const env = ctx.createGain();
+    env.gain.setValueAtTime(0, at);
+    env.gain.linearRampToValueAtTime(0.55, at + 0.25);
+    env.gain.setValueAtTime(0.55, at + duration - 0.4);
+    env.gain.linearRampToValueAtTime(0, at + duration);
+    source.connect(band).connect(env).connect(target);
+    source.stop(at + duration + 0.05);
+    source.onended = () => env.disconnect();
   }
 }

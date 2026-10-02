@@ -22,6 +22,11 @@ describe('soundProfileFromSeed', () => {
       expect(p.hum.mainsHz).toBeGreaterThan(49.5);
       expect(p.hum.mainsHz).toBeLessThan(50.5);
       expect(p.vacuum.whineHz).toBeGreaterThan(p.vacuum.motorHz * 5);
+      // The hero breathes lower than the ventilator he turns into, and a little faster.
+      expect(p.breath.exhaleHz).toBeGreaterThan(p.breath.inhaleHz);
+      expect(p.breath.exhaleHz).toBeLessThan(p.ventilator.inhaleHz);
+      expect(p.breath.breathsPerMinute).toBeGreaterThanOrEqual(16);
+      expect(p.breath.breathsPerMinute).toBeLessThanOrEqual(19);
     }
   });
 });

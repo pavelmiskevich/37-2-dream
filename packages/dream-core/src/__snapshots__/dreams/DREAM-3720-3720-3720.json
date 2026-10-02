@@ -1,5 +1,5 @@
 {
-  "engineVersion": 4,
+  "engineVersion": 5,
   "seed": "DREAM-3720-3720-3720",
   "profile": {
     "temperature": 37.2,
@@ -23,7 +23,16 @@
       "params": {
         "thermometer": 37.2,
         "roomLight": "tv_glow",
-        "sleepDelay": 3.6
+        "sleepDelay": 3.6,
+        "lastWords": {
+          "opening": "this_is_the_end",
+          "trail": "that_i"
+        },
+        "nightstand": [
+          "water_glass",
+          "pill_blister",
+          "tv_remote"
+        ]
       }
     },
     {

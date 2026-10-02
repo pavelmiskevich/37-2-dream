@@ -26,8 +26,11 @@ import { ENGINE_VERSION } from './version';
 const seed = normalizeSeed('DREAM-8F72-A19C-37B2');
 const dream = generateDream(seed);
 const totalTicks = dream.scenes.reduce((sum, scene) => sum + sceneDurationTicks(scene), 0);
-
-/** No scene rules: every scene simply lasts its `duration` (the real yard waits for its swing). */
+/**
+ * No scene rules: every scene simply lasts its `duration` and the hero walks
+ * freely (the real yard waits for its swing, the real apartment keeps him in
+ * bed on the prologue's own clock; their rules have tests of their own).
+ */
 const timed: SceneRulesMap = {};
 
 const forward: SimInput = { move: [0, 1], look: [0, 0], buttons: 0 };
@@ -51,7 +54,7 @@ function deepFreeze<T>(value: T): T {
 }
 
 describe('createInitialState', () => {
-  const state = createInitialState(dream);
+  const state = createInitialState(dream, timed);
 
   it('starts the first scene at tick 0 with the dream temperature', () => {
     expect(state).toMatchObject({
@@ -119,22 +122,30 @@ describe('step', () => {
   });
 
   it('walks WALK_SPEED metres per second along the view direction', () => {
-    const ahead = runInputs(dream, createInitialState(dream), repeat(forward, 60));
+    const start = createInitialState(dream, timed);
+    const ahead = runInputs(dream, start, repeat(forward, 60), timed);
     expect(ahead.player.position[0]).toBeCloseTo(0, 9);
     expect(ahead.player.position[1]).toBe(EYE_HEIGHT);
     expect(ahead.player.position[2]).toBeCloseTo(-WALK_SPEED, 9);
 
-    const turned = runInputs(dream, createInitialState(dream), [
-      { ...IDLE_INPUT, look: [Math.PI / 2, 0] },
-      ...repeat(forward, 60),
-    ]);
+    const turned = runInputs(
+      dream,
+      start,
+      [{ ...IDLE_INPUT, look: [Math.PI / 2, 0] }, ...repeat(forward, 60)],
+      timed,
+    );
     expect(turned.player.yaw).toBeCloseTo(Math.PI / 2, 4);
     expect(turned.player.position[0]).toBeCloseTo(-WALK_SPEED, 3);
     expect(turned.player.position[2]).toBeCloseTo(0, 3);
   });
 
   it('clamps pitch', () => {
-    const up = runInputs(dream, createInitialState(dream), repeat({ ...IDLE_INPUT, look: [0, 0.5] }, 10));
+    const up = runInputs(
+      dream,
+      createInitialState(dream, timed),
+      repeat({ ...IDLE_INPUT, look: [0, 0.5] }, 10),
+      timed,
+    );
     expect(up.player.pitch).toBe(MAX_PITCH);
   });
 

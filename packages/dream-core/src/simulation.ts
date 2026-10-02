@@ -11,6 +11,7 @@
  * can be stored as a checkpoint and resumed with no loss. The random stream of
  * the current scene is kept inside it as an `RngState`.
  */
+import { createApartmentRules } from './apartment';
 import { generateDream, type Dream } from './dream';
 import { createFallRules } from './fall';
 import { IDLE_INPUT, quantizeInput, type SimInput } from './input';
@@ -119,6 +120,7 @@ export type SceneRulesMap = Readonly<Partial<Record<SceneId, SceneRules>>>;
 
 /** Rules of the slice scenes. A scene without rules simply lasts its `duration`. */
 export const SCENE_RULES: SceneRulesMap = {
+  apartment: createApartmentRules({ tickDt: TICK_DT, eyeHeight: EYE_HEIGHT }),
   yard: createYardRules({ tickDt: TICK_DT, eyeHeight: EYE_HEIGHT, maxPitch: MAX_PITCH }),
   fall: createFallRules({ tickDt: TICK_DT, eyeHeight: EYE_HEIGHT, durationTicks: sceneDurationTicks }),
 };
