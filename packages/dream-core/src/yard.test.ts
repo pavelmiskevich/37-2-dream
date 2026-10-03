@@ -20,11 +20,15 @@ import { applyHeat, temperatureAtLeast } from './temperature';
 import { randomInputs, testSeeds } from './test-utils';
 import {
   SWING,
+  SWING_HINT,
+  SWING_HINT_MAX,
   SWING_RELEASE,
   YARD_VARS,
+  calledSwingAmplitude,
   stepSwing,
   swingAmplitude,
   swingHeatRate,
+  swingHintLevel,
   yardLayout,
   yardSwingAmplitude,
 } from './yard';
@@ -43,6 +47,9 @@ const atSwing = (state: SimState): SimState => ({
   ...state,
   player: { ...state.player, position: [v(state, 'swingX'), EYE_HEIGHT, v(state, 'swingZ') + 0.5] },
 });
+
+/** Stands (or sits) still for `s` seconds. */
+const idle = (state: SimState, s: number) => runInputs(dream, state, Array.from({ length: seconds(s) }, () => IDLE_INPUT));
 
 /** Steps `ticks` ticks, asking `input` for each one given the current state. */
 function drive(state: SimState, ticks: number, input: (state: SimState) => SimInput, rules = SCENE_RULES) {
@@ -145,9 +152,10 @@ describe('yard rules', () => {
     expect(yardSwingAmplitude(later)).toBeLessThan(SWING.sitBelow);
   });
 
-  it('never ends without input: no transition for two minutes, and the dream holds', () => {
+  it('holds without input for two minutes: no transition, and the dream goes on', () => {
     const later = runInputs(dream, inYard(), Array.from({ length: seconds(120) }, () => IDLE_INPUT));
     expect(later.sceneIndex).toBe(yard);
+    expect(v(later, 'released')).toBe(0);
     expect(later.wakeReason).toBeUndefined();
   });
 
@@ -232,6 +240,13 @@ describe('yard rules', () => {
     expect(later.player.pitch).toBeLessThan(-0.5);
   });
 
+  it('lets the pumped hero go through the swing itself, not through the way out', () => {
+    let state = inYard();
+    while (v(state, 'released') !== 1) state = step(dream, state, swingPlayer(state));
+    expect(v(state, 'fallback')).toBe(0);
+    expect(state.sceneTick).toBeLessThan(seconds(SWING_HINT.fallbackAfter));
+  });
+
   it('does not grow when pumped against the swing, held or mashed at random', () => {
     const against = (state: SimState): SimInput => ({ ...IDLE_INPUT, move: [0, -Math.sign(v(state, 'speed'))] });
     const hold: SimInput = { move: [0, 1], look: [0, 0], buttons: 0 };
@@ -277,5 +292,124 @@ describe('yard rules', () => {
     }
     const log = parseInputLog(serializeInputLog(recorder.toLog()));
     expect(replay(s, log, SCENE_RULES, { startScene: index })).toEqual(state);
+  });
+});
+
+describe('the yard calls the hero to the swing', () => {
+  it('counts levels in steps of time off the swing', () => {
+    expect(swingHintLevel(0, TICK_DT)).toBe(0);
+    expect(swingHintLevel(seconds(SWING_HINT.steps[0]) - 1, TICK_DT)).toBe(0);
+    expect(swingHintLevel(seconds(SWING_HINT.steps[0]), TICK_DT)).toBe(1);
+    expect(swingHintLevel(seconds(1000), TICK_DT)).toBe(SWING_HINT_MAX);
+    // The first step comes after 20–30 s, the way out after the top level.
+    expect(SWING_HINT.steps[0]).toBeGreaterThanOrEqual(20);
+    expect(SWING_HINT.steps[0]).toBeLessThanOrEqual(30);
+    expect(SWING_HINT.fallbackAfter).toBeGreaterThan(SWING_HINT.steps[SWING_HINT_MAX - 1]!);
+  });
+
+  it('grows more insistent the longer the hero stays off the swing, never less', () => {
+    let state = inYard();
+    let previous = 0;
+    const changes: number[] = [];
+    for (let i = 1; i < seconds(SWING_HINT.fallbackAfter); i++) {
+      state = step(dream, state, IDLE_INPUT);
+      const level = v(state, 'hint');
+      expect(level).toBeGreaterThanOrEqual(previous);
+      if (level !== previous) changes.push(i);
+      previous = level;
+    }
+    expect(previous).toBe(SWING_HINT_MAX);
+    // One step at a time, exactly when its time comes.
+    expect(changes).toEqual(SWING_HINT.steps.map((s) => seconds(s)));
+  });
+
+  it('swings the empty swing harder at the top level, still low enough to sit on', () => {
+    const quiet = idle(inYard(), SWING_HINT.steps[0] - 1);
+    const calling = idle(quiet, SWING_HINT.steps[SWING_HINT_MAX - 1]! - SWING_HINT.steps[0] + 20);
+    expect(v(calling, 'hint')).toBe(SWING_HINT_MAX);
+    expect(yardSwingAmplitude(calling)).toBeGreaterThan(yardSwingAmplitude(quiet) + 0.15);
+    expect(yardSwingAmplitude(calling)).toBeCloseTo(SWING_HINT.amplitude, 1);
+    expect(yardSwingAmplitude(calling)).toBeLessThan(SWING.sitBelow);
+    expect(calledSwingAmplitude(0.1, 0)).toBe(0.1);
+    expect(calledSwingAmplitude(0.1, SWING_HINT_MAX)).toBe(SWING_HINT.amplitude);
+
+    // The swing calls, and the hero can still answer.
+    const sat = step(dream, atSwing(calling), { ...IDLE_INPUT, buttons: use });
+    expect(v(sat, 'seated')).toBe(1);
+  });
+
+  it('does not grow while the hero sits on the swing, and starts over, not from zero, when he gets off', () => {
+    const waited = idle(inYard(), SWING_HINT.steps[1] + 5);
+    expect(v(waited, 'hint')).toBe(2);
+    const sat = seated(waited);
+    expect(v(sat, 'hint')).toBe(0);
+
+    // A minute on the swing doing nothing: the yard does not call him.
+    const sitting = idle(sat, 60);
+    expect(v(sitting, 'seated')).toBe(1);
+    expect(v(sitting, 'hint')).toBe(0);
+    expect(v(sitting, 'idle')).toBe(v(sat, 'idle'));
+
+    // Off again: the count goes on from `resumeAt`, so the first step comes sooner than at the start.
+    const off = step(dream, sitting, { ...IDLE_INPUT, buttons: use });
+    expect(v(off, 'seated')).toBe(0);
+    expect(v(off, 'idle')).toBe(seconds(SWING_HINT.resumeAt));
+    const sooner = SWING_HINT.steps[0] - SWING_HINT.resumeAt;
+    expect(v(idle(off, sooner - 0.5), 'hint')).toBe(0);
+    expect(v(idle(off, sooner + 0.5), 'hint')).toBe(1);
+  });
+
+  it('keeps a short visit: getting off soon after arriving does not set the count back', () => {
+    const early = seated(idle(inYard(), 5));
+    const off = step(dream, idle(early, 3), { ...IDLE_INPUT, buttons: use });
+    expect(v(off, 'seated')).toBe(0);
+    expect(v(off, 'idle')).toBe(v(early, 'idle'));
+  });
+});
+
+describe('the way out of the yard', () => {
+  const fallbackTick = seconds(SWING_HINT.fallbackAfter);
+
+  it('without input, moves on to the fall at the set time: the world turns over, the dream goes on', () => {
+    const before = runInputs(dream, inYard(), Array.from({ length: fallbackTick - 1 }, () => IDLE_INPUT));
+    expect(v(before, 'released')).toBe(0);
+    const out = step(dream, before, IDLE_INPUT);
+    expect(v(out, 'released')).toBe(1);
+    expect(v(out, 'fallback')).toBe(1);
+
+    // The same transition as the swing's: he rises into the sky looking down, then the fall begins.
+    const y0 = out.player.position[1];
+    const flying = runInputs(dream, out, Array.from({ length: seconds(SWING_RELEASE.duration) - 2 }, () => IDLE_INPUT));
+    expect(flying.sceneIndex).toBe(yard);
+    expect(flying.player.position[1]).toBeGreaterThan(y0 + 3);
+    expect(flying.player.pitch).toBeLessThan(-0.5);
+
+    const fallen = runInputs(dream, flying, Array.from({ length: 4 }, () => IDLE_INPUT));
+    expect(fallen.sceneIndex).toBe(yard + 1);
+    expect(dream.scenes[fallen.sceneIndex]!.id).toBe('fall');
+    expect(fallen.wakeReason).toBeUndefined();
+  });
+
+  it('also lets go of a hero who sits on the swing and never swings it high enough', () => {
+    const sat = seated(idle(inYard(), 40));
+    const out = drive(sat, fallbackTick, () => IDLE_INPUT);
+    expect(out.sceneIndex).toBe(yard + 1);
+    expect(out.wakeReason).toBeUndefined();
+  });
+
+  it('comes for a hero who wanders about the yard all the time, too', () => {
+    const ticks = fallbackTick + seconds(SWING_RELEASE.duration) + 2;
+    const noise = randomInputs(ticks, 'yard/wander').map((input) => ({ ...input, buttons: 0 }));
+    expect(runInputs(dream, inYard(), noise).sceneIndex).toBe(yard + 1);
+  });
+
+  it('replays the way out bit for bit', () => {
+    const recorder = createInputRecorder();
+    const noise = randomInputs(seconds(30), 'yard/way-out');
+    let state = inYard();
+    for (let i = 0; i < fallbackTick + 10; i++) state = step(dream, state, recorder.record(noise[i % noise.length]!));
+    expect(v(state, 'released')).toBe(1);
+    const log = parseInputLog(serializeInputLog(recorder.toLog()));
+    expect(replay(seed, log, SCENE_RULES, { startScene: yard })).toEqual(state);
   });
 });

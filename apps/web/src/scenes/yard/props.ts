@@ -111,15 +111,22 @@ export function buildBins(kit: Kit, count: number): THREE.Group {
   return row;
 }
 
-/** Street lamp: a concrete pole with an arm over the yard (local +Z). */
-export function buildLamp(kit: Kit, on: boolean): { lamp: THREE.Group; head: THREE.Vector3 } {
+/**
+ * Street lamp: a concrete pole with an arm over the yard (local +Z), its head
+ * `reach` metres out. The glass is unlit (`basic`) when the lamp burns.
+ */
+export function buildLamp(
+  kit: Kit,
+  on: boolean,
+  reach = 0.85,
+): { lamp: THREE.Group; head: THREE.Vector3; glass: THREE.MeshBasicMaterial | THREE.MeshLambertMaterial } {
   const lamp = new THREE.Group();
   const pole = kit.lambert({ color: 0x8a8880, flatShading: true });
   lamp.add(kit.box(0.14, 5, 0.14, pole, 0, 0, 0));
-  lamp.add(kit.box(0.08, 0.08, 0.9, pole, 0, 4.9, 0.45));
+  lamp.add(kit.box(0.08, 0.08, reach + 0.05, pole, 0, 4.9, (reach + 0.05) / 2));
   const glass = on ? kit.basic({ color: 0xffd090 }) : kit.lambert({ color: 0x9a9a90 });
-  lamp.add(kit.box(0.3, 0.12, 0.45, glass, 0, 4.75, 0.85));
-  return { lamp, head: new THREE.Vector3(0, 4.6, 0.85) };
+  lamp.add(kit.box(0.3, 0.12, 0.45, glass, 0, 4.75, reach));
+  return { lamp, head: new THREE.Vector3(0, 4.6, reach), glass };
 }
 
 /** A parked car, bonnet along local +X. */

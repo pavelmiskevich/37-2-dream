@@ -9,8 +9,9 @@ import {
   type DreamSeed,
   type TimeOfDay,
 } from '@dream/core';
-import { BACKWARD_PITCH, creakCue } from './creak-cue';
+import { BACKWARD_PITCH, TURN_CREAK_FROM, TURN_PITCH, creakCue } from './creak-cue';
 import { dressYard, womanAt, type YardDressing } from './dressing';
+import { DIMMEST, FLICKER_CYCLE, HINT_EASE_RATE, easeHint, gatherSpot, hintLook, lampFlicker, pigeonGoes } from './hint';
 import { DRIZZLE_FROM_FOG, yardLook } from './look';
 
 const SEEDS = ['DREAM-8F72-A19C-37B2', 'DREAM-0000-0000-0000', 'DREAM-C0DE-BEEF-0451', 'DREAM-3720-3720-3720'].map(
@@ -40,6 +41,71 @@ describe('creakCue', () => {
     expect(low.strength).toBeCloseTo(0.2 / SWING_RELEASE.amplitude, 2);
     expect(high.pitch).toBe(1);
     expect(creakCue({ angle: 0.001, speed: -1 }, { angle: -0.001, speed: -1 })!.pitch).toBe(BACKWARD_PITCH);
+  });
+
+  it('creaks louder and more often when the swing calls the hero', () => {
+    const bottom = [{ angle: -0.001, speed: 0.6 }, { angle: 0.001, speed: 0.6 }] as const;
+    const top = [{ angle: 0.3, speed: 0.01 }, { angle: 0.3, speed: -0.01 }] as const;
+    expect(creakCue(...bottom, 3)!.strength).toBeGreaterThan(creakCue(...bottom, 0)!.strength * 1.5);
+    // The top of a swing is silent for a quiet swing and squeaks for a calling one.
+    expect(creakCue(...top, 0)).toBeNull();
+    expect(creakCue(...top, TURN_CREAK_FROM - 1)).toBeNull();
+    const squeak = creakCue(...top, TURN_CREAK_FROM)!;
+    expect(squeak.pitch).toBe(TURN_PITCH);
+    expect(squeak.strength).toBeLessThan(creakCue(...bottom, TURN_CREAK_FROM)!.strength + 1e-9);
+    expect(creakCue(...bottom, 100)!.strength).toBeLessThanOrEqual(1);
+  });
+});
+
+describe('the yard calling the hero', () => {
+  it('is quiet at level 0 and grows with every level', () => {
+    expect(hintLook(0)).toEqual({ lampGlow: 0, flicker: 0, dimming: 1, gathered: 0 });
+    let previous = hintLook(0);
+    for (const level of [1, 2, 3, 4]) {
+      const look = hintLook(level);
+      expect(look.lampGlow).toBeGreaterThan(previous.lampGlow);
+      expect(look.dimming).toBeLessThan(previous.dimming);
+      expect(look.gathered).toBeGreaterThan(previous.gathered);
+      expect(look.flicker).toBeGreaterThanOrEqual(previous.flicker);
+      previous = look;
+    }
+    // The rest of the yard only dims a little; the lamp buzzes at the top level.
+    expect(previous.dimming).toBe(DIMMEST);
+    expect(previous.flicker).toBe(1);
+    expect(hintLook(1).flicker).toBe(0);
+  });
+
+  it('glides from one step to the next instead of popping', () => {
+    expect(easeHint(0, 1, 0.5)).toBeCloseTo(HINT_EASE_RATE * 0.5, 9);
+    expect(easeHint(1, 0, 0.5)).toBeCloseTo(1 - HINT_EASE_RATE * 0.5, 9);
+    expect(easeHint(0.99, 1, 1)).toBe(1);
+  });
+
+  it('dips the buzzing lamp fewer than three times a second (D-009)', () => {
+    expect(lampFlicker(1.23, 0)).toBe(1);
+    let dips = 0;
+    let lit = true;
+    for (let i = 0; i < 6000; i++) {
+      const on = lampFlicker(i / 1000, 1) === 1;
+      if (lit && !on) dips++;
+      lit = on;
+    }
+    expect(dips).toBeGreaterThan(0);
+    expect(dips / 6).toBeLessThan(3);
+    expect(Math.min(...Array.from({ length: 100 }, (_, i) => lampFlicker((i / 100) * FLICKER_CYCLE, 1)))).toBeGreaterThan(0);
+  });
+
+  it('gathers the pigeons around the swing, clear of its frame, a few at a time', () => {
+    for (let i = 0; i < 12; i++) {
+      const spot = gatherSpot(3, -2, i);
+      const r = Math.hypot(spot.x - 3, spot.z + 2);
+      expect(r).toBeGreaterThan(2.2);
+      expect(r).toBeLessThan(3.1);
+    }
+    expect(pigeonGoes(0, 8, 0)).toBe(false);
+    expect(pigeonGoes(0, 8, 0.25)).toBe(true);
+    expect(pigeonGoes(2, 8, 0.25)).toBe(false);
+    expect(Array.from({ length: 8 }, (_, i) => pigeonGoes(i, 8, 1)).every(Boolean)).toBe(true);
   });
 });
 

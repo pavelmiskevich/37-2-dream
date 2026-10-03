@@ -21,5 +21,9 @@
  *   gravity, the lid and the carry to it. Dreams are generated as before;
  *   logs that reach the jam would replay differently, and a player can now
  *   leave the jam before its nominal end.
+ * - 7 — the yard calls the hero to the swing and lets the dream go on without
+ *   it (#28, D-019): the empty swing swings harder the longer he stays off it,
+ *   and the yard ends by itself after a while. Dreams are generated as before;
+ *   logs that reach the yard would replay differently.
  */
-export const ENGINE_VERSION = 6;
+export const ENGINE_VERSION = 7;
