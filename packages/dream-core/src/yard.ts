@@ -14,6 +14,13 @@
  * a held key only shifts the rest position a little. Without input the swing
  * dies out with `damping`.
  *
+ * A hero who does not find the swing is called to it by the yard itself
+ * (`SWING_HINT`): the longer he stays off the seat, the higher the insistence
+ * level in `sceneVars`, in steps, and the harder the empty swing swings; the
+ * view adds the creaks, the pigeons and the lamp. If he still has not flown
+ * off after `fallbackAfter`, the dream goes on by itself through the same
+ * transition: he lets go of the ground instead of the seat.
+ *
  * Everything lives in `sceneVars` (keys in `YARD_VARS`); the app draws it.
  * The yard's geometry that the rules need — its bounds, the swing and the
  * hero's starting point — comes from `yardLayout`, a pure function of the
@@ -92,6 +99,34 @@ export const SWING_RELEASE = {
   lookRate: 1.2,
 } as const;
 
+/**
+ * The yard calls the hero to the swing when he does not find it, and lets the
+ * dream go on without it in the end. Nothing is said or shown on top of the
+ * world (vision, "Не объяснять"): only the swing, its creak, the pigeons and
+ * the lamp over it change. Placeholders until the playtest.
+ */
+export const SWING_HINT = {
+  /**
+   * Seconds off the swing before each level of insistence: level 1 after the
+   * first, the top level (the length of the list) after the last.
+   */
+  steps: [25, 50, 75, 100],
+  /** Getting off the swing pulls the count back to at most this many seconds: it starts over, not from zero. */
+  resumeAt: 15,
+  /** Amplitude of the empty swing at the top level, radians; below `SWING.sitBelow`, so the hero can still sit down. */
+  amplitude: 0.4,
+  /** Push that swings the calling swing up, rad/s² (the plain `SWING.emptyPush` cannot reach `amplitude`). */
+  push: 0.3,
+  /**
+   * Seconds in the yard after which the dream goes on by itself: the world
+   * turns over as on the swing's own transition and the hero falls.
+   */
+  fallbackAfter: 150,
+} as const;
+
+/** Top level of the swing's insistence. */
+export const SWING_HINT_MAX = SWING_HINT.steps.length;
+
 /** Keys of the yard's `sceneVars`. Absent keys read as 0. */
 export const YARD_VARS = {
   /** Swing pivot on the ground plane, metres, and the seat's facing (player yaw convention). */
@@ -130,6 +165,12 @@ export const YARD_VARS = {
   vx: 'vx',
   vy: 'vy',
   vz: 'vz',
+  /** Ticks the hero has spent off the swing (frozen while he sits, pulled back when he gets off). */
+  idle: 'idle',
+  /** Insistence of the swing calling him, 0…`SWING_HINT_MAX`; 0 while he sits on it. */
+  hint: 'hint',
+  /** 1 when the dream went on by itself (`SWING_HINT.fallbackAfter`), not through the swing. */
+  fallback: 'fallback',
 } as const;
 
 type YardVar = keyof typeof YARD_VARS;
@@ -202,6 +243,19 @@ export function stepSwing(angle: number, speed: number, push: number, dt: number
   return [nextAngle, nextSpeed];
 }
 
+/** Insistence level after `idleTicks` ticks off the swing, with ticks of `tickDt` seconds. */
+export function swingHintLevel(idleTicks: number, tickDt: number): number {
+  let level = 0;
+  for (const step of SWING_HINT.steps) if (idleTicks >= Math.round(step / tickDt)) level++;
+  return level;
+}
+
+/** Amplitude the empty swing keeps at insistence `level`, from its own `base` amplitude. */
+export function calledSwingAmplitude(base: number, level: number): number {
+  const k = clamp(level / SWING_HINT_MAX, 0, 1);
+  return Math.max(base, lerp(base, SWING_HINT.amplitude, k));
+}
+
 /** Heat of the swing per second at `amplitude`, °C/s. */
 export function swingHeatRate(amplitude: number): number {
   const k = amplitude / SWING_RELEASE.amplitude;
@@ -246,6 +300,8 @@ export function createYardRules(env: YardEnv): SceneRules {
   const use = buttonBit('use');
   const dt = env.tickDt;
   const clampPitch = (pitch: number) => clamp(pitch, -env.maxPitch, env.maxPitch);
+  const resumeTicks = Math.round(SWING_HINT.resumeAt / dt);
+  const fallbackTicks = Math.round(SWING_HINT.fallbackAfter / dt);
 
   const set = (state: SimState, values: Partial<Record<YardVar, number>>): SimState => {
     const vars: Record<string, number> = { ...state.sceneVars };
@@ -272,6 +328,7 @@ export function createYardRules(env: YardEnv): SceneRules {
     return set(walked, {
       seated: 1,
       mount: 0,
+      hint: 0,
       fromX: walked.player.position[0],
       fromY: walked.player.position[1],
       fromZ: walked.player.position[2],
@@ -279,6 +336,23 @@ export function createYardRules(env: YardEnv): SceneRules {
       toYaw: swingYaw + turns * 2 * Math.PI,
     });
   };
+
+  /** Lets the hero go from `from` with `velocity`: the transition to the fall begins. */
+  const letGo = (state: SimState, from: Vec3, velocity: Vec3, fallback: boolean): SimState =>
+    set(state, {
+      released: 1,
+      releaseTime: 0,
+      fallback: fallback ? 1 : 0,
+      vx: velocity[0],
+      vy: velocity[1],
+      vz: velocity[2],
+      flyX: from[0],
+      flyY: from[1],
+      flyZ: from[2],
+    });
+
+  /** The yard has waited long enough: the dream goes on without the swing. */
+  const fallbackDue = (state: SimState): boolean => state.sceneTick >= fallbackTicks;
 
   return {
     enter(state, context) {
@@ -335,11 +409,19 @@ export function createYardRules(env: YardEnv): SceneRules {
       }
 
       if (!seated) {
-        // The empty swing keeps itself going, a little: nobody pushes it.
+        // The empty swing keeps itself going, a little: nobody pushes it. The
+        // longer the hero stays off it, the harder it swings, calling him.
+        const idle = read(state, 'idle') + 1;
+        const hint = swingHintLevel(idle, dt);
         const amplitude = swingAmplitude(angle, speed);
-        const push = amplitude < read(state, 'emptyAmplitude') ? SWING.emptyPush * Math.sign(speed) : 0;
+        const target = calledSwingAmplitude(read(state, 'emptyAmplitude'), hint);
+        const strength = hint > 0 ? SWING_HINT.push : SWING.emptyPush;
+        const push = amplitude < target ? strength * Math.sign(speed) : 0;
         const [nextAngle, nextSpeed] = stepSwing(angle, speed, push, dt);
-        return standing(set(state, { angle: nextAngle, speed: nextSpeed }), context);
+        const next = standing(set(state, { angle: nextAngle, speed: nextSpeed, idle, hint }), context);
+        // Never found it: the dream goes on by itself, from where he stands.
+        if (read(next, 'seated') !== 1 && fallbackDue(next)) return letGo(next, next.player.position, [0, 0, 0], true);
+        return next;
       }
 
       // Seated: pumping. Getting off with "use" once settled.
@@ -357,7 +439,8 @@ export function createYardRules(env: YardEnv): SceneRules {
               pitch: clampPitch(state.player.pitch - seatTilt(angle, mount)),
             },
           },
-          { seated: 0, mount: 0, angle: nextAngle, speed: nextSpeed },
+          // The count of his time off the swing starts over, but not from zero.
+          { seated: 0, mount: 0, angle: nextAngle, speed: nextSpeed, idle: Math.min(read(state, 'idle'), resumeTicks), hint: swingHintLevel(Math.min(read(state, 'idle'), resumeTicks), dt) },
         );
       }
 
@@ -376,20 +459,13 @@ export function createYardRules(env: YardEnv): SceneRules {
       let next = set({ ...state, player: { position, yaw, pitch } }, { angle: nextAngle, speed: nextSpeed, mount: nextMount });
       next = applyHeat(next, swingHeatRate(swingAmplitude(nextAngle, nextSpeed)) * dt);
 
-      if (swingReleaseReady(next)) {
+      const ready = swingReleaseReady(next);
+      if (ready || fallbackDue(next)) {
         // Let go: off the seat with its velocity, along the chains' tangent.
         const [fx, fz] = forwardOf(read(next, 'swingYaw'));
         const tangential = nextSpeed * (SWING.chainLength - SWING.seatedEye);
-        next = set(next, {
-          released: 1,
-          releaseTime: 0,
-          vx: fx * Math.cos(nextAngle) * tangential,
-          vy: Math.sin(nextAngle) * tangential,
-          vz: fz * Math.cos(nextAngle) * tangential,
-          flyX: position[0],
-          flyY: position[1],
-          flyZ: position[2],
-        });
+        const velocity: Vec3 = [fx * Math.cos(nextAngle) * tangential, Math.sin(nextAngle) * tangential, fz * Math.cos(nextAngle) * tangential];
+        next = letGo(next, position, velocity, !ready);
       }
       return next;
     },
