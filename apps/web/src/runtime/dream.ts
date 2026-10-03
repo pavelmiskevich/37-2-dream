@@ -1,4 +1,4 @@
-import { findScene, generateDream } from '@dream/core';
+import { findScene, generateDream, type Dream, type InputLog, type SimState } from '@dream/core';
 import { createAudioEngine, feverSoundEvents, feverSoundMix, unlockAudio, type AudioEngine, type FeverSoundMix } from '../audio';
 import { createDebugOverlay, debugFromQuery } from '../debug';
 import { feverLevel } from '../fever';
@@ -10,8 +10,33 @@ import { createStickOverlay } from '../ui/stick';
 import { queryWithSeed, sceneFromQuery } from './query';
 import { createSceneRuntime, type SceneRuntime } from './scene-runtime';
 
-/** Phase of the page, mirrored to `<html data-phase>` for playtests. */
-export type DreamPhase = 'awake' | 'dreaming' | 'paused';
+/**
+ * Phase of the page, mirrored to `<html data-phase>` for playtests. `ended`:
+ * the dream is over (the awakening has stated its reason); the last frame
+ * stays on screen until the dream journal (#13) takes over.
+ */
+export type DreamPhase = 'awake' | 'dreaming' | 'paused' | 'ended';
+
+/** How a played dream ended: everything the dream journal (#13) needs. */
+export interface DreamEnding {
+  dream: Dream;
+  /**
+   * Final state: `wakeReason`, `temperature` on waking up and `intrusions`
+   * (what was heard; `heardMotifs` turns them into reveals).
+   */
+  state: SimState;
+  /** Scene the run started in (`?scene=`); with the log it replays the run. */
+  startScene: number;
+  inputLog: InputLog;
+}
+
+/** Name of the `CustomEvent<DreamEnding>` dispatched on `window` when the dream ends. */
+export const DREAM_END_EVENT = 'dream:end';
+
+export interface StartDreamOptions {
+  /** Called once when the dream is over; also dispatched as `DREAM_END_EVENT`. */
+  onDreamEnd?: (ending: DreamEnding) => void;
+}
 
 const NBSP = String.fromCharCode(0xa0);
 
@@ -27,7 +52,11 @@ const formatTemperature = (celsius: number) => `${celsius.toFixed(1).replace('.'
  * into the address); `?scene=<id>` starts right in that scene for playtests;
  * `?debug` (implied by `?scene=`) shows the debug overlay.
  */
-export function startDream(canvas: HTMLCanvasElement, search: string = window.location.search): void {
+export function startDream(
+  canvas: HTMLCanvasElement,
+  search: string = window.location.search,
+  { onDreamEnd }: StartDreamOptions = {},
+): void {
   const root = document.documentElement;
   const seed = seedFromQuery(search);
   const dream = generateDream(seed);
@@ -113,7 +142,12 @@ export function startDream(canvas: HTMLCanvasElement, search: string = window.lo
 
   function fallAsleep(audio: AudioEngine | undefined) {
     session = createDreamSession({ seed, startScene, readInput: input.readInput });
-    runtime = createSceneRuntime({ dream: session.dream, draw: ps1.render, ...(audio ? { audio } : {}) });
+    runtime = createSceneRuntime({
+      dream: session.dream,
+      draw: ps1.render,
+      ...(audio ? { audio } : {}),
+      onDreamEnd: (state) => endDream(state),
+    });
     input.setEnabled(true);
     setPhase('dreaming');
 
@@ -137,6 +171,17 @@ export function startDream(canvas: HTMLCanvasElement, search: string = window.lo
       if (sceneId) root.dataset.scene = sceneId;
       debug?.update(frame.state, sceneId);
     });
+  }
+
+  /** The dream is over: no more input, the pointer is free, the journal (#13) may take over. */
+  function endDream(state: SimState) {
+    if (!session) return;
+    setPhase('ended');
+    input.setEnabled(false);
+    if (document.pointerLockElement) document.exitPointerLock();
+    const ending: DreamEnding = { dream: session.dream, state, startScene: session.startScene, inputLog: session.inputLog() };
+    onDreamEnd?.(ending);
+    window.dispatchEvent(new CustomEvent<DreamEnding>(DREAM_END_EVENT, { detail: ending }));
   }
 
   document.addEventListener('visibilitychange', () => {

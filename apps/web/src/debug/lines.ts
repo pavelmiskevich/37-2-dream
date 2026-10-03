@@ -1,4 +1,4 @@
-import { TICK_DT, type SimState } from '@dream/core';
+import { TICK_DT, heardMotifs, type SimState } from '@dream/core';
 import { feverLevel } from '../fever';
 
 /**
@@ -6,7 +6,7 @@ import { feverLevel } from '../fever';
  * without a simulation passes just the temperature.
  */
 export type DebugState = Pick<SimState, 'temperature'> &
-  Partial<Pick<SimState, 'tick' | 'sceneIndex' | 'sceneTick' | 'finished' | 'wakeReason'>>;
+  Partial<Pick<SimState, 'tick' | 'sceneIndex' | 'sceneTick' | 'finished' | 'wakeReason' | 'intrusions'>>;
 
 /** True when the address asks for the debug overlay: `?debug` (any value but `0`). */
 export function debugFromQuery(search: string): boolean {
@@ -23,6 +23,10 @@ export function debugLines(state: DebugState, sceneId?: string): string[] {
     lines.push(`scene ${name}${time}`);
   }
   if (state.tick !== undefined) lines.push(`tick ${state.tick}`);
+  if (state.intrusions && state.intrusions.length > 0) {
+    const heard = heardMotifs(state.intrusions).map(({ motif, count }) => (count > 1 ? `${motif}×${count}` : motif));
+    lines.push(`heard ${heard.join(', ')}`);
+  }
   if (state.wakeReason !== undefined) lines.push(`wake ${state.wakeReason}${state.finished ? ' · finished' : ''}`);
   else if (state.finished) lines.push('finished');
   return lines;

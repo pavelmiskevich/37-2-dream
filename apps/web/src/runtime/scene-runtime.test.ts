@@ -1,6 +1,6 @@
 import * as THREE from 'three';
 import { describe, expect, it, vi } from 'vitest';
-import { SCENE_IDS, createInitialState, generateDream, normalizeSeed, type SceneId } from '@dream/core';
+import { SCENE_IDS, createInitialState, generateDream, normalizeSeed, type SceneId, type SimState } from '@dream/core';
 import type { AudioEngine } from '../audio';
 import { interpolateFrame, type FrameView } from '../loop';
 import type { SCENE_VIEWS, SceneView, SceneViewContext } from '../scenes';
@@ -74,7 +74,7 @@ describe('createSceneRuntime', () => {
     const { drawn, draw } = recorder();
     const yardView = fakeView('yard-view');
     const contexts: SceneViewContext[] = [];
-    const audio = { seed: 'test' } as unknown as AudioEngine;
+    const audio = { seed: 'test', handle: vi.fn() } as unknown as AudioEngine;
     const views: typeof SCENE_VIEWS = {
       yard: async () => (context) => (contexts.push(context), yardView),
     };
@@ -169,5 +169,33 @@ describe('createSceneRuntime', () => {
     expect(yardView.dispose).toHaveBeenCalledTimes(1);
     runtime.render(frameIn(indexOf('yard')));
     expect(drawn).toEqual(['blank']);
+  });
+
+  it('runs the cross-scene layers every frame, only with sound, and stops them on dispose', () => {
+    const layer = { update: vi.fn<(frame: FrameView) => void>(), dispose: vi.fn<() => void>() };
+    const audio = { seed: 'test', handle: vi.fn() } as unknown as AudioEngine;
+    const silent = createSceneRuntime({ dream, draw: () => {}, views: {}, layers: () => [layer] });
+    silent.render(frameIn(indexOf('yard')));
+    expect(layer.update).not.toHaveBeenCalled();
+
+    const runtime = createSceneRuntime({ dream, draw: () => {}, views: {}, audio, layers: () => [layer] });
+    runtime.render(frameIn(indexOf('yard')));
+    runtime.render(frameIn(indexOf('fall')));
+    expect(layer.update).toHaveBeenCalledTimes(2);
+    runtime.dispose();
+    expect(layer.dispose).toHaveBeenCalledTimes(1);
+  });
+
+  it('reports the end of the dream once, with the final state', () => {
+    const onDreamEnd = vi.fn<(state: SimState) => void>();
+    const runtime = createSceneRuntime({ dream, draw: () => {}, views: {}, onDreamEnd });
+    const awakening = frameIn(indexOf('awakening'));
+    runtime.render(awakening);
+    expect(onDreamEnd).not.toHaveBeenCalled();
+    const finished = { ...awakening.state, finished: true };
+    runtime.render(interpolateFrame(finished, finished, 0));
+    runtime.render(interpolateFrame(finished, finished, 0));
+    expect(onDreamEnd).toHaveBeenCalledTimes(1);
+    expect(onDreamEnd).toHaveBeenCalledWith(finished);
   });
 });
