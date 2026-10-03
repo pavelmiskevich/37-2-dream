@@ -67,6 +67,7 @@ describe('createInitialState', () => {
       buttons: 0,
       sceneVars: {},
       finished: false,
+      intrusions: [],
     });
     expect(state.player).toEqual({ position: [0, EYE_HEIGHT, 0], yaw: 0, pitch: 0 });
   });

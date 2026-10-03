@@ -25,5 +25,10 @@
  *   it (#28, D-019): the empty swing swings harder the longer he stays off it,
  *   and the yard ends by itself after a while. Dreams are generated as before;
  *   logs that reach the yard would replay differently.
+ * - 8 — reality leaks in (#12, D-020): the awakening may be planned as
+ *   `unknown` (one draw from the awakening's stream, after the old ones), the
+ *   awakening has rules (the hero in bed, the fever broken, its own clock),
+ *   and the state records the intrusions heard. Every dream's awakening may
+ *   differ and every log would replay differently.
  */
-export const ENGINE_VERSION = 7;
+export const ENGINE_VERSION = 8;
