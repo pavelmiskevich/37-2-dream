@@ -1,0 +1,47 @@
+/* The awakening: a voice from the kitchen and a dry verdict. Grave, never playful. */
+
+/* Off-screen voice: the film convention, in italics. */
+.subtitle--offscreen {
+  font-style: italic;
+}
+
+.verdict {
+  position: fixed;
+  inset: 0;
+  z-index: 5;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  /* In the upper third: the thermometer on the bedside table stays readable below. */
+  justify-content: flex-start;
+  gap: 1.1rem;
+  box-sizing: border-box;
+  padding: calc(var(--safe-top) + 24vh) calc(var(--safe-right) + 1.5rem) calc(var(--safe-bottom) + 1.5rem)
+    calc(var(--safe-left) + 1.5rem);
+  background: rgb(0 0 0 / 62%);
+  color: #ecebe6;
+  font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  text-align: center;
+  pointer-events: none;
+  user-select: none;
+}
+
+.verdict[hidden] {
+  display: none;
+}
+
+.verdict__line {
+  margin: 0;
+  /* Letter spacing also pads the end; shift back so the text stays centred. */
+  margin-right: -0.28em;
+  font-size: clamp(0.95rem, 3vmin, 1.35rem);
+  font-weight: 400;
+  font-variant-numeric: tabular-nums;
+  letter-spacing: 0.28em;
+  line-height: 1.4;
+}
+
+.verdict__line + .verdict__line {
+  color: #9a9892;
+  font-size: clamp(0.8rem, 2.4vmin, 1rem);
+}
