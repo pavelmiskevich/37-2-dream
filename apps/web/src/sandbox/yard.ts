@@ -1,7 +1,10 @@
 import {
   IDLE_INPUT,
   SWING,
+  SWING_HINT,
+  SWING_HINT_MAX,
   SWING_RELEASE,
+  TICK_DT,
   YARD_VARS,
   buttonMask,
   findScene,
@@ -25,7 +28,9 @@ import { SCENE_VIEWS, type SceneView, type SceneViewFactory } from '../scenes';
  *
  * - `&seed=DREAM-…` — the dream; without it a random one.
  * - `&auto` — the hero walks to the swing, sits down and pumps it himself.
- * - `&at=20` — start that many seconds into the yard (with `&auto`: mid-swing).
+ * - `&at=20` — start that many seconds into the yard (with `&auto`: mid-swing;
+ *   without it: standing still, so `&at=60` shows the swing calling at level 2
+ *   and `&at=148` the way out of the yard).
  *
  * Controls are the game's: WASD/arrows, mouse after a click, E or a left
  * click — sit down / get off. On the swing: W when it swings forward, S when
@@ -120,10 +125,12 @@ export async function startYardSandbox(canvas: HTMLCanvasElement): Promise<void>
     const amplitude = yardSwingAmplitude(state);
     const seated = vars(state, 'seated') === 1;
     const released = vars(state, 'released') === 1;
+    const left = Math.max(0, SWING_HINT.fallbackAfter - state.sceneTick * TICK_DT);
     panel.status.textContent =
       `${seed} · ${describe}\n` +
       `t ${state.temperature.toFixed(2)} °C · амплитуда ${amplitude.toFixed(2)} / ${SWING_RELEASE.amplitude} рад · ` +
-      (released ? 'переход' : seated ? 'на качелях' : 'стоит');
+      (released ? (vars(state, 'fallback') === 1 ? 'переход (сам)' : 'переход') : seated ? 'на качелях' : 'стоит') +
+      `\nзов ${vars(state, 'hint')} / ${SWING_HINT_MAX} · без качелей ${(vars(state, 'idle') * TICK_DT).toFixed(0)} с · до выхода ${left.toFixed(0)} с`;
   });
 }
 

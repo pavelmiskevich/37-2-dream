@@ -6,7 +6,8 @@ import { applyCameraSway, feverSway } from '../sway';
 import type { SceneView, SceneViewFactory } from '../types';
 import { creakCue, type SwingSample } from './creak-cue';
 import { FLOOR_HEIGHT, WINDOW_PITCH, blockHeight, dressYard, womanAt, type BlockPlan } from './dressing';
-import { yardLook, type YardLook } from './look';
+import { easeHint, gatherSpot, hintLook, lampFlicker, pigeonGoes } from './hint';
+import { mixColor, yardLook, type YardLook } from './look';
 import { Kit, buildBench, buildBins, buildCar, buildLamp, buildSandbox, buildSwing } from './props';
 import { paintAsphalt, paintCurtain, paintFacade, paintGrain, paintPigeon, paintWoman } from './textures';
 
@@ -18,9 +19,12 @@ import { paintAsphalt, paintCurtain, paintFacade, paintGrain, paintPigeon, paint
  * seed: the layout the rules use (`yardLayout`), the scene params (time of
  * day, floors, fog) and the view's own stream `scene/N/view`.
  *
- * The view only reads the simulation: the swing angle and the transition
- * come from `sceneVars` (dream-core `yard.ts`). The swing creaks through the
- * sound engine whenever the seat passes the bottom (`creakCue`).
+ * The view only reads the simulation: the swing angle, the transition and
+ * the swing's insistence come from `sceneVars` (dream-core `yard.ts`). The
+ * swing creaks through the sound engine whenever the seat passes the bottom
+ * (`creakCue`). When the hero does not find the swing, the yard calls him to
+ * it (`hint.ts`): the lamp over the swing burns brighter and buzzes, the rest
+ * of the yard dims, the pigeons walk over and stare at the swing.
  */
 
 /** The view's random stream inside the scene (never the simulation's). */
@@ -31,6 +35,14 @@ const RAIN_SPEED = 7;
 const RAIN_DROPS = 900;
 /** The hero this close scares the pigeons up, metres. */
 const PIGEON_FRIGHT = 2.6;
+/** Pigeons walk to the swing at this speed, m/s: unhurried, with little hops. */
+const PIGEON_WALK = 0.45;
+/** Light of a burning street lamp, candela. */
+const LAMP_LIGHT = 14;
+/** The lamp over the swing at the top insistence adds this much. */
+const CALLING_LAMP_LIGHT = 70;
+/** The lamp over the swing stands this far along the swing's bar, metres, its arm reaching back over it. */
+const CALLING_LAMP = { out: 2.7, reach: 2.4 } as const;
 
 const smooth = (t: number) => {
   const x = Math.min(1, Math.max(0, t));
@@ -45,6 +57,12 @@ const swingOf = (state: SimState): SwingSample => ({
 interface Pigeon {
   mesh: THREE.Mesh;
   base: THREE.Vector3;
+  /** Where it stands when it has come to the swing. */
+  spot: THREE.Vector3;
+  /** 0…1: how far it has walked from `base` to `spot`. */
+  walk: number;
+  /** Which way its beak points (`scale.x`) when it is not staring at the swing. */
+  side: 1 | -1;
   phase: number;
   /** Flight velocity once scared; null on the ground. */
   flight: THREE.Vector3 | null;
@@ -81,14 +99,17 @@ export const createYardView: SceneViewFactory<'yard'> = ({ dream, scene: dreamSc
   const world = new THREE.Group();
   scene.add(world);
 
-  world.add(new THREE.HemisphereLight(look.hemiSky, look.hemiGround, look.hemiIntensity));
+  const hemi = new THREE.HemisphereLight(look.hemiSky, look.hemiGround, look.hemiIntensity);
+  world.add(hemi);
   const sun = new THREE.DirectionalLight(look.sun, look.sunIntensity);
   sun.position.set(...look.sunFrom);
   world.add(sun);
 
   buildGround(kit, world, look, layout, rng);
   const curtainPlans: CurtainPlan[] = [];
-  for (const block of dressing.blocks) world.add(buildBlock(kit, block, look, rng, curtainPlans));
+  const facades: THREE.MeshLambertMaterial[] = [];
+  for (const block of dressing.blocks) world.add(buildBlock(kit, block, look, rng, curtainPlans, facades));
+  const windowGlow = look.lampsOn ? 1 : 0.25;
 
   const swingPaint = rng.pick([0x6a8aa8, 0xb04a3a, 0xc8a83a, 0x5a8a5a]);
   const swing = buildSwing(kit, swingPaint);
@@ -113,6 +134,7 @@ export const createYardView: SceneViewFactory<'yard'> = ({ dream, scene: dreamSc
   bins.rotation.y = dressing.bins.yaw;
   world.add(bins);
 
+  const lampLights: THREE.PointLight[] = [];
   for (const spot of dressing.lamps) {
     const { lamp, head } = buildLamp(kit, look.lampsOn);
     lamp.position.set(spot.x, 0, spot.z);
@@ -120,11 +142,26 @@ export const createYardView: SceneViewFactory<'yard'> = ({ dream, scene: dreamSc
     world.add(lamp);
     if (look.lampsOn) {
       // Sodium-orange pools of light on the wet asphalt.
-      const light = new THREE.PointLight(0xffb060, 14, 16, 1.2);
+      const light = new THREE.PointLight(0xffb060, LAMP_LIGHT, 16, 1.2);
       light.position.copy(head);
       lamp.add(light);
+      lampLights.push(light);
     }
   }
+
+  // The lamp over the swing: an ordinary one, until the swing starts calling.
+  // Placed by the layout alone (no draws), beside the frame, its arm over the bar.
+  const calling = buildLamp(kit, true, CALLING_LAMP.reach);
+  const callingX = layout.swing.x + Math.cos(layout.swing.yaw) * CALLING_LAMP.out;
+  const callingZ = layout.swing.z - Math.sin(layout.swing.yaw) * CALLING_LAMP.out;
+  calling.lamp.position.set(callingX, 0, callingZ);
+  calling.lamp.rotation.y = Math.atan2(layout.swing.x - callingX, layout.swing.z - callingZ);
+  world.add(calling.lamp);
+  const callingLight = new THREE.PointLight(0xffc070, look.lampsOn ? LAMP_LIGHT : 0, 11, 1.4);
+  callingLight.position.copy(calling.head);
+  calling.lamp.add(callingLight);
+  const callingGlass = calling.glass.color;
+  const glassBase = look.lampsOn ? 0xffd090 : 0x9a9a90;
 
   for (const spot of dressing.cars) {
     const car = buildCar(kit, spot.color);
@@ -155,9 +192,11 @@ export const createYardView: SceneViewFactory<'yard'> = ({ dream, scene: dreamSc
       dressing.pigeons.z + rng.range(-1.4, 1.4),
     );
     mesh.position.copy(base);
-    mesh.scale.x = rng.chance(0.5) ? 1 : -1;
+    const side = rng.chance(0.5) ? 1 : -1;
+    mesh.scale.x = side;
     world.add(mesh);
-    pigeons.push({ mesh, base, phase: rng.range(0, 10), flight: null });
+    const at = gatherSpot(layout.swing.x, layout.swing.z, i);
+    pigeons.push({ mesh, base, spot: new THREE.Vector3(at.x, base.y, at.z), walk: 0, side, phase: rng.range(0, 10), flight: null });
   }
 
   // The woman with the vacuum cleaner: flat, unexplained (D-007).
@@ -177,6 +216,9 @@ export const createYardView: SceneViewFactory<'yard'> = ({ dream, scene: dreamSc
   let before: SwingSample | null = null;
   let now: SwingSample | null = null;
   let lastTime: number | null = null;
+  // Insistence of the swing as shown: eased towards the rules' level; null before the first frame.
+  let shownHint: number | null = null;
+  const ground = new THREE.Vector3();
 
   const view: SceneView = {
     scene,
@@ -188,7 +230,7 @@ export const createYardView: SceneViewFactory<'yard'> = ({ dream, scene: dreamSc
         before = now ?? sample;
         now = sample;
         shownTick = state.tick;
-        const cue = creakCue(before, now);
+        const cue = creakCue(before, now, state.sceneVars[YARD_VARS.hint] ?? 0);
         if (cue && audio) audio.handle({ type: 'swing.creak', strength: cue.strength, pitch: params.swingCreakPitch * cue.pitch });
       }
       const angle = before && now ? before.angle + (now.angle - before.angle) * frame.alpha : 0;
@@ -206,6 +248,22 @@ export const createYardView: SceneViewFactory<'yard'> = ({ dream, scene: dreamSc
       world.position.set(layout.swing.x * (1 - scale), 0, layout.swing.z * (1 - scale));
       const gravity = 1 - 2 * progress; // 1: down as usual, −1: up.
 
+      // The swing calls: its lamp brightens and buzzes, the rest of the yard dims.
+      const targetHint = state.sceneVars[YARD_VARS.hint] ?? 0;
+      const first = shownHint === null;
+      shownHint = first ? targetHint : easeHint(shownHint ?? 0, targetHint, dt);
+      const hint = hintLook(shownHint);
+      hemi.intensity = look.hemiIntensity * hint.dimming;
+      sun.intensity = look.sunIntensity * hint.dimming;
+      for (const light of lampLights) light.intensity = LAMP_LIGHT * hint.dimming;
+      for (const facade of facades) facade.emissiveIntensity = windowGlow * hint.dimming;
+      const dusk = mixColor(look.sky, 0x000000, (1 - hint.dimming) * 0.6);
+      (scene.background as THREE.Color).setHex(dusk);
+      scene.fog!.color.setHex(dusk);
+      const buzz = lampFlicker(frame.time, hint.flicker);
+      callingLight.intensity = ((look.lampsOn ? LAMP_LIGHT : 0) + CALLING_LAMP_LIGHT * hint.lampGlow) * buzz;
+      callingGlass.setHex(mixColor(glassBase, 0xfff6e0, hint.lampGlow)).multiplyScalar(0.35 + 0.65 * buzz);
+
       for (const curtain of curtains) {
         // Mostly still; now and then somebody draws it.
         const wave = Math.sin(t * curtain.rate + curtain.phase);
@@ -214,24 +272,48 @@ export const createYardView: SceneViewFactory<'yard'> = ({ dream, scene: dreamSc
       }
 
       const [px, , pz] = frame.player.position;
-      for (const pigeon of pigeons) {
-        if (!pigeon.flight && (Math.hypot(pigeon.base.x - px, pigeon.base.z - pz) < PIGEON_FRIGHT || released)) {
-          const away = new THREE.Vector3(pigeon.base.x - px, 0, pigeon.base.z - pz).normalize();
+      pigeons.forEach((pigeon, index) => {
+        // The calling swing draws the flock over, a few birds at a time.
+        const goes = pigeonGoes(index, pigeons.length, hint.gathered);
+        const distance = Math.max(0.5, pigeon.base.distanceTo(pigeon.spot));
+        const walking = !pigeon.flight && (goes ? pigeon.walk < 1 : pigeon.walk > 0);
+        const stride = ((goes ? 1 : -1) * PIGEON_WALK * dt) / distance;
+        pigeon.walk = first ? (goes ? 1 : 0) : Math.min(1, Math.max(0, pigeon.walk + stride));
+        ground.lerpVectors(pigeon.base, pigeon.spot, pigeon.walk);
+        if (!pigeon.flight && (Math.hypot(ground.x - px, ground.z - pz) < PIGEON_FRIGHT || released)) {
+          const away = new THREE.Vector3(ground.x - px, 0, ground.z - pz).normalize();
           pigeon.flight = new THREE.Vector3(away.x * 3.5, released ? 0 : 3, away.z * 3.5);
         }
         if (pigeon.flight) {
           pigeon.flight.y += (released ? 9 * (1 - gravity) : 1.5) * dt;
           pigeon.mesh.position.addScaledVector(pigeon.flight, dt);
           pigeon.mesh.rotation.z = Math.sin(t * 30 + pigeon.phase) * 0.3;
+        } else if (walking) {
+          // Little hops on the way to the swing.
+          const hop = Math.abs(Math.sin(t * 9 + pigeon.phase)) * 0.06;
+          pigeon.mesh.position.set(ground.x, ground.y + hop, ground.z);
+          pigeon.mesh.rotation.z = 0;
+        } else if (pigeon.walk >= 1) {
+          // Arrived: it stands still and stares at the swing; no pecking.
+          pigeon.mesh.position.copy(ground);
+          pigeon.mesh.rotation.z = 0;
         } else {
           // Pecking: a quick dip now and then.
           const peck = Math.max(0, Math.sin(t * 3 + pigeon.phase)) ** 8;
-          pigeon.mesh.position.set(pigeon.base.x, pigeon.base.y - peck * 0.05, pigeon.base.z);
+          pigeon.mesh.position.set(ground.x, ground.y - peck * 0.05, ground.z);
           pigeon.mesh.rotation.z = -peck * 0.4 * Math.sign(pigeon.mesh.scale.x);
         }
         // Cardboard birds turn to the hero around the vertical only.
-        pigeon.mesh.rotation.y = Math.atan2(px - pigeon.mesh.position.x, pz - pigeon.mesh.position.z);
-      }
+        const facing = Math.atan2(px - pigeon.mesh.position.x, pz - pigeon.mesh.position.z);
+        pigeon.mesh.rotation.y = facing;
+        if (!pigeon.flight && pigeon.walk > 0) {
+          // On its way or arrived, the beak (the texture's +X) points at the swing as the hero sees it.
+          const toSwing = (layout.swing.x - ground.x) * Math.cos(facing) - (layout.swing.z - ground.z) * Math.sin(facing);
+          if (Math.abs(toSwing) > 0.05) pigeon.mesh.scale.x = Math.sign(toSwing);
+        } else if (!pigeon.flight) {
+          pigeon.mesh.scale.x = pigeon.side;
+        }
+      });
 
       const at = womanAt(dressing.woman, t);
       woman.visible = at !== null;
@@ -281,7 +363,14 @@ function buildGround(kit: Kit, world: THREE.Group, look: YardLook, layout: Retur
   }
 }
 
-function buildBlock(kit: Kit, plan: BlockPlan, look: YardLook, rng: Rng, curtains: CurtainPlan[]): THREE.Group {
+function buildBlock(
+  kit: Kit,
+  plan: BlockPlan,
+  look: YardLook,
+  rng: Rng,
+  curtains: CurtainPlan[],
+  facades: THREE.MeshLambertMaterial[],
+): THREE.Group {
   const block = new THREE.Group();
   block.position.set(plan.x, 0, plan.z);
   block.rotation.y = plan.yaw;
@@ -295,6 +384,7 @@ function buildBlock(kit: Kit, plan: BlockPlan, look: YardLook, rng: Rng, curtain
   kit.own(facade.glow);
   const glowStrength = look.lampsOn ? 1 : 0.25;
   const front = kit.lambert({ map: facade.texture, emissiveMap: facade.glow, emissive: 0xffffff, emissiveIntensity: glowStrength });
+  facades.push(front);
   const wall = kit.lambert({ color: 0x9a9488 });
   const roof = kit.lambert({ color: 0x4a4a48 });
   // Box faces: +X, −X, +Y, −Y, +Z (the facade, towards the yard), −Z.
