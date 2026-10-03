@@ -127,7 +127,7 @@ export function generateDream(seed: DreamSeed): Dream {
       case 'jam':
         return { id, ...base, params: generateJamParams(profile, rng) };
       case 'awakening':
-        return { id, ...base, params: generateAwakeningParams(heard) };
+        return { id, ...base, params: generateAwakeningParams(heard, rng) };
     }
   });
 

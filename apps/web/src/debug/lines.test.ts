@@ -29,4 +29,13 @@ describe('debugLines', () => {
       'wake tea_brought · finished',
     );
   });
+
+  it('shows the intrusions heard so far', () => {
+    const intrusions = [
+      { motif: 'ventilator', sceneIndex: 0, tick: 10 },
+      { motif: 'vacuum', sceneIndex: 1, tick: 20 },
+      { motif: 'vacuum', sceneIndex: 2, tick: 30 },
+    ] as const;
+    expect(debugLines({ temperature: 37.2, intrusions: [...intrusions] })).toContain('heard ventilator, vacuum×2');
+  });
 });

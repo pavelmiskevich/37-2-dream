@@ -163,6 +163,9 @@ class WebAudioEngine implements AudioEngine {
       case 'vacuum.turbine':
         this.voices.vacuum.setTurbine(event.value);
         break;
+      case 'vacuum.volume':
+        this.voices.vacuum.setVolume(event.value);
+        break;
       case 'swing.creak':
         this.creak.play(event.strength, event.pitch ?? 1, this.layers.location);
         break;

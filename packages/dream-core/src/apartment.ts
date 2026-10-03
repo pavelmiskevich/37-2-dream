@@ -109,8 +109,8 @@ export function apartmentSleep(state: Pick<SimState, 'sceneVars'>): number {
   return state.sceneVars.sleep ?? 0;
 }
 
-/** Keeps the hero on the pillow and his head within reach. */
-function lyingPose(player: PlayerState): PlayerState {
+/** Keeps the hero on the pillow and his head within reach. Shared with the awakening. */
+export function lyingPose(player: PlayerState): PlayerState {
   return {
     position: APARTMENT.eye,
     yaw: clamp(player.yaw, APARTMENT.yaw.min, APARTMENT.yaw.max),

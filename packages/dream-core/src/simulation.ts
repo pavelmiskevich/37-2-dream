@@ -12,11 +12,13 @@
  * the current scene is kept inside it as an `RngState`.
  */
 import { createApartmentRules } from './apartment';
+import { createAwakeningRules } from './awakening';
 import { generateDream, type Dream } from './dream';
 import { createFallRules } from './fall';
 import { createJamRules } from './jam';
 import { IDLE_INPUT, quantizeInput, type SimInput } from './input';
 import { inputsOf, type InputLog } from './input-log';
+import { recordIntrusions, type Intrusion } from './intrusions';
 import { rngFromState, type Rng, type RngState } from './rng';
 import type { AwakeningReason, DreamScene, SceneId } from './scenes';
 import type { DreamSeed } from './seed';
@@ -81,6 +83,12 @@ export interface SimState {
   /** True once the last scene has completed; further steps only count ticks. */
   finished: boolean;
   /**
+   * Intrusions of reality heard so far, in the order they sounded: the
+   * scenes' motif schedules as the run went through them (intrusions.ts,
+   * D-020). What the dream journal reveals.
+   */
+  intrusions: readonly Intrusion[];
+  /**
    * Why the hero woke up; absent while he is asleep. Set on entering the
    * awakening scene: the planned reason of that scene when the dream ran its
    * course, or the temperature's verdict when it woke him up early.
@@ -125,6 +133,7 @@ export const SCENE_RULES: SceneRulesMap = {
   yard: createYardRules({ tickDt: TICK_DT, eyeHeight: EYE_HEIGHT, maxPitch: MAX_PITCH }),
   fall: createFallRules({ tickDt: TICK_DT, eyeHeight: EYE_HEIGHT, durationTicks: sceneDurationTicks }),
   jam: createJamRules({ tickDt: TICK_DT, durationTicks: sceneDurationTicks }),
+  awakening: createAwakeningRules({ tickDt: TICK_DT }),
 };
 
 /** Number of whole ticks the scene lasts by default. */
@@ -177,6 +186,7 @@ export function createInitialState(
     rng: [0, 0, 0, 0],
     sceneVars: {},
     finished: false,
+    intrusions: [],
   };
   return enterScene(dream, state, startScene, IDLE_INPUT, rules);
 }
@@ -227,6 +237,9 @@ export function step(dream: Dream, state: SimState, rawInput: SimInput, rules: S
 
   if (sceneRules?.update) next = sceneRules.update(next, context);
   next = { ...next, rng: rng.state() };
+
+  // Reality leaking in (D-020): the scene's motifs due on this tick are heard.
+  next = recordIntrusions(scene, state.sceneTick, next, TICK_DT);
 
   // Leaving the safe range wakes the hero up, whatever the scene had planned.
   const verdict = dreaming ? temperatureWakeReason(next.temperature) : null;

@@ -41,6 +41,8 @@ export {
 } from './catalog';
 
 export {
+  AWAKENING_REASONS,
+  DREAM_MOTIFS,
   ECHO_CATALOG,
   ECHO_SCENES,
   MOTIF_SOURCES,
@@ -66,6 +68,7 @@ export {
   type LastWordsTrail,
   type MotifReveal,
   type NightstandItem,
+  type PlannedAwakeningReason,
   type RealSource,
   type RoomLight,
   type SceneId,
@@ -140,10 +143,36 @@ export {
   apartmentSleep,
   apartmentTimeline,
   createApartmentRules,
+  lyingPose,
   type ApartmentEnv,
   type ApartmentPhase,
   type ApartmentTimeline,
 } from './apartment';
+
+export {
+  AWAKENING,
+  AWAKENING_PHASES,
+  awakeningPhase,
+  awakeningPhaseAt,
+  awakeningTimeline,
+  awakeningWake,
+  createAwakeningRules,
+  isPlannedReason,
+  type AwakeningEnv,
+  type AwakeningPhase,
+  type AwakeningTimeline,
+} from './awakening';
+
+export {
+  ECHOING_SCENES,
+  SCENE_MOTIFS,
+  heardMotifs,
+  intrusionCues,
+  recordIntrusions,
+  type HeardMotif,
+  type Intrusion,
+  type IntrusionCue,
+} from './intrusions';
 
 export {
   DREAMING_SCENES,
