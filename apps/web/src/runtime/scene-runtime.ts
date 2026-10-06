@@ -1,7 +1,8 @@
 import * as THREE from 'three';
-import type { Dream, SceneId } from '@dream/core';
+import type { Dream, SceneId, SimState } from '@dream/core';
 import type { AudioEngine } from '../audio';
 import type { FrameView } from '../loop';
+import { createVacuumLayer } from '../reality';
 import { SCENE_VIEWS, type SceneView, type SceneViewContext, type SceneViewFactory } from '../scenes';
 import { createPlaceholderView } from './placeholder';
 
@@ -19,6 +20,21 @@ export interface SceneRuntimeOptions {
   placeholder?: SceneViewFactory;
   /** Reports a view that failed to load or to start. Default: `console.error`. */
   onError?: (error: unknown, sceneId: SceneId) => void;
+  /**
+   * Called once, on the first frame whose state is `finished`: the dream is
+   * over (the awakening has stated its reason). The final state carries what
+   * the dream journal (#13) needs: `wakeReason`, `temperature`, `intrusions`.
+   */
+  onDreamEnd?: (state: SimState) => void;
+  /** Layers that sound across every scene; default: the vacuum (D-020). Only with `audio`. */
+  layers?: (dream: Dream, audio: AudioEngine) => readonly DreamLayer[];
+}
+
+/** Sound (or anything) that runs across every scene of the dream, beside the scene views. */
+export interface DreamLayer {
+  /** Called once per rendered frame, after the scene's view. */
+  update(frame: FrameView): void;
+  dispose(): void;
 }
 
 export type SceneViewKind = 'loading' | 'view' | 'placeholder';
@@ -61,7 +77,13 @@ export function createSceneRuntime({
   views = SCENE_VIEWS,
   placeholder = createPlaceholderView,
   onError = (error, sceneId) => console.error(`Scene view "${sceneId}" failed`, error),
+  onDreamEnd,
+  layers = (d, a) => [createVacuumLayer(d, a)],
 }: SceneRuntimeOptions): SceneRuntime {
+  // Reality leaking into the dream (D-020): sounds that belong to no single scene.
+  const crossLayers = audio ? layers(dream, audio) : [];
+  let ended = false;
+
   // Drawn while a view is loading, so a scene change never flashes the placeholder.
   const blank = new THREE.Scene();
   blank.background = new THREE.Color(0x000000);
@@ -117,6 +139,11 @@ export function createSceneRuntime({
       } else {
         draw(blank, blankCamera);
       }
+      for (const layer of crossLayers) layer.update(frame);
+      if (frame.state.finished && !ended) {
+        ended = true;
+        onDreamEnd?.(frame.state);
+      }
     },
     get status() {
       if (!active) return null;
@@ -128,6 +155,7 @@ export function createSceneRuntime({
       disposed = true;
       active?.view?.dispose();
       active = null;
+      for (const layer of crossLayers) layer.dispose();
     },
   };
 }

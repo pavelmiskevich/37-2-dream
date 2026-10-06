@@ -258,8 +258,10 @@ export class VacuumVoice implements Voice {
     params: (p: VacuumParams) => [AudioParam, number][];
     motorHz: AudioParam;
     whineHz: AudioParam;
+    volume: AudioParam;
   } | null = null;
   private turbine = 0;
+  private volume = 1;
 
   constructor(private readonly env: VoiceEnv) {}
 
@@ -271,11 +273,13 @@ export class VacuumVoice implements Voice {
     const { ctx, noise, profile } = this.env;
     const out = createFadeIn(ctx, destination, fade, VACUUM_LEVEL);
 
+    const volume = ctx.createGain();
+    volume.gain.value = this.volume;
     const level = ctx.createGain();
     const wall = ctx.createBiquadFilter();
     wall.type = 'lowpass';
     wall.Q.value = 0.5;
-    wall.connect(level).connect(out);
+    wall.connect(level).connect(volume).connect(out);
 
     // Back-and-forth brush movement: gain = (1 - d/2) + d/2 · sin.
     const wobble = ctx.createGain();
@@ -344,6 +348,7 @@ export class VacuumVoice implements Voice {
       params,
       motorHz: motor.frequency,
       whineHz: whine.frequency,
+      volume: volume.gain,
     };
   }
 
@@ -371,6 +376,11 @@ export class VacuumVoice implements Voice {
     for (const [param, v] of instance.params(target)) glideParam(param, v, now, VACUUM_GLIDE);
     glideParam(instance.motorHz, target.motorHz, now, VACUUM_GLIDE);
     glideParam(instance.whineHz, target.whineHz, now, VACUUM_GLIDE);
+  }
+
+  setVolume(value: number): void {
+    this.volume = clamp01(value);
+    if (this.instance) glideParam(this.instance.volume, this.volume, this.env.ctx.currentTime, VACUUM_GLIDE);
   }
 
   schedule(): void {}

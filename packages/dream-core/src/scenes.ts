@@ -31,18 +31,38 @@ export function isSceneId(value: string): value is SceneId {
 /** Motifs that may leak into dream scenes as short "echoes". */
 export type EchoMotif = 'ventilator' | 'monitor';
 
-/** Every recurring sound motif the first slice can contain. */
-export type DreamMotif = 'vacuum' | 'swing_creak' | EchoMotif;
+/**
+ * Every recurring sound motif a dream can contain: an intrusion of reality
+ * into the dream. `lift_voice` has no scene in the first slice yet; it is in
+ * the registry because the vision's table is the contract.
+ */
+export type DreamMotif = 'vacuum' | 'swing_creak' | EchoMotif | 'lift_voice';
 
 /** What a motif really was, revealed on awakening. */
-export type RealSource = 'cleaning' | 'bed_creak' | 'snoring' | 'microwave';
+export type RealSource = 'cleaning' | 'bed_creak' | 'snoring' | 'microwave' | 'tea_offer';
 
+/**
+ * Registry of intrusions (vision.md, "Реальность → сон"; D-002, D-020): each
+ * dream motif and the everyday sound of the real flat behind it.
+ *
+ *   vacuum       vacuum turning turbine  ← cleaning   cleaning in the next room
+ *   swing_creak  the swing's creak       ← bed_creak  the bed as he turns over
+ *   ventilator   "ф-ф-ф… шшш…"           ← snoring    his own snore
+ *   monitor      "пип… пип…"             ← microwave  the microwave in the kitchen
+ *   lift_voice   a voice from the lift   ← tea_offer  "Ты чай будешь?" from the kitchen
+ *
+ * Ids only; the app owns the words.
+ */
 export const MOTIF_SOURCES: Readonly<Record<DreamMotif, RealSource>> = {
   vacuum: 'cleaning',
   swing_creak: 'bed_creak',
   ventilator: 'snoring',
   monitor: 'microwave',
+  lift_voice: 'tea_offer',
 };
+
+/** Every motif of the registry, in its order. */
+export const DREAM_MOTIFS = Object.keys(MOTIF_SOURCES) as readonly DreamMotif[];
 
 /** A motif sounding once inside a scene. */
 export interface Echo {
@@ -160,12 +180,20 @@ export interface JamParams {
 }
 
 /**
- * Why the hero woke up. The generator always plans `tea_brought` (the dream
- * runs its course); the temperature model (temperature.ts) wakes him up early
- * with `malingerer` (recovered: "ПРИЧИНА: СИМУЛЯНТ") or `overheated` (the
- * brain decided it had had enough). Ids only: texts live in the app.
+ * Why the hero woke up. The generator plans how a dream that runs its course
+ * ends: mostly `tea_brought`, now and then `unknown` (he just woke up —
+ * "ПРИЧИНА: НЕИЗВЕСТНО", spec §35). The temperature model (temperature.ts)
+ * wakes him up early with `malingerer` (recovered: "ПРИЧИНА: СИМУЛЯНТ") or
+ * `overheated` (the brain decided it had had enough). Ids only: texts live
+ * in the app.
  */
-export type AwakeningReason = 'tea_brought' | 'malingerer' | 'overheated';
+export type AwakeningReason = 'tea_brought' | 'unknown' | 'malingerer' | 'overheated';
+
+/** Reasons the generator may plan for a dream that runs its course. */
+export type PlannedAwakeningReason = Extract<AwakeningReason, 'tea_brought' | 'unknown'>;
+
+/** Every awakening reason. */
+export const AWAKENING_REASONS: readonly AwakeningReason[] = ['tea_brought', 'unknown', 'malingerer', 'overheated'];
 
 export interface MotifReveal {
   motif: DreamMotif;
@@ -173,7 +201,8 @@ export interface MotifReveal {
 }
 
 export interface AwakeningParams {
-  reason: AwakeningReason;
+  /** How the dream ends unless the temperature ends it earlier. */
+  reason: PlannedAwakeningReason;
   /** Temperature measured on waking up, °C. */
   temperature: number;
   /** Motifs heard in this dream with their real sources, in order of first appearance. */
@@ -366,10 +395,19 @@ export function generateJamParams(profile: DreamProfile, rng: Rng): JamParams {
   };
 }
 
-/** Awakening reason and temperature are fixed by the vision; only the reveals vary. */
-export function generateAwakeningParams(heard: readonly DreamMotif[]): AwakeningParams {
+const AWAKENING_REASON_CATALOG: Catalog<PlannedAwakeningReason> = [
+  { id: 'tea_brought', baseWeight: 7, rarity: 0, cooldownScenes: 0 },
+  { id: 'unknown', baseWeight: 1, rarity: 0, cooldownScenes: 0 },
+];
+
+/**
+ * The temperature is fixed by the vision (36,9: the fever has broken). The
+ * reason is mostly the tea and rarely unknown (spec §35, D-020); the reveals
+ * list the motifs planned for this dream.
+ */
+export function generateAwakeningParams(heard: readonly DreamMotif[], rng: Rng): AwakeningParams {
   return {
-    reason: 'tea_brought',
+    reason: pick(AWAKENING_REASON_CATALOG, rng),
     temperature: 36.9,
     reveals: heard.map((motif) => ({ motif, source: MOTIF_SOURCES[motif] })),
   };

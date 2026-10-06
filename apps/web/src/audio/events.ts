@@ -41,6 +41,11 @@ export type SoundEvent =
   | { type: 'swing.creak'; strength: number; pitch?: number }
   /** Vacuum → turbine, 0…1. */
   | { type: 'vacuum.turbine'; value: number }
+  /**
+   * Loudness of the vacuum on top of its turbine morph, 0…1 (1 = as loud as
+   * the voice goes): how far from the dream it is cleaning.
+   */
+  | { type: 'vacuum.volume'; value: number }
   | { type: 'layer.volume'; layer: LayerName; value: number }
   | { type: 'master.volume'; value: number }
   /** Low-pass muffling of the whole mix, 0 (open) … 1 (heard through jam); see `muffleCutoff`. */
