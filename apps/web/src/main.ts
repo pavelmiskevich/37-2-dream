@@ -14,6 +14,7 @@ const sandboxes = new Map<string, (canvas: HTMLCanvasElement) => Promise<void>>(
   ['yard', async (c) => (await import('./sandbox/yard')).startYardSandbox(c)],
   ['fall', async (c) => (await import('./sandbox/fall')).startFallSandbox(c)],
   ['journal', async () => (await import('./sandbox/journal')).startJournalSandbox()],
+  ['film', async (c) => (await import('./sandbox/film')).startFilmSandbox(c)],
   // The sound panel overlays a plain PS1 backdrop.
   [
     'audio',
