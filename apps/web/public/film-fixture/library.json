@@ -1,0 +1,37 @@
+{
+  "version": 1,
+  "assets": [
+    {
+      "id": "dev-yard-night",
+      "kind": "still",
+      "file": "stills/yard-night.webp",
+      "depth": "depth/yard-night.png",
+      "width": 1280,
+      "height": 720,
+      "tags": { "location": "yard", "motifs": ["swing", "vacuum_woman"], "people": "distant", "mood": "dread", "time": "night" },
+      "generation": {
+        "model": "Tongyi-MAI/Z-Image-Turbo",
+        "license": "Apache-2.0",
+        "prompt": "Concept frame docs/concept/yard-night-z-image.webp: a Soviet courtyard at night in fog, an empty swing, a woman with a vacuum cleaner. Depth: onnx-community/depth-anything-v2-small (Apache-2.0), transformers.js on CPU.",
+        "seed": 0,
+        "source": "docs/concept (dev fixture for the film player, #38)"
+      }
+    },
+    {
+      "id": "dev-yard-night-drift",
+      "kind": "clip",
+      "file": "clips/yard-night-drift.mp4",
+      "width": 960,
+      "height": 540,
+      "duration": 4,
+      "tags": { "location": "yard", "motifs": ["swing", "vacuum_woman"], "people": "distant", "mood": "uneasy", "time": "night" },
+      "generation": {
+        "model": "Tongyi-MAI/Z-Image-Turbo",
+        "license": "Apache-2.0",
+        "prompt": "Stand-in clip: the concept frame with an FFmpeg zoompan, lamp flicker and noise. Replaced by Wan 2.2 clips from the library (#35).",
+        "seed": 0,
+        "source": "FFmpeg from docs/concept/yard-night-z-image.webp (dev fixture for the film player, #38)"
+      }
+    }
+  ]
+}

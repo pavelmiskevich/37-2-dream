@@ -1,12 +1,13 @@
 import { PeriodicClock } from '../clock';
 import { humHarmonics } from '../hum';
 import { creakShape } from '../creak';
+import { stingerShape, type StingerCharacter } from '../stinger';
 import { clamp, clamp01 } from '../math';
 import { BEEP_HARMONICS, beepShape, monitorPeriod, type BeepShape } from '../monitor';
 import type { SoundProfile } from '../profile';
 import { VACUUM_SPIN_FACTOR, vacuumParams, type VacuumParams } from '../vacuum';
 import { drawKitchenSound, KITCHEN_PARTIALS, type KitchenHit, type KitchenSound } from '../kitchen';
-import { deriveRng, type AudioSeed, type Rng } from '../rng';
+import { deriveRng, randomIn, type AudioSeed, type Rng } from '../rng';
 import {
   breathCycle,
   breathPeriod,
@@ -502,6 +503,83 @@ export function createBreathVoice(env: VoiceEnv): VentilatorVoice {
     level: BREATH_LEVEL,
     body: 0.9,
   });
+}
+
+/** Overall level of the scare stinger before the limiter. */
+const STINGER_LEVEL = 0.8;
+
+/**
+ * The scare's stinger: one-shot, like the creak. It plays into its own bus,
+ * past the layers and the master volume, so it cuts through the silence the
+ * film drops right before a scare.
+ */
+export class StingerVoice {
+  private readonly character: StingerCharacter;
+
+  constructor(private readonly env: VoiceEnv) {
+    this.character = { rootHz: randomIn(deriveRng(env.seed, 'stinger'), 290, 360) };
+  }
+
+  play(strength: number, soft: boolean, destination: AudioNode): void {
+    const shape = stingerShape(strength, soft, this.character);
+    if (!shape) return;
+    const { ctx, noise } = this.env;
+    const at = ctx.currentTime + 0.005;
+    const end = at + shape.duration;
+
+    const lowpass = ctx.createBiquadFilter();
+    lowpass.type = 'lowpass';
+    lowpass.frequency.value = shape.lowpassHz;
+    lowpass.Q.value = 0.5;
+    const envelope = ctx.createGain();
+    envelope.gain.setValueAtTime(0, at);
+    envelope.gain.linearRampToValueAtTime(shape.gain * STINGER_LEVEL, at + shape.attack);
+    envelope.gain.setTargetAtTime(0, at + shape.attack, (shape.duration - shape.attack) / 5);
+    lowpass.connect(envelope).connect(destination);
+
+    // The cluster: detuned saws screeching up into pitch.
+    const cluster = ctx.createGain();
+    cluster.gain.value = 0.22;
+    cluster.connect(lowpass);
+    const tones = shape.cluster.map((tone) => {
+      const osc = ctx.createOscillator();
+      osc.type = 'sawtooth';
+      osc.frequency.setValueAtTime(tone.hz * (1 - shape.bend), at);
+      if (shape.bendTime > 0) osc.frequency.exponentialRampToValueAtTime(tone.hz, at + shape.bendTime);
+      const gain = ctx.createGain();
+      gain.gain.value = tone.gain;
+      osc.connect(gain).connect(cluster);
+      osc.start(at);
+      osc.stop(end + 0.05);
+      return osc;
+    });
+
+    // Sub boom, felt more than heard.
+    const boom = ctx.createOscillator();
+    boom.frequency.setValueAtTime(shape.boom.fromHz, at);
+    boom.frequency.exponentialRampToValueAtTime(shape.boom.toHz, at + shape.boom.decay);
+    const boomGain = ctx.createGain();
+    boomGain.gain.setValueAtTime(shape.boom.gain, at);
+    boomGain.gain.setTargetAtTime(0, at + 0.05, shape.boom.decay / 3);
+    boom.connect(boomGain).connect(lowpass);
+    boom.start(at);
+    boom.stop(end + 0.05);
+
+    if (shape.noise.gain > 0) {
+      const burst = noise.source('white', (at * 0.61) % 1);
+      const band = ctx.createBiquadFilter();
+      band.type = 'bandpass';
+      band.frequency.value = shape.noise.hz;
+      band.Q.value = 0.8;
+      const burstGain = ctx.createGain();
+      burstGain.gain.setValueAtTime(shape.noise.gain, at);
+      burstGain.gain.setTargetAtTime(0, at, shape.noise.decay / 3);
+      burst.connect(band).connect(burstGain).connect(lowpass);
+      burst.stop(end + 0.05);
+    }
+
+    (tones[0] ?? boom).onended = () => envelope.disconnect();
+  }
 }
 
 /** Cut-off of the closed kitchen door, Hz: the door takes the air out of every sound. */

@@ -39,6 +39,12 @@ export type SoundEvent =
    * `swingCreakPitch` (1 = nominal).
    */
   | { type: 'swing.creak'; strength: number; pitch?: number }
+  /**
+   * The scare's stinger, played at once past the layers and the master
+   * volume, so it is heard even through a silenced mix. `strength` 0…1
+   * (default 1); `soft` is the "без вспышек" variant (D-009).
+   */
+  | { type: 'stinger.hit'; strength?: number; soft?: boolean }
   /** Vacuum → turbine, 0…1. */
   | { type: 'vacuum.turbine'; value: number }
   /**
