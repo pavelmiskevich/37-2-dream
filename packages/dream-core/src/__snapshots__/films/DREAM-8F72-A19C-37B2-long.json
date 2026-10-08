@@ -1,0 +1,3527 @@
+{
+  "engineVersion": 8,
+  "seed": "DREAM-8F72-A19C-37B2",
+  "length": "long",
+  "duration": 162.6,
+  "profile": {
+    "temperature": 37.2,
+    "absurdity": 0.916,
+    "anxiety": 0.325,
+    "medicalIntensity": 0.907,
+    "sovietIntensity": 0.479,
+    "domesticIntensity": 0.131,
+    "physicsInstability": 0.389,
+    "jumpscareIntensity": 0.82,
+    "dreamLength": 3.21
+  },
+  "shots": [
+    {
+      "index": 0,
+      "assetId": "thermometer-corridor",
+      "start": 0,
+      "duration": 5.771,
+      "camera": {
+        "kind": "push",
+        "zoomFrom": 1.056,
+        "zoomTo": 1.162,
+        "panFrom": [
+          0.025,
+          0.037
+        ],
+        "panTo": [
+          0.031,
+          0.041
+        ],
+        "sway": 0.069
+      },
+      "parallax": 0,
+      "look": {
+        "grain": 0.465,
+        "flicker": 0.069,
+        "blur": 0.284,
+        "vignette": 0.39,
+        "fever": 0.079
+      },
+      "cutOut": "blink",
+      "cutDuration": 0.372,
+      "scare": false
+    },
+    {
+      "index": 1,
+      "assetId": "stairwell-mailboxes",
+      "start": 5.771,
+      "duration": 1.764,
+      "camera": {
+        "kind": "drift",
+        "zoomFrom": 1.105,
+        "zoomTo": 1.124,
+        "panFrom": [
+          0.061,
+          0.006
+        ],
+        "panTo": [
+          0.066,
+          -0.031
+        ],
+        "sway": 0.088
+      },
+      "parallax": 0.586,
+      "look": {
+        "grain": 0.476,
+        "flicker": 0.128,
+        "blur": 0.235,
+        "vignette": 0.395,
+        "fever": 0.116
+      },
+      "cutOut": "fade",
+      "cutDuration": 0.705,
+      "scare": false
+    },
+    {
+      "index": 2,
+      "assetId": "elevator-open",
+      "start": 7.535,
+      "duration": 4.609,
+      "camera": {
+        "kind": "drift",
+        "zoomFrom": 1.137,
+        "zoomTo": 1.126,
+        "panFrom": [
+          -0.031,
+          0.045
+        ],
+        "panTo": [
+          -0.071,
+          0.029
+        ],
+        "sway": 0.118
+      },
+      "parallax": 0.554,
+      "look": {
+        "grain": 0.448,
+        "flicker": 0.135,
+        "blur": 0.076,
+        "vignette": 0.439,
+        "fever": 0.093
+      },
+      "cutOut": "blink",
+      "cutDuration": 0.434,
+      "scare": false
+    },
+    {
+      "index": 3,
+      "assetId": "hospital-corridor-empty",
+      "start": 12.144,
+      "duration": 2.858,
+      "camera": {
+        "kind": "drift",
+        "zoomFrom": 1.179,
+        "zoomTo": 1.175,
+        "panFrom": [
+          0.071,
+          0.12
+        ],
+        "panTo": [
+          0.134,
+          0.134
+        ],
+        "sway": 0.086
+      },
+      "parallax": 0,
+      "look": {
+        "grain": 0.47,
+        "flicker": 0.205,
+        "blur": 0.037,
+        "vignette": 0.481,
+        "fever": 0.132
+      },
+      "cutOut": "hard",
+      "cutDuration": 0,
+      "scare": false
+    },
+    {
+      "index": 4,
+      "assetId": "jam-jar-inside",
+      "start": 15.002,
+      "duration": 2.343,
+      "camera": {
+        "kind": "push",
+        "zoomFrom": 1.045,
+        "zoomTo": 1.145,
+        "panFrom": [
+          0.018,
+          -0.019
+        ],
+        "panTo": [
+          0.021,
+          -0.014
+        ],
+        "sway": 0.213
+      },
+      "parallax": 0,
+      "look": {
+        "grain": 0.562,
+        "flicker": 0.186,
+        "blur": 0.063,
+        "vignette": 0.554,
+        "fever": 0.214
+      },
+      "cutOut": "hard",
+      "cutDuration": 0,
+      "scare": false
+    },
+    {
+      "index": 5,
+      "assetId": "thermometer-corridor-far",
+      "start": 17.345,
+      "duration": 2.181,
+      "camera": {
+        "kind": "push",
+        "zoomFrom": 1.045,
+        "zoomTo": 1.113,
+        "panFrom": [
+          0,
+          0
+        ],
+        "panTo": [
+          0.004,
+          -0.003
+        ],
+        "sway": 0.163
+      },
+      "parallax": 0.533,
+      "look": {
+        "grain": 0.56,
+        "flicker": 0.19,
+        "blur": 0.019,
+        "vignette": 0.575,
+        "fever": 0.236
+      },
+      "cutOut": "hard",
+      "cutDuration": 0,
+      "scare": false
+    },
+    {
+      "index": 6,
+      "assetId": "stairwell-dark",
+      "start": 19.526,
+      "duration": 0.98,
+      "camera": {
+        "kind": "still",
+        "zoomFrom": 1.068,
+        "zoomTo": 1.068,
+        "panFrom": [
+          -0.018,
+          -0.037
+        ],
+        "panTo": [
+          -0.02,
+          -0.037
+        ],
+        "sway": 0.343
+      },
+      "parallax": 0.338,
+      "look": {
+        "grain": 0.524,
+        "flicker": 0.349,
+        "blur": 0.073,
+        "vignette": 0.687,
+        "fever": 0.452
+      },
+      "cutOut": "fade",
+      "cutDuration": 0.392,
+      "scare": false
+    },
+    {
+      "index": 7,
+      "assetId": "bedroom-bed",
+      "start": 20.506,
+      "duration": 6.817,
+      "camera": {
+        "kind": "pull",
+        "zoomFrom": 1.138,
+        "zoomTo": 1.06,
+        "panFrom": [
+          0,
+          -0.034
+        ],
+        "panTo": [
+          0.003,
+          -0.029
+        ],
+        "sway": 0.067
+      },
+      "parallax": 0,
+      "look": {
+        "grain": 0.325,
+        "flicker": 0.065,
+        "blur": 0.385,
+        "vignette": 0.404,
+        "fever": 0.079
+      },
+      "cutOut": "fade",
+      "cutDuration": 1.238,
+      "scare": false
+    },
+    {
+      "index": 8,
+      "assetId": "yard-night-swing",
+      "start": 27.323,
+      "duration": 4.212,
+      "camera": {
+        "kind": "push",
+        "zoomFrom": 1.04,
+        "zoomTo": 1.174,
+        "panFrom": [
+          0.003,
+          0.012
+        ],
+        "panTo": [
+          0.001,
+          0.013
+        ],
+        "sway": 0.066
+      },
+      "parallax": 0.704,
+      "look": {
+        "grain": 0.489,
+        "flicker": 0.163,
+        "blur": 0.117,
+        "vignette": 0.519,
+        "fever": 0.126
+      },
+      "cutOut": "blink",
+      "cutDuration": 0.257,
+      "scare": false
+    },
+    {
+      "index": 9,
+      "assetId": "clip-swing-sways",
+      "start": 31.535,
+      "duration": 2.707,
+      "camera": {
+        "kind": "push",
+        "zoomFrom": 1.006,
+        "zoomTo": 1.087,
+        "panFrom": [
+          0.001,
+          0.001
+        ],
+        "panTo": [
+          0.002,
+          0.002
+        ],
+        "sway": 0.113
+      },
+      "parallax": 0,
+      "look": {
+        "grain": 0.544,
+        "flicker": 0.14,
+        "blur": 0.113,
+        "vignette": 0.522,
+        "fever": 0.158
+      },
+      "cutOut": "hard",
+      "cutDuration": 0,
+      "scare": false
+    },
+    {
+      "index": 10,
+      "assetId": "stairs-down",
+      "start": 34.242,
+      "duration": 3.438,
+      "camera": {
+        "kind": "drift",
+        "zoomFrom": 1.189,
+        "zoomTo": 1.19,
+        "panFrom": [
+          -0.066,
+          0.109
+        ],
+        "panTo": [
+          -0.143,
+          0.086
+        ],
+        "sway": 0.236
+      },
+      "parallax": 0.543,
+      "look": {
+        "grain": 0.426,
+        "flicker": 0.239,
+        "blur": 0.005,
+        "vignette": 0.564,
+        "fever": 0.228
+      },
+      "cutOut": "hard",
+      "cutDuration": 0,
+      "scare": false
+    },
+    {
+      "index": 11,
+      "assetId": "hospital-monitor",
+      "start": 37.68,
+      "duration": 2.114,
+      "camera": {
+        "kind": "drift",
+        "zoomFrom": 1.178,
+        "zoomTo": 1.158,
+        "panFrom": [
+          0.019,
+          -0.071
+        ],
+        "panTo": [
+          -0.034,
+          -0.053
+        ],
+        "sway": 0.232
+      },
+      "parallax": 0,
+      "look": {
+        "grain": 0.472,
+        "flicker": 0.235,
+        "blur": 0.096,
+        "vignette": 0.556,
+        "fever": 0.241
+      },
+      "cutOut": "hard",
+      "cutDuration": 0,
+      "scare": false
+    },
+    {
+      "index": 12,
+      "assetId": "hospital-corridor-figure",
+      "start": 39.794,
+      "duration": 0.557,
+      "camera": {
+        "kind": "sway",
+        "zoomFrom": 1.184,
+        "zoomTo": 1.188,
+        "panFrom": [
+          -0.116,
+          -0.064
+        ],
+        "panTo": [
+          -0.132,
+          -0.073
+        ],
+        "sway": 0.621
+      },
+      "parallax": 0.537,
+      "look": {
+        "grain": 0.513,
+        "flicker": 0.324,
+        "blur": 0.029,
+        "vignette": 0.689,
+        "fever": 0.463
+      },
+      "cutOut": "fade",
+      "cutDuration": 0.222,
+      "scare": false
+    },
+    {
+      "index": 13,
+      "assetId": "stairwell-mailboxes",
+      "start": 40.351,
+      "duration": 3.805,
+      "camera": {
+        "kind": "pull",
+        "zoomFrom": 1.123,
+        "zoomTo": 1.073,
+        "panFrom": [
+          -0.039,
+          0.004
+        ],
+        "panTo": [
+          -0.047,
+          0.003
+        ],
+        "sway": 0.063
+      },
+      "parallax": 0.761,
+      "look": {
+        "grain": 0.369,
+        "flicker": 0.078,
+        "blur": 0.332,
+        "vignette": 0.394,
+        "fever": 0.052
+      },
+      "cutOut": "blink",
+      "cutDuration": 0.375,
+      "scare": false
+    },
+    {
+      "index": 14,
+      "assetId": "stairwell-vacuum",
+      "start": 44.156,
+      "duration": 3.611,
+      "camera": {
+        "kind": "push",
+        "zoomFrom": 1.067,
+        "zoomTo": 1.195,
+        "panFrom": [
+          0.011,
+          -0.055
+        ],
+        "panTo": [
+          0.025,
+          -0.055
+        ],
+        "sway": 0.106
+      },
+      "parallax": 0,
+      "look": {
+        "grain": 0.449,
+        "flicker": 0.186,
+        "blur": 0.106,
+        "vignette": 0.453,
+        "fever": 0.142
+      },
+      "cutOut": "blink",
+      "cutDuration": 0.355,
+      "scare": false
+    },
+    {
+      "index": 15,
+      "assetId": "thermometer-corridor",
+      "start": 47.767,
+      "duration": 2.425,
+      "camera": {
+        "kind": "drift",
+        "zoomFrom": 1.165,
+        "zoomTo": 1.164,
+        "panFrom": [
+          0.098,
+          0.101
+        ],
+        "panTo": [
+          0,
+          0.126
+        ],
+        "sway": 0.175
+      },
+      "parallax": 0,
+      "look": {
+        "grain": 0.535,
+        "flicker": 0.227,
+        "blur": 0.025,
+        "vignette": 0.557,
+        "fever": 0.199
+      },
+      "cutOut": "hard",
+      "cutDuration": 0,
+      "scare": false
+    },
+    {
+      "index": 16,
+      "assetId": "bedroom-monitor",
+      "start": 50.192,
+      "duration": 2.795,
+      "camera": {
+        "kind": "drift",
+        "zoomFrom": 1.132,
+        "zoomTo": 1.115,
+        "panFrom": [
+          -0.051,
+          0.046
+        ],
+        "panTo": [
+          0.005,
+          0.086
+        ],
+        "sway": 0.111
+      },
+      "parallax": 0,
+      "look": {
+        "grain": 0.565,
+        "flicker": 0.198,
+        "blur": 0.071,
+        "vignette": 0.533,
+        "fever": 0.203
+      },
+      "cutOut": "fade",
+      "cutDuration": 0.674,
+      "scare": false
+    },
+    {
+      "index": 17,
+      "assetId": "bedroom-will",
+      "start": 52.987,
+      "duration": 1.686,
+      "camera": {
+        "kind": "push",
+        "zoomFrom": 1.063,
+        "zoomTo": 1.116,
+        "panFrom": [
+          0.012,
+          0.038
+        ],
+        "panTo": [
+          0.019,
+          0.039
+        ],
+        "sway": 0.121
+      },
+      "parallax": 0.365,
+      "look": {
+        "grain": 0.558,
+        "flicker": 0.2,
+        "blur": 0.051,
+        "vignette": 0.565,
+        "fever": 0.264
+      },
+      "cutOut": "hard",
+      "cutDuration": 0,
+      "scare": false
+    },
+    {
+      "index": 18,
+      "assetId": "bedroom-bed",
+      "start": 54.673,
+      "duration": 0.724,
+      "camera": {
+        "kind": "push",
+        "zoomFrom": 1.077,
+        "zoomTo": 1.108,
+        "panFrom": [
+          0.059,
+          -0.039
+        ],
+        "panTo": [
+          0.06,
+          -0.037
+        ],
+        "sway": 0.274
+      },
+      "parallax": 0,
+      "look": {
+        "grain": 0.6,
+        "flicker": 0.331,
+        "blur": 0.073,
+        "vignette": 0.644,
+        "fever": 0.264
+      },
+      "cutOut": "hard",
+      "cutDuration": 0,
+      "scare": false
+    },
+    {
+      "index": 19,
+      "assetId": "hospital-corridor-ventilator",
+      "start": 55.397,
+      "duration": 6.075,
+      "camera": {
+        "kind": "push",
+        "zoomFrom": 1.047,
+        "zoomTo": 1.227,
+        "panFrom": [
+          0.03,
+          0.028
+        ],
+        "panTo": [
+          0.021,
+          0.029
+        ],
+        "sway": 0.316
+      },
+      "parallax": 0.54,
+      "look": {
+        "grain": 0.531,
+        "flicker": 0.363,
+        "blur": 0.006,
+        "vignette": 0.618,
+        "fever": 0.384
+      },
+      "cutOut": "hard",
+      "cutDuration": 0,
+      "scare": false
+    },
+    {
+      "index": 20,
+      "assetId": "stairwell-dark",
+      "start": 61.472,
+      "duration": 0.828,
+      "camera": {
+        "kind": "sway",
+        "zoomFrom": 1.107,
+        "zoomTo": 1.097,
+        "panFrom": [
+          -0.072,
+          0.027
+        ],
+        "panTo": [
+          -0.079,
+          0.029
+        ],
+        "sway": 0.772
+      },
+      "parallax": 0.392,
+      "look": {
+        "grain": 0.544,
+        "flicker": 0.353,
+        "blur": 0.038,
+        "vignette": 0.742,
+        "fever": 0.473
+      },
+      "cutOut": "flash",
+      "cutDuration": 0.124,
+      "scare": false
+    },
+    {
+      "index": 21,
+      "assetId": "yard-day-pigeons",
+      "start": 62.3,
+      "duration": 3.417,
+      "camera": {
+        "kind": "drift",
+        "zoomFrom": 1.108,
+        "zoomTo": 1.095,
+        "panFrom": [
+          -0.062,
+          0.048
+        ],
+        "panTo": [
+          0.011,
+          0.031
+        ],
+        "sway": 0.065
+      },
+      "parallax": 0.693,
+      "look": {
+        "grain": 0.462,
+        "flicker": 0.101,
+        "blur": 0.372,
+        "vignette": 0.45,
+        "fever": 0.065
+      },
+      "cutOut": "hard",
+      "cutDuration": 0,
+      "scare": false
+    },
+    {
+      "index": 22,
+      "assetId": "scare-monitor",
+      "start": 65.717,
+      "duration": 0.133,
+      "camera": {
+        "kind": "push",
+        "zoomFrom": 1.04,
+        "zoomTo": 1.07,
+        "panFrom": [
+          -0.025,
+          0.007
+        ],
+        "panTo": [
+          -0.02,
+          0.01
+        ],
+        "sway": 0.231
+      },
+      "parallax": 0,
+      "look": {
+        "grain": 0.749,
+        "flicker": 0.365,
+        "blur": 0.108,
+        "vignette": 0.881,
+        "fever": 0.64
+      },
+      "cutOut": "hard",
+      "cutDuration": 0,
+      "scare": true
+    },
+    {
+      "index": 23,
+      "assetId": "hospital-monitor",
+      "start": 65.85,
+      "duration": 2.834,
+      "camera": {
+        "kind": "drift",
+        "zoomFrom": 1.166,
+        "zoomTo": 1.165,
+        "panFrom": [
+          0.125,
+          -0.113
+        ],
+        "panTo": [
+          0.08,
+          -0.127
+        ],
+        "sway": 0.155
+      },
+      "parallax": 0,
+      "look": {
+        "grain": 0.388,
+        "flicker": 0.142,
+        "blur": 0.292,
+        "vignette": 0.49,
+        "fever": 0.138
+      },
+      "cutOut": "hard",
+      "cutDuration": 0,
+      "scare": false
+    },
+    {
+      "index": 24,
+      "assetId": "jam-jar-inside",
+      "start": 68.684,
+      "duration": 3.276,
+      "camera": {
+        "kind": "push",
+        "zoomFrom": 1.055,
+        "zoomTo": 1.177,
+        "panFrom": [
+          0.012,
+          -0.015
+        ],
+        "panTo": [
+          0.007,
+          -0.01
+        ],
+        "sway": 0.175
+      },
+      "parallax": 0,
+      "look": {
+        "grain": 0.464,
+        "flicker": 0.142,
+        "blur": 0.105,
+        "vignette": 0.488,
+        "fever": 0.208
+      },
+      "cutOut": "fade",
+      "cutDuration": 1.117,
+      "scare": false
+    },
+    {
+      "index": 25,
+      "assetId": "thermometer-corridor-far",
+      "start": 71.96,
+      "duration": 2.794,
+      "camera": {
+        "kind": "push",
+        "zoomFrom": 1.073,
+        "zoomTo": 1.204,
+        "panFrom": [
+          0.035,
+          -0.021
+        ],
+        "panTo": [
+          0.032,
+          -0.021
+        ],
+        "sway": 0.233
+      },
+      "parallax": 0.535,
+      "look": {
+        "grain": 0.513,
+        "flicker": 0.274,
+        "blur": 0.095,
+        "vignette": 0.576,
+        "fever": 0.226
+      },
+      "cutOut": "fade",
+      "cutDuration": 0.562,
+      "scare": false
+    },
+    {
+      "index": 26,
+      "assetId": "elevator-face",
+      "start": 74.754,
+      "duration": 1.921,
+      "camera": {
+        "kind": "push",
+        "zoomFrom": 1.048,
+        "zoomTo": 1.104,
+        "panFrom": [
+          -0.026,
+          0.014
+        ],
+        "panTo": [
+          -0.026,
+          0.014
+        ],
+        "sway": 0.168
+      },
+      "parallax": 0,
+      "look": {
+        "grain": 0.47,
+        "flicker": 0.318,
+        "blur": 0.086,
+        "vignette": 0.572,
+        "fever": 0.278
+      },
+      "cutOut": "hard",
+      "cutDuration": 0,
+      "scare": false
+    },
+    {
+      "index": 27,
+      "assetId": "hospital-corridor-empty",
+      "start": 76.675,
+      "duration": 0.889,
+      "camera": {
+        "kind": "push",
+        "zoomFrom": 1.085,
+        "zoomTo": 1.122,
+        "panFrom": [
+          -0.024,
+          -0.031
+        ],
+        "panTo": [
+          -0.034,
+          -0.032
+        ],
+        "sway": 0.306
+      },
+      "parallax": 0,
+      "look": {
+        "grain": 0.493,
+        "flicker": 0.35,
+        "blur": 0.107,
+        "vignette": 0.673,
+        "fever": 0.297
+      },
+      "cutOut": "hard",
+      "cutDuration": 0,
+      "scare": false
+    },
+    {
+      "index": 28,
+      "assetId": "yard-night-vacuum",
+      "start": 77.564,
+      "duration": 0.965,
+      "camera": {
+        "kind": "still",
+        "zoomFrom": 1.044,
+        "zoomTo": 1.044,
+        "panFrom": [
+          0.03,
+          0.009
+        ],
+        "panTo": [
+          0.028,
+          0.01
+        ],
+        "sway": 0.386
+      },
+      "parallax": 0,
+      "look": {
+        "grain": 0.527,
+        "flicker": 0.369,
+        "blur": 0.018,
+        "vignette": 0.727,
+        "fever": 0.501
+      },
+      "cutOut": "flash",
+      "cutDuration": 0.084,
+      "scare": false
+    },
+    {
+      "index": 29,
+      "assetId": "bedroom-monitor",
+      "start": 78.529,
+      "duration": 5.649,
+      "camera": {
+        "kind": "pull",
+        "zoomFrom": 1.146,
+        "zoomTo": 1.031,
+        "panFrom": [
+          0.001,
+          -0.021
+        ],
+        "panTo": [
+          -0.001,
+          -0.024
+        ],
+        "sway": 0.063
+      },
+      "parallax": 0,
+      "look": {
+        "grain": 0.475,
+        "flicker": 0.124,
+        "blur": 0.311,
+        "vignette": 0.4,
+        "fever": 0.092
+      },
+      "cutOut": "fade",
+      "cutDuration": 1.18,
+      "scare": false
+    },
+    {
+      "index": 30,
+      "assetId": "elevator-open",
+      "start": 84.178,
+      "duration": 2.951,
+      "camera": {
+        "kind": "push",
+        "zoomFrom": 1.064,
+        "zoomTo": 1.15,
+        "panFrom": [
+          0.018,
+          0.028
+        ],
+        "panTo": [
+          0.023,
+          0.025
+        ],
+        "sway": 0.134
+      },
+      "parallax": 0.615,
+      "look": {
+        "grain": 0.553,
+        "flicker": 0.197,
+        "blur": 0.011,
+        "vignette": 0.507,
+        "fever": 0.205
+      },
+      "cutOut": "hard",
+      "cutDuration": 0,
+      "scare": false
+    },
+    {
+      "index": 31,
+      "assetId": "stairs-down",
+      "start": 87.129,
+      "duration": 3.718,
+      "camera": {
+        "kind": "sway",
+        "zoomFrom": 1.143,
+        "zoomTo": 1.161,
+        "panFrom": [
+          -0.054,
+          -0.002
+        ],
+        "panTo": [
+          -0.026,
+          -0.01
+        ],
+        "sway": 0.669
+      },
+      "parallax": 0.749,
+      "look": {
+        "grain": 0.59,
+        "flicker": 0.299,
+        "blur": 0.015,
+        "vignette": 0.562,
+        "fever": 0.266
+      },
+      "cutOut": "blink",
+      "cutDuration": 0.39,
+      "scare": false
+    },
+    {
+      "index": 32,
+      "assetId": "hospital-corridor-ventilator",
+      "start": 90.847,
+      "duration": 0.976,
+      "camera": {
+        "kind": "push",
+        "zoomFrom": 1.065,
+        "zoomTo": 1.104,
+        "panFrom": [
+          -0.029,
+          0.005
+        ],
+        "panTo": [
+          -0.024,
+          0.006
+        ],
+        "sway": 0.162
+      },
+      "parallax": 0.58,
+      "look": {
+        "grain": 0.462,
+        "flicker": 0.279,
+        "blur": 0.062,
+        "vignette": 0.606,
+        "fever": 0.312
+      },
+      "cutOut": "hard",
+      "cutDuration": 0,
+      "scare": false
+    },
+    {
+      "index": 33,
+      "assetId": "thermometer-corridor",
+      "start": 91.823,
+      "duration": 0.979,
+      "camera": {
+        "kind": "sway",
+        "zoomFrom": 1.151,
+        "zoomTo": 1.147,
+        "panFrom": [
+          -0.033,
+          0.115
+        ],
+        "panTo": [
+          -0.05,
+          0.115
+        ],
+        "sway": 0.824
+      },
+      "parallax": 0,
+      "look": {
+        "grain": 0.565,
+        "flicker": 0.327,
+        "blur": 0.006,
+        "vignette": 0.771,
+        "fever": 0.5
+      },
+      "cutOut": "fade",
+      "cutDuration": 0.391,
+      "scare": false
+    },
+    {
+      "index": 34,
+      "assetId": "jam-jar-shelf",
+      "start": 92.802,
+      "duration": 5.626,
+      "camera": {
+        "kind": "still",
+        "zoomFrom": 1.033,
+        "zoomTo": 1.033,
+        "panFrom": [
+          0.024,
+          -0.021
+        ],
+        "panTo": [
+          0.028,
+          -0.022
+        ],
+        "sway": 0.084
+      },
+      "parallax": 0.697,
+      "look": {
+        "grain": 0.468,
+        "flicker": 0.132,
+        "blur": 0.279,
+        "vignette": 0.453,
+        "fever": 0.154
+      },
+      "cutOut": "fade",
+      "cutDuration": 0.675,
+      "scare": false
+    },
+    {
+      "index": 35,
+      "assetId": "yard-night-swing",
+      "start": 98.428,
+      "duration": 3.514,
+      "camera": {
+        "kind": "push",
+        "zoomFrom": 1.077,
+        "zoomTo": 1.206,
+        "panFrom": [
+          0.013,
+          0.055
+        ],
+        "panTo": [
+          0,
+          0.06
+        ],
+        "sway": 0.129
+      },
+      "parallax": 0.702,
+      "look": {
+        "grain": 0.562,
+        "flicker": 0.2,
+        "blur": 0.056,
+        "vignette": 0.567,
+        "fever": 0.18
+      },
+      "cutOut": "fade",
+      "cutDuration": 1.008,
+      "scare": false
+    },
+    {
+      "index": 36,
+      "assetId": "hospital-corridor-figure",
+      "start": 101.942,
+      "duration": 2.52,
+      "camera": {
+        "kind": "push",
+        "zoomFrom": 1.028,
+        "zoomTo": 1.123,
+        "panFrom": [
+          0.022,
+          0.011
+        ],
+        "panTo": [
+          0.016,
+          0.01
+        ],
+        "sway": 0.162
+      },
+      "parallax": 0.698,
+      "look": {
+        "grain": 0.524,
+        "flicker": 0.214,
+        "blur": 0.079,
+        "vignette": 0.635,
+        "fever": 0.284
+      },
+      "cutOut": "blink",
+      "cutDuration": 0.378,
+      "scare": false
+    },
+    {
+      "index": 37,
+      "assetId": "clip-corridor-lights",
+      "start": 104.462,
+      "duration": 1.93,
+      "camera": {
+        "kind": "drift",
+        "zoomFrom": 1.148,
+        "zoomTo": 1.157,
+        "panFrom": [
+          0.102,
+          0.013
+        ],
+        "panTo": [
+          0.1,
+          -0.008
+        ],
+        "sway": 0.17
+      },
+      "parallax": 0.572,
+      "look": {
+        "grain": 0.492,
+        "flicker": 0.359,
+        "blur": 0.047,
+        "vignette": 0.682,
+        "fever": 0.345
+      },
+      "cutOut": "hard",
+      "cutDuration": 0,
+      "scare": false
+    },
+    {
+      "index": 38,
+      "assetId": "hospital-corridor-empty",
+      "start": 106.392,
+      "duration": 0.925,
+      "camera": {
+        "kind": "still",
+        "zoomFrom": 1.034,
+        "zoomTo": 1.034,
+        "panFrom": [
+          -0.029,
+          0.012
+        ],
+        "panTo": [
+          -0.028,
+          0.012
+        ],
+        "sway": 0.4
+      },
+      "parallax": 0,
+      "look": {
+        "grain": 0.521,
+        "flicker": 0.307,
+        "blur": 0.014,
+        "vignette": 0.732,
+        "fever": 0.534
+      },
+      "cutOut": "flash",
+      "cutDuration": 0.129,
+      "scare": false
+    },
+    {
+      "index": 39,
+      "assetId": "thermometer-corridor-far",
+      "start": 107.317,
+      "duration": 6.934,
+      "camera": {
+        "kind": "pull",
+        "zoomFrom": 1.252,
+        "zoomTo": 1.057,
+        "panFrom": [
+          0.015,
+          0.023
+        ],
+        "panTo": [
+          0.007,
+          0.026
+        ],
+        "sway": 0.148
+      },
+      "parallax": 0.801,
+      "look": {
+        "grain": 0.395,
+        "flicker": 0.147,
+        "blur": 0.289,
+        "vignette": 0.421,
+        "fever": 0.112
+      },
+      "cutOut": "blink",
+      "cutDuration": 0.394,
+      "scare": false
+    },
+    {
+      "index": 40,
+      "assetId": "bedroom-monitor",
+      "start": 114.251,
+      "duration": 2.836,
+      "camera": {
+        "kind": "push",
+        "zoomFrom": 1.023,
+        "zoomTo": 1.132,
+        "panFrom": [
+          0.006,
+          -0.019
+        ],
+        "panTo": [
+          0.003,
+          -0.02
+        ],
+        "sway": 0.183
+      },
+      "parallax": 0,
+      "look": {
+        "grain": 0.54,
+        "flicker": 0.266,
+        "blur": 0.088,
+        "vignette": 0.525,
+        "fever": 0.24
+      },
+      "cutOut": "hard",
+      "cutDuration": 0,
+      "scare": false
+    },
+    {
+      "index": 41,
+      "assetId": "stairs-endless",
+      "start": 117.087,
+      "duration": 3.049,
+      "camera": {
+        "kind": "drift",
+        "zoomFrom": 1.101,
+        "zoomTo": 1.095,
+        "panFrom": [
+          -0.067,
+          -0.072
+        ],
+        "panTo": [
+          -0.078,
+          -0.07
+        ],
+        "sway": 0.277
+      },
+      "parallax": 0,
+      "look": {
+        "grain": 0.487,
+        "flicker": 0.206,
+        "blur": 0.115,
+        "vignette": 0.657,
+        "fever": 0.316
+      },
+      "cutOut": "hard",
+      "cutDuration": 0,
+      "scare": false
+    },
+    {
+      "index": 42,
+      "assetId": "elevator-open",
+      "start": 120.136,
+      "duration": 2.306,
+      "camera": {
+        "kind": "push",
+        "zoomFrom": 1.015,
+        "zoomTo": 1.139,
+        "panFrom": [
+          0.006,
+          -0.008
+        ],
+        "panTo": [
+          0.008,
+          -0.007
+        ],
+        "sway": 0.296
+      },
+      "parallax": 0.551,
+      "look": {
+        "grain": 0.612,
+        "flicker": 0.349,
+        "blur": 0.071,
+        "vignette": 0.676,
+        "fever": 0.371
+      },
+      "cutOut": "hard",
+      "cutDuration": 0,
+      "scare": false
+    },
+    {
+      "index": 43,
+      "assetId": "elevator-face",
+      "start": 122.442,
+      "duration": 0.78,
+      "camera": {
+        "kind": "still",
+        "zoomFrom": 1.05,
+        "zoomTo": 1.05,
+        "panFrom": [
+          -0.022,
+          0.014
+        ],
+        "panTo": [
+          -0.017,
+          0.019
+        ],
+        "sway": 0.394
+      },
+      "parallax": 0,
+      "look": {
+        "grain": 0.639,
+        "flicker": 0.363,
+        "blur": 0.037,
+        "vignette": 0.777,
+        "fever": 0.526
+      },
+      "cutOut": "flash",
+      "cutDuration": 0.101,
+      "scare": false
+    },
+    {
+      "index": 44,
+      "assetId": "kitchen-kettle",
+      "start": 123.222,
+      "duration": 4.288,
+      "camera": {
+        "kind": "still",
+        "zoomFrom": 1.062,
+        "zoomTo": 1.062,
+        "panFrom": [
+          -0.04,
+          -0.039
+        ],
+        "panTo": [
+          -0.037,
+          -0.036
+        ],
+        "sway": 0.136
+      },
+      "parallax": 0.503,
+      "look": {
+        "grain": 0.422,
+        "flicker": 0.144,
+        "blur": 0.284,
+        "vignette": 0.472,
+        "fever": 0.113
+      },
+      "cutOut": "fade",
+      "cutDuration": 0.574,
+      "scare": false
+    },
+    {
+      "index": 45,
+      "assetId": "yard-night-vacuum",
+      "start": 127.51,
+      "duration": 4.871,
+      "camera": {
+        "kind": "sway",
+        "zoomFrom": 1.164,
+        "zoomTo": 1.147,
+        "panFrom": [
+          0,
+          -0.067
+        ],
+        "panTo": [
+          -0.02,
+          -0.071
+        ],
+        "sway": 0.6
+      },
+      "parallax": 0,
+      "look": {
+        "grain": 0.543,
+        "flicker": 0.206,
+        "blur": 0.005,
+        "vignette": 0.577,
+        "fever": 0.243
+      },
+      "cutOut": "hard",
+      "cutDuration": 0,
+      "scare": false
+    },
+    {
+      "index": 46,
+      "assetId": "hospital-corridor-ventilator",
+      "start": 132.381,
+      "duration": 2.507,
+      "camera": {
+        "kind": "sway",
+        "zoomFrom": 1.2,
+        "zoomTo": 1.206,
+        "panFrom": [
+          -0.037,
+          0.056
+        ],
+        "panTo": [
+          -0.043,
+          0.057
+        ],
+        "sway": 0.605
+      },
+      "parallax": 0.693,
+      "look": {
+        "grain": 0.505,
+        "flicker": 0.327,
+        "blur": 0.038,
+        "vignette": 0.676,
+        "fever": 0.333
+      },
+      "cutOut": "hard",
+      "cutDuration": 0,
+      "scare": false
+    },
+    {
+      "index": 47,
+      "assetId": "hospital-monitor",
+      "start": 134.888,
+      "duration": 2.279,
+      "camera": {
+        "kind": "push",
+        "zoomFrom": 1.012,
+        "zoomTo": 1.136,
+        "panFrom": [
+          0,
+          0.001
+        ],
+        "panTo": [
+          -0.001,
+          0
+        ],
+        "sway": 0.291
+      },
+      "parallax": 0,
+      "look": {
+        "grain": 0.617,
+        "flicker": 0.404,
+        "blur": 0.038,
+        "vignette": 0.698,
+        "fever": 0.367
+      },
+      "cutOut": "fade",
+      "cutDuration": 0.911,
+      "scare": false
+    },
+    {
+      "index": 48,
+      "assetId": "hospital-corridor-figure",
+      "start": 137.167,
+      "duration": 3.416,
+      "camera": {
+        "kind": "push",
+        "zoomFrom": 1.009,
+        "zoomTo": 1.095,
+        "panFrom": [
+          0,
+          0.001
+        ],
+        "panTo": [
+          -0.002,
+          0
+        ],
+        "sway": 0.318
+      },
+      "parallax": 0.761,
+      "look": {
+        "grain": 0.619,
+        "flicker": 0.41,
+        "blur": 0.106,
+        "vignette": 0.73,
+        "fever": 0.425
+      },
+      "cutOut": "hard",
+      "cutDuration": 0,
+      "scare": false
+    },
+    {
+      "index": 49,
+      "assetId": "clip-swing-sways",
+      "start": 140.583,
+      "duration": 3.753,
+      "camera": {
+        "kind": "push",
+        "zoomFrom": 1.056,
+        "zoomTo": 1.154,
+        "panFrom": [
+          0.026,
+          -0.013
+        ],
+        "panTo": [
+          0.022,
+          -0.008
+        ],
+        "sway": 0.373
+      },
+      "parallax": 0,
+      "look": {
+        "grain": 0.559,
+        "flicker": 0.469,
+        "blur": 0.039,
+        "vignette": 0.77,
+        "fever": 0.495
+      },
+      "cutOut": "hard",
+      "cutDuration": 0,
+      "scare": false
+    },
+    {
+      "index": 50,
+      "assetId": "thermometer-corridor",
+      "start": 144.336,
+      "duration": 0.557,
+      "camera": {
+        "kind": "sway",
+        "zoomFrom": 1.132,
+        "zoomTo": 1.123,
+        "panFrom": [
+          -0.001,
+          0.081
+        ],
+        "panTo": [
+          0.011,
+          0.071
+        ],
+        "sway": 0.8
+      },
+      "parallax": 0,
+      "look": {
+        "grain": 0.694,
+        "flicker": 0.357,
+        "blur": 0.006,
+        "vignette": 0.773,
+        "fever": 0.525
+      },
+      "cutOut": "flash",
+      "cutDuration": 0.148,
+      "scare": false
+    },
+    {
+      "index": 51,
+      "assetId": "thermometer-corridor-far",
+      "start": 144.893,
+      "duration": 3.698,
+      "camera": {
+        "kind": "still",
+        "zoomFrom": 1.054,
+        "zoomTo": 1.054,
+        "panFrom": [
+          0.004,
+          0.027
+        ],
+        "panTo": [
+          -0.003,
+          0.022
+        ],
+        "sway": 0.101
+      },
+      "parallax": 0.542,
+      "look": {
+        "grain": 0.556,
+        "flicker": 0.179,
+        "blur": 0.396,
+        "vignette": 0.54,
+        "fever": 0.156
+      },
+      "cutOut": "hard",
+      "cutDuration": 0,
+      "scare": false
+    },
+    {
+      "index": 52,
+      "assetId": "scare-monitor",
+      "start": 148.591,
+      "duration": 0.139,
+      "camera": {
+        "kind": "still",
+        "zoomFrom": 1.07,
+        "zoomTo": 1.07,
+        "panFrom": [
+          -0.007,
+          -0.032
+        ],
+        "panTo": [
+          -0.018,
+          -0.032
+        ],
+        "sway": 0.421
+      },
+      "parallax": 0,
+      "look": {
+        "grain": 0.674,
+        "flicker": 0.412,
+        "blur": 0.006,
+        "vignette": 0.895,
+        "fever": 0.673
+      },
+      "cutOut": "hard",
+      "cutDuration": 0,
+      "scare": true
+    },
+    {
+      "index": 53,
+      "assetId": "jam-jar-shelf",
+      "start": 148.73,
+      "duration": 3.173,
+      "camera": {
+        "kind": "sway",
+        "zoomFrom": 1.188,
+        "zoomTo": 1.194,
+        "panFrom": [
+          -0.07,
+          -0.086
+        ],
+        "panTo": [
+          -0.057,
+          -0.078
+        ],
+        "sway": 0.525
+      },
+      "parallax": 0.482,
+      "look": {
+        "grain": 0.587,
+        "flicker": 0.231,
+        "blur": 0.344,
+        "vignette": 0.564,
+        "fever": 0.3
+      },
+      "cutOut": "hard",
+      "cutDuration": 0,
+      "scare": false
+    },
+    {
+      "index": 54,
+      "assetId": "jam-jar-inside",
+      "start": 151.903,
+      "duration": 2.183,
+      "camera": {
+        "kind": "pull",
+        "zoomFrom": 1.115,
+        "zoomTo": 1.012,
+        "panFrom": [
+          0.003,
+          0.009
+        ],
+        "panTo": [
+          0.004,
+          0.01
+        ],
+        "sway": 0.108
+      },
+      "parallax": 0,
+      "look": {
+        "grain": 0.521,
+        "flicker": 0.276,
+        "blur": 0.435,
+        "vignette": 0.57,
+        "fever": 0.226
+      },
+      "cutOut": "fade",
+      "cutDuration": 0.873,
+      "scare": false
+    },
+    {
+      "index": 55,
+      "assetId": "stairwell-dark",
+      "start": 154.086,
+      "duration": 2.496,
+      "camera": {
+        "kind": "sway",
+        "zoomFrom": 1.195,
+        "zoomTo": 1.19,
+        "panFrom": [
+          0.037,
+          -0.095
+        ],
+        "panTo": [
+          0.015,
+          -0.097
+        ],
+        "sway": 0.602
+      },
+      "parallax": 0.521,
+      "look": {
+        "grain": 0.506,
+        "flicker": 0.327,
+        "blur": 0.179,
+        "vignette": 0.744,
+        "fever": 0.439
+      },
+      "cutOut": "blink",
+      "cutDuration": 0.265,
+      "scare": false
+    },
+    {
+      "index": 56,
+      "assetId": "clip-corridor-lights",
+      "start": 156.582,
+      "duration": 2.206,
+      "camera": {
+        "kind": "drift",
+        "zoomFrom": 1.111,
+        "zoomTo": 1.104,
+        "panFrom": [
+          0.002,
+          -0.004
+        ],
+        "panTo": [
+          0.039,
+          0.034
+        ],
+        "sway": 0.319
+      },
+      "parallax": 0.533,
+      "look": {
+        "grain": 0.518,
+        "flicker": 0.412,
+        "blur": 0.199,
+        "vignette": 0.698,
+        "fever": 0.459
+      },
+      "cutOut": "hard",
+      "cutDuration": 0,
+      "scare": false
+    },
+    {
+      "index": 57,
+      "assetId": "hospital-corridor-ventilator",
+      "start": 158.788,
+      "duration": 1.317,
+      "camera": {
+        "kind": "sway",
+        "zoomFrom": 1.187,
+        "zoomTo": 1.167,
+        "panFrom": [
+          -0.095,
+          0.004
+        ],
+        "panTo": [
+          -0.075,
+          0.02
+        ],
+        "sway": 0.635
+      },
+      "parallax": 0.598,
+      "look": {
+        "grain": 0.523,
+        "flicker": 0.369,
+        "blur": 0.107,
+        "vignette": 0.756,
+        "fever": 0.499
+      },
+      "cutOut": "flash",
+      "cutDuration": 0.097,
+      "scare": false
+    },
+    {
+      "index": 58,
+      "assetId": "bedroom-monitor",
+      "start": 160.105,
+      "duration": 0.837,
+      "camera": {
+        "kind": "sway",
+        "zoomFrom": 1.179,
+        "zoomTo": 1.195,
+        "panFrom": [
+          -0.045,
+          -0.016
+        ],
+        "panTo": [
+          -0.044,
+          -0.025
+        ],
+        "sway": 0.809
+      },
+      "parallax": 0,
+      "look": {
+        "grain": 0.616,
+        "flicker": 0.418,
+        "blur": 0.171,
+        "vignette": 0.826,
+        "fever": 0.579
+      },
+      "cutOut": "hard",
+      "cutDuration": 0,
+      "scare": false
+    },
+    {
+      "index": 59,
+      "assetId": "yard-face-window",
+      "start": 160.942,
+      "duration": 0.78,
+      "camera": {
+        "kind": "push",
+        "zoomFrom": 1,
+        "zoomTo": 1.041,
+        "panFrom": [
+          0,
+          0
+        ],
+        "panTo": [
+          0,
+          0
+        ],
+        "sway": 0.424
+      },
+      "parallax": 0.502,
+      "look": {
+        "grain": 0.619,
+        "flicker": 0.388,
+        "blur": 0.21,
+        "vignette": 0.79,
+        "fever": 0.547
+      },
+      "cutOut": "blink",
+      "cutDuration": 0.312,
+      "scare": false
+    },
+    {
+      "index": 60,
+      "assetId": "stairs-down",
+      "start": 161.722,
+      "duration": 0.878,
+      "camera": {
+        "kind": "push",
+        "zoomFrom": 1.048,
+        "zoomTo": 1.12,
+        "panFrom": [
+          -0.024,
+          0.005
+        ],
+        "panTo": [
+          -0.014,
+          0.006
+        ],
+        "sway": 0.284
+      },
+      "parallax": 0.657,
+      "look": {
+        "grain": 0.593,
+        "flicker": 0.435,
+        "blur": 0.106,
+        "vignette": 0.765,
+        "fever": 0.583
+      },
+      "cutOut": "fade",
+      "cutDuration": 0.351,
+      "scare": false
+    }
+  ],
+  "sounds": [
+    {
+      "at": 0,
+      "sound": "hum",
+      "action": "start",
+      "params": {
+        "volume": 0.465
+      }
+    },
+    {
+      "at": 3.768,
+      "sound": "hum",
+      "action": "set",
+      "params": {
+        "volume": 0.305,
+        "muffle": 0
+      }
+    },
+    {
+      "at": 7.184,
+      "sound": "hum",
+      "action": "set",
+      "params": {
+        "volume": 0.318,
+        "muffle": 0
+      }
+    },
+    {
+      "at": 11.465,
+      "sound": "monitor",
+      "action": "start",
+      "params": {
+        "volume": 0.462,
+        "tempo": 0.25
+      }
+    },
+    {
+      "at": 11.532,
+      "sound": "hum",
+      "action": "set",
+      "params": {
+        "volume": 0.363,
+        "muffle": 0
+      }
+    },
+    {
+      "at": 11.532,
+      "sound": "monitor",
+      "action": "set",
+      "params": {
+        "volume": 0.463,
+        "tempo": 0.251
+      }
+    },
+    {
+      "at": 15.529,
+      "sound": "hum",
+      "action": "set",
+      "params": {
+        "volume": 0.408,
+        "muffle": 0
+      }
+    },
+    {
+      "at": 15.529,
+      "sound": "monitor",
+      "action": "set",
+      "params": {
+        "volume": 0.508,
+        "tempo": 0.351
+      }
+    },
+    {
+      "at": 19.134,
+      "sound": "silence",
+      "action": "start",
+      "params": {
+        "depth": 0.7
+      }
+    },
+    {
+      "at": 19.526,
+      "sound": "silence",
+      "action": "stop"
+    },
+    {
+      "at": 19.526,
+      "sound": "swing_creak",
+      "action": "hit",
+      "params": {
+        "strength": 1,
+        "pitch": 0.262
+      }
+    },
+    {
+      "at": 20.365,
+      "sound": "hum",
+      "action": "set",
+      "params": {
+        "volume": 0.289,
+        "muffle": 0.3
+      }
+    },
+    {
+      "at": 20.365,
+      "sound": "monitor",
+      "action": "set",
+      "params": {
+        "volume": 0.389,
+        "tempo": 0.086
+      }
+    },
+    {
+      "at": 23.915,
+      "sound": "hum",
+      "action": "set",
+      "params": {
+        "volume": 0.282,
+        "muffle": 0.3
+      }
+    },
+    {
+      "at": 23.915,
+      "sound": "monitor",
+      "action": "set",
+      "params": {
+        "volume": 0.381,
+        "tempo": 0.07
+      }
+    },
+    {
+      "at": 26.41,
+      "sound": "swing_creak",
+      "action": "hit",
+      "params": {
+        "strength": 0.435,
+        "pitch": 0.411
+      }
+    },
+    {
+      "at": 27.023,
+      "sound": "hum",
+      "action": "set",
+      "params": {
+        "volume": 0.336,
+        "muffle": 0
+      }
+    },
+    {
+      "at": 27.023,
+      "sound": "monitor",
+      "action": "set",
+      "params": {
+        "volume": 0.436,
+        "tempo": 0.191
+      }
+    },
+    {
+      "at": 28.016,
+      "sound": "swing_creak",
+      "action": "hit",
+      "params": {
+        "strength": 0.525,
+        "pitch": 0.411
+      }
+    },
+    {
+      "at": 29.575,
+      "sound": "swing_creak",
+      "action": "hit",
+      "params": {
+        "strength": 0.547,
+        "pitch": 0.411
+      }
+    },
+    {
+      "at": 30.701,
+      "sound": "swing_creak",
+      "action": "hit",
+      "params": {
+        "strength": 0.563,
+        "pitch": 0.411
+      }
+    },
+    {
+      "at": 31.48,
+      "sound": "hum",
+      "action": "set",
+      "params": {
+        "volume": 0.381,
+        "muffle": 0
+      }
+    },
+    {
+      "at": 31.48,
+      "sound": "monitor",
+      "action": "set",
+      "params": {
+        "volume": 0.481,
+        "tempo": 0.29
+      }
+    },
+    {
+      "at": 31.964,
+      "sound": "swing_creak",
+      "action": "hit",
+      "params": {
+        "strength": 0.581,
+        "pitch": 0.411
+      }
+    },
+    {
+      "at": 33.497,
+      "sound": "swing_creak",
+      "action": "hit",
+      "params": {
+        "strength": 0.603,
+        "pitch": 0.411
+      }
+    },
+    {
+      "at": 35.637,
+      "sound": "hum",
+      "action": "set",
+      "params": {
+        "volume": 0.425,
+        "muffle": 0
+      }
+    },
+    {
+      "at": 35.637,
+      "sound": "monitor",
+      "action": "set",
+      "params": {
+        "volume": 0.525,
+        "tempo": 0.39
+      }
+    },
+    {
+      "at": 39.412,
+      "sound": "silence",
+      "action": "start",
+      "params": {
+        "depth": 0.7
+      }
+    },
+    {
+      "at": 39.775,
+      "sound": "hum",
+      "action": "set",
+      "params": {
+        "volume": 0.306,
+        "muffle": 0.3
+      }
+    },
+    {
+      "at": 39.775,
+      "sound": "monitor",
+      "action": "set",
+      "params": {
+        "volume": 0.406,
+        "tempo": 0.125
+      }
+    },
+    {
+      "at": 39.794,
+      "sound": "silence",
+      "action": "stop"
+    },
+    {
+      "at": 39.794,
+      "sound": "monitor",
+      "action": "hit",
+      "params": {
+        "volume": 1
+      }
+    },
+    {
+      "at": 42.924,
+      "sound": "vacuum",
+      "action": "start",
+      "params": {
+        "volume": 0.3,
+        "turbine": 0
+      }
+    },
+    {
+      "at": 44.041,
+      "sound": "hum",
+      "action": "set",
+      "params": {
+        "volume": 0.351,
+        "muffle": 0
+      }
+    },
+    {
+      "at": 44.041,
+      "sound": "monitor",
+      "action": "set",
+      "params": {
+        "volume": 0.451,
+        "tempo": 0.224
+      }
+    },
+    {
+      "at": 44.041,
+      "sound": "vacuum",
+      "action": "set",
+      "params": {
+        "volume": 0.306,
+        "turbine": 0.001
+      }
+    },
+    {
+      "at": 47.903,
+      "sound": "hum",
+      "action": "set",
+      "params": {
+        "volume": 0.395,
+        "muffle": 0
+      }
+    },
+    {
+      "at": 47.903,
+      "sound": "monitor",
+      "action": "set",
+      "params": {
+        "volume": 0.495,
+        "tempo": 0.323
+      }
+    },
+    {
+      "at": 47.903,
+      "sound": "vacuum",
+      "action": "set",
+      "params": {
+        "volume": 0.325,
+        "turbine": 0.005
+      }
+    },
+    {
+      "at": 48.374,
+      "sound": "ventilator",
+      "action": "start",
+      "params": {
+        "volume": 0.434,
+        "rate": 0.435
+      }
+    },
+    {
+      "at": 51.65,
+      "sound": "hum",
+      "action": "set",
+      "params": {
+        "volume": 0.44,
+        "muffle": 0
+      }
+    },
+    {
+      "at": 51.65,
+      "sound": "monitor",
+      "action": "set",
+      "params": {
+        "volume": 0.54,
+        "tempo": 0.421
+      }
+    },
+    {
+      "at": 51.65,
+      "sound": "ventilator",
+      "action": "set",
+      "params": {
+        "volume": 0.469,
+        "rate": 0.495
+      }
+    },
+    {
+      "at": 51.65,
+      "sound": "vacuum",
+      "action": "set",
+      "params": {
+        "volume": 0.344,
+        "turbine": 0.013
+      }
+    },
+    {
+      "at": 54.9,
+      "sound": "hum",
+      "action": "set",
+      "params": {
+        "volume": 0.484,
+        "muffle": 0
+      }
+    },
+    {
+      "at": 54.9,
+      "sound": "monitor",
+      "action": "set",
+      "params": {
+        "volume": 0.584,
+        "tempo": 0.52
+      }
+    },
+    {
+      "at": 54.9,
+      "sound": "ventilator",
+      "action": "set",
+      "params": {
+        "volume": 0.508,
+        "rate": 0.564
+      }
+    },
+    {
+      "at": 54.9,
+      "sound": "vacuum",
+      "action": "set",
+      "params": {
+        "volume": 0.363,
+        "turbine": 0.022
+      }
+    },
+    {
+      "at": 55.397,
+      "sound": "breath",
+      "action": "start",
+      "params": {
+        "volume": 0.4,
+        "rate": 0.768
+      }
+    },
+    {
+      "at": 58.435,
+      "sound": "hum",
+      "action": "set",
+      "params": {
+        "volume": 0.518,
+        "muffle": 0
+      }
+    },
+    {
+      "at": 58.435,
+      "sound": "monitor",
+      "action": "set",
+      "params": {
+        "volume": 0.618,
+        "tempo": 0.595
+      }
+    },
+    {
+      "at": 58.435,
+      "sound": "ventilator",
+      "action": "set",
+      "params": {
+        "volume": 0.538,
+        "rate": 0.616
+      }
+    },
+    {
+      "at": 58.435,
+      "sound": "vacuum",
+      "action": "set",
+      "params": {
+        "volume": 0.378,
+        "turbine": 0.031
+      }
+    },
+    {
+      "at": 60.916,
+      "sound": "silence",
+      "action": "start",
+      "params": {
+        "depth": 0.7
+      }
+    },
+    {
+      "at": 61.472,
+      "sound": "silence",
+      "action": "stop"
+    },
+    {
+      "at": 61.472,
+      "sound": "swing_creak",
+      "action": "hit",
+      "params": {
+        "strength": 1,
+        "pitch": 0.389
+      }
+    },
+    {
+      "at": 62.158,
+      "sound": "hum",
+      "action": "set",
+      "params": {
+        "volume": 0.326,
+        "muffle": 0.3
+      }
+    },
+    {
+      "at": 62.158,
+      "sound": "monitor",
+      "action": "set",
+      "params": {
+        "volume": 0.426,
+        "tempo": 0.168
+      }
+    },
+    {
+      "at": 62.158,
+      "sound": "ventilator",
+      "action": "set",
+      "params": {
+        "volume": 0.367,
+        "rate": 0.318
+      }
+    },
+    {
+      "at": 62.158,
+      "sound": "vacuum",
+      "action": "set",
+      "params": {
+        "volume": 0.397,
+        "turbine": 0.045
+      }
+    },
+    {
+      "at": 64.59,
+      "sound": "breath",
+      "action": "stop"
+    },
+    {
+      "at": 64.59,
+      "sound": "silence",
+      "action": "start",
+      "params": {
+        "depth": 1
+      }
+    },
+    {
+      "at": 65.389,
+      "sound": "hum",
+      "action": "set",
+      "params": {
+        "volume": 0.432,
+        "muffle": 0.6
+      }
+    },
+    {
+      "at": 65.389,
+      "sound": "monitor",
+      "action": "set",
+      "params": {
+        "volume": 0.532,
+        "tempo": 0.404
+      }
+    },
+    {
+      "at": 65.389,
+      "sound": "ventilator",
+      "action": "set",
+      "params": {
+        "volume": 0.462,
+        "rate": 0.483
+      }
+    },
+    {
+      "at": 65.389,
+      "sound": "vacuum",
+      "action": "set",
+      "params": {
+        "volume": 0.415,
+        "turbine": 0.059
+      }
+    },
+    {
+      "at": 65.717,
+      "sound": "silence",
+      "action": "stop"
+    },
+    {
+      "at": 65.717,
+      "sound": "stinger",
+      "action": "hit",
+      "params": {
+        "volume": 1
+      }
+    },
+    {
+      "at": 68.107,
+      "sound": "hum",
+      "action": "set",
+      "params": {
+        "volume": 0.372,
+        "muffle": 0
+      }
+    },
+    {
+      "at": 68.107,
+      "sound": "monitor",
+      "action": "set",
+      "params": {
+        "volume": 0.472,
+        "tempo": 0.272
+      }
+    },
+    {
+      "at": 68.107,
+      "sound": "ventilator",
+      "action": "set",
+      "params": {
+        "volume": 0.409,
+        "rate": 0.39
+      }
+    },
+    {
+      "at": 68.107,
+      "sound": "vacuum",
+      "action": "set",
+      "params": {
+        "volume": 0.429,
+        "turbine": 0.071
+      }
+    },
+    {
+      "at": 73.124,
+      "sound": "hum",
+      "action": "set",
+      "params": {
+        "volume": 0.438,
+        "muffle": 0
+      }
+    },
+    {
+      "at": 73.124,
+      "sound": "monitor",
+      "action": "set",
+      "params": {
+        "volume": 0.538,
+        "tempo": 0.418
+      }
+    },
+    {
+      "at": 73.124,
+      "sound": "ventilator",
+      "action": "set",
+      "params": {
+        "volume": 0.467,
+        "rate": 0.493
+      }
+    },
+    {
+      "at": 73.124,
+      "sound": "vacuum",
+      "action": "set",
+      "params": {
+        "volume": 0.451,
+        "turbine": 0.091
+      }
+    },
+    {
+      "at": 77.253,
+      "sound": "silence",
+      "action": "start",
+      "params": {
+        "depth": 0.7
+      }
+    },
+    {
+      "at": 77.564,
+      "sound": "silence",
+      "action": "stop"
+    },
+    {
+      "at": 77.564,
+      "sound": "monitor",
+      "action": "hit",
+      "params": {
+        "volume": 1
+      }
+    },
+    {
+      "at": 77.962,
+      "sound": "hum",
+      "action": "set",
+      "params": {
+        "volume": 0.34,
+        "muffle": 0.3
+      }
+    },
+    {
+      "at": 77.962,
+      "sound": "monitor",
+      "action": "set",
+      "params": {
+        "volume": 0.44,
+        "tempo": 0.2
+      }
+    },
+    {
+      "at": 77.962,
+      "sound": "ventilator",
+      "action": "set",
+      "params": {
+        "volume": 0.38,
+        "rate": 0.34
+      }
+    },
+    {
+      "at": 77.962,
+      "sound": "vacuum",
+      "action": "set",
+      "params": {
+        "volume": 0.479,
+        "turbine": 0.119
+      }
+    },
+    {
+      "at": 84.085,
+      "sound": "hum",
+      "action": "set",
+      "params": {
+        "volume": 0.386,
+        "muffle": 0
+      }
+    },
+    {
+      "at": 84.085,
+      "sound": "monitor",
+      "action": "set",
+      "params": {
+        "volume": 0.486,
+        "tempo": 0.303
+      }
+    },
+    {
+      "at": 84.085,
+      "sound": "ventilator",
+      "action": "set",
+      "params": {
+        "volume": 0.421,
+        "rate": 0.412
+      }
+    },
+    {
+      "at": 84.085,
+      "sound": "vacuum",
+      "action": "set",
+      "params": {
+        "volume": 0.507,
+        "turbine": 0.15
+      }
+    },
+    {
+      "at": 88.001,
+      "sound": "hum",
+      "action": "set",
+      "params": {
+        "volume": 0.451,
+        "muffle": 0
+      }
+    },
+    {
+      "at": 88.001,
+      "sound": "monitor",
+      "action": "set",
+      "params": {
+        "volume": 0.551,
+        "tempo": 0.448
+      }
+    },
+    {
+      "at": 88.001,
+      "sound": "ventilator",
+      "action": "set",
+      "params": {
+        "volume": 0.479,
+        "rate": 0.513
+      }
+    },
+    {
+      "at": 88.001,
+      "sound": "vacuum",
+      "action": "set",
+      "params": {
+        "volume": 0.526,
+        "turbine": 0.173
+      }
+    },
+    {
+      "at": 91.247,
+      "sound": "silence",
+      "action": "start",
+      "params": {
+        "depth": 0.7
+      }
+    },
+    {
+      "at": 91.823,
+      "sound": "silence",
+      "action": "stop"
+    },
+    {
+      "at": 91.823,
+      "sound": "swing_creak",
+      "action": "hit",
+      "params": {
+        "strength": 1,
+        "pitch": 0.381
+      }
+    },
+    {
+      "at": 92.226,
+      "sound": "hum",
+      "action": "set",
+      "params": {
+        "volume": 0.353,
+        "muffle": 0.3
+      }
+    },
+    {
+      "at": 92.226,
+      "sound": "monitor",
+      "action": "set",
+      "params": {
+        "volume": 0.453,
+        "tempo": 0.228
+      }
+    },
+    {
+      "at": 92.226,
+      "sound": "ventilator",
+      "action": "set",
+      "params": {
+        "volume": 0.391,
+        "rate": 0.36
+      }
+    },
+    {
+      "at": 92.226,
+      "sound": "vacuum",
+      "action": "set",
+      "params": {
+        "volume": 0.55,
+        "turbine": 0.204
+      }
+    },
+    {
+      "at": 97.771,
+      "sound": "swing_creak",
+      "action": "hit",
+      "params": {
+        "strength": 0.519,
+        "pitch": 0.458
+      }
+    },
+    {
+      "at": 97.858,
+      "sound": "hum",
+      "action": "set",
+      "params": {
+        "volume": 0.399,
+        "muffle": 0
+      }
+    },
+    {
+      "at": 97.858,
+      "sound": "monitor",
+      "action": "set",
+      "params": {
+        "volume": 0.499,
+        "tempo": 0.331
+      }
+    },
+    {
+      "at": 97.858,
+      "sound": "ventilator",
+      "action": "set",
+      "params": {
+        "volume": 0.432,
+        "rate": 0.432
+      }
+    },
+    {
+      "at": 97.858,
+      "sound": "vacuum",
+      "action": "set",
+      "params": {
+        "volume": 0.578,
+        "turbine": 0.242
+      }
+    },
+    {
+      "at": 99.475,
+      "sound": "swing_creak",
+      "action": "hit",
+      "params": {
+        "strength": 0.621,
+        "pitch": 0.458
+      }
+    },
+    {
+      "at": 101.086,
+      "sound": "swing_creak",
+      "action": "hit",
+      "params": {
+        "strength": 0.656,
+        "pitch": 0.458
+      }
+    },
+    {
+      "at": 102.41,
+      "sound": "hum",
+      "action": "set",
+      "params": {
+        "volume": 0.464,
+        "muffle": 0
+      }
+    },
+    {
+      "at": 102.41,
+      "sound": "monitor",
+      "action": "set",
+      "params": {
+        "volume": 0.564,
+        "tempo": 0.476
+      }
+    },
+    {
+      "at": 102.41,
+      "sound": "ventilator",
+      "action": "set",
+      "params": {
+        "volume": 0.49,
+        "rate": 0.533
+      }
+    },
+    {
+      "at": 102.41,
+      "sound": "vacuum",
+      "action": "set",
+      "params": {
+        "volume": 0.598,
+        "turbine": 0.27
+      }
+    },
+    {
+      "at": 106.08,
+      "sound": "silence",
+      "action": "start",
+      "params": {
+        "depth": 0.7
+      }
+    },
+    {
+      "at": 106.392,
+      "sound": "silence",
+      "action": "stop"
+    },
+    {
+      "at": 106.392,
+      "sound": "monitor",
+      "action": "hit",
+      "params": {
+        "volume": 1
+      }
+    },
+    {
+      "at": 107.247,
+      "sound": "hum",
+      "action": "set",
+      "params": {
+        "volume": 0.366,
+        "muffle": 0.3
+      }
+    },
+    {
+      "at": 107.247,
+      "sound": "monitor",
+      "action": "set",
+      "params": {
+        "volume": 0.466,
+        "tempo": 0.257
+      }
+    },
+    {
+      "at": 107.247,
+      "sound": "ventilator",
+      "action": "set",
+      "params": {
+        "volume": 0.403,
+        "rate": 0.38
+      }
+    },
+    {
+      "at": 107.247,
+      "sound": "vacuum",
+      "action": "set",
+      "params": {
+        "volume": 0.623,
+        "turbine": 0.306
+      }
+    },
+    {
+      "at": 110.784,
+      "sound": "hum",
+      "action": "set",
+      "params": {
+        "volume": 0.358,
+        "muffle": 0.3
+      }
+    },
+    {
+      "at": 110.784,
+      "sound": "monitor",
+      "action": "set",
+      "params": {
+        "volume": 0.458,
+        "tempo": 0.241
+      }
+    },
+    {
+      "at": 110.784,
+      "sound": "ventilator",
+      "action": "set",
+      "params": {
+        "volume": 0.396,
+        "rate": 0.369
+      }
+    },
+    {
+      "at": 110.784,
+      "sound": "vacuum",
+      "action": "set",
+      "params": {
+        "volume": 0.64,
+        "turbine": 0.333
+      }
+    },
+    {
+      "at": 113.973,
+      "sound": "hum",
+      "action": "set",
+      "params": {
+        "volume": 0.413,
+        "muffle": 0
+      }
+    },
+    {
+      "at": 113.973,
+      "sound": "monitor",
+      "action": "set",
+      "params": {
+        "volume": 0.513,
+        "tempo": 0.362
+      }
+    },
+    {
+      "at": 113.973,
+      "sound": "ventilator",
+      "action": "set",
+      "params": {
+        "volume": 0.445,
+        "rate": 0.453
+      }
+    },
+    {
+      "at": 113.973,
+      "sound": "vacuum",
+      "action": "set",
+      "params": {
+        "volume": 0.658,
+        "turbine": 0.361
+      }
+    },
+    {
+      "at": 118.347,
+      "sound": "hum",
+      "action": "set",
+      "params": {
+        "volume": 0.478,
+        "muffle": 0
+      }
+    },
+    {
+      "at": 118.347,
+      "sound": "monitor",
+      "action": "set",
+      "params": {
+        "volume": 0.578,
+        "tempo": 0.507
+      }
+    },
+    {
+      "at": 118.347,
+      "sound": "ventilator",
+      "action": "set",
+      "params": {
+        "volume": 0.503,
+        "rate": 0.555
+      }
+    },
+    {
+      "at": 118.347,
+      "sound": "vacuum",
+      "action": "set",
+      "params": {
+        "volume": 0.678,
+        "turbine": 0.395
+      }
+    },
+    {
+      "at": 122.121,
+      "sound": "silence",
+      "action": "start",
+      "params": {
+        "depth": 0.7
+      }
+    },
+    {
+      "at": 122.442,
+      "sound": "silence",
+      "action": "stop"
+    },
+    {
+      "at": 122.442,
+      "sound": "monitor",
+      "action": "hit",
+      "params": {
+        "volume": 1
+      }
+    },
+    {
+      "at": 122.809,
+      "sound": "hum",
+      "action": "set",
+      "params": {
+        "volume": 0.38,
+        "muffle": 0.3
+      }
+    },
+    {
+      "at": 122.809,
+      "sound": "monitor",
+      "action": "set",
+      "params": {
+        "volume": 0.48,
+        "tempo": 0.288
+      }
+    },
+    {
+      "at": 122.809,
+      "sound": "ventilator",
+      "action": "set",
+      "params": {
+        "volume": 0.415,
+        "rate": 0.402
+      }
+    },
+    {
+      "at": 122.809,
+      "sound": "vacuum",
+      "action": "set",
+      "params": {
+        "volume": 0.703,
+        "turbine": 0.436
+      }
+    },
+    {
+      "at": 127.4,
+      "sound": "hum",
+      "action": "set",
+      "params": {
+        "volume": 0.425,
+        "muffle": 0
+      }
+    },
+    {
+      "at": 127.4,
+      "sound": "monitor",
+      "action": "set",
+      "params": {
+        "volume": 0.525,
+        "tempo": 0.388
+      }
+    },
+    {
+      "at": 127.4,
+      "sound": "ventilator",
+      "action": "set",
+      "params": {
+        "volume": 0.455,
+        "rate": 0.472
+      }
+    },
+    {
+      "at": 127.4,
+      "sound": "vacuum",
+      "action": "set",
+      "params": {
+        "volume": 0.724,
+        "turbine": 0.474
+      }
+    },
+    {
+      "at": 132.339,
+      "sound": "hum",
+      "action": "set",
+      "params": {
+        "volume": 0.491,
+        "muffle": 0
+      }
+    },
+    {
+      "at": 132.339,
+      "sound": "monitor",
+      "action": "set",
+      "params": {
+        "volume": 0.591,
+        "tempo": 0.535
+      }
+    },
+    {
+      "at": 132.339,
+      "sound": "ventilator",
+      "action": "set",
+      "params": {
+        "volume": 0.514,
+        "rate": 0.574
+      }
+    },
+    {
+      "at": 132.339,
+      "sound": "vacuum",
+      "action": "set",
+      "params": {
+        "volume": 0.748,
+        "turbine": 0.518
+      }
+    },
+    {
+      "at": 136.588,
+      "sound": "hum",
+      "action": "set",
+      "params": {
+        "volume": 0.556,
+        "muffle": 0
+      }
+    },
+    {
+      "at": 136.588,
+      "sound": "monitor",
+      "action": "set",
+      "params": {
+        "volume": 0.656,
+        "tempo": 0.681
+      }
+    },
+    {
+      "at": 136.588,
+      "sound": "ventilator",
+      "action": "set",
+      "params": {
+        "volume": 0.572,
+        "rate": 0.677
+      }
+    },
+    {
+      "at": 136.588,
+      "sound": "vacuum",
+      "action": "set",
+      "params": {
+        "volume": 0.772,
+        "turbine": 0.564
+      }
+    },
+    {
+      "at": 137.167,
+      "sound": "breath",
+      "action": "start",
+      "params": {
+        "volume": 0.4,
+        "rate": 0.833
+      }
+    },
+    {
+      "at": 139.779,
+      "sound": "swing_creak",
+      "action": "hit",
+      "params": {
+        "strength": 0.842,
+        "pitch": 0.628
+      }
+    },
+    {
+      "at": 140.752,
+      "sound": "hum",
+      "action": "set",
+      "params": {
+        "volume": 0.59,
+        "muffle": 0
+      }
+    },
+    {
+      "at": 140.752,
+      "sound": "monitor",
+      "action": "set",
+      "params": {
+        "volume": 0.69,
+        "tempo": 0.757
+      }
+    },
+    {
+      "at": 140.752,
+      "sound": "ventilator",
+      "action": "set",
+      "params": {
+        "volume": 0.603,
+        "rate": 0.73
+      }
+    },
+    {
+      "at": 140.752,
+      "sound": "vacuum",
+      "action": "set",
+      "params": {
+        "volume": 0.79,
+        "turbine": 0.598
+      }
+    },
+    {
+      "at": 141.248,
+      "sound": "swing_creak",
+      "action": "hit",
+      "params": {
+        "strength": 0.86,
+        "pitch": 0.628
+      }
+    },
+    {
+      "at": 142.381,
+      "sound": "swing_creak",
+      "action": "hit",
+      "params": {
+        "strength": 0.874,
+        "pitch": 0.628
+      }
+    },
+    {
+      "at": 143.792,
+      "sound": "swing_creak",
+      "action": "hit",
+      "params": {
+        "strength": 0.892,
+        "pitch": 0.628
+      }
+    },
+    {
+      "at": 143.923,
+      "sound": "silence",
+      "action": "start",
+      "params": {
+        "depth": 0.7
+      }
+    },
+    {
+      "at": 144.336,
+      "sound": "silence",
+      "action": "stop"
+    },
+    {
+      "at": 144.336,
+      "sound": "monitor",
+      "action": "hit",
+      "params": {
+        "volume": 1
+      }
+    },
+    {
+      "at": 144.382,
+      "sound": "hum",
+      "action": "set",
+      "params": {
+        "volume": 0.399,
+        "muffle": 0.3
+      }
+    },
+    {
+      "at": 144.382,
+      "sound": "monitor",
+      "action": "set",
+      "params": {
+        "volume": 0.499,
+        "tempo": 0.331
+      }
+    },
+    {
+      "at": 144.382,
+      "sound": "ventilator",
+      "action": "set",
+      "params": {
+        "volume": 0.432,
+        "rate": 0.432
+      }
+    },
+    {
+      "at": 144.382,
+      "sound": "vacuum",
+      "action": "set",
+      "params": {
+        "volume": 0.811,
+        "turbine": 0.639
+      }
+    },
+    {
+      "at": 147.961,
+      "sound": "breath",
+      "action": "stop"
+    },
+    {
+      "at": 147.961,
+      "sound": "silence",
+      "action": "start",
+      "params": {
+        "depth": 1
+      }
+    },
+    {
+      "at": 148.591,
+      "sound": "silence",
+      "action": "stop"
+    },
+    {
+      "at": 148.591,
+      "sound": "stinger",
+      "action": "hit",
+      "params": {
+        "volume": 1
+      }
+    },
+    {
+      "at": 148.645,
+      "sound": "hum",
+      "action": "set",
+      "params": {
+        "volume": 0.505,
+        "muffle": 0.6
+      }
+    },
+    {
+      "at": 148.645,
+      "sound": "monitor",
+      "action": "set",
+      "params": {
+        "volume": 0.605,
+        "tempo": 0.567
+      }
+    },
+    {
+      "at": 148.645,
+      "sound": "ventilator",
+      "action": "set",
+      "params": {
+        "volume": 0.527,
+        "rate": 0.597
+      }
+    },
+    {
+      "at": 148.645,
+      "sound": "vacuum",
+      "action": "set",
+      "params": {
+        "volume": 0.83,
+        "turbine": 0.678
+      }
+    },
+    {
+      "at": 153.759,
+      "sound": "hum",
+      "action": "set",
+      "params": {
+        "volume": 0.551,
+        "muffle": 0
+      }
+    },
+    {
+      "at": 153.759,
+      "sound": "monitor",
+      "action": "set",
+      "params": {
+        "volume": 0.651,
+        "tempo": 0.669
+      }
+    },
+    {
+      "at": 153.759,
+      "sound": "ventilator",
+      "action": "set",
+      "params": {
+        "volume": 0.568,
+        "rate": 0.668
+      }
+    },
+    {
+      "at": 153.759,
+      "sound": "vacuum",
+      "action": "set",
+      "params": {
+        "volume": 0.857,
+        "turbine": 0.734
+      }
+    },
+    {
+      "at": 158.343,
+      "sound": "hum",
+      "action": "set",
+      "params": {
+        "volume": 0.606,
+        "muffle": 0
+      }
+    },
+    {
+      "at": 158.343,
+      "sound": "monitor",
+      "action": "set",
+      "params": {
+        "volume": 0.706,
+        "tempo": 0.792
+      }
+    },
+    {
+      "at": 158.343,
+      "sound": "ventilator",
+      "action": "set",
+      "params": {
+        "volume": 0.617,
+        "rate": 0.754
+      }
+    },
+    {
+      "at": 158.343,
+      "sound": "vacuum",
+      "action": "set",
+      "params": {
+        "volume": 0.879,
+        "turbine": 0.78
+      }
+    },
+    {
+      "at": 159.624,
+      "sound": "kitchen",
+      "action": "start",
+      "params": {
+        "volume": 0.3
+      }
+    },
+    {
+      "at": 162.6,
+      "sound": "hum",
+      "action": "stop"
+    },
+    {
+      "at": 162.6,
+      "sound": "monitor",
+      "action": "stop"
+    },
+    {
+      "at": 162.6,
+      "sound": "ventilator",
+      "action": "stop"
+    },
+    {
+      "at": 162.6,
+      "sound": "vacuum",
+      "action": "stop"
+    }
+  ],
+  "intrusions": [
+    {
+      "motif": "monitor",
+      "at": 11.465
+    },
+    {
+      "motif": "swing_creak",
+      "at": 19.526
+    },
+    {
+      "motif": "swing_creak",
+      "at": 26.41
+    },
+    {
+      "motif": "vacuum",
+      "at": 42.924
+    },
+    {
+      "motif": "ventilator",
+      "at": 48.374
+    },
+    {
+      "motif": "swing_creak",
+      "at": 61.472
+    },
+    {
+      "motif": "swing_creak",
+      "at": 91.823
+    },
+    {
+      "motif": "swing_creak",
+      "at": 97.771
+    },
+    {
+      "motif": "swing_creak",
+      "at": 139.779
+    }
+  ],
+  "awakening": {
+    "reason": "tea_brought",
+    "temperature": 36.9
+  }
+}
