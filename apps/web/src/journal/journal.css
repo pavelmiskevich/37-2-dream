@@ -1,0 +1,178 @@
+/* Dream journal card after the awakening: a medical record. Same type and
+   palette as the "Нажмите, чтобы уснуть" screen (ui/ui.css); entirely serious. */
+
+.journal {
+  position: fixed;
+  inset: 0;
+  z-index: 20;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.75rem;
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  padding: calc(var(--safe-top) + 2.5rem) calc(var(--safe-right) + 1rem) calc(var(--safe-bottom) + 2rem)
+    calc(var(--safe-left) + 1rem);
+  background: #000;
+  color: #d8d6d0;
+  font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.journal__sheet {
+  box-sizing: border-box;
+  width: 100%;
+  max-width: 34rem;
+}
+
+.journal__kicker {
+  margin: 0 0 0.9rem;
+  font-size: 0.72rem;
+  letter-spacing: 0.32em;
+  text-transform: uppercase;
+  color: #7d7b76;
+}
+
+.journal__title {
+  margin: 0;
+  padding-bottom: 1.4rem;
+  border-bottom: 1px solid #2c2b29;
+  font-size: clamp(2.5rem, 11vw, 3.6rem);
+  font-weight: 200;
+  font-variant-numeric: tabular-nums;
+  letter-spacing: 0.04em;
+  line-height: 1;
+  color: #ecebe6;
+}
+
+.journal__rows {
+  margin: 0;
+  display: grid;
+  gap: 0.55rem;
+}
+
+.journal__rows--vitals {
+  padding: 1.25rem 0 0.4rem;
+}
+
+.journal__row {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 1rem;
+}
+
+.journal__label {
+  font-size: 0.85rem;
+  color: #7d7b76;
+}
+
+.journal__value {
+  margin: 0;
+  font-size: 1rem;
+  font-variant-numeric: tabular-nums;
+  text-align: right;
+  white-space: nowrap;
+}
+
+.journal__section {
+  margin-top: 1.35rem;
+}
+
+.journal__heading {
+  margin: 0 0 0.5rem;
+  font-size: 0.68rem;
+  font-weight: 400;
+  letter-spacing: 0.24em;
+  text-transform: uppercase;
+  color: #7d7b76;
+}
+
+.journal__lines {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  display: grid;
+  gap: 0.3rem;
+  font-size: 1rem;
+  line-height: 1.35;
+}
+
+.journal__reason {
+  margin: 1.8rem 0 1.25rem;
+  padding: 1.1rem 0;
+  border-top: 1px solid #2c2b29;
+  border-bottom: 1px solid #2c2b29;
+  font-size: 1rem;
+  letter-spacing: 0.14em;
+  color: #ecebe6;
+}
+
+.journal__rows--meta {
+  gap: 0.35rem;
+}
+
+.journal__rows--meta .journal__label,
+.journal__rows--meta .journal__value {
+  font-family: ui-monospace, 'SFMono-Regular', Menlo, Consolas, monospace;
+  font-size: 0.72rem;
+  letter-spacing: 0.08em;
+  color: #6f6d68;
+}
+
+.journal__actions {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0.75rem;
+  width: 100%;
+  max-width: 34rem;
+}
+
+.journal__button {
+  flex: 1 1 9.5rem;
+  min-height: 2.75rem;
+  padding: 0.7rem 1rem;
+  border: 1px solid #3a3936;
+  border-radius: 0;
+  background: transparent;
+  color: #d8d6d0;
+  font: inherit;
+  font-size: 0.7rem;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  cursor: pointer;
+  touch-action: manipulation;
+}
+
+.journal__button:hover,
+.journal__button:focus-visible {
+  border-color: #8a8883;
+  color: #ecebe6;
+  outline: none;
+}
+
+.journal__button--primary {
+  border-color: #8a8883;
+  color: #ecebe6;
+}
+
+.journal__button:disabled {
+  opacity: 0.5;
+  cursor: default;
+}
+
+.journal__status {
+  min-height: 1.2em;
+  max-width: 34rem;
+  margin: 0;
+  font-family: ui-monospace, 'SFMono-Regular', Menlo, Consolas, monospace;
+  font-size: 0.72rem;
+  letter-spacing: 0.06em;
+  color: #7d7b76;
+  text-align: center;
+  overflow-wrap: anywhere;
+  user-select: text;
+  -webkit-user-select: text;
+}

@@ -83,6 +83,27 @@ export {
 export { findScene, generateDream, timelineSeed, type Dream, type DreamTransition, type TransitionKind } from './dream';
 
 export {
+  MIN_PROFILE_DISTANCE,
+  RECENT_DREAMS,
+  chooseFreshSeed,
+  profileDistance,
+  profileOfSeed,
+  type FreshSeedOptions,
+} from './fresh-seed';
+
+export {
+  strangestObjectSeed,
+  summarizeDream,
+  summaryWakeReason,
+  visitedScenes,
+  type DreamEventCount,
+  type DreamEventId,
+  type DreamRun,
+  type DreamSummary,
+  type StrangeObject,
+} from './summary';
+
+export {
   ACTION_BUTTONS,
   ALL_BUTTONS,
   IDLE_INPUT,

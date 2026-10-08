@@ -13,6 +13,7 @@ const sandboxes = new Map<string, (canvas: HTMLCanvasElement) => Promise<void>>(
   ['fever', async (c) => (await import('./sandbox/fever')).startFeverSandbox(c)],
   ['yard', async (c) => (await import('./sandbox/yard')).startYardSandbox(c)],
   ['fall', async (c) => (await import('./sandbox/fall')).startFallSandbox(c)],
+  ['journal', async () => (await import('./sandbox/journal')).startJournalSandbox()],
   // The sound panel overlays a plain PS1 backdrop.
   [
     'audio',
@@ -25,4 +26,12 @@ const sandboxes = new Map<string, (canvas: HTMLCanvasElement) => Promise<void>>(
 const sandbox = sandboxes.get(new URLSearchParams(window.location.search).get('sandbox') ?? '');
 
 if (sandbox) void sandbox(canvas);
-else startDream(canvas);
+else {
+  // After the awakening the dream journal (#13) records the dream and shows its card.
+  startDream(canvas, window.location.search, {
+    onDreamEnd: (ending) =>
+      void import('./journal')
+        .then(({ showDreamJournal }) => showDreamJournal(ending))
+        .catch((error: unknown) => console.error('The dream journal failed', error)),
+  });
+}
