@@ -6,4 +6,5 @@ export { soundProfileFromSeed, type SoundProfile } from './profile';
 export type { AudioSeed } from './rng';
 export { CREAK_SILENT_BELOW, creakShape, type CreakCharacter, type CreakShape } from './creak';
 export { MUFFLE, muffleCutoff } from './muffle';
+export { STINGER_CLUSTER, stingerShape, type StingerCharacter, type StingerShape } from './stinger';
 export { FEVER_SOUND, feverSoundEvents, feverSoundMix, type FeverSoundMix } from './fever';

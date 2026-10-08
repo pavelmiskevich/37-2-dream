@@ -19,6 +19,7 @@ import {
   HumVoice,
   KitchenVoice,
   MonitorVoice,
+  StingerVoice,
   VacuumVoice,
   VentilatorVoice,
   type Voice,
@@ -80,6 +81,9 @@ class WebAudioEngine implements AudioEngine {
   };
   /** One-shot creaks of the swing; not a looping sound, so not in `SOUNDS`. */
   private readonly creak: CreakVoice;
+  /** The scare's stinger, on a bus of its own past the layers and the master volume. */
+  private readonly stinger: StingerVoice;
+  private readonly stingerBus: GainNode;
   private readonly voiceLayer = new Map<SoundId, LayerName>();
   private timer: ReturnType<typeof setInterval> | null;
   private disposed = false;
@@ -132,6 +136,9 @@ class WebAudioEngine implements AudioEngine {
       kitchen: new KitchenVoice(env),
     };
     this.creak = new CreakVoice(env);
+    this.stinger = new StingerVoice(env);
+    this.stingerBus = context.createGain();
+    this.stingerBus.connect(this.muffle);
 
     this.timer = setInterval(() => this.tick(), TICK_MS);
   }
@@ -169,6 +176,9 @@ class WebAudioEngine implements AudioEngine {
       case 'swing.creak':
         this.creak.play(event.strength, event.pitch ?? 1, this.layers.location);
         break;
+      case 'stinger.hit':
+        this.stinger.play(event.strength ?? 1, event.soft ?? false, this.stingerBus);
+        break;
       case 'layer.volume':
         this.volumes[event.layer] = clamp01(event.value);
         this.applyMix();
@@ -204,6 +214,7 @@ class WebAudioEngine implements AudioEngine {
     this.timer = null;
     const length = Math.max(fade, MIN_FADE);
     for (const layer of LAYERS) rampParam(this.layers[layer].gain, 0, this.context.currentTime, length);
+    rampParam(this.stingerBus.gain, 0, this.context.currentTime, length);
     setTimeout(() => {
       this.muffle.disconnect();
       this.limiter.disconnect();
