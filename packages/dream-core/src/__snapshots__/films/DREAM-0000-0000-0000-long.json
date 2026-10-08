@@ -1,0 +1,3515 @@
+{
+  "engineVersion": 8,
+  "seed": "DREAM-0000-0000-0000",
+  "length": "long",
+  "duration": 156.6,
+  "profile": {
+    "temperature": 37.2,
+    "absurdity": 0.066,
+    "anxiety": 0.216,
+    "medicalIntensity": 0.202,
+    "sovietIntensity": 0.711,
+    "domesticIntensity": 0.825,
+    "physicsInstability": 0.833,
+    "jumpscareIntensity": 0.077,
+    "dreamLength": 3.11
+  },
+  "shots": [
+    {
+      "index": 0,
+      "assetId": "hospital-corridor-empty",
+      "start": 0,
+      "duration": 3.598,
+      "camera": {
+        "kind": "drift",
+        "zoomFrom": 1.138,
+        "zoomTo": 1.152,
+        "panFrom": [
+          0.053,
+          -0.062
+        ],
+        "panTo": [
+          0.109,
+          -0.018
+        ],
+        "sway": 0.068
+      },
+      "parallax": 0,
+      "look": {
+        "grain": 0.344,
+        "flicker": 0.068,
+        "blur": 0.106,
+        "vignette": 0.441,
+        "fever": 0.098
+      },
+      "cutOut": "fade",
+      "cutDuration": 0.748,
+      "scare": false
+    },
+    {
+      "index": 1,
+      "assetId": "yard-face-window",
+      "start": 3.598,
+      "duration": 4.626,
+      "camera": {
+        "kind": "push",
+        "zoomFrom": 1.084,
+        "zoomTo": 1.165,
+        "panFrom": [
+          -0.029,
+          -0.001
+        ],
+        "panTo": [
+          -0.042,
+          0.005
+        ],
+        "sway": 0.066
+      },
+      "parallax": 0.651,
+      "look": {
+        "grain": 0.357,
+        "flicker": 0.082,
+        "blur": 0.251,
+        "vignette": 0.371,
+        "fever": 0.082
+      },
+      "cutOut": "hard",
+      "cutDuration": 0,
+      "scare": false
+    },
+    {
+      "index": 2,
+      "assetId": "kitchen-night",
+      "start": 8.224,
+      "duration": 2.036,
+      "camera": {
+        "kind": "push",
+        "zoomFrom": 1.093,
+        "zoomTo": 1.127,
+        "panFrom": [
+          -0.006,
+          0.041
+        ],
+        "panTo": [
+          0.011,
+          0.042
+        ],
+        "sway": 0.064
+      },
+      "parallax": 0,
+      "look": {
+        "grain": 0.429,
+        "flicker": 0.098,
+        "blur": 0.173,
+        "vignette": 0.419,
+        "fever": 0.114
+      },
+      "cutOut": "blink",
+      "cutDuration": 0.337,
+      "scare": false
+    },
+    {
+      "index": 3,
+      "assetId": "stairs-down",
+      "start": 10.26,
+      "duration": 4.904,
+      "camera": {
+        "kind": "drift",
+        "zoomFrom": 1.134,
+        "zoomTo": 1.116,
+        "panFrom": [
+          -0.079,
+          0.014
+        ],
+        "panTo": [
+          -0.063,
+          0.006
+        ],
+        "sway": 0.076
+      },
+      "parallax": 0.877,
+      "look": {
+        "grain": 0.519,
+        "flicker": 0.149,
+        "blur": 0,
+        "vignette": 0.451,
+        "fever": 0.079
+      },
+      "cutOut": "blink",
+      "cutDuration": 0.26,
+      "scare": false
+    },
+    {
+      "index": 4,
+      "assetId": "stairwell-vacuum",
+      "start": 15.164,
+      "duration": 2.564,
+      "camera": {
+        "kind": "drift",
+        "zoomFrom": 1.141,
+        "zoomTo": 1.138,
+        "panFrom": [
+          0.093,
+          0.092
+        ],
+        "panTo": [
+          0.109,
+          0.081
+        ],
+        "sway": 0.085
+      },
+      "parallax": 0,
+      "look": {
+        "grain": 0.479,
+        "flicker": 0.178,
+        "blur": 0.11,
+        "vignette": 0.477,
+        "fever": 0.174
+      },
+      "cutOut": "hard",
+      "cutDuration": 0,
+      "scare": false
+    },
+    {
+      "index": 5,
+      "assetId": "clip-swing-sways",
+      "start": 17.728,
+      "duration": 2.873,
+      "camera": {
+        "kind": "drift",
+        "zoomFrom": 1.137,
+        "zoomTo": 1.15,
+        "panFrom": [
+          -0.012,
+          0.037
+        ],
+        "panTo": [
+          -0.092,
+          0.038
+        ],
+        "sway": 0.119
+      },
+      "parallax": 0,
+      "look": {
+        "grain": 0.462,
+        "flicker": 0.248,
+        "blur": 0.054,
+        "vignette": 0.559,
+        "fever": 0.193
+      },
+      "cutOut": "blink",
+      "cutDuration": 0.323,
+      "scare": false
+    },
+    {
+      "index": 6,
+      "assetId": "jam-jar-inside",
+      "start": 20.601,
+      "duration": 1.635,
+      "camera": {
+        "kind": "sway",
+        "zoomFrom": 1.155,
+        "zoomTo": 1.173,
+        "panFrom": [
+          -0.038,
+          -0.094
+        ],
+        "panTo": [
+          -0.046,
+          -0.104
+        ],
+        "sway": 0.609
+      },
+      "parallax": 0,
+      "look": {
+        "grain": 0.541,
+        "flicker": 0.227,
+        "blur": 0.073,
+        "vignette": 0.526,
+        "fever": 0.237
+      },
+      "cutOut": "hard",
+      "cutDuration": 0,
+      "scare": false
+    },
+    {
+      "index": 7,
+      "assetId": "jam-jar-shelf",
+      "start": 22.236,
+      "duration": 0.686,
+      "camera": {
+        "kind": "still",
+        "zoomFrom": 1.038,
+        "zoomTo": 1.038,
+        "panFrom": [
+          -0.003,
+          -0.008
+        ],
+        "panTo": [
+          0.004,
+          -0.007
+        ],
+        "sway": 0.358
+      },
+      "parallax": 0.714,
+      "look": {
+        "grain": 0.565,
+        "flicker": 0.373,
+        "blur": 0.059,
+        "vignette": 0.707,
+        "fever": 0.441
+      },
+      "cutOut": "flash",
+      "cutDuration": 0.086,
+      "scare": false
+    },
+    {
+      "index": 8,
+      "assetId": "kitchen-kettle",
+      "start": 22.922,
+      "duration": 4.329,
+      "camera": {
+        "kind": "still",
+        "zoomFrom": 1.067,
+        "zoomTo": 1.067,
+        "panFrom": [
+          0.031,
+          0.017
+        ],
+        "panTo": [
+          0.019,
+          0.02
+        ],
+        "sway": 0.067
+      },
+      "parallax": 0.628,
+      "look": {
+        "grain": 0.397,
+        "flicker": 0.065,
+        "blur": 0.493,
+        "vignette": 0.378,
+        "fever": 0.095
+      },
+      "cutOut": "blink",
+      "cutDuration": 0.323,
+      "scare": false
+    },
+    {
+      "index": 9,
+      "assetId": "elevator-open",
+      "start": 27.251,
+      "duration": 4.933,
+      "camera": {
+        "kind": "drift",
+        "zoomFrom": 1.184,
+        "zoomTo": 1.192,
+        "panFrom": [
+          0.034,
+          0.127
+        ],
+        "panTo": [
+          0.139,
+          0.139
+        ],
+        "sway": 0.117
+      },
+      "parallax": 0.914,
+      "look": {
+        "grain": 0.415,
+        "flicker": 0.119,
+        "blur": 0.089,
+        "vignette": 0.482,
+        "fever": 0.107
+      },
+      "cutOut": "blink",
+      "cutDuration": 0.278,
+      "scare": false
+    },
+    {
+      "index": 10,
+      "assetId": "stairwell-dark",
+      "start": 32.184,
+      "duration": 2.771,
+      "camera": {
+        "kind": "push",
+        "zoomFrom": 1.04,
+        "zoomTo": 1.131,
+        "panFrom": [
+          0.027,
+          0.012
+        ],
+        "panTo": [
+          0.034,
+          0.013
+        ],
+        "sway": 0.116
+      },
+      "parallax": 0.493,
+      "look": {
+        "grain": 0.551,
+        "flicker": 0.213,
+        "blur": 0.104,
+        "vignette": 0.49,
+        "fever": 0.199
+      },
+      "cutOut": "hard",
+      "cutDuration": 0,
+      "scare": false
+    },
+    {
+      "index": 11,
+      "assetId": "thermometer-corridor",
+      "start": 34.955,
+      "duration": 2.017,
+      "camera": {
+        "kind": "sway",
+        "zoomFrom": 1.173,
+        "zoomTo": 1.166,
+        "panFrom": [
+          0.036,
+          0.124
+        ],
+        "panTo": [
+          0.023,
+          0.117
+        ],
+        "sway": 0.602
+      },
+      "parallax": 0,
+      "look": {
+        "grain": 0.502,
+        "flicker": 0.173,
+        "blur": 0.027,
+        "vignette": 0.565,
+        "fever": 0.182
+      },
+      "cutOut": "hard",
+      "cutDuration": 0,
+      "scare": false
+    },
+    {
+      "index": 12,
+      "assetId": "thermometer-corridor-far",
+      "start": 36.972,
+      "duration": 1.076,
+      "camera": {
+        "kind": "sway",
+        "zoomFrom": 1.17,
+        "zoomTo": 1.153,
+        "panFrom": [
+          0.016,
+          -0.084
+        ],
+        "panTo": [
+          0.038,
+          -0.07
+        ],
+        "sway": 0.627
+      },
+      "parallax": 0.492,
+      "look": {
+        "grain": 0.515,
+        "flicker": 0.229,
+        "blur": 0.043,
+        "vignette": 0.566,
+        "fever": 0.211
+      },
+      "cutOut": "hard",
+      "cutDuration": 0,
+      "scare": false
+    },
+    {
+      "index": 13,
+      "assetId": "yard-dusk-empty",
+      "start": 38.048,
+      "duration": 0.616,
+      "camera": {
+        "kind": "sway",
+        "zoomFrom": 1.142,
+        "zoomTo": 1.154,
+        "panFrom": [
+          0.095,
+          0.071
+        ],
+        "panTo": [
+          0.103,
+          0.062
+        ],
+        "sway": 0.766
+      },
+      "parallax": 0,
+      "look": {
+        "grain": 0.607,
+        "flicker": 0.291,
+        "blur": 0.024,
+        "vignette": 0.739,
+        "fever": 0.464
+      },
+      "cutOut": "flash",
+      "cutDuration": 0.143,
+      "scare": false
+    },
+    {
+      "index": 14,
+      "assetId": "yard-day-pigeons",
+      "start": 38.664,
+      "duration": 4.976,
+      "camera": {
+        "kind": "still",
+        "zoomFrom": 1.029,
+        "zoomTo": 1.029,
+        "panFrom": [
+          0.014,
+          0.008
+        ],
+        "panTo": [
+          0.014,
+          0.007
+        ],
+        "sway": 0.049
+      },
+      "parallax": 0.885,
+      "look": {
+        "grain": 0.388,
+        "flicker": 0.071,
+        "blur": 0.282,
+        "vignette": 0.362,
+        "fever": 0.063
+      },
+      "cutOut": "fade",
+      "cutDuration": 1.317,
+      "scare": false
+    },
+    {
+      "index": 15,
+      "assetId": "yard-night-vacuum",
+      "start": 43.64,
+      "duration": 3.795,
+      "camera": {
+        "kind": "sway",
+        "zoomFrom": 1.131,
+        "zoomTo": 1.151,
+        "panFrom": [
+          -0.029,
+          0.054
+        ],
+        "panTo": [
+          -0.006,
+          0.06
+        ],
+        "sway": 0.492
+      },
+      "parallax": 0,
+      "look": {
+        "grain": 0.438,
+        "flicker": 0.191,
+        "blur": 0.016,
+        "vignette": 0.502,
+        "fever": 0.117
+      },
+      "cutOut": "hard",
+      "cutDuration": 0,
+      "scare": false
+    },
+    {
+      "index": 16,
+      "assetId": "bedroom-monitor",
+      "start": 47.435,
+      "duration": 4.453,
+      "camera": {
+        "kind": "push",
+        "zoomFrom": 1.034,
+        "zoomTo": 1.217,
+        "panFrom": [
+          -0.011,
+          -0.025
+        ],
+        "panTo": [
+          -0.011,
+          -0.028
+        ],
+        "sway": 0.165
+      },
+      "parallax": 0,
+      "look": {
+        "grain": 0.405,
+        "flicker": 0.164,
+        "blur": 0.079,
+        "vignette": 0.502,
+        "fever": 0.199
+      },
+      "cutOut": "blink",
+      "cutDuration": 0.298,
+      "scare": false
+    },
+    {
+      "index": 17,
+      "assetId": "bedroom-will",
+      "start": 51.888,
+      "duration": 2.87,
+      "camera": {
+        "kind": "push",
+        "zoomFrom": 1.08,
+        "zoomTo": 1.214,
+        "panFrom": [
+          0.035,
+          -0.046
+        ],
+        "panTo": [
+          0.046,
+          -0.045
+        ],
+        "sway": 0.154
+      },
+      "parallax": 0.743,
+      "look": {
+        "grain": 0.49,
+        "flicker": 0.271,
+        "blur": 0.111,
+        "vignette": 0.527,
+        "fever": 0.266
+      },
+      "cutOut": "fade",
+      "cutDuration": 0.591,
+      "scare": false
+    },
+    {
+      "index": 18,
+      "assetId": "bedroom-bed",
+      "start": 54.758,
+      "duration": 1.895,
+      "camera": {
+        "kind": "sway",
+        "zoomFrom": 1.12,
+        "zoomTo": 1.119,
+        "panFrom": [
+          -0.043,
+          -0.05
+        ],
+        "panTo": [
+          -0.057,
+          -0.045
+        ],
+        "sway": 0.535
+      },
+      "parallax": 0,
+      "look": {
+        "grain": 0.452,
+        "flicker": 0.292,
+        "blur": 0.052,
+        "vignette": 0.584,
+        "fever": 0.268
+      },
+      "cutOut": "hard",
+      "cutDuration": 0,
+      "scare": false
+    },
+    {
+      "index": 19,
+      "assetId": "kitchen-night",
+      "start": 56.653,
+      "duration": 0.693,
+      "camera": {
+        "kind": "push",
+        "zoomFrom": 1.072,
+        "zoomTo": 1.115,
+        "panFrom": [
+          0.002,
+          -0.02
+        ],
+        "panTo": [
+          0.008,
+          -0.025
+        ],
+        "sway": 0.326
+      },
+      "parallax": 0,
+      "look": {
+        "grain": 0.539,
+        "flicker": 0.436,
+        "blur": 0.05,
+        "vignette": 0.763,
+        "fever": 0.462
+      },
+      "cutOut": "flash",
+      "cutDuration": 0.122,
+      "scare": false
+    },
+    {
+      "index": 20,
+      "assetId": "kitchen-kettle",
+      "start": 57.346,
+      "duration": 4.117,
+      "camera": {
+        "kind": "pull",
+        "zoomFrom": 1.134,
+        "zoomTo": 1.043,
+        "panFrom": [
+          0.012,
+          -0.005
+        ],
+        "panTo": [
+          0.003,
+          -0.003
+        ],
+        "sway": 0.057
+      },
+      "parallax": 0.838,
+      "look": {
+        "grain": 0.488,
+        "flicker": 0.109,
+        "blur": 0.26,
+        "vignette": 0.385,
+        "fever": 0.122
+      },
+      "cutOut": "fade",
+      "cutDuration": 1.411,
+      "scare": false
+    },
+    {
+      "index": 21,
+      "assetId": "hospital-monitor",
+      "start": 61.463,
+      "duration": 4.05,
+      "camera": {
+        "kind": "push",
+        "zoomFrom": 1.076,
+        "zoomTo": 1.183,
+        "panFrom": [
+          -0.059,
+          0.025
+        ],
+        "panTo": [
+          -0.063,
+          0.031
+        ],
+        "sway": 0.108
+      },
+      "parallax": 0,
+      "look": {
+        "grain": 0.524,
+        "flicker": 0.176,
+        "blur": 0.032,
+        "vignette": 0.461,
+        "fever": 0.181
+      },
+      "cutOut": "hard",
+      "cutDuration": 0,
+      "scare": false
+    },
+    {
+      "index": 22,
+      "assetId": "yard-night-swing",
+      "start": 65.513,
+      "duration": 2.592,
+      "camera": {
+        "kind": "push",
+        "zoomFrom": 1.072,
+        "zoomTo": 1.179,
+        "panFrom": [
+          -0.038,
+          -0.037
+        ],
+        "panTo": [
+          -0.034,
+          -0.043
+        ],
+        "sway": 0.137
+      },
+      "parallax": 0.553,
+      "look": {
+        "grain": 0.525,
+        "flicker": 0.253,
+        "blur": 0.023,
+        "vignette": 0.56,
+        "fever": 0.171
+      },
+      "cutOut": "blink",
+      "cutDuration": 0.406,
+      "scare": false
+    },
+    {
+      "index": 23,
+      "assetId": "elevator-open",
+      "start": 68.105,
+      "duration": 2.385,
+      "camera": {
+        "kind": "push",
+        "zoomFrom": 1.034,
+        "zoomTo": 1.144,
+        "panFrom": [
+          -0.005,
+          -0.007
+        ],
+        "panTo": [
+          -0.004,
+          -0.007
+        ],
+        "sway": 0.138
+      },
+      "parallax": 0.791,
+      "look": {
+        "grain": 0.559,
+        "flicker": 0.249,
+        "blur": 0.01,
+        "vignette": 0.557,
+        "fever": 0.201
+      },
+      "cutOut": "fade",
+      "cutDuration": 0.663,
+      "scare": false
+    },
+    {
+      "index": 24,
+      "assetId": "stairs-endless",
+      "start": 70.49,
+      "duration": 2.133,
+      "camera": {
+        "kind": "drift",
+        "zoomFrom": 1.17,
+        "zoomTo": 1.162,
+        "panFrom": [
+          0.088,
+          -0.088
+        ],
+        "panTo": [
+          0.075,
+          -0.03
+        ],
+        "sway": 0.24
+      },
+      "parallax": 0,
+      "look": {
+        "grain": 0.535,
+        "flicker": 0.278,
+        "blur": 0.053,
+        "vignette": 0.558,
+        "fever": 0.236
+      },
+      "cutOut": "hard",
+      "cutDuration": 0,
+      "scare": false
+    },
+    {
+      "index": 25,
+      "assetId": "thermometer-corridor-far",
+      "start": 72.623,
+      "duration": 0.39,
+      "camera": {
+        "kind": "drift",
+        "zoomFrom": 1.136,
+        "zoomTo": 1.117,
+        "panFrom": [
+          -0.076,
+          -0.088
+        ],
+        "panTo": [
+          -0.094,
+          -0.07
+        ],
+        "sway": 0.275
+      },
+      "parallax": 0.41,
+      "look": {
+        "grain": 0.596,
+        "flicker": 0.342,
+        "blur": 0.097,
+        "vignette": 0.578,
+        "fever": 0.257
+      },
+      "cutOut": "hard",
+      "cutDuration": 0,
+      "scare": false
+    },
+    {
+      "index": 26,
+      "assetId": "hospital-corridor-ventilator",
+      "start": 73.013,
+      "duration": 0.892,
+      "camera": {
+        "kind": "still",
+        "zoomFrom": 1.056,
+        "zoomTo": 1.056,
+        "panFrom": [
+          -0.018,
+          0.013
+        ],
+        "panTo": [
+          -0.015,
+          0.011
+        ],
+        "sway": 0.309
+      },
+      "parallax": 0.722,
+      "look": {
+        "grain": 0.572,
+        "flicker": 0.459,
+        "blur": 0.033,
+        "vignette": 0.771,
+        "fever": 0.462
+      },
+      "cutOut": "flash",
+      "cutDuration": 0.13,
+      "scare": false
+    },
+    {
+      "index": 27,
+      "assetId": "jam-jar-inside",
+      "start": 73.905,
+      "duration": 3.571,
+      "camera": {
+        "kind": "still",
+        "zoomFrom": 1.041,
+        "zoomTo": 1.041,
+        "panFrom": [
+          -0.016,
+          -0.028
+        ],
+        "panTo": [
+          -0.015,
+          -0.026
+        ],
+        "sway": 0.118
+      },
+      "parallax": 0,
+      "look": {
+        "grain": 0.372,
+        "flicker": 0.111,
+        "blur": 0.277,
+        "vignette": 0.394,
+        "fever": 0.076
+      },
+      "cutOut": "blink",
+      "cutDuration": 0.289,
+      "scare": false
+    },
+    {
+      "index": 28,
+      "assetId": "jam-jar-shelf",
+      "start": 77.476,
+      "duration": 4.491,
+      "camera": {
+        "kind": "drift",
+        "zoomFrom": 1.146,
+        "zoomTo": 1.138,
+        "panFrom": [
+          0.086,
+          -0.078
+        ],
+        "panTo": [
+          0.086,
+          -0.08
+        ],
+        "sway": 0.103
+      },
+      "parallax": 0.883,
+      "look": {
+        "grain": 0.44,
+        "flicker": 0.223,
+        "blur": 0.006,
+        "vignette": 0.515,
+        "fever": 0.137
+      },
+      "cutOut": "hard",
+      "cutDuration": 0,
+      "scare": false
+    },
+    {
+      "index": 29,
+      "assetId": "stairs-down",
+      "start": 81.967,
+      "duration": 2.681,
+      "camera": {
+        "kind": "push",
+        "zoomFrom": 1.078,
+        "zoomTo": 1.167,
+        "panFrom": [
+          -0.056,
+          0.022
+        ],
+        "panTo": [
+          -0.058,
+          0.015
+        ],
+        "sway": 0.19
+      },
+      "parallax": 0.694,
+      "look": {
+        "grain": 0.479,
+        "flicker": 0.206,
+        "blur": 0.108,
+        "vignette": 0.509,
+        "fever": 0.244
+      },
+      "cutOut": "blink",
+      "cutDuration": 0.369,
+      "scare": false
+    },
+    {
+      "index": 30,
+      "assetId": "stairwell-dark",
+      "start": 84.648,
+      "duration": 3.189,
+      "camera": {
+        "kind": "drift",
+        "zoomFrom": 1.214,
+        "zoomTo": 1.227,
+        "panFrom": [
+          0.153,
+          -0.064
+        ],
+        "panTo": [
+          0.158,
+          -0.135
+        ],
+        "sway": 0.158
+      },
+      "parallax": 0.541,
+      "look": {
+        "grain": 0.568,
+        "flicker": 0.232,
+        "blur": 0.065,
+        "vignette": 0.583,
+        "fever": 0.224
+      },
+      "cutOut": "blink",
+      "cutDuration": 0.371,
+      "scare": false
+    },
+    {
+      "index": 31,
+      "assetId": "stairwell-vacuum",
+      "start": 87.837,
+      "duration": 2.08,
+      "camera": {
+        "kind": "sway",
+        "zoomFrom": 1.207,
+        "zoomTo": 1.216,
+        "panFrom": [
+          -0.107,
+          -0.101
+        ],
+        "panTo": [
+          -0.136,
+          -0.099
+        ],
+        "sway": 0.584
+      },
+      "parallax": 0,
+      "look": {
+        "grain": 0.62,
+        "flicker": 0.331,
+        "blur": 0.072,
+        "vignette": 0.629,
+        "fever": 0.275
+      },
+      "cutOut": "hard",
+      "cutDuration": 0,
+      "scare": false
+    },
+    {
+      "index": 32,
+      "assetId": "yard-face-window",
+      "start": 89.917,
+      "duration": 0.724,
+      "camera": {
+        "kind": "push",
+        "zoomFrom": 1.013,
+        "zoomTo": 1.043,
+        "panFrom": [
+          0.008,
+          -0.007
+        ],
+        "panTo": [
+          0.006,
+          -0.006
+        ],
+        "sway": 0.157
+      },
+      "parallax": 0.619,
+      "look": {
+        "grain": 0.484,
+        "flicker": 0.292,
+        "blur": 0.009,
+        "vignette": 0.629,
+        "fever": 0.35
+      },
+      "cutOut": "hard",
+      "cutDuration": 0,
+      "scare": false
+    },
+    {
+      "index": 33,
+      "assetId": "clip-swing-sways",
+      "start": 90.641,
+      "duration": 0.943,
+      "camera": {
+        "kind": "push",
+        "zoomFrom": 1.034,
+        "zoomTo": 1.095,
+        "panFrom": [
+          0.023,
+          -0.016
+        ],
+        "panTo": [
+          0.027,
+          -0.018
+        ],
+        "sway": 0.326
+      },
+      "parallax": 0,
+      "look": {
+        "grain": 0.612,
+        "flicker": 0.329,
+        "blur": 0.094,
+        "vignette": 0.769,
+        "fever": 0.425
+      },
+      "cutOut": "flash",
+      "cutDuration": 0.095,
+      "scare": false
+    },
+    {
+      "index": 34,
+      "assetId": "bedroom-bed",
+      "start": 91.584,
+      "duration": 5.467,
+      "camera": {
+        "kind": "pull",
+        "zoomFrom": 1.201,
+        "zoomTo": 1.069,
+        "panFrom": [
+          0.007,
+          0.013
+        ],
+        "panTo": [
+          0.003,
+          0.016
+        ],
+        "sway": 0.082
+      },
+      "parallax": 0,
+      "look": {
+        "grain": 0.535,
+        "flicker": 0.114,
+        "blur": 0.442,
+        "vignette": 0.452,
+        "fever": 0.13
+      },
+      "cutOut": "blink",
+      "cutDuration": 0.383,
+      "scare": false
+    },
+    {
+      "index": 35,
+      "assetId": "kitchen-night",
+      "start": 97.051,
+      "duration": 4.121,
+      "camera": {
+        "kind": "drift",
+        "zoomFrom": 1.22,
+        "zoomTo": 1.226,
+        "panFrom": [
+          0.007,
+          0.086
+        ],
+        "panTo": [
+          -0.142,
+          0.01
+        ],
+        "sway": 0.185
+      },
+      "parallax": 0,
+      "look": {
+        "grain": 0.578,
+        "flicker": 0.234,
+        "blur": 0.038,
+        "vignette": 0.563,
+        "fever": 0.198
+      },
+      "cutOut": "hard",
+      "cutDuration": 0,
+      "scare": false
+    },
+    {
+      "index": 36,
+      "assetId": "kitchen-kettle",
+      "start": 101.172,
+      "duration": 1.832,
+      "camera": {
+        "kind": "push",
+        "zoomFrom": 1.097,
+        "zoomTo": 1.194,
+        "panFrom": [
+          -0.003,
+          0.007
+        ],
+        "panTo": [
+          -0.014,
+          0.001
+        ],
+        "sway": 0.226
+      },
+      "parallax": 0.583,
+      "look": {
+        "grain": 0.576,
+        "flicker": 0.263,
+        "blur": 0.067,
+        "vignette": 0.634,
+        "fever": 0.289
+      },
+      "cutOut": "hard",
+      "cutDuration": 0,
+      "scare": false
+    },
+    {
+      "index": 37,
+      "assetId": "elevator-open",
+      "start": 103.004,
+      "duration": 0.545,
+      "camera": {
+        "kind": "sway",
+        "zoomFrom": 1.144,
+        "zoomTo": 1.152,
+        "panFrom": [
+          -0.046,
+          -0.063
+        ],
+        "panTo": [
+          -0.027,
+          -0.065
+        ],
+        "sway": 0.699
+      },
+      "parallax": 0.407,
+      "look": {
+        "grain": 0.62,
+        "flicker": 0.456,
+        "blur": 0.091,
+        "vignette": 0.711,
+        "fever": 0.464
+      },
+      "cutOut": "flash",
+      "cutDuration": 0.112,
+      "scare": false
+    },
+    {
+      "index": 38,
+      "assetId": "stairwell-mailboxes",
+      "start": 103.549,
+      "duration": 4.042,
+      "camera": {
+        "kind": "drift",
+        "zoomFrom": 1.151,
+        "zoomTo": 1.162,
+        "panFrom": [
+          -0.022,
+          -0.02
+        ],
+        "panTo": [
+          -0.054,
+          -0.013
+        ],
+        "sway": 0.126
+      },
+      "parallax": 0.8,
+      "look": {
+        "grain": 0.442,
+        "flicker": 0.139,
+        "blur": 0.364,
+        "vignette": 0.514,
+        "fever": 0.093
+      },
+      "cutOut": "blink",
+      "cutDuration": 0.284,
+      "scare": false
+    },
+    {
+      "index": 39,
+      "assetId": "jam-jar-shelf",
+      "start": 107.591,
+      "duration": 3.477,
+      "camera": {
+        "kind": "push",
+        "zoomFrom": 1.09,
+        "zoomTo": 1.177,
+        "panFrom": [
+          -0.044,
+          0.031
+        ],
+        "panTo": [
+          -0.059,
+          0.038
+        ],
+        "sway": 0.19
+      },
+      "parallax": 0.802,
+      "look": {
+        "grain": 0.568,
+        "flicker": 0.24,
+        "blur": 0.04,
+        "vignette": 0.528,
+        "fever": 0.179
+      },
+      "cutOut": "hard",
+      "cutDuration": 0,
+      "scare": false
+    },
+    {
+      "index": 40,
+      "assetId": "jam-jar-inside",
+      "start": 111.068,
+      "duration": 2.971,
+      "camera": {
+        "kind": "sway",
+        "zoomFrom": 1.162,
+        "zoomTo": 1.163,
+        "panFrom": [
+          -0.074,
+          -0.016
+        ],
+        "panTo": [
+          -0.051,
+          -0.014
+        ],
+        "sway": 0.582
+      },
+      "parallax": 0,
+      "look": {
+        "grain": 0.543,
+        "flicker": 0.223,
+        "blur": 0.044,
+        "vignette": 0.586,
+        "fever": 0.307
+      },
+      "cutOut": "hard",
+      "cutDuration": 0,
+      "scare": false
+    },
+    {
+      "index": 41,
+      "assetId": "bedroom-will",
+      "start": 114.039,
+      "duration": 1.527,
+      "camera": {
+        "kind": "push",
+        "zoomFrom": 1.02,
+        "zoomTo": 1.074,
+        "panFrom": [
+          0.006,
+          0.006
+        ],
+        "panTo": [
+          0.006,
+          0.006
+        ],
+        "sway": 0.247
+      },
+      "parallax": 0.655,
+      "look": {
+        "grain": 0.531,
+        "flicker": 0.274,
+        "blur": 0.036,
+        "vignette": 0.618,
+        "fever": 0.356
+      },
+      "cutOut": "blink",
+      "cutDuration": 0.368,
+      "scare": false
+    },
+    {
+      "index": 42,
+      "assetId": "stairs-endless",
+      "start": 115.566,
+      "duration": 5.787,
+      "camera": {
+        "kind": "push",
+        "zoomFrom": 1.077,
+        "zoomTo": 1.243,
+        "panFrom": [
+          -0.003,
+          0.043
+        ],
+        "panTo": [
+          0.004,
+          0.038
+        ],
+        "sway": 0.247
+      },
+      "parallax": 0,
+      "look": {
+        "grain": 0.554,
+        "flicker": 0.368,
+        "blur": 0.076,
+        "vignette": 0.657,
+        "fever": 0.392
+      },
+      "cutOut": "hard",
+      "cutDuration": 0,
+      "scare": false
+    },
+    {
+      "index": 43,
+      "assetId": "yard-night-vacuum",
+      "start": 121.353,
+      "duration": 0.697,
+      "camera": {
+        "kind": "sway",
+        "zoomFrom": 1.145,
+        "zoomTo": 1.161,
+        "panFrom": [
+          -0.08,
+          0.065
+        ],
+        "panTo": [
+          -0.068,
+          0.063
+        ],
+        "sway": 0.65
+      },
+      "parallax": 0,
+      "look": {
+        "grain": 0.543,
+        "flicker": 0.432,
+        "blur": 0.032,
+        "vignette": 0.734,
+        "fever": 0.48
+      },
+      "cutOut": "flash",
+      "cutDuration": 0.134,
+      "scare": false
+    },
+    {
+      "index": 44,
+      "assetId": "stairwell-dark",
+      "start": 122.05,
+      "duration": 3.933,
+      "camera": {
+        "kind": "pull",
+        "zoomFrom": 1.145,
+        "zoomTo": 1.019,
+        "panFrom": [
+          0.006,
+          -0.001
+        ],
+        "panTo": [
+          0.006,
+          -0.003
+        ],
+        "sway": 0.109
+      },
+      "parallax": 0.625,
+      "look": {
+        "grain": 0.408,
+        "flicker": 0.183,
+        "blur": 0.31,
+        "vignette": 0.442,
+        "fever": 0.116
+      },
+      "cutOut": "hard",
+      "cutDuration": 0,
+      "scare": false
+    },
+    {
+      "index": 45,
+      "assetId": "scare-vacuum-woman",
+      "start": 125.983,
+      "duration": 0.253,
+      "camera": {
+        "kind": "still",
+        "zoomFrom": 1.053,
+        "zoomTo": 1.053,
+        "panFrom": [
+          0.004,
+          0.014
+        ],
+        "panTo": [
+          0.011,
+          0.009
+        ],
+        "sway": 0.511
+      },
+      "parallax": 0.267,
+      "look": {
+        "grain": 0.65,
+        "flicker": 0.371,
+        "blur": 0.066,
+        "vignette": 0.85,
+        "fever": 0.671
+      },
+      "cutOut": "hard",
+      "cutDuration": 0,
+      "scare": true
+    },
+    {
+      "index": 46,
+      "assetId": "stairwell-vacuum",
+      "start": 126.236,
+      "duration": 2.303,
+      "camera": {
+        "kind": "drift",
+        "zoomFrom": 1.181,
+        "zoomTo": 1.163,
+        "panFrom": [
+          0.01,
+          -0.087
+        ],
+        "panTo": [
+          -0.087,
+          -0.105
+        ],
+        "sway": 0.256
+      },
+      "parallax": 0,
+      "look": {
+        "grain": 0.532,
+        "flicker": 0.256,
+        "blur": 0.314,
+        "vignette": 0.53,
+        "fever": 0.239
+      },
+      "cutOut": "fade",
+      "cutDuration": 0.49,
+      "scare": false
+    },
+    {
+      "index": 47,
+      "assetId": "kitchen-kettle",
+      "start": 128.539,
+      "duration": 1.227,
+      "camera": {
+        "kind": "pull",
+        "zoomFrom": 1.102,
+        "zoomTo": 1.06,
+        "panFrom": [
+          -0.048,
+          -0.023
+        ],
+        "panTo": [
+          -0.048,
+          -0.021
+        ],
+        "sway": 0.155
+      },
+      "parallax": 0.613,
+      "look": {
+        "grain": 0.412,
+        "flicker": 0.254,
+        "blur": 0.445,
+        "vignette": 0.494,
+        "fever": 0.213
+      },
+      "cutOut": "fade",
+      "cutDuration": 0.49,
+      "scare": false
+    },
+    {
+      "index": 48,
+      "assetId": "hospital-corridor-figure",
+      "start": 129.766,
+      "duration": 3.874,
+      "camera": {
+        "kind": "push",
+        "zoomFrom": 1.093,
+        "zoomTo": 1.236,
+        "panFrom": [
+          0.031,
+          -0.058
+        ],
+        "panTo": [
+          0.016,
+          -0.05
+        ],
+        "sway": 0.149
+      },
+      "parallax": 0.711,
+      "look": {
+        "grain": 0.552,
+        "flicker": 0.21,
+        "blur": 0.077,
+        "vignette": 0.613,
+        "fever": 0.258
+      },
+      "cutOut": "hard",
+      "cutDuration": 0,
+      "scare": false
+    },
+    {
+      "index": 49,
+      "assetId": "hospital-monitor",
+      "start": 133.64,
+      "duration": 2.888,
+      "camera": {
+        "kind": "drift",
+        "zoomFrom": 1.174,
+        "zoomTo": 1.172,
+        "panFrom": [
+          0.129,
+          -0.02
+        ],
+        "panTo": [
+          0.072,
+          0.02
+        ],
+        "sway": 0.279
+      },
+      "parallax": 0,
+      "look": {
+        "grain": 0.568,
+        "flicker": 0.321,
+        "blur": 0.086,
+        "vignette": 0.657,
+        "fever": 0.286
+      },
+      "cutOut": "blink",
+      "cutDuration": 0.442,
+      "scare": false
+    },
+    {
+      "index": 50,
+      "assetId": "hospital-corridor-empty",
+      "start": 136.528,
+      "duration": 3.373,
+      "camera": {
+        "kind": "drift",
+        "zoomFrom": 1.216,
+        "zoomTo": 1.216,
+        "panFrom": [
+          0.145,
+          0.043
+        ],
+        "panTo": [
+          0.1,
+          0.038
+        ],
+        "sway": 0.226
+      },
+      "parallax": 0,
+      "look": {
+        "grain": 0.618,
+        "flicker": 0.363,
+        "blur": 0.104,
+        "vignette": 0.658,
+        "fever": 0.317
+      },
+      "cutOut": "hard",
+      "cutDuration": 0,
+      "scare": false
+    },
+    {
+      "index": 51,
+      "assetId": "clip-swing-sways",
+      "start": 139.901,
+      "duration": 1.377,
+      "camera": {
+        "kind": "drift",
+        "zoomFrom": 1.178,
+        "zoomTo": 1.185,
+        "panFrom": [
+          0.097,
+          0.022
+        ],
+        "panTo": [
+          0.135,
+          0.006
+        ],
+        "sway": 0.248
+      },
+      "parallax": 0,
+      "look": {
+        "grain": 0.611,
+        "flicker": 0.402,
+        "blur": 0.073,
+        "vignette": 0.704,
+        "fever": 0.371
+      },
+      "cutOut": "hard",
+      "cutDuration": 0,
+      "scare": false
+    },
+    {
+      "index": 52,
+      "assetId": "yard-day-pigeons",
+      "start": 141.278,
+      "duration": 0.929,
+      "camera": {
+        "kind": "sway",
+        "zoomFrom": 1.148,
+        "zoomTo": 1.138,
+        "panFrom": [
+          0.085,
+          0.064
+        ],
+        "panTo": [
+          0.078,
+          0.069
+        ],
+        "sway": 0.607
+      },
+      "parallax": 0.605,
+      "look": {
+        "grain": 0.53,
+        "flicker": 0.457,
+        "blur": 0.074,
+        "vignette": 0.762,
+        "fever": 0.5
+      },
+      "cutOut": "flash",
+      "cutDuration": 0.087,
+      "scare": false
+    },
+    {
+      "index": 53,
+      "assetId": "stairwell-mailboxes",
+      "start": 142.207,
+      "duration": 4.239,
+      "camera": {
+        "kind": "pull",
+        "zoomFrom": 1.179,
+        "zoomTo": 1.061,
+        "panFrom": [
+          -0.014,
+          -0.027
+        ],
+        "panTo": [
+          -0.023,
+          -0.029
+        ],
+        "sway": 0.145
+      },
+      "parallax": 0.659,
+      "look": {
+        "grain": 0.498,
+        "flicker": 0.203,
+        "blur": 0.303,
+        "vignette": 0.509,
+        "fever": 0.167
+      },
+      "cutOut": "blink",
+      "cutDuration": 0.405,
+      "scare": false
+    },
+    {
+      "index": 54,
+      "assetId": "stairs-endless",
+      "start": 146.446,
+      "duration": 1.978,
+      "camera": {
+        "kind": "sway",
+        "zoomFrom": 1.218,
+        "zoomTo": 1.214,
+        "panFrom": [
+          0.017,
+          0.124
+        ],
+        "panTo": [
+          0.041,
+          0.124
+        ],
+        "sway": 0.741
+      },
+      "parallax": 0,
+      "look": {
+        "grain": 0.6,
+        "flicker": 0.263,
+        "blur": 0.165,
+        "vignette": 0.635,
+        "fever": 0.38
+      },
+      "cutOut": "blink",
+      "cutDuration": 0.342,
+      "scare": false
+    },
+    {
+      "index": 55,
+      "assetId": "stairs-down",
+      "start": 148.424,
+      "duration": 2.109,
+      "camera": {
+        "kind": "drift",
+        "zoomFrom": 1.218,
+        "zoomTo": 1.225,
+        "panFrom": [
+          -0.056,
+          -0.114
+        ],
+        "panTo": [
+          0.071,
+          -0.054
+        ],
+        "sway": 0.26
+      },
+      "parallax": 0.573,
+      "look": {
+        "grain": 0.538,
+        "flicker": 0.398,
+        "blur": 0.171,
+        "vignette": 0.702,
+        "fever": 0.401
+      },
+      "cutOut": "flash",
+      "cutDuration": 0.107,
+      "scare": false
+    },
+    {
+      "index": 56,
+      "assetId": "kitchen-night",
+      "start": 150.533,
+      "duration": 1.551,
+      "camera": {
+        "kind": "sway",
+        "zoomFrom": 1.147,
+        "zoomTo": 1.15,
+        "panFrom": [
+          0.013,
+          0.099
+        ],
+        "panTo": [
+          0.014,
+          0.1
+        ],
+        "sway": 0.752
+      },
+      "parallax": 0,
+      "look": {
+        "grain": 0.645,
+        "flicker": 0.374,
+        "blur": 0.128,
+        "vignette": 0.734,
+        "fever": 0.475
+      },
+      "cutOut": "flash",
+      "cutDuration": 0.14,
+      "scare": false
+    },
+    {
+      "index": 57,
+      "assetId": "yard-night-swing",
+      "start": 152.084,
+      "duration": 1.747,
+      "camera": {
+        "kind": "push",
+        "zoomFrom": 1.006,
+        "zoomTo": 1.127,
+        "panFrom": [
+          -0.003,
+          0
+        ],
+        "panTo": [
+          -0.004,
+          0
+        ],
+        "sway": 0.207
+      },
+      "parallax": 0.474,
+      "look": {
+        "grain": 0.615,
+        "flicker": 0.348,
+        "blur": 0.105,
+        "vignette": 0.742,
+        "fever": 0.458
+      },
+      "cutOut": "hard",
+      "cutDuration": 0,
+      "scare": false
+    },
+    {
+      "index": 58,
+      "assetId": "bedroom-will",
+      "start": 153.831,
+      "duration": 1.212,
+      "camera": {
+        "kind": "sway",
+        "zoomFrom": 1.117,
+        "zoomTo": 1.135,
+        "panFrom": [
+          -0.073,
+          0.018
+        ],
+        "panTo": [
+          -0.089,
+          0.018
+        ],
+        "sway": 0.772
+      },
+      "parallax": 0.499,
+      "look": {
+        "grain": 0.683,
+        "flicker": 0.348,
+        "blur": 0.13,
+        "vignette": 0.799,
+        "fever": 0.521
+      },
+      "cutOut": "blink",
+      "cutDuration": 0.393,
+      "scare": false
+    },
+    {
+      "index": 59,
+      "assetId": "stairwell-vacuum",
+      "start": 155.043,
+      "duration": 1.227,
+      "camera": {
+        "kind": "sway",
+        "zoomFrom": 1.194,
+        "zoomTo": 1.187,
+        "panFrom": [
+          0.016,
+          -0.05
+        ],
+        "panTo": [
+          0.046,
+          -0.053
+        ],
+        "sway": 0.759
+      },
+      "parallax": 0,
+      "look": {
+        "grain": 0.591,
+        "flicker": 0.327,
+        "blur": 0.097,
+        "vignette": 0.761,
+        "fever": 0.531
+      },
+      "cutOut": "flash",
+      "cutDuration": 0.132,
+      "scare": false
+    },
+    {
+      "index": 60,
+      "assetId": "elevator-face",
+      "start": 156.27,
+      "duration": 0.33,
+      "camera": {
+        "kind": "push",
+        "zoomFrom": 1.04,
+        "zoomTo": 1.07,
+        "panFrom": [
+          0.027,
+          0.023
+        ],
+        "panTo": [
+          0.022,
+          0.02
+        ],
+        "sway": 0.428
+      },
+      "parallax": 0,
+      "look": {
+        "grain": 0.611,
+        "flicker": 0.478,
+        "blur": 0.138,
+        "vignette": 0.759,
+        "fever": 0.513
+      },
+      "cutOut": "blink",
+      "cutDuration": 0.132,
+      "scare": false
+    }
+  ],
+  "sounds": [
+    {
+      "at": 0,
+      "sound": "hum",
+      "action": "start",
+      "params": {
+        "volume": 0.45
+      }
+    },
+    {
+      "at": 0,
+      "sound": "monitor",
+      "action": "start",
+      "params": {
+        "volume": 0.39,
+        "tempo": 0.088
+      }
+    },
+    {
+      "at": 3.42,
+      "sound": "hum",
+      "action": "set",
+      "params": {
+        "volume": 0.299,
+        "muffle": 0
+      }
+    },
+    {
+      "at": 3.42,
+      "sound": "monitor",
+      "action": "set",
+      "params": {
+        "volume": 0.399,
+        "tempo": 0.109
+      }
+    },
+    {
+      "at": 6.84,
+      "sound": "hum",
+      "action": "set",
+      "params": {
+        "volume": 0.309,
+        "muffle": 0
+      }
+    },
+    {
+      "at": 6.84,
+      "sound": "monitor",
+      "action": "set",
+      "params": {
+        "volume": 0.409,
+        "tempo": 0.13
+      }
+    },
+    {
+      "at": 10.174,
+      "sound": "hum",
+      "action": "set",
+      "params": {
+        "volume": 0.318,
+        "muffle": 0
+      }
+    },
+    {
+      "at": 10.174,
+      "sound": "monitor",
+      "action": "set",
+      "params": {
+        "volume": 0.418,
+        "tempo": 0.151
+      }
+    },
+    {
+      "at": 14.155,
+      "sound": "vacuum",
+      "action": "start",
+      "params": {
+        "volume": 0.3,
+        "turbine": 0
+      }
+    },
+    {
+      "at": 14.252,
+      "sound": "hum",
+      "action": "set",
+      "params": {
+        "volume": 0.361,
+        "muffle": 0
+      }
+    },
+    {
+      "at": 14.252,
+      "sound": "monitor",
+      "action": "set",
+      "params": {
+        "volume": 0.461,
+        "tempo": 0.247
+      }
+    },
+    {
+      "at": 14.252,
+      "sound": "vacuum",
+      "action": "set",
+      "params": {
+        "volume": 0.3,
+        "turbine": 0
+      }
+    },
+    {
+      "at": 17.164,
+      "sound": "swing_creak",
+      "action": "hit",
+      "params": {
+        "strength": 0.59,
+        "pitch": 0.495
+      }
+    },
+    {
+      "at": 18.244,
+      "sound": "hum",
+      "action": "set",
+      "params": {
+        "volume": 0.404,
+        "muffle": 0
+      }
+    },
+    {
+      "at": 18.244,
+      "sound": "monitor",
+      "action": "set",
+      "params": {
+        "volume": 0.504,
+        "tempo": 0.342
+      }
+    },
+    {
+      "at": 18.244,
+      "sound": "vacuum",
+      "action": "set",
+      "params": {
+        "volume": 0.317,
+        "turbine": 0.003
+      }
+    },
+    {
+      "at": 18.707,
+      "sound": "swing_creak",
+      "action": "hit",
+      "params": {
+        "strength": 0.612,
+        "pitch": 0.495
+      }
+    },
+    {
+      "at": 20.111,
+      "sound": "swing_creak",
+      "action": "hit",
+      "params": {
+        "strength": 0.632,
+        "pitch": 0.495
+      }
+    },
+    {
+      "at": 21.65,
+      "sound": "silence",
+      "action": "start",
+      "params": {
+        "depth": 0.7
+      }
+    },
+    {
+      "at": 22.236,
+      "sound": "silence",
+      "action": "stop"
+    },
+    {
+      "at": 22.236,
+      "sound": "monitor",
+      "action": "hit",
+      "params": {
+        "volume": 1
+      }
+    },
+    {
+      "at": 22.478,
+      "sound": "hum",
+      "action": "set",
+      "params": {
+        "volume": 0.29,
+        "muffle": 0.3
+      }
+    },
+    {
+      "at": 22.478,
+      "sound": "monitor",
+      "action": "set",
+      "params": {
+        "volume": 0.39,
+        "tempo": 0.089
+      }
+    },
+    {
+      "at": 22.478,
+      "sound": "vacuum",
+      "action": "set",
+      "params": {
+        "volume": 0.337,
+        "turbine": 0.011
+      }
+    },
+    {
+      "at": 27.19,
+      "sound": "hum",
+      "action": "set",
+      "params": {
+        "volume": 0.333,
+        "muffle": 0
+      }
+    },
+    {
+      "at": 27.19,
+      "sound": "monitor",
+      "action": "set",
+      "params": {
+        "volume": 0.433,
+        "tempo": 0.185
+      }
+    },
+    {
+      "at": 27.19,
+      "sound": "vacuum",
+      "action": "set",
+      "params": {
+        "volume": 0.355,
+        "turbine": 0.021
+      }
+    },
+    {
+      "at": 30.85,
+      "sound": "hum",
+      "action": "set",
+      "params": {
+        "volume": 0.376,
+        "muffle": 0
+      }
+    },
+    {
+      "at": 30.85,
+      "sound": "monitor",
+      "action": "set",
+      "params": {
+        "volume": 0.476,
+        "tempo": 0.279
+      }
+    },
+    {
+      "at": 30.85,
+      "sound": "vacuum",
+      "action": "set",
+      "params": {
+        "volume": 0.37,
+        "turbine": 0.031
+      }
+    },
+    {
+      "at": 34.449,
+      "sound": "hum",
+      "action": "set",
+      "params": {
+        "volume": 0.418,
+        "muffle": 0
+      }
+    },
+    {
+      "at": 34.449,
+      "sound": "monitor",
+      "action": "set",
+      "params": {
+        "volume": 0.518,
+        "tempo": 0.374
+      }
+    },
+    {
+      "at": 34.449,
+      "sound": "vacuum",
+      "action": "set",
+      "params": {
+        "volume": 0.385,
+        "turbine": 0.043
+      }
+    },
+    {
+      "at": 37.631,
+      "sound": "silence",
+      "action": "start",
+      "params": {
+        "depth": 0.7
+      }
+    },
+    {
+      "at": 38.048,
+      "sound": "silence",
+      "action": "stop"
+    },
+    {
+      "at": 38.048,
+      "sound": "swing_creak",
+      "action": "hit",
+      "params": {
+        "strength": 1,
+        "pitch": 0.232
+      }
+    },
+    {
+      "at": 38.189,
+      "sound": "hum",
+      "action": "set",
+      "params": {
+        "volume": 0.304,
+        "muffle": 0.3
+      }
+    },
+    {
+      "at": 38.189,
+      "sound": "monitor",
+      "action": "set",
+      "params": {
+        "volume": 0.404,
+        "tempo": 0.119
+      }
+    },
+    {
+      "at": 38.189,
+      "sound": "vacuum",
+      "action": "set",
+      "params": {
+        "volume": 0.403,
+        "turbine": 0.058
+      }
+    },
+    {
+      "at": 43.277,
+      "sound": "hum",
+      "action": "set",
+      "params": {
+        "volume": 0.348,
+        "muffle": 0
+      }
+    },
+    {
+      "at": 43.277,
+      "sound": "monitor",
+      "action": "set",
+      "params": {
+        "volume": 0.448,
+        "tempo": 0.217
+      }
+    },
+    {
+      "at": 43.277,
+      "sound": "vacuum",
+      "action": "set",
+      "params": {
+        "volume": 0.424,
+        "turbine": 0.078
+      }
+    },
+    {
+      "at": 46.351,
+      "sound": "ventilator",
+      "action": "start",
+      "params": {
+        "volume": 0.411,
+        "rate": 0.394
+      }
+    },
+    {
+      "at": 47.978,
+      "sound": "hum",
+      "action": "set",
+      "params": {
+        "volume": 0.391,
+        "muffle": 0
+      }
+    },
+    {
+      "at": 47.978,
+      "sound": "monitor",
+      "action": "set",
+      "params": {
+        "volume": 0.491,
+        "tempo": 0.313
+      }
+    },
+    {
+      "at": 47.978,
+      "sound": "ventilator",
+      "action": "set",
+      "params": {
+        "volume": 0.425,
+        "rate": 0.419
+      }
+    },
+    {
+      "at": 47.978,
+      "sound": "vacuum",
+      "action": "set",
+      "params": {
+        "volume": 0.442,
+        "turbine": 0.097
+      }
+    },
+    {
+      "at": 52.315,
+      "sound": "hum",
+      "action": "set",
+      "params": {
+        "volume": 0.434,
+        "muffle": 0
+      }
+    },
+    {
+      "at": 52.315,
+      "sound": "monitor",
+      "action": "set",
+      "params": {
+        "volume": 0.534,
+        "tempo": 0.409
+      }
+    },
+    {
+      "at": 52.315,
+      "sound": "ventilator",
+      "action": "set",
+      "params": {
+        "volume": 0.464,
+        "rate": 0.486
+      }
+    },
+    {
+      "at": 52.315,
+      "sound": "vacuum",
+      "action": "set",
+      "params": {
+        "volume": 0.461,
+        "turbine": 0.117
+      }
+    },
+    {
+      "at": 56.092,
+      "sound": "silence",
+      "action": "start",
+      "params": {
+        "depth": 0.7
+      }
+    },
+    {
+      "at": 56.653,
+      "sound": "silence",
+      "action": "stop"
+    },
+    {
+      "at": 56.653,
+      "sound": "swing_creak",
+      "action": "hit",
+      "params": {
+        "strength": 1,
+        "pitch": 0.285
+      }
+    },
+    {
+      "at": 56.97,
+      "sound": "hum",
+      "action": "set",
+      "params": {
+        "volume": 0.32,
+        "muffle": 0.3
+      }
+    },
+    {
+      "at": 56.97,
+      "sound": "monitor",
+      "action": "set",
+      "params": {
+        "volume": 0.42,
+        "tempo": 0.156
+      }
+    },
+    {
+      "at": 56.97,
+      "sound": "ventilator",
+      "action": "set",
+      "params": {
+        "volume": 0.362,
+        "rate": 0.309
+      }
+    },
+    {
+      "at": 56.97,
+      "sound": "vacuum",
+      "action": "set",
+      "params": {
+        "volume": 0.482,
+        "turbine": 0.143
+      }
+    },
+    {
+      "at": 60.944,
+      "sound": "hum",
+      "action": "set",
+      "params": {
+        "volume": 0.363,
+        "muffle": 0
+      }
+    },
+    {
+      "at": 60.944,
+      "sound": "monitor",
+      "action": "set",
+      "params": {
+        "volume": 0.463,
+        "tempo": 0.252
+      }
+    },
+    {
+      "at": 60.944,
+      "sound": "ventilator",
+      "action": "set",
+      "params": {
+        "volume": 0.401,
+        "rate": 0.376
+      }
+    },
+    {
+      "at": 60.944,
+      "sound": "vacuum",
+      "action": "set",
+      "params": {
+        "volume": 0.499,
+        "turbine": 0.165
+      }
+    },
+    {
+      "at": 64.794,
+      "sound": "swing_creak",
+      "action": "hit",
+      "params": {
+        "strength": 0.601,
+        "pitch": 0.487
+      }
+    },
+    {
+      "at": 65.313,
+      "sound": "hum",
+      "action": "set",
+      "params": {
+        "volume": 0.406,
+        "muffle": 0
+      }
+    },
+    {
+      "at": 65.313,
+      "sound": "monitor",
+      "action": "set",
+      "params": {
+        "volume": 0.506,
+        "tempo": 0.347
+      }
+    },
+    {
+      "at": 65.313,
+      "sound": "ventilator",
+      "action": "set",
+      "params": {
+        "volume": 0.439,
+        "rate": 0.443
+      }
+    },
+    {
+      "at": 65.313,
+      "sound": "vacuum",
+      "action": "set",
+      "params": {
+        "volume": 0.515,
+        "turbine": 0.187
+      }
+    },
+    {
+      "at": 65.954,
+      "sound": "swing_creak",
+      "action": "hit",
+      "params": {
+        "strength": 0.618,
+        "pitch": 0.487
+      }
+    },
+    {
+      "at": 67.645,
+      "sound": "swing_creak",
+      "action": "hit",
+      "params": {
+        "strength": 0.643,
+        "pitch": 0.487
+      }
+    },
+    {
+      "at": 69.163,
+      "sound": "hum",
+      "action": "set",
+      "params": {
+        "volume": 0.449,
+        "muffle": 0
+      }
+    },
+    {
+      "at": 69.163,
+      "sound": "monitor",
+      "action": "set",
+      "params": {
+        "volume": 0.549,
+        "tempo": 0.442
+      }
+    },
+    {
+      "at": 69.163,
+      "sound": "ventilator",
+      "action": "set",
+      "params": {
+        "volume": 0.477,
+        "rate": 0.509
+      }
+    },
+    {
+      "at": 69.163,
+      "sound": "vacuum",
+      "action": "set",
+      "params": {
+        "volume": 0.532,
+        "turbine": 0.211
+      }
+    },
+    {
+      "at": 72.561,
+      "sound": "silence",
+      "action": "start",
+      "params": {
+        "depth": 0.7
+      }
+    },
+    {
+      "at": 73.013,
+      "sound": "silence",
+      "action": "stop"
+    },
+    {
+      "at": 73.013,
+      "sound": "swing_creak",
+      "action": "hit",
+      "params": {
+        "strength": 1,
+        "pitch": 0.298
+      }
+    },
+    {
+      "at": 73.321,
+      "sound": "hum",
+      "action": "set",
+      "params": {
+        "volume": 0.335,
+        "muffle": 0.3
+      }
+    },
+    {
+      "at": 73.321,
+      "sound": "monitor",
+      "action": "set",
+      "params": {
+        "volume": 0.435,
+        "tempo": 0.188
+      }
+    },
+    {
+      "at": 73.321,
+      "sound": "ventilator",
+      "action": "set",
+      "params": {
+        "volume": 0.375,
+        "rate": 0.332
+      }
+    },
+    {
+      "at": 73.321,
+      "sound": "vacuum",
+      "action": "set",
+      "params": {
+        "volume": 0.552,
+        "turbine": 0.24
+      }
+    },
+    {
+      "at": 77.055,
+      "sound": "hum",
+      "action": "set",
+      "params": {
+        "volume": 0.377,
+        "muffle": 0
+      }
+    },
+    {
+      "at": 77.055,
+      "sound": "monitor",
+      "action": "set",
+      "params": {
+        "volume": 0.477,
+        "tempo": 0.283
+      }
+    },
+    {
+      "at": 77.055,
+      "sound": "ventilator",
+      "action": "set",
+      "params": {
+        "volume": 0.413,
+        "rate": 0.398
+      }
+    },
+    {
+      "at": 77.055,
+      "sound": "vacuum",
+      "action": "set",
+      "params": {
+        "volume": 0.567,
+        "turbine": 0.264
+      }
+    },
+    {
+      "at": 81.864,
+      "sound": "hum",
+      "action": "set",
+      "params": {
+        "volume": 0.421,
+        "muffle": 0
+      }
+    },
+    {
+      "at": 81.864,
+      "sound": "monitor",
+      "action": "set",
+      "params": {
+        "volume": 0.521,
+        "tempo": 0.379
+      }
+    },
+    {
+      "at": 81.864,
+      "sound": "ventilator",
+      "action": "set",
+      "params": {
+        "volume": 0.452,
+        "rate": 0.465
+      }
+    },
+    {
+      "at": 81.864,
+      "sound": "vacuum",
+      "action": "set",
+      "params": {
+        "volume": 0.585,
+        "turbine": 0.294
+      }
+    },
+    {
+      "at": 86.253,
+      "sound": "hum",
+      "action": "set",
+      "params": {
+        "volume": 0.464,
+        "muffle": 0
+      }
+    },
+    {
+      "at": 86.253,
+      "sound": "monitor",
+      "action": "set",
+      "params": {
+        "volume": 0.564,
+        "tempo": 0.475
+      }
+    },
+    {
+      "at": 86.253,
+      "sound": "ventilator",
+      "action": "set",
+      "params": {
+        "volume": 0.49,
+        "rate": 0.533
+      }
+    },
+    {
+      "at": 86.253,
+      "sound": "vacuum",
+      "action": "set",
+      "params": {
+        "volume": 0.604,
+        "turbine": 0.325
+      }
+    },
+    {
+      "at": 89.896,
+      "sound": "swing_creak",
+      "action": "hit",
+      "params": {
+        "strength": 0.733,
+        "pitch": 0.563
+      }
+    },
+    {
+      "at": 90.056,
+      "sound": "silence",
+      "action": "start",
+      "params": {
+        "depth": 0.7
+      }
+    },
+    {
+      "at": 90.641,
+      "sound": "silence",
+      "action": "stop"
+    },
+    {
+      "at": 90.641,
+      "sound": "swing_creak",
+      "action": "hit",
+      "params": {
+        "strength": 1,
+        "pitch": 0.311
+      }
+    },
+    {
+      "at": 91.38,
+      "sound": "hum",
+      "action": "set",
+      "params": {
+        "volume": 0.35,
+        "muffle": 0.3
+      }
+    },
+    {
+      "at": 91.38,
+      "sound": "monitor",
+      "action": "set",
+      "params": {
+        "volume": 0.45,
+        "tempo": 0.223
+      }
+    },
+    {
+      "at": 91.38,
+      "sound": "ventilator",
+      "action": "set",
+      "params": {
+        "volume": 0.389,
+        "rate": 0.356
+      }
+    },
+    {
+      "at": 91.38,
+      "sound": "vacuum",
+      "action": "set",
+      "params": {
+        "volume": 0.626,
+        "turbine": 0.364
+      }
+    },
+    {
+      "at": 97.049,
+      "sound": "hum",
+      "action": "set",
+      "params": {
+        "volume": 0.394,
+        "muffle": 0
+      }
+    },
+    {
+      "at": 97.049,
+      "sound": "monitor",
+      "action": "set",
+      "params": {
+        "volume": 0.494,
+        "tempo": 0.321
+      }
+    },
+    {
+      "at": 97.049,
+      "sound": "ventilator",
+      "action": "set",
+      "params": {
+        "volume": 0.428,
+        "rate": 0.425
+      }
+    },
+    {
+      "at": 97.049,
+      "sound": "vacuum",
+      "action": "set",
+      "params": {
+        "volume": 0.649,
+        "turbine": 0.406
+      }
+    },
+    {
+      "at": 102.502,
+      "sound": "silence",
+      "action": "start",
+      "params": {
+        "depth": 0.7
+      }
+    },
+    {
+      "at": 103.004,
+      "sound": "silence",
+      "action": "stop"
+    },
+    {
+      "at": 103.004,
+      "sound": "swing_creak",
+      "action": "hit",
+      "params": {
+        "strength": 1,
+        "pitch": 0.305
+      }
+    },
+    {
+      "at": 103.056,
+      "sound": "hum",
+      "action": "set",
+      "params": {
+        "volume": 0.361,
+        "muffle": 0.3
+      }
+    },
+    {
+      "at": 103.056,
+      "sound": "monitor",
+      "action": "set",
+      "params": {
+        "volume": 0.461,
+        "tempo": 0.246
+      }
+    },
+    {
+      "at": 103.056,
+      "sound": "ventilator",
+      "action": "set",
+      "params": {
+        "volume": 0.398,
+        "rate": 0.372
+      }
+    },
+    {
+      "at": 103.056,
+      "sound": "vacuum",
+      "action": "set",
+      "params": {
+        "volume": 0.677,
+        "turbine": 0.458
+      }
+    },
+    {
+      "at": 107.005,
+      "sound": "hum",
+      "action": "set",
+      "params": {
+        "volume": 0.404,
+        "muffle": 0
+      }
+    },
+    {
+      "at": 107.005,
+      "sound": "monitor",
+      "action": "set",
+      "params": {
+        "volume": 0.504,
+        "tempo": 0.342
+      }
+    },
+    {
+      "at": 107.005,
+      "sound": "ventilator",
+      "action": "set",
+      "params": {
+        "volume": 0.437,
+        "rate": 0.439
+      }
+    },
+    {
+      "at": 107.005,
+      "sound": "vacuum",
+      "action": "set",
+      "params": {
+        "volume": 0.694,
+        "turbine": 0.491
+      }
+    },
+    {
+      "at": 111.579,
+      "sound": "hum",
+      "action": "set",
+      "params": {
+        "volume": 0.466,
+        "muffle": 0
+      }
+    },
+    {
+      "at": 111.579,
+      "sound": "monitor",
+      "action": "set",
+      "params": {
+        "volume": 0.566,
+        "tempo": 0.481
+      }
+    },
+    {
+      "at": 111.579,
+      "sound": "ventilator",
+      "action": "set",
+      "params": {
+        "volume": 0.492,
+        "rate": 0.537
+      }
+    },
+    {
+      "at": 111.579,
+      "sound": "vacuum",
+      "action": "set",
+      "params": {
+        "volume": 0.71,
+        "turbine": 0.525
+      }
+    },
+    {
+      "at": 115.035,
+      "sound": "hum",
+      "action": "set",
+      "params": {
+        "volume": 0.529,
+        "muffle": 0
+      }
+    },
+    {
+      "at": 115.035,
+      "sound": "monitor",
+      "action": "set",
+      "params": {
+        "volume": 0.629,
+        "tempo": 0.62
+      }
+    },
+    {
+      "at": 115.035,
+      "sound": "ventilator",
+      "action": "set",
+      "params": {
+        "volume": 0.548,
+        "rate": 0.634
+      }
+    },
+    {
+      "at": 115.035,
+      "sound": "vacuum",
+      "action": "set",
+      "params": {
+        "volume": 0.727,
+        "turbine": 0.56
+      }
+    },
+    {
+      "at": 115.566,
+      "sound": "breath",
+      "action": "start",
+      "params": {
+        "volume": 0.4,
+        "rate": 0.805
+      }
+    },
+    {
+      "at": 120.821,
+      "sound": "silence",
+      "action": "start",
+      "params": {
+        "depth": 0.7
+      }
+    },
+    {
+      "at": 121.353,
+      "sound": "silence",
+      "action": "stop"
+    },
+    {
+      "at": 121.353,
+      "sound": "monitor",
+      "action": "hit",
+      "params": {
+        "volume": 1
+      }
+    },
+    {
+      "at": 121.858,
+      "sound": "hum",
+      "action": "set",
+      "params": {
+        "volume": 0.377,
+        "muffle": 0.3
+      }
+    },
+    {
+      "at": 121.858,
+      "sound": "monitor",
+      "action": "set",
+      "params": {
+        "volume": 0.477,
+        "tempo": 0.283
+      }
+    },
+    {
+      "at": 121.858,
+      "sound": "ventilator",
+      "action": "set",
+      "params": {
+        "volume": 0.413,
+        "rate": 0.398
+      }
+    },
+    {
+      "at": 121.858,
+      "sound": "vacuum",
+      "action": "set",
+      "params": {
+        "volume": 0.754,
+        "turbine": 0.619
+      }
+    },
+    {
+      "at": 124.941,
+      "sound": "breath",
+      "action": "stop"
+    },
+    {
+      "at": 124.941,
+      "sound": "silence",
+      "action": "start",
+      "params": {
+        "depth": 1
+      }
+    },
+    {
+      "at": 125.983,
+      "sound": "silence",
+      "action": "stop"
+    },
+    {
+      "at": 125.983,
+      "sound": "stinger",
+      "action": "hit",
+      "params": {
+        "volume": 1
+      }
+    },
+    {
+      "at": 126.086,
+      "sound": "hum",
+      "action": "set",
+      "params": {
+        "volume": 0.48,
+        "muffle": 0.6
+      }
+    },
+    {
+      "at": 126.086,
+      "sound": "monitor",
+      "action": "set",
+      "params": {
+        "volume": 0.58,
+        "tempo": 0.51
+      }
+    },
+    {
+      "at": 126.086,
+      "sound": "ventilator",
+      "action": "set",
+      "params": {
+        "volume": 0.504,
+        "rate": 0.557
+      }
+    },
+    {
+      "at": 126.086,
+      "sound": "vacuum",
+      "action": "set",
+      "params": {
+        "volume": 0.772,
+        "turbine": 0.658
+      }
+    },
+    {
+      "at": 129.464,
+      "sound": "hum",
+      "action": "set",
+      "params": {
+        "volume": 0.423,
+        "muffle": 0
+      }
+    },
+    {
+      "at": 129.464,
+      "sound": "monitor",
+      "action": "set",
+      "params": {
+        "volume": 0.523,
+        "tempo": 0.385
+      }
+    },
+    {
+      "at": 129.464,
+      "sound": "ventilator",
+      "action": "set",
+      "params": {
+        "volume": 0.454,
+        "rate": 0.47
+      }
+    },
+    {
+      "at": 129.464,
+      "sound": "vacuum",
+      "action": "set",
+      "params": {
+        "volume": 0.787,
+        "turbine": 0.691
+      }
+    },
+    {
+      "at": 133.603,
+      "sound": "hum",
+      "action": "set",
+      "params": {
+        "volume": 0.466,
+        "muffle": 0
+      }
+    },
+    {
+      "at": 133.603,
+      "sound": "monitor",
+      "action": "set",
+      "params": {
+        "volume": 0.566,
+        "tempo": 0.48
+      }
+    },
+    {
+      "at": 133.603,
+      "sound": "ventilator",
+      "action": "set",
+      "params": {
+        "volume": 0.492,
+        "rate": 0.536
+      }
+    },
+    {
+      "at": 133.603,
+      "sound": "vacuum",
+      "action": "set",
+      "params": {
+        "volume": 0.803,
+        "turbine": 0.728
+      }
+    },
+    {
+      "at": 137.441,
+      "sound": "hum",
+      "action": "set",
+      "params": {
+        "volume": 0.509,
+        "muffle": 0
+      }
+    },
+    {
+      "at": 137.441,
+      "sound": "monitor",
+      "action": "set",
+      "params": {
+        "volume": 0.609,
+        "tempo": 0.575
+      }
+    },
+    {
+      "at": 137.441,
+      "sound": "ventilator",
+      "action": "set",
+      "params": {
+        "volume": 0.53,
+        "rate": 0.602
+      }
+    },
+    {
+      "at": 137.441,
+      "sound": "vacuum",
+      "action": "set",
+      "params": {
+        "volume": 0.819,
+        "turbine": 0.766
+      }
+    },
+    {
+      "at": 139.439,
+      "sound": "swing_creak",
+      "action": "hit",
+      "params": {
+        "strength": 0.775,
+        "pitch": 0.622
+      }
+    },
+    {
+      "at": 140.749,
+      "sound": "swing_creak",
+      "action": "hit",
+      "params": {
+        "strength": 0.794,
+        "pitch": 0.622
+      }
+    },
+    {
+      "at": 140.873,
+      "sound": "silence",
+      "action": "start",
+      "params": {
+        "depth": 0.7
+      }
+    },
+    {
+      "at": 141.278,
+      "sound": "silence",
+      "action": "stop"
+    },
+    {
+      "at": 141.278,
+      "sound": "swing_creak",
+      "action": "hit",
+      "params": {
+        "strength": 1,
+        "pitch": 0.323
+      }
+    },
+    {
+      "at": 141.698,
+      "sound": "hum",
+      "action": "set",
+      "params": {
+        "volume": 0.395,
+        "muffle": 0.3
+      }
+    },
+    {
+      "at": 141.698,
+      "sound": "monitor",
+      "action": "set",
+      "params": {
+        "volume": 0.495,
+        "tempo": 0.322
+      }
+    },
+    {
+      "at": 141.698,
+      "sound": "ventilator",
+      "action": "set",
+      "params": {
+        "volume": 0.429,
+        "rate": 0.425
+      }
+    },
+    {
+      "at": 141.698,
+      "sound": "vacuum",
+      "action": "set",
+      "params": {
+        "volume": 0.839,
+        "turbine": 0.814
+      }
+    },
+    {
+      "at": 145.872,
+      "sound": "hum",
+      "action": "set",
+      "params": {
+        "volume": 0.537,
+        "muffle": 0
+      }
+    },
+    {
+      "at": 145.872,
+      "sound": "monitor",
+      "action": "set",
+      "params": {
+        "volume": 0.637,
+        "tempo": 0.637
+      }
+    },
+    {
+      "at": 145.872,
+      "sound": "ventilator",
+      "action": "set",
+      "params": {
+        "volume": 0.555,
+        "rate": 0.646
+      }
+    },
+    {
+      "at": 145.872,
+      "sound": "vacuum",
+      "action": "set",
+      "params": {
+        "volume": 0.857,
+        "turbine": 0.857
+      }
+    },
+    {
+      "at": 149.831,
+      "sound": "hum",
+      "action": "set",
+      "params": {
+        "volume": 0.572,
+        "muffle": 0
+      }
+    },
+    {
+      "at": 149.831,
+      "sound": "monitor",
+      "action": "set",
+      "params": {
+        "volume": 0.672,
+        "tempo": 0.717
+      }
+    },
+    {
+      "at": 149.831,
+      "sound": "ventilator",
+      "action": "set",
+      "params": {
+        "volume": 0.587,
+        "rate": 0.702
+      }
+    },
+    {
+      "at": 149.831,
+      "sound": "vacuum",
+      "action": "set",
+      "params": {
+        "volume": 0.871,
+        "turbine": 0.893
+      }
+    },
+    {
+      "at": 151.68,
+      "sound": "swing_creak",
+      "action": "hit",
+      "params": {
+        "strength": 0.856,
+        "pitch": 0.5
+      }
+    },
+    {
+      "at": 152.976,
+      "sound": "swing_creak",
+      "action": "hit",
+      "params": {
+        "strength": 0.874,
+        "pitch": 0.5
+      }
+    },
+    {
+      "at": 153.211,
+      "sound": "kitchen",
+      "action": "start",
+      "params": {
+        "volume": 0.3
+      }
+    },
+    {
+      "at": 153.215,
+      "sound": "hum",
+      "action": "set",
+      "params": {
+        "volume": 0.608,
+        "muffle": 0
+      }
+    },
+    {
+      "at": 153.215,
+      "sound": "monitor",
+      "action": "set",
+      "params": {
+        "volume": 0.708,
+        "tempo": 0.796
+      }
+    },
+    {
+      "at": 153.215,
+      "sound": "ventilator",
+      "action": "set",
+      "params": {
+        "volume": 0.619,
+        "rate": 0.757
+      }
+    },
+    {
+      "at": 153.215,
+      "sound": "vacuum",
+      "action": "set",
+      "params": {
+        "volume": 0.886,
+        "turbine": 0.929
+      }
+    },
+    {
+      "at": 156.6,
+      "sound": "hum",
+      "action": "stop"
+    },
+    {
+      "at": 156.6,
+      "sound": "monitor",
+      "action": "stop"
+    },
+    {
+      "at": 156.6,
+      "sound": "ventilator",
+      "action": "stop"
+    },
+    {
+      "at": 156.6,
+      "sound": "vacuum",
+      "action": "stop"
+    }
+  ],
+  "intrusions": [
+    {
+      "motif": "monitor",
+      "at": 0
+    },
+    {
+      "motif": "vacuum",
+      "at": 14.155
+    },
+    {
+      "motif": "swing_creak",
+      "at": 17.164
+    },
+    {
+      "motif": "swing_creak",
+      "at": 38.048
+    },
+    {
+      "motif": "ventilator",
+      "at": 46.351
+    },
+    {
+      "motif": "swing_creak",
+      "at": 56.653
+    },
+    {
+      "motif": "swing_creak",
+      "at": 64.794
+    },
+    {
+      "motif": "swing_creak",
+      "at": 73.013
+    },
+    {
+      "motif": "swing_creak",
+      "at": 89.896
+    },
+    {
+      "motif": "swing_creak",
+      "at": 90.641
+    },
+    {
+      "motif": "swing_creak",
+      "at": 103.004
+    },
+    {
+      "motif": "swing_creak",
+      "at": 139.439
+    },
+    {
+      "motif": "swing_creak",
+      "at": 141.278
+    },
+    {
+      "motif": "swing_creak",
+      "at": 151.68
+    }
+  ],
+  "awakening": {
+    "reason": "tea_brought",
+    "temperature": 36.9
+  }
+}
