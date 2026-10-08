@@ -260,3 +260,6 @@ export {
   type YardEnv,
   type YardLayout,
 } from './yard';
+
+// Dream film (D-022): library manifest and edit decision list contract.
+export * from './film';
