@@ -1,4 +1,5 @@
 import { findScene, type Dream } from '@dream/core';
+import { CARD_KICKER, cardTitle, type CardBlock } from './blocks';
 import type { JournalEntry } from './storage';
 import {
   dateText,
@@ -11,31 +12,8 @@ import {
   temperatureText,
 } from './texts';
 
-/**
- * What the journal card says, as plain data: the page and the PNG are both
- * drawn from it, so they never disagree. Order follows spec §34, with the
- * sources of the sounds (vision, "Реальность → сон") before the reason.
- */
-export type CardBlock =
-  /** Small line above the title. */
-  | { kind: 'kicker'; text: string }
-  /** "СОН №1847". */
-  | { kind: 'title'; text: string }
-  /** Label — value lines. */
-  | { kind: 'rows'; rows: readonly (readonly [string, string])[] }
-  /** A heading over lines of text. */
-  | { kind: 'section'; heading: string; lines: readonly string[] }
-  /** "ПРИЧИНА: …". */
-  | { kind: 'reason'; text: string }
-  /** Seed, engine, date: small print at the bottom. */
-  | { kind: 'meta'; rows: readonly (readonly [string, string])[] };
-
-export const CARD_KICKER = 'Журнал сновидений';
-
-/** "СОН №1847". */
-export function cardTitle(number: number): string {
-  return `СОН №${number}`;
-}
+/** The card of a played game dream (v1.2); the film's card is `film-card.ts`. Both are drawn from `CardBlock`s. */
+export { CARD_KICKER, cardFileName, cardTitle, type CardBlock } from './blocks';
 
 /** The card of `entry`; `dream` is the dream of its seed (for the names of things in it). */
 export function journalCard(entry: JournalEntry, dream: Dream, date: Date = new Date(entry.date)): CardBlock[] {
@@ -71,9 +49,4 @@ export function journalCard(entry: JournalEntry, dream: Dream, date: Date = new 
       ],
     },
   ];
-}
-
-/** File name of the saved card: "son-1847-DREAM-8F72-A19C-37B2.png". */
-export function cardFileName(entry: Pick<JournalEntry, 'number' | 'seed'>): string {
-  return `son-${entry.number}-${entry.seed}.png`;
 }

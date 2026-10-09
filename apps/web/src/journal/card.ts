@@ -1,4 +1,4 @@
-import type { CardBlock } from './card-model';
+import type { CardBlock } from './blocks';
 import './journal.css';
 
 /**

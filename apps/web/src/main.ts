@@ -1,5 +1,5 @@
 import { ENGINE_VERSION } from '@dream/core';
-import { startDream } from './runtime';
+import { startDreamFilm } from './dream';
 import './style.css';
 
 const canvas = document.querySelector<HTMLCanvasElement>('#dream');
@@ -7,7 +7,7 @@ if (!canvas) throw new Error('Canvas #dream not found');
 
 document.documentElement.dataset.engine = String(ENGINE_VERSION);
 
-// Dev test benches: `?sandbox=<name>` opens one instead of the game.
+// Dev test benches: `?sandbox=<name>` opens one instead of the dream.
 const sandboxes = new Map<string, (canvas: HTMLCanvasElement) => Promise<void>>([
   ['ps1', async (c) => (await import('./sandbox/ps1')).startPs1Sandbox(c)],
   ['fever', async (c) => (await import('./sandbox/fever')).startFeverSandbox(c)],
@@ -26,13 +26,7 @@ const sandboxes = new Map<string, (canvas: HTMLCanvasElement) => Promise<void>>(
 ]);
 const sandbox = sandboxes.get(new URLSearchParams(window.location.search).get('sandbox') ?? '');
 
+// By default the page is the dream film (D-022, D-027): falling asleep, the
+// film, the awakening, the journal. The v1.2 game runtime is no longer started.
 if (sandbox) void sandbox(canvas);
-else {
-  // After the awakening the dream journal (#13) records the dream and shows its card.
-  startDream(canvas, window.location.search, {
-    onDreamEnd: (ending) =>
-      void import('./journal')
-        .then(({ showDreamJournal }) => showDreamJournal(ending))
-        .catch((error: unknown) => console.error('The dream journal failed', error)),
-  });
-}
+else startDreamFilm(canvas, window.location.search);

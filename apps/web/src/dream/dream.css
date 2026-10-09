@@ -1,0 +1,347 @@
+/* The dream film outside the dream: falling asleep, pause, awakening.
+   Same palette and type as the journal; serious, quiet, nothing winks. */
+
+.sleep {
+  position: fixed;
+  inset: 0;
+  z-index: 10;
+  box-sizing: border-box;
+  display: flex;
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  padding: calc(var(--safe-top) + 1.5rem) calc(var(--safe-right) + 1.25rem) calc(var(--safe-bottom) + 1.5rem)
+    calc(var(--safe-left) + 1.25rem);
+  background: #000;
+  color: #d8d6d0;
+  font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.sleep[hidden],
+.pause[hidden],
+.awakening[hidden],
+.sleep__button[hidden],
+.sleep__status[hidden] {
+  display: none;
+}
+
+/* `margin: auto` centres the panel and still lets a short screen scroll to its top. */
+.sleep__panel {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.5rem;
+  width: 100%;
+  max-width: 26rem;
+  margin: auto;
+  text-align: center;
+}
+
+.sleep__title {
+  margin: 0;
+  font-size: clamp(2.75rem, 11vmin, 6.5rem);
+  font-weight: 200;
+  font-variant-numeric: tabular-nums;
+  letter-spacing: 0.04em;
+  line-height: 1;
+  color: #ecebe6;
+}
+
+.sleep__lengths {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0.75rem;
+  width: 100%;
+  min-width: 0;
+  margin: 0;
+  padding: 0;
+  border: 0;
+}
+
+.sleep__legend {
+  width: 100%;
+  margin-bottom: 0.7rem;
+  padding: 0;
+  font-size: 0.68rem;
+  letter-spacing: 0.24em;
+  text-transform: uppercase;
+  color: #7d7b76;
+}
+
+.sleep__length {
+  position: relative;
+  flex: 1 1 8.5rem;
+  cursor: pointer;
+}
+
+/* The radio itself is invisible; its label is the button. */
+.sleep__length input {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  opacity: 0;
+  cursor: pointer;
+}
+
+.sleep__length-text {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-sizing: border-box;
+  min-height: 2.75rem;
+  padding: 0.6rem 0.9rem;
+  border: 1px solid #3a3936;
+  font-size: 0.95rem;
+  font-variant-numeric: tabular-nums;
+  color: #9a9892;
+}
+
+.sleep__length input:checked + .sleep__length-text {
+  border-color: #b9b7b1;
+  color: #ecebe6;
+}
+
+.sleep__length input:focus-visible + .sleep__length-text {
+  outline: 1px solid #ecebe6;
+  outline-offset: 3px;
+}
+
+.sleep__warning {
+  margin: 0;
+  font-size: 0.82rem;
+  line-height: 1.5;
+  color: #8f8d87;
+}
+
+.sleep__option {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.6rem;
+  min-height: 2.75rem;
+  font-size: 0.9rem;
+  cursor: pointer;
+}
+
+.sleep__option input {
+  width: 1.15rem;
+  height: 1.15rem;
+  margin: 0;
+  accent-color: #d8d6d0;
+}
+
+.sleep__button {
+  box-sizing: border-box;
+  width: 100%;
+  min-height: 3.5rem;
+  padding: 1rem 1rem 1rem 1.32rem;
+  border: 1px solid #8a8883;
+  border-radius: 0;
+  background: transparent;
+  color: #ecebe6;
+  font: inherit;
+  font-size: clamp(0.8rem, 2.4vmin, 0.95rem);
+  letter-spacing: 0.32em;
+  text-transform: uppercase;
+  cursor: pointer;
+  touch-action: manipulation;
+}
+
+.sleep__button:hover,
+.sleep__button:focus-visible {
+  border-color: #ecebe6;
+  outline: none;
+}
+
+.sleep__button:disabled {
+  border-color: #3a3936;
+  color: #9a9892;
+  cursor: default;
+}
+
+.sleep--busy .sleep__lengths,
+.sleep--busy .sleep__option,
+.sleep--busy .sleep__warning {
+  opacity: 0.4;
+}
+
+.sleep__status {
+  margin: 0;
+  font-size: 0.9rem;
+  line-height: 1.5;
+}
+
+.sleep__seed {
+  margin: 0;
+  font-family: ui-monospace, 'SFMono-Regular', Menlo, Consolas, monospace;
+  font-size: clamp(0.7rem, 1.9vmin, 0.85rem);
+  letter-spacing: 0.12em;
+  color: #6f6d68;
+}
+
+/* Pause: the stopped dream shows through. */
+.pause {
+  position: fixed;
+  inset: 0;
+  z-index: 30;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 2rem;
+  padding: calc(var(--safe-top) + 1.5rem) calc(var(--safe-right) + 1.25rem) calc(var(--safe-bottom) + 1.5rem)
+    calc(var(--safe-left) + 1.25rem);
+  background: rgb(0 0 0 / 78%);
+  color: #d8d6d0;
+  font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  text-align: center;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.pause__title {
+  margin: 0;
+  font-size: clamp(2rem, 8vmin, 4rem);
+  font-weight: 200;
+  letter-spacing: 0.04em;
+  color: #ecebe6;
+}
+
+.pause__actions {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0.75rem;
+  width: 100%;
+  max-width: 26rem;
+}
+
+.pause__button {
+  flex: 1 1 9.5rem;
+  min-height: 2.75rem;
+  padding: 0.7rem 1rem;
+  border: 1px solid #3a3936;
+  border-radius: 0;
+  background: transparent;
+  color: #d8d6d0;
+  font: inherit;
+  font-size: 0.7rem;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  cursor: pointer;
+  touch-action: manipulation;
+}
+
+.pause__button--primary,
+.pause__button:hover,
+.pause__button:focus-visible {
+  border-color: #8a8883;
+  color: #ecebe6;
+  outline: none;
+}
+
+/* Awakening: plain reality over the stopped film. */
+.awakening {
+  position: fixed;
+  inset: 0;
+  z-index: 5;
+  overflow: hidden;
+  background: #000;
+  color: #ecebe6;
+  font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  text-align: center;
+  user-select: none;
+  -webkit-user-select: none;
+}
+
+/* Without a bedroom frame: a dim room seen through just-opened eyes. */
+.awakening__room {
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(ellipse at 50% 38%, #2b2925 0%, #171613 55%, #0b0a09 100%);
+  opacity: 0;
+}
+
+.awakening__frame {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  max-width: none;
+  object-fit: cover;
+}
+
+/* The words stay readable over a daylight frame. */
+.awakening--framed .awakening__room::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: rgb(0 0 0 / 42%);
+}
+
+.awakening--framed .awakening__center,
+.awakening--framed .awakening__call {
+  text-shadow: 0 0 0.6em rgb(0 0 0 / 90%), 0 0 0.15em rgb(0 0 0 / 80%);
+}
+
+.awakening__center {
+  position: absolute;
+  inset: 0;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 2rem;
+  padding: calc(var(--safe-top) + 1.5rem) calc(var(--safe-right) + 1.5rem) calc(var(--safe-bottom) + 6rem)
+    calc(var(--safe-left) + 1.5rem);
+}
+
+.awakening__thermometer {
+  margin: 0;
+  font-size: clamp(2.75rem, 11vmin, 6.5rem);
+  font-weight: 200;
+  font-variant-numeric: tabular-nums;
+  letter-spacing: 0.04em;
+  line-height: 1;
+  opacity: 0;
+}
+
+.awakening__verdict {
+  display: flex;
+  flex-direction: column;
+  gap: 0.9rem;
+  /* Reserved from the start, so the thermometer does not jump when the reason appears. */
+  min-height: 4.5rem;
+  opacity: 0;
+}
+
+.awakening__reason {
+  margin: 0 -0.28em 0 0;
+  font-size: clamp(0.9rem, 3vmin, 1.3rem);
+  letter-spacing: 0.28em;
+  line-height: 1.4;
+}
+
+.awakening__after {
+  margin: 0;
+  font-size: clamp(0.85rem, 2.4vmin, 1rem);
+  line-height: 1.4;
+  color: #b4b2ac;
+}
+
+/* Off-screen voice: the film convention, in italics. */
+.awakening__call {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: calc(var(--safe-bottom) + 9vh);
+  margin: 0;
+  padding: 0 calc(var(--safe-right) + 1.5rem) 0 calc(var(--safe-left) + 1.5rem);
+  font-size: clamp(1.05rem, 3.4vmin, 1.6rem);
+  font-style: italic;
+  opacity: 0;
+}
