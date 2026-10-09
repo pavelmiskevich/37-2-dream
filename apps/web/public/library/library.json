@@ -1,0 +1,28 @@
+{
+  "version": 1,
+  "assets": [
+    {
+      "id": "thermometer-corridor-endless",
+      "kind": "still",
+      "file": "stills/thermometer-corridor-endless.webp",
+      "width": 1280,
+      "height": 720,
+      "tags": {
+        "location": "thermometer_corridor",
+        "motifs": [
+          "thermometer"
+        ],
+        "people": "none",
+        "mood": "dread",
+        "time": "interior"
+      },
+      "generation": {
+        "model": "Tongyi-MAI/Z-Image-Turbo",
+        "license": "Apache-2.0",
+        "prompt": "An endless narrow corridor with pale green painted walls; hundreds of old glass mercury thermometers hang in neat rows on both walls like a museum display, all showing 37.2; dim yellow ceiling lamps fade into darkness at the far end. Realistic 35mm film photograph, heavy film grain, muted desaturated colors, faces hidden in shadow, Russia in the 1990s, Soviet-era interiors and courtyards, the logic of a dream, quiet, uneasy and unsettling atmosphere.",
+        "seed": 2145213146,
+        "source": "local-laptop"
+      }
+    }
+  ]
+}

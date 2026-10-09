@@ -1,0 +1,10 @@
+# PyTorch is installed separately: XPU wheel on the laptop, CUDA 12.8+ wheel on
+# the desktop (see README.md). Versions below were tested on the laptop.
+diffusers>=0.41.0
+transformers>=5.19.0
+accelerate>=1.15.0
+safetensors>=0.8.0
+huggingface_hub>=1.33.0
+gguf>=0.19.0
+pillow>=12.3.0
+psutil>=7.2.2
