@@ -1,0 +1,8 @@
+# A workspace of its own: `pnpm install` here never touches the project
+# workspace, and the project install (and CI) never downloads the ONNX runtime.
+packages: []
+
+# Their install scripts are not needed: the CPU runtime ships inside the package.
+allowBuilds:
+  onnxruntime-node: false
+  protobufjs: false

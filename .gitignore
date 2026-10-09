@@ -16,6 +16,8 @@ Thumbs.db
 tools/generation/.venv/
 tools/generation/logs/
 tools/generation/.generate.lock
+# Depth maps (tools/depth): model weights
+tools/depth/.cache/
 __pycache__/
 *.py[cod]
 .pytest_cache/
