@@ -12,3 +12,10 @@ Thumbs.db
 .idea/
 .playwright-mcp/
 .claude/worktrees/
+# Local generation (tools/generation)
+tools/generation/.venv/
+tools/generation/logs/
+tools/generation/.generate.lock
+__pycache__/
+*.py[cod]
+.pytest_cache/

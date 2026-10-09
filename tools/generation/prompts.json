@@ -1,0 +1,229 @@
+{
+  "version": 1,
+  "model": "Tongyi-MAI/Z-Image-Turbo",
+  "license": "Apache-2.0",
+  "style": "Realistic 35mm film photograph, heavy film grain, muted desaturated colors, faces hidden in shadow, Russia in the 1990s, Soviet-era interiors and courtyards, the logic of a dream, quiet, uneasy and unsettling atmosphere.",
+  "priorities": {
+    "1": "prototype gaps: locations without frames yet and scare frames",
+    "2": "second frame for each location, more motifs",
+    "3": "variety for the full library"
+  },
+  "scenes": [
+    {
+      "id": "thermometer-corridor-endless",
+      "priority": 1,
+      "tags": { "location": "thermometer_corridor", "motifs": ["thermometer"], "people": "none", "mood": "dread", "time": "interior" },
+      "scene": "An endless narrow corridor with pale green painted walls; hundreds of old glass mercury thermometers hang in neat rows on both walls like a museum display, all showing 37.2; dim yellow ceiling lamps fade into darkness at the far end"
+    },
+    {
+      "id": "thermometer-corridor-giant",
+      "priority": 1,
+      "tags": { "location": "thermometer_corridor", "motifs": ["thermometer"], "people": "distant", "mood": "uneasy", "time": "interior" },
+      "scene": "A long institutional corridor where a giant glass mercury thermometer, taller than a man, leans against the wall; far behind it a small figure in a bathrobe stands with its back to the camera under a flickering fluorescent tube"
+    },
+    {
+      "id": "jam-jar-inside",
+      "priority": 1,
+      "tags": { "location": "jam_jar", "motifs": [], "people": "none", "mood": "dread", "time": "interior" },
+      "scene": "View from inside a huge glass jar of dark cherry jam, thick red syrup and drowned berries filling the frame, a blurred kitchen and a window seen through the curved glass wall above, light coming down through the jam"
+    },
+    {
+      "id": "jam-jar-shelf",
+      "priority": 1,
+      "tags": { "location": "jam_jar", "motifs": [], "people": "none", "mood": "uneasy", "time": "dusk" },
+      "scene": "A dacha cellar shelf crowded with old glass jars of home-made jam sealed with paper and string; one jar in the middle is enormous, as tall as a door, its lid ajar, a wooden ladder leaning against it; grey dusk light from a small window"
+    },
+    {
+      "id": "bedroom-night-carpet",
+      "priority": 1,
+      "tags": { "location": "bedroom", "motifs": [], "people": "none", "mood": "uneasy", "time": "night" },
+      "scene": "A small Soviet apartment bedroom at night, a red patterned carpet hanging on the wall above a narrow bed with a crumpled blanket, a polished wardrobe, streetlight through net curtains, the doorway to a black hallway left open"
+    },
+    {
+      "id": "bedroom-monitor",
+      "priority": 1,
+      "tags": { "location": "bedroom", "motifs": ["monitor"], "people": "distant", "mood": "dread", "time": "night" },
+      "scene": "A home bedroom at night with a hospital heart monitor standing on the bedside table next to a crocheted doily and a glass of water, its green line glowing; under the blanket the shape of a sleeping man, his face turned to the wall"
+    },
+    {
+      "id": "kitchen-night-fridge",
+      "priority": 1,
+      "tags": { "location": "kitchen", "motifs": [], "people": "none", "mood": "uneasy", "time": "night" },
+      "scene": "A cramped Soviet kitchen at night lit only by the open door of an old white refrigerator, oilcloth on the table, a kettle on a gas stove, a tiled wall, the window black with frost patterns"
+    },
+    {
+      "id": "kitchen-jam-table",
+      "priority": 1,
+      "tags": { "location": "kitchen", "motifs": ["thermometer"], "people": "none", "mood": "uneasy", "time": "day" },
+      "scene": "A kitchen table in flat grey daylight: an open jar of jam, a teaspoon standing upright in it, a mercury thermometer lying on a saucer, a cup of cold tea, a calendar from 1994 on the wall"
+    },
+    {
+      "id": "elevator-cabin",
+      "priority": 1,
+      "tags": { "location": "elevator", "motifs": [], "people": "none", "mood": "dread", "time": "interior" },
+      "scene": "Inside a cramped old Soviet elevator cabin with brown wood-grain panels scratched with graffiti, a panel of burnt round buttons, one weak bulb behind a cracked plastic cover, the folding door half open onto blackness"
+    },
+    {
+      "id": "elevator-doors-landing",
+      "priority": 1,
+      "tags": { "location": "elevator", "motifs": [], "people": "distant", "mood": "uneasy", "time": "night" },
+      "scene": "A dim apartment block landing at night, metal elevator doors with a small round window glowing yellow; through the window a figure is visible standing motionless inside the cabin"
+    },
+    {
+      "id": "hospital-corridor-gurney",
+      "priority": 1,
+      "tags": { "location": "hospital_corridor", "motifs": ["monitor"], "people": "none", "mood": "dread", "time": "night" },
+      "scene": "A Soviet hospital corridor at night, tiled walls painted half blue, an empty gurney with a rumpled sheet, a heart monitor on a trolley beside it still showing a green line, a single lamp burning at the nurse's post far away"
+    },
+    {
+      "id": "hospital-ward-ventilator",
+      "priority": 1,
+      "tags": { "location": "hospital_corridor", "motifs": ["ventilator", "monitor"], "people": "distant", "mood": "dread", "time": "night" },
+      "scene": "A hospital ward seen through the glass of a door: an old ventilator with an accordion bellows next to a bed, a man lying under a sheet, his face in shadow, the monitor light reflecting on the glass"
+    },
+    {
+      "id": "scare-stairwell-face",
+      "priority": 1,
+      "tags": { "location": "stairwell", "motifs": [], "people": "face", "mood": "scare", "time": "night" },
+      "scene": "A pale human face suddenly very close to the camera in a dark stairwell, lit from below by a harsh flash, eyes wide and black, mouth slightly open, peeling green paint behind"
+    },
+    {
+      "id": "scare-vacuum-woman-close",
+      "priority": 1,
+      "tags": { "location": "bedroom", "motifs": ["vacuum_woman"], "people": "face", "mood": "scare", "time": "night" },
+      "scene": "A woman in a faded house dress standing right over the bed at night with an old Soviet vacuum cleaner hose raised, her face bent close to the camera, half lit by a harsh flash, eyes reflecting the light"
+    },
+    {
+      "id": "scare-hospital-figure",
+      "priority": 1,
+      "tags": { "location": "hospital_corridor", "motifs": [], "people": "face", "mood": "scare", "time": "night" },
+      "scene": "A tall figure in a white hospital gown suddenly filling the frame in a dark hospital corridor, its face a smear of shadow and grey skin caught by a camera flash, the corridor behind it receding into black"
+    },
+    {
+      "id": "scare-elevator-crowd",
+      "priority": 1,
+      "tags": { "location": "elevator", "motifs": [], "people": "face", "mood": "scare", "time": "interior" },
+      "scene": "Elevator doors open onto a cabin packed tightly with silent people in winter coats, all of them staring straight into the camera, faces grey in a harsh flash, no room to step in"
+    },
+    {
+      "id": "scare-jam-hand",
+      "priority": 1,
+      "tags": { "location": "jam_jar", "motifs": [], "people": "face", "mood": "scare", "time": "interior" },
+      "scene": "A pale face pressed against the inside of a huge glass jar of dark red jam, eyes open, red syrup in the hair, a hand flat on the glass, lit by a harsh camera flash in a dark kitchen"
+    },
+    {
+      "id": "yard-night-swing-moving",
+      "priority": 2,
+      "tags": { "location": "yard", "motifs": ["swing"], "people": "none", "mood": "dread", "time": "night" },
+      "scene": "A Soviet apartment courtyard at night in fog, a metal swing frozen high in mid-swing with nobody on it, a single sodium streetlight, rows of dark windows in a nine-storey panel block"
+    },
+    {
+      "id": "yard-dusk-will-papers",
+      "priority": 2,
+      "tags": { "location": "yard", "motifs": ["will_papers"], "people": "none", "mood": "uneasy", "time": "dusk" },
+      "scene": "Typewritten sheets of a last will scattered across the wet asphalt of a courtyard at dusk, stamped and signed, some stuck to a bench and a sandbox, panel apartment blocks behind in blue twilight"
+    },
+    {
+      "id": "yard-day-laundry",
+      "priority": 3,
+      "tags": { "location": "yard", "motifs": [], "people": "distant", "mood": "calm", "time": "day" },
+      "scene": "An overcast day in a courtyard between grey panel blocks, white sheets drying on ropes, a rusty climbing frame, a distant old woman on a bench with her back to the camera"
+    },
+    {
+      "id": "yard-night-pigeons-window",
+      "priority": 3,
+      "tags": { "location": "yard", "motifs": ["pigeons"], "people": "none", "mood": "uneasy", "time": "night" },
+      "scene": "Dozens of pigeons sitting motionless in rows on a snowy courtyard fence at night, all facing the same lit window on the ground floor, a streetlight humming above"
+    },
+    {
+      "id": "stairwell-vacuum-sound",
+      "priority": 2,
+      "tags": { "location": "stairwell", "motifs": ["vacuum_woman"], "people": "distant", "mood": "dread", "time": "interior" },
+      "scene": "A dark stairwell of a panel apartment block, a long vacuum cleaner hose snaking down the stairs from the floor above, at the top of the flight a woman's legs and the hem of a house dress under a bare bulb"
+    },
+    {
+      "id": "stairwell-window-night",
+      "priority": 2,
+      "tags": { "location": "stairwell", "motifs": [], "people": "none", "mood": "uneasy", "time": "night" },
+      "scene": "A stairwell landing at night with a dirty window onto the courtyard, a radiator, cigarette butts in a tin can, peeling blue-green paint, the light on the floor below has gone out"
+    },
+    {
+      "id": "stairs-up-endless",
+      "priority": 2,
+      "tags": { "location": "stairs", "motifs": [], "people": "none", "mood": "dread", "time": "interior" },
+      "scene": "Looking up the stairwell shaft of a Soviet apartment block, the railings spiralling upward far beyond the number of floors the building has, weak bulbs on each landing, the top lost in darkness"
+    },
+    {
+      "id": "stairs-thermometers",
+      "priority": 3,
+      "tags": { "location": "stairs", "motifs": ["thermometer"], "people": "none", "mood": "uneasy", "time": "interior" },
+      "scene": "Concrete stairs of an apartment block with a mercury thermometer lying on every step, glinting under a single dim bulb, leading down to a closed basement door"
+    },
+    {
+      "id": "stairs-pigeons-dusk",
+      "priority": 3,
+      "tags": { "location": "stairs", "motifs": ["pigeons"], "people": "none", "mood": "uneasy", "time": "dusk" },
+      "scene": "Pigeons sitting on the steps of an indoor staircase at dusk, the stairwell window broken, feathers on the concrete, dusk light falling in blue stripes across the railings"
+    },
+    {
+      "id": "hospital-corridor-day-chairs",
+      "priority": 2,
+      "tags": { "location": "hospital_corridor", "motifs": [], "people": "distant", "mood": "uneasy", "time": "day" },
+      "scene": "A polyclinic corridor in grey daylight, a row of joined wooden chairs along the wall, one patient sitting at the far end with his head down, numbered white doors, a rubber plant in a pot"
+    },
+    {
+      "id": "hospital-will-papers",
+      "priority": 2,
+      "tags": { "location": "hospital_corridor", "motifs": ["will_papers"], "people": "none", "mood": "dread", "time": "night" },
+      "scene": "A nurse's desk in an empty hospital corridor at night, a typed last will lying under a desk lamp with a fountain pen on top, a rubber stamp, a ventilator hissing somewhere in the dark behind"
+    },
+    {
+      "id": "thermometer-corridor-mercury",
+      "priority": 2,
+      "tags": { "location": "thermometer_corridor", "motifs": ["thermometer"], "people": "none", "mood": "dread", "time": "interior" },
+      "scene": "A corridor floor covered with beads of spilled mercury from broken thermometers, reflecting the ceiling lamps like tiny mirrors, broken glass along the skirting board, a door at the end with a red lamp above it"
+    },
+    {
+      "id": "thermometer-corridor-nurse",
+      "priority": 3,
+      "tags": { "location": "thermometer_corridor", "motifs": ["thermometer"], "people": "distant", "mood": "uneasy", "time": "interior" },
+      "scene": "A nurse in a white cap seen from behind at the far end of a corridor lined with thermometers in glass cases, she holds one up to the lamp to read it, her shadow stretched long across the linoleum"
+    },
+    {
+      "id": "jam-jar-spoon-viscous",
+      "priority": 2,
+      "tags": { "location": "jam_jar", "motifs": [], "people": "none", "mood": "uneasy", "time": "interior" },
+      "scene": "Extreme close-up of thick dark jam slowly dripping from a silver teaspoon into an open jar, a distorted reflection of a kitchen window in the jam surface, sticky glass rim"
+    },
+    {
+      "id": "bedroom-dawn-pills",
+      "priority": 2,
+      "tags": { "location": "bedroom", "motifs": ["thermometer"], "people": "none", "mood": "calm", "time": "dusk" },
+      "scene": "A bedside table at grey dawn: a thermometer in a plastic case, blister packs of pills, a glass of water, a wind-up alarm clock, a crumpled pillow beside it, net curtains lit pale blue"
+    },
+    {
+      "id": "bedroom-ventilator-snore",
+      "priority": 3,
+      "tags": { "location": "bedroom", "motifs": ["ventilator"], "people": "distant", "mood": "dread", "time": "night" },
+      "scene": "A hospital ventilator with an accordion bellows standing in an ordinary apartment bedroom at night, its tube running under the blanket of a sleeping figure, a wall carpet and a cassette radio on the shelf"
+    },
+    {
+      "id": "kitchen-vacuum-woman",
+      "priority": 2,
+      "tags": { "location": "kitchen", "motifs": ["vacuum_woman"], "people": "distant", "mood": "dread", "time": "night" },
+      "scene": "A woman in a house dress vacuuming the floor of a dark Soviet kitchen at night with an old cylinder vacuum cleaner, seen from the hallway, her face turned away into shadow, a single bulb over the table"
+    },
+    {
+      "id": "kitchen-microwave-monitor",
+      "priority": 3,
+      "tags": { "location": "kitchen", "motifs": ["monitor"], "people": "none", "mood": "uneasy", "time": "night" },
+      "scene": "A dark kitchen at night where the glowing display of an old microwave oven shows a green heartbeat line instead of a clock, its light falling on a plate of cold food and a jar of jam"
+    },
+    {
+      "id": "elevator-buttons-37",
+      "priority": 2,
+      "tags": { "location": "elevator", "motifs": [], "people": "none", "mood": "uneasy", "time": "interior" },
+      "scene": "Close-up of an old elevator button panel with melted plastic buttons, the floors numbered up to 37, button 37 glowing faintly, scratched wood-grain walls, harsh flat light"
+    }
+  ]
+}

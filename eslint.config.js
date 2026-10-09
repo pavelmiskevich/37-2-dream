@@ -6,7 +6,7 @@ import tseslint from 'typescript-eslint';
 const nondeterminism = 'dream-core must stay deterministic: use the seeded RNG / simulation clock (D-005).';
 
 export default defineConfig(
-  { ignores: ['**/dist/**', '**/node_modules/**', '**/coverage/**', '.remember/**'] },
+  { ignores: ['**/dist/**', '**/node_modules/**', '**/coverage/**', '.remember/**', '**/.venv/**'] },
   js.configs.recommended,
   tseslint.configs.recommended,
   {
