@@ -3,7 +3,7 @@
  * → `DreamFilm`. Pure: the same three inputs always give a deeply equal film,
  * and nothing outside them (history, clock, storage) reaches it (D-004, D-005).
  *
- *   profile        — the same `generateProfile` draw as the scene graph
+ *   profile        — the `generateProfile` draw of the seed (fresh-seed.ts reads the same)
  *   beats          — dramaturgy (beats.ts): opening, waves, climax
  *   shots          — every beat cut into shots by its rhythm
  *   cast           — an asset per shot (cast.ts)
@@ -128,7 +128,7 @@ export const generateFilm: GenerateFilm = (seed: DreamSeed, length: DreamLength,
     };
   });
 
-  // How the dream ends: the planned reason and temperature of the scene graph (D-020).
+  // How the dream ends: the planned reason and temperature (D-020).
   const awakening = generateAwakeningParams([], filmSharedRng(seed, 'awakening'));
   const { sounds, intrusions } = planSound(beats, planned, totalMs, profile, awakening.reason, filmRng(seed, length, 'sound'));
 

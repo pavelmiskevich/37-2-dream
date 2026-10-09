@@ -1,4 +1,4 @@
-import { parseSeed, type DreamSeed, type DreamSummary } from '@dream/core';
+import { parseSeed, type DreamSeed } from '@dream/core';
 
 /**
  * Local dream journal (spec §34, D-021): the dreams played on this device,
@@ -8,16 +8,16 @@ import { parseSeed, type DreamSeed, type DreamSummary } from '@dream/core';
  * ones (D-004). The dream itself never reads it.
  *
  * Storage is optional. Every access is wrapped: in a private window, with
- * storage disabled or full, the game goes on, the journal simply forgets and
+ * storage disabled or full, the dream goes on, the journal simply forgets and
  * every dream is "СОН №1".
  */
 
-/** What a journal keeps about a dream: the game's summary or the film's (D-027); the seed names the dream. */
+/** What a journal keeps about a dream: a summary (the film's, D-027); the seed names the dream. */
 export interface SeededSummary {
   seed: DreamSeed;
 }
 
-export interface JournalEntry<S extends SeededSummary = DreamSummary> {
+export interface JournalEntry<S extends SeededSummary = SeededSummary> {
   /** "СОН №…": 1 for the first dream on this device. */
   number: number;
   seed: DreamSeed;
@@ -26,11 +26,11 @@ export interface JournalEntry<S extends SeededSummary = DreamSummary> {
   summary: S;
 }
 
-export interface DreamJournal<S extends SeededSummary = DreamSummary> {
+export interface DreamJournal<S extends SeededSummary = SeededSummary> {
   /**
    * Recorded dreams, oldest first. Empty without storage. Entries written by
-   * an older build may carry a summary of another shape: only `number`, `seed`
-   * and `date` are checked on reading.
+   * an older build (the v1.2 game) may carry a summary of another shape: only `number`,
+   * `seed` and `date` are checked on reading.
    */
   entries(): JournalEntry<S>[];
   /** Number the next dream gets: one more than the last recorded, or 1. */
@@ -75,7 +75,7 @@ export interface DreamJournalOptions {
   limit?: number;
 }
 
-export function createDreamJournal<S extends SeededSummary = DreamSummary>(
+export function createDreamJournal<S extends SeededSummary = SeededSummary>(
   storage: () => Storage | null = browserStorage,
   { key = JOURNAL_STORAGE_KEY, limit = JOURNAL_LIMIT }: DreamJournalOptions = {},
 ): DreamJournal<S> {
@@ -94,7 +94,7 @@ export function createDreamJournal<S extends SeededSummary = DreamSummary>(
     try {
       storage()?.setItem(key, JSON.stringify(entries));
     } catch {
-      // Full, disabled or gone: the dream is not remembered, the game goes on.
+      // Full, disabled or gone: the dream is not remembered, the page goes on.
     }
   };
 

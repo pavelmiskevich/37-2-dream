@@ -8,9 +8,6 @@ import type { JournalEntry } from './storage';
  * card is a medical document: dry, exact, entirely serious. Nothing here
  * jokes or winks; the absurdity is in what is being recorded, and in the
  * sources of the sounds — the one place the dream is explained.
- *
- * Self-contained on purpose: the words of the v1.2 game journal (`texts.ts`)
- * go away with the game (#41).
  */
 
 /** Where the edit went, as the record names it. */

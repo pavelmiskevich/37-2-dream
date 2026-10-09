@@ -1,5 +1,4 @@
 import { describe, expect, it } from 'vitest';
-import { generateDream } from '../dream';
 import { generateProfile } from '../profile';
 import { DREAM_MOTIFS } from '../scenes';
 import { normalizeSeed, type DreamSeed } from '../seed';
@@ -62,12 +61,6 @@ describe('generateFilm: purity', () => {
     expect(JSON.parse(JSON.stringify(film))).toEqual(film);
   });
 
-  it('does not change the scene graph of the same seed', () => {
-    const before = generateDream(SNAPSHOT_SEEDS[0]!);
-    generateFilm(SNAPSHOT_SEEDS[0]!, 'short', TEST_LIBRARY);
-    expect(generateDream(SNAPSHOT_SEEDS[0]!)).toEqual(before);
-  });
-
   for (const length of LENGTHS) {
     it.each(SNAPSHOT_SEEDS)(`matches the pinned ${length} film for %s`, async (seed) => {
       const json = `${JSON.stringify(generateFilm(seed, length, TEST_LIBRARY), null, 2)}\n`;
@@ -79,7 +72,7 @@ describe('generateFilm: purity', () => {
 describe.each(LENGTHS)('generateFilm: structure of %s films', { timeout: SLOW }, (length) => {
   const list = films[length];
 
-  it('records the seed, length, engine version and the profile of the scene graph', () => {
+  it('records the seed, length, engine version and the profile of the seed', () => {
     list.slice(0, 50).forEach((film, i) => {
       expect(film.seed).toBe(seeds[i]);
       expect(film.length).toBe(length);
@@ -251,7 +244,7 @@ describe.each(LENGTHS)('generateFilm: structure of %s films', { timeout: SLOW },
     }
   });
 
-  it('wakes up as the scene graph plans it (D-020)', () => {
+  it('wakes up as planned: the tea or nothing known (D-020)', () => {
     for (const film of list) {
       expect(['tea_brought', 'unknown']).toContain(film.awakening.reason);
       expect(film.awakening.temperature).toBe(36.9);

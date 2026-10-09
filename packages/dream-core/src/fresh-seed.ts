@@ -1,6 +1,6 @@
 /**
  * Choosing the seed of the next dream with the history in mind (D-004,
- * D-021). The history never reaches `generateDream`: it only filters the
+ * D-021). The history never reaches `generateFilm`: it only filters the
  * candidates the app drew from its entropy, so a seed still names the same
  * dream on any device. The function is pure — the app supplies the
  * candidates and the seeds of the last dreams from its journal.
@@ -23,7 +23,7 @@ export const RECENT_DREAMS = 5;
  */
 export const MIN_PROFILE_DISTANCE = 0.25;
 
-/** Profile of the dream of `seed`, as `generateDream` draws it. */
+/** Profile of the dream of `seed`, as `generateFilm` draws it. */
 export function profileOfSeed(seed: DreamSeed): DreamProfile {
   return generateProfile(profileRng(seed));
 }
