@@ -8,10 +8,14 @@ packages/dream-core/src/film/library.ts).
 
 Every frame goes through ThermalGuard (thermal.py): no sensor, no mains power
 or a second generator -> refuse to start; too hot -> pause or emergency stop.
+Encoded prompts are cached on disk (``cache/embeds``, outside git), so each
+prompt is encoded once and the text encoder is not loaded at all when every
+prompt of the run is cached.
 
     python generate.py --profile laptop --limit 1          # one frame on the laptop
     python generate.py --profile desktop --limit 50        # a batch on the desktop
     python generate.py --dry-run --limit 10                # show what would be generated
+    python generate.py --encode-only --limit 10            # only fill the prompt cache
 """
 
 from __future__ import annotations
@@ -35,6 +39,7 @@ REPO = HERE.parents[1]
 DEFAULT_CATALOG = HERE / "prompts.json"
 LIBRARY_DIR = REPO / "apps" / "web" / "public" / "library"
 MANIFEST_NAME = "library.json"
+DEFAULT_EMBED_CACHE = HERE / "cache" / "embeds"
 STILLS_DIR = "stills"
 
 MODEL_ID = "Tongyi-MAI/Z-Image-Turbo"
@@ -252,6 +257,53 @@ def existing_ids(library: Path, manifest: dict[str, Any]) -> set[str]:
 
 
 # --------------------------------------------------------------------------
+# Prompt embedding cache
+
+
+class EmbedCache:
+    """Encoded prompts on disk, one safetensors file per (model, dtype, prompt).
+
+    The key does not depend on the device: a cache filled on the desktop can be
+    copied to the laptop, which then never loads the text encoder.
+    """
+
+    FORMAT = 1
+
+    def __init__(self, root: Path) -> None:
+        self.root = Path(root)
+
+    def path(self, model_id: str, dtype: str, prompt: str) -> Path:
+        key = "\n".join((f"v{self.FORMAT}", model_id, dtype, prompt))
+        return self.root / f"{hashlib.sha256(key.encode('utf-8')).hexdigest()[:32]}.safetensors"
+
+    def has(self, model_id: str, dtype: str, prompt: str) -> bool:
+        return self.path(model_id, dtype, prompt).is_file()
+
+    def load(self, model_id: str, dtype: str, prompt: str) -> list[Any]:
+        from safetensors.torch import load_file
+
+        tensors = load_file(self.path(model_id, dtype, prompt), device="cpu")
+        return [tensors[name] for name in sorted(tensors)]
+
+    def save(self, model_id: str, dtype: str, prompt: str, embeds: list[Any]) -> None:
+        from safetensors.torch import save_file
+
+        path = self.path(model_id, dtype, prompt)
+        path.parent.mkdir(parents=True, exist_ok=True)
+        tmp = path.with_suffix(".tmp")
+        save_file({f"{n:04d}": e.contiguous() for n, e in enumerate(embeds)}, tmp)
+        os.replace(tmp, path)
+
+
+def split_cached(
+    prompts: dict[str, str], cache: EmbedCache | None, model_id: str, dtype: str
+) -> tuple[list[str], list[str]]:
+    """Keys of ``prompts`` whose embeddings are (cached, still to encode)."""
+    cached = [k for k, p in prompts.items() if cache is not None and cache.has(model_id, dtype, p)]
+    return cached, [k for k in prompts if k not in cached]
+
+
+# --------------------------------------------------------------------------
 # Model (heavy imports stay inside functions so --dry-run and tests need no torch)
 
 
@@ -295,9 +347,9 @@ def resolve_gguf(spec: str) -> str:
 class Generator:
     """Z-Image-Turbo in two stages to fit the laptop's shared memory.
 
-    Stage 1 loads only the text encoder, encodes every prompt of the run and
-    unloads it; stage 2 loads the transformer and VAE and denoises from the
-    cached embeddings. Peak memory is the larger stage instead of the sum
+    Stage 1 loads only the text encoder, encodes the prompts of the run that
+    are not in the disk cache and unloads it; stage 2 loads the transformer and
+    VAE and denoises from the embeddings. Peak memory is the larger stage instead of the sum
     (~8 GiB text encoder + ~12 GiB transformer in bf16). The transformer can be
     a GGUF quantisation of the same weights (``gguf``) to fit in less memory.
     ``offload`` instead uses diffusers' model CPU offload with the whole
@@ -313,7 +365,9 @@ class Generator:
         two_stage: bool,
         offload: bool,
         encoder_device: str | None = None,
+        encoder_threads: int | None = None,
         gguf: str | None = None,
+        cache: EmbedCache | None = None,
     ) -> None:
         import torch
 
@@ -321,6 +375,9 @@ class Generator:
         self.model_id = model_id
         self.device = device
         self.encoder_device = encoder_device or device
+        self.encoder_threads = encoder_threads
+        self.cache = cache
+        self.dtype_name = dtype
         self.dtype = getattr(torch, dtype)
         self.two_stage = two_stage
         self.offload = offload
@@ -328,33 +385,62 @@ class Generator:
         self.pipe: Any = None
         self.embeds: dict[str, Any] = {}
 
-    def encode(self, prompts: dict[str, str], watchdog: thermal.Watchdog) -> None:
+    def encode(self, prompts: dict[str, str], guard: thermal.ThermalGuard) -> None:
+        """Embeddings for every prompt: from the disk cache or the text encoder.
+
+        Loading the encoder and each prompt are separate pieces of protected
+        work, so the guard cools down between them and nothing is lost on an
+        emergency stop: every embedding is written to the cache at once.
+        """
         if not self.two_stage:
             return
+        torch = self.torch
+        cached, todo = split_cached(prompts, self.cache, self.model_id, self.dtype_name)
+        for key in cached:
+            self.embeds[key] = self.cache.load(self.model_id, self.dtype_name, prompts[key])
+        print(f"[gen] prompts: {len(cached)} from cache, {len(todo)} to encode")
+        if not todo:
+            return
+
         from diffusers import ZImagePipeline
         from transformers import AutoModel, AutoTokenizer
 
-        torch = self.torch
+        def load_encoder(watchdog: thermal.Watchdog) -> Any:
+            tokenizer = AutoTokenizer.from_pretrained(self.model_id, subfolder="tokenizer")
+            text_encoder = AutoModel.from_pretrained(
+                self.model_id, subfolder="text_encoder", dtype=self.dtype, device_map=self.encoder_device
+            )
+            text_encoder.eval()
+            # Reuse the pipeline's own prompt encoding (chat template, hidden layer).
+            return ZImagePipeline(
+                scheduler=None, vae=None, text_encoder=text_encoder, tokenizer=tokenizer, transformer=None
+            )
+
+        def encode_one(key: str) -> list[Any]:
+            with torch.inference_mode():
+                embeds = shell._encode_prompt(prompts[key], device=torch.device(self.encoder_device))
+            return [e.to("cpu") for e in embeds]
+
         started = time.monotonic()
-        tokenizer = AutoTokenizer.from_pretrained(self.model_id, subfolder="tokenizer")
-        text_encoder = AutoModel.from_pretrained(
-            self.model_id, subfolder="text_encoder", dtype=self.dtype, device_map=self.encoder_device
-        )
-        text_encoder.eval()
-        # Reuse the pipeline's own prompt encoding (chat template, hidden layer).
-        shell = ZImagePipeline(
-            scheduler=None, vae=None, text_encoder=text_encoder, tokenizer=tokenizer, transformer=None
-        )
-        with torch.inference_mode():
-            for key, prompt in prompts.items():
-                watchdog.check()
-                embeds = shell._encode_prompt(prompt, device=torch.device(self.encoder_device))
-                self.embeds[key] = [e.to("cpu") for e in embeds]
-        del shell, text_encoder, tokenizer
-        _empty_cache(torch, self.encoder_device)
+        threads = torch.get_num_threads()
+        if self.encoder_threads:
+            torch.set_num_threads(self.encoder_threads)
+        shell = None
+        try:
+            shell = guard.run("load-text-encoder", load_encoder, counts=False, encode=True)
+            for key in todo:
+                self.embeds[key] = guard.run(
+                    f"encode:{key}", lambda wd, k=key: encode_one(k), counts=False, encode=True
+                )
+                if self.cache is not None:
+                    self.cache.save(self.model_id, self.dtype_name, prompts[key], self.embeds[key])
+        finally:
+            del shell
+            _empty_cache(torch, self.encoder_device)
+            torch.set_num_threads(threads)
         print(
-            f"[gen] encoded {len(prompts)} prompt(s) on {self.encoder_device} in "
-            f"{time.monotonic() - started:.1f} s; text encoder unloaded"
+            f"[gen] encoded {len(todo)} prompt(s) on {self.encoder_device} in "
+            f"{time.monotonic() - started:.1f} s (with rests); text encoder unloaded"
         )
 
     def load(self) -> None:
@@ -474,6 +560,23 @@ def build_parser() -> argparse.ArgumentParser:
         "--encoder-device",
         help="device for the text encoder in two-stage mode (default: same as --device)",
     )
+    parser.add_argument(
+        "--encoder-threads",
+        type=int,
+        help="CPU threads for the text encoder, 0 = torch default (laptop 4: fewer cores, less heat)",
+    )
+    parser.add_argument(
+        "--embed-cache",
+        type=Path,
+        default=DEFAULT_EMBED_CACHE,
+        help="directory of encoded prompts (outside git); each prompt is encoded once",
+    )
+    parser.add_argument("--no-embed-cache", action="store_true", help="neither read nor write the prompt cache")
+    parser.add_argument(
+        "--encode-only",
+        action="store_true",
+        help="encode the prompts into the cache and stop: no transformer, no frames",
+    )
     parser.add_argument("--dry-run", action="store_true", help="print the plan, load nothing")
     thermal.add_guard_arguments(parser)
     return parser
@@ -488,8 +591,12 @@ def main(argv: list[str] | None = None) -> int:
         parser.error(str(exc))
     if args.width % 16 or args.height % 16:
         parser.error("width and height must be multiples of 16")
+    if args.encode_only and (args.no_embed_cache or args.pipeline != "two-stage"):
+        parser.error("--encode-only needs the prompt cache and --pipeline two-stage")
     profile = thermal.PROFILES[args.profile]
     device = args.device or profile.default_device
+    encoder_threads = profile.encoder_threads if args.encoder_threads is None else args.encoder_threads
+    cache = None if args.no_embed_cache else EmbedCache(args.embed_cache)
 
     catalog = load_catalog(args.catalog)
     manifest_path = args.library / MANIFEST_NAME
@@ -521,11 +628,16 @@ def main(argv: list[str] | None = None) -> int:
                 two_stage=args.pipeline == "two-stage",
                 offload=args.pipeline == "offload",
                 encoder_device=args.encoder_device,
+                encoder_threads=encoder_threads,
                 gguf=args.gguf,
+                cache=cache,
             )
             prompts = {s.id: s.prompt(catalog.style) for s in todo}
-            # Prompt encoding is model work too: same protection, not a frame.
-            guard.run("encode-prompts", lambda wd: gen.encode(prompts, wd), counts=False)
+            # Prompt encoding is model work too: protected, but not a frame.
+            gen.encode(prompts, guard)
+            if args.encode_only:
+                print("[gen] prompts encoded; --encode-only: no frames")
+                return 0
             guard.wait_until_cool()
             gen.load()
             for n, scene in enumerate(todo, 1):

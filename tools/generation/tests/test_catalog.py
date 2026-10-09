@@ -154,5 +154,37 @@ class ManifestTest(unittest.TestCase):
         self.assertEqual(generate.load_manifest(Path("does-not-exist.json")), generate.empty_manifest())
 
 
+class EmbedCacheTest(unittest.TestCase):
+    def test_key_depends_on_model_dtype_and_prompt_only(self) -> None:
+        cache = generate.EmbedCache(Path("cache"))
+        path = cache.path("m", "bfloat16", "a yard")
+        self.assertEqual(path, generate.EmbedCache(Path("cache")).path("m", "bfloat16", "a yard"))
+        self.assertEqual(path.parent, Path("cache"))
+        self.assertEqual(path.suffix, ".safetensors")
+        others = {
+            cache.path("m2", "bfloat16", "a yard"),
+            cache.path("m", "float16", "a yard"),
+            cache.path("m", "bfloat16", "a yard."),
+        }
+        self.assertEqual(len(others | {path}), 4)
+
+    def test_split_cached(self) -> None:
+        prompts = {"a": "scene a", "b": "scene b", "c": "scene c"}
+        with tempfile.TemporaryDirectory() as tmp:
+            cache = generate.EmbedCache(Path(tmp) / "embeds")
+            self.assertEqual(generate.split_cached(prompts, cache, "m", "bfloat16"), ([], ["a", "b", "c"]))
+            cache.root.mkdir(parents=True)
+            cache.path("m", "bfloat16", "scene b").write_bytes(b"")
+            self.assertEqual(generate.split_cached(prompts, cache, "m", "bfloat16"), (["b"], ["a", "c"]))
+            # Another dtype is another embedding.
+            self.assertEqual(generate.split_cached(prompts, cache, "m", "float16"), ([], ["a", "b", "c"]))
+        self.assertEqual(generate.split_cached(prompts, None, "m", "bfloat16"), ([], ["a", "b", "c"]))
+
+    def test_cache_is_outside_git(self) -> None:
+        ignore = (generate.REPO / ".gitignore").read_text(encoding="utf-8")
+        self.assertIn("tools/generation/cache/", ignore)
+        self.assertEqual(generate.DEFAULT_EMBED_CACHE, generate.HERE / "cache" / "embeds")
+
+
 if __name__ == "__main__":
     unittest.main()
