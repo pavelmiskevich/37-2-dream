@@ -209,6 +209,234 @@
         "seed": 2145213146,
         "source": "local-laptop"
       }
+    },
+    {
+      "id": "thermometer-corridor-giant",
+      "kind": "still",
+      "file": "stills/thermometer-corridor-giant.webp",
+      "depth": "depth/thermometer-corridor-giant.png",
+      "width": 1280,
+      "height": 720,
+      "tags": {
+        "location": "thermometer_corridor",
+        "motifs": [
+          "thermometer"
+        ],
+        "people": "distant",
+        "mood": "uneasy",
+        "time": "interior"
+      },
+      "generation": {
+        "model": "Tongyi-MAI/Z-Image-Turbo",
+        "license": "Apache-2.0",
+        "prompt": "A long institutional corridor where a giant glass mercury thermometer, taller than a man, leans against the wall; far behind it a small figure in a bathrobe stands with its back to the camera under a flickering fluorescent tube. Realistic 35mm film photograph, heavy film grain, muted desaturated colors, faces hidden in shadow, Russia in the 1990s, Soviet-era interiors and courtyards, the logic of a dream, quiet, uneasy and unsettling atmosphere.",
+        "seed": 1880587936,
+        "source": "local-laptop"
+      }
+    },
+    {
+      "id": "jam-jar-inside",
+      "kind": "still",
+      "file": "stills/jam-jar-inside.webp",
+      "depth": "depth/jam-jar-inside.png",
+      "width": 1280,
+      "height": 720,
+      "tags": {
+        "location": "jam_jar",
+        "motifs": [],
+        "people": "none",
+        "mood": "dread",
+        "time": "interior"
+      },
+      "generation": {
+        "model": "Tongyi-MAI/Z-Image-Turbo",
+        "license": "Apache-2.0",
+        "prompt": "View from inside a huge glass jar of dark cherry jam, thick red syrup and drowned berries filling the frame, a blurred kitchen and a window seen through the curved glass wall above, light coming down through the jam. Realistic 35mm film photograph, heavy film grain, muted desaturated colors, faces hidden in shadow, Russia in the 1990s, Soviet-era interiors and courtyards, the logic of a dream, quiet, uneasy and unsettling atmosphere.",
+        "seed": 1136427144,
+        "source": "local-laptop"
+      }
+    },
+    {
+      "id": "jam-jar-shelf",
+      "kind": "still",
+      "file": "stills/jam-jar-shelf.webp",
+      "depth": "depth/jam-jar-shelf.png",
+      "width": 1280,
+      "height": 720,
+      "tags": {
+        "location": "jam_jar",
+        "motifs": [],
+        "people": "none",
+        "mood": "uneasy",
+        "time": "dusk"
+      },
+      "generation": {
+        "model": "Tongyi-MAI/Z-Image-Turbo",
+        "license": "Apache-2.0",
+        "prompt": "A dacha cellar shelf crowded with old glass jars of home-made jam sealed with paper and string; one jar in the middle is enormous, as tall as a door, its lid ajar, a wooden ladder leaning against it; grey dusk light from a small window. Realistic 35mm film photograph, heavy film grain, muted desaturated colors, faces hidden in shadow, Russia in the 1990s, Soviet-era interiors and courtyards, the logic of a dream, quiet, uneasy and unsettling atmosphere.",
+        "seed": 995171456,
+        "source": "local-laptop"
+      }
+    },
+    {
+      "id": "bedroom-night-carpet",
+      "kind": "still",
+      "file": "stills/bedroom-night-carpet.webp",
+      "depth": "depth/bedroom-night-carpet.png",
+      "width": 1280,
+      "height": 720,
+      "tags": {
+        "location": "bedroom",
+        "motifs": [],
+        "people": "none",
+        "mood": "uneasy",
+        "time": "night"
+      },
+      "generation": {
+        "model": "Tongyi-MAI/Z-Image-Turbo",
+        "license": "Apache-2.0",
+        "prompt": "A small Soviet apartment bedroom at night, a red patterned carpet hanging on the wall above a narrow bed with a crumpled blanket, a polished wardrobe, streetlight through net curtains, the doorway to a black hallway left open. Realistic 35mm film photograph, heavy film grain, muted desaturated colors, faces hidden in shadow, Russia in the 1990s, Soviet-era interiors and courtyards, the logic of a dream, quiet, uneasy and unsettling atmosphere.",
+        "seed": 976736028,
+        "source": "local-laptop"
+      }
+    },
+    {
+      "id": "bedroom-monitor",
+      "kind": "still",
+      "file": "stills/bedroom-monitor.webp",
+      "depth": "depth/bedroom-monitor.png",
+      "width": 1280,
+      "height": 720,
+      "tags": {
+        "location": "bedroom",
+        "motifs": [
+          "monitor"
+        ],
+        "people": "distant",
+        "mood": "dread",
+        "time": "night"
+      },
+      "generation": {
+        "model": "Tongyi-MAI/Z-Image-Turbo",
+        "license": "Apache-2.0",
+        "prompt": "A home bedroom at night with a hospital heart monitor standing on the bedside table next to a crocheted doily and a glass of water, its green line glowing; under the blanket the shape of a sleeping man, his face turned to the wall. Realistic 35mm film photograph, heavy film grain, muted desaturated colors, faces hidden in shadow, Russia in the 1990s, Soviet-era interiors and courtyards, the logic of a dream, quiet, uneasy and unsettling atmosphere.",
+        "seed": 983149475,
+        "source": "local-laptop"
+      }
+    },
+    {
+      "id": "kitchen-night-fridge",
+      "kind": "still",
+      "file": "stills/kitchen-night-fridge.webp",
+      "depth": "depth/kitchen-night-fridge.png",
+      "width": 1280,
+      "height": 720,
+      "tags": {
+        "location": "kitchen",
+        "motifs": [],
+        "people": "none",
+        "mood": "uneasy",
+        "time": "night"
+      },
+      "generation": {
+        "model": "Tongyi-MAI/Z-Image-Turbo",
+        "license": "Apache-2.0",
+        "prompt": "A cramped Soviet kitchen at night lit only by the open door of an old white refrigerator, oilcloth on the table, a kettle on a gas stove, a tiled wall, the window black with frost patterns. Realistic 35mm film photograph, heavy film grain, muted desaturated colors, faces hidden in shadow, Russia in the 1990s, Soviet-era interiors and courtyards, the logic of a dream, quiet, uneasy and unsettling atmosphere.",
+        "seed": 473686300,
+        "source": "local-laptop"
+      }
+    },
+    {
+      "id": "kitchen-jam-table",
+      "kind": "still",
+      "file": "stills/kitchen-jam-table.webp",
+      "depth": "depth/kitchen-jam-table.png",
+      "width": 1280,
+      "height": 720,
+      "tags": {
+        "location": "kitchen",
+        "motifs": [
+          "thermometer"
+        ],
+        "people": "none",
+        "mood": "uneasy",
+        "time": "day"
+      },
+      "generation": {
+        "model": "Tongyi-MAI/Z-Image-Turbo",
+        "license": "Apache-2.0",
+        "prompt": "A kitchen table in flat grey daylight: an open jar of jam, a teaspoon standing upright in it, a mercury thermometer lying on a saucer, a cup of cold tea, a calendar from 1994 on the wall. Realistic 35mm film photograph, heavy film grain, muted desaturated colors, faces hidden in shadow, Russia in the 1990s, Soviet-era interiors and courtyards, the logic of a dream, quiet, uneasy and unsettling atmosphere.",
+        "seed": 1155187910,
+        "source": "local-laptop"
+      }
+    },
+    {
+      "id": "elevator-cabin",
+      "kind": "still",
+      "file": "stills/elevator-cabin.webp",
+      "depth": "depth/elevator-cabin.png",
+      "width": 1280,
+      "height": 720,
+      "tags": {
+        "location": "elevator",
+        "motifs": [],
+        "people": "none",
+        "mood": "dread",
+        "time": "interior"
+      },
+      "generation": {
+        "model": "Tongyi-MAI/Z-Image-Turbo",
+        "license": "Apache-2.0",
+        "prompt": "Inside a cramped old Soviet elevator cabin with brown wood-grain panels scratched with graffiti, a panel of burnt round buttons, one weak bulb behind a cracked plastic cover, the folding door half open onto blackness. Realistic 35mm film photograph, heavy film grain, muted desaturated colors, faces hidden in shadow, Russia in the 1990s, Soviet-era interiors and courtyards, the logic of a dream, quiet, uneasy and unsettling atmosphere.",
+        "seed": 901829491,
+        "source": "local-laptop"
+      }
+    },
+    {
+      "id": "elevator-doors-landing",
+      "kind": "still",
+      "file": "stills/elevator-doors-landing.webp",
+      "depth": "depth/elevator-doors-landing.png",
+      "width": 1280,
+      "height": 720,
+      "tags": {
+        "location": "elevator",
+        "motifs": [],
+        "people": "distant",
+        "mood": "uneasy",
+        "time": "night"
+      },
+      "generation": {
+        "model": "Tongyi-MAI/Z-Image-Turbo",
+        "license": "Apache-2.0",
+        "prompt": "A dim apartment block landing at night, metal elevator doors with a small round window glowing yellow; through the window a figure is visible standing motionless inside the cabin. Realistic 35mm film photograph, heavy film grain, muted desaturated colors, faces hidden in shadow, Russia in the 1990s, Soviet-era interiors and courtyards, the logic of a dream, quiet, uneasy and unsettling atmosphere.",
+        "seed": 1992222267,
+        "source": "local-laptop"
+      }
+    },
+    {
+      "id": "hospital-corridor-gurney",
+      "kind": "still",
+      "file": "stills/hospital-corridor-gurney.webp",
+      "depth": "depth/hospital-corridor-gurney.png",
+      "width": 1280,
+      "height": 720,
+      "tags": {
+        "location": "hospital_corridor",
+        "motifs": [
+          "monitor"
+        ],
+        "people": "none",
+        "mood": "dread",
+        "time": "night"
+      },
+      "generation": {
+        "model": "Tongyi-MAI/Z-Image-Turbo",
+        "license": "Apache-2.0",
+        "prompt": "A Soviet hospital corridor at night, tiled walls painted half blue, an empty gurney with a rumpled sheet, a heart monitor on a trolley beside it still showing a green line, a single lamp burning at the nurse's post far away. Realistic 35mm film photograph, heavy film grain, muted desaturated colors, faces hidden in shadow, Russia in the 1990s, Soviet-era interiors and courtyards, the logic of a dream, quiet, uneasy and unsettling atmosphere.",
+        "seed": 829848158,
+        "source": "local-laptop"
+      }
     }
   ]
 }
