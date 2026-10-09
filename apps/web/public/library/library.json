@@ -2,6 +2,183 @@
   "version": 1,
   "assets": [
     {
+      "id": "yard-night-vacuum-woman",
+      "kind": "still",
+      "file": "stills/yard-night-vacuum-woman.webp",
+      "width": 1280,
+      "height": 720,
+      "tags": {
+        "location": "yard",
+        "motifs": [
+          "swing",
+          "vacuum_woman"
+        ],
+        "people": "distant",
+        "mood": "dread",
+        "time": "night"
+      },
+      "generation": {
+        "model": "Tongyi-MAI/Z-Image-Turbo",
+        "license": "Apache-2.0",
+        "prompt": "Night courtyard between Soviet nine-storey panel apartment blocks, wet cracked asphalt reflecting sodium street lamps, an empty children's swing moving slightly, a few yellow lit windows, light fog. Far away under a lamp a middle-aged woman in a house robe stands motionless holding an old Soviet vacuum cleaner, facing the camera, face in shadow. Shot on 35mm film, heavy grain, slight motion blur, muted green-orange colors, liminal, eerie, unsettling, realistic photograph, dream.",
+        "seed": 21140,
+        "source": "hf-space:mcp-tools/Z-Image-Turbo"
+      }
+    },
+    {
+      "id": "yard-dusk-empty-swing",
+      "kind": "still",
+      "file": "stills/yard-dusk-empty-swing.webp",
+      "width": 1280,
+      "height": 720,
+      "tags": {
+        "location": "yard",
+        "motifs": [
+          "swing"
+        ],
+        "people": "none",
+        "mood": "uneasy",
+        "time": "dusk"
+      },
+      "generation": {
+        "model": "Tongyi-MAI/Z-Image-Turbo",
+        "license": "Apache-2.0",
+        "prompt": "Courtyard between Soviet panel apartment blocks at dusk, an empty children's swing hanging still in thick fog, wet asphalt, a single sodium street lamp just turning on, nobody around, silence. Shot on 35mm film, heavy grain, muted desaturated colors, realistic photograph, liminal, eerie, unsettling, 1990s Russia, dream.",
+        "seed": 72505,
+        "source": "hf-space:mcp-tools/Z-Image-Turbo"
+      }
+    },
+    {
+      "id": "yard-night-window-silhouette",
+      "kind": "still",
+      "file": "stills/yard-night-window-silhouette.webp",
+      "width": 1280,
+      "height": 720,
+      "tags": {
+        "location": "yard",
+        "motifs": [],
+        "people": "distant",
+        "mood": "dread",
+        "time": "night"
+      },
+      "generation": {
+        "model": "Tongyi-MAI/Z-Image-Turbo",
+        "license": "Apache-2.0",
+        "prompt": "Looking up at a Soviet nine-storey panel apartment block at night from the courtyard, all windows dark except one yellow lit window high up with a motionless human silhouette standing in it, light drizzle, sodium light. Shot on 35mm film, heavy grain, muted desaturated colors, realistic photograph, liminal, eerie, unsettling, 1990s Russia, dream.",
+        "seed": 290970,
+        "source": "hf-space:mcp-tools/Z-Image-Turbo"
+      }
+    },
+    {
+      "id": "yard-day-pigeons",
+      "kind": "still",
+      "file": "stills/yard-day-pigeons.webp",
+      "width": 1280,
+      "height": 720,
+      "tags": {
+        "location": "yard",
+        "motifs": [
+          "pigeons"
+        ],
+        "people": "none",
+        "mood": "uneasy",
+        "time": "day"
+      },
+      "generation": {
+        "model": "Tongyi-MAI/Z-Image-Turbo",
+        "license": "Apache-2.0",
+        "prompt": "Grey overcast day in an empty Soviet courtyard, dozens of grey pigeons standing still on cracked wet asphalt, all of them turned toward the camera, panel apartment blocks behind, flat light, no people. Shot on 35mm film, heavy grain, muted desaturated colors, realistic photograph, liminal, eerie, unsettling, 1990s Russia, dream.",
+        "seed": 288267,
+        "source": "hf-space:mcp-tools/Z-Image-Turbo"
+      }
+    },
+    {
+      "id": "stairwell-mailboxes",
+      "kind": "still",
+      "file": "stills/stairwell-mailboxes.webp",
+      "width": 1280,
+      "height": 720,
+      "tags": {
+        "location": "stairwell",
+        "motifs": [],
+        "people": "none",
+        "mood": "uneasy",
+        "time": "interior"
+      },
+      "generation": {
+        "model": "Tongyi-MAI/Z-Image-Turbo",
+        "license": "Apache-2.0",
+        "prompt": "Inside an old Soviet apartment building stairwell entrance, walls painted dark green to shoulder height and whitewashed above, rusty metal mailboxes, peeling paint, a single bare light bulb flickering, cigarette burns, nobody, cold night. Shot on 35mm film, heavy grain, muted desaturated colors, realistic photograph, liminal, eerie, unsettling, 1990s Russia, dream.",
+        "seed": 331710,
+        "source": "hf-space:mcp-tools/Z-Image-Turbo"
+      }
+    },
+    {
+      "id": "stairwell-door-ajar",
+      "kind": "still",
+      "file": "stills/stairwell-door-ajar.webp",
+      "width": 1280,
+      "height": 720,
+      "tags": {
+        "location": "stairwell",
+        "motifs": [],
+        "people": "none",
+        "mood": "dread",
+        "time": "interior"
+      },
+      "generation": {
+        "model": "Tongyi-MAI/Z-Image-Turbo",
+        "license": "Apache-2.0",
+        "prompt": "Dark stairwell landing in a Soviet apartment building at night, a padded leatherette apartment door standing slightly ajar with warm yellow light coming out of the gap, the rest in deep shadow, silence. Shot on 35mm film, heavy grain, muted desaturated colors, realistic photograph, liminal, eerie, unsettling, 1990s Russia, dream.",
+        "seed": 247875,
+        "source": "hf-space:mcp-tools/Z-Image-Turbo"
+      }
+    },
+    {
+      "id": "stairs-down",
+      "kind": "still",
+      "file": "stills/stairs-down.webp",
+      "width": 1280,
+      "height": 720,
+      "tags": {
+        "location": "stairs",
+        "motifs": [],
+        "people": "none",
+        "mood": "uneasy",
+        "time": "interior"
+      },
+      "generation": {
+        "model": "Tongyi-MAI/Z-Image-Turbo",
+        "license": "Apache-2.0",
+        "prompt": "Endless concrete staircase without railings descending into complete darkness inside a Soviet apartment building, worn steps, a painted floor number on the wall, cold fluorescent light from above fading into black, nobody. Shot on 35mm film, heavy grain, muted desaturated colors, realistic photograph, liminal, eerie, unsettling, 1990s Russia, dream.",
+        "seed": 108785,
+        "source": "hf-space:mcp-tools/Z-Image-Turbo"
+      }
+    },
+    {
+      "id": "hospital-corridor-ventilator",
+      "kind": "still",
+      "file": "stills/hospital-corridor-ventilator.webp",
+      "width": 1280,
+      "height": 720,
+      "tags": {
+        "location": "hospital_corridor",
+        "motifs": [
+          "ventilator"
+        ],
+        "people": "none",
+        "mood": "dread",
+        "time": "interior"
+      },
+      "generation": {
+        "model": "Tongyi-MAI/Z-Image-Turbo",
+        "license": "Apache-2.0",
+        "prompt": "Long empty Soviet hospital corridor at night, tiled walls painted pale blue, linoleum floor, flickering fluorescent tubes, in the middle of the corridor a lone old medical ventilator machine with hoses standing by itself, nobody around. Shot on 35mm film, heavy grain, muted desaturated colors, realistic photograph, liminal, eerie, unsettling, 1990s Russia, dream.",
+        "seed": 184060,
+        "source": "hf-space:mcp-tools/Z-Image-Turbo"
+      }
+    },
+    {
       "id": "thermometer-corridor-endless",
       "kind": "still",
       "file": "stills/thermometer-corridor-endless.webp",
