@@ -437,6 +437,142 @@
         "seed": 829848158,
         "source": "local-laptop"
       }
+    },
+    {
+      "id": "scare-stairwell-face",
+      "kind": "still",
+      "file": "stills/scare-stairwell-face.webp",
+      "depth": "depth/scare-stairwell-face.png",
+      "width": 1280,
+      "height": 720,
+      "tags": {
+        "location": "stairwell",
+        "motifs": [],
+        "people": "face",
+        "mood": "scare",
+        "time": "night"
+      },
+      "generation": {
+        "model": "Tongyi-MAI/Z-Image-Turbo",
+        "license": "Apache-2.0",
+        "prompt": "A pale human face suddenly very close to the camera in a dark stairwell, lit from below by a harsh flash, eyes wide and black, mouth slightly open, peeling green paint behind. Realistic 35mm film photograph, heavy film grain, muted desaturated colors, faces hidden in shadow, Russia in the 1990s, Soviet-era interiors and courtyards, the logic of a dream, quiet, uneasy and unsettling atmosphere.",
+        "seed": 1309471914,
+        "source": "local-laptop"
+      }
+    },
+    {
+      "id": "scare-vacuum-woman-close",
+      "kind": "still",
+      "file": "stills/scare-vacuum-woman-close.webp",
+      "depth": "depth/scare-vacuum-woman-close.png",
+      "width": 1280,
+      "height": 720,
+      "tags": {
+        "location": "bedroom",
+        "motifs": [
+          "vacuum_woman"
+        ],
+        "people": "face",
+        "mood": "scare",
+        "time": "night"
+      },
+      "generation": {
+        "model": "Tongyi-MAI/Z-Image-Turbo",
+        "license": "Apache-2.0",
+        "prompt": "A woman in a faded house dress standing right over the bed at night with an old Soviet vacuum cleaner hose raised, her face bent close to the camera, half lit by a harsh flash, eyes reflecting the light. Realistic 35mm film photograph, heavy film grain, muted desaturated colors, faces hidden in shadow, Russia in the 1990s, Soviet-era interiors and courtyards, the logic of a dream, quiet, uneasy and unsettling atmosphere.",
+        "seed": 252208132,
+        "source": "local-laptop"
+      }
+    },
+    {
+      "id": "scare-hospital-figure",
+      "kind": "still",
+      "file": "stills/scare-hospital-figure.webp",
+      "depth": "depth/scare-hospital-figure.png",
+      "width": 1280,
+      "height": 720,
+      "tags": {
+        "location": "hospital_corridor",
+        "motifs": [],
+        "people": "face",
+        "mood": "scare",
+        "time": "night"
+      },
+      "generation": {
+        "model": "Tongyi-MAI/Z-Image-Turbo",
+        "license": "Apache-2.0",
+        "prompt": "A tall figure in a white hospital gown suddenly filling the frame in a dark hospital corridor, its face a smear of shadow and grey skin caught by a camera flash, the corridor behind it receding into black. Realistic 35mm film photograph, heavy film grain, muted desaturated colors, faces hidden in shadow, Russia in the 1990s, Soviet-era interiors and courtyards, the logic of a dream, quiet, uneasy and unsettling atmosphere.",
+        "seed": 467776675,
+        "source": "local-laptop"
+      }
+    },
+    {
+      "id": "scare-elevator-crowd",
+      "kind": "still",
+      "file": "stills/scare-elevator-crowd.webp",
+      "depth": "depth/scare-elevator-crowd.png",
+      "width": 1280,
+      "height": 720,
+      "tags": {
+        "location": "elevator",
+        "motifs": [],
+        "people": "face",
+        "mood": "scare",
+        "time": "interior"
+      },
+      "generation": {
+        "model": "Tongyi-MAI/Z-Image-Turbo",
+        "license": "Apache-2.0",
+        "prompt": "Elevator doors open onto a cabin packed tightly with silent people in winter coats, all of them staring straight into the camera, faces grey in a harsh flash, no room to step in. Realistic 35mm film photograph, heavy film grain, muted desaturated colors, faces hidden in shadow, Russia in the 1990s, Soviet-era interiors and courtyards, the logic of a dream, quiet, uneasy and unsettling atmosphere.",
+        "seed": 277326740,
+        "source": "local-laptop"
+      }
+    },
+    {
+      "id": "scare-jam-hand",
+      "kind": "still",
+      "file": "stills/scare-jam-hand.webp",
+      "depth": "depth/scare-jam-hand.png",
+      "width": 1280,
+      "height": 720,
+      "tags": {
+        "location": "jam_jar",
+        "motifs": [],
+        "people": "face",
+        "mood": "scare",
+        "time": "interior"
+      },
+      "generation": {
+        "model": "Tongyi-MAI/Z-Image-Turbo",
+        "license": "Apache-2.0",
+        "prompt": "A pale face pressed against the inside of a huge glass jar of dark red jam, eyes open, red syrup in the hair, a hand flat on the glass, lit by a harsh camera flash in a dark kitchen. Realistic 35mm film photograph, heavy film grain, muted desaturated colors, faces hidden in shadow, Russia in the 1990s, Soviet-era interiors and courtyards, the logic of a dream, quiet, uneasy and unsettling atmosphere.",
+        "seed": 1977071676,
+        "source": "local-laptop"
+      }
+    },
+    {
+      "id": "bedroom-day-waking",
+      "kind": "still",
+      "file": "stills/bedroom-day-waking.webp",
+      "depth": "depth/bedroom-day-waking.png",
+      "width": 1280,
+      "height": 720,
+      "tags": {
+        "location": "bedroom",
+        "motifs": [
+          "thermometer"
+        ],
+        "people": "none",
+        "mood": "calm",
+        "time": "day"
+      },
+      "generation": {
+        "model": "Tongyi-MAI/Z-Image-Turbo",
+        "license": "Apache-2.0",
+        "prompt": "A small bedroom in a Soviet apartment on a grey day, a patterned carpet hanging on the wall above an unmade bed, a wooden stool by the bed with a glass thermometer and a glass of tea, pale daylight through net curtains, nobody in the room. Realistic 35mm film photograph, heavy film grain, muted desaturated colors, faces hidden in shadow, Russia in the 1990s, Soviet-era interiors and courtyards, the logic of a dream, quiet, uneasy and unsettling atmosphere.",
+        "seed": 369001,
+        "source": "local-laptop"
+      }
     }
   ]
 }

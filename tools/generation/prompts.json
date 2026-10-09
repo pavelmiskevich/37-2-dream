@@ -224,6 +224,13 @@
       "priority": 2,
       "tags": { "location": "elevator", "motifs": [], "people": "none", "mood": "uneasy", "time": "interior" },
       "scene": "Close-up of an old elevator button panel with melted plastic buttons, the floors numbered up to 37, button 37 glowing faintly, scratched wood-grain walls, harsh flat light"
+    },
+    {
+      "id": "bedroom-day-waking",
+      "priority": 1,
+      "tags": { "location": "bedroom", "motifs": ["thermometer"], "people": "none", "mood": "calm", "time": "day" },
+      "seed": 369001,
+      "scene": "A small bedroom in a Soviet apartment on a grey day, a patterned carpet hanging on the wall above an unmade bed, a wooden stool by the bed with a glass thermometer and a glass of tea, pale daylight through net curtains, nobody in the room"
     }
   ]
 }
