@@ -1,7 +1,5 @@
 import { SEED_ENTROPY_BYTES, chooseFreshSeed, seedFromEntropy, type DreamSeed } from '@dream/core';
 
-type PageLocation = Pick<Location, 'origin' | 'pathname' | 'search'>;
-
 /** Candidates drawn for every new dream; a few would do, the profiles are cheap. */
 export const FRESH_SEED_CANDIDATES = 16;
 
@@ -15,20 +13,4 @@ export function freshSeed(
 ): DreamSeed {
   const candidates = Array.from({ length: FRESH_SEED_CANDIDATES }, () => seedFromEntropy(randomBytes()));
   return chooseFreshSeed(candidates, recent);
-}
-
-/**
- * Link to a dream: this page with only `?seed=`. It opens the same dream from
- * the beginning on any device (D-004); playtest and sandbox parameters are
- * dropped.
- */
-export function shareUrl(seed: DreamSeed, location: PageLocation): string {
-  return `${location.origin}${location.pathname}?${new URLSearchParams({ seed }).toString()}`;
-}
-
-/** Where "Уснуть снова" goes: the next dream, keeping the debug overlay if it was on. */
-export function nextDreamUrl(seed: DreamSeed, location: PageLocation): string {
-  const debug = new URLSearchParams(location.search).get('debug');
-  const url = shareUrl(seed, location);
-  return debug === null ? url : `${url}&${new URLSearchParams({ debug }).toString()}`;
 }

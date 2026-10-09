@@ -1,6 +1,6 @@
 /**
  * Random streams of the dream film (D-023). They live under `seed/film/…`, so
- * the film never shifts a number the old scene graph or the profile draw:
+ * the film never shifts a number the profile draws:
  *
  *   DREAM-8F72-A19C-37B2/film/short/beats     — dramaturgy of the short film
  *   DREAM-8F72-A19C-37B2/film/long/cast       — asset picks of the long film

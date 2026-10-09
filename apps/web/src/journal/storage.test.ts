@@ -1,6 +1,6 @@
-import { generateDream, normalizeSeed, summarizeDream, createInitialState, type DreamSummary } from '@dream/core';
+import { normalizeSeed } from '@dream/core';
 import { describe, expect, it } from 'vitest';
-import { JOURNAL_STORAGE_KEY, browserStorage, createDreamJournal } from './storage';
+import { JOURNAL_STORAGE_KEY, browserStorage, createDreamJournal, type SeededSummary } from './storage';
 
 /** A Map-backed `Storage`. */
 function memoryStorage(): Storage {
@@ -35,10 +35,7 @@ function brokenStorage(): Storage {
 }
 
 const seeds = ['DREAM-8F72-A19C-37B2', 'DREAM-0000-0000-0000', 'DREAM-C0DE-BEEF-0451'].map(normalizeSeed);
-const summaryOf = (index: number): DreamSummary => {
-  const dream = generateDream(seeds[index % seeds.length]!);
-  return summarizeDream(dream, { state: createInitialState(dream) });
-};
+const summaryOf = (index: number): SeededSummary => ({ seed: seeds[index % seeds.length]! });
 const date = new Date('2026-10-02T21:00:00Z');
 
 describe('createDreamJournal', () => {
@@ -119,6 +116,37 @@ describe('createDreamJournal', () => {
     );
     expect(journal.entries().map((entry) => entry.number)).toEqual([9]);
     expect(journal.record(summaryOf(0), date).number).toBe(10);
+  });
+});
+
+describe('entries of the v1.2 game', () => {
+  // What the game build wrote under the same key: a summary of another shape.
+  const gameEntry = {
+    number: 7,
+    seed: seeds[0],
+    date: '2026-10-05T20:15:00.000Z',
+    summary: {
+      seed: seeds[0],
+      engineVersion: 8,
+      temperature: { asleep: 37.2, awake: 36.9 },
+      duration: 192.4,
+      locations: ['yard', 'fall', 'jam'],
+      events: [{ id: 'thermometer', count: 1 }],
+      strangestObject: { kind: 'will_clause', clause: 'cat' },
+      wakeReason: 'tea_brought',
+      heard: [{ motif: 'vacuum', source: 'cleaning', count: 3, firstSceneIndex: 1 }],
+    },
+  };
+
+  it('are read, and the numbering goes on from them', () => {
+    const storage = memoryStorage();
+    storage.setItem(JOURNAL_STORAGE_KEY, JSON.stringify([gameEntry]));
+    const journal = createDreamJournal(() => storage);
+    expect(journal.entries()).toEqual([gameEntry]);
+    expect(journal.recentSeeds(5)).toEqual([seeds[0]]);
+    const next = journal.record(summaryOf(1), date);
+    expect(next.number).toBe(8);
+    expect(journal.entries().map((entry) => entry.number)).toEqual([7, 8]);
   });
 });
 
