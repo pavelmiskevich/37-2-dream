@@ -1,4 +1,4 @@
-import type { CardBlock } from './card-model';
+import type { CardBlock } from './blocks';
 
 /**
  * The journal card as a PNG, drawn with the 2D canvas from the same blocks

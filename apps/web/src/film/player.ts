@@ -70,6 +70,8 @@ export class FilmPlayer {
   /** Film time sound cues have been fired up to. */
   private cueTime = 0;
   private heldAt: number | null = null;
+  /** Film time the playback is paused at, or null. */
+  private pausedAt: number | null = null;
   private windowShot = -1;
   private activeVideo: HTMLVideoElement | null = null;
   private lastFrameMs = 0;
@@ -88,6 +90,7 @@ export class FilmPlayer {
   /** Film time now, seconds. */
   get time(): number {
     if (this.heldAt !== null) return this.heldAt;
+    if (this.pausedAt !== null) return this.pausedAt;
     return this.clock.now() - this.origin;
   }
 
@@ -131,8 +134,34 @@ export class FilmPlayer {
     this.renderer.renderer.setAnimationLoop(() => this.tick());
   }
 
+  /** True between `pause` and `resume`. */
+  get paused(): boolean {
+    return this.pausedAt !== null;
+  }
+
+  /**
+   * Freezes a playing film on its frame; `play` stays pending. The sound is
+   * the caller's: suspend the audio context alongside (D-027).
+   */
+  pause(): void {
+    if (!this.film || !this.finish || this.pausedAt !== null) return;
+    this.pausedAt = Math.max(0, Math.min(this.time, this.film.duration));
+    this.renderer.renderer.setAnimationLoop(null);
+    this.activeVideo?.pause();
+    this.lastFrameMs = 0;
+  }
+
+  /** Goes on from where `pause` froze the film. */
+  resume(): void {
+    if (this.pausedAt === null) return;
+    this.origin = this.clock.now() - this.pausedAt;
+    this.pausedAt = null;
+    this.renderer.renderer.setAnimationLoop(() => this.tick());
+  }
+
   /** Stops the picture (the last frame stays) and resolves `play`. The audio engine is left as it is. */
   stop(): void {
+    this.pausedAt = null;
     this.renderer.renderer.setAnimationLoop(null);
     this.activeVideo?.pause();
     this.activeVideo = null;
