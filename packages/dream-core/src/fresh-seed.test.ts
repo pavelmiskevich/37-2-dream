@@ -1,5 +1,6 @@
 import { describe, expect, it } from 'vitest';
-import { generateDream } from './dream';
+import { generateFilm } from './film/generate';
+import { TEST_LIBRARY } from './film/test-library';
 import {
   MIN_PROFILE_DISTANCE,
   RECENT_DREAMS,
@@ -23,8 +24,10 @@ describe('profileDistance', () => {
   const seeds = testSeeds(400, 'fresh/pairs');
   const profiles = seeds.map(profileOfSeed);
 
-  it('is the profile generateDream draws', () => {
-    for (const seed of seeds.slice(0, 20)) expect(profileOfSeed(seed)).toEqual(generateDream(seed).profile);
+  it('is the profile generateFilm draws', () => {
+    for (const seed of seeds.slice(0, 20)) {
+      expect(profileOfSeed(seed)).toEqual(generateFilm(seed, 'short', TEST_LIBRARY).profile);
+    }
   });
 
   it('is 0 for the same profile, symmetric and within [0, 1]', () => {

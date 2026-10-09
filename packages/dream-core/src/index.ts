@@ -40,47 +40,18 @@ export {
   type PickContext,
 } from './catalog';
 
+// Registry of intrusions and the planned awakening (D-020).
 export {
   AWAKENING_REASONS,
   DREAM_MOTIFS,
-  ECHO_CATALOG,
-  ECHO_SCENES,
   MOTIF_SOURCES,
-  NIGHTSTAND_ITEMS,
-  SCENE_IDS,
-  SLICE_SCENE_ORDER,
-  WILL_PAGES,
-  isSceneId,
-  type ApartmentParams,
   type AwakeningParams,
   type AwakeningReason,
-  type BuildingFloors,
   type DreamMotif,
-  type DreamScene,
-  type Echo,
-  type EchoMotif,
-  type FallParams,
-  type GravityDirection,
-  type JamFlavor,
-  type JamParams,
-  type LastWords,
-  type LastWordsOpening,
-  type LastWordsTrail,
   type MotifReveal,
-  type NightstandItem,
   type PlannedAwakeningReason,
   type RealSource,
-  type RoomLight,
-  type SceneId,
-  type SceneOf,
-  type SceneParams,
-  type SceneParamsMap,
-  type TimeOfDay,
-  type WillClause,
-  type YardParams,
 } from './scenes';
-
-export { findScene, generateDream, timelineSeed, type Dream, type DreamTransition, type TransitionKind } from './dream';
 
 export {
   MIN_PROFILE_DISTANCE,
@@ -90,176 +61,6 @@ export {
   profileOfSeed,
   type FreshSeedOptions,
 } from './fresh-seed';
-
-export {
-  strangestObjectSeed,
-  summarizeDream,
-  summaryWakeReason,
-  visitedScenes,
-  type DreamEventCount,
-  type DreamEventId,
-  type DreamRun,
-  type DreamSummary,
-  type StrangeObject,
-} from './summary';
-
-export {
-  ACTION_BUTTONS,
-  ALL_BUTTONS,
-  IDLE_INPUT,
-  LOOK_UNITS,
-  MAX_LOOK_PER_TICK,
-  MOVE_UNITS,
-  buttonBit,
-  buttonMask,
-  inputFromUnits,
-  inputToUnits,
-  isHeld,
-  quantizeInput,
-  type ActionButton,
-  type SimInput,
-  type Vec2,
-} from './input';
-
-export {
-  INPUT_LOG_FORMAT,
-  createInputRecorder,
-  inputsOf,
-  parseInputLog,
-  serializeInputLog,
-  type InputChange,
-  type InputLog,
-  type InputRecorder,
-} from './input-log';
-
-export {
-  EYE_HEIGHT,
-  MAX_PITCH,
-  SCENE_RULES,
-  SIMULATION_CHANNEL,
-  TICK_DT,
-  TICK_RATE,
-  WALK_SPEED,
-  createInitialState,
-  movePlayer,
-  replay,
-  runInputs,
-  sceneDurationTicks,
-  step,
-  type PlayerState,
-  type InitialStateOptions,
-  type SceneContext,
-  type SceneRules,
-  type SceneRulesMap,
-  type SceneVars,
-  type SimState,
-  type Vec3,
-} from './simulation';
-
-export {
-  APARTMENT,
-  APARTMENT_PHASES,
-  apartmentPhase,
-  apartmentPhaseAt,
-  apartmentSleep,
-  apartmentTimeline,
-  createApartmentRules,
-  lyingPose,
-  type ApartmentEnv,
-  type ApartmentPhase,
-  type ApartmentTimeline,
-} from './apartment';
-
-export {
-  AWAKENING,
-  AWAKENING_PHASES,
-  awakeningPhase,
-  awakeningPhaseAt,
-  awakeningTimeline,
-  awakeningWake,
-  createAwakeningRules,
-  isPlannedReason,
-  type AwakeningEnv,
-  type AwakeningPhase,
-  type AwakeningTimeline,
-} from './awakening';
-
-export {
-  ECHOING_SCENES,
-  SCENE_MOTIFS,
-  heardMotifs,
-  intrusionCues,
-  recordIntrusions,
-  type HeardMotif,
-  type Intrusion,
-  type IntrusionCue,
-} from './intrusions';
-
-export {
-  DREAMING_SCENES,
-  TEMPERATURE_MODEL,
-  applyHeat,
-  driftTemperature,
-  isDreamingScene,
-  temperatureAtLeast,
-  temperatureWakeReason,
-  temperatureWobble,
-  thermometerReading,
-  type TemperatureModel,
-} from './temperature';
-
-export { FALL_DRIFT, FALL_HEAT, FALL_TUMBLE, createFallRules, fallMonitorIntensity, fallenFraction, type FallEnv } from './fall';
-
-export {
-  JAM_CEILING,
-  JAM_EXIT,
-  JAM_GRAVITY,
-  JAM_GRAVITY_DIRECTIONS,
-  JAM_JAR,
-  JAM_MOTION,
-  JAM_TURN,
-  createJamRules,
-  frameAngle,
-  jamCarry,
-  jamLidOpensAt,
-  jamMotion,
-  rotateByQuat,
-  type JamEnv,
-  type JamGravity,
-} from './jam';
-
-export {
-  WILL_CHANNEL,
-  WILL_PAPERS,
-  generateWill,
-  willOfScene,
-  willPageText,
-  willVariantCount,
-  type WillPage,
-  type WillPaper,
-} from './will';
-
-export {
-  SWING,
-  SWING_HEAT,
-  SWING_HINT,
-  SWING_HINT_MAX,
-  SWING_OMEGA,
-  SWING_RELEASE,
-  YARD_LAYOUT_CHANNEL,
-  YARD_VARS,
-  calledSwingAmplitude,
-  createYardRules,
-  stepSwing,
-  swingAmplitude,
-  swingHeatRate,
-  swingHintLevel,
-  swingReleaseReady,
-  yardLayout,
-  yardSwingAmplitude,
-  type YardEnv,
-  type YardLayout,
-} from './yard';
 
 // Dream film (D-022): library manifest and edit decision list contract.
 export * from './film';
