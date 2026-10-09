@@ -6,6 +6,8 @@ Every model run goes through ThermalGuard:
   (laptop, kelvin, readable without admin rights) or ``nvidia-smi`` (desktop);
   no sensor -> the script refuses to start;
 - pause at ``pause_at`` and above until the temperature drops to ``resume_at``;
+- prompt encoding heats the laptop much faster than a frame, so it starts only
+  below the stricter ``encode_pause_at`` / ``encode_resume_at`` pair;
 - emergency stop at ``abort_at`` and above, also in the middle of a frame
   (watchdog thread);
 - duty cycle: after each frame rest at least ``duty`` x its generation time;
@@ -282,6 +284,10 @@ class ThermalLimits:
     """A pause lasts until the temperature drops to this value, C."""
     abort_at: float = 90.0
     """Emergency stop at this temperature and above, C (also mid-frame)."""
+    encode_pause_at: float = 75.0
+    """Text encoder work (loading it, each prompt) starts only below this, C."""
+    encode_resume_at: float = 65.0
+    """A pause before text encoder work lasts until this value, C."""
     duty: float = 1.0
     """Rest after a frame = duty x frame generation time."""
     min_rest: float = 0.0
@@ -290,7 +296,7 @@ class ThermalLimits:
     """Frames in a row before a long break; 0 = no batches."""
     batch_break: float = 600.0
     """Break between batches, seconds."""
-    poll_interval: float = 5.0
+    poll_interval: float = 2.0
     """How often the temperature is read while waiting or generating, seconds."""
     max_pause: float = 1800.0
     """Give up (emergency stop) if a pause has not cooled the device by then, seconds."""
@@ -305,6 +311,10 @@ class ThermalLimits:
             raise ValueError("resume_at must be below pause_at (hysteresis)")
         if not self.pause_at <= self.abort_at:
             raise ValueError("pause_at must not exceed abort_at")
+        if not self.encode_resume_at < self.encode_pause_at:
+            raise ValueError("encode_resume_at must be below encode_pause_at (hysteresis)")
+        if not self.encode_pause_at <= self.pause_at:
+            raise ValueError("encode_pause_at must not exceed pause_at")
         for name in ("duty", "min_rest", "batch_break", "max_pause", "kill_grace"):
             if getattr(self, name) < 0:
                 raise ValueError(f"{name} must be >= 0")
@@ -322,6 +332,8 @@ class Profile:
     default_device: str
     source: str
     """``generation.source`` written to the library manifest."""
+    encoder_threads: int | None = None
+    """CPU threads for the text encoder; None = torch default."""
 
 
 PROFILES: dict[str, Profile] = {
@@ -331,6 +343,7 @@ PROFILES: dict[str, Profile] = {
         limits=ThermalLimits(),
         default_device="xpu",
         source="local-laptop",
+        encoder_threads=4,
     ),
     "desktop": Profile(
         name="desktop",
@@ -341,6 +354,9 @@ PROFILES: dict[str, Profile] = {
             pause_at=80.0,
             resume_at=70.0,
             abort_at=83.0,
+            # The sensor is the GPU: encoding gets the same thresholds as a frame.
+            encode_pause_at=80.0,
+            encode_resume_at=70.0,
             duty=0.0,
             batch_size=0,
             batch_break=0.0,
@@ -560,19 +576,22 @@ class ThermalGuard:
             last = self.read()
             self._abort_if_hot(last, reason)
 
-    def wait_until_cool(self) -> float:
+    def wait_until_cool(self, *, encode: bool = False) -> float:
         """Return the temperature once it is below ``pause_at``.
 
         At ``pause_at`` and above, wait until it drops to ``resume_at``
-        (hysteresis); at ``abort_at`` or after ``max_pause``, stop.
+        (hysteresis); at ``abort_at`` or after ``max_pause``, stop. ``encode``
+        selects the stricter ``encode_pause_at`` / ``encode_resume_at`` pair.
         """
+        pause_at = self.limits.encode_pause_at if encode else self.limits.pause_at
+        resume_at = self.limits.encode_resume_at if encode else self.limits.resume_at
         value = self.read()
         self._abort_if_hot(value, "before frame")
-        if value < self.limits.pause_at:
+        if value < pause_at:
             return value
         started = self.clock()
-        self.log.write("pause", temp_c=value, note=f">= {self.limits.pause_at:.1f} C, waiting for {self.limits.resume_at:.1f} C")
-        while value > self.limits.resume_at:
+        self.log.write("pause", temp_c=value, note=f">= {pause_at:.1f} C, waiting for {resume_at:.1f} C")
+        while value > resume_at:
             if self.clock() - started >= self.limits.max_pause:
                 self.log.write("abort", temp_c=value, seconds=self.clock() - started, note="did not cool down")
                 raise ThermalAbort(
@@ -586,7 +605,7 @@ class ThermalGuard:
 
     # -- frames
 
-    def before_frame(self) -> float:
+    def before_frame(self, *, encode: bool = False) -> float:
         if not self.started:
             self.start()
         self.check_power_mid_run()
@@ -594,7 +613,7 @@ class ThermalGuard:
             self.log.write("batch_break", seconds=self.limits.batch_break, note=f"after {self.frames_in_batch} frames")
             self.rest(self.limits.batch_break, "batch break")
             self.frames_in_batch = 0
-        return self.wait_until_cool()
+        return self.wait_until_cool(encode=encode)
 
     def check_power_mid_run(self) -> None:
         try:
@@ -606,15 +625,23 @@ class ThermalGuard:
     def rest_seconds(self, generation_seconds: float) -> float:
         return max(self.limits.min_rest, self.limits.duty * generation_seconds)
 
-    def run(self, frame_id: str, generate: Callable[[Watchdog], T], *, counts: bool = True) -> T:
+    def run(
+        self,
+        frame_id: str,
+        generate: Callable[[Watchdog], T],
+        *,
+        counts: bool = True,
+        encode: bool = False,
+    ) -> T:
         """Generate one frame under protection.
 
         ``generate`` receives the watchdog and must call ``watchdog.check()``
         between diffusion steps. ``counts=False`` is for other model work (for
         example prompt encoding): it gets the same protection and rest but is
-        not counted as a frame of the batch.
+        not counted as a frame of the batch. ``encode=True`` marks text encoder
+        work, which starts only below the stricter encode thresholds.
         """
-        before = self.before_frame()
+        before = self.before_frame(encode=encode)
         watchdog = self.watchdog_factory(self.sensor, self.limits)
         watchdog.note(before)
         watchdog.start()
@@ -666,11 +693,13 @@ def add_guard_arguments(parser: argparse.ArgumentParser) -> None:
     group.add_argument("--pause-at", type=float, help="pause at this temperature, C (laptop 85)")
     group.add_argument("--resume-at", type=float, help="resume after cooling to this, C (laptop 70)")
     group.add_argument("--abort-at", type=float, help="emergency stop at this, C (laptop 90, desktop 83)")
+    group.add_argument("--encode-pause-at", type=float, help="text encoder work starts only below this, C (laptop 75)")
+    group.add_argument("--encode-resume-at", type=float, help="resume text encoder work after cooling to this, C (laptop 65)")
     group.add_argument("--duty", type=float, help="rest after a frame = duty x its time (laptop 1.0)")
     group.add_argument("--min-rest", type=float, help="minimum rest after a frame, s")
     group.add_argument("--batch-size", type=int, help="frames per batch, 0 = no batches (laptop 10)")
     group.add_argument("--batch-break", type=float, help="break between batches, s (laptop 600)")
-    group.add_argument("--poll-interval", type=float, help="sensor poll interval, s (5)")
+    group.add_argument("--poll-interval", type=float, help="sensor poll interval, s (2)")
     group.add_argument("--max-pause", type=float, help="stop if a pause lasts longer, s (1800)")
     group.add_argument("--log", type=Path, help="CSV log (default tools/generation/logs/thermal-<profile>.csv)")
     group.add_argument("--lock", type=Path, default=DEFAULT_LOCK, help="lock file")
@@ -679,10 +708,14 @@ def add_guard_arguments(parser: argparse.ArgumentParser) -> None:
 def limits_from_args(args: argparse.Namespace) -> ThermalLimits:
     base = PROFILES[args.profile].limits
     overrides = {}
-    for field in ("pause_at", "resume_at", "abort_at", "duty", "min_rest", "batch_size", "batch_break", "poll_interval", "max_pause"):
+    for field in ("pause_at", "resume_at", "abort_at", "encode_pause_at", "encode_resume_at", "duty", "min_rest", "batch_size", "batch_break", "poll_interval", "max_pause"):
         value = getattr(args, field, None)
         if value is not None:
             overrides[field] = value
+    # Lowering the main thresholds lowers the encode ones with them: never looser.
+    for field, cap in (("encode_pause_at", "pause_at"), ("encode_resume_at", "resume_at")):
+        if field not in overrides and cap in overrides:
+            overrides[field] = min(getattr(base, field), overrides[cap])
     limits = dataclasses.replace(base, **overrides)
     limits.validate()
     return limits
@@ -700,7 +733,9 @@ def describe(limits: ThermalLimits) -> str:
     )
     return (
         f"pause >= {limits.pause_at:.1f} C until <= {limits.resume_at:.1f} C, "
-        f"stop >= {limits.abort_at:.1f} C, rest {limits.duty:g} x frame time "
+        f"stop >= {limits.abort_at:.1f} C, "
+        f"text encoder below {limits.encode_pause_at:.1f} C (pause until <= {limits.encode_resume_at:.1f} C), "
+        f"rest {limits.duty:g} x frame time "
         f"(min {limits.min_rest:.0f} s), {batches}, mains power "
         f"{'required' if limits.require_ac else 'not required'}"
     )
