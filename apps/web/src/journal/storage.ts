@@ -12,24 +12,33 @@ import { parseSeed, type DreamSeed, type DreamSummary } from '@dream/core';
  * every dream is "СОН №1".
  */
 
-export interface JournalEntry {
+/** What a journal keeps about a dream: the game's summary or the film's (D-027); the seed names the dream. */
+export interface SeededSummary {
+  seed: DreamSeed;
+}
+
+export interface JournalEntry<S extends SeededSummary = DreamSummary> {
   /** "СОН №…": 1 for the first dream on this device. */
   number: number;
   seed: DreamSeed;
   /** When the dream ended, ISO 8601 (the app's clock; the core has none). */
   date: string;
-  summary: DreamSummary;
+  summary: S;
 }
 
-export interface DreamJournal {
-  /** Recorded dreams, oldest first. Empty without storage. */
-  entries(): JournalEntry[];
+export interface DreamJournal<S extends SeededSummary = DreamSummary> {
+  /**
+   * Recorded dreams, oldest first. Empty without storage. Entries written by
+   * an older build may carry a summary of another shape: only `number`, `seed`
+   * and `date` are checked on reading.
+   */
+  entries(): JournalEntry<S>[];
   /** Number the next dream gets: one more than the last recorded, or 1. */
   nextNumber(): number;
   /** Seeds of the last `count` dreams, oldest first. */
   recentSeeds(count: number): DreamSeed[];
   /** Records a dream and returns its entry, numbered, even if it could not be saved. */
-  record(summary: DreamSummary, date: Date): JournalEntry;
+  record(summary: S, date: Date): JournalEntry<S>;
 }
 
 export const JOURNAL_STORAGE_KEY = '37.2-dream/journal/v1';
@@ -46,9 +55,9 @@ export function browserStorage(): Storage | null {
   }
 }
 
-function isEntry(value: unknown): value is JournalEntry {
+function isEntry<S extends SeededSummary>(value: unknown): value is JournalEntry<S> {
   if (typeof value !== 'object' || value === null) return false;
-  const entry = value as Partial<Record<keyof JournalEntry, unknown>>;
+  const entry = value as Partial<Record<keyof JournalEntry<S>, unknown>>;
   return (
     typeof entry.number === 'number' &&
     Number.isInteger(entry.number) &&
@@ -66,22 +75,22 @@ export interface DreamJournalOptions {
   limit?: number;
 }
 
-export function createDreamJournal(
+export function createDreamJournal<S extends SeededSummary = DreamSummary>(
   storage: () => Storage | null = browserStorage,
   { key = JOURNAL_STORAGE_KEY, limit = JOURNAL_LIMIT }: DreamJournalOptions = {},
-): DreamJournal {
-  const read = (): JournalEntry[] => {
+): DreamJournal<S> {
+  const read = (): JournalEntry<S>[] => {
     try {
       const raw = storage()?.getItem(key);
       if (!raw) return [];
       const parsed: unknown = JSON.parse(raw);
-      return Array.isArray(parsed) ? parsed.filter(isEntry) : [];
+      return Array.isArray(parsed) ? parsed.filter((value): value is JournalEntry<S> => isEntry<S>(value)) : [];
     } catch {
       return [];
     }
   };
 
-  const write = (entries: readonly JournalEntry[]): void => {
+  const write = (entries: readonly JournalEntry<S>[]): void => {
     try {
       storage()?.setItem(key, JSON.stringify(entries));
     } catch {
@@ -89,7 +98,7 @@ export function createDreamJournal(
     }
   };
 
-  const nextNumber = (entries: readonly JournalEntry[]): number =>
+  const nextNumber = (entries: readonly JournalEntry<S>[]): number =>
     entries.reduce((max, entry) => Math.max(max, entry.number), 0) + 1;
 
   return {
@@ -98,7 +107,7 @@ export function createDreamJournal(
     recentSeeds: (count) => (count > 0 ? read().slice(-count).map((entry) => entry.seed) : []),
     record(summary, date) {
       const entries = read();
-      const entry: JournalEntry = { number: nextNumber(entries), seed: summary.seed, date: date.toISOString(), summary };
+      const entry: JournalEntry<S> = { number: nextNumber(entries), seed: summary.seed, date: date.toISOString(), summary };
       write([...entries, entry].slice(-limit));
       return entry;
     },

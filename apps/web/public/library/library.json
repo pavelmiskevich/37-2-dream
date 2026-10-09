@@ -5,6 +5,7 @@
       "id": "yard-night-vacuum-woman",
       "kind": "still",
       "file": "stills/yard-night-vacuum-woman.webp",
+      "depth": "depth/yard-night-vacuum-woman.png",
       "width": 1280,
       "height": 720,
       "tags": {
@@ -29,6 +30,7 @@
       "id": "yard-dusk-empty-swing",
       "kind": "still",
       "file": "stills/yard-dusk-empty-swing.webp",
+      "depth": "depth/yard-dusk-empty-swing.png",
       "width": 1280,
       "height": 720,
       "tags": {
@@ -52,6 +54,7 @@
       "id": "yard-night-window-silhouette",
       "kind": "still",
       "file": "stills/yard-night-window-silhouette.webp",
+      "depth": "depth/yard-night-window-silhouette.png",
       "width": 1280,
       "height": 720,
       "tags": {
@@ -73,6 +76,7 @@
       "id": "yard-day-pigeons",
       "kind": "still",
       "file": "stills/yard-day-pigeons.webp",
+      "depth": "depth/yard-day-pigeons.png",
       "width": 1280,
       "height": 720,
       "tags": {
@@ -96,6 +100,7 @@
       "id": "stairwell-mailboxes",
       "kind": "still",
       "file": "stills/stairwell-mailboxes.webp",
+      "depth": "depth/stairwell-mailboxes.png",
       "width": 1280,
       "height": 720,
       "tags": {
@@ -117,6 +122,7 @@
       "id": "stairwell-door-ajar",
       "kind": "still",
       "file": "stills/stairwell-door-ajar.webp",
+      "depth": "depth/stairwell-door-ajar.png",
       "width": 1280,
       "height": 720,
       "tags": {
@@ -138,6 +144,7 @@
       "id": "stairs-down",
       "kind": "still",
       "file": "stills/stairs-down.webp",
+      "depth": "depth/stairs-down.png",
       "width": 1280,
       "height": 720,
       "tags": {
@@ -159,6 +166,7 @@
       "id": "hospital-corridor-ventilator",
       "kind": "still",
       "file": "stills/hospital-corridor-ventilator.webp",
+      "depth": "depth/hospital-corridor-ventilator.png",
       "width": 1280,
       "height": 720,
       "tags": {
@@ -182,6 +190,7 @@
       "id": "thermometer-corridor-endless",
       "kind": "still",
       "file": "stills/thermometer-corridor-endless.webp",
+      "depth": "depth/thermometer-corridor-endless.png",
       "width": 1280,
       "height": 720,
       "tags": {
