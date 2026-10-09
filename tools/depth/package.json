@@ -1,0 +1,16 @@
+{
+  "name": "@dream/depth-tool",
+  "private": true,
+  "type": "module",
+  "description": "Depth maps for the stills of the dream library (D-028). Not part of the pnpm workspace or the web build.",
+  "engines": {
+    "node": ">=24"
+  },
+  "scripts": {
+    "depth": "node depth.mjs",
+    "test": "node --test"
+  },
+  "dependencies": {
+    "@huggingface/transformers": "4.3.1"
+  }
+}
