@@ -15,6 +15,7 @@ Thumbs.db
 # Local generation (tools/generation)
 tools/generation/.venv/
 tools/generation/logs/
+tools/generation/cache/
 tools/generation/.generate.lock
 # Depth maps (tools/depth): model weights
 tools/depth/.cache/

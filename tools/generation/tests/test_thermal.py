@@ -128,6 +128,21 @@ class LimitsTest(unittest.TestCase):
         self.assertTrue(limits.require_ac)
         self.assertEqual(thermal.PROFILES["desktop"].limits.abort_at, 83.0)
 
+    def test_encode_thresholds_are_stricter_on_the_laptop(self) -> None:
+        limits = thermal.PROFILES["laptop"].limits
+        self.assertEqual((limits.encode_pause_at, limits.encode_resume_at), (75.0, 65.0))
+        self.assertLess(limits.encode_pause_at, limits.pause_at)
+        # A 1.5 C/s rise must be seen well before it covers pause -> abort.
+        self.assertLessEqual(limits.poll_interval, 2.0)
+        for profile in thermal.PROFILES.values():
+            profile.limits.validate()
+
+    def test_encode_thresholds_never_looser_than_frame_ones(self) -> None:
+        with self.assertRaises(ValueError):
+            ThermalLimits(encode_pause_at=86).validate()
+        with self.assertRaises(ValueError):
+            ThermalLimits(encode_pause_at=70, encode_resume_at=70).validate()
+
     def test_hysteresis_must_be_real(self) -> None:
         with self.assertRaises(ValueError):
             ThermalLimits(pause_at=80, resume_at=80).validate()
@@ -148,6 +163,21 @@ class LimitsTest(unittest.TestCase):
         args = parser.parse_args(["--profile", "desktop"])
         self.assertEqual(thermal.limits_from_args(args).abort_at, 83)
         args = parser.parse_args(["--resume-at", "86"])
+        with self.assertRaises(ValueError):
+            thermal.limits_from_args(args)
+
+    def test_cli_encode_thresholds_follow_lowered_main_ones(self) -> None:
+        import argparse
+
+        parser = argparse.ArgumentParser()
+        thermal.add_guard_arguments(parser)
+        args = parser.parse_args(["--pause-at", "50", "--resume-at", "40", "--abort-at", "55"])
+        limits = thermal.limits_from_args(args)
+        self.assertEqual((limits.encode_pause_at, limits.encode_resume_at), (50, 40))
+        args = parser.parse_args(["--encode-pause-at", "72", "--encode-resume-at", "60"])
+        limits = thermal.limits_from_args(args)
+        self.assertEqual((limits.encode_pause_at, limits.encode_resume_at), (72, 60))
+        args = parser.parse_args(["--encode-pause-at", "88"])
         with self.assertRaises(ValueError):
             thermal.limits_from_args(args)
 
@@ -199,12 +229,25 @@ class PauseTest(unittest.TestCase):
         # resume: the pause must continue until 70 C (hysteresis).
         clock = FakeClock()
         sensor = ScriptedSensor(fn=lambda t: max(60.0, 85.0 - t / 5.0), clock=clock)
-        guard, clock, log = make_guard(sensor, clock=clock)
+        guard, clock, log = make_guard(sensor, limits=ThermalLimits(poll_interval=5.0), clock=clock)
         guard.start()
         value = guard.wait_until_cool()
         self.assertLessEqual(value, 70.0)
         self.assertEqual(clock.now, 75.0)  # 15 polls of 5 s
         self.assertEqual(events(log)[-2:], ["pause", "resume"])
+
+    def test_encode_work_pauses_at_its_own_threshold(self) -> None:
+        # 78 C is fine for a frame but too hot to start the text encoder.
+        readings = [60.0, 78.0, 72.0, 66.0, 64.0, 70.0]  # start, pause..., resume, after
+        guard, clock, log = make_guard(ScriptedSensor(readings), limits=ThermalLimits(duty=0))
+        guard.run("encode:a", frame_taking(clock, 4), counts=False, encode=True)
+        self.assertEqual(events(log), ["start", "pause", "resume", "work"])
+        self.assertEqual(log.rows[-1]["temp_before_c"], "64.0")
+
+    def test_frame_does_not_pause_at_encode_threshold(self) -> None:
+        guard, clock, log = make_guard(ScriptedSensor([60.0, 78.0]), limits=ThermalLimits(duty=0))
+        guard.run("f0", frame_taking(clock, 4))
+        self.assertNotIn("pause", events(log))
 
     def test_abort_during_pause(self) -> None:
         guard, _, log = make_guard(ScriptedSensor([60.0, 86.0, 88.0, 90.5]))
@@ -325,7 +368,7 @@ class BatchTest(unittest.TestCase):
         self.assertNotIn("batch_break", events(log))
 
     def test_still_hot_after_break_waits(self) -> None:
-        limits = ThermalLimits(batch_size=1, batch_break=10, duty=0)
+        limits = ThermalLimits(batch_size=1, batch_break=10, duty=0, poll_interval=5.0)
         readings = [60.0, 60.0, 60.0]  # start, before f0, after f0
         readings += [86.0, 86.0]  # during the break (2 polls)
         readings += [86.0, 75.0, 69.0]  # before f1: pause until 70
