@@ -9,7 +9,7 @@ import { SCARE_COUNT } from './beats';
 import { MAX_LOCATION_RUN, assetCooldown } from './cast';
 import { DREAM_LENGTH_SECONDS, FILM_SOUNDS, type DreamFilm, type DreamLength, type Shot } from './film';
 import { MIN_SHOT_MS, generateFilm } from './generate';
-import type { LibraryAsset, LibraryManifest, LocationTag } from './library';
+import { isWakingFrame, type LibraryAsset, type LibraryManifest, type LocationTag } from './library';
 import { MIN_FLASH_GAP_MS } from './look';
 import { TEST_LIBRARY, TEST_LIBRARY_NO_SCARES } from './test-library';
 
@@ -368,5 +368,52 @@ describe('generateFilm: libraries', { timeout: SLOW }, () => {
     expect(() => generateFilm(SNAPSHOT_SEEDS[0]!, 'short', { version: 1, assets: [] })).toThrow(RangeError);
     const onlyScares = { version: 1 as const, assets: TEST_LIBRARY.assets.filter((a) => a.tags.mood === 'scare') };
     expect(() => generateFilm(SNAPSHOT_SEEDS[0]!, 'short', onlyScares)).toThrow(RangeError);
+    // The frame of the awakening is not something to show inside the dream (D-030).
+    const onlyWaking = { version: 1 as const, assets: [...onlyScares.assets, wakingAsset('bedroom-day-waking')] };
+    expect(() => generateFilm(SNAPSHOT_SEEDS[0]!, 'short', onlyWaking)).toThrow(RangeError);
+  });
+});
+
+/** A frame of the awakening shaped like the real one: the bedroom by day. */
+function wakingAsset(id: string, tags: Partial<LibraryAsset['tags']> = {}, kind: LibraryAsset['kind'] = 'still'): LibraryAsset {
+  const bed = assets.get('bedroom-bed')!;
+  return { ...bed, id, kind, file: `stills/${id}.webp`, tags: { ...bed.tags, time: 'day', mood: 'calm', ...tags } };
+}
+
+describe('generateFilm: the frame of the awakening (D-030)', { timeout: SLOW }, () => {
+  it('is a still of the bedroom by day that is not a scare', () => {
+    expect(isWakingFrame(wakingAsset('a'))).toBe(true);
+    expect(isWakingFrame(wakingAsset('b', { mood: 'dread', people: 'face' }))).toBe(true);
+    expect(isWakingFrame(wakingAsset('c', { mood: 'scare' }))).toBe(false);
+    expect(isWakingFrame(wakingAsset('d', {}, 'clip'))).toBe(false);
+    expect(isWakingFrame(wakingAsset('e', { time: 'night' }))).toBe(false);
+    expect(isWakingFrame(wakingAsset('f', { location: 'kitchen' }))).toBe(false);
+    expect(TEST_LIBRARY.assets.filter(isWakingFrame)).toEqual([]);
+  });
+
+  it.each(LENGTHS)('is never cast: a library with it cuts the same film as one without it (%s)', (length) => {
+    const first = wakingAsset('bedroom-day-waking');
+    const last = wakingAsset('bedroom-day-window', { people: 'distant' });
+    const withWaking: LibraryManifest = { version: 1, assets: [first, ...TEST_LIBRARY.assets, last] };
+    seeds.slice(0, 300).forEach((seed, i) => {
+      const film = generateFilm(seed, length, withWaking);
+      expect(film.shots.filter((shot) => shot.assetId === first.id || shot.assetId === last.id)).toEqual([]);
+      expect(film).toEqual(films[length][i]);
+    });
+  });
+
+  it('copes with a location that only had the frame of the awakening', () => {
+    const library: LibraryManifest = {
+      version: 1,
+      assets: [...TEST_LIBRARY.assets.filter((a) => a.tags.location !== 'bedroom'), wakingAsset('bedroom-day-waking')],
+    };
+    for (const seed of seeds.slice(0, 100)) {
+      for (const length of LENGTHS) {
+        const film = generateFilm(seed, length, library);
+        expect(film.shots.length).toBeGreaterThan(0);
+        expect(film.shots.filter((shot) => shot.assetId.startsWith('bedroom'))).toEqual([]);
+        expect(ms(film.shots.reduce((sum, s) => sum + s.duration, 0))).toBe(ms(film.duration));
+      }
+    }
   });
 });

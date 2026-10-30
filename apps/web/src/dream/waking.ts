@@ -1,4 +1,4 @@
-import type { LibraryAsset, LibraryManifest } from '@dream/core';
+import { isWakingFrame, type LibraryAsset, type LibraryManifest } from '@dream/core';
 import type { SoundEvent } from '../audio';
 
 /**
@@ -33,17 +33,14 @@ export const WAKING = {
 } as const;
 
 /**
- * The frame he wakes up in: a still of the bedroom by day that is not a
- * scare. Null while the library has none — the awakening then plays over a
- * dark screen. The first match in manifest order, so it is stable.
+ * The frame he wakes up in: the first frame of the awakening (`isWakingFrame`
+ * of the core: a still of the bedroom by day that is not a scare) in manifest
+ * order, so it is stable. The dream itself never shows such frames (D-030).
+ * Null while the library has none — the awakening then plays over a dark
+ * screen.
  */
 export function wakingFrame(library: LibraryManifest): LibraryAsset | null {
-  return (
-    library.assets.find(
-      (asset) =>
-        asset.kind === 'still' && asset.tags.location === 'bedroom' && asset.tags.time === 'day' && asset.tags.mood !== 'scare',
-    ) ?? null
-  );
+  return library.assets.find(isWakingFrame) ?? null;
 }
 
 /** What the awakening shows at a moment, each opacity 0…1. */

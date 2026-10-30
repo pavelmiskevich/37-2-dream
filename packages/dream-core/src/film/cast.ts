@@ -9,6 +9,8 @@
  * - `mood` and `people` follow the beat: calm frames open and let go, dread
  *   frames build and peak, empty frames wait. `scare` frames are cast only
  *   as scares and nothing else is.
+ * - Frames of the awakening (`isWakingFrame`: the bedroom by day) are never
+ *   cast: they belong to the awakening only (D-030).
  * - `leaning` is the dream profile (spec §4): medical dreams lean to hospital
  *   corridors and monitors, Soviet dreams to yards and stairwells, and so on.
  * - `compatibility` is the matrix of spec §19 between the previous shot and
@@ -24,7 +26,7 @@ import { clamp, lerp } from '../math';
 import type { DreamProfile, ProfileIntensityKey } from '../profile';
 import type { Rng } from '../rng';
 import type { BeatRole } from './beats';
-import type { LibraryAsset, LocationTag, MoodTag, MotifTag, PeopleTag } from './library';
+import { isWakingFrame, type LibraryAsset, type LocationTag, type MoodTag, type MotifTag, type PeopleTag } from './library';
 
 type Leaning = 'medical' | 'soviet' | 'domestic' | 'physics' | 'absurd';
 
@@ -178,9 +180,10 @@ export interface Caster {
 }
 
 export function createCaster(assets: readonly LibraryAsset[], profile: DreamProfile, rng: Rng): Caster {
-  const frames = assets.filter((asset) => asset.tags.mood !== 'scare');
+  // Frames of the awakening are left out entirely (D-030), as if the library did not have them.
+  const frames = assets.filter((asset) => asset.tags.mood !== 'scare' && !isWakingFrame(asset));
   const scares = assets.filter((asset) => asset.tags.mood === 'scare');
-  if (frames.length === 0) throw new RangeError('generateFilm: the library has no frames besides scares.');
+  if (frames.length === 0) throw new RangeError('generateFilm: the library has no frames besides scares and the awakening.');
 
   const frameCooldown = assetCooldown(frames.length);
   const scareCooldown = Math.max(0, scares.length - 1);

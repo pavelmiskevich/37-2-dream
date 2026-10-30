@@ -4,12 +4,16 @@ import {
   MOTIF_TAGS,
   PEOPLE_TAGS,
   TIME_TAGS,
+  createSeededRng,
   generateFilm,
+  isWakingFrame,
   normalizeSeed,
+  seedFromEntropy,
   type LibraryManifest,
 } from '@dream/core';
 import { describe, expect, it } from 'vitest';
 import manifestJson from '../../public/library/library.json?raw';
+import { wakingFrame } from '../dream/waking';
 
 /**
  * The project library (#35): the manifest is valid, every frame has its file,
@@ -68,6 +72,25 @@ describe('library manifest', () => {
     for (const length of ['short', 'long'] as const) {
       const film = generateFilm(normalizeSeed('DREAM-8F72-A19C-37B2'), length, manifest);
       expect(film.shots.length).toBeGreaterThan(0);
+    }
+  });
+
+  it('has a frame to wake up in, and the dream never shows it (D-030)', () => {
+    const waking = wakingFrame(manifest);
+    expect(waking).not.toBeNull();
+    const rng = createSeededRng('test/library-waking-seeds');
+    const seeds = [
+      normalizeSeed('DREAM-8F72-A19C-37B2'),
+      normalizeSeed('DREAM-0000-0000-0000'),
+      normalizeSeed('DREAM-C0DE-BEEF-0451'),
+      ...Array.from({ length: 200 }, () => seedFromEntropy(Array.from({ length: 6 }, () => rng.int(0, 255)))),
+    ];
+    const byId = new Map(manifest.assets.map((asset) => [asset.id, asset]));
+    for (const seed of seeds) {
+      for (const length of ['short', 'long'] as const) {
+        const shown = generateFilm(seed, length, manifest).shots.map((shot) => byId.get(shot.assetId)!);
+        expect(shown.filter(isWakingFrame).map((asset) => asset.id), `${seed} ${length}`).toEqual([]);
+      }
     }
   });
 });
