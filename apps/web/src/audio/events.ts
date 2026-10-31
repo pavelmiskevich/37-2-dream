@@ -1,4 +1,5 @@
 import type { LayerName } from './layers';
+import type { SampleId } from './samples';
 
 export const SOUNDS = ['monitor', 'ventilator', 'vacuum', 'hum', 'breath', 'kitchen'] as const;
 export type SoundId = (typeof SOUNDS)[number];
@@ -55,4 +56,24 @@ export type SoundEvent =
   | { type: 'layer.volume'; layer: LayerName; value: number }
   | { type: 'master.volume'; value: number }
   /** Low-pass muffling of the whole mix, 0 (open) … 1 (heard through jam); see `muffleCutoff`. */
-  | { type: 'master.muffle'; value: number };
+  | { type: 'master.muffle'; value: number }
+  /**
+   * Plays a recording (D-032) at once, in its layer (`DEFAULT_SAMPLE_LAYER`
+   * unless `layer` says otherwise). `gain` 0…1 (default 1); `offset` and
+   * `duration` pick a part of the file (default: all of it); fades in
+   * seconds; a `loop` plays until `sample.stop`. A recording that is not
+   * loaded (yet, or ever) is silently skipped.
+   */
+  | {
+      type: 'sample.play';
+      sample: SampleId;
+      layer?: LayerName;
+      gain?: number;
+      offset?: number;
+      duration?: number;
+      fadeIn?: number;
+      fadeOut?: number;
+      loop?: boolean;
+    }
+  /** Fades out every play of the recording. */
+  | { type: 'sample.stop'; sample: SampleId; fade?: number };

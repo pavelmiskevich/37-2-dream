@@ -10,7 +10,7 @@ import {
   type FilmSummary,
   type LibraryManifest,
 } from '@dream/core';
-import { createAudioEngine, unlockAudio, type AudioEngine } from '../audio';
+import { createAudioEngine, loadSampleBank, unlockAudio, type AudioEngine } from '../audio';
 import { FilmPlayer, fetchLibrary } from '../film';
 import { assetUrl } from '../film/preload';
 import { cardFileName } from '../journal/blocks';
@@ -25,7 +25,7 @@ import { createPauseScreen } from './pause-screen';
 import { DEFAULT_LENGTH, dreamUrl, parseDreamQuery, queryWithDream } from './query';
 import { readSettings, writeSettings } from './settings';
 import { createSleepScreen, type SleepChoice } from './sleep-screen';
-import { wakingFrame } from './waking';
+import { wakingFrame, wakingSamples } from './waking';
 
 /**
  * Phase of the page, mirrored to `<html data-phase>` for playtests:
@@ -35,6 +35,7 @@ import { wakingFrame } from './waking';
 export type DreamPhase = 'awake' | 'dreaming' | 'waking' | 'journal';
 
 const LIBRARY_ROOT = `${import.meta.env.BASE_URL}library/`;
+const SOUNDS_ROOT = `${import.meta.env.BASE_URL}sounds/`;
 
 /** The journal's sounds of the flat fade out over this long, seconds. */
 const JOURNAL_FADE = 2;
@@ -171,7 +172,10 @@ export function startDreamFilm(canvas: HTMLCanvasElement, search: string = windo
     player = new FilmPlayer({ canvas, library: manifest, root: LIBRARY_ROOT, settings: { noFlash: choice.noFlash } });
     await player.load(film);
     context = await unlocked;
-    audio = context ? createAudioEngine(context, { seed }) : null;
+    // The awakening's recordings (D-032) load during the dream; nothing waits for them.
+    audio = context
+      ? createAudioEngine(context, { seed, samples: loadSampleBank(context, SOUNDS_ROOT, wakingSamples(seed)) })
+      : null;
 
     // Created now, so the bedroom frame loads while he is still asleep.
     const frame = wakingFrame(manifest);
