@@ -25,6 +25,8 @@ export const MOTIF_TAGS = [
   'thermometer',
   'pigeons',
   'will_papers',
+  'spider',
+  'snake',
 ] as const;
 export type MotifTag = (typeof MOTIF_TAGS)[number];
 

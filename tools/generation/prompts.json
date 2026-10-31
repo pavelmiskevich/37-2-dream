@@ -237,6 +237,55 @@
       "tags": { "location": "bedroom", "motifs": ["thermometer"], "people": "none", "mood": "calm", "time": "day" },
       "seed": 369001,
       "scene": "A small bedroom in a Soviet apartment on a grey day, a patterned carpet hanging on the wall above an unmade bed, a wooden stool by the bed with a glass thermometer and a glass of tea, pale daylight through net curtains, nobody in the room"
+    },
+    {
+      "id": "stairwell-spider-web",
+      "priority": 2,
+      "tags": { "location": "stairwell", "motifs": ["spider"], "people": "none", "mood": "uneasy", "time": "night" },
+      "seed": 650101,
+      "scene": "A huge black spider the size of a cat sitting in a thick dusty web in the upper corner of a Soviet apartment stairwell, peeling green paint, a single dim bulb below, concrete steps leading up into darkness, nobody there"
+    },
+    {
+      "id": "bedroom-spider-ceiling",
+      "priority": 2,
+      "tags": { "location": "bedroom", "motifs": ["spider"], "people": "none", "mood": "dread", "time": "night" },
+      "seed": 650102,
+      "scene": "A dark Soviet-era bedroom at night seen from the bed, an enormous spider as big as a dog clinging to the ceiling right above the bed, its long legs spread across the cracked plaster, faint streetlight through the curtains, nobody else in the room"
+    },
+    {
+      "id": "hospital-corridor-snake",
+      "priority": 2,
+      "tags": { "location": "hospital_corridor", "motifs": ["snake"], "people": "none", "mood": "dread", "time": "night" },
+      "seed": 650103,
+      "scene": "A long empty hospital corridor at night, a long dark snake slowly crawling across the worn linoleum floor in the middle of the corridor, flickering fluorescent tubes, pale tiled walls, closed doors, nobody there"
+    },
+    {
+      "id": "kitchen-snake-sink",
+      "priority": 2,
+      "tags": { "location": "kitchen", "motifs": ["snake"], "people": "none", "mood": "dread", "time": "night" },
+      "seed": 650104,
+      "scene": "A cramped Soviet-era kitchen at night lit only by a weak bulb, a thick snake coiled inside the old enamel sink among unwashed dishes, its head raised over the edge, a dripping tap, nobody in the room"
+    },
+    {
+      "id": "yard-snake-swing",
+      "priority": 2,
+      "tags": { "location": "yard", "motifs": ["snake", "swing"], "people": "none", "mood": "uneasy", "time": "dusk" },
+      "seed": 650105,
+      "scene": "An empty Soviet courtyard at dusk, an old metal swing hanging still, a long snake wrapped around one of the swing chains and hanging down towards the seat, grey panel apartment blocks behind, bare trees, nobody there"
+    },
+    {
+      "id": "scare-spider-lunge",
+      "priority": 2,
+      "tags": { "location": "bedroom", "motifs": ["spider"], "people": "none", "mood": "scare", "time": "night" },
+      "seed": 650106,
+      "scene": "Extreme close-up of a giant hairy spider lunging straight at the camera in a pitch-dark room, its many glossy black eyes reflecting a harsh camera flash, fangs open, legs filling the whole frame"
+    },
+    {
+      "id": "scare-snake-bed",
+      "priority": 2,
+      "tags": { "location": "bedroom", "motifs": ["snake"], "people": "none", "mood": "scare", "time": "night" },
+      "seed": 650107,
+      "scene": "Extreme close-up of a large snake striking straight at the camera out of darkness at the edge of a bed, mouth wide open, fangs bared, lit by a harsh camera flash, the pillow blurred behind it"
     }
   ]
 }

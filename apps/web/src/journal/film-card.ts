@@ -31,6 +31,8 @@ const MOTIF_OBJECT_TEXT: Readonly<Record<MotifTag, string>> = {
   thermometer: 'Термометр',
   pigeons: 'Голуби',
   will_papers: 'Листы завещания',
+  spider: 'Паук',
+  snake: 'Змея',
 };
 
 const LOCATION_OBJECT_TEXT: Readonly<Partial<Record<LocationTag, string>>> = {

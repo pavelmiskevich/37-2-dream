@@ -573,6 +573,175 @@
         "seed": 369001,
         "source": "local-laptop"
       }
+    },
+    {
+      "id": "stairwell-spider-web",
+      "kind": "still",
+      "file": "stills/stairwell-spider-web.webp",
+      "depth": "depth/stairwell-spider-web.png",
+      "width": 1280,
+      "height": 720,
+      "tags": {
+        "location": "stairwell",
+        "motifs": [
+          "spider"
+        ],
+        "people": "none",
+        "mood": "uneasy",
+        "time": "night"
+      },
+      "generation": {
+        "model": "Tongyi-MAI/Z-Image-Turbo",
+        "license": "Apache-2.0",
+        "prompt": "A huge black spider the size of a cat sitting in a thick dusty web in the upper corner of a Soviet apartment stairwell, peeling green paint, a single dim bulb below, concrete steps leading up into darkness, nobody there. Realistic 35mm film photograph, heavy film grain, muted desaturated colors, faces hidden in shadow, Russia in the 1990s, Soviet-era interiors and courtyards, the logic of a dream, quiet, uneasy and unsettling atmosphere.",
+        "seed": 650101,
+        "source": "hf-space:mcp-tools/Z-Image-Turbo"
+      }
+    },
+    {
+      "id": "bedroom-spider-ceiling",
+      "kind": "still",
+      "file": "stills/bedroom-spider-ceiling.webp",
+      "depth": "depth/bedroom-spider-ceiling.png",
+      "width": 1280,
+      "height": 720,
+      "tags": {
+        "location": "bedroom",
+        "motifs": [
+          "spider"
+        ],
+        "people": "none",
+        "mood": "dread",
+        "time": "night"
+      },
+      "generation": {
+        "model": "Tongyi-MAI/Z-Image-Turbo",
+        "license": "Apache-2.0",
+        "prompt": "A dark Soviet-era bedroom at night seen from the bed, an enormous spider as big as a dog clinging to the ceiling right above the bed, its long legs spread across the cracked plaster, faint streetlight through the curtains, nobody else in the room. Realistic 35mm film photograph, heavy film grain, muted desaturated colors, faces hidden in shadow, Russia in the 1990s, Soviet-era interiors and courtyards, the logic of a dream, quiet, uneasy and unsettling atmosphere.",
+        "seed": 650102,
+        "source": "hf-space:mcp-tools/Z-Image-Turbo"
+      }
+    },
+    {
+      "id": "hospital-corridor-snake",
+      "kind": "still",
+      "file": "stills/hospital-corridor-snake.webp",
+      "depth": "depth/hospital-corridor-snake.png",
+      "width": 1280,
+      "height": 720,
+      "tags": {
+        "location": "hospital_corridor",
+        "motifs": [
+          "snake"
+        ],
+        "people": "none",
+        "mood": "dread",
+        "time": "night"
+      },
+      "generation": {
+        "model": "Tongyi-MAI/Z-Image-Turbo",
+        "license": "Apache-2.0",
+        "prompt": "A long empty hospital corridor at night, a long dark snake slowly crawling across the worn linoleum floor in the middle of the corridor, flickering fluorescent tubes, pale tiled walls, closed doors, nobody there. Realistic 35mm film photograph, heavy film grain, muted desaturated colors, faces hidden in shadow, Russia in the 1990s, Soviet-era interiors and courtyards, the logic of a dream, quiet, uneasy and unsettling atmosphere.",
+        "seed": 650103,
+        "source": "hf-space:mcp-tools/Z-Image-Turbo"
+      }
+    },
+    {
+      "id": "kitchen-snake-sink",
+      "kind": "still",
+      "file": "stills/kitchen-snake-sink.webp",
+      "depth": "depth/kitchen-snake-sink.png",
+      "width": 1280,
+      "height": 720,
+      "tags": {
+        "location": "kitchen",
+        "motifs": [
+          "snake"
+        ],
+        "people": "none",
+        "mood": "dread",
+        "time": "night"
+      },
+      "generation": {
+        "model": "Tongyi-MAI/Z-Image-Turbo",
+        "license": "Apache-2.0",
+        "prompt": "A cramped Soviet-era kitchen at night lit only by a weak bulb, a thick snake coiled inside the old enamel sink among unwashed dishes, its head raised over the edge, a dripping tap, nobody in the room. Realistic 35mm film photograph, heavy film grain, muted desaturated colors, faces hidden in shadow, Russia in the 1990s, Soviet-era interiors and courtyards, the logic of a dream, quiet, uneasy and unsettling atmosphere.",
+        "seed": 650104,
+        "source": "hf-space:mcp-tools/Z-Image-Turbo"
+      }
+    },
+    {
+      "id": "yard-snake-swing",
+      "kind": "still",
+      "file": "stills/yard-snake-swing.webp",
+      "depth": "depth/yard-snake-swing.png",
+      "width": 1280,
+      "height": 720,
+      "tags": {
+        "location": "yard",
+        "motifs": [
+          "snake",
+          "swing"
+        ],
+        "people": "none",
+        "mood": "uneasy",
+        "time": "dusk"
+      },
+      "generation": {
+        "model": "Tongyi-MAI/Z-Image-Turbo",
+        "license": "Apache-2.0",
+        "prompt": "An empty Soviet courtyard at dusk, an old metal swing hanging still, a long snake wrapped around one of the swing chains and hanging down towards the seat, grey panel apartment blocks behind, bare trees, nobody there. Realistic 35mm film photograph, heavy film grain, muted desaturated colors, faces hidden in shadow, Russia in the 1990s, Soviet-era interiors and courtyards, the logic of a dream, quiet, uneasy and unsettling atmosphere.",
+        "seed": 650105,
+        "source": "hf-space:mcp-tools/Z-Image-Turbo"
+      }
+    },
+    {
+      "id": "scare-spider-lunge",
+      "kind": "still",
+      "file": "stills/scare-spider-lunge.webp",
+      "depth": "depth/scare-spider-lunge.png",
+      "width": 1280,
+      "height": 720,
+      "tags": {
+        "location": "bedroom",
+        "motifs": [
+          "spider"
+        ],
+        "people": "none",
+        "mood": "scare",
+        "time": "night"
+      },
+      "generation": {
+        "model": "Tongyi-MAI/Z-Image-Turbo",
+        "license": "Apache-2.0",
+        "prompt": "Extreme close-up of a giant hairy spider lunging straight at the camera in a pitch-dark room, its many glossy black eyes reflecting a harsh camera flash, fangs open, legs filling the whole frame. Realistic 35mm film photograph, heavy film grain, harsh direct flash, muted desaturated colors, Russia in the 1990s, the logic of a dream, sudden shocking moment.",
+        "seed": 650106,
+        "source": "hf-space:mcp-tools/Z-Image-Turbo"
+      }
+    },
+    {
+      "id": "scare-snake-bed",
+      "kind": "still",
+      "file": "stills/scare-snake-bed.webp",
+      "depth": "depth/scare-snake-bed.png",
+      "width": 1280,
+      "height": 720,
+      "tags": {
+        "location": "bedroom",
+        "motifs": [
+          "snake"
+        ],
+        "people": "none",
+        "mood": "scare",
+        "time": "night"
+      },
+      "generation": {
+        "model": "Tongyi-MAI/Z-Image-Turbo",
+        "license": "Apache-2.0",
+        "prompt": "Extreme close-up of a large snake striking straight at the camera out of darkness at the edge of a bed, mouth wide open, fangs bared, lit by a harsh camera flash, the pillow blurred behind it. Realistic 35mm film photograph, heavy film grain, harsh direct flash, muted desaturated colors, Russia in the 1990s, the logic of a dream, sudden shocking moment.",
+        "seed": 650107,
+        "source": "hf-space:mcp-tools/Z-Image-Turbo"
+      }
     }
   ]
 }
