@@ -25,7 +25,8 @@
       "id": "jam-jar-inside",
       "priority": 1,
       "tags": { "location": "jam_jar", "motifs": [], "people": "none", "mood": "dread", "time": "interior" },
-      "scene": "View from inside a huge glass jar of dark cherry jam, thick red syrup and drowned berries filling the frame, a blurred kitchen and a window seen through the curved glass wall above, light coming down through the jam"
+      "seed": 484214,
+      "scene": "Underwater-like macro shot submerged inside thick dark red cherry jam, whole cherries and seeds suspended around the camera, everything glowing deep red and murky, the round mouth of the jar far above as a pale blurred circle of light, claustrophobic"
     },
     {
       "id": "jam-jar-shelf",
@@ -37,25 +38,29 @@
       "id": "bedroom-night-carpet",
       "priority": 1,
       "tags": { "location": "bedroom", "motifs": [], "people": "none", "mood": "uneasy", "time": "night" },
-      "scene": "A small Soviet apartment bedroom at night, a red patterned carpet hanging on the wall above a narrow bed with a crumpled blanket, a polished wardrobe, streetlight through net curtains, the doorway to a black hallway left open"
+      "seed": 484205,
+      "scene": "A Soviet-era bedroom deep at night, only cold blue moonlight from the window, a patterned carpet hanging on the wall above an empty unmade bed, long shadows across the floor, the doorway to the dark corridor open, nobody in the room"
     },
     {
       "id": "bedroom-monitor",
       "priority": 1,
       "tags": { "location": "bedroom", "motifs": ["monitor"], "people": "distant", "mood": "dread", "time": "night" },
-      "scene": "A home bedroom at night with a hospital heart monitor standing on the bedside table next to a crocheted doily and a glass of water, its green line glowing; under the blanket the shape of a sleeping man, his face turned to the wall"
+      "seed": 484213,
+      "scene": "A dark Soviet-era bedroom at night seen from the doorway, a sleeping figure in bed is only a dark silhouette under the blanket with the head turned to the wall, an old heart monitor on the bedside table glowing green is the only light, its glow on the wall and the pillow, the figure's face completely invisible in darkness"
     },
     {
       "id": "kitchen-night-fridge",
       "priority": 1,
       "tags": { "location": "kitchen", "motifs": [], "people": "none", "mood": "uneasy", "time": "night" },
-      "scene": "A cramped Soviet kitchen at night lit only by the open door of an old white refrigerator, oilcloth on the table, a kettle on a gas stove, a tiled wall, the window black with frost patterns"
+      "seed": 484201,
+      "scene": "A cramped Soviet-era kitchen at night, the old white refrigerator door standing wide open, its pale yellow light the only light in the room, spilling over a linoleum floor and a small table with an oilcloth, dark window behind, nobody in the room"
     },
     {
       "id": "kitchen-jam-table",
       "priority": 1,
       "tags": { "location": "kitchen", "motifs": ["thermometer"], "people": "none", "mood": "uneasy", "time": "day" },
-      "scene": "A kitchen table in flat grey daylight: an open jar of jam, a teaspoon standing upright in it, a mercury thermometer lying on a saucer, a cup of cold tea, a calendar from 1994 on the wall"
+      "seed": 484206,
+      "scene": "A kitchen table with an oilcloth in grey daylight, an open jar of cherry jam with a spoon standing upright in it, a glass mercury thermometer lying next to it, a glass of tea in a metal holder, a plain bare wall behind, nothing written anywhere"
     },
     {
       "id": "elevator-cabin",
@@ -73,7 +78,8 @@
       "id": "hospital-corridor-gurney",
       "priority": 1,
       "tags": { "location": "hospital_corridor", "motifs": ["monitor"], "people": "none", "mood": "dread", "time": "night" },
-      "scene": "A Soviet hospital corridor at night, tiled walls painted half blue, an empty gurney with a rumpled sheet, a heart monitor on a trolley beside it still showing a green line, a single lamp burning at the nurse's post far away"
+      "seed": 484202,
+      "scene": "An empty hospital corridor at night, a metal gurney with a white sheet standing alone in the middle of the corridor, an old heart monitor on a trolley beside it with a faint green line, flickering fluorescent tube overhead, pale tiled walls, doors closed, nobody in the corridor"
     },
     {
       "id": "hospital-ward-ventilator",

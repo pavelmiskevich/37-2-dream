@@ -251,9 +251,9 @@
       "generation": {
         "model": "Tongyi-MAI/Z-Image-Turbo",
         "license": "Apache-2.0",
-        "prompt": "View from inside a huge glass jar of dark cherry jam, thick red syrup and drowned berries filling the frame, a blurred kitchen and a window seen through the curved glass wall above, light coming down through the jam. Realistic 35mm film photograph, heavy film grain, muted desaturated colors, faces hidden in shadow, Russia in the 1990s, Soviet-era interiors and courtyards, the logic of a dream, quiet, uneasy and unsettling atmosphere.",
-        "seed": 1136427144,
-        "source": "local-laptop"
+        "prompt": "Underwater-like macro shot submerged inside thick dark red cherry jam, whole cherries and seeds suspended around the camera, everything glowing deep red and murky, the round mouth of the jar far above as a pale blurred circle of light, claustrophobic. Realistic 35mm film photograph, heavy film grain, muted desaturated colors, the logic of a dream, quiet, uneasy and unsettling atmosphere.",
+        "seed": 484214,
+        "source": "hf-space:mcp-tools/Z-Image-Turbo"
       }
     },
     {
@@ -295,9 +295,9 @@
       "generation": {
         "model": "Tongyi-MAI/Z-Image-Turbo",
         "license": "Apache-2.0",
-        "prompt": "A small Soviet apartment bedroom at night, a red patterned carpet hanging on the wall above a narrow bed with a crumpled blanket, a polished wardrobe, streetlight through net curtains, the doorway to a black hallway left open. Realistic 35mm film photograph, heavy film grain, muted desaturated colors, faces hidden in shadow, Russia in the 1990s, Soviet-era interiors and courtyards, the logic of a dream, quiet, uneasy and unsettling atmosphere.",
-        "seed": 976736028,
-        "source": "local-laptop"
+        "prompt": "A Soviet-era bedroom deep at night, only cold blue moonlight from the window, a patterned carpet hanging on the wall above an empty unmade bed, long shadows across the floor, the doorway to the dark corridor open, nobody in the room. Realistic 35mm film photograph, heavy film grain, muted desaturated colors, faces hidden in shadow, Russia in the 1990s, Soviet-era interiors and courtyards, the logic of a dream, quiet, uneasy and unsettling atmosphere.",
+        "seed": 484205,
+        "source": "hf-space:mcp-tools/Z-Image-Turbo"
       }
     },
     {
@@ -319,9 +319,9 @@
       "generation": {
         "model": "Tongyi-MAI/Z-Image-Turbo",
         "license": "Apache-2.0",
-        "prompt": "A home bedroom at night with a hospital heart monitor standing on the bedside table next to a crocheted doily and a glass of water, its green line glowing; under the blanket the shape of a sleeping man, his face turned to the wall. Realistic 35mm film photograph, heavy film grain, muted desaturated colors, faces hidden in shadow, Russia in the 1990s, Soviet-era interiors and courtyards, the logic of a dream, quiet, uneasy and unsettling atmosphere.",
-        "seed": 983149475,
-        "source": "local-laptop"
+        "prompt": "A dark Soviet-era bedroom at night seen from the doorway, a sleeping figure in bed is only a dark silhouette under the blanket with the head turned to the wall, an old heart monitor on the bedside table glowing green is the only light, its glow on the wall and the pillow, the figure's face completely invisible in darkness. Realistic 35mm film photograph, heavy film grain, muted desaturated colors, faces hidden in shadow, Russia in the 1990s, the logic of a dream, quiet, uneasy and unsettling atmosphere.",
+        "seed": 484213,
+        "source": "hf-space:mcp-tools/Z-Image-Turbo"
       }
     },
     {
@@ -341,9 +341,9 @@
       "generation": {
         "model": "Tongyi-MAI/Z-Image-Turbo",
         "license": "Apache-2.0",
-        "prompt": "A cramped Soviet kitchen at night lit only by the open door of an old white refrigerator, oilcloth on the table, a kettle on a gas stove, a tiled wall, the window black with frost patterns. Realistic 35mm film photograph, heavy film grain, muted desaturated colors, faces hidden in shadow, Russia in the 1990s, Soviet-era interiors and courtyards, the logic of a dream, quiet, uneasy and unsettling atmosphere.",
-        "seed": 473686300,
-        "source": "local-laptop"
+        "prompt": "A cramped Soviet-era kitchen at night, the old white refrigerator door standing wide open, its pale yellow light the only light in the room, spilling over a linoleum floor and a small table with an oilcloth, dark window behind, nobody in the room. Realistic 35mm film photograph, heavy film grain, muted desaturated colors, faces hidden in shadow, Russia in the 1990s, Soviet-era interiors and courtyards, the logic of a dream, quiet, uneasy and unsettling atmosphere.",
+        "seed": 484201,
+        "source": "hf-space:mcp-tools/Z-Image-Turbo"
       }
     },
     {
@@ -365,9 +365,9 @@
       "generation": {
         "model": "Tongyi-MAI/Z-Image-Turbo",
         "license": "Apache-2.0",
-        "prompt": "A kitchen table in flat grey daylight: an open jar of jam, a teaspoon standing upright in it, a mercury thermometer lying on a saucer, a cup of cold tea, a calendar from 1994 on the wall. Realistic 35mm film photograph, heavy film grain, muted desaturated colors, faces hidden in shadow, Russia in the 1990s, Soviet-era interiors and courtyards, the logic of a dream, quiet, uneasy and unsettling atmosphere.",
-        "seed": 1155187910,
-        "source": "local-laptop"
+        "prompt": "A kitchen table with an oilcloth in grey daylight, an open jar of cherry jam with a spoon standing upright in it, a glass mercury thermometer lying next to it, a glass of tea in a metal holder, a plain bare wall behind, nothing written anywhere. Realistic 35mm film photograph, heavy film grain, muted desaturated colors, faces hidden in shadow, Russia in the 1990s, Soviet-era interiors and courtyards, the logic of a dream, quiet, uneasy and unsettling atmosphere.",
+        "seed": 484206,
+        "source": "hf-space:mcp-tools/Z-Image-Turbo"
       }
     },
     {
@@ -433,9 +433,9 @@
       "generation": {
         "model": "Tongyi-MAI/Z-Image-Turbo",
         "license": "Apache-2.0",
-        "prompt": "A Soviet hospital corridor at night, tiled walls painted half blue, an empty gurney with a rumpled sheet, a heart monitor on a trolley beside it still showing a green line, a single lamp burning at the nurse's post far away. Realistic 35mm film photograph, heavy film grain, muted desaturated colors, faces hidden in shadow, Russia in the 1990s, Soviet-era interiors and courtyards, the logic of a dream, quiet, uneasy and unsettling atmosphere.",
-        "seed": 829848158,
-        "source": "local-laptop"
+        "prompt": "An empty hospital corridor at night, a metal gurney with a white sheet standing alone in the middle of the corridor, an old heart monitor on a trolley beside it with a faint green line, flickering fluorescent tube overhead, pale tiled walls, doors closed, nobody in the corridor. Realistic 35mm film photograph, heavy film grain, muted desaturated colors, faces hidden in shadow, Russia in the 1990s, Soviet-era interiors and courtyards, the logic of a dream, quiet, uneasy and unsettling atmosphere.",
+        "seed": 484202,
+        "source": "hf-space:mcp-tools/Z-Image-Turbo"
       }
     },
     {
