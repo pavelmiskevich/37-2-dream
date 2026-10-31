@@ -567,7 +567,7 @@
           "duration": 171129,
           "filetype": "mp3",
           "attribution": "\"room tone apartment hallway quiet night fluorescent light hum and distant noises and police siren Montreal, Canada.flac\" by kyles is marked with CC0 1.0. To view the terms, visit https://creativecommons.org/publicdomain/zero/1.0/.",
-          "note": "Коридор дома ночью, гудит люминесцентная лампа."
+          "note": "Коридор дома ночью, гудит люминесцентная лампа, далёкие шумы и полицейская сирена."
         }
       ]
     },
@@ -1059,7 +1059,7 @@
           "duration": 180000,
           "filetype": "mp3",
           "attribution": "\"Room Tone, Empty Hospital\" by Kinoton is marked with CC0 1.0. To view the terms, visit https://creativecommons.org/publicdomain/zero/1.0/.",
-          "note": "Тон пустой больничной палаты, гул вентиляции, 180 с (нашёлся по «ventilator hospital»)."
+          "note": "Тон пустой больничной палаты, гул вентиляции (нашёлся по «ventilator hospital»)."
         },
         {
           "id": "19648c53-aada-4465-b39a-c573a6e02c7c",
@@ -1073,7 +1073,7 @@
           "duration": 34018,
           "filetype": "mp3",
           "attribution": "\"hospital hall3 heavy ventilation, distant sounds, elevator open and cart comes out.flac\" by kyles is marked with CC0 1.0. To view the terms, visit https://creativecommons.org/publicdomain/zero/1.0/.",
-          "note": "Больничный холл, сильная вентиляция, далёкие звуки, лифт, 34 с (по «ventilator hospital»)."
+          "note": "Больничный холл, сильная вентиляция, далёкие звуки, лифт (по «ventilator hospital»)."
         },
         {
           "id": "d338011b-ea04-47b4-8e39-471e387ee8a4",
@@ -1087,7 +1087,7 @@
           "duration": 222699,
           "filetype": "mp3",
           "attribution": "\"room tone hospital exam room noisy ventilation Montreal, Canada.flac\" by kyles is marked with CC0 1.0. To view the terms, visit https://creativecommons.org/publicdomain/zero/1.0/.",
-          "note": "Смотровая больницы, шумная вентиляция, 223 с (по «ventilator hospital»)."
+          "note": "Смотровая больницы, шумная вентиляция (по «ventilator hospital»)."
         }
       ]
     },

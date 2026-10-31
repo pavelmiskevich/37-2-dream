@@ -176,7 +176,7 @@ CC0 атрибуции не требует, но проект всё равно 
 - [Interior bedroom apartment night room tone roomtone](https://freesound.org/people/franciscopcoutinho/sounds/466123) — franciscopcoutinho, 180 с. Спальня квартиры ночью, тон комнаты: основа для спальни.
 - [room tone apartment small room quiet +distant drips and traffic haze](https://freesound.org/people/kyles/sounds/637797) — kyles, 87 с. Маленькая тихая комната, далёкие капли и машины.
 - [indoor_ apartments_hall_noise 2](https://freesound.org/people/Kostrava/sounds/333960) — Kostrava, 162 с. Холл многоквартирного дома: бетон, далёкий гул — подъезд.
-- [room tone apartment hallway quiet night fluorescent light hum and distant noises and police siren Montreal, Canada](https://freesound.org/people/kyles/sounds/635718) — kyles, 171 с. Коридор дома ночью, гудит люминесцентная лампа.
+- [room tone apartment hallway quiet night fluorescent light hum and distant noises and police siren Montreal, Canada](https://freesound.org/people/kyles/sounds/635718) — kyles, 171 с. Коридор дома ночью, гудит люминесцентная лампа, далёкие шумы и полицейская сирена.
 
 ### monitor
 
@@ -251,9 +251,9 @@ CC0 атрибуции не требует, но проект всё равно 
 Запрос: `hospital corridor ambience`.
 
 - [HOSPITAL - LONG CORRIDOR - ATMO / AMB (02)](https://freesound.org/people/tferrino/sounds/618353) — tferrino, 107 с. Длинный больничный коридор, атмосфера.
-- [Room Tone, Empty Hospital](https://freesound.org/people/Kinoton/sounds/670070) — Kinoton, 180 с. Тон пустой больничной палаты, гул вентиляции, 180 с (нашёлся по «ventilator hospital»).
-- [hospital hall3 heavy ventilation, distant sounds, elevator open and cart comes out](https://freesound.org/people/kyles/sounds/451886) — kyles, 34 с. Больничный холл, сильная вентиляция, далёкие звуки, лифт, 34 с (по «ventilator hospital»).
-- [room tone hospital exam room noisy ventilation Montreal, Canada](https://freesound.org/people/kyles/sounds/451922) — kyles, 223 с. Смотровая больницы, шумная вентиляция, 223 с (по «ventilator hospital»).
+- [Room Tone, Empty Hospital](https://freesound.org/people/Kinoton/sounds/670070) — Kinoton, 180 с. Тон пустой больничной палаты, гул вентиляции (нашёлся по «ventilator hospital»).
+- [hospital hall3 heavy ventilation, distant sounds, elevator open and cart comes out](https://freesound.org/people/kyles/sounds/451886) — kyles, 34 с. Больничный холл, сильная вентиляция, далёкие звуки, лифт (по «ventilator hospital»).
+- [room tone hospital exam room noisy ventilation Montreal, Canada](https://freesound.org/people/kyles/sounds/451922) — kyles, 223 с. Смотровая больницы, шумная вентиляция (по «ventilator hospital»).
 
 ### wind
 
