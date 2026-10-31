@@ -79,3 +79,14 @@ export interface LibraryManifest {
   version: 1;
   assets: readonly LibraryAsset[];
 }
+
+/**
+ * Whether `asset` is a frame of the awakening (D-027, D-030): a still of the
+ * bedroom by day that is not a scare. Such frames belong to the awakening
+ * only — the edit never casts them inside the dream, and the web app wakes
+ * up into the first of them.
+ */
+export function isWakingFrame(asset: LibraryAsset): boolean {
+  const { location, time, mood } = asset.tags;
+  return asset.kind === 'still' && location === 'bedroom' && time === 'day' && mood !== 'scare';
+}
