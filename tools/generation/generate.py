@@ -60,7 +60,7 @@ LOCATION_TAGS = (
     "kitchen",
     "elevator",
 )
-MOTIF_TAGS = ("swing", "vacuum_woman", "ventilator", "monitor", "thermometer", "pigeons", "will_papers", "spider", "snake")
+MOTIF_TAGS = ("swing", "vacuum_woman", "ventilator", "monitor", "thermometer", "pigeons", "will_papers", "spider", "snake", "giant_shapes")
 PEOPLE_TAGS = ("none", "distant", "face")
 MOOD_TAGS = ("calm", "uneasy", "dread", "scare")
 TIME_TAGS = ("night", "dusk", "day", "interior")
