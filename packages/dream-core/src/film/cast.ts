@@ -64,6 +64,7 @@ export const MOTIF_LEANINGS: Readonly<Record<MotifTag, Leanings>> = {
   will_papers: { domestic: 1, absurd: 0.4 },
   spider: { domestic: 0.6, absurd: 0.7 },
   snake: { absurd: 0.8, domestic: 0.3, medical: 0.3 },
+  giant_shapes: { physics: 1, absurd: 0.8 },
 };
 
 /** `+`, `++`, `+++` of the compatibility matrix (spec §19). */
@@ -104,6 +105,8 @@ export const COMPATIBILITY: readonly (readonly [Tag, Tag, number])[] = [
   ['stairwell', 'spider', PLUS],
   ['bedroom', 'spider', PLUS],
   ['hospital_corridor', 'snake', PLUS],
+  ['bedroom', 'giant_shapes', PLUS],
+  ['yard', 'giant_shapes', PLUS],
 ];
 
 const MOOD_WEIGHTS: Readonly<Record<BeatRole, Readonly<Record<Exclude<MoodTag, 'scare'>, number>>>> = {

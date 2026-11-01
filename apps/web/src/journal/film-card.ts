@@ -33,6 +33,7 @@ const MOTIF_OBJECT_TEXT: Readonly<Record<MotifTag, string>> = {
   will_papers: 'Листы завещания',
   spider: 'Паук',
   snake: 'Змея',
+  giant_shapes: 'Гигантские шары и кубы',
 };
 
 const LOCATION_OBJECT_TEXT: Readonly<Partial<Record<LocationTag, string>>> = {
