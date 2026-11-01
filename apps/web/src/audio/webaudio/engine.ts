@@ -11,8 +11,10 @@ import { clamp01 } from '../math';
 import { MUFFLE, muffleCutoff } from '../muffle';
 import { soundProfileFromSeed, type SoundProfile } from '../profile';
 import type { AudioSeed } from '../rng';
+import { DEFAULT_SAMPLE_LAYER, samplePlayShape, type SampleId } from '../samples';
 import { NoiseBank } from './noise-bank';
-import { MIN_FADE, glideParam, rampParam } from './params';
+import { MIN_FADE, glideParam, rampParam, releaseInstance } from './params';
+import { EMPTY_SAMPLE_BANK, type SampleBank } from './sample-bank';
 import {
   createBreathVoice,
   CreakVoice,
@@ -31,6 +33,8 @@ export interface AudioEngineOptions {
   seed: AudioSeed;
   /** How far ahead periodic sounds are scheduled, seconds. */
   lookahead?: number;
+  /** Recordings `sample.play` can play (D-032); without a bank every recording is skipped. */
+  samples?: SampleBank;
 }
 
 export interface AudioEngine {
@@ -40,12 +44,20 @@ export interface AudioEngine {
   /** Applies a sound event coming from the simulation. */
   handle(event: SoundEvent): void;
   isPlaying(sound: SoundId): boolean;
+  /** True once the recording is loaded and decoded, so `sample.play` will be heard. */
+  hasSample(sample: SampleId): boolean;
   /** Layer the sound is playing in, or null when it is off. */
   layerOf(sound: SoundId): LayerName | null;
   /** Current effective layer gains after compatibility rules and master volume. */
   layerGains(): LayerGains;
   /** Fades everything out and detaches from the context. The context itself stays open. */
   dispose(fade?: number): void;
+}
+
+/** One play of a recording: its source and the gain that shapes its fades. */
+interface SamplePlay {
+  out: GainNode;
+  source: AudioBufferSourceNode;
 }
 
 /** Ramp time for layer gain changes (ducking, volume sliders). */
@@ -85,6 +97,9 @@ class WebAudioEngine implements AudioEngine {
   private readonly stinger: StingerVoice;
   private readonly stingerBus: GainNode;
   private readonly voiceLayer = new Map<SoundId, LayerName>();
+  private readonly samples: SampleBank;
+  /** Plays of recordings still sounding, to stop them on `sample.stop` and `dispose`. */
+  private readonly samplePlays = new Map<SampleId, Set<SamplePlay>>();
   private timer: ReturnType<typeof setInterval> | null;
   private disposed = false;
 
@@ -94,6 +109,7 @@ class WebAudioEngine implements AudioEngine {
   ) {
     this.seed = options.seed;
     this.lookahead = options.lookahead ?? 0.15;
+    this.samples = options.samples ?? EMPTY_SAMPLE_BANK;
     this.profile = soundProfileFromSeed(options.seed);
 
     // Safety limiter: several loud sounds at once must not distort.
@@ -190,12 +206,22 @@ class WebAudioEngine implements AudioEngine {
       case 'master.muffle':
         glideParam(this.muffle.frequency, muffleCutoff(event.value), this.context.currentTime, MUFFLE.glide);
         break;
+      case 'sample.play':
+        this.playSample(event);
+        break;
+      case 'sample.stop':
+        this.stopSample(event.sample, event.fade ?? 0.3);
+        break;
     }
     this.tick();
   }
 
   isPlaying(sound: SoundId): boolean {
     return this.voices[sound].playing;
+  }
+
+  hasSample(sample: SampleId): boolean {
+    return this.samples.get(sample) !== null;
   }
 
   layerOf(sound: SoundId): LayerName | null {
@@ -209,6 +235,7 @@ class WebAudioEngine implements AudioEngine {
   dispose(fade = 0.3): void {
     if (this.disposed) return;
     for (const sound of SOUNDS) this.stop(sound, fade);
+    for (const sample of [...this.samplePlays.keys()]) this.stopSample(sample, fade);
     this.disposed = true;
     if (this.timer !== null) clearInterval(this.timer);
     this.timer = null;
@@ -240,6 +267,49 @@ class WebAudioEngine implements AudioEngine {
     voice.stop(fade ?? voice.defaultFadeOut);
     this.voiceLayer.delete(sound);
     this.applyMix();
+  }
+
+  private playSample(event: Extract<SoundEvent, { type: 'sample.play' }>): void {
+    const buffer = this.samples.get(event.sample);
+    if (!buffer) return;
+    const shape = samplePlayShape(buffer.duration, event);
+    if (shape.duration <= 0) return;
+    const ctx = this.context;
+    const now = ctx.currentTime;
+    const level = clamp01(event.gain ?? 1);
+
+    const out = ctx.createGain();
+    out.gain.setValueAtTime(0, now);
+    out.gain.linearRampToValueAtTime(level, now + Math.max(shape.fadeIn, MIN_FADE));
+    const source = ctx.createBufferSource();
+    source.buffer = buffer;
+    source.loop = event.loop ?? false;
+    source.connect(out);
+    out.connect(this.layers[event.layer ?? DEFAULT_SAMPLE_LAYER[event.sample]]);
+    source.start(now, shape.offset);
+    if (Number.isFinite(shape.duration)) {
+      const end = now + shape.duration;
+      const fadeOut = Math.max(shape.fadeOut, MIN_FADE);
+      out.gain.setValueAtTime(level, Math.max(now + Math.max(shape.fadeIn, MIN_FADE), end - fadeOut));
+      out.gain.linearRampToValueAtTime(0, end);
+      source.stop(end + 0.05);
+    }
+
+    const play: SamplePlay = { out, source };
+    const plays = this.samplePlays.get(event.sample) ?? new Set<SamplePlay>();
+    plays.add(play);
+    this.samplePlays.set(event.sample, plays);
+    source.addEventListener('ended', () => {
+      plays.delete(play);
+      setTimeout(() => out.disconnect(), 250);
+    });
+  }
+
+  private stopSample(sample: SampleId, fade: number): void {
+    const plays = this.samplePlays.get(sample);
+    if (!plays) return;
+    for (const play of plays) releaseInstance(this.context, play.out, [play.source], fade);
+    plays.clear();
   }
 
   private mix(): LayerGains {
