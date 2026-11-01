@@ -286,6 +286,27 @@
       "tags": { "location": "bedroom", "motifs": ["snake"], "people": "none", "mood": "scare", "time": "night" },
       "seed": 650107,
       "scene": "Extreme close-up of a large snake striking straight at the camera out of darkness at the edge of a bed, mouth wide open, fangs bared, lit by a harsh camera flash, the pillow blurred behind it"
+    },
+    {
+      "id": "bedroom-giant-spheres",
+      "priority": 2,
+      "tags": { "location": "bedroom", "motifs": ["giant_shapes"], "people": "distant", "mood": "dread", "time": "night" },
+      "seed": 150101,
+      "scene": "A small Soviet-era bedroom at night almost completely filled by three enormous smooth grey spheres, each three times taller than a man, pressing against the walls and the ceiling, a man in pajamas standing tiny beside them with his face in shadow, a weak lamp"
+    },
+    {
+      "id": "yard-giant-cubes",
+      "priority": 2,
+      "tags": { "location": "yard", "motifs": ["giant_shapes"], "people": "distant", "mood": "dread", "time": "dusk" },
+      "seed": 150112,
+      "scene": "Three gigantic plain grey concrete cubes, each as tall as a three-storey building, standing in the middle of an empty Soviet courtyard at dusk, one cube tilted and balanced on its edge, a tiny man far below them in the foreground looking up, grey panel apartment blocks around"
+    },
+    {
+      "id": "stairwell-giant-ball",
+      "priority": 2,
+      "tags": { "location": "stairwell", "motifs": ["giant_shapes"], "people": "none", "mood": "uneasy", "time": "interior" },
+      "seed": 150103,
+      "scene": "A narrow Soviet apartment stairwell completely blocked by one gigantic smooth white ball wedged between the walls and the steps, far too big for the space, peeling paint, a dim bulb, nobody there"
     }
   ]
 }
