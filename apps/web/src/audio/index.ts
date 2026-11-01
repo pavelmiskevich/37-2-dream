@@ -1,5 +1,7 @@
 export { createAudioEngine, type AudioEngine, type AudioEngineOptions } from './webaudio/engine';
 export { unlockAudio } from './webaudio/unlock';
+export { EMPTY_SAMPLE_BANK, loadSampleBank, type SampleBank } from './webaudio/sample-bank';
+export { DEFAULT_SAMPLE_LAYER, SAMPLES, SAMPLE_IDS, samplePlayShape, sampleUrl, type SampleId } from './samples';
 export { DEFAULT_SOUND_LAYER, SOUNDS, type SoundEvent, type SoundId } from './events';
 export { DEFAULT_LAYER_VOLUMES, LAYERS, LAYER_RULES, type LayerGains, type LayerName } from './layers';
 export { soundProfileFromSeed, type SoundProfile } from './profile';

@@ -1,7 +1,7 @@
 import type { AwakeningReason } from '@dream/core';
 import type { AudioEngine } from '../audio';
 import { KITCHEN_CALL, NOTHING_SERIOUS, reasonLine, temperatureText } from './lines';
-import { dueWakingCues, wakingCues, wakingView } from './waking';
+import { dueWakingCues, wakingCues, wakingRoomTone, wakingView } from './waking';
 import './dream.css';
 
 /**
@@ -65,7 +65,8 @@ export function createAwakening(options: AwakeningOptions, root: HTMLElement = d
   element.append(room, center, call);
   root.append(element);
 
-  const cues = wakingCues();
+  // Decided when the awakening starts: by then the recordings have had the whole dream to load.
+  let cues = wakingCues();
   let time = 0;
   /** Sound cues have been fired up to here; starts before 0 so the cues of the very start fire. */
   let cueTime = -1;
@@ -101,6 +102,8 @@ export function createAwakening(options: AwakeningOptions, root: HTMLElement = d
   return {
     element,
     run() {
+      const audio = options.audio;
+      if (audio) cues = wakingCues({ roomTone: wakingRoomTone(String(audio.seed)), has: (sample) => audio.hasSample(sample) });
       element.hidden = false;
       draw();
       return new Promise<void>((resolve) => {
