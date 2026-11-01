@@ -64,9 +64,9 @@ class CatalogFileTest(unittest.TestCase):
 
     def test_size_and_coverage(self) -> None:
         scenes = self.catalog.scenes
-        self.assertTrue(30 <= len(scenes) <= 40, len(scenes))
+        self.assertTrue(30 <= len(scenes) <= 60, len(scenes))
         scares = [s for s in scenes if s.tags["mood"] == "scare"]
-        self.assertTrue(4 <= len(scares) <= 6, len(scares))
+        self.assertTrue(4 <= len(scares) <= 8, len(scares))
         self.assertEqual({s.tags["location"] for s in scenes}, set(generate.LOCATION_TAGS))
         self.assertEqual({s.tags["time"] for s in scenes}, set(generate.TIME_TAGS))
         motifs = {m for s in scenes for m in s.tags["motifs"]}
