@@ -1,278 +1,226 @@
-# Компьютер с RTX 5070 Ti: настройка и работа с ноутбука
+# Компьютер с RTX 5070 Ti: клипы вручную
 
-Пошаговая инструкция для владельца: как подготовить компьютер с RTX 5070 Ti
-(16 ГБ видеопамяти, 96 ГБ RAM) и как пользоваться его мощностью, сидя за
-ноутбуком. Первая задача для компьютера — #39 (видеоклипы Wan 2.2).
+Инструкция для владельца: как на компьютере с RTX 5070 Ti (16 ГБ видеопамяти,
+96 ГБ RAM) своими руками делать видеоклипы для сна по готовым промптам и
+отдавать их на проверку. Claude Code на компьютер не ставится. Задача — #39.
 
 ## Как это устроено
 
-Видеокарту компьютера нельзя «подключить» к ноутбуку так, чтобы ноутбук считал
-ею сам. Работает другая схема: **тяжёлое считает компьютер, а управляете вы с
-ноутбука** (или с телефона).
-
 ```text
-ноутбук / телефон ──(интернет)──> Claude Code на компьютере ──> RTX 5070 Ti
-        ^                                   │
-        └──────── GitHub (ветка, PR) <──────┘  кадры, клипы, манифест
+компьютер: ComfyUI + Wan 2.2 TI2V-5B ──> MP4-файлы ──> ноутбук (папка) ──> Claude Code
+              кадр библиотеки + промпт                                 проверка, сжатие,
+                                                                        манифест, PR
 ```
 
-- На компьютере работает своя сессия Claude Code: генерирует кадры и клипы,
-  коммитит в ветку и открывает PR.
-- С ноутбука вы пишете этой сессии через **Remote Control** (claude.ai/code
-  или приложение Claude) — без настройки сети.
-- Для прямого доступа к командной строке компьютера — **SSH через Tailscale**
-  (необязательно, но полезно при сбоях).
-- Результаты приходят на ноутбук через GitHub: `git pull` — и новые кадры и
-  клипы видны в `pnpm dev`.
+1. Вы ставите на компьютер ComfyUI — бесплатную программу с окнами, без
+   командной строки.
+2. Открываете в ней готовый шаблон Wan 2.2 5B, подставляете кадр из
+   библиотеки, промпт и seed из этого файла, жмёте «Run».
+3. Готовые MP4 переносите на ноутбук и говорите мне, где они лежат.
+4. Я смотрю клипы по кадрам, показываю вам, сжимаю для веба, вношу в манифест
+   и подключаю к монтажу. Неудачные — переделываете с другим seed или
+   поправленным промптом.
 
-## Часть 1. Подготовка компьютера (один раз, за самим компьютером)
+## 1. Подготовка компьютера (один раз)
 
-### 1. Система и драйвер
+1. **Драйвер NVIDIA.** Свежий Game Ready или Studio — с nvidia.com или через
+   NVIDIA App. Проверка в PowerShell: `nvidia-smi` — в шапке
+   `CUDA Version: 12.8` или выше и `NVIDIA GeForce RTX 5070 Ti`.
+2. **Место на диске.** Не меньше 40 ГБ: модели ~18 ГБ, сама программа и её
+   Python ~10 ГБ, клипы.
+3. **Сон.** На время генерации компьютер не должен засыпать: «Параметры →
+   Система → Питание → Переводить в спящий режим при питании от сети:
+   Никогда» (на время работы с клипами).
 
-1. Обновить Windows.
-2. Поставить свежий драйвер NVIDIA (Game Ready или Studio) с nvidia.com или
-   через NVIDIA App.
-3. Проверить в PowerShell:
+## 2. ComfyUI
 
-   ```powershell
-   nvidia-smi
-   ```
+1. Скачать **ComfyUI Desktop для Windows (NVIDIA)** с официального сайта
+   comfy.org (кнопка Download). Бесплатно.
+2. Установить. В мастере установки:
+   - видеокарта — **NVIDIA (CUDA)**;
+   - папка установки — на диске, где есть 40 ГБ (запомните путь: там будут
+     модели и готовые видео);
+   - импорт из старой установки — пропустить;
+   - остальное по умолчанию.
 
-   В шапке должно быть `CUDA Version: 12.8` или выше и строка
-   `NVIDIA GeForce RTX 5070 Ti`.
-4. Свободное место на диске — не меньше 100 ГБ: модель кадров ~33 ГБ, модель
-   клипов — ещё несколько десятков ГБ, плюс окружение Python.
-5. Чтобы компьютер не засыпал посреди генерации и был доступен издалека
-   (PowerShell):
+   Мастер сам скачает Python и PyTorch с поддержкой RTX 50xx — это займёт
+   время.
+3. Запустить ComfyUI. Откроется окно с пустым или стартовым графом из
+   прямоугольников (узлов) — это нормально.
 
-   ```powershell
-   powercfg /change standby-timeout-ac 0
-   ```
+## 3. Шаблон Wan 2.2 и модели
 
-   Это правило только для компьютера. На ноутбуке режим питания не менять.
+1. В ComfyUI: меню **Workflow → Browse Templates** (или значок шаблонов на
+   левой панели) → раздел **Video** → шаблон **Wan 2.2 5B** (Text/Image to
+   Video, «ti2v»). Откроется граф.
+2. ComfyUI покажет окно **«Missing models»** со списком файлов — нажать
+   **Download** у каждого и дождаться конца. Должны скачаться три файла:
 
-### 2. Программы
+   | Файл | Папка внутри `models` | Размер |
+   |---|---|---|
+   | `wan2.2_ti2v_5B_fp16.safetensors` | `diffusion_models` | ~10 ГБ |
+   | `umt5_xxl_fp8_e4m3fn_scaled.safetensors` | `text_encoders` | ~6,7 ГБ |
+   | `wan2.2_vae.safetensors` | `vae` | ~1,4 ГБ |
 
-Поставить (всё бесплатно):
+   Если окно не появилось, эти файлы лежат на huggingface.co в репозиториях
+   `Comfy-Org/Wan_2.2_ComfyUI_Repackaged` и `Comfy-Org/Wan_2.1_ComfyUI_repackaged`
+   (папка `split_files`). Скачать и положить в указанные папки внутри папки
+   установки, затем перезапустить ComfyUI.
 
-| Что | Откуда | Проверка |
+   Модель — Wan 2.2 TI2V-5B от Wan-AI, лицензия Apache-2.0 (коммерческое
+   использование разрешено). Других моделей не скачивать: у многих моделей с
+   сайтов вроде Civitai лицензия запрещает коммерческое использование.
+3. Сохранить шаблон себе: **Workflow → Save As** → `dream-clip`. Дальше
+   открывать его.
+
+## 4. Настройка шаблона (один раз)
+
+В графе найти узлы и выставить значения. Узел можно найти поиском по двойному
+щелчку на пустом месте или просто по заголовку.
+
+| Узел | Поле | Значение |
 |---|---|---|
-| Git для Windows | git-scm.com | `git --version` |
-| Python 3.12 | python.org (галочка «Add to PATH») | `py -3.12 --version` |
-| Node.js 24 | nodejs.org (LTS 24) | `node --version` → `v24…` |
-| pnpm | `corepack enable` в PowerShell от администратора | `pnpm --version` |
-| GitHub CLI | cli.github.com | `gh --version` |
+| **Load Image** | — | Если узел бледный или фиолетовый (отключён) — выделить щелчком и нажать **Ctrl+B**, чтобы включить. Без него получится видео из текста, а нужно из кадра |
+| **Wan22ImageToVideoLatent** | `width` × `height` | `1280` × `704` |
+| | `length` | `121` (5 секунд при 24 к/с) |
+| | `batch_size` | `1` |
+| **KSampler** | `seed` | из таблицы клипов ниже |
+| | `control after generate` | **`fixed`** — иначе seed поменяется сам, и я не смогу записать его в манифест |
+| | `steps`, `cfg`, `sampler`, `scheduler` | не трогать (по умолчанию 20, 5, `uni_pc`, `simple`) |
+| **CLIP Text Encode** (верхний, зелёный, Positive) | текст | промпт клипа из таблицы ниже |
+| **CLIP Text Encode** (нижний, красный, Negative) | текст | не трогать (там стандартный негативный промпт на китайском) |
+| **Save Video** / **Create Video** | `fps` | `24` |
+| | имя файла (`filename_prefix`) | id клипа из таблицы, например `clip-yard-swing-alone` |
 
-### 3. GitHub и авторство коммитов
+Сохранить: **Ctrl+S**.
 
-```powershell
-gh auth login                      # GitHub.com → HTTPS → войти как pavelmiskevich
-gh auth setup-git
-git config --global user.name "pavelmiskevich"
-git config --global user.email "48240641+pavelmiskevich@users.noreply.github.com"
-```
+## 5. Как сделать один клип
 
-Почта — служебная почта аккаунта `pavelmiskevich`. С `pmiskevich@gmail.com`
-коммиты GitHub припишет аккаунту `pmiskevich-cmd`.
+1. Скачать входной кадр по ссылке из таблицы (файл `.webp`, сохранить куда
+   удобно).
+2. В узле **Load Image** нажать **choose file to upload** и выбрать кадр.
+   Кадр 1280×720 программа сама подрежет до 1280×704 по центру.
+3. Вставить промпт клипа в верхний **CLIP Text Encode**, seed — в
+   **KSampler**, id — в имя файла **Save Video**.
+4. Нажать **Run** (или **Queue**). Прогресс — зелёная рамка на работающем
+   узле и полоса вверху. Первый запуск дольше: модели грузятся в память.
+   Ориентировочно 5–15 минут на клип.
+5. Готовое видео появится в узле **Save Video** — посмотреть прямо там. Файл —
+   в папке `output` внутри папки установки ComfyUI.
 
-### 4. Репозиторий
-
-```powershell
-mkdir C:\Projects -Force
-cd C:\Projects
-git clone https://github.com/pavelmiskevich/37-2-dream.git
-cd 37-2-dream
-pnpm install
-pnpm test
-```
-
-`pnpm test` должен пройти: это проверка, что Node и pnpm стоят правильно.
-
-### 5. Python и модели
-
-По разделу «Компьютер: RTX 5070 Ti» в
-[tools/generation/README.md](../tools/generation/README.md): окружение
-`tools\generation\.venv`, PyTorch под CUDA 12.8 (`whl/cu128`), проверка
-`True NVIDIA GeForce RTX 5070 Ti (12, 0)`, скачивание Z-Image-Turbo. Этот шаг
-может сделать и Claude Code на компьютере (часть 4) — он долгий из-за
-скачивания.
-
-Проверка защиты от перегрева:
+**Температура.** Во время генерации держать открытым окно PowerShell с
+командой:
 
 ```powershell
-cd C:\Projects\37-2-dream\tools\generation
-python thermal.py check --profile desktop
+nvidia-smi --query-gpu=temperature.gpu,power.draw,utilization.gpu,memory.used --format=csv -l 5
 ```
 
-Должно быть `ready`.
+Нормально — до 75–80 °C. Если **83 °C и выше** — остановить генерацию
+(крестик у задачи в очереди или **Cancel**), дать остыть, проверить, что
+корпус не закрыт и вентиляторы крутятся. Цифры пика пришлите вместе с
+клипами — я запишу их в PR.
 
-### 6. Claude Code
+**Если не хватает видеопамяти** (ошибка `out of memory`): закрыть игры и
+браузер с видео, повторить. Не помогло — уменьшить `length` до `97` (4 с).
 
-1. Установить (PowerShell):
+## 6. Клипы для #39
 
-   ```powershell
-   irm https://claude.ai/install.ps1 | iex
-   ```
+Общие правила промптов: камера неподвижна, движение одно и медленное, людей и
+лица не показывать крупно. Стиль — как у кадров библиотеки. Промпт вставлять
+целиком, по-английски.
 
-   Если команда изменилась — актуальная есть на странице установки в
-   документации Claude Code.
-2. Войти тем же аккаунтом claude.ai, что и на ноутбуке: `claude` → вход через
-   браузер.
-3. Перенести с ноутбука свои глобальные правила — файл
-   `%USERPROFILE%\.claude\CLAUDE.md` положить по тому же пути на компьютере.
-   Там запреты на подписи об авторстве, правило «только мои ишью» и правила
-   безопасности. Без этого файла сессия на компьютере их не знает. Правила
-   проекта (`AGENTS.md`) придут вместе с репозиторием.
-4. Защитные хуки `%USERPROFILE%\.claude\hooks\injection-guard\` и их записи в
-   `%USERPROFILE%\.claude\settings.json` перенесите сами: агентам менять их
-   запрещено. Если в путях внутри `settings.json` стоит имя пользователя
-   ноутбука, исправьте его на имя пользователя компьютера.
+### Основные три
 
-## Часть 2. Работа с ноутбука через Remote Control (основной способ)
+**1. `clip-yard-swing-alone`** — качели раскачиваются сами
 
-Remote Control позволяет писать сессии Claude Code, запущенной на компьютере, из
-браузера или приложения Claude на ноутбуке или телефоне. Команды и генерация
-выполняются на компьютере. Порты открывать и сеть настраивать не нужно.
+- Кадр: `yard-dusk-empty-swing` —
+  <https://github.com/pavelmiskevich/37-2-dream/raw/main/apps/web/public/library/stills/yard-dusk-empty-swing.webp>
+- Seed: `390101`
+- Промпт:
 
-На компьютере (один раз после каждой перезагрузки):
+  ```text
+  Static camera, no camera movement. A foggy empty Soviet courtyard at dusk. The old red metal swing slowly starts to swing back and forth by itself, a little higher with every swing, while nobody is around. Wet asphalt, the street lamp glowing in the fog, the apartment blocks and everything else stay completely still. Realistic 35mm film footage, heavy film grain, muted desaturated colors, quiet, uneasy and unsettling dream atmosphere.
+  ```
 
-```powershell
-cd C:\Projects\37-2-dream
-claude
-```
+**2. `clip-yard-vacuum-woman-turn`** — женщина с пылесосом поворачивает голову
 
-В открывшейся сессии ввести `/remote-control`. Если такой команды нет —
-`/help` покажет актуальное название. Окно терминала не закрывать: пока оно
-открыто, сессия доступна.
+- Кадр: `yard-night-vacuum-woman` —
+  <https://github.com/pavelmiskevich/37-2-dream/raw/main/apps/web/public/library/stills/yard-night-vacuum-woman.webp>
+- Seed: `390102`
+- Промпт:
 
-На ноутбуке открыть **claude.ai/code** (или приложение Claude): сессия
-компьютера появится в списке. Дальше с ней можно говорить как здесь.
+  ```text
+  Static camera, no camera movement. Night in a wet Soviet courtyard. The elderly woman in a dark coat standing beside an old vacuum cleaner slowly turns her head towards the camera and then stays completely still, her face remains hidden in shadow. The empty swing behind her sways very slightly. Fog around the street lamp, lit windows, nothing else moves. Realistic 35mm film footage, heavy film grain, muted desaturated colors, quiet, uneasy and unsettling dream atmosphere.
+  ```
 
-Проверка: попросите сессию выполнить `nvidia-smi` — в ответе должна быть
-RTX 5070 Ti.
+**3. `clip-stairwell-door-opens`** — дверь медленно открывается
 
-## Часть 3. Прямой доступ по SSH через Tailscale (по желанию)
+- Кадр: `stairwell-door-ajar` —
+  <https://github.com/pavelmiskevich/37-2-dream/raw/main/apps/web/public/library/stills/stairwell-door-ajar.webp>
+- Seed: `390103`
+- Промпт:
 
-Нужен, если хотите сами запускать команды на компьютере с ноутбука, смотреть
-температуру или перезапускать сессию, не подходя к компьютеру.
+  ```text
+  Static camera, no camera movement. A dark Soviet apartment stairwell. The padded double door at the end of the corridor slowly swings open by itself, revealing more dim yellow light behind it, and nobody comes through. Dust floating in the air, deep shadows on the walls, nothing else moves. Realistic 35mm film footage, heavy film grain, muted desaturated colors, quiet, uneasy and unsettling dream atmosphere.
+  ```
 
-### 3.1. Tailscale — сеть между ноутбуком и компьютером
+### Запасные — если основные не выйдут или захочется ещё
 
-1. Поставить Tailscale (tailscale.com, бесплатный личный план) на компьютер и
-   на ноутбук.
-2. Войти на обоих одним аккаунтом.
-3. В админке Tailscale посмотреть имя компьютера, например `rtx-pc`.
-   Проверка с ноутбука: `ping rtx-pc`.
+**4. `clip-hospital-ventilator-breathing`** — аппарат дышит
 
-Tailscale работает и из дома, и из другой сети — проброс портов на роутере не
-нужен.
+- Кадр: `hospital-corridor-ventilator` —
+  <https://github.com/pavelmiskevich/37-2-dream/raw/main/apps/web/public/library/stills/hospital-corridor-ventilator.webp>
+- Seed: `390104`
+- Промпт:
 
-### 3.2. SSH-сервер на компьютере
+  ```text
+  Static camera, no camera movement. An empty hospital corridor with pale blue tiles. The hose of the old medical ventilator slowly rises and falls as if the machine were breathing on its own, and the farthest fluorescent tube flickers twice. Nobody is there, nothing else moves. Realistic 35mm film footage, heavy film grain, muted desaturated colors, quiet, uneasy and unsettling dream atmosphere.
+  ```
 
-PowerShell **от администратора** на компьютере:
+**5. `clip-bedroom-spider-crawl`** — паук ползёт по потолку
 
-```powershell
-Add-WindowsCapability -Online -Name OpenSSH.Server~~~~0.0.1.0
-Start-Service sshd
-Set-Service -Name sshd -StartupType Automatic
-# чтобы по SSH открывался PowerShell, а не cmd
-New-ItemProperty -Path "HKLM:\SOFTWARE\OpenSSH" -Name DefaultShell `
-  -Value "C:\Windows\System32\WindowsPowerShell\v1.0\powershell.exe" -PropertyType String -Force
-```
+- Кадр: `bedroom-spider-ceiling` —
+  <https://github.com/pavelmiskevich/37-2-dream/raw/main/apps/web/public/library/stills/bedroom-spider-ceiling.webp>
+- Seed: `390105`
+- Промпт:
 
-### 3.3. Вход по ключу, без пароля
+  ```text
+  Static camera, no camera movement. A dark Soviet-era bedroom at night. The enormous spider on the ceiling slowly moves its long legs and crawls a short distance across the cracked plaster towards the bed, then freezes. Faint light through the curtains, the bed and the room stay still. Realistic 35mm film footage, heavy film grain, muted desaturated colors, quiet, uneasy and dread-filled dream atmosphere.
+  ```
 
-На ноутбуке:
+### Если клип не вышел
 
-```powershell
-ssh-keygen -t ed25519            # Enter на все вопросы
-Get-Content $env:USERPROFILE\.ssh\id_ed25519.pub
-```
+- Картинка поплыла, появились лишние люди, лицо крупно, камера поехала —
+  поставить seed на 1 больше (`390101` → `390111`, затем `390121` и т. д.) и
+  запустить снова. Промпт не менять.
+- Движение слишком слабое или слишком резкое — напишите мне, я поправлю
+  промпт.
+- Записывайте, с каким seed вышел удачный клип.
 
-Скопировать выведенную строку. На компьютере, в PowerShell от администратора
-(если ваша учётная запись на компьютере — администратор, а обычно так и есть):
+## 7. Как отдать клипы на проверку
 
-```powershell
-Add-Content C:\ProgramData\ssh\administrators_authorized_keys "ВСТАВИТЬ_СТРОКУ_КЛЮЧА"
-icacls C:\ProgramData\ssh\administrators_authorized_keys /inheritance:r /grant "Administrators:F" /grant "SYSTEM:F"
-```
+1. Взять из папки `output` ComfyUI готовые MP4 (имя начинается с id клипа).
+   Сжимать и перекодировать не нужно — я сделаю это сам.
+2. Перенести на ноутбук любым способом: флешка, облако, сеть. Положить в одну
+   папку, например `C:\Users\Asus\Videos\dream-clips\` (не в папку
+   репозитория).
+3. Написать мне: путь к папке и для каждого клипа — seed, с которым он вышел,
+   если не тот, что в таблице; правили ли промпт; пик температуры.
 
-Если учётная запись не администратор — та же строка в
-`%USERPROFILE%\.ssh\authorized_keys` на компьютере, без `icacls`.
+Что делаю я:
 
-На ноутбуке добавить в `%USERPROFILE%\.ssh\config`:
+- смотрю каждый клип по кадрам и проверяю длину, размер и частоту кадров;
+  показываю вам ключевые кадры;
+- сжимаю для веба (MP4 H.264, ~1–3 МБ на клип), кладу в
+  `apps/web/public/library/clips/<id>.mp4`;
+- вношу в манифест: `kind: "clip"`, длительность, промпт, seed, модель
+  `Wan-AI/Wan2.2-TI2V-5B`, лицензия Apache-2.0, источник — компьютер,
+  ComfyUI и id входного кадра;
+- подключаю клипы к монтажу и открываю PR с `Closes #39` и адресом для
+  проверки сна с клипом.
 
-```text
-Host rtx
-    HostName rtx-pc
-    User ИМЯ_ПОЛЬЗОВАТЕЛЯ_НА_КОМПЬЮТЕРЕ
-```
+## Позже
 
-Проверка с ноутбука:
-
-```powershell
-ssh rtx nvidia-smi
-```
-
-### 3.4. Что делать по SSH
-
-- Смотреть температуру и загрузку: `ssh rtx nvidia-smi`.
-- Посмотреть лог защиты: `ssh rtx "Get-Content C:\Projects\37-2-dream\tools\generation\logs\thermal-desktop.csv -Tail 20"`.
-- Короткие команды и проверки.
-
-Долгую генерацию по SSH не запускать: при обрыве связи Windows завершает
-процессы сеанса, и генерация оборвётся. Долгое — через сессию Claude Code на
-компьютере (часть 2).
-
-Если компьютер перезагрузился и сессия Claude Code пропала, её нужно снова
-запустить в окне на самом компьютере — подойти или зайти удалённым рабочим
-столом. Встроенный «Удалённый рабочий стол» Windows работает поверх Tailscale,
-если на компьютере Windows Pro (адрес — то же имя `rtx-pc`).
-
-### 3.5. Может ли сессия на ноутбуке сама работать на компьютере по SSH
-
-Технически да (`ssh rtx "…"`), но защита injection-guard на ноутбуке пускает в
-сеть только хосты из списка разрешённых, и `rtx-pc` туда добавляете только вы.
-Пока проще разделить роли: компьютер считает и открывает PR, ноутбук ревьюит.
-
-## Часть 4. Первая задача на компьютере — #39
-
-Когда части 1 и 2 готовы, напишите сессии на компьютере (через Remote Control
-или за самим компьютером):
-
-> Прочитай AGENTS.md, docs/handoff.md, docs/desktop.md,
-> tools/generation/README.md и ишью #39. Проверь окружение:
-> `nvidia-smi`, PyTorch видит RTX 5070 Ti, `thermal.py check --profile desktop`
-> даёт ready; чего не хватает — доставь по README. Затем сделай #39: скрипт
-> клипов Wan 2.2 TI2V-5B через ThermalGuard с профилем desktop, 2–3 клипа из
-> кадров библиотеки, манифест, подключение к монтажу. Ветка от main, PR с
-> `Closes #39`, без слияния. Каждый клип покажи мне до коммита.
-
-Дальше:
-
-1. Сессия на компьютере открывает PR.
-2. Вы или основная сессия на ноутбуке смотрите PR. Сливает одна сессия, с
-   вашего разрешения — чтобы две сессии не сливали одновременно.
-3. На ноутбуке: `git pull`, `pnpm dev`, посмотреть сон с клипами.
-
-Пока компьютер работает над веткой, на ноутбуке не менять те же файлы
-(`library.json`, `prompts.json`, монтажный лист) — иначе будут конфликты.
-
-## Что ещё можно отдать компьютеру
-
-- **Кадры.** Z-Image-Turbo в полном bf16 — без квоты Hugging Face и без нагрева
-  ноутбука (`generate.py --profile desktop`).
-- **Кэш промптов** для ноутбука: `--profile desktop --encode-only`, затем
-  скопировать `tools/generation/cache/embeds`.
-- **Сборки и тесты** больших веток — чтобы не греть ноутбук.
-
-## Чек-лист готовности
-
-- [ ] `nvidia-smi` на компьютере: RTX 5070 Ti, CUDA 12.8+.
-- [ ] `pnpm test` в клоне на компьютере проходит.
-- [ ] PyTorch: `True NVIDIA GeForce RTX 5070 Ti (12, 0)`.
-- [ ] `python thermal.py check --profile desktop` → `ready`.
-- [ ] `git config --global user.email` — служебная почта `pavelmiskevich`.
-- [ ] `%USERPROFILE%\.claude\CLAUDE.md` перенесён.
-- [ ] Сессия компьютера видна на claude.ai/code с ноутбука.
-- [ ] (по желанию) `ssh rtx nvidia-smi` с ноутбука работает.
+Если ручной режим надоест, на компьютер можно поставить Claude Code и
+управлять им с ноутбука через Remote Control — тогда он будет делать всё это
+сам. Пока владелец решил работать вручную (2026-11-04).
