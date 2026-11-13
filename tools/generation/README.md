@@ -229,6 +229,9 @@ python thermal.py check                    # должно быть "ready"
 RTX 50xx требует PyTorch под **CUDA 12.8 или новее**. Памяти хватает на полный
 трансформер в bf16.
 
+Клипы Wan 2.2 на компьютере владелец делает вручную в ComfyUI — инструкция,
+промпты и seed в [docs/desktop.md](../../docs/desktop.md).
+
 ### Установка
 
 1. Драйвер NVIDIA — свежий Game Ready или Studio (поддержка CUDA 12.8+;
