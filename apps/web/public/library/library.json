@@ -814,6 +814,164 @@
         "seed": 150103,
         "source": "local-laptop"
       }
+    },
+    {
+      "id": "yard-day-laundry",
+      "kind": "still",
+      "file": "stills/yard-day-laundry.webp",
+      "depth": "depth/yard-day-laundry.png",
+      "width": 1280,
+      "height": 720,
+      "tags": {
+        "location": "yard",
+        "motifs": [],
+        "people": "distant",
+        "mood": "calm",
+        "time": "day"
+      },
+      "generation": {
+        "model": "Tongyi-MAI/Z-Image-Turbo",
+        "license": "Apache-2.0",
+        "prompt": "An overcast day in a courtyard between grey panel blocks, white sheets drying on ropes, a rusty climbing frame, a distant old woman on a bench with her back to the camera. Realistic 35mm film photograph, heavy film grain, muted desaturated colors, faces hidden in shadow, Russia in the 1990s, Soviet-era interiors and courtyards, the logic of a dream, quiet, uneasy and unsettling atmosphere.",
+        "seed": 790101,
+        "source": "hf-space:mcp-tools/Z-Image-Turbo"
+      }
+    },
+    {
+      "id": "bedroom-dawn-pills",
+      "kind": "still",
+      "file": "stills/bedroom-dawn-pills.webp",
+      "depth": "depth/bedroom-dawn-pills.png",
+      "width": 1280,
+      "height": 720,
+      "tags": {
+        "location": "bedroom",
+        "motifs": [
+          "thermometer"
+        ],
+        "people": "none",
+        "mood": "calm",
+        "time": "dusk"
+      },
+      "generation": {
+        "model": "Tongyi-MAI/Z-Image-Turbo",
+        "license": "Apache-2.0",
+        "prompt": "A bedside table at grey dawn: a thermometer in a plastic case, blister packs of pills, a glass of water, a wind-up alarm clock, a crumpled pillow beside it, net curtains lit pale blue. Realistic 35mm film photograph, heavy film grain, muted desaturated colors, faces hidden in shadow, Russia in the 1990s, Soviet-era interiors and courtyards, the logic of a dream, quiet, uneasy and unsettling atmosphere.",
+        "seed": 790102,
+        "source": "hf-space:mcp-tools/Z-Image-Turbo"
+      }
+    },
+    {
+      "id": "stairs-up-endless",
+      "kind": "still",
+      "file": "stills/stairs-up-endless.webp",
+      "depth": "depth/stairs-up-endless.png",
+      "width": 1280,
+      "height": 720,
+      "tags": {
+        "location": "stairs",
+        "motifs": [],
+        "people": "none",
+        "mood": "uneasy",
+        "time": "interior"
+      },
+      "generation": {
+        "model": "Tongyi-MAI/Z-Image-Turbo",
+        "license": "Apache-2.0",
+        "prompt": "Indoors, inside a Soviet apartment block: looking straight up through the narrow gap between the flights of the stairwell, the worn wooden handrails and metal railings spiralling upward far beyond the number of floors the building has, weak bare bulbs on each landing, green painted walls, the top lost in darkness. Realistic 35mm film photograph, heavy film grain, muted desaturated colors, faces hidden in shadow, Russia in the 1990s, Soviet-era interiors and courtyards, the logic of a dream, quiet, uneasy and unsettling atmosphere.",
+        "seed": 790103,
+        "source": "hf-space:mcp-tools/Z-Image-Turbo"
+      }
+    },
+    {
+      "id": "kitchen-day-empty",
+      "kind": "still",
+      "file": "stills/kitchen-day-empty.webp",
+      "depth": "depth/kitchen-day-empty.png",
+      "width": 1280,
+      "height": 720,
+      "tags": {
+        "location": "kitchen",
+        "motifs": [],
+        "people": "none",
+        "mood": "calm",
+        "time": "day"
+      },
+      "generation": {
+        "model": "Tongyi-MAI/Z-Image-Turbo",
+        "license": "Apache-2.0",
+        "prompt": "A small Soviet kitchen on a grey winter day, nobody there, an enamel kettle on a gas stove, a checkered oilcloth on the table with one cup, net curtains, pale flat light from the window, a wall calendar, a radio on the windowsill. Realistic 35mm film photograph, heavy film grain, muted desaturated colors, faces hidden in shadow, Russia in the 1990s, Soviet-era interiors and courtyards, the logic of a dream, quiet, uneasy and unsettling atmosphere.",
+        "seed": 790104,
+        "source": "hf-space:mcp-tools/Z-Image-Turbo"
+      }
+    },
+    {
+      "id": "stairwell-day-sunlight",
+      "kind": "still",
+      "file": "stills/stairwell-day-sunlight.webp",
+      "depth": "depth/stairwell-day-sunlight.png",
+      "width": 1280,
+      "height": 720,
+      "tags": {
+        "location": "stairwell",
+        "motifs": [],
+        "people": "none",
+        "mood": "calm",
+        "time": "day"
+      },
+      "generation": {
+        "model": "Tongyi-MAI/Z-Image-Turbo",
+        "license": "Apache-2.0",
+        "prompt": "A Soviet apartment stairwell landing in the afternoon, a dusty window lets a slanted beam of pale sunlight onto the worn tiled floor, dust hanging in the air, a dying potted plant on the windowsill, walls painted green to shoulder height, nobody, silence. Realistic 35mm film photograph, heavy film grain, muted desaturated colors, faces hidden in shadow, Russia in the 1990s, Soviet-era interiors and courtyards, the logic of a dream, quiet, uneasy and unsettling atmosphere.",
+        "seed": 790105,
+        "source": "hf-space:mcp-tools/Z-Image-Turbo"
+      }
+    },
+    {
+      "id": "hospital-corridor-day-window",
+      "kind": "still",
+      "file": "stills/hospital-corridor-day-window.webp",
+      "depth": "depth/hospital-corridor-day-window.png",
+      "width": 1280,
+      "height": 720,
+      "tags": {
+        "location": "hospital_corridor",
+        "motifs": [],
+        "people": "none",
+        "mood": "calm",
+        "time": "day"
+      },
+      "generation": {
+        "model": "Tongyi-MAI/Z-Image-Turbo",
+        "license": "Apache-2.0",
+        "prompt": "An empty Soviet hospital corridor in morning light, sunlight lying in long pale rectangles on the linoleum from tall windows, a potted ficus, a folded wheelchair standing against the tiled wall, nobody, completely still. Realistic 35mm film photograph, heavy film grain, muted desaturated colors, faces hidden in shadow, Russia in the 1990s, Soviet-era interiors and courtyards, the logic of a dream, quiet, uneasy and unsettling atmosphere.",
+        "seed": 790106,
+        "source": "hf-space:mcp-tools/Z-Image-Turbo"
+      }
+    },
+    {
+      "id": "thermometer-corridor-day",
+      "kind": "still",
+      "file": "stills/thermometer-corridor-day.webp",
+      "depth": "depth/thermometer-corridor-day.png",
+      "width": 1280,
+      "height": 720,
+      "tags": {
+        "location": "thermometer_corridor",
+        "motifs": [
+          "thermometer"
+        ],
+        "people": "none",
+        "mood": "calm",
+        "time": "day"
+      },
+      "generation": {
+        "model": "Tongyi-MAI/Z-Image-Turbo",
+        "license": "Apache-2.0",
+        "prompt": "A long quiet corridor with pale green walls lined with neat rows of old glass mercury thermometers, soft daylight from a single window at the far end, a lone wooden chair standing halfway along the wall, dust floating in the light, nobody. Realistic 35mm film photograph, heavy film grain, muted desaturated colors, faces hidden in shadow, Russia in the 1990s, Soviet-era interiors and courtyards, the logic of a dream, quiet, uneasy and unsettling atmosphere.",
+        "seed": 790107,
+        "source": "hf-space:mcp-tools/Z-Image-Turbo"
+      }
     }
   ]
 }

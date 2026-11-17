@@ -135,6 +135,7 @@
       "id": "yard-day-laundry",
       "priority": 3,
       "tags": { "location": "yard", "motifs": [], "people": "distant", "mood": "calm", "time": "day" },
+      "seed": 790101,
       "scene": "An overcast day in a courtyard between grey panel blocks, white sheets drying on ropes, a rusty climbing frame, a distant old woman on a bench with her back to the camera"
     },
     {
@@ -158,8 +159,9 @@
     {
       "id": "stairs-up-endless",
       "priority": 2,
-      "tags": { "location": "stairs", "motifs": [], "people": "none", "mood": "dread", "time": "interior" },
-      "scene": "Looking up the stairwell shaft of a Soviet apartment block, the railings spiralling upward far beyond the number of floors the building has, weak bulbs on each landing, the top lost in darkness"
+      "tags": { "location": "stairs", "motifs": [], "people": "none", "mood": "uneasy", "time": "interior" },
+      "seed": 790103,
+      "scene": "Indoors, inside a Soviet apartment block: looking straight up through the narrow gap between the flights of the stairwell, the worn wooden handrails and metal railings spiralling upward far beyond the number of floors the building has, weak bare bulbs on each landing, green painted walls, the top lost in darkness"
     },
     {
       "id": "stairs-thermometers",
@@ -207,6 +209,7 @@
       "id": "bedroom-dawn-pills",
       "priority": 2,
       "tags": { "location": "bedroom", "motifs": ["thermometer"], "people": "none", "mood": "calm", "time": "dusk" },
+      "seed": 790102,
       "scene": "A bedside table at grey dawn: a thermometer in a plastic case, blister packs of pills, a glass of water, a wind-up alarm clock, a crumpled pillow beside it, net curtains lit pale blue"
     },
     {
@@ -311,6 +314,41 @@
       "tags": { "location": "stairwell", "motifs": ["giant_shapes"], "people": "none", "mood": "uneasy", "time": "interior" },
       "seed": 150103,
       "scene": "A narrow Soviet apartment stairwell completely blocked by one gigantic smooth white ball wedged between the walls and the steps, far too big for the space, peeling paint, a dim bulb, nobody there"
+    },
+    {
+      "id": "kitchen-day-empty",
+      "priority": 2,
+      "tags": { "location": "kitchen", "motifs": [], "people": "none", "mood": "calm", "time": "day" },
+      "seed": 790104,
+      "scene": "A small Soviet kitchen on a grey winter day, nobody there, an enamel kettle on a gas stove, a checkered oilcloth on the table with one cup, net curtains, pale flat light from the window, a wall calendar, a radio on the windowsill"
+    },
+    {
+      "id": "stairwell-day-sunlight",
+      "priority": 2,
+      "tags": { "location": "stairwell", "motifs": [], "people": "none", "mood": "calm", "time": "day" },
+      "seed": 790105,
+      "scene": "A Soviet apartment stairwell landing in the afternoon, a dusty window lets a slanted beam of pale sunlight onto the worn tiled floor, dust hanging in the air, a dying potted plant on the windowsill, walls painted green to shoulder height, nobody, silence"
+    },
+    {
+      "id": "hospital-corridor-day-window",
+      "priority": 2,
+      "tags": { "location": "hospital_corridor", "motifs": [], "people": "none", "mood": "calm", "time": "day" },
+      "seed": 790106,
+      "scene": "An empty Soviet hospital corridor in morning light, sunlight lying in long pale rectangles on the linoleum from tall windows, a potted ficus, a folded wheelchair standing against the tiled wall, nobody, completely still"
+    },
+    {
+      "id": "thermometer-corridor-day",
+      "priority": 2,
+      "tags": { "location": "thermometer_corridor", "motifs": ["thermometer"], "people": "none", "mood": "calm", "time": "day" },
+      "seed": 790107,
+      "scene": "A long quiet corridor with pale green walls lined with neat rows of old glass mercury thermometers, soft daylight from a single window at the far end, a lone wooden chair standing halfway along the wall, dust floating in the light, nobody"
+    },
+    {
+      "id": "jam-jar-windowsill",
+      "priority": 3,
+      "tags": { "location": "jam_jar", "motifs": [], "people": "none", "mood": "calm", "time": "day" },
+      "seed": 790108,
+      "scene": "A single glass jar of dark cherry jam standing alone on a white painted windowsill, soft morning light shining through it and casting a deep red glow on the sill, a net curtain, a grey courtyard blurred outside the window"
     },
     {
       "id": "yard-night-vacuum-woman",
