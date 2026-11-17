@@ -1,8 +1,9 @@
 /**
  * What the device remembers between dreams: only the "без вспышек" switch
  * (D-009) — a safety setting should not have to be found again every time.
- * Storage is optional: every access is wrapped, and without it the switch
- * simply starts off.
+ * Storage is optional: every access is wrapped. Until the viewer has chosen,
+ * the switch follows the system's `prefers-reduced-motion: reduce`; a choice
+ * once made, either way, wins over it.
  */
 export const SETTINGS_STORAGE_KEY = '37.2-dream/settings/v1';
 
@@ -18,13 +19,27 @@ function browserStorage(): Storage | null {
   }
 }
 
-export function readSettings(storage: () => Storage | null = browserStorage): DreamSettings {
+/** The system asks for less motion (and, by the same token, fewer flashes). */
+export function prefersReducedMotion(): boolean {
+  try {
+    return window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  } catch {
+    return false;
+  }
+}
+
+export function readSettings(
+  storage: () => Storage | null = browserStorage,
+  reducedMotion: () => boolean = prefersReducedMotion,
+): DreamSettings {
+  let stored: unknown;
   try {
     const parsed: unknown = JSON.parse(storage()?.getItem(SETTINGS_STORAGE_KEY) ?? 'null');
-    return { noFlash: typeof parsed === 'object' && parsed !== null && (parsed as { noFlash?: unknown }).noFlash === true };
+    stored = typeof parsed === 'object' && parsed !== null ? (parsed as { noFlash?: unknown }).noFlash : undefined;
   } catch {
-    return { noFlash: false };
+    stored = undefined;
   }
+  return { noFlash: typeof stored === 'boolean' ? stored : reducedMotion() };
 }
 
 export function writeSettings(settings: DreamSettings, storage: () => Storage | null = browserStorage): void {

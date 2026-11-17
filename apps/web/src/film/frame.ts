@@ -108,7 +108,7 @@ export function frameAt(
     motionX,
     motionY,
     zoomBlur: before.height > 0 ? Math.min(0.02, Math.abs(1 - view.height / before.height)) : 0,
-    look: lookAt(shot.look, time, key),
+    look: lookAt(shot.look, time, key, settings),
     overlay,
     scare,
     shakeX: SCARE_SHAKE * scare.shake * (hash01(jolt * 2) * 2 - 1),

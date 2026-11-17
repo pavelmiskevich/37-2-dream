@@ -73,7 +73,11 @@ describe('frameAt over films from generateFilm', () => {
               expect(value).toBeGreaterThanOrEqual(0);
               expect(value).toBeLessThanOrEqual(1);
             }
-            if (settings.noFlash) expect(frame.overlay.white + frame.scare.flash).toBe(0);
+            if (settings.noFlash) {
+              expect(frame.overlay.white + frame.scare.flash).toBe(0);
+              // D-009: no exposure flicker, the brightness of the frame does not pulse.
+              expect(frame.look.exposure).toBe(1);
+            }
           }
         }
       });
