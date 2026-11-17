@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest';
-import { flickerAt, lookAt, MAX_LOOK } from './look';
+import { flickerAt, lookAt, MAX_LOOK, NO_FLASH_FLICKER } from './look';
 
 const NONE = { grain: 0, flicker: 0, blur: 0, vignette: 0, fever: 0 };
 const FULL = { grain: 1, flicker: 1, blur: 1, vignette: 1, fever: 1 };
@@ -43,7 +43,7 @@ describe('lookAt', () => {
     expect(lookAt(FULL, 1.05).frame).toBe(a.frame + 1);
   });
 
-  it('holds the exposure still with "без вспышек" and leaves the rest of the look alone', () => {
+  it('softens the exposure flicker with "без вспышек" and leaves the rest of the look alone', () => {
     const times = Array.from({ length: 2400 }, (_, i) => i / 240);
     const swing = (settings?: { noFlash: boolean }) => {
       const exposures = times.map((t) => lookAt(FULL, t, 5, settings).exposure);
@@ -52,12 +52,15 @@ describe('lookAt', () => {
     // Without the switch the whole frame does pulse: the dream looks as before.
     expect(swing()).toBeGreaterThan(0.05);
     expect(swing({ noFlash: false })).toBe(swing());
-    expect(swing({ noFlash: true })).toBeLessThanOrEqual(1e-9);
+    // With it the frame still breathes, but at a quarter of the swing (#115).
+    expect(NO_FLASH_FLICKER).toBeGreaterThan(0);
+    expect(NO_FLASH_FLICKER).toBeLessThanOrEqual(0.25);
+    expect(swing({ noFlash: true })).toBeGreaterThan(0);
+    expect(swing({ noFlash: true })).toBeCloseTo(swing() * NO_FLASH_FLICKER, 9);
     for (const t of [0.3, 2.7, 9.1]) {
       const { exposure, ...rest } = lookAt(FULL, t, 5, { noFlash: true });
       const { exposure: flickering, ...before } = lookAt(FULL, t, 5);
-      expect(exposure).toBe(1);
-      expect(flickering).not.toBe(1);
+      expect(exposure - 1).toBeCloseTo((flickering - 1) * NO_FLASH_FLICKER, 12);
       expect(rest).toEqual(before);
     }
   });

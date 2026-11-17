@@ -5,7 +5,7 @@ import manifestJson from '../../public/film-fixture/library.json?raw';
 import { devLibrary } from './dev-library';
 import { fixtureFilm } from './fixture';
 import { frameAt } from './frame';
-import { MAX_MOTION_BLUR } from './look';
+import { MAX_LOOK, MAX_MOTION_BLUR, NO_FLASH_FLICKER } from './look';
 import { planFilm } from './timeline';
 
 const manifest = JSON.parse(manifestJson) as LibraryManifest;
@@ -75,8 +75,8 @@ describe('frameAt over films from generateFilm', () => {
             }
             if (settings.noFlash) {
               expect(frame.overlay.white + frame.scare.flash).toBe(0);
-              // D-009: no exposure flicker, the brightness of the frame does not pulse.
-              expect(frame.look.exposure).toBe(1);
+              // D-009, #115: the exposure flicker is softened to a quarter.
+              expect(Math.abs(frame.look.exposure - 1)).toBeLessThanOrEqual(MAX_LOOK.flicker * NO_FLASH_FLICKER + 1e-9);
             }
           }
         }
