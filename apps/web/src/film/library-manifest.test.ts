@@ -12,6 +12,7 @@ import {
   type LibraryManifest,
 } from '@dream/core';
 import { describe, expect, it } from 'vitest';
+import catalogJson from '../../../../tools/generation/prompts.json?raw';
 import manifestJson from '../../public/library/library.json?raw';
 import { wakingFrame } from '../dream/waking';
 
@@ -28,6 +29,27 @@ const files = new Set(
     path.slice(LIBRARY.length),
   ),
 );
+
+/** The prompt catalog of tools/generation (#91): every still is generated from one of its scenes. */
+interface CatalogScene {
+  id: string;
+  scene: string;
+  seed?: number;
+  style?: string;
+}
+const catalog = JSON.parse(catalogJson) as { style: string; scenes: CatalogScene[] };
+
+/** `Scene.prompt` of generate.py: the scene without a trailing '.'/' ', then its style. */
+function catalogPrompt(scene: CatalogScene): string {
+  return `${scene.scene.replace(/[. ]+$/, '')}. ${scene.style ?? catalog.style}`;
+}
+
+/** `Scene.generation_seed` of generate.py: explicit seed, or 31 bits of sha256(id). */
+async function catalogSeed(scene: CatalogScene): Promise<number> {
+  if (scene.seed !== undefined) return scene.seed;
+  const digest = new DataView(await crypto.subtle.digest('SHA-256', new TextEncoder().encode(scene.id)));
+  return digest.getUint32(0) & 0x7fffffff;
+}
 
 /** Licences that allow commercial use; the models of the project are all Apache-2.0. */
 const LICENSES = ['Apache-2.0'];
@@ -61,6 +83,16 @@ describe('library manifest', () => {
     expect(asset.generation.prompt.trim()).not.toBe('');
     expect(Number.isInteger(asset.generation.seed)).toBe(true);
     expect(asset.generation.source).not.toBe('');
+  });
+
+  it('takes the prompt and seed of every still from the catalog (#91)', async () => {
+    const scenes = new Map(catalog.scenes.map((scene) => [scene.id, scene]));
+    for (const asset of manifest.assets.filter((a) => a.kind === 'still')) {
+      const scene = scenes.get(asset.id);
+      expect(scene, `${asset.id} is not in tools/generation/prompts.json`).toBeDefined();
+      expect(asset.generation.prompt, asset.id).toBe(catalogPrompt(scene!));
+      expect(asset.generation.seed, asset.id).toBe(await catalogSeed(scene!));
+    }
   });
 
   it('has no frame file without an asset', () => {

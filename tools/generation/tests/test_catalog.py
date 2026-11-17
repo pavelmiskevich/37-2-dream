@@ -16,20 +16,6 @@ from generate import CatalogError, load_catalog, parse_catalog, select_scenes  #
 
 LIBRARY_TS = generate.REPO / "packages" / "dream-core" / "src" / "film" / "library.ts"
 
-# Stills generated through the Space (branch 35-library-v0); their prompts are
-# added to the catalog separately, so the catalog must not reuse these ids.
-SPACE_IDS = {
-    "hospital-corridor-ventilator",
-    "stairs-down",
-    "stairwell-door-ajar",
-    "stairwell-mailboxes",
-    "yard-day-pigeons",
-    "yard-dusk-empty-swing",
-    "yard-night-vacuum-woman",
-    "yard-night-window-silhouette",
-}
-
-
 def ts_tuple(name: str) -> tuple[str, ...]:
     text = LIBRARY_TS.read_text(encoding="utf-8")
     match = re.search(rf"export const {name} = \[(.*?)\] as const;", text, re.S)
@@ -76,8 +62,18 @@ class CatalogFileTest(unittest.TestCase):
         self.assertEqual(self.catalog.model, "Tongyi-MAI/Z-Image-Turbo")
         self.assertEqual(self.catalog.license, "Apache-2.0")
 
-    def test_no_collision_with_space_stills(self) -> None:
-        self.assertFalse({s.id for s in self.catalog.scenes} & SPACE_IDS)
+    def test_catalog_describes_every_still_of_the_library(self) -> None:
+        # The same check runs in CI as library-manifest.test.ts (vitest).
+        manifest = generate.load_manifest(generate.LIBRARY_DIR / generate.MANIFEST_NAME)
+        scenes = {s.id: s for s in self.catalog.scenes}
+        for asset in manifest["assets"]:
+            if asset["kind"] != "still":
+                continue
+            scene = scenes.get(asset["id"])
+            self.assertIsNotNone(scene, f"{asset['id']} is not in the catalog")
+            assert scene is not None
+            self.assertEqual(asset["generation"]["prompt"], scene.prompt(self.catalog.style), asset["id"])
+            self.assertEqual(asset["generation"]["seed"], scene.generation_seed(), asset["id"])
 
     def test_seeds_are_stable_and_distinct(self) -> None:
         seeds = [s.generation_seed() for s in self.catalog.scenes]
@@ -95,6 +91,13 @@ class ValidationTest(unittest.TestCase):
             catalog_of(scene("a", motifs=["cat"]))
         with self.assertRaises(CatalogError):
             catalog_of(scene("a", mood="funny"))
+
+    def test_scene_style_overrides_catalog_style(self) -> None:
+        catalog = catalog_of(scene("a"), {**scene("b"), "style": "own style."})
+        self.assertEqual(catalog.scenes[0].prompt(catalog.style), "scene a. style.")
+        self.assertEqual(catalog.scenes[1].prompt(catalog.style), "scene b. own style.")
+        with self.assertRaises(CatalogError):
+            catalog_of({**scene("c"), "style": " "})
 
     def test_rejects_duplicates_and_bad_ids(self) -> None:
         with self.assertRaises(CatalogError):
