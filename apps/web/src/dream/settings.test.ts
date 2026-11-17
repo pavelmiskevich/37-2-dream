@@ -36,4 +36,20 @@ describe('dream settings', () => {
     expect(() => writeSettings({ noFlash: true }, broken)).not.toThrow();
     expect(() => writeSettings({ noFlash: true }, () => null)).not.toThrow();
   });
+
+  it('starts on when the system asks for reduced motion and nothing was chosen yet', () => {
+    const reduced = () => true;
+    expect(readSettings(() => null, reduced)).toEqual({ noFlash: true });
+    expect(readSettings(() => memoryStorage(), reduced)).toEqual({ noFlash: true });
+    expect(readSettings(() => memoryStorage({ [SETTINGS_STORAGE_KEY]: '{oops' }), reduced)).toEqual({ noFlash: true });
+    expect(readSettings(() => memoryStorage({ [SETTINGS_STORAGE_KEY]: '{"noFlash":"yes"}' }), reduced)).toEqual({ noFlash: true });
+  });
+
+  it("keeps the viewer's own choice over the system's", () => {
+    const storage = memoryStorage();
+    writeSettings({ noFlash: false }, () => storage);
+    expect(readSettings(() => storage, () => true)).toEqual({ noFlash: false });
+    writeSettings({ noFlash: true }, () => storage);
+    expect(readSettings(() => storage, () => false)).toEqual({ noFlash: true });
+  });
 });

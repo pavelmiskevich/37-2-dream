@@ -1,5 +1,6 @@
 import type { FilmLook } from '@dream/core';
 import { clamp01, hash01, lerp, valueNoise } from './math';
+import type { PlayerSettings } from './timeline';
 
 /**
  * Film look (D-022): grain, exposure flicker, gate weave, vignette, soft
@@ -61,14 +62,23 @@ export function flickerAt(time: number, key = 0): number {
   return Math.max(-1, Math.min(1, shimmer + drift + dip));
 }
 
-export function lookAt(look: FilmLook, time: number, key = 0): LookParams {
+/**
+ * Share of the exposure flicker left with "без вспышек" (D-009): none. The
+ * flicker swings the brightness of the whole frame several times a second,
+ * which is exactly what the warning before the dream promises to spare.
+ * Grain, weave and vignette stay: they do not pulse the frame as a whole.
+ */
+export const NO_FLASH_FLICKER = 0;
+
+export function lookAt(look: FilmLook, time: number, key = 0, settings?: PlayerSettings): LookParams {
   const frame = Math.floor(time * FILM_FPS);
   const flicker = clamp01(look.flicker);
   const fever = clamp01(look.fever);
   const weave = BASE_WEAVE + MAX_LOOK.weave * flicker;
+  const exposureFlicker = settings?.noFlash ? flicker * NO_FLASH_FLICKER : flicker;
   return {
     grain: lerp(BASE_GRAIN, MAX_LOOK.grain, clamp01(look.grain)),
-    exposure: 1 + MAX_LOOK.flicker * flicker * flickerAt(time, key),
+    exposure: 1 + MAX_LOOK.flicker * exposureFlicker * flickerAt(time, key),
     weaveX: weave * (hash01(frame * 2 + key * 7919) * 2 - 1),
     weaveY: weave * (hash01(frame * 2 + 1 + key * 7919) * 2 - 1),
     blur: MAX_LOOK.blur * clamp01(look.blur),

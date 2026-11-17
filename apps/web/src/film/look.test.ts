@@ -42,4 +42,23 @@ describe('lookAt', () => {
     expect(lookAt(FULL, 1.01).weaveX).toBe(a.weaveX);
     expect(lookAt(FULL, 1.05).frame).toBe(a.frame + 1);
   });
+
+  it('holds the exposure still with "без вспышек" and leaves the rest of the look alone', () => {
+    const times = Array.from({ length: 2400 }, (_, i) => i / 240);
+    const swing = (settings?: { noFlash: boolean }) => {
+      const exposures = times.map((t) => lookAt(FULL, t, 5, settings).exposure);
+      return Math.max(...exposures) - Math.min(...exposures);
+    };
+    // Without the switch the whole frame does pulse: the dream looks as before.
+    expect(swing()).toBeGreaterThan(0.05);
+    expect(swing({ noFlash: false })).toBe(swing());
+    expect(swing({ noFlash: true })).toBeLessThanOrEqual(1e-9);
+    for (const t of [0.3, 2.7, 9.1]) {
+      const { exposure, ...rest } = lookAt(FULL, t, 5, { noFlash: true });
+      const { exposure: flickering, ...before } = lookAt(FULL, t, 5);
+      expect(exposure).toBe(1);
+      expect(flickering).not.toBe(1);
+      expect(rest).toEqual(before);
+    }
+  });
 });

@@ -8,7 +8,7 @@ import { clamp01, smoothstep } from './math';
  */
 
 export interface PlayerSettings {
-  /** "Без вспышек" (D-009): no white flashes, softened scares. */
+  /** "Без вспышек" (D-009): no white flashes, no exposure flicker, softened scares. */
   noFlash: boolean;
 }
 
