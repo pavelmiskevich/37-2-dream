@@ -63,12 +63,13 @@ export function flickerAt(time: number, key = 0): number {
 }
 
 /**
- * Share of the exposure flicker left with "без вспышек" (D-009): none. The
- * flicker swings the brightness of the whole frame several times a second,
- * which is exactly what the warning before the dream promises to spare.
- * Grain, weave and vignette stay: they do not pulse the frame as a whole.
+ * Share of the exposure flicker left with "без вспышек" (D-009): a quarter.
+ * The flicker swings the brightness of the whole frame several times a
+ * second; the mode softens it to a slight breathing, a quarter of the swing,
+ * but keeps it, as the owner decided (#115): the film should still look like
+ * old film. Grain, weave, vignette and the fever haze stay as they are.
  */
-export const NO_FLASH_FLICKER = 0;
+export const NO_FLASH_FLICKER = 0.25;
 
 export function lookAt(look: FilmLook, time: number, key = 0, settings?: PlayerSettings): LookParams {
   const frame = Math.floor(time * FILM_FPS);
