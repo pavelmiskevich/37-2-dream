@@ -78,7 +78,10 @@ class WebAudioEngine implements AudioEngine {
   readonly seed: AudioSeed;
   private readonly lookahead: number;
   private readonly limiter: DynamicsCompressorNode;
-  /** Low-pass in front of the limiter; open (transparent) unless a scene muffles the dream. */
+  /**
+   * Low-pass in front of the limiter; open (transparent) unless a scene muffles
+   * the dream. Everything but the stinger goes through it.
+   */
   private readonly muffle: BiquadFilterNode;
   private readonly layers: Record<LayerName, GainNode>;
   private readonly volumes: LayerVolumes = { ...DEFAULT_LAYER_VOLUMES };
@@ -93,7 +96,11 @@ class WebAudioEngine implements AudioEngine {
   };
   /** One-shot creaks of the swing; not a looping sound, so not in `SOUNDS`. */
   private readonly creak: CreakVoice;
-  /** The scare's stinger, on a bus of its own past the layers and the master volume. */
+  /**
+   * The scare's stinger, on a bus of its own past the layers, the master volume
+   * and the muffle, straight into the limiter: the film muffles the mix right
+   * around a scare, and the hit must still cut through with open highs (D-024).
+   */
   private readonly stinger: StingerVoice;
   private readonly stingerBus: GainNode;
   private readonly voiceLayer = new Map<SoundId, LayerName>();
@@ -154,7 +161,7 @@ class WebAudioEngine implements AudioEngine {
     this.creak = new CreakVoice(env);
     this.stinger = new StingerVoice(env);
     this.stingerBus = context.createGain();
-    this.stingerBus.connect(this.muffle);
+    this.stingerBus.connect(this.limiter);
 
     this.timer = setInterval(() => this.tick(), TICK_MS);
   }

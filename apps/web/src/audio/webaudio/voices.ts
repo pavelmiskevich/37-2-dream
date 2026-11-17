@@ -510,8 +510,10 @@ const STINGER_LEVEL = 0.8;
 
 /**
  * The scare's stinger: one-shot, like the creak. It plays into its own bus,
- * past the layers and the master volume, so it cuts through the silence the
- * film drops right before a scare.
+ * past the layers, the master volume and the muffle of the mix, so it cuts
+ * through the silence and the muffling the film drops right before a scare.
+ * Only its own low-pass dulls it: wide open for the hit, closed for the
+ * softened ("без вспышек") variant.
  */
 export class StingerVoice {
   private readonly character: StingerCharacter;
