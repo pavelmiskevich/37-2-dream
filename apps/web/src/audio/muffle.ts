@@ -5,7 +5,8 @@ import { clamp01, expLerp } from './math';
  * if the dream were heard through something — a wall, water, a jar of jam.
  * `amount` 0 leaves the sound open, 1 muffles it as much as the dream ever
  * does. The cutoff moves in the log domain, so equal steps of `amount` sound
- * like equal steps of muffling.
+ * like equal steps of muffling. The scare's stinger bypasses it: the hit must
+ * cut through however muffled the dream is.
  */
 export const MUFFLE = {
   /** Cutoff with no muffling, Hz: above hearing, the filter is transparent. */
