@@ -77,9 +77,11 @@ class Scene:
     tags: dict[str, Any]
     scene: str
     seed: int | None = None
+    style: str | None = None
 
     def prompt(self, style: str) -> str:
-        return f"{self.scene.rstrip('. ')}. {style}"
+        """Scene text plus its own style, or the catalog ``style`` passed in."""
+        return f"{self.scene.rstrip('. ')}. {self.style or style}"
 
     def generation_seed(self) -> int:
         """Explicit seed, or a stable one derived from the id."""
@@ -140,7 +142,10 @@ def parse_catalog(data: dict[str, Any]) -> Catalog:
             raise CatalogError(f"{scene_id}: priority must be a positive integer")
         if not raw.get("scene", "").strip():
             raise CatalogError(f"{scene_id}: empty scene")
-        scenes.append(Scene(scene_id, priority, raw["tags"], raw["scene"], raw.get("seed")))
+        style = raw.get("style")
+        if style is not None and (not isinstance(style, str) or not style.strip()):
+            raise CatalogError(f"{scene_id}: style must be a non-empty string")
+        scenes.append(Scene(scene_id, priority, raw["tags"], raw["scene"], raw.get("seed"), style))
     return Catalog(data["model"], data["license"], data["style"], tuple(scenes))
 
 

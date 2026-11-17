@@ -26,6 +26,7 @@
       "priority": 1,
       "tags": { "location": "jam_jar", "motifs": [], "people": "none", "mood": "dread", "time": "interior" },
       "seed": 484214,
+      "style": "Realistic 35mm film photograph, heavy film grain, muted desaturated colors, the logic of a dream, quiet, uneasy and unsettling atmosphere.",
       "scene": "Underwater-like macro shot submerged inside thick dark red cherry jam, whole cherries and seeds suspended around the camera, everything glowing deep red and murky, the round mouth of the jar far above as a pale blurred circle of light, claustrophobic"
     },
     {
@@ -46,6 +47,7 @@
       "priority": 1,
       "tags": { "location": "bedroom", "motifs": ["monitor"], "people": "distant", "mood": "dread", "time": "night" },
       "seed": 484213,
+      "style": "Realistic 35mm film photograph, heavy film grain, muted desaturated colors, faces hidden in shadow, Russia in the 1990s, the logic of a dream, quiet, uneasy and unsettling atmosphere.",
       "scene": "A dark Soviet-era bedroom at night seen from the doorway, a sleeping figure in bed is only a dark silhouette under the blanket with the head turned to the wall, an old heart monitor on the bedside table glowing green is the only light, its glow on the wall and the pillow, the figure's face completely invisible in darkness"
     },
     {
@@ -278,6 +280,7 @@
       "priority": 2,
       "tags": { "location": "bedroom", "motifs": ["spider"], "people": "none", "mood": "scare", "time": "night" },
       "seed": 650106,
+      "style": "Realistic 35mm film photograph, heavy film grain, harsh direct flash, muted desaturated colors, Russia in the 1990s, the logic of a dream, sudden shocking moment.",
       "scene": "Extreme close-up of a giant hairy spider lunging straight at the camera in a pitch-dark room, its many glossy black eyes reflecting a harsh camera flash, fangs open, legs filling the whole frame"
     },
     {
@@ -285,6 +288,7 @@
       "priority": 2,
       "tags": { "location": "bedroom", "motifs": ["snake"], "people": "none", "mood": "scare", "time": "night" },
       "seed": 650107,
+      "style": "Realistic 35mm film photograph, heavy film grain, harsh direct flash, muted desaturated colors, Russia in the 1990s, the logic of a dream, sudden shocking moment.",
       "scene": "Extreme close-up of a large snake striking straight at the camera out of darkness at the edge of a bed, mouth wide open, fangs bared, lit by a harsh camera flash, the pillow blurred behind it"
     },
     {
@@ -307,6 +311,70 @@
       "tags": { "location": "stairwell", "motifs": ["giant_shapes"], "people": "none", "mood": "uneasy", "time": "interior" },
       "seed": 150103,
       "scene": "A narrow Soviet apartment stairwell completely blocked by one gigantic smooth white ball wedged between the walls and the steps, far too big for the space, peeling paint, a dim bulb, nobody there"
+    },
+    {
+      "id": "yard-night-vacuum-woman",
+      "priority": 1,
+      "tags": { "location": "yard", "motifs": ["swing", "vacuum_woman"], "people": "distant", "mood": "dread", "time": "night" },
+      "seed": 21140,
+      "style": "Shot on 35mm film, heavy grain, slight motion blur, muted green-orange colors, liminal, eerie, unsettling, realistic photograph, dream.",
+      "scene": "Night courtyard between Soviet nine-storey panel apartment blocks, wet cracked asphalt reflecting sodium street lamps, an empty children's swing moving slightly, a few yellow lit windows, light fog. Far away under a lamp a middle-aged woman in a house robe stands motionless holding an old Soviet vacuum cleaner, facing the camera, face in shadow"
+    },
+    {
+      "id": "yard-dusk-empty-swing",
+      "priority": 1,
+      "tags": { "location": "yard", "motifs": ["swing"], "people": "none", "mood": "uneasy", "time": "dusk" },
+      "seed": 72505,
+      "style": "Shot on 35mm film, heavy grain, muted desaturated colors, realistic photograph, liminal, eerie, unsettling, 1990s Russia, dream.",
+      "scene": "Courtyard between Soviet panel apartment blocks at dusk, an empty children's swing hanging still in thick fog, wet asphalt, a single sodium street lamp just turning on, nobody around, silence"
+    },
+    {
+      "id": "yard-night-window-silhouette",
+      "priority": 1,
+      "tags": { "location": "yard", "motifs": [], "people": "distant", "mood": "dread", "time": "night" },
+      "seed": 290970,
+      "style": "Shot on 35mm film, heavy grain, muted desaturated colors, realistic photograph, liminal, eerie, unsettling, 1990s Russia, dream.",
+      "scene": "Looking up at a Soviet nine-storey panel apartment block at night from the courtyard, all windows dark except one yellow lit window high up with a motionless human silhouette standing in it, light drizzle, sodium light"
+    },
+    {
+      "id": "yard-day-pigeons",
+      "priority": 1,
+      "tags": { "location": "yard", "motifs": ["pigeons"], "people": "none", "mood": "uneasy", "time": "day" },
+      "seed": 288267,
+      "style": "Shot on 35mm film, heavy grain, muted desaturated colors, realistic photograph, liminal, eerie, unsettling, 1990s Russia, dream.",
+      "scene": "Grey overcast day in an empty Soviet courtyard, dozens of grey pigeons standing still on cracked wet asphalt, all of them turned toward the camera, panel apartment blocks behind, flat light, no people"
+    },
+    {
+      "id": "stairwell-mailboxes",
+      "priority": 1,
+      "tags": { "location": "stairwell", "motifs": [], "people": "none", "mood": "uneasy", "time": "interior" },
+      "seed": 331710,
+      "style": "Shot on 35mm film, heavy grain, muted desaturated colors, realistic photograph, liminal, eerie, unsettling, 1990s Russia, dream.",
+      "scene": "Inside an old Soviet apartment building stairwell entrance, walls painted dark green to shoulder height and whitewashed above, rusty metal mailboxes, peeling paint, a single bare light bulb flickering, cigarette burns, nobody, cold night"
+    },
+    {
+      "id": "stairwell-door-ajar",
+      "priority": 1,
+      "tags": { "location": "stairwell", "motifs": [], "people": "none", "mood": "dread", "time": "interior" },
+      "seed": 247875,
+      "style": "Shot on 35mm film, heavy grain, muted desaturated colors, realistic photograph, liminal, eerie, unsettling, 1990s Russia, dream.",
+      "scene": "Dark stairwell landing in a Soviet apartment building at night, a padded leatherette apartment door standing slightly ajar with warm yellow light coming out of the gap, the rest in deep shadow, silence"
+    },
+    {
+      "id": "stairs-down",
+      "priority": 1,
+      "tags": { "location": "stairs", "motifs": [], "people": "none", "mood": "uneasy", "time": "interior" },
+      "seed": 108785,
+      "style": "Shot on 35mm film, heavy grain, muted desaturated colors, realistic photograph, liminal, eerie, unsettling, 1990s Russia, dream.",
+      "scene": "Endless concrete staircase without railings descending into complete darkness inside a Soviet apartment building, worn steps, a painted floor number on the wall, cold fluorescent light from above fading into black, nobody"
+    },
+    {
+      "id": "hospital-corridor-ventilator",
+      "priority": 1,
+      "tags": { "location": "hospital_corridor", "motifs": ["ventilator"], "people": "none", "mood": "dread", "time": "interior" },
+      "seed": 184060,
+      "style": "Shot on 35mm film, heavy grain, muted desaturated colors, realistic photograph, liminal, eerie, unsettling, 1990s Russia, dream.",
+      "scene": "Long empty Soviet hospital corridor at night, tiled walls painted pale blue, linoleum floor, flickering fluorescent tubes, in the middle of the corridor a lone old medical ventilator machine with hoses standing by itself, nobody around"
     }
   ]
 }
