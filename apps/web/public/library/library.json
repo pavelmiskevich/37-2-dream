@@ -922,7 +922,7 @@
       "generation": {
         "model": "Tongyi-MAI/Z-Image-Turbo",
         "license": "Apache-2.0",
-        "prompt": "A Soviet apartment stairwell landing in the afternoon, a dusty window lets a slanted beam of pale sunlight onto the worn tiled floor, dust hanging in the air, a dying potted plant on the windowsill, walls painted green to shoulder height, nobody, silence. Realistic 35mm film photograph, heavy film grain, muted desaturated colors, faces hidden in shadow, Russia in the 1990s, Soviet-era interiors and courtyards, the logic of a dream, quiet, uneasy and unsettling atmosphere.",
+        "prompt": "Indoors, inside a Soviet apartment block: a stairwell landing in the afternoon, a flight of worn concrete stairs with a painted metal railing and a wooden handrail rising from the landing to the next floor, a dusty window lets a slanted beam of pale sunlight onto the steps and the tiled floor, dust hanging in the air, a dying potted plant on the windowsill, walls painted green to shoulder height, nobody, silence. Realistic 35mm film photograph, heavy film grain, muted desaturated colors, faces hidden in shadow, Russia in the 1990s, Soviet-era interiors and courtyards, the logic of a dream, quiet, uneasy and unsettling atmosphere.",
         "seed": 790105,
         "source": "hf-space:mcp-tools/Z-Image-Turbo"
       }
