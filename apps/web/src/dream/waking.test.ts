@@ -96,6 +96,16 @@ describe('wakingCues', () => {
     expect(first).toContainEqual({ type: 'sound.start', sound: 'kitchen', fade: WAKING.kitchenFade });
   });
 
+  it('sets its own volume of the breathing and the kitchen before starting them (#80)', () => {
+    for (const sound of ['breath', 'kitchen'] as const) {
+      const volume = cues.findIndex((cue) => cue.event.type === 'sound.volume' && cue.event.sound === sound);
+      const start = cues.findIndex((cue) => cue.event.type === 'sound.start' && cue.event.sound === sound);
+      expect(volume).toBeGreaterThanOrEqual(0);
+      expect(volume).toBeLessThan(start);
+      expect(cues[volume]).toEqual({ at: 0, event: { type: 'sound.volume', sound, value: 1 } });
+    }
+  });
+
   it('beeps the microwave three times before the call', () => {
     const beeps = cues.filter((cue) => cue.event.type === 'monitor.beep');
     expect(beeps).toHaveLength(3);

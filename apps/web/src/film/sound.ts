@@ -10,11 +10,12 @@ import type { PlayerSettings } from './timeline';
  *
  * Parameters (each 0…1) as `generateFilm` writes them (D-023, header of
  * `packages/dream-core/src/film/sound.ts`): `tempo` — monitor urgency;
- * `rate` — ventilator and breathing; `turbine` and `volume` — the vacuum;
- * `muffle` — the whole mix, on any cue; `strength` and `pitch` (0.5 nominal)
- * — the swing creak; `volume` — the stinger; `depth` — how deep `silence`
- * ducks the mix. The engine has no per-sound volume, so `volume` of the other
- * beds is not applied (only the vacuum and the stinger have one).
+ * `rate` — ventilator and breathing; `turbine` — the vacuum; `volume` of a
+ * start or set — the sound's loudness (`sound.volume`; the vacuum's own
+ * `vacuum.volume`); `muffle` — the whole mix, on any cue; `strength` and
+ * `pitch` (0.5 nominal) — the swing creak; `volume` — the stinger; `depth` —
+ * how deep `silence` ducks the mix. `volume` of the monitor's lone hit is
+ * not applied: the beep has a level of its own.
  */
 
 /** Breathing rates `rate` 0…1 spans, breaths a minute. */
@@ -51,6 +52,8 @@ export function cueEvents(cue: SoundCue, settings: PlayerSettings): SoundEvent[]
   if (isSoundId(sound)) {
     // Parameters first, so a sound starts already in its new state.
     if (action !== 'stop') events.push(...paramEvents(sound, params));
+    if ((action === 'start' || action === 'set') && sound !== 'vacuum' && params.volume !== undefined)
+      events.push({ type: 'sound.volume', sound, value: clamp01(params.volume) });
     if (action === 'start') events.push({ type: 'sound.start', sound });
     else if (action === 'stop') events.push({ type: 'sound.stop', sound });
     else if (action === 'hit' && sound === 'monitor') events.push({ type: 'monitor.beep' });
