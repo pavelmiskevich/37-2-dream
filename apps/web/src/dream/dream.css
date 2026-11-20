@@ -210,6 +210,13 @@
   color: #ecebe6;
 }
 
+.pause__text {
+  max-width: 26rem;
+  margin: -1rem 0 0;
+  font-size: 0.95rem;
+  line-height: 1.5;
+}
+
 .pause__actions {
   display: flex;
   flex-wrap: wrap;

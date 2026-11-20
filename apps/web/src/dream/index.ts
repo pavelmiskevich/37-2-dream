@@ -20,6 +20,8 @@ import { freshSeed } from '../journal/fresh';
 import { saveCardPng } from '../journal/png';
 import { createDreamJournal } from '../journal/storage';
 import { createAwakening, type Awakening } from './awakening';
+import { showBrokenScreen } from './broken-screen';
+import { DreamStartError, failureMessage, soundStoppedBySystem } from './failure';
 import { SLEEP_UNAVAILABLE } from './lines';
 import { createPauseScreen } from './pause-screen';
 import { DEFAULT_LENGTH, dreamUrl, parseDreamQuery, queryWithDream } from './query';
@@ -107,8 +109,11 @@ export function startDreamFilm(canvas: HTMLCanvasElement, search: string = windo
     wakeLock = null;
   };
 
+  /** Set once the dream broke after the click: nothing pauses or goes on any more (#81). */
+  let broken = false;
+
   const pause = () => {
-    if (paused || (phase !== 'dreaming' && phase !== 'waking')) return;
+    if (broken || paused || (phase !== 'dreaming' && phase !== 'waking')) return;
     paused = true;
     root.dataset.paused = '';
     player?.pause();
@@ -166,12 +171,41 @@ export function startDreamFilm(canvas: HTMLCanvasElement, search: string = windo
     });
   };
 
+  /** The dream broke after the click: stop everything and say so, with the way back (#81). */
+  const breakDream = (error: unknown) => {
+    if (broken) return;
+    broken = true;
+    root.dataset.broken = '';
+    paused = false;
+    delete root.dataset.paused;
+    pauseScreen.hide();
+    player?.stop();
+    awakening?.pause();
+    audio?.dispose(0.5);
+    letSleep();
+    // Back to the falling-asleep screen of the same dream, as the pause's "Проснуться".
+    showBrokenScreen(failureMessage(error, true), () => window.location.reload());
+  };
+
   async function dream(choice: SleepChoice, unlocked: Promise<AudioContext | null>): Promise<void> {
-    const manifest = await library;
+    const manifest = await library.catch((cause: unknown) => {
+      throw new DreamStartError('library', cause);
+    });
     const film = generateFilm(seed, choice.length, manifest);
-    player = new FilmPlayer({ canvas, library: manifest, root: LIBRARY_ROOT, settings: { noFlash: choice.noFlash } });
+    try {
+      player = new FilmPlayer({ canvas, library: manifest, root: LIBRARY_ROOT, settings: { noFlash: choice.noFlash } });
+    } catch (cause) {
+      // The renderer is the first thing to need WebGL.
+      throw new DreamStartError('webgl', cause);
+    }
     await player.load(film);
     context = await unlocked;
+    // The film runs on the sound's clock (D-024): if the system stops the sound
+    // (a call, the output device gone), the dream must pause, not stand still.
+    const sound = context;
+    sound?.addEventListener('statechange', () => {
+      if (soundStoppedBySystem(sound.state, paused)) pause();
+    });
     // The awakening's recordings (D-032) load during the dream; nothing waits for them.
     audio = context
       ? createAudioEngine(context, { seed, samples: loadSampleBank(context, SOUNDS_ROOT, wakingSamples(seed)) })
@@ -189,7 +223,12 @@ export function startDreamFilm(canvas: HTMLCanvasElement, search: string = windo
     screen.dispose();
     setPhase('dreaming');
     keepAwake();
-    await player.play({ audio });
+    const playing = player.play({ audio });
+    // Fallen asleep in a tab that went to the background while the first
+    // frames loaded, or with the sound already stopped: the dream waits at its
+    // start behind the pause instead of running unseen (#81).
+    if (document.hidden || (sound && soundStoppedBySystem(sound.state, false))) pause();
+    await playing;
 
     setPhase('waking');
     await awakening.run();
@@ -217,8 +256,9 @@ export function startDreamFilm(canvas: HTMLCanvasElement, search: string = windo
         return null;
       });
       dream(choice, unlocked).catch((error: unknown) => {
-        console.error('The dream did not start', error);
-        if (phase === 'awake') screen.fail(SLEEP_UNAVAILABLE);
+        console.error(phase === 'awake' ? 'The dream did not start' : 'The dream broke', error);
+        if (phase === 'awake') screen.fail(failureMessage(error, false));
+        else breakDream(error);
       });
     },
   });
