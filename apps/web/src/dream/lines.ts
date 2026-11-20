@@ -18,6 +18,14 @@ export function temperatureText(celsius: number): string {
 export const SLEEP_ACTION = 'Нажмите, чтобы уснуть';
 export const SLEEP_LOADING = 'Вы засыпаете';
 export const SLEEP_UNAVAILABLE = 'Сон недоступен: библиотека кадров не загрузилась. Обновите страницу.';
+export const SLEEP_FRAMES_UNAVAILABLE = 'Сон недоступен: первые кадры не загрузились. Проверьте соединение и обновите страницу.';
+export const SLEEP_NO_WEBGL = 'Сон недоступен: браузер не может показать изображение. Включите WebGL или откройте сон в другом браузере.';
+export const SLEEP_FAILED = 'Сон недоступен: засыпание не удалось. Обновите страницу.';
+
+/** A dream broken after the click (#81): said over the stopped film, with the way back. */
+export const DREAM_BROKEN_TITLE = 'Сон прервался';
+export const DREAM_BROKEN_TEXT = 'Изображение или звук перестали работать.';
+export const DREAM_BROKEN_EXIT = 'Уснуть снова';
 
 export const LENGTH_LEGEND = 'Длина сна';
 export const LENGTH_TEXT: Readonly<Record<DreamLength, string>> = {

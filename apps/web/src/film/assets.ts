@@ -1,5 +1,6 @@
 import type { LibraryAsset, LibraryManifest } from '@dream/core';
 import * as THREE from 'three';
+import { RetryingLoads } from './loads';
 import { assetIndex, assetUrl } from './preload';
 
 /**
@@ -71,7 +72,7 @@ async function loadVideo(url: string): Promise<HTMLVideoElement> {
 
 export class AssetCache {
   private readonly index: Map<string, LibraryAsset>;
-  private readonly loading = new Map<string, Promise<LoadedAsset | null>>();
+  private readonly loading: RetryingLoads<LoadedAsset>;
   private readonly ready = new Map<string, LoadedAsset>();
   private disposed = false;
 
@@ -85,6 +86,11 @@ export class AssetCache {
     private readonly prepare: (texture: THREE.Texture) => void = () => {},
   ) {
     this.index = assetIndex(manifest);
+    this.loading = new RetryingLoads((id) => this.load(id), {
+      onError: (id, error) => {
+        if (!this.disposed) console.warn(`Film asset "${id}" is not available (yet)`, error);
+      },
+    });
   }
 
   /** The asset if it is loaded; never waits. */
@@ -92,17 +98,12 @@ export class AssetCache {
     return this.ready.get(id);
   }
 
-  /** Loads an asset (once); resolves to null when it cannot be loaded. */
+  /**
+   * Loads an asset (once); resolves to null when it cannot be loaded. A failed
+   * asset is tried again when it is asked for after `LOAD_RETRY_MS` (#81).
+   */
   request(id: string): Promise<LoadedAsset | null> {
-    let promise = this.loading.get(id);
-    if (!promise) {
-      promise = this.load(id).catch((error: unknown) => {
-        console.warn(`Film asset "${id}" is not available`, error);
-        return null;
-      });
-      this.loading.set(id, promise);
-    }
-    return promise;
+    return this.loading.request(id);
   }
 
   /** Keeps `ids` loaded (requesting the missing ones, in order) and releases everything else. */
@@ -112,7 +113,7 @@ export class AssetCache {
       if (ids.includes(id)) continue;
       this.release(loaded);
       this.ready.delete(id);
-      this.loading.delete(id);
+      this.loading.forget(id);
     }
   }
 
@@ -150,7 +151,7 @@ export class AssetCache {
       const depth = depthImage ? imageTexture(depthImage) : null;
       loaded = { asset, texture, depth, video: null, aspect: image.naturalWidth / image.naturalHeight };
     }
-    if (this.disposed || this.loading.get(id) === undefined) {
+    if (this.disposed || !this.loading.has(id)) {
       this.release(loaded);
       throw new Error(`Asset "${id}" was released while loading`);
     }

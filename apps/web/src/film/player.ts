@@ -52,6 +52,14 @@ export interface PlayerStats {
 /** Shots preloaded before playback starts. */
 const START_READY = 2;
 
+/** The first shot's asset did not load, so the film cannot start (#81). */
+export class FilmAssetError extends Error {
+  constructor(readonly assetId: string) {
+    super(`The first shot's asset "${assetId}" did not load`);
+    this.name = 'FilmAssetError';
+  }
+}
+
 export class FilmPlayer {
   readonly renderer: FilmRenderer;
   /** "Без вспышек" and friends; takes effect on the next `play` or `hold`. */
@@ -76,6 +84,7 @@ export class FilmPlayer {
   private activeVideo: HTMLVideoElement | null = null;
   private lastFrameMs = 0;
   private finish: (() => void) | null = null;
+  private fail: ((error: unknown) => void) | null = null;
 
   constructor(options: FilmPlayerOptions) {
     this.settings = options.settings ?? { noFlash: false };
@@ -94,7 +103,11 @@ export class FilmPlayer {
     return this.clock.now() - this.origin;
   }
 
-  /** Sets the film and waits for the assets of its first shots (from `from`). */
+  /**
+   * Sets the film and waits for the assets of its first shots (from `from`).
+   * Rejects with `FilmAssetError` when the first shot's asset cannot be
+   * loaded: a film that would open on a black screen does not start (#81).
+   */
   async load(film: DreamFilm, from = 0): Promise<void> {
     this.stop();
     this.film = film;
@@ -103,7 +116,10 @@ export class FilmPlayer {
     this.windowShot = first;
     const ids = assetWindow(film.shots, first);
     this.assets.keep(ids);
-    await Promise.all(assetWindow(film.shots, first, START_READY - 1, 0).map((id) => this.assets.request(id)));
+    const ready = assetWindow(film.shots, first, START_READY - 1, 0);
+    const loaded = await Promise.all(ready.map((id) => this.assets.request(id)));
+    const firstId = ready[0];
+    if (firstId !== undefined && loaded[0] === null) throw new FilmAssetError(firstId);
   }
 
   /** Plays the loaded film; resolves when it is over (or stopped). */
@@ -120,7 +136,10 @@ export class FilmPlayer {
     this.heldAt = null;
     // Catch the sound up to `from`: state cues apply, stale one-shots are skipped.
     this.cueTime = from > 0 ? -Infinity : 0;
-    const ended = new Promise<void>((resolve) => (this.finish = resolve));
+    const ended = new Promise<void>((resolve, reject) => {
+      this.finish = resolve;
+      this.fail = reject;
+    });
     this.renderer.renderer.setAnimationLoop(() => this.tick());
     return ended;
   }
@@ -167,6 +186,7 @@ export class FilmPlayer {
     this.activeVideo = null;
     this.finish?.();
     this.finish = null;
+    this.fail = null;
   }
 
   dispose(): void {
@@ -175,7 +195,24 @@ export class FilmPlayer {
     this.renderer.dispose();
   }
 
+  /**
+   * One frame. An error thrown in it would otherwise leave the animation loop
+   * to throw on every frame while `play` never settles: it stops the picture
+   * and rejects `play` instead (#81).
+   */
   private tick(): void {
+    try {
+      this.frame();
+    } catch (error) {
+      const fail = this.fail;
+      this.finish = null;
+      this.stop();
+      if (fail) fail(error);
+      else throw error;
+    }
+  }
+
+  private frame(): void {
     const film = this.film;
     if (!film) return;
     const nowMs = performance.now();
@@ -195,7 +232,11 @@ export class FilmPlayer {
       this.assets.keep(assetWindow(film.shots, at.index));
     }
     const loaded = at ? this.assets.get(at.shot.assetId) : undefined;
-    if (at && !loaded && time < film.duration) this.stats.misses++;
+    if (at && !loaded && time < film.duration) {
+      this.stats.misses++;
+      // The shot is black while its file is missing; ask again (the cache paces the retries).
+      void this.assets.request(at.shot.assetId);
+    }
     this.syncVideo(loaded, at?.local ?? 0, at?.shot.duration ?? 0, held);
 
     const frame = frameAt(
