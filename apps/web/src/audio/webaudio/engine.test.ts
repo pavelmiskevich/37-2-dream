@@ -160,6 +160,46 @@ describe('audio engine routing', () => {
     for (const path of heard) expect(path.has(muffle)).toBe(true);
   });
 
+  /** Gains on the way of the sound's audible sources started by `start`. */
+  function gainsOf(start: () => void): FakeNode[][] {
+    const before = ctx.nodes.length;
+    start();
+    return ctx.nodes
+      .slice(before)
+      .filter((node) => node.kind === 'oscillator' || node.kind === 'buffer-source')
+      .map(downstream)
+      .filter((path) => path.has(ctx.destination))
+      .map((path) => [...path].filter((node) => node.kind === 'gain'));
+  }
+
+  it('plays each sound at its own volume and glides it while it plays (#80)', () => {
+    expect(engine.soundVolumeOf('hum')).toBe(1);
+    engine.handle({ type: 'sound.volume', sound: 'hum', value: 0.37 });
+    const paths = gainsOf(() => engine.handle({ type: 'sound.start', sound: 'hum' }));
+    expect(paths.length).toBeGreaterThan(0);
+    const buses = new Set(paths.map((gains) => gains.find((node) => node.gain.value === 0.37)));
+    expect(buses.size).toBe(1);
+    const [bus] = [...buses];
+    expect(bus).toBeDefined();
+
+    engine.handle({ type: 'sound.volume', sound: 'hum', value: 2 });
+    expect(engine.soundVolumeOf('hum')).toBe(1);
+    expect(bus!.gain.value).toBe(1);
+    // Another sound's volume leaves the hum alone.
+    engine.handle({ type: 'sound.volume', sound: 'kitchen', value: 0.3 });
+    expect(bus!.gain.value).toBe(1);
+  });
+
+  it('keeps a sound\'s volume across a stop and a move to another layer', () => {
+    engine.handle({ type: 'sound.volume', sound: 'breath', value: 0.4 });
+    engine.handle({ type: 'sound.start', sound: 'breath' });
+    engine.handle({ type: 'sound.stop', sound: 'breath' });
+    expect(engine.soundVolumeOf('breath')).toBe(0.4);
+    const paths = gainsOf(() => engine.handle({ type: 'sound.start', sound: 'breath', layer: 'ambient' }));
+    expect(paths.length).toBeGreaterThan(0);
+    for (const gains of paths) expect(gains.some((node) => node.gain.value === 0.4)).toBe(true);
+  });
+
   it('lets the stinger past the muffle, however muffled the mix is', () => {
     engine.handle({ type: 'master.muffle', value: 0.6 });
     expect(muffle.frequency.value).toBeCloseTo(muffleCutoff(0.6), 6);

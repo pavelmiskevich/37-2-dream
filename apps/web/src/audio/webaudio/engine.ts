@@ -48,6 +48,8 @@ export interface AudioEngine {
   hasSample(sample: SampleId): boolean;
   /** Layer the sound is playing in, or null when it is off. */
   layerOf(sound: SoundId): LayerName | null;
+  /** The sound's `sound.volume`, 0…1. */
+  soundVolumeOf(sound: SoundId): number;
   /** Current effective layer gains after compatibility rules and master volume. */
   layerGains(): LayerGains;
   /** Fades everything out and detaches from the context. The context itself stays open. */
@@ -62,6 +64,8 @@ interface SamplePlay {
 
 /** Ramp time for layer gain changes (ducking, volume sliders). */
 const LAYER_RAMP = 0.4;
+/** Time constant of a sound's volume glide: the film retargets it every few seconds. */
+export const SOUND_VOLUME_GLIDE = 0.6;
 const TICK_MS = 25;
 
 /**
@@ -104,6 +108,14 @@ class WebAudioEngine implements AudioEngine {
   private readonly stinger: StingerVoice;
   private readonly stingerBus: GainNode;
   private readonly voiceLayer = new Map<SoundId, LayerName>();
+  /** `sound.volume` of each sound. */
+  private readonly soundVolume = Object.fromEntries(SOUNDS.map((sound) => [sound, 1])) as Record<SoundId, number>;
+  /**
+   * A gain per sound and layer between the voice and its layer, carrying the
+   * sound's volume. One per layer, so a sound moving to another layer still
+   * crossfades its two instances, each at the sound's volume.
+   */
+  private readonly soundBuses = new Map<`${SoundId}/${LayerName}`, GainNode>();
   private readonly samples: SampleBank;
   /** Plays of recordings still sounding, to stop them on `sample.stop` and `dispose`. */
   private readonly samplePlays = new Map<SampleId, Set<SamplePlay>>();
@@ -175,6 +187,9 @@ class WebAudioEngine implements AudioEngine {
       case 'sound.stop':
         this.stop(event.sound, event.fade);
         break;
+      case 'sound.volume':
+        this.setSoundVolume(event.sound, event.value);
+        break;
       case 'monitor.intensity':
         this.voices.monitor.setIntensity(event.value);
         break;
@@ -239,6 +254,10 @@ class WebAudioEngine implements AudioEngine {
     return this.mix();
   }
 
+  soundVolumeOf(sound: SoundId): number {
+    return this.soundVolume[sound];
+  }
+
   dispose(fade = 0.3): void {
     if (this.disposed) return;
     for (const sound of SOUNDS) this.stop(sound, fade);
@@ -263,7 +282,7 @@ class WebAudioEngine implements AudioEngine {
     }
     // Moving to another layer: the old instance fades out while the new one fades in.
     if (voice.playing) voice.stop(fade ?? voice.defaultFadeOut);
-    voice.start(this.layers[layer], fade ?? voice.defaultFadeIn);
+    voice.start(this.soundBus(sound, layer), fade ?? voice.defaultFadeIn);
     this.voiceLayer.set(sound, layer);
     this.applyMix();
   }
@@ -274,6 +293,33 @@ class WebAudioEngine implements AudioEngine {
     voice.stop(fade ?? voice.defaultFadeOut);
     this.voiceLayer.delete(sound);
     this.applyMix();
+  }
+
+  /** The gain carrying `sound`'s volume into `layer`, created on first use. */
+  private soundBus(sound: SoundId, layer: LayerName): GainNode {
+    const key = `${sound}/${layer}` as const;
+    let bus = this.soundBuses.get(key);
+    if (!bus) {
+      bus = this.context.createGain();
+      bus.gain.value = this.soundVolume[sound];
+      bus.connect(this.layers[layer]);
+      this.soundBuses.set(key, bus);
+    }
+    return bus;
+  }
+
+  private setSoundVolume(sound: SoundId, value: number): void {
+    const volume = clamp01(value);
+    this.soundVolume[sound] = volume;
+    const now = this.context.currentTime;
+    const playing = this.voices[sound].playing;
+    for (const layer of LAYERS) {
+      const bus = this.soundBuses.get(`${sound}/${layer}`);
+      if (!bus) continue;
+      // A playing sound swells or recedes; a silent one is simply set before it starts.
+      if (playing) glideParam(bus.gain, volume, now, SOUND_VOLUME_GLIDE);
+      else rampParam(bus.gain, volume, now, MIN_FADE);
+    }
   }
 
   private playSample(event: Extract<SoundEvent, { type: 'sample.play' }>): void {

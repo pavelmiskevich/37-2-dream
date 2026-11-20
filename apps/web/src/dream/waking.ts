@@ -21,6 +21,9 @@ export const WAKING = {
   breath: 13,
   breathFade: 2.5,
   kitchenFade: 1,
+  /** `sound.volume` of his breathing and the kitchen: the flat is real, as loud as its voices go. */
+  breathVolume: 1,
+  kitchenVolume: 1,
   microwave: { at: 1.4, gap: 0.6, beeps: 3 },
   thermometerAt: 3.2,
   thermometerFade: 1.2,
@@ -132,7 +135,9 @@ export interface WakingRecordingsAvailable {
 
 /**
  * Every sound of the awakening, in time order. The mix is opened first: the
- * film may have ended muffled or ducked. The kitchen is started whether or
+ * film may have ended muffled or ducked, and his breathing and the kitchen
+ * may still play at the film's quiet volume, so the awakening sets its own.
+ * The kitchen is started whether or
  * not the film already brought it in (D-023): starting a playing sound
  * changes nothing.
  *
@@ -148,6 +153,8 @@ export function wakingCues(recordings?: WakingRecordingsAvailable): WakingCue[] 
   const cues: WakingCue[] = [
     { at: 0, event: { type: 'master.volume', value: 1 } },
     { at: 0, event: { type: 'master.muffle', value: 0 } },
+    { at: 0, event: { type: 'sound.volume', sound: 'breath', value: WAKING.breathVolume } },
+    { at: 0, event: { type: 'sound.volume', sound: 'kitchen', value: WAKING.kitchenVolume } },
     { at: 0, event: { type: 'breath.rate', breathsPerMinute: WAKING.breath } },
     {
       at: has('snore') ? rec.snore.ends : 0,

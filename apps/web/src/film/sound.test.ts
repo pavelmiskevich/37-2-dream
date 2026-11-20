@@ -1,6 +1,6 @@
 import type { SoundCue } from '@dream/core';
 import { describe, expect, it } from 'vitest';
-import { CREAK_PERIOD, cueEvents, dueCues, expandCues, STALE_HIT, VENTILATOR_RATE } from './sound';
+import { BREATH_RATE, CREAK_PERIOD, cueEvents, dueCues, expandCues, STALE_HIT, VENTILATOR_RATE } from './sound';
 
 const FLASHES_ON = { noFlash: false };
 
@@ -21,6 +21,34 @@ describe('cueEvents', () => {
       { type: 'vacuum.turbine', value: 1 },
       { type: 'vacuum.volume', value: 0.5 },
     ]);
+  });
+
+  it('gives the beds the volume of their start and set cues (#80)', () => {
+    expect(cueEvents({ at: 0, sound: 'hum', action: 'set', params: { volume: 0.7, muffle: 0 } }, FLASHES_ON)).toEqual([
+      { type: 'sound.volume', sound: 'hum', value: 0.7 },
+      { type: 'master.muffle', value: 0 },
+    ]);
+    // The volume comes before the start, so the sound starts at it.
+    expect(cueEvents({ at: 0, sound: 'kitchen', action: 'start', params: { volume: 0.3 } }, FLASHES_ON)).toEqual([
+      { type: 'sound.volume', sound: 'kitchen', value: 0.3 },
+      { type: 'sound.start', sound: 'kitchen' },
+    ]);
+    expect(cueEvents({ at: 0, sound: 'breath', action: 'start', params: { volume: 1.4, rate: 0 } }, FLASHES_ON)).toEqual([
+      { type: 'breath.rate', breathsPerMinute: BREATH_RATE.min },
+      { type: 'sound.volume', sound: 'breath', value: 1 },
+      { type: 'sound.start', sound: 'breath' },
+    ]);
+    for (const sound of ['monitor', 'ventilator'] as const) {
+      expect(cueEvents({ at: 0, sound, action: 'set', params: { volume: 0.5 } }, FLASHES_ON)).toContainEqual({
+        type: 'sound.volume',
+        sound,
+        value: 0.5,
+      });
+    }
+    // The lone beep and the vacuum keep their own levels.
+    expect(cueEvents({ at: 0, sound: 'monitor', action: 'hit', params: { volume: 1 } }, FLASHES_ON)).toEqual([{ type: 'monitor.beep' }]);
+    const vacuum = cueEvents({ at: 0, sound: 'vacuum', action: 'start', params: { volume: 0.5 } }, FLASHES_ON);
+    expect(vacuum.some((event) => event.type === 'sound.volume')).toBe(false);
   });
 
   it('muffles the whole mix from any cue', () => {

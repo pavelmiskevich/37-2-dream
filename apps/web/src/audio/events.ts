@@ -25,6 +25,12 @@ export type SoundEvent =
   /** Starts a sound, or resumes it (monitor after silence). Moving a playing sound to another layer crossfades it. */
   | { type: 'sound.start'; sound: SoundId; layer?: LayerName; fade?: number }
   | { type: 'sound.stop'; sound: SoundId; fade?: number }
+  /**
+   * Loudness of one sound, 0…1 (1 = as loud as its voice goes, the default),
+   * glided without clicks. It outlives `sound.stop`: the next start plays at
+   * the same volume. The vacuum's own `vacuum.volume` multiplies with it.
+   */
+  | { type: 'sound.volume'; sound: SoundId; value: number }
   /** Monitor tempo and urgency, 0 (calm "пип… пип…") … 1 ("ПИППИППИП"). */
   | { type: 'monitor.intensity'; value: number }
   /** Cuts the beeping after the critical moment; the next `sound.start` resumes it. */
