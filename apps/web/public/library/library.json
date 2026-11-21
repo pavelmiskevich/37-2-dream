@@ -994,6 +994,191 @@
         "seed": 790108,
         "source": "hf-space:mcp-tools/Z-Image-Turbo"
       }
+    },
+    {
+      "id": "hospital-ward-ventilator",
+      "kind": "still",
+      "file": "stills/hospital-ward-ventilator.webp",
+      "depth": "depth/hospital-ward-ventilator.png",
+      "width": 1280,
+      "height": 720,
+      "tags": {
+        "location": "hospital_corridor",
+        "motifs": [
+          "ventilator",
+          "monitor"
+        ],
+        "people": "distant",
+        "mood": "uneasy",
+        "time": "day"
+      },
+      "generation": {
+        "model": "Tongyi-MAI/Z-Image-Turbo",
+        "license": "Apache-2.0",
+        "prompt": "A hospital ward seen through the glass of a door: an old ventilator with an accordion bellows next to a bed, a man lying under a sheet, his face in shadow, the monitor light reflecting on the glass. Realistic 35mm film photograph, heavy film grain, muted desaturated colors, faces hidden in shadow, Russia in the 1990s, Soviet-era interiors and courtyards, the logic of a dream, quiet, uneasy and unsettling atmosphere.",
+        "seed": 1240101,
+        "source": "hf-space:mcp-tools/Z-Image-Turbo"
+      }
+    },
+    {
+      "id": "elevator-buttons-37",
+      "kind": "still",
+      "file": "stills/elevator-buttons-37.webp",
+      "depth": "depth/elevator-buttons-37.png",
+      "width": 1280,
+      "height": 720,
+      "tags": {
+        "location": "elevator",
+        "motifs": [],
+        "people": "none",
+        "mood": "uneasy",
+        "time": "interior"
+      },
+      "generation": {
+        "model": "Tongyi-MAI/Z-Image-Turbo",
+        "license": "Apache-2.0",
+        "prompt": "Close-up of an old elevator button panel with melted plastic buttons, the floors numbered up to 37, button 37 glowing faintly, scratched wood-grain walls, harsh flat light. Realistic 35mm film photograph, heavy film grain, muted desaturated colors, faces hidden in shadow, Russia in the 1990s, Soviet-era interiors and courtyards, the logic of a dream, quiet, uneasy and unsettling atmosphere.",
+        "seed": 1240102,
+        "source": "hf-space:mcp-tools/Z-Image-Turbo"
+      }
+    },
+    {
+      "id": "thermometer-corridor-mercury",
+      "kind": "still",
+      "file": "stills/thermometer-corridor-mercury.webp",
+      "depth": "depth/thermometer-corridor-mercury.png",
+      "width": 1280,
+      "height": 720,
+      "tags": {
+        "location": "thermometer_corridor",
+        "motifs": [
+          "thermometer"
+        ],
+        "people": "none",
+        "mood": "dread",
+        "time": "interior"
+      },
+      "generation": {
+        "model": "Tongyi-MAI/Z-Image-Turbo",
+        "license": "Apache-2.0",
+        "prompt": "A corridor floor covered with beads of spilled mercury from broken thermometers, reflecting the ceiling lamps like tiny mirrors, broken glass along the skirting board, a door at the end with a red lamp above it. Realistic 35mm film photograph, heavy film grain, muted desaturated colors, faces hidden in shadow, Russia in the 1990s, Soviet-era interiors and courtyards, the logic of a dream, quiet, uneasy and unsettling atmosphere.",
+        "seed": 1240103,
+        "source": "hf-space:mcp-tools/Z-Image-Turbo"
+      }
+    },
+    {
+      "id": "jam-jar-spoon-viscous",
+      "kind": "still",
+      "file": "stills/jam-jar-spoon-viscous.webp",
+      "depth": "depth/jam-jar-spoon-viscous.png",
+      "width": 1280,
+      "height": 720,
+      "tags": {
+        "location": "jam_jar",
+        "motifs": [],
+        "people": "none",
+        "mood": "uneasy",
+        "time": "interior"
+      },
+      "generation": {
+        "model": "Tongyi-MAI/Z-Image-Turbo",
+        "license": "Apache-2.0",
+        "prompt": "Extreme close-up of thick dark jam slowly dripping from a silver teaspoon into an open jar, a distorted reflection of a kitchen window in the jam surface, sticky glass rim. Realistic 35mm film photograph, heavy film grain, muted desaturated colors, faces hidden in shadow, Russia in the 1990s, Soviet-era interiors and courtyards, the logic of a dream, quiet, uneasy and unsettling atmosphere.",
+        "seed": 1240104,
+        "source": "hf-space:mcp-tools/Z-Image-Turbo"
+      }
+    },
+    {
+      "id": "kitchen-vacuum-woman",
+      "kind": "still",
+      "file": "stills/kitchen-vacuum-woman.webp",
+      "depth": "depth/kitchen-vacuum-woman.png",
+      "width": 1280,
+      "height": 720,
+      "tags": {
+        "location": "kitchen",
+        "motifs": [
+          "vacuum_woman"
+        ],
+        "people": "distant",
+        "mood": "dread",
+        "time": "night"
+      },
+      "generation": {
+        "model": "Tongyi-MAI/Z-Image-Turbo",
+        "license": "Apache-2.0",
+        "prompt": "A woman in a house dress vacuuming the floor of a dark Soviet kitchen at night with an old cylinder vacuum cleaner, seen from the hallway, her face turned away into shadow, a single bulb over the table. Realistic 35mm film photograph, heavy film grain, muted desaturated colors, faces hidden in shadow, Russia in the 1990s, Soviet-era interiors and courtyards, the logic of a dream, quiet, uneasy and unsettling atmosphere.",
+        "seed": 1240105,
+        "source": "hf-space:mcp-tools/Z-Image-Turbo"
+      }
+    },
+    {
+      "id": "stairwell-window-night",
+      "kind": "still",
+      "file": "stills/stairwell-window-night.webp",
+      "depth": "depth/stairwell-window-night.png",
+      "width": 1280,
+      "height": 720,
+      "tags": {
+        "location": "stairwell",
+        "motifs": [],
+        "people": "none",
+        "mood": "uneasy",
+        "time": "night"
+      },
+      "generation": {
+        "model": "Tongyi-MAI/Z-Image-Turbo",
+        "license": "Apache-2.0",
+        "prompt": "A stairwell landing at night with a dirty window onto the courtyard, a radiator, cigarette butts in a tin can, peeling blue-green paint, the light on the floor below has gone out. Realistic 35mm film photograph, heavy film grain, muted desaturated colors, faces hidden in shadow, Russia in the 1990s, Soviet-era interiors and courtyards, the logic of a dream, quiet, uneasy and unsettling atmosphere.",
+        "seed": 1240106,
+        "source": "hf-space:mcp-tools/Z-Image-Turbo"
+      }
+    },
+    {
+      "id": "yard-dusk-swing-hanging",
+      "kind": "still",
+      "file": "stills/yard-dusk-swing-hanging.webp",
+      "depth": "depth/yard-dusk-swing-hanging.png",
+      "width": 1280,
+      "height": 720,
+      "tags": {
+        "location": "yard",
+        "motifs": [
+          "swing"
+        ],
+        "people": "none",
+        "mood": "dread",
+        "time": "dusk"
+      },
+      "generation": {
+        "model": "Tongyi-MAI/Z-Image-Turbo",
+        "license": "Apache-2.0",
+        "prompt": "A Soviet apartment courtyard at night in fog, a metal swing frozen high in mid-swing with nobody on it, a single sodium streetlight, rows of dark windows in a nine-storey panel block. Realistic 35mm film photograph, heavy film grain, muted desaturated colors, faces hidden in shadow, Russia in the 1990s, Soviet-era interiors and courtyards, the logic of a dream, quiet, uneasy and unsettling atmosphere.",
+        "seed": 1240107,
+        "source": "hf-space:mcp-tools/Z-Image-Turbo"
+      }
+    },
+    {
+      "id": "hospital-corridor-day-chairs",
+      "kind": "still",
+      "file": "stills/hospital-corridor-day-chairs.webp",
+      "depth": "depth/hospital-corridor-day-chairs.png",
+      "width": 1280,
+      "height": 720,
+      "tags": {
+        "location": "hospital_corridor",
+        "motifs": [],
+        "people": "distant",
+        "mood": "uneasy",
+        "time": "day"
+      },
+      "generation": {
+        "model": "Tongyi-MAI/Z-Image-Turbo",
+        "license": "Apache-2.0",
+        "prompt": "A polyclinic corridor in grey daylight, a row of joined wooden chairs along the wall, one patient sitting at the far end with his head down, numbered white doors, a rubber plant in a pot. Realistic 35mm film photograph, heavy film grain, muted desaturated colors, faces hidden in shadow, Russia in the 1990s, Soviet-era interiors and courtyards, the logic of a dream, quiet, uneasy and unsettling atmosphere.",
+        "seed": 1240108,
+        "source": "hf-space:mcp-tools/Z-Image-Turbo"
+      }
     }
   ]
 }
