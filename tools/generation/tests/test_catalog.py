@@ -50,9 +50,11 @@ class CatalogFileTest(unittest.TestCase):
 
     def test_size_and_coverage(self) -> None:
         scenes = self.catalog.scenes
-        self.assertTrue(30 <= len(scenes) <= 60, len(scenes))
+        # From the prototype (25–30 frames) up to the full library (300+, docs/generation-plan.md).
+        self.assertTrue(30 <= len(scenes) <= 300, len(scenes))
         scares = [s for s in scenes if s.tags["mood"] == "scare"]
-        self.assertTrue(4 <= len(scares) <= 8, len(scares))
+        # Scares stay rare: a dream is mostly dread, not jumps.
+        self.assertTrue(4 <= len(scares) <= len(scenes) // 5, (len(scares), len(scenes)))
         self.assertEqual({s.tags["location"] for s in scenes}, set(generate.LOCATION_TAGS))
         self.assertEqual({s.tags["time"] for s in scenes}, set(generate.TIME_TAGS))
         motifs = {m for s in scenes for m in s.tags["motifs"]}

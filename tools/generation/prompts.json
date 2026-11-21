@@ -421,6 +421,122 @@
       "seed": 184060,
       "style": "Shot on 35mm film, heavy grain, muted desaturated colors, realistic photograph, liminal, eerie, unsettling, 1990s Russia, dream.",
       "scene": "Long empty Soviet hospital corridor at night, tiled walls painted pale blue, linoleum floor, flickering fluorescent tubes, in the middle of the corridor a lone old medical ventilator machine with hoses standing by itself, nobody around"
+    },
+    {
+      "id": "elevator-day-open",
+      "priority": 2,
+      "tags": { "location": "elevator", "motifs": [], "people": "none", "mood": "calm", "time": "day" },
+      "seed": 1260101,
+      "scene": "Indoors, inside a Soviet apartment block: an old elevator cabin standing open on a landing in the afternoon, the doors folded back, scratched wood-grain walls lit by pale daylight from a stairwell window, a burnt-out bulb in the ceiling, nobody, silence"
+    },
+    {
+      "id": "stairs-day-stripes",
+      "priority": 2,
+      "tags": { "location": "stairs", "motifs": [], "people": "none", "mood": "calm", "time": "day" },
+      "seed": 1260102,
+      "scene": "Indoors, inside a Soviet apartment block: a long flight of worn concrete stairs going down, afternoon sunlight from a landing window lying in pale stripes across the steps and the painted metal railing, dust hanging in the air, nobody"
+    },
+    {
+      "id": "yard-day-snow",
+      "priority": 2,
+      "tags": { "location": "yard", "motifs": ["swing"], "people": "none", "mood": "calm", "time": "day" },
+      "seed": 1260103,
+      "scene": "A Soviet courtyard on a quiet snowy morning seen at eye level: fresh untouched snow on a sandbox and on the benches, a swing frozen still under a cap of snow, grey five-storey panel apartment blocks around with a few lit windows, white sky, nobody"
+    },
+    {
+      "id": "kitchen-dusk-window",
+      "priority": 2,
+      "tags": { "location": "kitchen", "motifs": [], "people": "none", "mood": "calm", "time": "dusk" },
+      "seed": 1260104,
+      "scene": "A small Soviet kitchen at dusk with the light switched off, the window over the sink glowing deep blue, a jar of jam and a glass of tea in a metal holder on the windowsill, outside the outline of panel blocks with the first lit windows, nobody"
+    },
+    {
+      "id": "elevator-mirror-37",
+      "priority": 2,
+      "tags": { "location": "elevator", "motifs": [], "people": "none", "mood": "uneasy", "time": "interior" },
+      "seed": 1260105,
+      "scene": "Inside a cramped old Soviet elevator cabin, a cracked mirror on the back wall reflecting only the empty cabin, a scratched floor indicator above the door showing 37, a dim ceiling lamp, burnt marks around the buttons"
+    },
+    {
+      "id": "elevator-shaft-open",
+      "priority": 2,
+      "tags": { "location": "elevator", "motifs": [], "people": "none", "mood": "dread", "time": "interior" },
+      "seed": 1260106,
+      "scene": "Indoors, inside a Soviet apartment block: elevator doors standing half open on a dark landing onto an empty shaft with no cabin, greasy cables hanging in the dark, a thin strip of yellow light far below, a worn doormat in front of the doors"
+    },
+    {
+      "id": "stairs-coats-railing",
+      "priority": 2,
+      "tags": { "location": "stairs", "motifs": [], "people": "none", "mood": "uneasy", "time": "interior" },
+      "seed": 1260107,
+      "scene": "Indoors, inside a Soviet apartment block: dozens of old winter coats hanging on the stair railing all the way up a flight of concrete stairs, like people standing in a queue, nobody inside them, a single dim bulb on the landing"
+    },
+    {
+      "id": "stairs-down-37",
+      "priority": 3,
+      "tags": { "location": "stairs", "motifs": [], "people": "none", "mood": "dread", "time": "interior" },
+      "seed": 1260108,
+      "scene": "Indoors, inside a Soviet apartment block: a narrow staircase going down, every landing exactly the same, the floor number 37 painted on the wall of each one, the bulbs dead below the second landing, darkness further down"
+    },
+    {
+      "id": "thermometer-corridor-doors",
+      "priority": 2,
+      "tags": { "location": "thermometer_corridor", "motifs": ["thermometer"], "people": "none", "mood": "uneasy", "time": "interior" },
+      "seed": 1260109,
+      "scene": "A long corridor of identical white doors under cold fluorescent light, every door plate reads 37,2, a glass mercury thermometer fixed to each door instead of a handle, worn linoleum, nobody"
+    },
+    {
+      "id": "jam-jar-kitchen-flood",
+      "priority": 2,
+      "tags": { "location": "jam_jar", "motifs": [], "people": "none", "mood": "dread", "time": "night" },
+      "seed": 1260110,
+      "scene": "A Soviet kitchen at night with its floor covered by a slowly spreading pool of thick dark red jam from an overturned jar on the table, the jam reflecting a single bare bulb, the legs of the chairs standing in it"
+    },
+    {
+      "id": "jam-jar-room-inside",
+      "priority": 3,
+      "tags": { "location": "jam_jar", "motifs": [], "people": "none", "mood": "uneasy", "time": "interior" },
+      "seed": 1260111,
+      "scene": "Seen from inside a giant glass jar: a small furnished room at the bottom of the jar, a bed and a stool half sunk in dark jam, the curved glass walls distorting a kitchen and a window outside, red light filtering through"
+    },
+    {
+      "id": "kitchen-fridge-thermometers",
+      "priority": 2,
+      "tags": { "location": "kitchen", "motifs": ["thermometer"], "people": "none", "mood": "uneasy", "time": "night" },
+      "seed": 1260112,
+      "scene": "An old Soviet refrigerator standing open in a dark kitchen at night, its shelves holding nothing but neat rows of glass mercury thermometers, its pale light the only light in the room, a checkered oilcloth on the table"
+    },
+    {
+      "id": "scare-stairs-coat",
+      "priority": 2,
+      "tags": { "location": "stairs", "motifs": [], "people": "face", "mood": "scare", "time": "night" },
+      "seed": 1260113,
+      "style": "Realistic 35mm film photograph, heavy film grain, harsh direct flash, muted desaturated colors, Russia in the 1990s, the logic of a dream, sudden shocking moment.",
+      "scene": "A figure in a long dark winter coat suddenly standing on the step right in front of the camera on a dark concrete staircase, its face grey and blank in the flash, eyes black, the railing behind it"
+    },
+    {
+      "id": "scare-kitchen-window-face",
+      "priority": 2,
+      "tags": { "location": "kitchen", "motifs": [], "people": "face", "mood": "scare", "time": "night" },
+      "seed": 1260114,
+      "style": "Realistic 35mm film photograph, heavy film grain, harsh direct flash, muted desaturated colors, Russia in the 1990s, the logic of a dream, sudden shocking moment.",
+      "scene": "A pale face pressed against the dark kitchen window from outside, high above the courtyard, both hands flat on the glass, eyes wide, net curtains half drawn, the dark kitchen in the foreground"
+    },
+    {
+      "id": "scare-thermometer-nurse",
+      "priority": 2,
+      "tags": { "location": "thermometer_corridor", "motifs": ["thermometer"], "people": "face", "mood": "scare", "time": "night" },
+      "seed": 1260115,
+      "style": "Realistic 35mm film photograph, heavy film grain, harsh direct flash, muted desaturated colors, Russia in the 1990s, the logic of a dream, sudden shocking moment.",
+      "scene": "A nurse in a white cap suddenly bent close to the camera, holding up a long glass thermometer, her face grey and without expression, eyes black, a dark corridor lined with thermometers behind her"
+    },
+    {
+      "id": "scare-yard-swing-figure",
+      "priority": 2,
+      "tags": { "location": "yard", "motifs": ["swing"], "people": "face", "mood": "scare", "time": "night" },
+      "seed": 1260116,
+      "style": "Realistic 35mm film photograph, heavy film grain, harsh direct flash, muted desaturated colors, Russia in the 1990s, the logic of a dream, sudden shocking moment.",
+      "scene": "A figure in a dark coat suddenly sitting on a swing right in front of the camera in a foggy courtyard at night, its face lifted into the flash, grey skin, eyes black, the chains of the swing in the foreground"
     }
   ]
 }
