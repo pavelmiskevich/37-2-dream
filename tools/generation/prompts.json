@@ -86,7 +86,8 @@
     {
       "id": "hospital-ward-ventilator",
       "priority": 1,
-      "tags": { "location": "hospital_corridor", "motifs": ["ventilator", "monitor"], "people": "distant", "mood": "dread", "time": "night" },
+      "tags": { "location": "hospital_corridor", "motifs": ["ventilator", "monitor"], "people": "distant", "mood": "uneasy", "time": "day" },
+      "seed": 1240101,
       "scene": "A hospital ward seen through the glass of a door: an old ventilator with an accordion bellows next to a bed, a man lying under a sheet, his face in shadow, the monitor light reflecting on the glass"
     },
     {
@@ -120,9 +121,10 @@
       "scene": "A pale face pressed against the inside of a huge glass jar of dark red jam, eyes open, red syrup in the hair, a hand flat on the glass, lit by a harsh camera flash in a dark kitchen"
     },
     {
-      "id": "yard-night-swing-moving",
+      "id": "yard-dusk-swing-hanging",
       "priority": 2,
-      "tags": { "location": "yard", "motifs": ["swing"], "people": "none", "mood": "dread", "time": "night" },
+      "tags": { "location": "yard", "motifs": ["swing"], "people": "none", "mood": "dread", "time": "dusk" },
+      "seed": 1240107,
       "scene": "A Soviet apartment courtyard at night in fog, a metal swing frozen high in mid-swing with nobody on it, a single sodium streetlight, rows of dark windows in a nine-storey panel block"
     },
     {
@@ -154,6 +156,7 @@
       "id": "stairwell-window-night",
       "priority": 2,
       "tags": { "location": "stairwell", "motifs": [], "people": "none", "mood": "uneasy", "time": "night" },
+      "seed": 1240106,
       "scene": "A stairwell landing at night with a dirty window onto the courtyard, a radiator, cigarette butts in a tin can, peeling blue-green paint, the light on the floor below has gone out"
     },
     {
@@ -179,6 +182,7 @@
       "id": "hospital-corridor-day-chairs",
       "priority": 2,
       "tags": { "location": "hospital_corridor", "motifs": [], "people": "distant", "mood": "uneasy", "time": "day" },
+      "seed": 1240108,
       "scene": "A polyclinic corridor in grey daylight, a row of joined wooden chairs along the wall, one patient sitting at the far end with his head down, numbered white doors, a rubber plant in a pot"
     },
     {
@@ -191,6 +195,7 @@
       "id": "thermometer-corridor-mercury",
       "priority": 2,
       "tags": { "location": "thermometer_corridor", "motifs": ["thermometer"], "people": "none", "mood": "dread", "time": "interior" },
+      "seed": 1240103,
       "scene": "A corridor floor covered with beads of spilled mercury from broken thermometers, reflecting the ceiling lamps like tiny mirrors, broken glass along the skirting board, a door at the end with a red lamp above it"
     },
     {
@@ -203,6 +208,7 @@
       "id": "jam-jar-spoon-viscous",
       "priority": 2,
       "tags": { "location": "jam_jar", "motifs": [], "people": "none", "mood": "uneasy", "time": "interior" },
+      "seed": 1240104,
       "scene": "Extreme close-up of thick dark jam slowly dripping from a silver teaspoon into an open jar, a distorted reflection of a kitchen window in the jam surface, sticky glass rim"
     },
     {
@@ -222,6 +228,7 @@
       "id": "kitchen-vacuum-woman",
       "priority": 2,
       "tags": { "location": "kitchen", "motifs": ["vacuum_woman"], "people": "distant", "mood": "dread", "time": "night" },
+      "seed": 1240105,
       "scene": "A woman in a house dress vacuuming the floor of a dark Soviet kitchen at night with an old cylinder vacuum cleaner, seen from the hallway, her face turned away into shadow, a single bulb over the table"
     },
     {
@@ -234,6 +241,7 @@
       "id": "elevator-buttons-37",
       "priority": 2,
       "tags": { "location": "elevator", "motifs": [], "people": "none", "mood": "uneasy", "time": "interior" },
+      "seed": 1240102,
       "scene": "Close-up of an old elevator button panel with melted plastic buttons, the floors numbered up to 37, button 37 glowing faintly, scratched wood-grain walls, harsh flat light"
     },
     {
