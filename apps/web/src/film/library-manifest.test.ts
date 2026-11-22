@@ -124,5 +124,6 @@ describe('library manifest', () => {
         expect(shown.filter(isWakingFrame).map((asset) => asset.id), `${seed} ${length}`).toEqual([]);
       }
     }
-  });
+    // 406 films over the whole library: ~1.5 s alone, more under a parallel run on a busy laptop.
+  }, 20_000);
 });

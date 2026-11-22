@@ -1179,6 +1179,584 @@
         "seed": 1240108,
         "source": "hf-space:mcp-tools/Z-Image-Turbo"
       }
+    },
+    {
+      "id": "yard-dusk-will-papers",
+      "kind": "still",
+      "file": "stills/yard-dusk-will-papers.webp",
+      "depth": "depth/yard-dusk-will-papers.png",
+      "width": 1280,
+      "height": 720,
+      "tags": {
+        "location": "yard",
+        "motifs": [
+          "will_papers"
+        ],
+        "people": "none",
+        "mood": "uneasy",
+        "time": "dusk"
+      },
+      "generation": {
+        "model": "Tongyi-MAI/Z-Image-Turbo",
+        "license": "Apache-2.0",
+        "prompt": "Typewritten sheets of a last will scattered across the wet asphalt of a courtyard at dusk, stamped and signed, some stuck to a bench and a sandbox, panel apartment blocks behind in blue twilight. Realistic 35mm film photograph, heavy film grain, muted desaturated colors, faces hidden in shadow, Russia in the 1990s, Soviet-era interiors and courtyards, the logic of a dream, quiet, uneasy and unsettling atmosphere.",
+        "seed": 365475107,
+        "source": "local-desktop"
+      }
+    },
+    {
+      "id": "yard-night-pigeons-window",
+      "kind": "still",
+      "file": "stills/yard-night-pigeons-window.webp",
+      "depth": "depth/yard-night-pigeons-window.png",
+      "width": 1280,
+      "height": 720,
+      "tags": {
+        "location": "yard",
+        "motifs": [
+          "pigeons"
+        ],
+        "people": "none",
+        "mood": "uneasy",
+        "time": "night"
+      },
+      "generation": {
+        "model": "Tongyi-MAI/Z-Image-Turbo",
+        "license": "Apache-2.0",
+        "prompt": "Dozens of pigeons sitting motionless in rows on a snowy courtyard fence at night, all facing the same lit window on the ground floor, a streetlight humming above. Realistic 35mm film photograph, heavy film grain, muted desaturated colors, faces hidden in shadow, Russia in the 1990s, Soviet-era interiors and courtyards, the logic of a dream, quiet, uneasy and unsettling atmosphere.",
+        "seed": 1176289073,
+        "source": "local-desktop"
+      }
+    },
+    {
+      "id": "stairwell-vacuum-sound",
+      "kind": "still",
+      "file": "stills/stairwell-vacuum-sound.webp",
+      "depth": "depth/stairwell-vacuum-sound.png",
+      "width": 1280,
+      "height": 720,
+      "tags": {
+        "location": "stairwell",
+        "motifs": [
+          "vacuum_woman"
+        ],
+        "people": "distant",
+        "mood": "dread",
+        "time": "interior"
+      },
+      "generation": {
+        "model": "Tongyi-MAI/Z-Image-Turbo",
+        "license": "Apache-2.0",
+        "prompt": "A dark stairwell of a panel apartment block, a long vacuum cleaner hose snaking down the stairs from the floor above, at the top of the flight a woman's legs and the hem of a house dress under a bare bulb. Realistic 35mm film photograph, heavy film grain, muted desaturated colors, faces hidden in shadow, Russia in the 1990s, Soviet-era interiors and courtyards, the logic of a dream, quiet, uneasy and unsettling atmosphere.",
+        "seed": 502543937,
+        "source": "local-desktop"
+      }
+    },
+    {
+      "id": "stairs-thermometers",
+      "kind": "still",
+      "file": "stills/stairs-thermometers.webp",
+      "depth": "depth/stairs-thermometers.png",
+      "width": 1280,
+      "height": 720,
+      "tags": {
+        "location": "stairs",
+        "motifs": [
+          "thermometer"
+        ],
+        "people": "none",
+        "mood": "uneasy",
+        "time": "interior"
+      },
+      "generation": {
+        "model": "Tongyi-MAI/Z-Image-Turbo",
+        "license": "Apache-2.0",
+        "prompt": "Concrete stairs of an apartment block with a mercury thermometer lying on every step, glinting under a single dim bulb, leading down to a closed basement door. Realistic 35mm film photograph, heavy film grain, muted desaturated colors, faces hidden in shadow, Russia in the 1990s, Soviet-era interiors and courtyards, the logic of a dream, quiet, uneasy and unsettling atmosphere.",
+        "seed": 1767398957,
+        "source": "local-desktop"
+      }
+    },
+    {
+      "id": "stairs-pigeons-dusk",
+      "kind": "still",
+      "file": "stills/stairs-pigeons-dusk.webp",
+      "depth": "depth/stairs-pigeons-dusk.png",
+      "width": 1280,
+      "height": 720,
+      "tags": {
+        "location": "stairs",
+        "motifs": [
+          "pigeons"
+        ],
+        "people": "none",
+        "mood": "uneasy",
+        "time": "dusk"
+      },
+      "generation": {
+        "model": "Tongyi-MAI/Z-Image-Turbo",
+        "license": "Apache-2.0",
+        "prompt": "Pigeons sitting on the steps of an indoor staircase at dusk, the stairwell window broken, feathers on the concrete, dusk light falling in blue stripes across the railings. Realistic 35mm film photograph, heavy film grain, muted desaturated colors, faces hidden in shadow, Russia in the 1990s, Soviet-era interiors and courtyards, the logic of a dream, quiet, uneasy and unsettling atmosphere.",
+        "seed": 1746063278,
+        "source": "local-desktop"
+      }
+    },
+    {
+      "id": "hospital-will-papers",
+      "kind": "still",
+      "file": "stills/hospital-will-papers.webp",
+      "depth": "depth/hospital-will-papers.png",
+      "width": 1280,
+      "height": 720,
+      "tags": {
+        "location": "hospital_corridor",
+        "motifs": [
+          "will_papers"
+        ],
+        "people": "none",
+        "mood": "dread",
+        "time": "night"
+      },
+      "generation": {
+        "model": "Tongyi-MAI/Z-Image-Turbo",
+        "license": "Apache-2.0",
+        "prompt": "A nurse's desk in an empty hospital corridor at night, a typed last will lying under a desk lamp with a fountain pen on top, a rubber stamp, a ventilator hissing somewhere in the dark behind. Realistic 35mm film photograph, heavy film grain, muted desaturated colors, faces hidden in shadow, Russia in the 1990s, Soviet-era interiors and courtyards, the logic of a dream, quiet, uneasy and unsettling atmosphere.",
+        "seed": 356070734,
+        "source": "local-desktop"
+      }
+    },
+    {
+      "id": "thermometer-corridor-nurse",
+      "kind": "still",
+      "file": "stills/thermometer-corridor-nurse.webp",
+      "depth": "depth/thermometer-corridor-nurse.png",
+      "width": 1280,
+      "height": 720,
+      "tags": {
+        "location": "thermometer_corridor",
+        "motifs": [
+          "thermometer"
+        ],
+        "people": "distant",
+        "mood": "uneasy",
+        "time": "interior"
+      },
+      "generation": {
+        "model": "Tongyi-MAI/Z-Image-Turbo",
+        "license": "Apache-2.0",
+        "prompt": "A nurse in a white cap seen from behind at the far end of a corridor lined with thermometers in glass cases, she holds one up to the lamp to read it, her shadow stretched long across the linoleum. Realistic 35mm film photograph, heavy film grain, muted desaturated colors, faces hidden in shadow, Russia in the 1990s, Soviet-era interiors and courtyards, the logic of a dream, quiet, uneasy and unsettling atmosphere.",
+        "seed": 1633013601,
+        "source": "local-desktop"
+      }
+    },
+    {
+      "id": "bedroom-ventilator-snore",
+      "kind": "still",
+      "file": "stills/bedroom-ventilator-snore.webp",
+      "depth": "depth/bedroom-ventilator-snore.png",
+      "width": 1280,
+      "height": 720,
+      "tags": {
+        "location": "bedroom",
+        "motifs": [
+          "ventilator"
+        ],
+        "people": "distant",
+        "mood": "dread",
+        "time": "night"
+      },
+      "generation": {
+        "model": "Tongyi-MAI/Z-Image-Turbo",
+        "license": "Apache-2.0",
+        "prompt": "A hospital ventilator with an accordion bellows standing in an ordinary apartment bedroom at night, its tube running under the blanket of a sleeping figure, a wall carpet and a cassette radio on the shelf. Realistic 35mm film photograph, heavy film grain, muted desaturated colors, faces hidden in shadow, Russia in the 1990s, Soviet-era interiors and courtyards, the logic of a dream, quiet, uneasy and unsettling atmosphere.",
+        "seed": 1251886238,
+        "source": "local-desktop"
+      }
+    },
+    {
+      "id": "kitchen-microwave-monitor",
+      "kind": "still",
+      "file": "stills/kitchen-microwave-monitor.webp",
+      "depth": "depth/kitchen-microwave-monitor.png",
+      "width": 1280,
+      "height": 720,
+      "tags": {
+        "location": "kitchen",
+        "motifs": [
+          "monitor"
+        ],
+        "people": "none",
+        "mood": "uneasy",
+        "time": "night"
+      },
+      "generation": {
+        "model": "Tongyi-MAI/Z-Image-Turbo",
+        "license": "Apache-2.0",
+        "prompt": "A dark kitchen at night where the glowing display of an old microwave oven shows a green heartbeat line instead of a clock, its light falling on a plate of cold food and a jar of jam. Realistic 35mm film photograph, heavy film grain, muted desaturated colors, faces hidden in shadow, Russia in the 1990s, Soviet-era interiors and courtyards, the logic of a dream, quiet, uneasy and unsettling atmosphere.",
+        "seed": 15354539,
+        "source": "local-desktop"
+      }
+    },
+    {
+      "id": "elevator-day-open",
+      "kind": "still",
+      "file": "stills/elevator-day-open.webp",
+      "depth": "depth/elevator-day-open.png",
+      "width": 1280,
+      "height": 720,
+      "tags": {
+        "location": "elevator",
+        "motifs": [],
+        "people": "none",
+        "mood": "calm",
+        "time": "day"
+      },
+      "generation": {
+        "model": "Tongyi-MAI/Z-Image-Turbo",
+        "license": "Apache-2.0",
+        "prompt": "Indoors, inside a Soviet apartment block: an old elevator cabin standing open on a landing in the afternoon, the doors folded back, scratched wood-grain walls lit by pale daylight from a stairwell window, a burnt-out bulb in the ceiling, nobody, silence. Realistic 35mm film photograph, heavy film grain, muted desaturated colors, faces hidden in shadow, Russia in the 1990s, Soviet-era interiors and courtyards, the logic of a dream, quiet, uneasy and unsettling atmosphere.",
+        "seed": 1260138,
+        "source": "local-desktop"
+      }
+    },
+    {
+      "id": "stairs-day-stripes",
+      "kind": "still",
+      "file": "stills/stairs-day-stripes.webp",
+      "depth": "depth/stairs-day-stripes.png",
+      "width": 1280,
+      "height": 720,
+      "tags": {
+        "location": "stairs",
+        "motifs": [],
+        "people": "none",
+        "mood": "calm",
+        "time": "day"
+      },
+      "generation": {
+        "model": "Tongyi-MAI/Z-Image-Turbo",
+        "license": "Apache-2.0",
+        "prompt": "Indoors, inside a Soviet apartment block: a long flight of worn concrete stairs going down, afternoon sunlight from a landing window lying in pale stripes across the steps and the painted metal railing, dust hanging in the air, nobody. Realistic 35mm film photograph, heavy film grain, muted desaturated colors, faces hidden in shadow, Russia in the 1990s, Soviet-era interiors and courtyards, the logic of a dream, quiet, uneasy and unsettling atmosphere.",
+        "seed": 1260104,
+        "source": "local-desktop"
+      }
+    },
+    {
+      "id": "yard-day-snow",
+      "kind": "still",
+      "file": "stills/yard-day-snow.webp",
+      "depth": "depth/yard-day-snow.png",
+      "width": 1280,
+      "height": 720,
+      "tags": {
+        "location": "yard",
+        "motifs": [
+          "swing"
+        ],
+        "people": "none",
+        "mood": "calm",
+        "time": "day"
+      },
+      "generation": {
+        "model": "Tongyi-MAI/Z-Image-Turbo",
+        "license": "Apache-2.0",
+        "prompt": "A Soviet courtyard on a quiet snowy morning seen at eye level: fresh untouched snow on a sandbox and on the benches, a swing frozen still under a cap of snow, grey five-storey panel apartment blocks around with a few lit windows, white sky, nobody. Realistic 35mm film photograph, heavy film grain, muted desaturated colors, faces hidden in shadow, Russia in the 1990s, Soviet-era interiors and courtyards, the logic of a dream, quiet, uneasy and unsettling atmosphere.",
+        "seed": 1260103,
+        "source": "local-desktop"
+      }
+    },
+    {
+      "id": "kitchen-dusk-window",
+      "kind": "still",
+      "file": "stills/kitchen-dusk-window.webp",
+      "depth": "depth/kitchen-dusk-window.png",
+      "width": 1280,
+      "height": 720,
+      "tags": {
+        "location": "kitchen",
+        "motifs": [],
+        "people": "none",
+        "mood": "calm",
+        "time": "dusk"
+      },
+      "generation": {
+        "model": "Tongyi-MAI/Z-Image-Turbo",
+        "license": "Apache-2.0",
+        "prompt": "A small Soviet kitchen at dusk with the light switched off, the window over the sink glowing deep blue, a jar of jam and a glass of tea in a metal holder on the windowsill, outside the outline of panel blocks with the first lit windows, nobody. Realistic 35mm film photograph, heavy film grain, muted desaturated colors, faces hidden in shadow, Russia in the 1990s, Soviet-era interiors and courtyards, the logic of a dream, quiet, uneasy and unsettling atmosphere.",
+        "seed": 1260104,
+        "source": "local-desktop"
+      }
+    },
+    {
+      "id": "elevator-mirror-37",
+      "kind": "still",
+      "file": "stills/elevator-mirror-37.webp",
+      "depth": "depth/elevator-mirror-37.png",
+      "width": 1280,
+      "height": 720,
+      "tags": {
+        "location": "elevator",
+        "motifs": [],
+        "people": "distant",
+        "mood": "uneasy",
+        "time": "interior"
+      },
+      "generation": {
+        "model": "Tongyi-MAI/Z-Image-Turbo",
+        "license": "Apache-2.0",
+        "prompt": "Inside a cramped old Soviet elevator cabin, a cracked mirror on the back wall reflecting only the empty cabin, a scratched floor indicator above the door showing 37, a dim ceiling lamp, burnt marks around the buttons. Realistic 35mm film photograph, heavy film grain, muted desaturated colors, faces hidden in shadow, Russia in the 1990s, Soviet-era interiors and courtyards, the logic of a dream, quiet, uneasy and unsettling atmosphere.",
+        "seed": 1260105,
+        "source": "local-desktop"
+      }
+    },
+    {
+      "id": "elevator-shaft-open",
+      "kind": "still",
+      "file": "stills/elevator-shaft-open.webp",
+      "depth": "depth/elevator-shaft-open.png",
+      "width": 1280,
+      "height": 720,
+      "tags": {
+        "location": "elevator",
+        "motifs": [],
+        "people": "none",
+        "mood": "dread",
+        "time": "interior"
+      },
+      "generation": {
+        "model": "Tongyi-MAI/Z-Image-Turbo",
+        "license": "Apache-2.0",
+        "prompt": "Indoors, inside a Soviet apartment block: elevator doors standing half open on a dark landing onto an empty shaft with no cabin, greasy cables hanging in the dark, a thin strip of yellow light far below, a worn doormat in front of the doors. Realistic 35mm film photograph, heavy film grain, muted desaturated colors, faces hidden in shadow, Russia in the 1990s, Soviet-era interiors and courtyards, the logic of a dream, quiet, uneasy and unsettling atmosphere.",
+        "seed": 1260106,
+        "source": "local-desktop"
+      }
+    },
+    {
+      "id": "stairs-coats-railing",
+      "kind": "still",
+      "file": "stills/stairs-coats-railing.webp",
+      "depth": "depth/stairs-coats-railing.png",
+      "width": 1280,
+      "height": 720,
+      "tags": {
+        "location": "stairs",
+        "motifs": [],
+        "people": "none",
+        "mood": "uneasy",
+        "time": "interior"
+      },
+      "generation": {
+        "model": "Tongyi-MAI/Z-Image-Turbo",
+        "license": "Apache-2.0",
+        "prompt": "Indoors, inside a Soviet apartment block: dozens of old winter coats hanging on the stair railing all the way up a flight of concrete stairs, like people standing in a queue, nobody inside them, a single dim bulb on the landing. Realistic 35mm film photograph, heavy film grain, muted desaturated colors, faces hidden in shadow, Russia in the 1990s, Soviet-era interiors and courtyards, the logic of a dream, quiet, uneasy and unsettling atmosphere.",
+        "seed": 1260107,
+        "source": "local-desktop"
+      }
+    },
+    {
+      "id": "stairs-down-37",
+      "kind": "still",
+      "file": "stills/stairs-down-37.webp",
+      "depth": "depth/stairs-down-37.png",
+      "width": 1280,
+      "height": 720,
+      "tags": {
+        "location": "stairs",
+        "motifs": [],
+        "people": "none",
+        "mood": "dread",
+        "time": "interior"
+      },
+      "generation": {
+        "model": "Tongyi-MAI/Z-Image-Turbo",
+        "license": "Apache-2.0",
+        "prompt": "Indoors, inside a Soviet apartment block: a narrow staircase going down, every landing exactly the same, the floor number 37 painted on the wall of each one, the bulbs dead below the second landing, darkness further down. Realistic 35mm film photograph, heavy film grain, muted desaturated colors, faces hidden in shadow, Russia in the 1990s, Soviet-era interiors and courtyards, the logic of a dream, quiet, uneasy and unsettling atmosphere.",
+        "seed": 1260108,
+        "source": "local-desktop"
+      }
+    },
+    {
+      "id": "thermometer-corridor-doors",
+      "kind": "still",
+      "file": "stills/thermometer-corridor-doors.webp",
+      "depth": "depth/thermometer-corridor-doors.png",
+      "width": 1280,
+      "height": 720,
+      "tags": {
+        "location": "thermometer_corridor",
+        "motifs": [
+          "thermometer"
+        ],
+        "people": "none",
+        "mood": "uneasy",
+        "time": "interior"
+      },
+      "generation": {
+        "model": "Tongyi-MAI/Z-Image-Turbo",
+        "license": "Apache-2.0",
+        "prompt": "A long corridor of identical white doors under cold fluorescent light, every door plate reads 37,2, a glass mercury thermometer fixed to each door instead of a handle, worn linoleum, nobody. Realistic 35mm film photograph, heavy film grain, muted desaturated colors, faces hidden in shadow, Russia in the 1990s, Soviet-era interiors and courtyards, the logic of a dream, quiet, uneasy and unsettling atmosphere.",
+        "seed": 1260108,
+        "source": "local-desktop"
+      }
+    },
+    {
+      "id": "jam-jar-kitchen-flood",
+      "kind": "still",
+      "file": "stills/jam-jar-kitchen-flood.webp",
+      "depth": "depth/jam-jar-kitchen-flood.png",
+      "width": 1280,
+      "height": 720,
+      "tags": {
+        "location": "jam_jar",
+        "motifs": [],
+        "people": "none",
+        "mood": "dread",
+        "time": "night"
+      },
+      "generation": {
+        "model": "Tongyi-MAI/Z-Image-Turbo",
+        "license": "Apache-2.0",
+        "prompt": "A Soviet kitchen at night with its floor covered by a slowly spreading pool of thick dark red jam from an overturned jar on the table, the jam reflecting a single bare bulb, the legs of the chairs standing in it. Realistic 35mm film photograph, heavy film grain, muted desaturated colors, faces hidden in shadow, Russia in the 1990s, Soviet-era interiors and courtyards, the logic of a dream, quiet, uneasy and unsettling atmosphere.",
+        "seed": 1260110,
+        "source": "local-desktop"
+      }
+    },
+    {
+      "id": "jam-jar-room-inside",
+      "kind": "still",
+      "file": "stills/jam-jar-room-inside.webp",
+      "depth": "depth/jam-jar-room-inside.png",
+      "width": 1280,
+      "height": 720,
+      "tags": {
+        "location": "jam_jar",
+        "motifs": [],
+        "people": "none",
+        "mood": "uneasy",
+        "time": "interior"
+      },
+      "generation": {
+        "model": "Tongyi-MAI/Z-Image-Turbo",
+        "license": "Apache-2.0",
+        "prompt": "Seen from inside a giant glass jar: a small furnished room at the bottom of the jar, a bed and a stool half sunk in dark jam, the curved glass walls distorting a kitchen and a window outside, red light filtering through. Realistic 35mm film photograph, heavy film grain, muted desaturated colors, faces hidden in shadow, Russia in the 1990s, Soviet-era interiors and courtyards, the logic of a dream, quiet, uneasy and unsettling atmosphere.",
+        "seed": 1260111,
+        "source": "local-desktop"
+      }
+    },
+    {
+      "id": "kitchen-fridge-thermometers",
+      "kind": "still",
+      "file": "stills/kitchen-fridge-thermometers.webp",
+      "depth": "depth/kitchen-fridge-thermometers.png",
+      "width": 1280,
+      "height": 720,
+      "tags": {
+        "location": "kitchen",
+        "motifs": [
+          "thermometer"
+        ],
+        "people": "none",
+        "mood": "uneasy",
+        "time": "night"
+      },
+      "generation": {
+        "model": "Tongyi-MAI/Z-Image-Turbo",
+        "license": "Apache-2.0",
+        "prompt": "An old Soviet refrigerator standing open in a dark kitchen at night, its shelves holding nothing but neat rows of glass mercury thermometers, its pale light the only light in the room, a checkered oilcloth on the table. Realistic 35mm film photograph, heavy film grain, muted desaturated colors, faces hidden in shadow, Russia in the 1990s, Soviet-era interiors and courtyards, the logic of a dream, quiet, uneasy and unsettling atmosphere.",
+        "seed": 1260112,
+        "source": "local-desktop"
+      }
+    },
+    {
+      "id": "scare-stairs-coat",
+      "kind": "still",
+      "file": "stills/scare-stairs-coat.webp",
+      "depth": "depth/scare-stairs-coat.png",
+      "width": 1280,
+      "height": 720,
+      "tags": {
+        "location": "stairs",
+        "motifs": [],
+        "people": "face",
+        "mood": "scare",
+        "time": "night"
+      },
+      "generation": {
+        "model": "Tongyi-MAI/Z-Image-Turbo",
+        "license": "Apache-2.0",
+        "prompt": "A figure in a long dark winter coat suddenly standing on the step right in front of the camera on a dark concrete staircase, its face grey and blank in the flash, eyes black, the railing behind it. Realistic 35mm film photograph, heavy film grain, harsh direct flash, muted desaturated colors, Russia in the 1990s, the logic of a dream, sudden shocking moment.",
+        "seed": 1260113,
+        "source": "local-desktop"
+      }
+    },
+    {
+      "id": "scare-kitchen-window-face",
+      "kind": "still",
+      "file": "stills/scare-kitchen-window-face.webp",
+      "depth": "depth/scare-kitchen-window-face.png",
+      "width": 1280,
+      "height": 720,
+      "tags": {
+        "location": "kitchen",
+        "motifs": [],
+        "people": "face",
+        "mood": "scare",
+        "time": "night"
+      },
+      "generation": {
+        "model": "Tongyi-MAI/Z-Image-Turbo",
+        "license": "Apache-2.0",
+        "prompt": "A pale face pressed against the dark kitchen window from outside, high above the courtyard, both hands flat on the glass, eyes wide, net curtains half drawn, the dark kitchen in the foreground. Realistic 35mm film photograph, heavy film grain, harsh direct flash, muted desaturated colors, Russia in the 1990s, the logic of a dream, sudden shocking moment.",
+        "seed": 1260114,
+        "source": "local-desktop"
+      }
+    },
+    {
+      "id": "scare-thermometer-nurse",
+      "kind": "still",
+      "file": "stills/scare-thermometer-nurse.webp",
+      "depth": "depth/scare-thermometer-nurse.png",
+      "width": 1280,
+      "height": 720,
+      "tags": {
+        "location": "thermometer_corridor",
+        "motifs": [
+          "thermometer"
+        ],
+        "people": "face",
+        "mood": "scare",
+        "time": "night"
+      },
+      "generation": {
+        "model": "Tongyi-MAI/Z-Image-Turbo",
+        "license": "Apache-2.0",
+        "prompt": "A nurse in a white cap suddenly bent close to the camera, holding up a long glass thermometer, her face grey and without expression, eyes black, a dark corridor lined with thermometers behind her. Realistic 35mm film photograph, heavy film grain, harsh direct flash, muted desaturated colors, Russia in the 1990s, the logic of a dream, sudden shocking moment.",
+        "seed": 1260116,
+        "source": "local-desktop"
+      }
+    },
+    {
+      "id": "scare-yard-swing-figure",
+      "kind": "still",
+      "file": "stills/scare-yard-swing-figure.webp",
+      "depth": "depth/scare-yard-swing-figure.png",
+      "width": 1280,
+      "height": 720,
+      "tags": {
+        "location": "yard",
+        "motifs": [
+          "swing"
+        ],
+        "people": "face",
+        "mood": "scare",
+        "time": "night"
+      },
+      "generation": {
+        "model": "Tongyi-MAI/Z-Image-Turbo",
+        "license": "Apache-2.0",
+        "prompt": "A figure in a dark coat suddenly sitting on a swing right in front of the camera in a foggy courtyard at night, its face lifted into the flash, grey skin, eyes black, the chains of the swing in the foreground. Realistic 35mm film photograph, heavy film grain, harsh direct flash, muted desaturated colors, Russia in the 1990s, the logic of a dream, sudden shocking moment.",
+        "seed": 1260118,
+        "source": "local-desktop"
+      }
     }
   ]
 }
