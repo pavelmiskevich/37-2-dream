@@ -79,8 +79,13 @@ class CatalogFileTest(unittest.TestCase):
 
     def test_seeds_are_stable_and_distinct(self) -> None:
         seeds = [s.generation_seed() for s in self.catalog.scenes]
-        self.assertEqual(len(set(seeds)), len(seeds))
         self.assertTrue(all(0 <= s < 2**31 for s in seeds))
+        # Seeds derived from ids must not collide. An explicit seed records the run that was kept
+        # (desktop retries, #128), so two scenes with different prompts may share one.
+        derived = [s.generation_seed() for s in self.catalog.scenes if s.seed is None]
+        self.assertEqual(len(set(derived)), len(derived))
+        explicit = [(s.prompt(self.catalog.style), s.seed) for s in self.catalog.scenes if s.seed is not None]
+        self.assertEqual(len(set(explicit)), len(explicit))
         first = self.catalog.scenes[0]
         self.assertEqual(first.generation_seed(), load_catalog(generate.DEFAULT_CATALOG).scenes[0].generation_seed())
 
