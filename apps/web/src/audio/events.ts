@@ -52,6 +52,8 @@ export type SoundEvent =
    * (default 1); `soft` is the "без вспышек" variant (D-009).
    */
   | { type: 'stinger.hit'; strength?: number; soft?: boolean }
+  /** The sharp breath of waking from a fall (#134), on the stinger's bus. `strength` 0…1 (default 1). */
+  | { type: 'gasp'; strength?: number }
   /** Vacuum → turbine, 0…1. */
   | { type: 'vacuum.turbine'; value: number }
   /**

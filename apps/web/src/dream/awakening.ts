@@ -1,4 +1,4 @@
-import type { AwakeningReason } from '@dream/core';
+import type { AwakeningReason, FilmEnding } from '@dream/core';
 import type { AudioEngine } from '../audio';
 import { KITCHEN_CALL, NOTHING_SERIOUS, reasonLine, temperatureText } from './lines';
 import { dueWakingCues, wakingCues, wakingRoomTone, wakingView } from './waking';
@@ -18,6 +18,8 @@ export interface AwakeningOptions {
   temperature: number;
   /** URL of the bedroom frame, or null while the library has none. */
   frameUrl: string | null;
+  /** How the dream ended: a fall wakes with a jolt (#134). */
+  ending?: FilmEnding;
   audio?: AudioEngine | null;
 }
 
@@ -66,7 +68,8 @@ export function createAwakening(options: AwakeningOptions, root: HTMLElement = d
   root.append(element);
 
   // Decided when the awakening starts: by then the recordings have had the whole dream to load.
-  let cues = wakingCues();
+  const ending = options.ending ?? 'quiet';
+  let cues = wakingCues(undefined, ending);
   let time = 0;
   /** Sound cues have been fired up to here; starts before 0 so the cues of the very start fire. */
   let cueTime = -1;
@@ -76,7 +79,7 @@ export function createAwakening(options: AwakeningOptions, root: HTMLElement = d
   let finish: (() => void) | null = null;
 
   const draw = () => {
-    const view = wakingView(time);
+    const view = wakingView(time, ending);
     room.style.opacity = opacity(view.eyes);
     thermometer.style.opacity = opacity(view.thermometer);
     call.style.opacity = opacity(view.call);
@@ -103,7 +106,7 @@ export function createAwakening(options: AwakeningOptions, root: HTMLElement = d
     element,
     run() {
       const audio = options.audio;
-      if (audio) cues = wakingCues({ roomTone: wakingRoomTone(String(audio.seed)), has: (sample) => audio.hasSample(sample) });
+      if (audio) cues = wakingCues({ roomTone: wakingRoomTone(String(audio.seed)), has: (sample) => audio.hasSample(sample) }, ending);
       element.hidden = false;
       draw();
       return new Promise<void>((resolve) => {

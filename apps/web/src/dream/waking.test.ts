@@ -4,6 +4,7 @@ import type { SampleId } from '../audio';
 import {
   ROOM_TONES,
   WAKING,
+  WAKING_FALL,
   WAKING_RECORDINGS,
   dueWakingCues,
   wakingCues,
@@ -210,5 +211,38 @@ describe('wakingRoomTone', () => {
   it('is what the awakening loads, with the other four recordings', () => {
     const seed = 'DREAM-8F72-A19C-37B2';
     expect(wakingSamples(seed)).toEqual(['snore', 'microwave', 'bed-creak', 'kettle', wakingRoomTone(seed)]);
+  });
+});
+
+describe('waking from a fall (#134)', () => {
+  const cues = wakingCues(everything('room-hallway'), 'fall');
+  const play = (sample: SampleId) => plays(cues).find((p) => p.sample === sample);
+
+  it('gasps at once, with no snore, and the bed creaks under the start', () => {
+    expect(cues.find((cue) => cue.event.type === 'gasp')).toMatchObject({ at: 0 });
+    expect(play('snore')).toBeUndefined();
+    expect(play('bed-creak')?.at).toBe(WAKING_FALL.bedCreakAt);
+  });
+
+  it('breathes fast right after the gasp, then calms down to the usual breathing', () => {
+    const breath = cues.find((cue) => cue.event.type === 'sound.start' && cue.event.sound === 'breath');
+    expect(breath?.at).toBe(WAKING_FALL.breath.at);
+    const rates = cues.flatMap((cue) => (cue.event.type === 'breath.rate' ? [[cue.at, cue.event.breathsPerMinute]] : []));
+    expect(rates).toEqual([
+      [0, WAKING_FALL.breath.fast],
+      [WAKING_FALL.breath.calmAt, WAKING.breath],
+    ]);
+  });
+
+  it('opens the eyes at once; the rest of the morning is the same', () => {
+    expect(wakingView(WAKING_FALL.eyes, 'fall').eyes).toBe(1);
+    expect(wakingView(WAKING_FALL.eyes).eyes).toBeLessThan(0.2);
+    expect(wakingView(WAKING.verdictAt + 1, 'fall')).toEqual(wakingView(WAKING.verdictAt + 1));
+    expect(play('microwave')).toEqual(plays(wakingCues(everything('room-hallway'))).find((p) => p.sample === 'microwave'));
+  });
+
+  it('gasps even with no recordings loaded', () => {
+    expect(wakingCues(undefined, 'fall').some((cue) => cue.event.type === 'gasp')).toBe(true);
+    expect(wakingCues().some((cue) => cue.event.type === 'gasp')).toBe(false);
   });
 });

@@ -1,5 +1,5 @@
 {
-  "engineVersion": 9,
+  "engineVersion": 10,
   "seed": "DREAM-0000-0000-0000",
   "length": "long",
   "duration": 156.6,
@@ -3511,5 +3511,6 @@
   "awakening": {
     "reason": "tea_brought",
     "temperature": 36.9
-  }
+  },
+  "ending": "quiet"
 }

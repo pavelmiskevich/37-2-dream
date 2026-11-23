@@ -1,5 +1,5 @@
 {
-  "engineVersion": 9,
+  "engineVersion": 10,
   "seed": "DREAM-8F72-A19C-37B2",
   "length": "long",
   "duration": 162.6,
@@ -3523,5 +3523,6 @@
   "awakening": {
     "reason": "tea_brought",
     "temperature": 36.9
-  }
+  },
+  "ending": "quiet"
 }

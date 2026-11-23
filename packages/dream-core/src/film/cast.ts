@@ -184,6 +184,8 @@ export interface CastRequest {
   role: BeatRole;
   /** Shot length, ms: a clip shorter than the shot is not cast. */
   ms: number;
+  /** Cast only frames with this motif when the library has any (the heights of a fall ending, #134). */
+  motif?: MotifTag;
 }
 
 /** Stateful caster of one film. Every pick draws from `rng` in a fixed order. */
@@ -267,8 +269,23 @@ export function createCaster(assets: readonly LibraryAsset[], profile: DreamProf
     uses.set(asset.id, (uses.get(asset.id) ?? 0) + 1);
   };
 
+  /** The edit moves on to `asset`: location run, recent locations, cooldown. */
+  const cut = (asset: LibraryAsset, shotIndex: number): void => {
+    if (prev && asset.tags.location === prev.tags.location) {
+      run += 1;
+    } else {
+      if (prev) {
+        recentLocations.push(prev.tags.location);
+        if (recentLocations.length > LOCATION_COOLDOWN) recentLocations.shift();
+      }
+      run = 1;
+    }
+    prev = asset;
+    remember(asset, shotIndex);
+  };
+
   return {
-    pick({ shotIndex, role, ms }) {
+    pick({ shotIndex, role, ms, motif }) {
       if (role === 'scare' && scares.length > 0) {
         // A scare is an insert: it does not move the edit to another location.
         const asset = choose(scares, shotIndex, role) ?? relaxed(scares, role);
@@ -278,6 +295,15 @@ export function createCaster(assets: readonly LibraryAsset[], profile: DreamProf
 
       let pool = frames.filter((asset) => fits(asset, ms));
       if (pool.length === 0) pool = frames;
+
+      const themed = motif === undefined ? [] : pool.filter((asset) => asset.tags.motifs.includes(motif));
+      if (themed.length > 0) {
+        // The theme decides the frame, wherever the edit was: no staying or leaving to weigh.
+        const asset = choose(themed, shotIndex, role) ?? relaxed(themed, role);
+        cut(asset, shotIndex);
+        return asset;
+      }
+
       const here = prev ? pool.filter((asset) => asset.tags.location === prev?.tags.location) : [];
       const elsewhere = prev ? pool.filter((asset) => asset.tags.location !== prev?.tags.location) : pool;
       const stayChance = run < MAX_LOCATION_RUN ? lerp(0.5, 0.2, profile.absurdity) : 0;
@@ -288,18 +314,7 @@ export function createCaster(assets: readonly LibraryAsset[], profile: DreamProf
         choose(elsewhere, shotIndex, role) ??
         choose(pool, shotIndex, role) ??
         relaxed(pool, role);
-
-      if (prev && asset.tags.location === prev.tags.location) {
-        run += 1;
-      } else {
-        if (prev) {
-          recentLocations.push(prev.tags.location);
-          if (recentLocations.length > LOCATION_COOLDOWN) recentLocations.shift();
-        }
-        run = 1;
-      }
-      prev = asset;
-      remember(asset, shotIndex);
+      cut(asset, shotIndex);
       return asset;
     },
   };

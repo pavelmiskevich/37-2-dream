@@ -167,5 +167,6 @@ export function fixtureFilm(seed: DreamSeed, length: DreamLength, manifest: Libr
     sounds,
     intrusions: [{ motif: 'vacuum', at: 11 }],
     awakening: { reason: 'unknown', temperature: DREAM_TEMPERATURE },
+    ending: 'quiet',
   };
 }

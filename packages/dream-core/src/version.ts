@@ -12,5 +12,9 @@
  * - 9 — the edit no longer casts frames of the awakening (the bedroom by day,
  *   `isWakingFrame`) inside the dream (#61, D-030). Films over a library that
  *   has such a frame change; films over one without it stay the same.
+ * - 10 — the film says how it ends (`ending`, #134, D-037): with frames of a
+ *   fall in the library, some dreams end in a fall — the last shots of the
+ *   climax are heights with a camera falling in and a hard cut. Every film
+ *   gains the field; films that end quietly are otherwise the same.
  */
-export const ENGINE_VERSION = 9;
+export const ENGINE_VERSION = 10;

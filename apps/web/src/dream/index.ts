@@ -217,6 +217,7 @@ export function startDreamFilm(canvas: HTMLCanvasElement, search: string = windo
       reason: film.awakening.reason,
       temperature: film.awakening.temperature,
       frameUrl: frame ? assetUrl(LIBRARY_ROOT, frame.file) : null,
+      ending: film.ending,
       audio,
     });
 

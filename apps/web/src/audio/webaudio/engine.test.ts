@@ -145,6 +145,19 @@ describe('audio engine routing', () => {
     return ctx.nodes.slice(before).filter((node) => node.kind === 'oscillator');
   }
 
+  it('plays the gasp of waking from a fall on the stinger bus, past the muffle (#134)', () => {
+    const before = ctx.nodes.length;
+    engine.handle({ type: 'gasp' });
+    const sources = ctx.nodes.slice(before).filter((node) => node.kind === 'buffer-source');
+    expect(sources).toHaveLength(1);
+    const path = downstream(sources[0]!);
+    expect(path.has(ctx.destination)).toBe(true);
+    expect(path.has(muffle)).toBe(false);
+    const silent = ctx.nodes.length;
+    engine.handle({ type: 'gasp', strength: 0 });
+    expect(ctx.nodes.length).toBe(silent);
+  });
+
   it('sends the mix through the muffle into the limiter', () => {
     expect(limiter.outputs.has(ctx.destination)).toBe(true);
     expect(muffle).toBeDefined();

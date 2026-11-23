@@ -12,6 +12,7 @@
  */
 import { MOTIF_SOURCES, type AwakeningReason, type DreamMotif, type MotifReveal } from '../scenes';
 import type { DreamSeed } from '../seed';
+import type { FilmEnding } from './ending';
 import type { DreamFilm, DreamLength } from './film';
 import type { LibraryAsset, LibraryManifest, LocationTag, MotifTag } from './library';
 import { filmRng } from './streams';
@@ -52,6 +53,8 @@ export interface FilmSummary {
   wakeReason: AwakeningReason;
   /** Intrusions of reality heard in the film, in order of first appearance. */
   heard: FilmHeardMotif[];
+  /** How the film ended (#134); absent in entries recorded before engine 10. */
+  ending?: FilmEnding;
 }
 
 /** Motifs heard in a film with their real sources, in order of first appearance. */
@@ -100,5 +103,6 @@ export function summarizeFilm(film: DreamFilm, library: LibraryManifest): FilmSu
     strangestObject: candidates.length > 0 ? (candidates[pick.int(0, candidates.length - 1)] ?? null) : null,
     wakeReason: film.awakening.reason,
     heard: heardInFilm(film),
+    ending: film.ending,
   };
 }

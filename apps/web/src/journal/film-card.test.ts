@@ -54,6 +54,13 @@ describe('filmJournalCard', () => {
     ]);
   });
 
+  it('notes a dream that ended in a fall, and only that ending (#134)', () => {
+    const fell = filmJournalCard({ ...entry, summary: { ...summary, ending: 'fall' } }, new Date(2026, 9, 9));
+    expect(rows(fell, 'rows')).toContainEqual(['Конец сна', 'падение']);
+    const quiet = filmJournalCard({ ...entry, summary: { ...summary, ending: 'quiet' } }, new Date(2026, 9, 9));
+    expect(rows(quiet, 'rows').map(([label]) => label)).not.toContain('Конец сна');
+  });
+
   it('lists the locations, the strangest object and the sources of the sounds', () => {
     expect(section(blocks, 'Локации')).toEqual(['советский двор', 'подъезд', 'коридор термометров']);
     expect(section(blocks, 'Самый странный объект')).toEqual(['Женщина с пылесосом']);

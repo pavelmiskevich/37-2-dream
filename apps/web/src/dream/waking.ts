@@ -1,4 +1,4 @@
-import { createSeededRng, isWakingFrame, type LibraryAsset, type LibraryManifest } from '@dream/core';
+import { createSeededRng, isWakingFrame, type FilmEnding, type LibraryAsset, type LibraryManifest } from '@dream/core';
 import type { SampleId, SoundEvent } from '../audio';
 
 /**
@@ -13,6 +13,11 @@ import type { SampleId, SoundEvent } from '../audio';
  *   5 s     "Ты чай будешь?" from the kitchen
  *   8,6 s   the reason of the awakening
  *   13 s    over: the journal
+ *
+ * A dream that ended in a fall (#134) wakes with a jolt instead (`WAKING_FALL`):
+ * a sharp gasp at once, the eyes snap open, the bed creaks under the start,
+ * the breathing comes in fast and calms down; no snore — he was not asleep
+ * enough to snore. The rest of the morning is the same.
  */
 export const WAKING = {
   /** The eyes open over this long. */
@@ -34,6 +39,17 @@ export const WAKING = {
   verdictFade: 1.5,
   /** The awakening is over; the journal takes the screen. */
   end: 13,
+} as const;
+
+/** Waking with a jolt from a fall (#134, D-037). */
+export const WAKING_FALL = {
+  /** The eyes snap open. */
+  eyes: 0.3,
+  gasp: { at: 0, strength: 1 },
+  /** The bed creaks under the start. */
+  bedCreakAt: 0.12,
+  /** His breathing comes in fast, then settles to `WAKING.breath`. */
+  breath: { at: 0.5, fast: 24, calmAt: 4 },
 } as const;
 
 /**
@@ -63,7 +79,7 @@ const ease = (value: number): number => {
   return x * x * (3 - 2 * x);
 };
 
-export function wakingView(time: number): WakingView {
+export function wakingView(time: number, ending: FilmEnding = 'quiet'): WakingView {
   const t = Math.max(0, time);
   const sinceCall = t - WAKING.callAt;
   const call =
@@ -71,7 +87,7 @@ export function wakingView(time: number): WakingView {
       ? 0
       : Math.min(clamp01(sinceCall / WAKING.callFade), clamp01((WAKING.callSeconds - sinceCall) / WAKING.callFade));
   return {
-    eyes: ease(t / WAKING.eyes),
+    eyes: ease(t / (ending === 'fall' ? WAKING_FALL.eyes : WAKING.eyes)),
     thermometer: ease((t - WAKING.thermometerAt) / WAKING.thermometerFade),
     call,
     verdict: ease((t - WAKING.verdictAt) / WAKING.verdictFade),
@@ -147,18 +163,21 @@ export interface WakingRecordingsAvailable {
  * has not loaded is simply not there; with nothing loaded the awakening
  * sounds as it did before the recordings.
  */
-export function wakingCues(recordings?: WakingRecordingsAvailable): WakingCue[] {
+export function wakingCues(recordings?: WakingRecordingsAvailable, ending: FilmEnding = 'quiet'): WakingCue[] {
   const has = (sample: SampleId): boolean => recordings?.has(sample) ?? false;
   const rec = WAKING_RECORDINGS;
+  const fall = ending === 'fall';
+  // Waking from a fall there is no snore: the breathing comes in right after the gasp.
+  const snore = has('snore') && !fall;
   const cues: WakingCue[] = [
     { at: 0, event: { type: 'master.volume', value: 1 } },
     { at: 0, event: { type: 'master.muffle', value: 0 } },
     { at: 0, event: { type: 'sound.volume', sound: 'breath', value: WAKING.breathVolume } },
     { at: 0, event: { type: 'sound.volume', sound: 'kitchen', value: WAKING.kitchenVolume } },
-    { at: 0, event: { type: 'breath.rate', breathsPerMinute: WAKING.breath } },
+    { at: 0, event: { type: 'breath.rate', breathsPerMinute: fall ? WAKING_FALL.breath.fast : WAKING.breath } },
     {
-      at: has('snore') ? rec.snore.ends : 0,
-      event: { type: 'sound.start', sound: 'breath', fade: WAKING.breathFade },
+      at: fall ? WAKING_FALL.breath.at : snore ? rec.snore.ends : 0,
+      event: { type: 'sound.start', sound: 'breath', fade: fall ? 0.3 : WAKING.breathFade },
     },
     { at: 0, event: { type: 'sound.start', sound: 'kitchen', fade: WAKING.kitchenFade } },
   ];
@@ -168,8 +187,15 @@ export function wakingCues(recordings?: WakingRecordingsAvailable): WakingCue[] 
       event: { type: 'sample.play', sample: recordings.roomTone, gain: rec.roomTone.gain, fadeIn: rec.roomTone.fadeIn, loop: true },
     });
   }
-  if (has('snore')) cues.push({ at: rec.snore.at, event: { type: 'sample.play', sample: 'snore', gain: rec.snore.gain } });
-  if (has('bed-creak')) cues.push({ at: rec.bedCreak.at, event: { type: 'sample.play', sample: 'bed-creak', gain: rec.bedCreak.gain } });
+  if (fall) {
+    cues.push({ at: WAKING_FALL.gasp.at, event: { type: 'gasp', strength: WAKING_FALL.gasp.strength } });
+    cues.push({ at: WAKING_FALL.breath.calmAt, event: { type: 'breath.rate', breathsPerMinute: WAKING.breath } });
+  }
+  if (snore) cues.push({ at: rec.snore.at, event: { type: 'sample.play', sample: 'snore', gain: rec.snore.gain } });
+  if (has('bed-creak')) {
+    const at = fall ? WAKING_FALL.bedCreakAt : rec.bedCreak.at;
+    cues.push({ at, event: { type: 'sample.play', sample: 'bed-creak', gain: rec.bedCreak.gain } });
+  }
   if (has('microwave')) {
     cues.push({
       at: rec.microwave.firstBeep - rec.microwave.beepInFile,
