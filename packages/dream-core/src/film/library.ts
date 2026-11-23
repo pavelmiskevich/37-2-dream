@@ -28,6 +28,7 @@ export const MOTIF_TAGS = [
   'spider',
   'snake',
   'giant_shapes',
+  'fall',
 ] as const;
 export type MotifTag = (typeof MOTIF_TAGS)[number];
 
