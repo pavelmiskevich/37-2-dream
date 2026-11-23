@@ -1899,6 +1899,189 @@
         "seed": 1300108,
         "source": "hf-space:mcp-tools/Z-Image-Turbo"
       }
+    },
+    {
+      "id": "clip-yard-swing-alone",
+      "kind": "clip",
+      "file": "clips/clip-yard-swing-alone.mp4",
+      "width": 1280,
+      "height": 720,
+      "duration": 5.042,
+      "tags": {
+        "location": "yard",
+        "motifs": [
+          "swing"
+        ],
+        "people": "none",
+        "mood": "uneasy",
+        "time": "dusk"
+      },
+      "generation": {
+        "model": "Wan-AI/Wan2.2-TI2V-5B",
+        "license": "Apache-2.0",
+        "prompt": "Static camera, no camera movement. A foggy empty Soviet courtyard at dusk. The old red metal swing slowly starts to swing back and forth by itself, a little higher with every swing, while nobody is around. Wet asphalt, the street lamp glowing in the fog, the apartment blocks and everything else stay completely still. Realistic 35mm film footage, heavy film grain, muted desaturated colors, quiet, uneasy and unsettling dream atmosphere.",
+        "seed": 390101,
+        "source": "local-desktop, from still yard-dusk-empty-swing"
+      }
+    },
+    {
+      "id": "clip-yard-vacuum-woman-turn",
+      "kind": "clip",
+      "file": "clips/clip-yard-vacuum-woman-turn.mp4",
+      "width": 1280,
+      "height": 720,
+      "duration": 5.042,
+      "tags": {
+        "location": "yard",
+        "motifs": [
+          "swing",
+          "vacuum_woman"
+        ],
+        "people": "distant",
+        "mood": "dread",
+        "time": "night"
+      },
+      "generation": {
+        "model": "Wan-AI/Wan2.2-TI2V-5B",
+        "license": "Apache-2.0",
+        "prompt": "Static camera, no camera movement. Night in a wet Soviet courtyard. The elderly woman in a dark coat standing beside an old vacuum cleaner slowly turns her head towards the camera and then stays completely still, her face remains hidden in shadow. The empty swing behind her sways very slightly. Fog around the street lamp, lit windows, nothing else moves. Realistic 35mm film footage, heavy film grain, muted desaturated colors, quiet, uneasy and unsettling dream atmosphere.",
+        "seed": 390102,
+        "source": "local-desktop, from still yard-night-vacuum-woman"
+      }
+    },
+    {
+      "id": "clip-stairwell-door-closes",
+      "kind": "clip",
+      "file": "clips/clip-stairwell-door-closes.mp4",
+      "width": 1280,
+      "height": 720,
+      "duration": 5.042,
+      "tags": {
+        "location": "stairwell",
+        "motifs": [],
+        "people": "none",
+        "mood": "dread",
+        "time": "interior"
+      },
+      "generation": {
+        "model": "Wan-AI/Wan2.2-TI2V-5B",
+        "license": "Apache-2.0",
+        "prompt": "Static camera, no camera movement. A dark Soviet apartment stairwell. The padded double door at the end of the corridor slowly swings open by itself, revealing more dim yellow light behind it, and nobody comes through. Dust floating in the air, deep shadows on the walls, nothing else moves. Realistic 35mm film footage, heavy film grain, muted desaturated colors, quiet, uneasy and unsettling dream atmosphere.",
+        "seed": 390103,
+        "source": "local-desktop, from still stairwell-door-ajar"
+      }
+    },
+    {
+      "id": "clip-jam-spoon-drip",
+      "kind": "clip",
+      "file": "clips/clip-jam-spoon-drip.mp4",
+      "width": 1280,
+      "height": 720,
+      "duration": 5.042,
+      "tags": {
+        "location": "jam_jar",
+        "motifs": [],
+        "people": "none",
+        "mood": "uneasy",
+        "time": "interior"
+      },
+      "generation": {
+        "model": "Wan-AI/Wan2.2-TI2V-5B",
+        "license": "Apache-2.0",
+        "prompt": "Static camera, no camera movement. Extreme close-up of a silver teaspoon above an open glass jar. Thick dark cherry jam slowly stretches down from the spoon in one long sticky thread and very slowly drips into the jar, the surface of the jam barely trembling. Nothing else moves. Realistic 35mm film footage, heavy film grain, muted desaturated colors, quiet, uneasy and unsettling dream atmosphere.",
+        "seed": 390106,
+        "source": "local-desktop, from still jam-jar-spoon-viscous"
+      }
+    },
+    {
+      "id": "clip-yard-laundry-wind",
+      "kind": "clip",
+      "file": "clips/clip-yard-laundry-wind.mp4",
+      "width": 1280,
+      "height": 720,
+      "duration": 5.042,
+      "tags": {
+        "location": "yard",
+        "motifs": [],
+        "people": "distant",
+        "mood": "calm",
+        "time": "day"
+      },
+      "generation": {
+        "model": "Wan-AI/Wan2.2-TI2V-5B",
+        "license": "Apache-2.0",
+        "prompt": "Static camera, no camera movement. A Soviet courtyard on an overcast day. The white sheets drying on the ropes in the foreground slowly billow and settle in a light wind. The old woman on the distant bench sits completely still with her back to the camera, the panel apartment blocks do not move. Realistic 35mm film footage, heavy film grain, muted desaturated colors, quiet and calm dream atmosphere.",
+        "seed": 390107,
+        "source": "local-desktop, from still yard-day-laundry"
+      }
+    },
+    {
+      "id": "clip-stairwell-sunbeam-dust",
+      "kind": "clip",
+      "file": "clips/clip-stairwell-sunbeam-dust.mp4",
+      "width": 1280,
+      "height": 720,
+      "duration": 5.042,
+      "tags": {
+        "location": "stairwell",
+        "motifs": [],
+        "people": "none",
+        "mood": "calm",
+        "time": "day"
+      },
+      "generation": {
+        "model": "Wan-AI/Wan2.2-TI2V-5B",
+        "license": "Apache-2.0",
+        "prompt": "Static camera, no camera movement. A quiet Soviet apartment stairwell landing in the afternoon. Specks of dust slowly drift and turn in the slanted beam of pale sunlight falling across the steps, the light very slowly dims and brightens as a cloud passes. The stairs, the railing and the plant on the windowsill stay completely still, nobody. Realistic 35mm film footage, heavy film grain, muted desaturated colors, quiet and calm dream atmosphere.",
+        "seed": 390108,
+        "source": "local-desktop, from still stairwell-day-sunlight"
+      }
+    },
+    {
+      "id": "clip-elevator-button-37",
+      "kind": "clip",
+      "file": "clips/clip-elevator-button-37.mp4",
+      "width": 1280,
+      "height": 720,
+      "duration": 5.042,
+      "tags": {
+        "location": "elevator",
+        "motifs": [],
+        "people": "none",
+        "mood": "uneasy",
+        "time": "interior"
+      },
+      "generation": {
+        "model": "Wan-AI/Wan2.2-TI2V-5B",
+        "license": "Apache-2.0",
+        "prompt": "Static camera, no camera movement. Close-up of an old elevator button panel full of buttons numbered 37. The glowing button slowly fades out, and a moment later another button numbered 37 lights up by itself, then another. The wood-grain walls and the panel stay completely still. Realistic 35mm film footage, heavy film grain, muted desaturated colors, quiet, uneasy and unsettling dream atmosphere.",
+        "seed": 390119,
+        "source": "local-desktop, from still elevator-buttons-37"
+      }
+    },
+    {
+      "id": "clip-bedroom-spider-crawl",
+      "kind": "clip",
+      "file": "clips/clip-bedroom-spider-crawl.mp4",
+      "width": 1280,
+      "height": 720,
+      "duration": 5.042,
+      "tags": {
+        "location": "bedroom",
+        "motifs": [
+          "spider"
+        ],
+        "people": "none",
+        "mood": "dread",
+        "time": "night"
+      },
+      "generation": {
+        "model": "Wan-AI/Wan2.2-TI2V-5B",
+        "license": "Apache-2.0",
+        "prompt": "Static camera, no camera movement. A dark Soviet-era bedroom at night. The enormous spider on the ceiling slowly moves its long legs and crawls a short distance across the cracked plaster towards the bed, then freezes. Faint light through the curtains, the bed and the room stay still. Realistic 35mm film footage, heavy film grain, muted desaturated colors, quiet, uneasy and dread-filled dream atmosphere.",
+        "seed": 390105,
+        "source": "local-desktop, from still bedroom-spider-ceiling"
+      }
     }
   ]
 }
