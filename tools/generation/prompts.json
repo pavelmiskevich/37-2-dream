@@ -606,6 +606,212 @@
       "seed": 1300109,
       "style": "Realistic 35mm film photograph, heavy film grain, harsh direct flash, muted desaturated colors, Russia in the 1990s, the logic of a dream, sudden shocking moment.",
       "scene": "Extreme vertigo, a view straight down while falling from the ninth floor, the concrete wall and windows of a Soviet apartment block streaking past in heavy motion blur at the edges of the frame, the courtyard asphalt with a tiny swing far below rushing up at the camera, no people"
+    },
+    {
+      "id": "fall-yard-window-straight-down",
+      "priority": 1,
+      "tags": { "location": "yard", "motifs": ["fall"], "people": "none", "mood": "dread", "time": "night" },
+      "seed": 1320101,
+      "scene": "Top-down view straight down from the window ledge of the ninth floor of a Soviet apartment block at night, the sheer facade with rows of dark windows dropping away below, the courtyard tiny and far down with one lit street lamp and a swing, two hands gripping the edge of the window sill at the bottom of the frame"
+    },
+    {
+      "id": "fall-stairs-missing-flight",
+      "priority": 1,
+      "tags": { "location": "stairs", "motifs": ["fall"], "people": "none", "mood": "dread", "time": "interior" },
+      "seed": 1320102,
+      "scene": "A flight of worn concrete stairs in a Soviet stairwell that breaks off in mid-air halfway down, the missing steps leave a gap over a deep dark drop of many floors, the handrail goes on alone into the darkness, a single bare bulb above"
+    },
+    {
+      "id": "fall-elevator-roof-shaft",
+      "priority": 2,
+      "tags": { "location": "elevator", "motifs": ["fall"], "people": "none", "mood": "dread", "time": "interior" },
+      "seed": 1320103,
+      "scene": "Standing on the roof of an old elevator cabin inside a dark shaft, looking straight down past its edge into a shaft that goes down for dozens of floors, greasy cables, thin lines of light around the closed landing doors fading far below"
+    },
+    {
+      "id": "yard-day-dandelions",
+      "priority": 1,
+      "tags": { "location": "yard", "motifs": [], "people": "none", "mood": "calm", "time": "day" },
+      "seed": 1320104,
+      "scene": "A quiet Soviet courtyard on a warm late morning, dandelions in the long grass, a sandbox with a forgotten red bucket, laundry on a line, sunlight on the panel facades, nobody around"
+    },
+    {
+      "id": "kitchen-day-tea-glass",
+      "priority": 1,
+      "tags": { "location": "kitchen", "motifs": [], "people": "none", "mood": "calm", "time": "day" },
+      "seed": 1320105,
+      "scene": "A glass of tea in a metal holder on an oilcloth table in an old Soviet kitchen in the morning, thin steam rising, a sugar bowl and a plate of bread, sunlight on the tiles, a small radio on the windowsill"
+    },
+    {
+      "id": "stairs-day-cat-window",
+      "priority": 1,
+      "tags": { "location": "stairs", "motifs": [], "people": "none", "mood": "calm", "time": "day" },
+      "seed": 1320106,
+      "scene": "A tabby cat asleep on the wide windowsill of a stairwell landing in the afternoon sun, a potted aloe beside it, dust in the light, the worn stairs going up"
+    },
+    {
+      "id": "hospital-corridor-day-plants",
+      "priority": 1,
+      "tags": { "location": "hospital_corridor", "motifs": [], "people": "none", "mood": "calm", "time": "day" },
+      "seed": 1320107,
+      "scene": "A quiet hospital corridor in the afternoon, tall windows throwing sunlight on the linoleum, potted ficus plants and a row of empty chairs, a round wall clock, nobody around"
+    },
+    {
+      "id": "scare-bedroom-wardrobe-face",
+      "priority": 2,
+      "tags": { "location": "bedroom", "motifs": [], "people": "face", "mood": "scare", "time": "night" },
+      "seed": 1320108,
+      "style": "Realistic 35mm film photograph, heavy film grain, harsh direct flash, muted desaturated colors, Russia in the 1990s, the logic of a dream, sudden shocking moment.",
+      "scene": "A grey face with black eyes suddenly peering out of the gap of a dark wardrobe door right next to the camera in a bedroom at night, long thin fingers on the edge of the door"
+    },
+    {
+      "id": "scare-elevator-door-figure",
+      "priority": 2,
+      "tags": { "location": "elevator", "motifs": [], "people": "face", "mood": "scare", "time": "night" },
+      "seed": 1320109,
+      "style": "Realistic 35mm film photograph, heavy film grain, harsh direct flash, muted desaturated colors, Russia in the 1990s, the logic of a dream, sudden shocking moment.",
+      "scene": "The doors of an old elevator open onto a tall figure standing right in the doorway, a dark coat, a grey face lit by the flash, eyes black, the landing pitch dark behind it"
+    },
+    {
+      "id": "scare-stairs-hands-railing",
+      "priority": 2,
+      "tags": { "location": "stairs", "motifs": [], "people": "face", "mood": "scare", "time": "night" },
+      "seed": 1320110,
+      "style": "Realistic 35mm film photograph, heavy film grain, harsh direct flash, muted desaturated colors, Russia in the 1990s, the logic of a dream, sudden shocking moment.",
+      "scene": "Dozens of pale hands suddenly reaching through the bars of a stairwell railing towards the camera in a pitch-dark stairwell"
+    },
+    {
+      "id": "yard-night-snow-footprints",
+      "priority": 2,
+      "tags": { "location": "yard", "motifs": ["swing"], "people": "none", "mood": "uneasy", "time": "night" },
+      "seed": 1320111,
+      "scene": "A snowy Soviet courtyard at night under a single street lamp, a line of bare footprints in the fresh snow leads to the swing and stops there, the swing seat empty and slightly swaying, no one around"
+    },
+    {
+      "id": "yard-dusk-carpet-beating",
+      "priority": 2,
+      "tags": { "location": "yard", "motifs": [], "people": "distant", "mood": "uneasy", "time": "dusk" },
+      "seed": 1320112,
+      "scene": "A patterned carpet hung over a metal carpet-beating frame in a Soviet courtyard at dusk, a distant woman in a headscarf standing beside it with a beater raised, frozen mid-motion, lit windows behind"
+    },
+    {
+      "id": "yard-day-garages-fog",
+      "priority": 2,
+      "tags": { "location": "yard", "motifs": [], "people": "none", "mood": "uneasy", "time": "day" },
+      "seed": 1320113,
+      "scene": "A row of rusty metal garages behind Soviet apartment blocks in thick fog, one garage door open onto darkness, a child's bicycle lying on the wet ground, crows on the roofs"
+    },
+    {
+      "id": "stairwell-night-padded-doors",
+      "priority": 2,
+      "tags": { "location": "stairwell", "motifs": [], "people": "none", "mood": "dread", "time": "night" },
+      "seed": 1320114,
+      "scene": "A dim stairwell landing at night with four apartment doors upholstered in quilted brown leatherette, every door numbered 37, one slightly open with a thin line of yellow light, a worn doormat"
+    },
+    {
+      "id": "stairwell-chalk-thermometers",
+      "priority": 2,
+      "tags": { "location": "stairwell", "motifs": ["thermometer"], "people": "none", "mood": "uneasy", "time": "day" },
+      "seed": 1320115,
+      "scene": "Children's chalk drawings covering the floor and walls of a stairwell landing: dozens of thermometers all showing 37.2, a stick figure lying in a bed, a piece of chalk left on the step"
+    },
+    {
+      "id": "stairs-water-flowing",
+      "priority": 2,
+      "tags": { "location": "stairs", "motifs": [], "people": "none", "mood": "uneasy", "time": "interior" },
+      "seed": 1320116,
+      "scene": "Water flowing steadily down the worn concrete stairs of a Soviet stairwell like a quiet stream, a bare bulb reflected in it, a single slipper floating down, walls painted green"
+    },
+    {
+      "id": "hospital-nurse-station-night",
+      "priority": 2,
+      "tags": { "location": "hospital_corridor", "motifs": ["monitor"], "people": "none", "mood": "dread", "time": "night" },
+      "seed": 1320117,
+      "scene": "An empty nurses' station in a hospital corridor at night, a desk lamp on, a telephone receiver off the hook hanging by its cord, an old monitor showing a flat green line, a cup of tea still steaming"
+    },
+    {
+      "id": "hospital-gurney-sheet",
+      "priority": 2,
+      "tags": { "location": "hospital_corridor", "motifs": [], "people": "distant", "mood": "dread", "time": "night" },
+      "seed": 1320118,
+      "scene": "A gurney in a dim hospital corridor at night with a figure fully covered by a white sheet, one bare foot showing with a paper tag tied to the toe that reads 37.2, a fluorescent lamp above"
+    },
+    {
+      "id": "thermometer-corridor-snow",
+      "priority": 2,
+      "tags": { "location": "thermometer_corridor", "motifs": ["thermometer"], "people": "none", "mood": "uneasy", "time": "interior" },
+      "seed": 1320119,
+      "scene": "A long corridor lined with wall thermometers where snow is falling from the ceiling and lies on the floor in drifts, the mercury of every thermometer at 37.2, a single path of footprints through the snow"
+    },
+    {
+      "id": "thermometer-corridor-bath",
+      "priority": 2,
+      "tags": { "location": "thermometer_corridor", "motifs": ["thermometer"], "people": "none", "mood": "uneasy", "time": "interior" },
+      "seed": 1320120,
+      "scene": "A cast-iron bathtub standing in the middle of a long corridor lined with thermometers, filled to the brim with silver mercury, a towel hanging over its edge"
+    },
+    {
+      "id": "jam-jar-swing-inside",
+      "priority": 2,
+      "tags": { "location": "jam_jar", "motifs": ["swing"], "people": "none", "mood": "uneasy", "time": "interior" },
+      "seed": 1320121,
+      "scene": "A small swing set standing inside a large glass jam jar on a kitchen windowsill, half sunk in dark cherry jam, the courtyard visible through the glass and the window behind"
+    },
+    {
+      "id": "jam-jar-wasp-giant",
+      "priority": 2,
+      "tags": { "location": "jam_jar", "motifs": ["giant_shapes"], "people": "none", "mood": "dread", "time": "interior" },
+      "seed": 1320122,
+      "scene": "A giant wasp the size of a dog trapped inside an enormous jam jar in a dim pantry, its wings stuck in the jam, the lid screwed on, shelves of jars all around"
+    },
+    {
+      "id": "jam-jar-pantry-rooms",
+      "priority": 2,
+      "tags": { "location": "jam_jar", "motifs": [], "people": "none", "mood": "uneasy", "time": "interior" },
+      "seed": 1320123,
+      "scene": "Long shelves in a dark pantry lined with jam jars, inside each jar a tiny lit room: a bedroom, a hospital ward, a stairwell, all slowly sinking in dark jam"
+    },
+    {
+      "id": "bedroom-night-wardrobe-ajar",
+      "priority": 2,
+      "tags": { "location": "bedroom", "motifs": [], "people": "none", "mood": "dread", "time": "night" },
+      "seed": 1320124,
+      "scene": "A dark Soviet bedroom at night, a tall wooden wardrobe with its door slightly ajar, total darkness inside the gap, a coat sleeve hanging out, faint light from the window across the floor"
+    },
+    {
+      "id": "bedroom-night-tv-static",
+      "priority": 2,
+      "tags": { "location": "bedroom", "motifs": [], "people": "none", "mood": "uneasy", "time": "night" },
+      "seed": 1320125,
+      "scene": "An old Soviet television on a lacquered cabinet in a dark bedroom showing grey static, its glow on the rumpled bed and the carpet on the wall, the wall clock stopped at seven past three"
+    },
+    {
+      "id": "kitchen-dusk-table-set",
+      "priority": 2,
+      "tags": { "location": "kitchen", "motifs": [], "people": "none", "mood": "uneasy", "time": "dusk" },
+      "seed": 1320126,
+      "scene": "A kitchen table in an old Soviet apartment at dusk set for many guests, plates of food, glasses of compote and a jar of jam, every chair empty, the light from the window fading"
+    },
+    {
+      "id": "kitchen-night-gas-stove",
+      "priority": 2,
+      "tags": { "location": "kitchen", "motifs": [], "people": "none", "mood": "uneasy", "time": "night" },
+      "seed": 1320127,
+      "scene": "All four burners of an old gas stove burning with blue flames in a dark Soviet kitchen at night, no pots on them, nobody there, the window reflecting the flames"
+    },
+    {
+      "id": "elevator-doors-snow-yard",
+      "priority": 2,
+      "tags": { "location": "elevator", "motifs": [], "people": "none", "mood": "uneasy", "time": "day" },
+      "seed": 1320128,
+      "scene": "The doors of an old Soviet elevator open not onto a landing but onto a snowy courtyard in daylight, snow drifting into the cabin onto the scratched floor, the button panel glowing"
+    },
+    {
+      "id": "elevator-indicator-37",
+      "priority": 2,
+      "tags": { "location": "elevator", "motifs": [], "people": "none", "mood": "uneasy", "time": "interior" },
+      "seed": 1320129,
+      "scene": "Above the closed doors of an old elevator on a dim landing, a mechanical floor indicator where every number reads 37, the call button glowing red, scratched paint on the doors"
     }
   ]
 }

@@ -3,15 +3,21 @@
 Инструкция для владельца: как на компьютере с RTX 5070 Ti (16 ГБ видеопамяти,
 96 ГБ RAM) своими руками делать для сна **кадры** (Z-Image-Turbo) и
 **видеоклипы** (Wan 2.2) по готовым промптам и отдавать их на проверку.
-Claude Code на компьютер не ставится. Задачи — #126 (кадры) и #39 (клипы).
+Claude Code на компьютер не ставится.
+
+Первая партия — 25 кадров и 9 клипов — сделана 2026-11-22 (#128, #39).
+Сейчас в списках **вторая партия** (#132): 32 кадра (раздел 4) и 16 клипов
+(раздел 6). Делать её можно самому или поручить другой модели: файл
+самодостаточен, в репозиторий исполнителю писать ничего не нужно —
+только сделать файлы и положить их в папку (раздел 7).
 
 ## План на один вечер
 
 | Шаг | Что | Время |
 |---|---|---|
 | 1 | Поставить ComfyUI и скачать модели (разделы 1–2, 3.1, 5.1) | 30–60 мин, в основном загрузка |
-| 2 | **Кадры**: 25 штук по списку из раздела 4 | ~1 час с отбором |
-| 3 | **Клипы**: начать с трёх основных и варенья (раздел 6), поставить в очередь и оставить | 5–15 мин на клип |
+| 2 | **Кадры**: 32 штуки по списку из раздела 4 | ~1–1,5 часа с отбором |
+| 3 | **Перезапустить ComfyUI** и сделать **клипы** (раздел 6): поставить в очередь и оставить | 5–15 мин на клип |
 | 4 | Перенести PNG и MP4 на ноутбук и написать мне (раздел 7) | 10 мин |
 
 Если время есть только на одно — делайте кадры: их ждёт библиотека, а квота
@@ -120,8 +126,8 @@ seed и имя файла и снова нажать **Run** — так в оч�
 | `steps` | `8` (по умолчанию) |
 | `unet_name`, `clip_name`, `vae_name` | не трогать (три файла из таблицы выше) |
 
-На узле **Save Image**: `filename_prefix` — id кадра из раздела 4, например
-`elevator-day-open`. Остальное в шаблоне (cfg 1, `res_multistep`, shift 3) не
+На узле **Save Image**: `filename_prefix` — id кадра и seed через
+подчёркивание, например `yard-day-dandelions_1320104`. Остальное в шаблоне (cfg 1, `res_multistep`, shift 3) не
 трогать — это те же настройки, что у Hugging Face, на котором сделаны
 прежние кадры.
 
@@ -133,7 +139,7 @@ seed и имя файла и снова нажать **Run** — так в оч�
 2. Нажать **Run**. Первый запуск дольше: модели грузятся в память. Дальше —
    секунды на кадр.
 3. Кадр появится в узле **Save Image**; файл — в папке `output` внутри папки
-   установки ComfyUI, имя вида `elevator-day-open_00001_.png`.
+   установки ComfyUI, имя вида `yard-day-dandelions_1320104_00001_.png`.
 4. Посмотреть на кадр (см. «Как отбирать» ниже). Годится — следующий кадр.
 
 Удобно ставить кадры в очередь пачкой (см. «Очередь» в разделе 2), а
@@ -153,183 +159,243 @@ seed и имя файла и снова нажать **Run** — так в оч�
 Кадр **не годится** — поставить seed на 1 больше (`1260101` → `1260102`;
 для длинных seed тоже просто +1) и запустить снова. Промпт не менять. Не
 вышло с трёх попыток — пропустить и написать мне: я поправлю промпт.
-Записывайте, с каким seed вышел принятый кадр, если не с тем, что в списке.
+Seed в имени файла поменять вместе с seed в узле. Записывать его отдельно
+не нужно: настоящий seed я читаю из самого файла — ComfyUI сохраняет туда
+весь граф.
 
 Что-то удачное, но не по промпту (как качели на цепи с неба в
 `yard-dusk-swing-hanging`), тоже присылайте — с пометкой: я поправлю теги
 под то, что получилось.
 
-## 4. Список кадров (25)
+## 4. Список кадров (32)
 
 Тот же seed в ComfyUI даёт другую картинку, чем на Hugging Face, — это
-нормально: в манифест я запишу, что кадр сделан на компьютере. Промпты
-совпадают с каталогом `tools/generation/prompts.json` буква в букву —
-вставляйте целиком.
+нормально. Промпты совпадают с каталогом `tools/generation/prompts.json`
+буква в букву — вставляйте целиком.
+
+**Падение с высоты** модели даётся трудно: она охотно рисует окно или
+лестницу, но без обрыва. Кадр без ощущения высоты — не годится, seed +1.
+Если обрыва нет и с трёх попыток, а кадр сам по себе хороший — пришлите с
+пометкой, я сделаю из него обычный кадр места.
+
+### Падение с высоты — самый страшный кошмар
+
+**1. `fall-bed-over-drop`** — спальня, seed `1300104`
+
+```text
+High-angle view of a bedroom on the top floor of a nine-storey Soviet apartment block at night whose outer wall is missing, the floor ends in a broken concrete edge right past the foot of the bed, rumpled white sheets hang over the edge, beyond it a sheer drop down the facade to a dark courtyard with tiny street lamps far below, a bedside lamp still on. Realistic 35mm film photograph, heavy film grain, muted desaturated colors, faces hidden in shadow, Russia in the 1990s, Soviet-era interiors and courtyards, the logic of a dream, quiet, uneasy and unsettling atmosphere.
+```
+
+**2. `fall-hospital-corridor-edge`** — больничный коридор, seed `1300107`
+
+```text
+An empty hospital corridor with pale tiles and humming fluorescent lamps that ends abruptly mid-air, the floor tiles broken off at an edge, beyond it a deep night drop down the side of a tall hospital building to street lamps far below, a wheelchair standing at the edge. Realistic 35mm film photograph, heavy film grain, muted desaturated colors, faces hidden in shadow, Russia in the 1990s, Soviet-era interiors and courtyards, the logic of a dream, quiet, uneasy and unsettling atmosphere.
+```
+
+**3. `fall-yard-window-straight-down`** — двор, seed `1320101`
+
+```text
+Top-down view straight down from the window ledge of the ninth floor of a Soviet apartment block at night, the sheer facade with rows of dark windows dropping away below, the courtyard tiny and far down with one lit street lamp and a swing, two hands gripping the edge of the window sill at the bottom of the frame. Realistic 35mm film photograph, heavy film grain, muted desaturated colors, faces hidden in shadow, Russia in the 1990s, Soviet-era interiors and courtyards, the logic of a dream, quiet, uneasy and unsettling atmosphere.
+```
+
+**4. `fall-stairs-missing-flight`** — лестница, seed `1320102`
+
+```text
+A flight of worn concrete stairs in a Soviet stairwell that breaks off in mid-air halfway down, the missing steps leave a gap over a deep dark drop of many floors, the handrail goes on alone into the darkness, a single bare bulb above. Realistic 35mm film photograph, heavy film grain, muted desaturated colors, faces hidden in shadow, Russia in the 1990s, Soviet-era interiors and courtyards, the logic of a dream, quiet, uneasy and unsettling atmosphere.
+```
+
+**5. `fall-elevator-roof-shaft`** — лифт, seed `1320103`
+
+```text
+Standing on the roof of an old elevator cabin inside a dark shaft, looking straight down past its edge into a shaft that goes down for dozens of floors, greasy cables, thin lines of light around the closed landing doors fading far below. Realistic 35mm film photograph, heavy film grain, muted desaturated colors, faces hidden in shadow, Russia in the 1990s, Soviet-era interiors and courtyards, the logic of a dream, quiet, uneasy and unsettling atmosphere.
+```
 
 ### Спокойные — для вступления и разрядки
 
-**1. `elevator-day-open`** — лифт, seed `1260101`
+**6. `yard-day-dandelions`** — двор, seed `1320104`
 
 ```text
-Indoors, inside a Soviet apartment block: an old elevator cabin standing open on a landing in the afternoon, the doors folded back, scratched wood-grain walls lit by pale daylight from a stairwell window, a burnt-out bulb in the ceiling, nobody, silence. Realistic 35mm film photograph, heavy film grain, muted desaturated colors, faces hidden in shadow, Russia in the 1990s, Soviet-era interiors and courtyards, the logic of a dream, quiet, uneasy and unsettling atmosphere.
+A quiet Soviet courtyard on a warm late morning, dandelions in the long grass, a sandbox with a forgotten red bucket, laundry on a line, sunlight on the panel facades, nobody around. Realistic 35mm film photograph, heavy film grain, muted desaturated colors, faces hidden in shadow, Russia in the 1990s, Soviet-era interiors and courtyards, the logic of a dream, quiet, uneasy and unsettling atmosphere.
 ```
 
-**2. `stairs-day-stripes`** — лестница, seed `1260102`
+**7. `kitchen-day-tea-glass`** — кухня, seed `1320105`
 
 ```text
-Indoors, inside a Soviet apartment block: a long flight of worn concrete stairs going down, afternoon sunlight from a landing window lying in pale stripes across the steps and the painted metal railing, dust hanging in the air, nobody. Realistic 35mm film photograph, heavy film grain, muted desaturated colors, faces hidden in shadow, Russia in the 1990s, Soviet-era interiors and courtyards, the logic of a dream, quiet, uneasy and unsettling atmosphere.
+A glass of tea in a metal holder on an oilcloth table in an old Soviet kitchen in the morning, thin steam rising, a sugar bowl and a plate of bread, sunlight on the tiles, a small radio on the windowsill. Realistic 35mm film photograph, heavy film grain, muted desaturated colors, faces hidden in shadow, Russia in the 1990s, Soviet-era interiors and courtyards, the logic of a dream, quiet, uneasy and unsettling atmosphere.
 ```
 
-**3. `yard-day-snow`** — двор, seed `1260103`
+**8. `stairs-day-cat-window`** — лестница, seed `1320106`
 
 ```text
-A Soviet courtyard on a quiet snowy morning seen at eye level: fresh untouched snow on a sandbox and on the benches, a swing frozen still under a cap of snow, grey five-storey panel apartment blocks around with a few lit windows, white sky, nobody. Realistic 35mm film photograph, heavy film grain, muted desaturated colors, faces hidden in shadow, Russia in the 1990s, Soviet-era interiors and courtyards, the logic of a dream, quiet, uneasy and unsettling atmosphere.
+A tabby cat asleep on the wide windowsill of a stairwell landing in the afternoon sun, a potted aloe beside it, dust in the light, the worn stairs going up. Realistic 35mm film photograph, heavy film grain, muted desaturated colors, faces hidden in shadow, Russia in the 1990s, Soviet-era interiors and courtyards, the logic of a dream, quiet, uneasy and unsettling atmosphere.
 ```
 
-**4. `kitchen-dusk-window`** — кухня, seed `1260104`
+**9. `hospital-corridor-day-plants`** — больничный коридор, seed `1320107`
 
 ```text
-A small Soviet kitchen at dusk with the light switched off, the window over the sink glowing deep blue, a jar of jam and a glass of tea in a metal holder on the windowsill, outside the outline of panel blocks with the first lit windows, nobody. Realistic 35mm film photograph, heavy film grain, muted desaturated colors, faces hidden in shadow, Russia in the 1990s, Soviet-era interiors and courtyards, the logic of a dream, quiet, uneasy and unsettling atmosphere.
+A quiet hospital corridor in the afternoon, tall windows throwing sunlight on the linoleum, potted ficus plants and a row of empty chairs, a round wall clock, nobody around. Realistic 35mm film photograph, heavy film grain, muted desaturated colors, faces hidden in shadow, Russia in the 1990s, Soviet-era interiors and courtyards, the logic of a dream, quiet, uneasy and unsettling atmosphere.
 ```
 
 ### Скримеры — чтобы один сон не повторял один и тот же
 
-**5. `scare-stairs-coat`** — лестница, seed `1260113`
+**10. `scare-fall-ground-rushing`** — двор, seed `1300109`
 
 ```text
-A figure in a long dark winter coat suddenly standing on the step right in front of the camera on a dark concrete staircase, its face grey and blank in the flash, eyes black, the railing behind it. Realistic 35mm film photograph, heavy film grain, harsh direct flash, muted desaturated colors, Russia in the 1990s, the logic of a dream, sudden shocking moment.
+Extreme vertigo, a view straight down while falling from the ninth floor, the concrete wall and windows of a Soviet apartment block streaking past in heavy motion blur at the edges of the frame, the courtyard asphalt with a tiny swing far below rushing up at the camera, no people. Realistic 35mm film photograph, heavy film grain, harsh direct flash, muted desaturated colors, Russia in the 1990s, the logic of a dream, sudden shocking moment.
 ```
 
-**6. `scare-kitchen-window-face`** — кухня, seed `1260114`
+**11. `scare-bedroom-wardrobe-face`** — спальня, seed `1320108`
 
 ```text
-A pale face pressed against the dark kitchen window from outside, high above the courtyard, both hands flat on the glass, eyes wide, net curtains half drawn, the dark kitchen in the foreground. Realistic 35mm film photograph, heavy film grain, harsh direct flash, muted desaturated colors, Russia in the 1990s, the logic of a dream, sudden shocking moment.
+A grey face with black eyes suddenly peering out of the gap of a dark wardrobe door right next to the camera in a bedroom at night, long thin fingers on the edge of the door. Realistic 35mm film photograph, heavy film grain, harsh direct flash, muted desaturated colors, Russia in the 1990s, the logic of a dream, sudden shocking moment.
 ```
 
-**7. `scare-thermometer-nurse`** — коридор термометров, seed `1260115`
+**12. `scare-elevator-door-figure`** — лифт, seed `1320109`
 
 ```text
-A nurse in a white cap suddenly bent close to the camera, holding up a long glass thermometer, her face grey and without expression, eyes black, a dark corridor lined with thermometers behind her. Realistic 35mm film photograph, heavy film grain, harsh direct flash, muted desaturated colors, Russia in the 1990s, the logic of a dream, sudden shocking moment.
+The doors of an old elevator open onto a tall figure standing right in the doorway, a dark coat, a grey face lit by the flash, eyes black, the landing pitch dark behind it. Realistic 35mm film photograph, heavy film grain, harsh direct flash, muted desaturated colors, Russia in the 1990s, the logic of a dream, sudden shocking moment.
 ```
 
-**8. `scare-yard-swing-figure`** — двор, seed `1260116`
+**13. `scare-stairs-hands-railing`** — лестница, seed `1320110`
 
 ```text
-A figure in a dark coat suddenly sitting on a swing right in front of the camera in a foggy courtyard at night, its face lifted into the flash, grey skin, eyes black, the chains of the swing in the foreground. Realistic 35mm film photograph, heavy film grain, harsh direct flash, muted desaturated colors, Russia in the 1990s, the logic of a dream, sudden shocking moment.
+Dozens of pale hands suddenly reaching through the bars of a stairwell railing towards the camera in a pitch-dark stairwell. Realistic 35mm film photograph, heavy film grain, harsh direct flash, muted desaturated colors, Russia in the 1990s, the logic of a dream, sudden shocking moment.
 ```
 
-### Лифт, лестница, коридор термометров, варенье, кухня — где кадров меньше всего
+### Подъезд, лестница, лифт, коридор термометров, варенье
 
-**9. `elevator-mirror-37`** — лифт, seed `1260105`
+**14. `stairwell-night-padded-doors`** — подъезд, seed `1320114`
 
 ```text
-Inside a cramped old Soviet elevator cabin, a cracked mirror on the back wall reflecting only the empty cabin, a scratched floor indicator above the door showing 37, a dim ceiling lamp, burnt marks around the buttons. Realistic 35mm film photograph, heavy film grain, muted desaturated colors, faces hidden in shadow, Russia in the 1990s, Soviet-era interiors and courtyards, the logic of a dream, quiet, uneasy and unsettling atmosphere.
+A dim stairwell landing at night with four apartment doors upholstered in quilted brown leatherette, every door numbered 37, one slightly open with a thin line of yellow light, a worn doormat. Realistic 35mm film photograph, heavy film grain, muted desaturated colors, faces hidden in shadow, Russia in the 1990s, Soviet-era interiors and courtyards, the logic of a dream, quiet, uneasy and unsettling atmosphere.
 ```
 
-**10. `elevator-shaft-open`** — лифт, seed `1260106`
+**15. `stairwell-chalk-thermometers`** — подъезд, seed `1320115`
 
 ```text
-Indoors, inside a Soviet apartment block: elevator doors standing half open on a dark landing onto an empty shaft with no cabin, greasy cables hanging in the dark, a thin strip of yellow light far below, a worn doormat in front of the doors. Realistic 35mm film photograph, heavy film grain, muted desaturated colors, faces hidden in shadow, Russia in the 1990s, Soviet-era interiors and courtyards, the logic of a dream, quiet, uneasy and unsettling atmosphere.
+Children's chalk drawings covering the floor and walls of a stairwell landing: dozens of thermometers all showing 37.2, a stick figure lying in a bed, a piece of chalk left on the step. Realistic 35mm film photograph, heavy film grain, muted desaturated colors, faces hidden in shadow, Russia in the 1990s, Soviet-era interiors and courtyards, the logic of a dream, quiet, uneasy and unsettling atmosphere.
 ```
 
-**11. `stairs-coats-railing`** — лестница, seed `1260107`
+**16. `stairs-water-flowing`** — лестница, seed `1320116`
 
 ```text
-Indoors, inside a Soviet apartment block: dozens of old winter coats hanging on the stair railing all the way up a flight of concrete stairs, like people standing in a queue, nobody inside them, a single dim bulb on the landing. Realistic 35mm film photograph, heavy film grain, muted desaturated colors, faces hidden in shadow, Russia in the 1990s, Soviet-era interiors and courtyards, the logic of a dream, quiet, uneasy and unsettling atmosphere.
+Water flowing steadily down the worn concrete stairs of a Soviet stairwell like a quiet stream, a bare bulb reflected in it, a single slipper floating down, walls painted green. Realistic 35mm film photograph, heavy film grain, muted desaturated colors, faces hidden in shadow, Russia in the 1990s, Soviet-era interiors and courtyards, the logic of a dream, quiet, uneasy and unsettling atmosphere.
 ```
 
-**12. `stairs-down-37`** — лестница, seed `1260108`
+**17. `thermometer-corridor-snow`** — коридор термометров, seed `1320119`
 
 ```text
-Indoors, inside a Soviet apartment block: a narrow staircase going down, every landing exactly the same, the floor number 37 painted on the wall of each one, the bulbs dead below the second landing, darkness further down. Realistic 35mm film photograph, heavy film grain, muted desaturated colors, faces hidden in shadow, Russia in the 1990s, Soviet-era interiors and courtyards, the logic of a dream, quiet, uneasy and unsettling atmosphere.
+A long corridor lined with wall thermometers where snow is falling from the ceiling and lies on the floor in drifts, the mercury of every thermometer at 37.2, a single path of footprints through the snow. Realistic 35mm film photograph, heavy film grain, muted desaturated colors, faces hidden in shadow, Russia in the 1990s, Soviet-era interiors and courtyards, the logic of a dream, quiet, uneasy and unsettling atmosphere.
 ```
 
-**13. `thermometer-corridor-doors`** — коридор термометров, seed `1260109`
+**18. `thermometer-corridor-bath`** — коридор термометров, seed `1320120`
 
 ```text
-A long corridor of identical white doors under cold fluorescent light, every door plate reads 37,2, a glass mercury thermometer fixed to each door instead of a handle, worn linoleum, nobody. Realistic 35mm film photograph, heavy film grain, muted desaturated colors, faces hidden in shadow, Russia in the 1990s, Soviet-era interiors and courtyards, the logic of a dream, quiet, uneasy and unsettling atmosphere.
+A cast-iron bathtub standing in the middle of a long corridor lined with thermometers, filled to the brim with silver mercury, a towel hanging over its edge. Realistic 35mm film photograph, heavy film grain, muted desaturated colors, faces hidden in shadow, Russia in the 1990s, Soviet-era interiors and courtyards, the logic of a dream, quiet, uneasy and unsettling atmosphere.
 ```
 
-**14. `jam-jar-kitchen-flood`** — банка варенья, seed `1260110`
+**19. `jam-jar-swing-inside`** — банка варенья, seed `1320121`
 
 ```text
-A Soviet kitchen at night with its floor covered by a slowly spreading pool of thick dark red jam from an overturned jar on the table, the jam reflecting a single bare bulb, the legs of the chairs standing in it. Realistic 35mm film photograph, heavy film grain, muted desaturated colors, faces hidden in shadow, Russia in the 1990s, Soviet-era interiors and courtyards, the logic of a dream, quiet, uneasy and unsettling atmosphere.
+A small swing set standing inside a large glass jam jar on a kitchen windowsill, half sunk in dark cherry jam, the courtyard visible through the glass and the window behind. Realistic 35mm film photograph, heavy film grain, muted desaturated colors, faces hidden in shadow, Russia in the 1990s, Soviet-era interiors and courtyards, the logic of a dream, quiet, uneasy and unsettling atmosphere.
 ```
 
-**15. `jam-jar-room-inside`** — банка варенья, seed `1260111`
+**20. `jam-jar-wasp-giant`** — банка варенья, seed `1320122`
 
 ```text
-Seen from inside a giant glass jar: a small furnished room at the bottom of the jar, a bed and a stool half sunk in dark jam, the curved glass walls distorting a kitchen and a window outside, red light filtering through. Realistic 35mm film photograph, heavy film grain, muted desaturated colors, faces hidden in shadow, Russia in the 1990s, Soviet-era interiors and courtyards, the logic of a dream, quiet, uneasy and unsettling atmosphere.
+A giant wasp the size of a dog trapped inside an enormous jam jar in a dim pantry, its wings stuck in the jam, the lid screwed on, shelves of jars all around. Realistic 35mm film photograph, heavy film grain, muted desaturated colors, faces hidden in shadow, Russia in the 1990s, Soviet-era interiors and courtyards, the logic of a dream, quiet, uneasy and unsettling atmosphere.
 ```
 
-**16. `kitchen-fridge-thermometers`** — кухня, seed `1260112`
+**21. `jam-jar-pantry-rooms`** — банка варенья, seed `1320123`
 
 ```text
-An old Soviet refrigerator standing open in a dark kitchen at night, its shelves holding nothing but neat rows of glass mercury thermometers, its pale light the only light in the room, a checkered oilcloth on the table. Realistic 35mm film photograph, heavy film grain, muted desaturated colors, faces hidden in shadow, Russia in the 1990s, Soviet-era interiors and courtyards, the logic of a dream, quiet, uneasy and unsettling atmosphere.
+Long shelves in a dark pantry lined with jam jars, inside each jar a tiny lit room: a bedroom, a hospital ward, a stairwell, all slowly sinking in dark jam. Realistic 35mm film photograph, heavy film grain, muted desaturated colors, faces hidden in shadow, Russia in the 1990s, Soviet-era interiors and courtyards, the logic of a dream, quiet, uneasy and unsettling atmosphere.
 ```
 
-### Оставшиеся сцены каталога
-
-**17. `yard-dusk-will-papers`** — двор, seed `365475107`
+**22. `elevator-doors-snow-yard`** — лифт, seed `1320128`
 
 ```text
-Typewritten sheets of a last will scattered across the wet asphalt of a courtyard at dusk, stamped and signed, some stuck to a bench and a sandbox, panel apartment blocks behind in blue twilight. Realistic 35mm film photograph, heavy film grain, muted desaturated colors, faces hidden in shadow, Russia in the 1990s, Soviet-era interiors and courtyards, the logic of a dream, quiet, uneasy and unsettling atmosphere.
+The doors of an old Soviet elevator open not onto a landing but onto a snowy courtyard in daylight, snow drifting into the cabin onto the scratched floor, the button panel glowing. Realistic 35mm film photograph, heavy film grain, muted desaturated colors, faces hidden in shadow, Russia in the 1990s, Soviet-era interiors and courtyards, the logic of a dream, quiet, uneasy and unsettling atmosphere.
 ```
 
-**18. `yard-night-pigeons-window`** — двор, seed `1176289073`
+**23. `elevator-indicator-37`** — лифт, seed `1320129`
 
 ```text
-Dozens of pigeons sitting motionless in rows on a snowy courtyard fence at night, all facing the same lit window on the ground floor, a streetlight humming above. Realistic 35mm film photograph, heavy film grain, muted desaturated colors, faces hidden in shadow, Russia in the 1990s, Soviet-era interiors and courtyards, the logic of a dream, quiet, uneasy and unsettling atmosphere.
+Above the closed doors of an old elevator on a dim landing, a mechanical floor indicator where every number reads 37, the call button glowing red, scratched paint on the doors. Realistic 35mm film photograph, heavy film grain, muted desaturated colors, faces hidden in shadow, Russia in the 1990s, Soviet-era interiors and courtyards, the logic of a dream, quiet, uneasy and unsettling atmosphere.
 ```
 
-**19. `stairwell-vacuum-sound`** — подъезд, seed `502543917`
+### Двор, больница, спальня, кухня
+
+**24. `yard-night-snow-footprints`** — двор, seed `1320111`
 
 ```text
-A dark stairwell of a panel apartment block, a long vacuum cleaner hose snaking down the stairs from the floor above, at the top of the flight a woman's legs and the hem of a house dress under a bare bulb. Realistic 35mm film photograph, heavy film grain, muted desaturated colors, faces hidden in shadow, Russia in the 1990s, Soviet-era interiors and courtyards, the logic of a dream, quiet, uneasy and unsettling atmosphere.
+A snowy Soviet courtyard at night under a single street lamp, a line of bare footprints in the fresh snow leads to the swing and stops there, the swing seat empty and slightly swaying, no one around. Realistic 35mm film photograph, heavy film grain, muted desaturated colors, faces hidden in shadow, Russia in the 1990s, Soviet-era interiors and courtyards, the logic of a dream, quiet, uneasy and unsettling atmosphere.
 ```
 
-**20. `stairs-thermometers`** — лестница, seed `1767398947`
+**25. `yard-dusk-carpet-beating`** — двор, seed `1320112`
 
 ```text
-Concrete stairs of an apartment block with a mercury thermometer lying on every step, glinting under a single dim bulb, leading down to a closed basement door. Realistic 35mm film photograph, heavy film grain, muted desaturated colors, faces hidden in shadow, Russia in the 1990s, Soviet-era interiors and courtyards, the logic of a dream, quiet, uneasy and unsettling atmosphere.
+A patterned carpet hung over a metal carpet-beating frame in a Soviet courtyard at dusk, a distant woman in a headscarf standing beside it with a beater raised, frozen mid-motion, lit windows behind. Realistic 35mm film photograph, heavy film grain, muted desaturated colors, faces hidden in shadow, Russia in the 1990s, Soviet-era interiors and courtyards, the logic of a dream, quiet, uneasy and unsettling atmosphere.
 ```
 
-**21. `stairs-pigeons-dusk`** — лестница, seed `1746063288`
+**26. `yard-day-garages-fog`** — двор, seed `1320113`
 
 ```text
-Pigeons sitting on the steps of an indoor staircase at dusk, the stairwell window broken, feathers on the concrete, dusk light falling in blue stripes across the railings. Realistic 35mm film photograph, heavy film grain, muted desaturated colors, faces hidden in shadow, Russia in the 1990s, Soviet-era interiors and courtyards, the logic of a dream, quiet, uneasy and unsettling atmosphere.
+A row of rusty metal garages behind Soviet apartment blocks in thick fog, one garage door open onto darkness, a child's bicycle lying on the wet ground, crows on the roofs. Realistic 35mm film photograph, heavy film grain, muted desaturated colors, faces hidden in shadow, Russia in the 1990s, Soviet-era interiors and courtyards, the logic of a dream, quiet, uneasy and unsettling atmosphere.
 ```
 
-**22. `hospital-will-papers`** — больничный коридор, seed `356070734`
+**27. `hospital-nurse-station-night`** — больничный коридор, seed `1320117`
 
 ```text
-A nurse's desk in an empty hospital corridor at night, a typed last will lying under a desk lamp with a fountain pen on top, a rubber stamp, a ventilator hissing somewhere in the dark behind. Realistic 35mm film photograph, heavy film grain, muted desaturated colors, faces hidden in shadow, Russia in the 1990s, Soviet-era interiors and courtyards, the logic of a dream, quiet, uneasy and unsettling atmosphere.
+An empty nurses' station in a hospital corridor at night, a desk lamp on, a telephone receiver off the hook hanging by its cord, an old monitor showing a flat green line, a cup of tea still steaming. Realistic 35mm film photograph, heavy film grain, muted desaturated colors, faces hidden in shadow, Russia in the 1990s, Soviet-era interiors and courtyards, the logic of a dream, quiet, uneasy and unsettling atmosphere.
 ```
 
-**23. `thermometer-corridor-nurse`** — коридор термометров, seed `1633013601`
+**28. `hospital-gurney-sheet`** — больничный коридор, seed `1320118`
 
 ```text
-A nurse in a white cap seen from behind at the far end of a corridor lined with thermometers in glass cases, she holds one up to the lamp to read it, her shadow stretched long across the linoleum. Realistic 35mm film photograph, heavy film grain, muted desaturated colors, faces hidden in shadow, Russia in the 1990s, Soviet-era interiors and courtyards, the logic of a dream, quiet, uneasy and unsettling atmosphere.
+A gurney in a dim hospital corridor at night with a figure fully covered by a white sheet, one bare foot showing with a paper tag tied to the toe that reads 37.2, a fluorescent lamp above. Realistic 35mm film photograph, heavy film grain, muted desaturated colors, faces hidden in shadow, Russia in the 1990s, Soviet-era interiors and courtyards, the logic of a dream, quiet, uneasy and unsettling atmosphere.
 ```
 
-**24. `bedroom-ventilator-snore`** — спальня, seed `1251886228`
+**29. `bedroom-night-wardrobe-ajar`** — спальня, seed `1320124`
 
 ```text
-A hospital ventilator with an accordion bellows standing in an ordinary apartment bedroom at night, its tube running under the blanket of a sleeping figure, a wall carpet and a cassette radio on the shelf. Realistic 35mm film photograph, heavy film grain, muted desaturated colors, faces hidden in shadow, Russia in the 1990s, Soviet-era interiors and courtyards, the logic of a dream, quiet, uneasy and unsettling atmosphere.
+A dark Soviet bedroom at night, a tall wooden wardrobe with its door slightly ajar, total darkness inside the gap, a coat sleeve hanging out, faint light from the window across the floor. Realistic 35mm film photograph, heavy film grain, muted desaturated colors, faces hidden in shadow, Russia in the 1990s, Soviet-era interiors and courtyards, the logic of a dream, quiet, uneasy and unsettling atmosphere.
 ```
 
-**25. `kitchen-microwave-monitor`** — кухня, seed `15354529`
+**30. `bedroom-night-tv-static`** — спальня, seed `1320125`
 
 ```text
-A dark kitchen at night where the glowing display of an old microwave oven shows a green heartbeat line instead of a clock, its light falling on a plate of cold food and a jar of jam. Realistic 35mm film photograph, heavy film grain, muted desaturated colors, faces hidden in shadow, Russia in the 1990s, Soviet-era interiors and courtyards, the logic of a dream, quiet, uneasy and unsettling atmosphere.
+An old Soviet television on a lacquered cabinet in a dark bedroom showing grey static, its glow on the rumpled bed and the carpet on the wall, the wall clock stopped at seven past three. Realistic 35mm film photograph, heavy film grain, muted desaturated colors, faces hidden in shadow, Russia in the 1990s, Soviet-era interiors and courtyards, the logic of a dream, quiet, uneasy and unsettling atmosphere.
 ```
+
+**31. `kitchen-dusk-table-set`** — кухня, seed `1320126`
+
+```text
+A kitchen table in an old Soviet apartment at dusk set for many guests, plates of food, glasses of compote and a jar of jam, every chair empty, the light from the window fading. Realistic 35mm film photograph, heavy film grain, muted desaturated colors, faces hidden in shadow, Russia in the 1990s, Soviet-era interiors and courtyards, the logic of a dream, quiet, uneasy and unsettling atmosphere.
+```
+
+**32. `kitchen-night-gas-stove`** — кухня, seed `1320127`
+
+```text
+All four burners of an old gas stove burning with blue flames in a dark Soviet kitchen at night, no pots on them, nobody there, the window reflecting the flames. Realistic 35mm film photograph, heavy film grain, muted desaturated colors, faces hidden in shadow, Russia in the 1990s, Soviet-era interiors and courtyards, the logic of a dream, quiet, uneasy and unsettling atmosphere.
+```
+
+## Между кадрами и клипами
+
+**Перезапустите ComfyUI.** Обе модели в 16 ГБ видеопамяти не помещаются;
+ComfyUI выгрузит модель кадров и сам, но она останется в обычной памяти и
+будет мешать длинным клипам. Перезапуск занимает минуту и чистит всё.
+Можно и кнопкой **Free model and node cache** (или **Unload Models**), если
+она есть в вашей версии.
 
 ## 5. Клипы: Wan 2.2
 
 ### 5.1. Шаблон и модели (один раз)
 
 1. Меню **Workflow → Browse Templates** → раздел **Video** → шаблон **Wan 2.2
-   5B** (Text/Image to Video, «ti2v»). Откроется граф.
+   5B Video Generation**. В каталоге он подписан «Text to Video», но это та
+   самая модель TI2V-5B, она умеет и из кадра. Шаблоны с **14B** не брать:
+   слишком тяжёлые, и настройки ниже не для них. Откроется граф.
 2. В окне **«Missing models»** скачать три файла:
 
    | Файл | Папка внутри `models` | Размер |
@@ -361,7 +427,7 @@ A dark kitchen at night where the glowing display of an old microwave oven shows
 | **CLIP Text Encode** (верхний, зелёный, Positive) | текст | промпт клипа |
 | **CLIP Text Encode** (нижний, красный, Negative) | текст | не трогать (стандартный негативный промпт на китайском) |
 | **Save Video** / **Create Video** | `fps` | `24` |
-| | имя файла (`filename_prefix`) | id клипа, например `clip-yard-swing-alone` |
+| | имя файла (`filename_prefix`) | id клипа и seed, например `clip-roof-edge-toes_391001` (по умолчанию там `video/ComfyUI` — заменить) |
 
 Сохранить: **Ctrl+S**.
 
@@ -380,118 +446,206 @@ A dark kitchen at night where the glowing display of an old microwave oven shows
 Кадры и клипы одновременно не запускать: обе модели в видеопамять не влезут.
 
 **Если клип не вышел.** Картинка поплыла, появились лишние люди, лицо
-крупно, камера поехала — поставить seed на 10 больше (`390101` → `390111`,
-затем `390121`) и запустить снова. Движение слишком слабое или слишком
+крупно, камера поехала — поставить seed на 10 больше (`391001` → `391011`,
+затем `391021`) и запустить снова. Движение слишком слабое или слишком
 резкое — напишите мне, я поправлю промпт.
 
-## 6. Список клипов
+## 6. Список клипов (16)
 
 Общие правила промптов: камера неподвижна, движение одно и медленное, людей и
 лица не показывать крупно. Промпт вставлять целиком, по-английски.
 
-### Основные три (#39)
+Первая партия принята: качели, женщина с пылесосом, дверь (закрывается, а не
+открывается — оставлено так), варенье с ложки, бельё, пыль в луче, кнопки
+37, паук. `clip-hospital-ventilator-breathing` не двигался ни с одним seed —
+в кадре нечему «дышать»; вместо него ниже меха аппарата у кровати и
+гаснущие лампы того же коридора.
 
-**1. `clip-yard-swing-alone`** — качели раскачиваются сами
+**Если движения нет** с двух-трёх seed — не мучить дальше: значит, модель
+не видит в кадре, чему двигаться. Пропустить и написать мне.
 
-- Кадр: `yard-dusk-empty-swing` —
-  <https://github.com/pavelmiskevich/37-2-dream/raw/main/apps/web/public/library/stills/yard-dusk-empty-swing.webp>
-- Seed: `390101`
+### Падение с высоты
+
+**1. `clip-roof-edge-toes`** — пальцы на краю крыши, вниз падает камешек
+
+- Кадр: `fall-roof-edge-yard` —
+  <https://github.com/pavelmiskevich/37-2-dream/raw/main/apps/web/public/library/stills/fall-roof-edge-yard.webp>
+- Seed: `391001`
 - Промпт:
 
   ```text
-  Static camera, no camera movement. A foggy empty Soviet courtyard at dusk. The old red metal swing slowly starts to swing back and forth by itself, a little higher with every swing, while nobody is around. Wet asphalt, the street lamp glowing in the fog, the apartment blocks and everything else stay completely still. Realistic 35mm film footage, heavy film grain, muted desaturated colors, quiet, uneasy and unsettling dream atmosphere.
+  Static camera, no camera movement. From the edge of a flat roof high above a Soviet courtyard at dusk. The bare toes at the very edge slowly curl and shift a little forward, and a small pebble rolls off the edge and falls down towards the tiny courtyard far below. The buildings and the courtyard stay completely still. Realistic 35mm film footage, heavy film grain, muted desaturated colors, quiet, uneasy and dread-filled dream atmosphere.
   ```
 
-**2. `clip-yard-vacuum-woman-turn`** — женщина с пылесосом поворачивает голову
+**2. `clip-balcony-slipper-falls`** — тапок соскальзывает с перил и падает
 
-- Кадр: `yard-night-vacuum-woman` —
-  <https://github.com/pavelmiskevich/37-2-dream/raw/main/apps/web/public/library/stills/yard-night-vacuum-woman.webp>
-- Seed: `390102`
+- Кадр: `fall-balcony-no-railing` —
+  <https://github.com/pavelmiskevich/37-2-dream/raw/main/apps/web/public/library/stills/fall-balcony-no-railing.webp>
+- Seed: `391002`
 - Промпт:
 
   ```text
-  Static camera, no camera movement. Night in a wet Soviet courtyard. The elderly woman in a dark coat standing beside an old vacuum cleaner slowly turns her head towards the camera and then stays completely still, her face remains hidden in shadow. The empty swing behind her sways very slightly. Fog around the street lamp, lit windows, nothing else moves. Realistic 35mm film footage, heavy film grain, muted desaturated colors, quiet, uneasy and unsettling dream atmosphere.
+  Static camera, no camera movement. A high balcony over a foggy street at night. One of the slippers standing on the balcony railing slowly tips over the edge and falls down into the fog far below. The street lamps and the buildings stay completely still. Realistic 35mm film footage, heavy film grain, muted desaturated colors, quiet, uneasy and unsettling dream atmosphere.
   ```
 
-**3. `clip-stairwell-door-opens`** — дверь медленно открывается
+**3. `clip-jam-jar-rim-sway`** — человек на краю банки качается
 
-- Кадр: `stairwell-door-ajar` —
-  <https://github.com/pavelmiskevich/37-2-dream/raw/main/apps/web/public/library/stills/stairwell-door-ajar.webp>
-- Seed: `390103`
+- Кадр: `fall-jam-jar-rim` —
+  <https://github.com/pavelmiskevich/37-2-dream/raw/main/apps/web/public/library/stills/fall-jam-jar-rim.webp>
+- Seed: `391003`
 - Промпт:
 
   ```text
-  Static camera, no camera movement. A dark Soviet apartment stairwell. The padded double door at the end of the corridor slowly swings open by itself, revealing more dim yellow light behind it, and nobody comes through. Dust floating in the air, deep shadows on the walls, nothing else moves. Realistic 35mm film footage, heavy film grain, muted desaturated colors, quiet, uneasy and unsettling dream atmosphere.
+  Static camera, no camera movement. A man standing on the rim of a gigantic jam jar in a round courtyard, seen from above and behind. He slowly sways forward and back as if about to fall in, and the dark jam below ripples slightly. The walls, the furniture and the jar stay completely still. Realistic 35mm film footage, heavy film grain, muted desaturated colors, quiet, uneasy and dread-filled dream atmosphere.
   ```
 
-### Варенье и спокойные — к новым кадрам библиотеки
+**4. `clip-elevator-hole-cables`** — кабели в провале пола медленно уползают вниз
 
-**4. `clip-jam-spoon-drip`** — варенье тянется с ложки
-
-- Кадр: `jam-jar-spoon-viscous` —
-  <https://github.com/pavelmiskevich/37-2-dream/raw/main/apps/web/public/library/stills/jam-jar-spoon-viscous.webp>
-- Seed: `390106`
+- Кадр: `fall-elevator-no-floor` —
+  <https://github.com/pavelmiskevich/37-2-dream/raw/main/apps/web/public/library/stills/fall-elevator-no-floor.webp>
+- Seed: `391004`
 - Промпт:
 
   ```text
-  Static camera, no camera movement. Extreme close-up of a silver teaspoon above an open glass jar. Thick dark cherry jam slowly stretches down from the spoon in one long sticky thread and very slowly drips into the jar, the surface of the jam barely trembling. Nothing else moves. Realistic 35mm film footage, heavy film grain, muted desaturated colors, quiet, uneasy and unsettling dream atmosphere.
+  Static camera, no camera movement. Inside an old Soviet elevator cabin with a hole in the floor. The tangled cables hanging into the hole slowly slide down and disappear into the darkness below, and the red 37 on the display flickers once. The walls and the cabin stay completely still. Realistic 35mm film footage, heavy film grain, muted desaturated colors, quiet, uneasy and unsettling dream atmosphere.
   ```
 
-**5. `clip-yard-laundry-wind`** — бельё колышется во дворе
+### Аппарат ИВЛ — вместо неподвижного коридора
 
-- Кадр: `yard-day-laundry` —
-  <https://github.com/pavelmiskevich/37-2-dream/raw/main/apps/web/public/library/stills/yard-day-laundry.webp>
-- Seed: `390107`
+**5. `clip-bedroom-ventilator-bellows`** — меха аппарата у кровати сжимаются и разжимаются
+
+- Кадр: `bedroom-ventilator-snore` —
+  <https://github.com/pavelmiskevich/37-2-dream/raw/main/apps/web/public/library/stills/bedroom-ventilator-snore.webp>
+- Seed: `391005`
 - Промпт:
 
   ```text
-  Static camera, no camera movement. A Soviet courtyard on an overcast day. The white sheets drying on the ropes in the foreground slowly billow and settle in a light wind. The old woman on the distant bench sits completely still with her back to the camera, the panel apartment blocks do not move. Realistic 35mm film footage, heavy film grain, muted desaturated colors, quiet and calm dream atmosphere.
+  Static camera, no camera movement. A sleeping man in a bed connected by a tube to a large machine with accordion bellows. The bellows of the machine slowly expand and contract in a steady rhythm like breathing, the tube moves slightly with each breath, and the man's chest rises and falls. Nothing else in the room moves. Realistic 35mm film footage, heavy film grain, muted desaturated colors, quiet, uneasy and unsettling dream atmosphere.
   ```
 
-**6. `clip-stairwell-sunbeam-dust`** — пыль в солнечном луче на площадке
-
-- Кадр: `stairwell-day-sunlight` —
-  <https://github.com/pavelmiskevich/37-2-dream/raw/main/apps/web/public/library/stills/stairwell-day-sunlight.webp>
-- Seed: `390108`
-- Промпт:
-
-  ```text
-  Static camera, no camera movement. A quiet Soviet apartment stairwell landing in the afternoon. Specks of dust slowly drift and turn in the slanted beam of pale sunlight falling across the steps, the light very slowly dims and brightens as a cloud passes. The stairs, the railing and the plant on the windowsill stay completely still, nobody. Realistic 35mm film footage, heavy film grain, muted desaturated colors, quiet and calm dream atmosphere.
-  ```
-
-**7. `clip-elevator-button-37`** — кнопка 37 мигает
-
-- Кадр: `elevator-buttons-37` —
-  <https://github.com/pavelmiskevich/37-2-dream/raw/main/apps/web/public/library/stills/elevator-buttons-37.webp>
-- Seed: `390109`
-- Промпт:
-
-  ```text
-  Static camera, no camera movement. Close-up of an old elevator button panel full of buttons numbered 37. The glowing button slowly fades out, and a moment later another button numbered 37 lights up by itself, then another. The wood-grain walls and the panel stay completely still. Realistic 35mm film footage, heavy film grain, muted desaturated colors, quiet, uneasy and unsettling dream atmosphere.
-  ```
-
-### Запасные — если основные не выйдут или захочется ещё
-
-**8. `clip-hospital-ventilator-breathing`** — аппарат дышит
+**6. `clip-hospital-lamps-go-out`** — лампы в коридоре гаснут одна за другой
 
 - Кадр: `hospital-corridor-ventilator` —
   <https://github.com/pavelmiskevich/37-2-dream/raw/main/apps/web/public/library/stills/hospital-corridor-ventilator.webp>
-- Seed: `390104`
+- Seed: `391006`
 - Промпт:
 
   ```text
-  Static camera, no camera movement. An empty hospital corridor with pale blue tiles. The hose of the old medical ventilator slowly rises and falls as if the machine were breathing on its own, and the farthest fluorescent tube flickers twice. Nobody is there, nothing else moves. Realistic 35mm film footage, heavy film grain, muted desaturated colors, quiet, uneasy and unsettling dream atmosphere.
+  Static camera, no camera movement. An empty hospital corridor with pale blue tiles and a row of fluorescent lamps on the ceiling. The farthest lamp flickers and goes dark, then the next one, and the next, the darkness slowly coming down the corridor towards the camera, then all lamps light up again at once. The walls, the floor and the machine stay completely still. Realistic 35mm film footage, heavy film grain, muted desaturated colors, quiet, uneasy and dread-filled dream atmosphere.
   ```
 
-**9. `clip-bedroom-spider-crawl`** — паук ползёт по потолку
+### Тихие — для вступления и разрядки
 
-- Кадр: `bedroom-spider-ceiling` —
-  <https://github.com/pavelmiskevich/37-2-dream/raw/main/apps/web/public/library/stills/bedroom-spider-ceiling.webp>
-- Seed: `390105`
+**7. `clip-yard-snow-falling`** — во дворе начинается снег
+
+- Кадр: `yard-day-snow` —
+  <https://github.com/pavelmiskevich/37-2-dream/raw/main/apps/web/public/library/stills/yard-day-snow.webp>
+- Seed: `391007`
 - Промпт:
 
   ```text
-  Static camera, no camera movement. A dark Soviet-era bedroom at night. The enormous spider on the ceiling slowly moves its long legs and crawls a short distance across the cracked plaster towards the bed, then freezes. Faint light through the curtains, the bed and the room stay still. Realistic 35mm film footage, heavy film grain, muted desaturated colors, quiet, uneasy and dread-filled dream atmosphere.
+  Static camera, no camera movement. A snowy Soviet courtyard with a swing and benches in daylight. Soft snow begins to fall slowly over the empty courtyard and the swing sways very slightly. The buildings stay completely still. Realistic 35mm film footage, heavy film grain, muted desaturated colors, quiet and calm but strange dream atmosphere.
+  ```
+
+**8. `clip-kitchen-curtain-breeze`** — тюль на кухне колышется
+
+- Кадр: `kitchen-window-jam-curtain` —
+  <https://github.com/pavelmiskevich/37-2-dream/raw/main/apps/web/public/library/stills/kitchen-window-jam-curtain.webp>
+- Seed: `391008`
+- Промпт:
+
+  ```text
+  Static camera, no camera movement. An open kitchen window in an old Soviet apartment, a jar of jam on the sill. The net curtain slowly billows inwards and outwards in a light breeze. The jar, the window frame and the courtyard outside stay completely still. Realistic 35mm film footage, heavy film grain, muted desaturated colors, quiet and calm but strange dream atmosphere.
+  ```
+
+### Места и мотивы
+
+**9. `clip-microwave-heartbeat`** — по окну микроволновки бежит пульс
+
+- Кадр: `kitchen-microwave-monitor` —
+  <https://github.com/pavelmiskevich/37-2-dream/raw/main/apps/web/public/library/stills/kitchen-microwave-monitor.webp>
+- Seed: `391009`
+- Промпт:
+
+  ```text
+  Static camera, no camera movement. A dark kitchen with an old microwave oven on the counter. The green heartbeat line on the microwave door slowly runs from left to right like a hospital monitor and the green digits flicker. The plate of food and the kitchen stay completely still. Realistic 35mm film footage, heavy film grain, muted desaturated colors, quiet, uneasy and unsettling dream atmosphere.
+  ```
+
+**10. `clip-stairs-coats-sway`** — пальто на перилах качаются, будто кто-то прошёл
+
+- Кадр: `stairs-coats-railing` —
+  <https://github.com/pavelmiskevich/37-2-dream/raw/main/apps/web/public/library/stills/stairs-coats-railing.webp>
+- Seed: `391010`
+- Промпт:
+
+  ```text
+  Static camera, no camera movement. A Soviet stairwell with many coats hanging along the stair railing. The coats sway slightly one after another from the bottom of the stairs to the top, as if someone invisible walked up past them. The stairs, the walls and the lamp stay completely still. Realistic 35mm film footage, heavy film grain, muted desaturated colors, quiet, uneasy and unsettling dream atmosphere.
+  ```
+
+**11. `clip-yard-pigeons-turn`** — голуби на ограде разом поворачивают головы
+
+- Кадр: `yard-night-pigeons-window` —
+  <https://github.com/pavelmiskevich/37-2-dream/raw/main/apps/web/public/library/stills/yard-night-pigeons-window.webp>
+- Seed: `391011`
+- Промпт:
+
+  ```text
+  Static camera, no camera movement. A row of pigeons sitting on a low fence in front of a Soviet apartment block at night. All the pigeons slowly turn their heads towards the camera at the same moment and then stay completely still. The building, the street lamp and the windows do not move. Realistic 35mm film footage, heavy film grain, muted desaturated colors, quiet, uneasy and unsettling dream atmosphere.
+  ```
+
+**12. `clip-elevator-mirror-figure`** — фигура в зеркале лифта поднимает голову
+
+- Кадр: `elevator-mirror-37` —
+  <https://github.com/pavelmiskevich/37-2-dream/raw/main/apps/web/public/library/stills/elevator-mirror-37.webp>
+- Seed: `391012`
+- Промпт:
+
+  ```text
+  Static camera, no camera movement. Inside an old Soviet elevator cabin with a cracked mirror on the back wall. The hooded figure reflected in the mirror slowly raises its head, while the cabin in front of the mirror stays empty. The lamp and the 37 on the display stay still. Realistic 35mm film footage, heavy film grain, muted desaturated colors, quiet, uneasy and dread-filled dream atmosphere.
+  ```
+
+**13. `clip-jam-flood-spread`** — варенье растекается по столу и капает
+
+- Кадр: `jam-jar-kitchen-flood` —
+  <https://github.com/pavelmiskevich/37-2-dream/raw/main/apps/web/public/library/stills/jam-jar-kitchen-flood.webp>
+- Seed: `391013`
+- Промпт:
+
+  ```text
+  Static camera, no camera movement. A tipped-over jar of dark jam on a kitchen table. The jam slowly spreads across the table from the jar and starts to drip over the edge. The kitchen and the chairs stay completely still. Realistic 35mm film footage, heavy film grain, muted desaturated colors, quiet, uneasy and unsettling dream atmosphere.
+  ```
+
+**14. `clip-stairwell-vacuum-hose`** — шланг пылесоса сползает по ступеньке
+
+- Кадр: `stairwell-vacuum-sound` —
+  <https://github.com/pavelmiskevich/37-2-dream/raw/main/apps/web/public/library/stills/stairwell-vacuum-sound.webp>
+- Seed: `391014`
+- Промпт:
+
+  ```text
+  Static camera, no camera movement. A dark stairwell, a vacuum cleaner hose lying down the stairs from a woman standing at the top. The hose twitches and slowly slides down one step like a living thing. The woman's legs and the stairs stay completely still. Realistic 35mm film footage, heavy film grain, muted desaturated colors, quiet, uneasy and dread-filled dream atmosphere.
+  ```
+
+**15. `clip-thermometer-door-light`** — дальняя дверь коридора приоткрывается, полоска света
+
+- Кадр: `thermometer-corridor-doors` —
+  <https://github.com/pavelmiskevich/37-2-dream/raw/main/apps/web/public/library/stills/thermometer-corridor-doors.webp>
+- Seed: `391015`
+- Промпт:
+
+  ```text
+  Static camera, no camera movement. A long pale corridor with numbered doors and thermometers on the walls. The farthest door slowly opens a little, letting a strip of light out onto the floor, then the light goes out. Nothing else moves. Realistic 35mm film footage, heavy film grain, muted desaturated colors, quiet, uneasy and unsettling dream atmosphere.
+  ```
+
+**16. `clip-fridge-light-flicker`** — свет в открытом холодильнике мигает
+
+- Кадр: `kitchen-fridge-thermometers` —
+  <https://github.com/pavelmiskevich/37-2-dream/raw/main/apps/web/public/library/stills/kitchen-fridge-thermometers.webp>
+- Seed: `391016`
+- Промпт:
+
+  ```text
+  Static camera, no camera movement. An old fridge standing open in a dark kitchen, its shelves full of thermometers. The light inside the fridge flickers and the glass thermometers glint, then the fridge door slowly swings a little towards closing. The kitchen stays completely still. Realistic 35mm film footage, heavy film grain, muted desaturated colors, quiet, uneasy and unsettling dream atmosphere.
   ```
 
 ## 7. Как отдать результат
@@ -502,8 +656,8 @@ A dark kitchen at night where the glowing display of an old microwave oven shows
 2. Перенести на ноутбук любым способом: флешка, облако, сеть. Положить в одну
    папку, например `C:\Users\Asus\Pictures\dream-desktop\` (не в папку
    репозитория).
-3. Написать мне: путь к папке и для каждого файла, где что-то отличалось от
-   списка, — seed, с которым он вышел; правили ли промпт; пик температуры.
+3. Написать мне путь к папке; правили ли промпт; пик температуры. Seed
+   писать не нужно: он в имени файла, а настоящий я читаю из метаданных.
 
 Что делаю я:
 
