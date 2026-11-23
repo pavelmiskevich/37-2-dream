@@ -139,3 +139,10 @@ describe('dueCues', () => {
     expect(due.map((cue) => cue.at)).toEqual([2, 3]);
   });
 });
+
+describe('the wind of a fall (#137)', () => {
+  it('rises from its start and is cut dead at its stop', () => {
+    expect(cueEvents({ at: 35.8, sound: 'fall_wind', action: 'start' }, FLASHES_ON)).toEqual([{ type: 'wind.start' }]);
+    expect(cueEvents({ at: 37, sound: 'fall_wind', action: 'stop' }, FLASHES_ON)).toEqual([{ type: 'wind.stop' }]);
+  });
+});

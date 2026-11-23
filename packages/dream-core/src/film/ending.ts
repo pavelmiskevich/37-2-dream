@@ -25,8 +25,12 @@ export const FALL_ENDING = {
   chance: [0.02, 0.4] as const,
   /** The last height is held at least this long, ms, so the camera can fall in. */
   lastMs: 1200,
-  /** Each height comes closer than the last; the final one rushes in. */
-  zoom: { from: 1, to: [1.2, 1.35, 1.6] as const },
+  /** Each height comes closer than the last. */
+  zoom: { from: 1, to: [1.2, 1.35] as const },
+  /** The final height: the camera falls in, three times closer by the cut, shaking. */
+  plunge: { zoomTo: 3.2, sway: 0.7 },
+  /** How deep the rest of the mix ducks under the wind of the fall. */
+  duck: 0.85,
 } as const;
 
 /** Frames a fall ending can use: ordinary frames with the `fall` motif. */
@@ -47,14 +51,18 @@ export function planEnding(profile: DreamProfile, assets: readonly LibraryAsset[
 }
 
 /**
- * Camera of the `step`-th of the last heights (0 = the first of them): a
- * straight push into the drop, steeper each time, with a little hand-held
- * sway — the camera falls in.
+ * Camera of the `step`-th of the last `of` heights (0 = the first of them).
+ * The heights before the last push straight in, each closer than the one
+ * before; the last one is the fall itself (`fall` kind, D-037, #137).
  */
 export function fallCamera(step: number, of: number): CameraMove {
+  if (step >= of - 1) {
+    const { zoomTo, sway } = FALL_ENDING.plunge;
+    return { kind: 'fall', zoomFrom: FALL_ENDING.zoom.from, zoomTo, panFrom: [0, 0], panTo: [0, 0], sway };
+  }
   const zooms = FALL_ENDING.zoom.to;
-  // The final height always gets the steepest push, however many heights there are.
-  const at = Math.max(0, Math.min(zooms.length - 1, zooms.length - of + step));
+  // The height right before the fall gets the steepest push, however many heights there are.
+  const at = Math.max(0, Math.min(zooms.length - 1, zooms.length - (of - 1) + step));
   const zoomTo = zooms[at] as number;
   return { kind: 'push', zoomFrom: FALL_ENDING.zoom.from, zoomTo, panFrom: [0, 0], panTo: [0, 0], sway: 0.25 };
 }

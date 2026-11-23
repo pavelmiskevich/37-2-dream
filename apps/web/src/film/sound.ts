@@ -68,6 +68,10 @@ export function cueEvents(cue: SoundCue, settings: PlayerSettings): SoundEvent[]
   } else if (sound === 'stinger') {
     if (action === 'hit' || action === 'start')
       events.push({ type: 'stinger.hit', strength: clamp01(params.strength ?? params.volume ?? 1), soft: settings.noFlash });
+  } else if (sound === 'fall_wind') {
+    // The wind of a fall (#137): rises from the start, stops dead at the cut.
+    if (action === 'start') events.push({ type: 'wind.start' });
+    else if (action === 'stop') events.push({ type: 'wind.stop' });
   } else if (sound === 'silence') {
     // Silence is the mix falling away (a dread before the scare); stopping it brings the mix back.
     events.push({ type: 'master.volume', value: action === 'stop' ? 1 : 1 - clamp01(params.depth ?? 1) });

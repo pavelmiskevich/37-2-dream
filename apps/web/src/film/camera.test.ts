@@ -138,3 +138,25 @@ describe('parallaxAt', () => {
     expect(Math.hypot(a.shiftX - b.shiftX, a.shiftY - b.shiftY)).toBeGreaterThan(0);
   });
 });
+
+describe('fall camera (#137)', () => {
+  const fall: CameraMove = { kind: 'fall', zoomFrom: 1, zoomTo: 3.2, panFrom: [0, 0], panTo: [0, 0], sway: 0.7 };
+
+  it('drops in faster and faster: most of the zoom comes at the end', () => {
+    expect(moveEase('fall', 0)).toBe(0);
+    expect(moveEase('fall', 1)).toBe(1);
+    expect(moveEase('fall', 0.5)).toBeLessThan(0.2);
+    const speeds = [0.2, 0.5, 0.8, 0.95].map((t) => cameraVelocity(fall, 1.2, t * 1.2).zoom);
+    expect([...speeds].sort((a, b) => a - b)).toEqual(speeds);
+    expect(cameraAt(fall, 1, 1.2).zoom).toBeCloseTo(3.2);
+  });
+
+  it('shakes and tumbles more as it falls', () => {
+    const spread = (from: number, to: number) => {
+      let roll = 0;
+      for (let i = 0; i <= 40; i++) roll = Math.max(roll, Math.abs(cameraAt(fall, from + ((to - from) * i) / 40, 1.2 * (from + ((to - from) * i) / 40), 0.3).roll));
+      return roll;
+    };
+    expect(spread(0.85, 1)).toBeGreaterThan(spread(0, 0.15) * 3);
+  });
+});

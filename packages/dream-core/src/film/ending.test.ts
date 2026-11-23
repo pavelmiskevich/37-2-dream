@@ -77,14 +77,25 @@ describe('fall ending (#134)', () => {
         const tail = film.shots.slice(-FALL_ENDING.shots);
         for (const shot of tail) {
           expect(isHeight.has(shot.assetId), `${seed} ${length} #${shot.index}`).toBe(true);
-          expect(shot.camera.kind).toBe('push');
           expect(shot.scare).toBe(false);
         }
         const zooms = tail.map((shot) => shot.camera.zoomTo);
         expect([...zooms].sort((a, b) => a - b)).toEqual(zooms);
+        expect(tail.slice(0, -1).map((shot) => shot.camera.kind)).toEqual(tail.slice(0, -1).map(() => 'push'));
         const last = film.shots[film.shots.length - 1]!;
+        // The last height is the fall itself (#137).
+        expect(last.camera).toMatchObject({ kind: 'fall', zoomTo: FALL_ENDING.plunge.zoomTo });
         expect(last.cutOut).toBe('hard');
         expect(last.cutDuration).toBe(0);
+        // The wind of the fall rises over the last height, the mix ducks, and both end at the cut.
+        const wind = film.sounds.filter((cue) => cue.sound === 'fall_wind');
+        expect(wind).toEqual([
+          { at: last.start, sound: 'fall_wind', action: 'start' },
+          { at: film.duration, sound: 'fall_wind', action: 'stop' },
+        ]);
+        expect(film.sounds).toContainEqual({ at: last.start, sound: 'silence', action: 'start', params: { depth: FALL_ENDING.duck } });
+        const times = film.sounds.map((cue) => cue.at);
+        expect([...times].sort((a, b) => a - b)).toEqual(times);
         // Two heights in a row are never the same frame.
         for (let i = 1; i < tail.length; i++) expect(tail[i]!.assetId).not.toBe(tail[i - 1]!.assetId);
       }
@@ -97,7 +108,8 @@ describe('fall ending (#134)', () => {
       const film = generateFilm(seed, 'short', WITH_HEIGHTS);
       if (film.ending === 'fall') continue;
       const last = film.shots[film.shots.length - 1]!;
-      expect(last.camera.zoomTo).toBeLessThan(FALL_ENDING.zoom.to[2]);
+      expect(last.camera.kind).not.toBe('fall');
+      expect(film.sounds.some((cue) => cue.sound === 'fall_wind')).toBe(false);
     }
   });
 });

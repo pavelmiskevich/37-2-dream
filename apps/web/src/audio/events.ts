@@ -54,6 +54,9 @@ export type SoundEvent =
   | { type: 'stinger.hit'; strength?: number; soft?: boolean }
   /** The sharp breath of waking from a fall (#134), on the stinger's bus. `strength` 0…1 (default 1). */
   | { type: 'gasp'; strength?: number }
+  /** The rushing wind of a fall (#137): rises from now on, past the master volume; `wind.stop` cuts it dead. */
+  | { type: 'wind.start' }
+  | { type: 'wind.stop' }
   /** Vacuum → turbine, 0…1. */
   | { type: 'vacuum.turbine'; value: number }
   /**

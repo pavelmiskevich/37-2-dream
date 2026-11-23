@@ -585,6 +585,72 @@ export class StingerVoice {
   }
 }
 
+/**
+ * The rushing wind of a fall (#137): noise through a band that sweeps up as
+ * the air gets faster, over a low roar, louder and louder for `rise` seconds
+ * and then held; `stop` cuts it dead (the fall breaks off).
+ */
+export const FALL_WIND = {
+  rise: 1.4,
+  level: 0.5,
+  /** Level the wind starts from, share of `level`. */
+  from: 0.04,
+  band: { fromHz: 280, toHz: 2400, q: 0.7 },
+  roar: { hz: 140, gain: 0.8 },
+  /** The cut, seconds: dead, but without a click. */
+  cut: 0.015,
+} as const;
+
+export class WindVoice {
+  private instance: { out: GainNode; sources: AudioBufferSourceNode[] } | null = null;
+
+  constructor(private readonly env: VoiceEnv) {}
+
+  get playing(): boolean {
+    return this.instance !== null;
+  }
+
+  start(destination: AudioNode): void {
+    if (this.instance) return;
+    const { ctx, noise } = this.env;
+    const at = ctx.currentTime + 0.005;
+    const out = ctx.createGain();
+    out.gain.setValueAtTime(FALL_WIND.level * FALL_WIND.from, at);
+    out.gain.exponentialRampToValueAtTime(FALL_WIND.level, at + FALL_WIND.rise);
+    out.connect(destination);
+
+    const air = noise.source('white', (at * 0.53) % 1);
+    const band = ctx.createBiquadFilter();
+    band.type = 'bandpass';
+    band.Q.value = FALL_WIND.band.q;
+    band.frequency.setValueAtTime(FALL_WIND.band.fromHz, at);
+    band.frequency.exponentialRampToValueAtTime(FALL_WIND.band.toHz, at + FALL_WIND.rise);
+    air.connect(band).connect(out);
+
+    const rumble = noise.source('brown', (at * 0.29) % 1);
+    const low = ctx.createBiquadFilter();
+    low.type = 'lowpass';
+    low.frequency.value = FALL_WIND.roar.hz;
+    const roar = ctx.createGain();
+    roar.gain.value = FALL_WIND.roar.gain;
+    rumble.connect(low).connect(roar).connect(out);
+
+    this.instance = { out, sources: [air, rumble] };
+  }
+
+  stop(): void {
+    const instance = this.instance;
+    if (!instance) return;
+    this.instance = null;
+    const now = this.env.ctx.currentTime;
+    instance.out.gain.cancelScheduledValues(now);
+    instance.out.gain.setValueAtTime(instance.out.gain.value, now);
+    instance.out.gain.linearRampToValueAtTime(0, now + FALL_WIND.cut);
+    for (const source of instance.sources) source.stop(now + FALL_WIND.cut + 0.02);
+    instance.sources[0]!.onended = () => instance.out.disconnect();
+  }
+}
+
 /** Level of the waking gasp before the limiter: close, his own. */
 const GASP_LEVEL = 0.55;
 /** Points of the gasp envelope curve. */
