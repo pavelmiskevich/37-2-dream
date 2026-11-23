@@ -1,5 +1,5 @@
 {
-  "engineVersion": 9,
+  "engineVersion": 10,
   "seed": "DREAM-C0DE-BEEF-0451",
   "length": "long",
   "duration": 162,
@@ -4149,5 +4149,6 @@
   "awakening": {
     "reason": "unknown",
     "temperature": 36.9
-  }
+  },
+  "ending": "quiet"
 }

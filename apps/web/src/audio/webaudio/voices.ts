@@ -2,6 +2,7 @@ import { PeriodicClock } from '../clock';
 import { humHarmonics } from '../hum';
 import { creakShape } from '../creak';
 import { stingerShape, type StingerCharacter } from '../stinger';
+import { gaspLevel, gaspShape } from '../gasp';
 import { clamp, clamp01 } from '../math';
 import { BEEP_HARMONICS, beepShape, monitorPeriod, type BeepShape } from '../monitor';
 import type { SoundProfile } from '../profile';
@@ -581,6 +582,64 @@ export class StingerVoice {
     }
 
     (tones[0] ?? boom).onended = () => envelope.disconnect();
+  }
+}
+
+/** Level of the waking gasp before the limiter: close, his own. */
+const GASP_LEVEL = 0.55;
+/** Points of the gasp envelope curve. */
+const GASP_POINTS = 48;
+
+/**
+ * The sharp breath of waking from a fall (#134): one-shot noise through the
+ * mouth resonances of `gaspShape`, played on the stinger's bus so neither the
+ * mix nor its muffling can swallow it.
+ */
+export class GaspVoice {
+  constructor(private readonly env: VoiceEnv) {}
+
+  play(strength: number, destination: AudioNode): void {
+    const shape = gaspShape(strength);
+    if (!shape) return;
+    const { ctx, noise } = this.env;
+    const at = ctx.currentTime + 0.005;
+    const end = at + shape.duration;
+
+    const curve = new Float32Array(GASP_POINTS);
+    for (let i = 0; i < GASP_POINTS; i++) {
+      curve[i] = gaspLevel(shape, (i / (GASP_POINTS - 1)) * shape.duration) * shape.gain * GASP_LEVEL;
+    }
+    curve[GASP_POINTS - 1] = 0;
+    const envelope = ctx.createGain();
+    envelope.gain.value = 0;
+    envelope.gain.setValueCurveAtTime(curve, at, shape.duration);
+    envelope.connect(destination);
+
+    const air = noise.source('white', (at * 0.37) % 1);
+    const mouth = ctx.createBiquadFilter();
+    mouth.type = 'bandpass';
+    mouth.Q.value = shape.mouth.q;
+    mouth.frequency.setValueAtTime(shape.mouth.fromHz, at);
+    mouth.frequency.exponentialRampToValueAtTime(shape.mouth.toHz, at + shape.rise);
+    air.connect(mouth).connect(envelope);
+
+    const throat = ctx.createBiquadFilter();
+    throat.type = 'bandpass';
+    throat.frequency.value = shape.throat.hz;
+    throat.Q.value = shape.throat.q;
+    const throatGain = ctx.createGain();
+    throatGain.gain.value = shape.throat.gain;
+    air.connect(throat).connect(throatGain).connect(envelope);
+
+    const body = ctx.createBiquadFilter();
+    body.type = 'lowpass';
+    body.frequency.value = shape.body.hz;
+    const bodyGain = ctx.createGain();
+    bodyGain.gain.value = shape.body.gain;
+    air.connect(body).connect(bodyGain).connect(envelope);
+
+    air.stop(end + 0.05);
+    air.onended = () => envelope.disconnect();
   }
 }
 

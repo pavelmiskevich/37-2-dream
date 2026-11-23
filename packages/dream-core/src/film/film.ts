@@ -6,6 +6,7 @@
 import type { DreamProfile } from '../profile';
 import type { AwakeningReason, DreamMotif } from '../scenes';
 import type { DreamSeed } from '../seed';
+import type { FilmEnding } from './ending';
 import type { LibraryManifest } from './library';
 
 export type DreamLength = 'short' | 'long';
@@ -101,6 +102,8 @@ export interface DreamFilm {
   sounds: readonly SoundCue[];
   intrusions: readonly FilmIntrusion[];
   awakening: { reason: AwakeningReason; temperature: number };
+  /** `fall`: the last shots are heights and the dream breaks off into a sharp waking (#134). */
+  ending: FilmEnding;
 }
 
 /** Builds the film for a seed and length from the library (#37). Pure. */

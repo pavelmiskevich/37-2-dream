@@ -22,6 +22,7 @@ import {
   KitchenVoice,
   MonitorVoice,
   StingerVoice,
+  GaspVoice,
   VacuumVoice,
   VentilatorVoice,
   type Voice,
@@ -106,6 +107,8 @@ class WebAudioEngine implements AudioEngine {
    * around a scare, and the hit must still cut through with open highs (D-024).
    */
   private readonly stinger: StingerVoice;
+  /** The gasp of waking from a fall (#134), on the stinger's bus. */
+  private readonly gasp: GaspVoice;
   private readonly stingerBus: GainNode;
   private readonly voiceLayer = new Map<SoundId, LayerName>();
   /** `sound.volume` of each sound. */
@@ -172,6 +175,7 @@ class WebAudioEngine implements AudioEngine {
     };
     this.creak = new CreakVoice(env);
     this.stinger = new StingerVoice(env);
+    this.gasp = new GaspVoice(env);
     this.stingerBus = context.createGain();
     this.stingerBus.connect(this.limiter);
 
@@ -216,6 +220,9 @@ class WebAudioEngine implements AudioEngine {
         break;
       case 'stinger.hit':
         this.stinger.play(event.strength ?? 1, event.soft ?? false, this.stingerBus);
+        break;
+      case 'gasp':
+        this.gasp.play(event.strength ?? 1, this.stingerBus);
         break;
       case 'layer.volume':
         this.volumes[event.layer] = clamp01(event.value);

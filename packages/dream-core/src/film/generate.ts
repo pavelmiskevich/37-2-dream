@@ -24,6 +24,7 @@ import { profileRng } from '../streams';
 import { ENGINE_VERSION } from '../version';
 import { filmLengthMs, planBeats, scareCount, tensionAt, type Beat, type BeatRole } from './beats';
 import { createCaster } from './cast';
+import { FALL_ENDING, fallCamera, planEnding } from './ending';
 import type { DreamFilm, DreamLength, GenerateFilm, Shot } from './film';
 import type { LibraryManifest } from './library';
 import { cameraFor, cutFor, lookFor, parallaxFor } from './look';
@@ -87,18 +88,27 @@ export const generateFilm: GenerateFilm = (seed: DreamSeed, length: DreamLength,
   const scares = scareCount(length, profile, hasScares, beatRng);
   const beats = planBeats(length, totalMs, scares, profile, beatRng);
 
+  // How it ends (#134): a fall takes the last shots of the climax.
+  const ending = planEnding(profile, library.assets, filmRng(seed, length, 'ending'));
+
   // Shots: lengths by beat rhythm, then an asset for each.
   const rhythmRng = filmRng(seed, length, 'rhythm');
-  const caster = createCaster(library.assets, profile, filmRng(seed, length, 'cast'));
-  const planned: (TimedShot & { beat: Beat })[] = [];
+  const timed: { beat: Beat; start: number; ms: number }[] = [];
   for (const beat of beats) {
     let start = beat.start;
     for (const ms of shotLengths(beat, length, profile, rhythmRng)) {
-      const asset = caster.pick({ shotIndex: planned.length, role: beat.role, ms });
-      planned.push({ start, duration: ms, asset, scare: beat.role === 'scare', beat });
+      timed.push({ beat, start, ms });
       start += ms;
     }
   }
+  const firstHeight = ending === 'fall' ? fallShotsFrom(timed.map((shot) => shot.beat.role)) : timed.length;
+  if (ending === 'fall') holdLastHeight(timed);
+  const caster = createCaster(library.assets, profile, filmRng(seed, length, 'cast'));
+  const planned: (TimedShot & { beat: Beat })[] = timed.map(({ beat, start, ms }, shotIndex) => {
+    const motif = shotIndex >= firstHeight ? ('fall' as const) : undefined;
+    const asset = caster.pick({ shotIndex, role: beat.role, ms, ...(motif ? { motif } : {}) });
+    return { start, duration: ms, asset, scare: beat.role === 'scare', beat };
+  });
 
   // Camera, look and cuts: each shot from its own stream.
   let lastFlash = -Infinity;
@@ -114,16 +124,22 @@ export const generateFilm: GenerateFilm = (seed: DreamSeed, length: DreamLength,
       rng,
     );
     if (cut.kind === 'flash' || shot.scare) lastFlash = shot.scare ? start : end;
+    const camera = cameraFor(beat.role, tension, duration, rng);
+    const parallax = parallaxFor(beat.role, duration, asset.depth !== undefined, profile, rng);
+    const look = lookFor(beat.role, tension, profile, rng);
+    const height = index >= firstHeight;
+    // The fall breaks off: no fade out of the last height, the awakening comes at once.
+    const last = index === planned.length - 1;
     return {
       index,
       assetId: asset.id,
       start: start / 1000,
       duration: duration / 1000,
-      camera: cameraFor(beat.role, tension, duration, rng),
-      parallax: parallaxFor(beat.role, duration, asset.depth !== undefined, profile, rng),
-      look: lookFor(beat.role, tension, profile, rng),
-      cutOut: cut.kind,
-      cutDuration: cut.ms / 1000,
+      camera: height ? fallCamera(index - firstHeight, planned.length - firstHeight) : camera,
+      parallax,
+      look,
+      cutOut: height && last ? 'hard' : cut.kind,
+      cutDuration: height && last ? 0 : cut.ms / 1000,
       scare: shot.scare,
     };
   });
@@ -142,5 +158,39 @@ export const generateFilm: GenerateFilm = (seed: DreamSeed, length: DreamLength,
     sounds,
     intrusions,
     awakening: { reason: awakening.reason, temperature: awakening.temperature },
+    ending,
   };
 };
+
+/**
+ * Lengthens the last shot of a fall ending to `FALL_ENDING.lastMs` with time
+ * taken from the climax shots before it (none below `MIN_SHOT_MS`); the
+ * climax and the film keep their length.
+ */
+function holdLastHeight(timed: { beat: Beat; start: number; ms: number }[]): void {
+  const last = timed[timed.length - 1];
+  if (!last) return;
+  let need = FALL_ENDING.lastMs - last.ms;
+  for (let i = timed.length - 2; i >= 0 && need > 0; i--) {
+    const shot = timed[i] as { beat: Beat; start: number; ms: number };
+    if (shot.beat.role !== 'climax') break;
+    const take = Math.min(need, shot.ms - MIN_SHOT_MS);
+    if (take <= 0) continue;
+    shot.ms -= take;
+    last.ms += take;
+    need -= take;
+    // Everything after the shortened shot starts that much earlier.
+    for (let j = i + 1; j < timed.length; j++) (timed[j] as { start: number }).start -= take;
+  }
+}
+
+/**
+ * Index of the first shot of a fall ending: the last `FALL_ENDING.shots`
+ * shots, but only those of the closing climax — the heights never reach back
+ * into a scare or a wave.
+ */
+function fallShotsFrom(roles: readonly BeatRole[]): number {
+  let first = roles.length;
+  while (first > 0 && roles.length - first < FALL_ENDING.shots && roles[first - 1] === 'climax') first -= 1;
+  return first;
+}

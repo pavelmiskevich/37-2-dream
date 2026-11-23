@@ -102,6 +102,8 @@ export function filmJournalCard(entry: JournalEntry<FilmSummary>, date: Date = n
         ['Температура при засыпании', temperatureText(summary.temperature.asleep)],
         ['Температура при пробуждении', temperatureText(summary.temperature.awake)],
         ['Длительность', durationText(summary.duration)],
+        // Only a fall is worth a line: the quiet end is every other dream (#134).
+        ...(summary.ending === 'fall' ? [['Конец сна', 'падение'] as [string, string]] : []),
       ],
     },
     { kind: 'section', heading: 'Локации', lines: locations.length > 0 ? locations : none },
