@@ -542,6 +542,70 @@
       "seed": 1260118,
       "style": "Realistic 35mm film photograph, heavy film grain, harsh direct flash, muted desaturated colors, Russia in the 1990s, the logic of a dream, sudden shocking moment.",
       "scene": "A figure in a dark coat suddenly sitting on a swing right in front of the camera in a foggy courtyard at night, its face lifted into the flash, grey skin, eyes black, the chains of the swing in the foreground"
+    },
+    {
+      "id": "fall-stairwell-well-down",
+      "priority": 1,
+      "tags": { "location": "stairs", "motifs": ["fall"], "people": "none", "mood": "uneasy", "time": "interior" },
+      "seed": 1300101,
+      "scene": "Looking straight down the narrow gap between the flights of stairs of a nine-storey Soviet apartment block, from the top floor, the painted railings and worn handrails spiral down into darkness, the tiled ground floor tiny and very far below, a single house slipper falling down the gap"
+    },
+    {
+      "id": "fall-roof-edge-yard",
+      "priority": 1,
+      "tags": { "location": "yard", "motifs": ["fall"], "people": "none", "mood": "dread", "time": "dusk" },
+      "seed": 1300102,
+      "scene": "From the very edge of the flat tar roof of a nine-storey panel apartment block at dusk, looking straight down at a tiny courtyard far below, the swing and benches small as toys, a pair of bare toes at the edge of the roof in the foreground, no railing, dizzying height"
+    },
+    {
+      "id": "fall-balcony-no-railing",
+      "priority": 2,
+      "tags": { "location": "yard", "motifs": ["fall"], "people": "none", "mood": "uneasy", "time": "night" },
+      "seed": 1300103,
+      "scene": "A narrow balcony high up on a Soviet apartment block at night with its railing missing, a pair of worn slippers standing at the very edge, far below the courtyard street lamps glowing in the fog, the drop between the balconies goes down and down"
+    },
+    {
+      "id": "fall-bed-over-drop",
+      "priority": 1,
+      "tags": { "location": "bedroom", "motifs": ["fall"], "people": "none", "mood": "dread", "time": "night" },
+      "seed": 1300104,
+      "scene": "High-angle view of a bedroom on the top floor of a nine-storey Soviet apartment block at night whose outer wall is missing, the floor ends in a broken concrete edge right past the foot of the bed, rumpled white sheets hang over the edge, beyond it a sheer drop down the facade to a dark courtyard with tiny street lamps far below, a bedside lamp still on"
+    },
+    {
+      "id": "fall-elevator-no-floor",
+      "priority": 1,
+      "tags": { "location": "elevator", "motifs": ["fall"], "people": "none", "mood": "uneasy", "time": "interior" },
+      "seed": 1300105,
+      "scene": "Inside a cramped old Soviet elevator cabin whose floor is missing, looking down the dark shaft, greasy cables and the thin lit outlines of doors of the floors below receding far into the depth, the button panel on the wall still glowing 37"
+    },
+    {
+      "id": "kitchen-window-jam-curtain",
+      "priority": 2,
+      "tags": { "location": "kitchen", "motifs": [], "people": "none", "mood": "uneasy", "time": "day" },
+      "seed": 1300106,
+      "scene": "An old Soviet kitchen with its window wide open on the ninth floor, the window frame gone, a net curtain blowing outwards, from the sill a dizzying view straight down the wall of the building to a tiny courtyard and parked cars far below, a pot of jam on the sill"
+    },
+    {
+      "id": "fall-hospital-corridor-edge",
+      "priority": 2,
+      "tags": { "location": "hospital_corridor", "motifs": ["fall"], "people": "none", "mood": "dread", "time": "night" },
+      "seed": 1300107,
+      "scene": "An empty hospital corridor with pale tiles and humming fluorescent lamps that ends abruptly mid-air, the floor tiles broken off at an edge, beyond it a deep night drop down the side of a tall hospital building to street lamps far below, a wheelchair standing at the edge"
+    },
+    {
+      "id": "fall-jam-jar-rim",
+      "priority": 2,
+      "tags": { "location": "jam_jar", "motifs": ["fall"], "people": "distant", "mood": "uneasy", "time": "interior" },
+      "seed": 1300108,
+      "scene": "Standing on the glass rim of a gigantic jam jar the size of a building, looking down inside: far below a dark glossy lake of cherry jam, the curved glass walls drop sheer down, tiny furniture of a room half sunk in the jam, dizzying height"
+    },
+    {
+      "id": "scare-fall-ground-rushing",
+      "priority": 2,
+      "tags": { "location": "yard", "motifs": ["fall"], "people": "none", "mood": "scare", "time": "day" },
+      "seed": 1300109,
+      "style": "Realistic 35mm film photograph, heavy film grain, harsh direct flash, muted desaturated colors, Russia in the 1990s, the logic of a dream, sudden shocking moment.",
+      "scene": "Extreme vertigo, a view straight down while falling from the ninth floor, the concrete wall and windows of a Soviet apartment block streaking past in heavy motion blur at the edges of the frame, the courtyard asphalt with a tiny swing far below rushing up at the camera, no people"
     }
   ]
 }

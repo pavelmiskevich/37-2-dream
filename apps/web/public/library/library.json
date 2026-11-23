@@ -1757,6 +1757,148 @@
         "seed": 1260118,
         "source": "local-desktop"
       }
+    },
+    {
+      "id": "fall-stairwell-well-down",
+      "kind": "still",
+      "file": "stills/fall-stairwell-well-down.webp",
+      "depth": "depth/fall-stairwell-well-down.png",
+      "width": 1280,
+      "height": 720,
+      "tags": {
+        "location": "stairs",
+        "motifs": [
+          "fall"
+        ],
+        "people": "none",
+        "mood": "uneasy",
+        "time": "interior"
+      },
+      "generation": {
+        "model": "Tongyi-MAI/Z-Image-Turbo",
+        "license": "Apache-2.0",
+        "prompt": "Looking straight down the narrow gap between the flights of stairs of a nine-storey Soviet apartment block, from the top floor, the painted railings and worn handrails spiral down into darkness, the tiled ground floor tiny and very far below, a single house slipper falling down the gap. Realistic 35mm film photograph, heavy film grain, muted desaturated colors, faces hidden in shadow, Russia in the 1990s, Soviet-era interiors and courtyards, the logic of a dream, quiet, uneasy and unsettling atmosphere.",
+        "seed": 1300101,
+        "source": "hf-space:mcp-tools/Z-Image-Turbo"
+      }
+    },
+    {
+      "id": "fall-roof-edge-yard",
+      "kind": "still",
+      "file": "stills/fall-roof-edge-yard.webp",
+      "depth": "depth/fall-roof-edge-yard.png",
+      "width": 1280,
+      "height": 720,
+      "tags": {
+        "location": "yard",
+        "motifs": [
+          "fall"
+        ],
+        "people": "none",
+        "mood": "dread",
+        "time": "dusk"
+      },
+      "generation": {
+        "model": "Tongyi-MAI/Z-Image-Turbo",
+        "license": "Apache-2.0",
+        "prompt": "From the very edge of the flat tar roof of a nine-storey panel apartment block at dusk, looking straight down at a tiny courtyard far below, the swing and benches small as toys, a pair of bare toes at the edge of the roof in the foreground, no railing, dizzying height. Realistic 35mm film photograph, heavy film grain, muted desaturated colors, faces hidden in shadow, Russia in the 1990s, Soviet-era interiors and courtyards, the logic of a dream, quiet, uneasy and unsettling atmosphere.",
+        "seed": 1300102,
+        "source": "hf-space:mcp-tools/Z-Image-Turbo"
+      }
+    },
+    {
+      "id": "fall-elevator-no-floor",
+      "kind": "still",
+      "file": "stills/fall-elevator-no-floor.webp",
+      "depth": "depth/fall-elevator-no-floor.png",
+      "width": 1280,
+      "height": 720,
+      "tags": {
+        "location": "elevator",
+        "motifs": [
+          "fall"
+        ],
+        "people": "none",
+        "mood": "uneasy",
+        "time": "interior"
+      },
+      "generation": {
+        "model": "Tongyi-MAI/Z-Image-Turbo",
+        "license": "Apache-2.0",
+        "prompt": "Inside a cramped old Soviet elevator cabin whose floor is missing, looking down the dark shaft, greasy cables and the thin lit outlines of doors of the floors below receding far into the depth, the button panel on the wall still glowing 37. Realistic 35mm film photograph, heavy film grain, muted desaturated colors, faces hidden in shadow, Russia in the 1990s, Soviet-era interiors and courtyards, the logic of a dream, quiet, uneasy and unsettling atmosphere.",
+        "seed": 1300105,
+        "source": "hf-space:mcp-tools/Z-Image-Turbo"
+      }
+    },
+    {
+      "id": "kitchen-window-jam-curtain",
+      "kind": "still",
+      "file": "stills/kitchen-window-jam-curtain.webp",
+      "depth": "depth/kitchen-window-jam-curtain.png",
+      "width": 1280,
+      "height": 720,
+      "tags": {
+        "location": "kitchen",
+        "motifs": [],
+        "people": "none",
+        "mood": "uneasy",
+        "time": "day"
+      },
+      "generation": {
+        "model": "Tongyi-MAI/Z-Image-Turbo",
+        "license": "Apache-2.0",
+        "prompt": "An old Soviet kitchen with its window wide open on the ninth floor, the window frame gone, a net curtain blowing outwards, from the sill a dizzying view straight down the wall of the building to a tiny courtyard and parked cars far below, a pot of jam on the sill. Realistic 35mm film photograph, heavy film grain, muted desaturated colors, faces hidden in shadow, Russia in the 1990s, Soviet-era interiors and courtyards, the logic of a dream, quiet, uneasy and unsettling atmosphere.",
+        "seed": 1300106,
+        "source": "hf-space:mcp-tools/Z-Image-Turbo"
+      }
+    },
+    {
+      "id": "fall-balcony-no-railing",
+      "kind": "still",
+      "file": "stills/fall-balcony-no-railing.webp",
+      "depth": "depth/fall-balcony-no-railing.png",
+      "width": 1280,
+      "height": 720,
+      "tags": {
+        "location": "yard",
+        "motifs": [
+          "fall"
+        ],
+        "people": "none",
+        "mood": "uneasy",
+        "time": "night"
+      },
+      "generation": {
+        "model": "Tongyi-MAI/Z-Image-Turbo",
+        "license": "Apache-2.0",
+        "prompt": "A narrow balcony high up on a Soviet apartment block at night with its railing missing, a pair of worn slippers standing at the very edge, far below the courtyard street lamps glowing in the fog, the drop between the balconies goes down and down. Realistic 35mm film photograph, heavy film grain, muted desaturated colors, faces hidden in shadow, Russia in the 1990s, Soviet-era interiors and courtyards, the logic of a dream, quiet, uneasy and unsettling atmosphere.",
+        "seed": 1300103,
+        "source": "hf-space:mcp-tools/Z-Image-Turbo"
+      }
+    },
+    {
+      "id": "fall-jam-jar-rim",
+      "kind": "still",
+      "file": "stills/fall-jam-jar-rim.webp",
+      "depth": "depth/fall-jam-jar-rim.png",
+      "width": 1280,
+      "height": 720,
+      "tags": {
+        "location": "jam_jar",
+        "motifs": [
+          "fall"
+        ],
+        "people": "distant",
+        "mood": "uneasy",
+        "time": "interior"
+      },
+      "generation": {
+        "model": "Tongyi-MAI/Z-Image-Turbo",
+        "license": "Apache-2.0",
+        "prompt": "Standing on the glass rim of a gigantic jam jar the size of a building, looking down inside: far below a dark glossy lake of cherry jam, the curved glass walls drop sheer down, tiny furniture of a room half sunk in the jam, dizzying height. Realistic 35mm film photograph, heavy film grain, muted desaturated colors, faces hidden in shadow, Russia in the 1990s, Soviet-era interiors and courtyards, the logic of a dream, quiet, uneasy and unsettling atmosphere.",
+        "seed": 1300108,
+        "source": "hf-space:mcp-tools/Z-Image-Turbo"
+      }
     }
   ]
 }

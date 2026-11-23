@@ -34,6 +34,7 @@ const MOTIF_OBJECT_TEXT: Readonly<Record<MotifTag, string>> = {
   spider: 'Паук',
   snake: 'Змея',
   giant_shapes: 'Гигантские шары и кубы',
+  fall: 'Падение с высоты',
 };
 
 const LOCATION_OBJECT_TEXT: Readonly<Partial<Record<LocationTag, string>>> = {
