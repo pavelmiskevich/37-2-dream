@@ -6,7 +6,8 @@
  *   profile        — the `generateProfile` draw of the seed (fresh-seed.ts reads the same)
  *   beats          — dramaturgy (beats.ts): opening, waves, climax
  *   shots          — every beat cut into shots by its rhythm
- *   cast           — an asset per shot (cast.ts)
+ *   places         — the few locations the dream keeps to (places.ts)
+ *   cast           — an asset per shot from them (cast.ts)
  *   camera, look   — per shot (look.ts)
  *   cuts           — per shot, by rhythm; flashes kept apart (D-009)
  *   sound          — cues and intrusions (sound.ts)
@@ -28,6 +29,7 @@ import { FALL_ENDING, fallCamera, planEnding } from './ending';
 import type { DreamFilm, DreamLength, GenerateFilm, Shot, SoundCue } from './film';
 import type { LibraryAsset, LibraryManifest } from './library';
 import { cameraFor, cutFor, lookFor, parallaxFor } from './look';
+import { planPlaces } from './places';
 import { planSound, type TimedShot } from './sound';
 import { filmRng, filmSharedRng } from './streams';
 
@@ -123,7 +125,9 @@ export const generateFilm: GenerateFilm = (seed: DreamSeed, length: DreamLength,
   }
   let firstHeight = ending === 'fall' ? fallShotsFrom(timed.map((shot) => shot.beat.role)) : timed.length;
   if (ending === 'fall') holdLastHeight(timed);
-  const caster = createCaster(library.assets, profile, filmRng(seed, length, 'cast'));
+  // Where it happens (#77): a few of the library's locations.
+  const places = planPlaces(profile, library.assets, length, filmRng(seed, length, 'places'));
+  const caster = createCaster(library.assets, profile, filmRng(seed, length, 'cast'), places);
   const planned: (TimedShot & { beat: Beat })[] = [];
   for (let shotIndex = 0; shotIndex < timed.length; shotIndex++) {
     const motif = shotIndex >= firstHeight ? ('fall' as const) : undefined;

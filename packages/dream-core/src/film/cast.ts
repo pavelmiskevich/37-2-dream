@@ -19,7 +19,9 @@
  *   for a number of shots that grows with the library.
  *
  * The edit stays in a location for a few shots, then jumps; a location left
- * recently is avoided, so every film wanders the library differently.
+ * recently is avoided, so every film wanders the library differently. It
+ * wanders only the dream's own places (places.ts, #77), and a frame shown
+ * `MAX_USES` times is all but retired.
  */
 import { pickFromCatalog, weightedPick, type CatalogItem } from '../catalog';
 import { clamp, lerp } from '../math';
@@ -174,6 +176,9 @@ export function assetCooldown(poolSize: number): number {
   return clamp(Math.floor(poolSize * 0.4), 1, 12);
 }
 
+/** Times a frame may be shown in one dream before it is all but retired (#77). */
+export const MAX_USES = 4;
+
 /** Locations recently left are avoided for this many location changes. */
 export const LOCATION_COOLDOWN = 2;
 /** Longest stay in one location, shots. */
@@ -193,13 +198,25 @@ export interface Caster {
   pick(request: CastRequest): LibraryAsset;
 }
 
-export function createCaster(assets: readonly LibraryAsset[], profile: DreamProfile, rng: Rng): Caster {
+/** Frames the edit may cast as ordinary shots: no scares, and none of the awakening (D-030). */
+export function castFrames(assets: readonly LibraryAsset[]): LibraryAsset[] {
+  return assets.filter((asset) => asset.tags.mood !== 'scare' && !isWakingFrame(asset));
+}
+
+/**
+ * `places` — the locations the dream keeps to (places.ts, #77): ordinary
+ * shots are cast from their frames only; a themed shot (the heights of a
+ * fall) and a scare may come from anywhere.
+ */
+export function createCaster(assets: readonly LibraryAsset[], profile: DreamProfile, rng: Rng, places?: readonly LocationTag[]): Caster {
   // Frames of the awakening are left out entirely (D-030), as if the library did not have them.
-  const frames = assets.filter((asset) => asset.tags.mood !== 'scare' && !isWakingFrame(asset));
+  const frames = castFrames(assets);
   const scares = assets.filter((asset) => asset.tags.mood === 'scare');
   if (frames.length === 0) throw new RangeError('generateFilm: the library has no frames besides scares and the awakening.');
+  const placed = places ? frames.filter((asset) => places.includes(asset.tags.location)) : frames;
+  const local = placed.length > 0 ? placed : frames;
 
-  const frameCooldown = assetCooldown(frames.length);
+  const frameCooldown = assetCooldown(local.length);
   const scareCooldown = Math.max(0, scares.length - 1);
   const items = new Map<LibraryAsset, CatalogItem>();
   for (const asset of frames) items.set(asset, { id: asset.id, baseWeight: 1, rarity: 0, cooldownScenes: frameCooldown });
@@ -246,7 +263,9 @@ export function createCaster(assets: readonly LibraryAsset[], profile: DreamProf
     if (prev && prev.tags.time === asset.tags.time) w *= 1.3;
     if (asset.tags.location !== prev?.tags.location && recentLocations.includes(asset.tags.location)) w *= 0.15;
     const used = uses.get(asset.id);
-    return used === undefined ? w : w * 0.7 ** used;
+    if (used === undefined) return w;
+    // A frame seen `MAX_USES` times is all but retired: the dream has others (#77).
+    return w * 0.7 ** used * (used >= MAX_USES ? 0.02 : 1);
   };
 
   /** Picks from `pool` honouring cooldown; `undefined` when everything there is resting. */
@@ -293,16 +312,16 @@ export function createCaster(assets: readonly LibraryAsset[], profile: DreamProf
         return asset;
       }
 
-      let pool = frames.filter((asset) => fits(asset, ms));
-      if (pool.length === 0) pool = frames;
-
-      const themed = motif === undefined ? [] : pool.filter((asset) => asset.tags.motifs.includes(motif));
+      const themed = motif === undefined ? [] : frames.filter((asset) => fits(asset, ms) && asset.tags.motifs.includes(motif));
       if (themed.length > 0) {
         // The theme decides the frame, wherever the edit was: no staying or leaving to weigh.
         const asset = choose(themed, shotIndex, role) ?? relaxed(themed, role);
         cut(asset, shotIndex);
         return asset;
       }
+
+      let pool = local.filter((asset) => fits(asset, ms));
+      if (pool.length === 0) pool = local;
 
       const here = prev ? pool.filter((asset) => asset.tags.location === prev?.tags.location) : [];
       const elsewhere = prev ? pool.filter((asset) => asset.tags.location !== prev?.tags.location) : pool;

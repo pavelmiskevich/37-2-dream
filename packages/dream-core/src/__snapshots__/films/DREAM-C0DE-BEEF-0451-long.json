@@ -1,5 +1,5 @@
 {
-  "engineVersion": 12,
+  "engineVersion": 13,
   "seed": "DREAM-C0DE-BEEF-0451",
   "length": "long",
   "duration": 162,
@@ -2157,7 +2157,7 @@
     },
     {
       "index": 69,
-      "assetId": "jam-jar-inside",
+      "assetId": "elevator-open",
       "start": 153.972,
       "duration": 1.017,
       "camera": {
@@ -2174,7 +2174,7 @@
         ],
         "sway": 0.442
       },
-      "parallax": 0,
+      "parallax": 0.642,
       "look": {
         "grain": 0.646,
         "flicker": 0.456,
@@ -2188,7 +2188,7 @@
     },
     {
       "index": 70,
-      "assetId": "elevator-face",
+      "assetId": "jam-jar-inside",
       "start": 154.989,
       "duration": 1.009,
       "camera": {
@@ -2219,7 +2219,7 @@
     },
     {
       "index": 71,
-      "assetId": "thermometer-corridor-far",
+      "assetId": "yard-face-window",
       "start": 155.998,
       "duration": 1.095,
       "camera": {
@@ -2250,13 +2250,13 @@
     },
     {
       "index": 72,
-      "assetId": "thermometer-corridor",
+      "assetId": "clip-swing-sways",
       "start": 157.093,
-      "duration": 1.155,
+      "duration": 1.5,
       "camera": {
         "kind": "push",
         "zoomFrom": 1.023,
-        "zoomTo": 1.103,
+        "zoomTo": 1.127,
         "panFrom": [
           0.017,
           -0.015
@@ -2269,25 +2269,26 @@
       },
       "parallax": 0,
       "look": {
-        "grain": 0.597,
-        "flicker": 0.437,
-        "blur": 0.18,
-        "vignette": 0.848,
-        "fever": 0.775
+        "grain": 0.598,
+        "flicker": 0.439,
+        "blur": 0.181,
+        "vignette": 0.85,
+        "fever": 0.778
       },
       "cutOut": "flash",
       "cutDuration": 0.128,
-      "scare": false
+      "scare": false,
+      "clipFrom": 1.25
     },
     {
       "index": 73,
-      "assetId": "clip-swing-sways",
-      "start": 158.248,
-      "duration": 1.5,
+      "assetId": "yard-night-vacuum",
+      "start": 158.593,
+      "duration": 0.613,
       "camera": {
         "kind": "push",
         "zoomFrom": 1.055,
-        "zoomTo": 1.168,
+        "zoomTo": 1.101,
         "panFrom": [
           -0.006,
           -0.015
@@ -2296,26 +2297,25 @@
           0.004,
           -0.014
         ],
-        "sway": 0.45
+        "sway": 0.449
       },
       "parallax": 0,
       "look": {
-        "grain": 0.63,
-        "flicker": 0.39,
-        "blur": 0.144,
+        "grain": 0.629,
+        "flicker": 0.389,
+        "blur": 0.143,
         "vignette": 0.796,
-        "fever": 0.777
+        "fever": 0.775
       },
       "cutOut": "hard",
       "cutDuration": 0,
-      "scare": false,
-      "clipFrom": 1.25
+      "scare": false
     },
     {
       "index": 74,
-      "assetId": "stairs-down",
-      "start": 159.748,
-      "duration": 0.402,
+      "assetId": "thermometer-corridor-far",
+      "start": 159.206,
+      "duration": 0.944,
       "camera": {
         "kind": "sway",
         "zoomFrom": 1.215,
@@ -2328,15 +2328,15 @@
           0.144,
           0.107
         ],
-        "sway": 0.647
+        "sway": 0.645
       },
-      "parallax": 0.617,
+      "parallax": 0.639,
       "look": {
-        "grain": 0.584,
-        "flicker": 0.512,
-        "blur": 0.15,
-        "vignette": 0.813,
-        "fever": 0.748
+        "grain": 0.583,
+        "flicker": 0.509,
+        "blur": 0.149,
+        "vignette": 0.81,
+        "fever": 0.743
       },
       "cutOut": "hard",
       "cutDuration": 0,
@@ -2344,7 +2344,7 @@
     },
     {
       "index": 75,
-      "assetId": "bedroom-monitor",
+      "assetId": "elevator-face",
       "start": 160.15,
       "duration": 0.67,
       "camera": {
@@ -2375,7 +2375,7 @@
     },
     {
       "index": 76,
-      "assetId": "bedroom-will",
+      "assetId": "stairwell-dark",
       "start": 160.82,
       "duration": 0.717,
       "camera": {
@@ -2406,7 +2406,7 @@
     },
     {
       "index": 77,
-      "assetId": "bedroom-bed",
+      "assetId": "stairwell-mailboxes",
       "start": 161.537,
       "duration": 0.463,
       "camera": {
@@ -2423,7 +2423,7 @@
         ],
         "sway": 0.284
       },
-      "parallax": 0,
+      "parallax": 0.407,
       "look": {
         "grain": 0.607,
         "flicker": 0.421,
@@ -4020,11 +4020,20 @@
       }
     },
     {
-      "at": 157.734,
+      "at": 156.579,
       "sound": "swing_creak",
       "action": "hit",
       "params": {
-        "strength": 0.954,
+        "strength": 0.941,
+        "pitch": 0.379
+      }
+    },
+    {
+      "at": 158.046,
+      "sound": "swing_creak",
+      "action": "hit",
+      "params": {
+        "strength": 0.957,
         "pitch": 0.379
       }
     },
@@ -4062,15 +4071,6 @@
       "params": {
         "volume": 0.884,
         "turbine": 0.937
-      }
-    },
-    {
-      "at": 159.201,
-      "sound": "swing_creak",
-      "action": "hit",
-      "params": {
-        "strength": 0.97,
-        "pitch": 0.379
       }
     },
     {
@@ -4145,7 +4145,7 @@
     },
     {
       "motif": "swing_creak",
-      "at": 157.734
+      "at": 156.579
     }
   ],
   "awakening": {

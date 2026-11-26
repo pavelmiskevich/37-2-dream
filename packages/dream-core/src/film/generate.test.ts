@@ -6,11 +6,13 @@ import { profileRng } from '../streams';
 import { testSeeds } from '../test-utils';
 import { ENGINE_VERSION } from '../version';
 import { SCARE_COUNT } from './beats';
-import { MAX_LOCATION_RUN, assetCooldown } from './cast';
+import { MAX_LOCATION_RUN, assetCooldown, castFrames } from './cast';
 import { DREAM_LENGTH_SECONDS, FILM_SOUNDS, type DreamFilm, type DreamLength, type Shot } from './film';
 import { MIN_SHOT_MS, generateFilm } from './generate';
 import { isWakingFrame, type LibraryAsset, type LibraryManifest, type LocationTag } from './library';
 import { MIN_FLASH_GAP_MS } from './look';
+import { planPlaces } from './places';
+import { filmRng } from './streams';
 import { TEST_LIBRARY, TEST_LIBRARY_NO_SCARES } from './test-library';
 
 /**
@@ -256,11 +258,12 @@ describe.each(LENGTHS)('generateFilm: structure of %s films', { timeout: SLOW },
 });
 
 describe('generateFilm: the edit', { timeout: SLOW }, () => {
-  const frames = TEST_LIBRARY.assets.filter((asset) => asset.tags.mood !== 'scare').length;
-
   it.each(LENGTHS)('rests every asset for a while before reusing it (%s)', (length) => {
-    const cooldown = assetCooldown(frames);
     for (const film of films[length]) {
+      // The rest grows with the frames of the dream's own places (#77).
+      const places = planPlaces(film.profile, TEST_LIBRARY.assets, length, filmRng(film.seed, length, 'places'));
+      const local = castFrames(TEST_LIBRARY.assets).filter((asset) => !places || places.includes(asset.tags.location));
+      const cooldown = assetCooldown(local.length);
       const lastSeen = new Map<string, number>();
       film.shots.forEach((shot, i) => {
         if (shot.scare) return;
