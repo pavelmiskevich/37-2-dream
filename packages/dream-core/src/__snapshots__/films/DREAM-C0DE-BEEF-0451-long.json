@@ -1,5 +1,5 @@
 {
-  "engineVersion": 11,
+  "engineVersion": 12,
   "seed": "DREAM-C0DE-BEEF-0451",
   "length": "long",
   "duration": 162,
@@ -726,7 +726,8 @@
       },
       "cutOut": "fade",
       "cutDuration": 0.42,
-      "scare": false
+      "scare": false,
+      "clipFrom": 1.474
     },
     {
       "index": 23,
@@ -2282,11 +2283,11 @@
       "index": 73,
       "assetId": "clip-swing-sways",
       "start": 158.248,
-      "duration": 0.958,
+      "duration": 1.5,
       "camera": {
         "kind": "push",
         "zoomFrom": 1.055,
-        "zoomTo": 1.127,
+        "zoomTo": 1.168,
         "panFrom": [
           -0.006,
           -0.015
@@ -2295,25 +2296,26 @@
           0.004,
           -0.014
         ],
-        "sway": 0.448
+        "sway": 0.45
       },
       "parallax": 0,
       "look": {
-        "grain": 0.628,
-        "flicker": 0.388,
-        "blur": 0.143,
-        "vignette": 0.794,
-        "fever": 0.771
+        "grain": 0.63,
+        "flicker": 0.39,
+        "blur": 0.144,
+        "vignette": 0.796,
+        "fever": 0.777
       },
       "cutOut": "hard",
       "cutDuration": 0,
-      "scare": false
+      "scare": false,
+      "clipFrom": 1.25
     },
     {
       "index": 74,
       "assetId": "stairs-down",
-      "start": 159.206,
-      "duration": 0.944,
+      "start": 159.748,
+      "duration": 0.402,
       "camera": {
         "kind": "sway",
         "zoomFrom": 1.215,
@@ -2326,15 +2328,15 @@
           0.144,
           0.107
         ],
-        "sway": 0.645
+        "sway": 0.647
       },
-      "parallax": 0.639,
+      "parallax": 0.617,
       "look": {
-        "grain": 0.583,
-        "flicker": 0.509,
-        "blur": 0.149,
-        "vignette": 0.81,
-        "fever": 0.743
+        "grain": 0.584,
+        "flicker": 0.512,
+        "blur": 0.15,
+        "vignette": 0.813,
+        "fever": 0.748
       },
       "cutOut": "hard",
       "cutDuration": 0,

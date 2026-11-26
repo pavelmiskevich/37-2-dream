@@ -60,6 +60,8 @@ export interface Shot {
   cutDuration: number;
   /** A scare frame: very short, loud, preceded by build-up (spec §16). */
   scare: boolean;
+  /** Shots of a clip only: where in the clip the shot starts, seconds — its middle, where it moves (#141). */
+  clipFrom?: number;
 }
 
 /** Sounds the film can ask for; the player maps them to the audio engine. */

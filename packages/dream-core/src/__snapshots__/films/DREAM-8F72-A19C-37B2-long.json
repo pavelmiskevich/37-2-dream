@@ -1,5 +1,5 @@
 {
-  "engineVersion": 11,
+  "engineVersion": 12,
   "seed": "DREAM-8F72-A19C-37B2",
   "length": "long",
   "duration": 162.6,
@@ -298,11 +298,11 @@
       "index": 9,
       "assetId": "clip-swing-sways",
       "start": 31.535,
-      "duration": 2.707,
+      "duration": 3,
       "camera": {
         "kind": "push",
         "zoomFrom": 1.006,
-        "zoomTo": 1.087,
+        "zoomTo": 1.096,
         "panFrom": [
           0.001,
           0.001
@@ -311,25 +311,26 @@
           0.002,
           0.002
         ],
-        "sway": 0.113
+        "sway": 0.114
       },
       "parallax": 0,
       "look": {
-        "grain": 0.544,
-        "flicker": 0.14,
+        "grain": 0.545,
+        "flicker": 0.141,
         "blur": 0.113,
-        "vignette": 0.522,
-        "fever": 0.158
+        "vignette": 0.523,
+        "fever": 0.16
       },
       "cutOut": "hard",
       "cutDuration": 0,
-      "scare": false
+      "scare": false,
+      "clipFrom": 0.5
     },
     {
       "index": 10,
       "assetId": "stairs-down",
-      "start": 34.242,
-      "duration": 3.438,
+      "start": 34.535,
+      "duration": 3.145,
       "camera": {
         "kind": "drift",
         "zoomFrom": 1.189,
@@ -342,15 +343,15 @@
           -0.143,
           0.086
         ],
-        "sway": 0.236
+        "sway": 0.237
       },
-      "parallax": 0.543,
+      "parallax": 0.53,
       "look": {
-        "grain": 0.426,
-        "flicker": 0.239,
+        "grain": 0.427,
+        "flicker": 0.241,
         "blur": 0.005,
-        "vignette": 0.564,
-        "fever": 0.228
+        "vignette": 0.565,
+        "fever": 0.23
       },
       "cutOut": "hard",
       "cutDuration": 0,
@@ -1191,7 +1192,8 @@
       },
       "cutOut": "hard",
       "cutDuration": 0,
-      "scare": false
+      "scare": false,
+      "clipFrom": 0.535
     },
     {
       "index": 38,
@@ -1563,7 +1565,8 @@
       },
       "cutOut": "hard",
       "cutDuration": 0,
-      "scare": false
+      "scare": false,
+      "clipFrom": 0.124
     },
     {
       "index": 50,
@@ -1780,7 +1783,8 @@
       },
       "cutOut": "hard",
       "cutDuration": 0,
-      "scare": false
+      "scare": false,
+      "clipFrom": 0.397
     },
     {
       "index": 57,

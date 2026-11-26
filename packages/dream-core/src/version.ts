@@ -19,5 +19,9 @@
  * - 11 — the last height of a fall is the fall itself (#137): a `fall` camera
  *   that drops into the frame, the mix ducked under the wind of the fall
  *   (`fall_wind`). Only films that end in a fall change.
+ * - 12 — a clip is held long enough to be seen moving and shows its middle
+ *   (#141): its shot takes time from the shots after it in its beat, and the
+ *   shot says where in the clip it starts (`clipFrom`). Films that cast a clip
+ *   change; films over a library without clips stay the same.
  */
-export const ENGINE_VERSION = 11;
+export const ENGINE_VERSION = 12;

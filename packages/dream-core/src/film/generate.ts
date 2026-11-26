@@ -15,7 +15,7 @@
  * Every step draws from its own stream (streams.ts), so changing how one
  * step draws does not reshuffle the others.
  */
-import { lerp } from '../math';
+import { lerp, round } from '../math';
 import { generateProfile, type DreamProfile } from '../profile';
 import type { Rng } from '../rng';
 import { generateAwakeningParams } from '../scenes';
@@ -26,7 +26,7 @@ import { filmLengthMs, planBeats, scareCount, tensionAt, type Beat, type BeatRol
 import { createCaster } from './cast';
 import { FALL_ENDING, fallCamera, planEnding } from './ending';
 import type { DreamFilm, DreamLength, GenerateFilm, Shot, SoundCue } from './film';
-import type { LibraryManifest } from './library';
+import type { LibraryAsset, LibraryManifest } from './library';
 import { cameraFor, cutFor, lookFor, parallaxFor } from './look';
 import { planSound, type TimedShot } from './sound';
 import { filmRng, filmSharedRng } from './streams';
@@ -44,6 +44,26 @@ const SHOT_MS: Readonly<Record<BeatRole, { from: Range; to: Range } | 'whole'>> 
   recovery: { from: [1500, 3500], to: [1500, 3500] },
   climax: { from: [1500, 2500], to: [350, 800] },
 };
+
+/** A shot of the edit before it is cast: its beat, start and length, ms. */
+type TimedSlot = { beat: Beat; start: number; ms: number };
+
+/**
+ * How long a clip is held (#141), ms: long enough for its movement to be
+ * seen — a Wan clip moves mostly in its middle seconds. The climax keeps its
+ * fast rhythm and holds a clip only briefly.
+ */
+export const CLIP_HOLD_MS = { default: 3000, climax: 1500 } as const;
+
+function clipHoldMs(role: BeatRole, clipSeconds: number): number {
+  return Math.min(role === 'climax' ? CLIP_HOLD_MS.climax : CLIP_HOLD_MS.default, clipSeconds * 1000);
+}
+
+/** Where in its clip a shot starts, seconds: the middle of the clip, where it moves (#141). */
+function clipStart(asset: LibraryAsset, ms: number): number | undefined {
+  if (asset.kind !== 'clip' || asset.duration === undefined) return undefined;
+  return round(Math.max(0, asset.duration * 1000 - ms) / 2000, 3);
+}
 
 /** Shots of a short film are cut faster. */
 const LENGTH_PACE: Readonly<Record<DreamLength, number>> = { short: 0.75, long: 1 };
@@ -93,7 +113,7 @@ export const generateFilm: GenerateFilm = (seed: DreamSeed, length: DreamLength,
 
   // Shots: lengths by beat rhythm, then an asset for each.
   const rhythmRng = filmRng(seed, length, 'rhythm');
-  const timed: { beat: Beat; start: number; ms: number }[] = [];
+  const timed: TimedSlot[] = [];
   for (const beat of beats) {
     let start = beat.start;
     for (const ms of shotLengths(beat, length, profile, rhythmRng)) {
@@ -101,14 +121,20 @@ export const generateFilm: GenerateFilm = (seed: DreamSeed, length: DreamLength,
       start += ms;
     }
   }
-  const firstHeight = ending === 'fall' ? fallShotsFrom(timed.map((shot) => shot.beat.role)) : timed.length;
+  let firstHeight = ending === 'fall' ? fallShotsFrom(timed.map((shot) => shot.beat.role)) : timed.length;
   if (ending === 'fall') holdLastHeight(timed);
   const caster = createCaster(library.assets, profile, filmRng(seed, length, 'cast'));
-  const planned: (TimedShot & { beat: Beat })[] = timed.map(({ beat, start, ms }, shotIndex) => {
+  const planned: (TimedShot & { beat: Beat })[] = [];
+  for (let shotIndex = 0; shotIndex < timed.length; shotIndex++) {
     const motif = shotIndex >= firstHeight ? ('fall' as const) : undefined;
-    const asset = caster.pick({ shotIndex, role: beat.role, ms, ...(motif ? { motif } : {}) });
-    return { start, duration: ms, asset, scare: beat.role === 'scare', beat };
-  });
+    const shot = timed[shotIndex] as TimedSlot;
+    const asset = caster.pick({ shotIndex, role: shot.beat.role, ms: shot.ms, ...(motif ? { motif } : {}) });
+    // A clip is held long enough for its movement to be seen (#141); the heights keep their own timing.
+    if (asset.kind === 'clip' && asset.duration !== undefined && shotIndex < firstHeight) {
+      firstHeight -= holdClip(timed, shotIndex, clipHoldMs(shot.beat.role, asset.duration), asset.duration * 1000, firstHeight);
+    }
+    planned.push({ start: shot.start, duration: shot.ms, asset, scare: shot.beat.role === 'scare', beat: shot.beat });
+  }
 
   // Camera, look and cuts: each shot from its own stream.
   let lastFlash = -Infinity;
@@ -128,6 +154,7 @@ export const generateFilm: GenerateFilm = (seed: DreamSeed, length: DreamLength,
     const parallax = parallaxFor(beat.role, duration, asset.depth !== undefined, profile, rng);
     const look = lookFor(beat.role, tension, profile, rng);
     const height = index >= firstHeight;
+    const clipFrom = clipStart(asset, duration);
     // The fall breaks off: no fade out of the last height, the awakening comes at once.
     const last = index === planned.length - 1;
     return {
@@ -141,6 +168,7 @@ export const generateFilm: GenerateFilm = (seed: DreamSeed, length: DreamLength,
       cutOut: height && last ? 'hard' : cut.kind,
       cutDuration: height && last ? 0 : cut.ms / 1000,
       scare: shot.scare,
+      ...(clipFrom === undefined ? {} : { clipFrom }),
     };
   });
 
@@ -185,12 +213,12 @@ function withFallWind(sounds: readonly SoundCue[], fromMs: number, totalMs: numb
  * taken from the climax shots before it (none below `MIN_SHOT_MS`); the
  * climax and the film keep their length.
  */
-function holdLastHeight(timed: { beat: Beat; start: number; ms: number }[]): void {
+function holdLastHeight(timed: TimedSlot[]): void {
   const last = timed[timed.length - 1];
   if (!last) return;
   let need = FALL_ENDING.lastMs - last.ms;
   for (let i = timed.length - 2; i >= 0 && need > 0; i--) {
-    const shot = timed[i] as { beat: Beat; start: number; ms: number };
+    const shot = timed[i] as TimedSlot;
     if (shot.beat.role !== 'climax') break;
     const take = Math.min(need, shot.ms - MIN_SHOT_MS);
     if (take <= 0) continue;
@@ -200,6 +228,40 @@ function holdLastHeight(timed: { beat: Beat; start: number; ms: number }[]): voi
     // Everything after the shortened shot starts that much earlier.
     for (let j = i + 1; j < timed.length; j++) (timed[j] as { start: number }).start -= take;
   }
+}
+
+/**
+ * Lengthens the clip shot `index` towards `wantMs` (#141) with time from the
+ * shots after it in its beat, before `until`: each gives what it can above
+ * `MIN_SHOT_MS`, and one that cannot give enough without dropping below it
+ * is taken whole when the clip lasts long enough. The beat keeps its length.
+ * Returns how many shots were taken whole (and removed from `timed`).
+ */
+export function holdClip(timed: TimedSlot[], index: number, wantMs: number, maxMs: number, until: number): number {
+  const shot = timed[index];
+  if (!shot) return 0;
+  let removed = 0;
+  while (shot.ms < wantMs && index + 1 < until - removed) {
+    const next = timed[index + 1] as TimedSlot;
+    if (next.beat !== shot.beat) break;
+    const need = wantMs - shot.ms;
+    if (next.ms - need >= MIN_SHOT_MS) {
+      shot.ms += need;
+      next.ms -= need;
+      next.start += need;
+    } else if (shot.ms + next.ms <= maxMs) {
+      shot.ms += next.ms;
+      timed.splice(index + 1, 1);
+      removed += 1;
+    } else {
+      const take = Math.max(0, next.ms - MIN_SHOT_MS);
+      shot.ms += take;
+      next.ms -= take;
+      next.start += take;
+      break;
+    }
+  }
+  return removed;
 }
 
 /**

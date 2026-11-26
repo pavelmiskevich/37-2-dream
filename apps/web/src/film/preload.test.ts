@@ -1,6 +1,6 @@
 import type { Shot } from '@dream/core';
 import { describe, expect, it } from 'vitest';
-import { assetUrl, assetWindow, clipPlayback, clipTime } from './preload';
+import { assetUrl, assetWindow, clipPlayback, clipStart, clipTime } from './preload';
 
 const shots = ['a', 'b', 'a', 'c', 'd', 'e'].map((assetId, index) => ({ assetId, index }) as Shot);
 
@@ -36,5 +36,19 @@ describe('clipPlayback', () => {
     expect(clipTime(3, 4, { rate: 0.5, loop: true })).toBe(1.5);
     expect(clipTime(10, 4, { rate: 0.5, loop: true })).toBe(1);
     expect(clipTime(10, 4, { rate: 1, loop: false })).toBe(4);
+  });
+
+  it('starts a shot where the edit says in its clip (#141)', () => {
+    expect(clipTime(0, 5, { rate: 1, loop: false }, 1)).toBe(1);
+    expect(clipTime(2.5, 5, { rate: 1, loop: false }, 1)).toBe(3.5);
+    expect(clipTime(9, 5, { rate: 1, loop: false }, 1)).toBe(5);
+  });
+
+  it('pulls the start back when the file is shorter than the manifest says (#141)', () => {
+    expect(clipStart(1, 3, 5)).toBe(1);
+    expect(clipStart(1, 3, 3.6)).toBeCloseTo(0.6);
+    expect(clipStart(1, 3, 2)).toBe(0);
+    expect(clipStart(undefined, 3, 5)).toBe(0);
+    expect(clipStart(1, 3, 0)).toBe(0);
   });
 });

@@ -1,5 +1,5 @@
 {
-  "engineVersion": 11,
+  "engineVersion": 12,
   "seed": "DREAM-0000-0000-0000",
   "length": "long",
   "duration": 156.6,
@@ -174,7 +174,7 @@
       "index": 5,
       "assetId": "clip-swing-sways",
       "start": 17.728,
-      "duration": 2.873,
+      "duration": 3,
       "camera": {
         "kind": "drift",
         "zoomFrom": 1.137,
@@ -192,20 +192,21 @@
       "parallax": 0,
       "look": {
         "grain": 0.462,
-        "flicker": 0.248,
+        "flicker": 0.249,
         "blur": 0.054,
-        "vignette": 0.559,
+        "vignette": 0.56,
         "fever": 0.193
       },
       "cutOut": "blink",
       "cutDuration": 0.323,
-      "scare": false
+      "scare": false,
+      "clipFrom": 0.5
     },
     {
       "index": 6,
       "assetId": "jam-jar-inside",
-      "start": 20.601,
-      "duration": 1.635,
+      "start": 20.728,
+      "duration": 1.508,
       "camera": {
         "kind": "sway",
         "zoomFrom": 1.155,
@@ -223,10 +224,10 @@
       "parallax": 0,
       "look": {
         "grain": 0.541,
-        "flicker": 0.227,
+        "flicker": 0.228,
         "blur": 0.073,
-        "vignette": 0.526,
-        "fever": 0.237
+        "vignette": 0.527,
+        "fever": 0.238
       },
       "cutOut": "hard",
       "cutDuration": 0,
@@ -1067,7 +1068,8 @@
       },
       "cutOut": "flash",
       "cutDuration": 0.095,
-      "scare": false
+      "scare": false,
+      "clipFrom": 1.529
     },
     {
       "index": 34,
@@ -1625,7 +1627,8 @@
       },
       "cutOut": "hard",
       "cutDuration": 0,
-      "scare": false
+      "scare": false,
+      "clipFrom": 1.312
     },
     {
       "index": 52,
