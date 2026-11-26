@@ -115,6 +115,17 @@ describe.each(LENGTHS)('generateFilm: structure of %s films', { timeout: SLOW },
     }
   });
 
+  it('never shows the same scare twice in a dream while others are left (#75)', () => {
+    const library = TEST_LIBRARY.assets.filter((asset) => asset.tags.mood === 'scare').length;
+    let twice = 0;
+    for (const film of list) {
+      const scares = film.shots.filter((shot) => shot.scare).map((shot) => shot.assetId);
+      if (scares.length > 1) twice++;
+      expect(new Set(scares).size).toBe(Math.min(scares.length, library));
+    }
+    if (length === 'long') expect(twice).toBeGreaterThan(0);
+  });
+
   it('precedes every scare with waiting: a held shot, a misdirection, a short relief and silence', () => {
     let scares = 0;
     for (const film of list) {

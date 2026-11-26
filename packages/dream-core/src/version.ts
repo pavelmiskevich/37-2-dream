@@ -32,5 +32,8 @@
  *   the sources it shows; a hospital corridor alone no longer starts the
  *   monitor; a false alarm sounds with what the dream has. Every film's
  *   sound changes.
+ * - 15 — every scare of a dream is a new frame while the library has any
+ *   left (#75): a long dream no longer shows the same scare twice. Films
+ *   with more than one scare may change.
  */
-export const ENGINE_VERSION = 14;
+export const ENGINE_VERSION = 15;
