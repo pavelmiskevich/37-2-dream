@@ -833,6 +833,76 @@
       "tags": { "location": "yard", "motifs": ["fall"], "people": "none", "mood": "uneasy", "time": "night" },
       "seed": 1370105,
       "scene": "Steep high-angle view from the roof edge of a nine-storey Soviet panel apartment block at night, looking down into a narrow courtyard between tall blocks, the dark walls with a few lit windows converging far down to the tiny wet asphalt lit by a single street lamp, an empty swing, dizzying depth, fog"
+    },
+    {
+      "id": "yard-chalk-swing-asphalt",
+      "priority": 2,
+      "tags": { "location": "yard", "motifs": ["swing", "thermometer"], "people": "none", "mood": "uneasy", "time": "day" },
+      "seed": 1380101,
+      "scene": "Children's chalk drawings covering the asphalt of an empty Soviet courtyard: a huge swing drawn in white chalk with a stick figure in pyjamas flying off it into a sky full of thermometers, 37.2 written again and again in pink and blue chalk, the real empty swing standing still in the background, pieces of chalk left on the ground"
+    },
+    {
+      "id": "yard-chalk-hopscotch-fever",
+      "priority": 2,
+      "tags": { "location": "yard", "motifs": ["thermometer"], "people": "none", "mood": "uneasy", "time": "dusk" },
+      "seed": 1380102,
+      "scene": "A long children's hopscotch drawn in chalk on the wet asphalt of a Soviet courtyard at dusk, its squares numbered 36.6, 36.9, 37.0, 37.1, 37.2, the last square drawn as a bed with a small figure lying in it, the hopscotch leading to the dark entrance of an apartment block, a forgotten piece of chalk"
+    },
+    {
+      "id": "yard-chalk-outline-night",
+      "priority": 2,
+      "tags": { "location": "yard", "motifs": [], "people": "none", "mood": "dread", "time": "night" },
+      "seed": 1380103,
+      "scene": "A child's chalk outline of a small figure lying on the asphalt at the foot of a tall Soviet apartment block at night, drawn around with little hearts, stars and the number 37.2, a chalk arrow drawn on the wall pointing up to the roof, a single street lamp, pieces of chalk scattered nearby"
+    },
+    {
+      "id": "stairs-chalk-vacuum-woman",
+      "priority": 2,
+      "tags": { "location": "stairs", "motifs": ["vacuum_woman"], "people": "none", "mood": "uneasy", "time": "interior" },
+      "seed": 1380104,
+      "scene": "A child's chalk drawing on the green painted wall of a Soviet staircase: a very tall woman with a vacuum cleaner whose long hose winds up the wall along the stairs and into the darkness, small chalk thermometers and the number 37.2 around her, real worn concrete steps, a piece of chalk on the step"
+    },
+    {
+      "id": "stairwell-chalk-door-figure",
+      "priority": 2,
+      "tags": { "location": "stairwell", "motifs": [], "people": "none", "mood": "dread", "time": "night" },
+      "seed": 1380105,
+      "scene": "A padded leatherette apartment door on a dim Soviet stairwell landing at night, covered in a child's chalk drawing of a very tall thin figure with long arms standing as if behind the door, the number 37.2 written many times around it, a doormat, a bare bulb, a piece of chalk on the floor"
+    },
+    {
+      "id": "bedroom-chalk-wall-thermometer",
+      "priority": 2,
+      "tags": { "location": "bedroom", "motifs": ["thermometer"], "people": "none", "mood": "uneasy", "time": "night" },
+      "seed": 1380106,
+      "scene": "A child's bedroom in a Soviet apartment at night, the wallpaper above the rumpled empty bed covered in children's chalk and crayon drawings: a thermometer taller than the house, a sun with the number 37.2, a small figure in bed with a huge glass of tea, a dim bedside lamp"
+    },
+    {
+      "id": "kitchen-chalk-jam-jars",
+      "priority": 2,
+      "tags": { "location": "kitchen", "motifs": [], "people": "none", "mood": "uneasy", "time": "day" },
+      "seed": 1380107,
+      "scene": "A Soviet kitchen door painted dark green and covered in children's chalk drawings of jars of jam with tiny houses, swings and people inside them, a spoon as big as a tree, the number 37.2 on every jar, a real jar of dark jam on the kitchen table in front, daylight from the window"
+    },
+    {
+      "id": "hospital-chalk-floor-ventilator",
+      "priority": 2,
+      "tags": { "location": "hospital_corridor", "motifs": ["ventilator", "monitor"], "people": "none", "mood": "dread", "time": "night" },
+      "seed": 1380108,
+      "scene": "Children's chalk drawings on the pale tiled floor of an empty hospital corridor at night: a smiling breathing machine with a long tube, a heartbeat line running along the tiles to a closed door, a stick figure in a bed, 37.2 written beside it, humming fluorescent lamps, a piece of chalk on the floor"
+    },
+    {
+      "id": "elevator-chalk-walls-buttons",
+      "priority": 2,
+      "tags": { "location": "elevator", "motifs": [], "people": "none", "mood": "uneasy", "time": "interior" },
+      "seed": 1380109,
+      "scene": "The scratched walls of an old Soviet elevator cabin covered in a child's chalk drawings: a column of buttons drawn up to the ceiling numbered to 37, a tiny figure riding in a tiny elevator, the number 37.2, a dim lamp, the real control panel with burnt plastic buttons"
+    },
+    {
+      "id": "thermometer-corridor-chalk-hopscotch",
+      "priority": 2,
+      "tags": { "location": "thermometer_corridor", "motifs": ["thermometer"], "people": "none", "mood": "uneasy", "time": "interior" },
+      "seed": 1380110,
+      "scene": "An endless narrow corridor with pale green walls lined with old glass thermometers, a children's chalk hopscotch drawn along its whole floor into the darkness, every square with a chalk thermometer showing 37.2, a single piece of chalk lying on the first square, dim yellow ceiling lamps"
     }
   ]
 }
