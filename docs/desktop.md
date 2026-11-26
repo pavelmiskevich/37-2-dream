@@ -447,7 +447,7 @@ ComfyUI выгрузит модель кадров и сам, но она ост
 затем `391021`) и запустить снова. Движение слишком слабое или слишком
 резкое — напишите мне, я поправлю промпт.
 
-## 6. Список клипов (16)
+## 6. Список клипов (22)
 
 Общие правила промптов: камера неподвижна (кроме клипов падения), движение
 одно и медленное, людей и лица не показывать крупно. Промпт вставлять
@@ -651,6 +651,80 @@ ComfyUI выгрузит модель кадров и сам, но она ост
 
   ```text
   Static camera, no camera movement. An old fridge standing open in a dark kitchen, its shelves full of thermometers. The light inside the fridge flickers and the glass thermometers glint, then the fridge door slowly swings a little towards closing. The kitchen stays completely still. Realistic 35mm film footage, heavy film grain, muted desaturated colors, quiet, uneasy and unsettling dream atmosphere.
+  ```
+
+### Резкое падение — сердце в пятки (#151)
+
+Первые клипы падения вышли скорее полётом: камера плавно уходит за край, как
+дрон. Здесь падение настигает внезапно, как вздрагивание при засыпании:
+секунду всё неподвижно, и вдруг опора исчезает — рывок, и камера сразу летит
+вниз. Клип годится, если рывок резкий и внезапный. Если камера плавно
+опускается или стоит — seed +10.
+
+**17. `clip-drop-bed-gives-way`** — пол под кроватью проваливается, рывок вниз в темноту
+
+- Кадр: `bedroom-night-carpet` —
+  <https://github.com/pavelmiskevich/37-2-dream/raw/main/apps/web/public/library/stills/bedroom-night-carpet.webp>
+- Seed: `392001`
+- Промпт:
+
+  ```text
+  A dark Soviet bedroom at night in cold moonlight, a patterned carpet on the wall. For the first second everything is completely still. Then suddenly, without any warning, the floor gives way and the camera drops straight down into black emptiness, the room shooting upwards and vanishing above in one violent jolt, falling faster and faster into darkness. Realistic 35mm film footage, heavy film grain, strong motion blur, muted desaturated colors, sudden terrifying dream atmosphere.
+  ```
+
+**18. `clip-drop-stairs-step-crumbles`** — ступенька крошится под ногой, камера срывается в пустоту
+
+- Кадр: `stairs-down` —
+  <https://github.com/pavelmiskevich/37-2-dream/raw/main/apps/web/public/library/stills/stairs-down.webp>
+- Seed: `392002`
+- Промпт:
+
+  ```text
+  First-person view standing on an endless concrete staircase without railings that goes down into darkness. For the first second nothing moves. Then suddenly the step under the camera crumbles and the camera drops sharply off the side of the staircase into the dark void, the steps whipping upwards past the camera in one violent jolt, falling fast. Realistic 35mm film footage, heavy film grain, strong motion blur, muted desaturated colors, sudden terrifying dream atmosphere.
+  ```
+
+**19. `clip-drop-elevator-snaps`** — лифт срывается: рывок, лампа гаснет, свободное падение
+
+- Кадр: `elevator-cabin` —
+  <https://github.com/pavelmiskevich/37-2-dream/raw/main/apps/web/public/library/stills/elevator-cabin.webp>
+- Seed: `392003`
+- Промпт:
+
+  ```text
+  Inside a cramped old Soviet elevator cabin with wood-grain panels and a button panel. For the first second everything is still. Then the cabin suddenly drops: a violent jolt shakes the whole picture, the lamp flickers and goes dark, the camera is thrown up towards the ceiling, the walls shudder and rattle as the cabin falls freely down the shaft, heavy shaking. Realistic 35mm film footage, heavy film grain, strong motion blur, muted desaturated colors, sudden terrifying dream atmosphere.
+  ```
+
+**20. `clip-drop-roof-edge-breaks`** — край крыши обламывается, камера головой вниз вдоль фасада
+
+- Кадр: `fall-courtyard-roof-night` —
+  <https://github.com/pavelmiskevich/37-2-dream/raw/main/apps/web/public/library/stills/fall-courtyard-roof-night.webp>
+- Seed: `392004`
+- Промпт:
+
+  ```text
+  Steep view from the roof edge of a nine-storey Soviet apartment block at night down into a narrow courtyard. For the first second the camera hangs completely still. Then the concrete edge breaks off under the camera and it drops instantly, headfirst straight down the dark facade, the lit windows streaking upwards in long smears, the wet asphalt and the street lamp rushing at the camera within a second, violent shaking. Realistic 35mm film footage, heavy film grain, strong motion blur, muted desaturated colors, sudden terrifying dream atmosphere.
+  ```
+
+**21. `clip-drop-window-ledge`** — подоконник девятого этажа ломается, двор несётся навстречу
+
+- Кадр: `fall-yard-window-straight-down` —
+  <https://github.com/pavelmiskevich/37-2-dream/raw/main/apps/web/public/library/stills/fall-yard-window-straight-down.webp>
+- Seed: `392005`
+- Промпт:
+
+  ```text
+  Top-down view from the window ledge of the ninth floor of a Soviet apartment block at night, straight down to the courtyard. For the first second nothing moves. Then suddenly the ledge gives way and the camera falls straight down, the walls streaking past, the courtyard rushing up at the camera at terrifying speed in one violent jolt. Realistic 35mm film footage, heavy film grain, strong motion blur, muted desaturated colors, sudden terrifying dream atmosphere.
+  ```
+
+**22. `clip-drop-jam-jar-slip`** — нога соскальзывает с края банки, падение в варенье
+
+- Кадр: `fall-jam-jar-rim` —
+  <https://github.com/pavelmiskevich/37-2-dream/raw/main/apps/web/public/library/stills/fall-jam-jar-rim.webp>
+- Seed: `392006`
+- Промпт:
+
+  ```text
+  Standing on the glass rim of a gigantic jam jar the size of a building, looking down inside at dark jam far below. For the first second everything is still. Then the camera suddenly slips off the glass rim and drops straight down inside the jar, the glass walls streaking upwards, the dark glistening jam rushing up at the camera in one violent jolt. Realistic 35mm film footage, heavy film grain, strong motion blur, muted desaturated colors, sudden terrifying dream atmosphere.
   ```
 
 ## 7. Как отдать результат

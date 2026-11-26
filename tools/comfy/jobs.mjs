@@ -71,6 +71,8 @@ export function clipJobs(catalog, targets, libraryIds) {
       seed: seed ?? clip.seed,
       prompt: clip.prompt,
       from: clip.from,
+      // Tags over those of the still, e.g. `fall` for a drop out of an ordinary bedroom (#151).
+      ...(clip.tags ? { tags: clip.tags } : {}),
       model: catalog.model,
       license: catalog.license,
     };

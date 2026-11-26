@@ -86,7 +86,10 @@ export function stillAsset(job, scene, { width, height }) {
   };
 }
 
-/** The library entry of an accepted clip; tags from the still it was made from (D-036). */
+/**
+ * The library entry of an accepted clip; tags from the still it was made from
+ * (D-036), with the clip's own tags from the catalog over them (#151).
+ */
 export function clipAsset(job, still, { width, height, duration }) {
   return {
     id: job.id,
@@ -95,7 +98,7 @@ export function clipAsset(job, still, { width, height, duration }) {
     width,
     height,
     duration: Math.round(duration * 1000) / 1000,
-    tags: structuredClone(still.tags),
+    tags: { ...structuredClone(still.tags), ...structuredClone(job.tags ?? {}) },
     generation: {
       model: job.model,
       license: job.license,
