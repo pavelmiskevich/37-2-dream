@@ -232,14 +232,20 @@ export function startDreamFilm(canvas: HTMLCanvasElement, search: string = windo
     await playing;
 
     setPhase('waking');
-    await awakening.run();
+    try {
+      await awakening.run();
 
-    setPhase('journal');
-    letSleep();
-    audio?.dispose(JOURNAL_FADE);
-    showJournal(film, manifest);
-    awakening.dispose();
-    player.dispose();
+      setPhase('journal');
+      letSleep();
+      audio?.dispose(JOURNAL_FADE);
+      showJournal(film, manifest);
+    } finally {
+      // Even if the awakening or the journal breaks, the bedroom overlay,
+      // textures, clips and the WebGL context are let go; the broken screen
+      // takes it from here (#81). Pausing or stopping them afterwards is harmless.
+      awakening.dispose();
+      player.dispose();
+    }
   }
 
   const screen = createSleepScreen({

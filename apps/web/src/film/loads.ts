@@ -52,6 +52,11 @@ export class RetryingLoads<T> {
     return promise;
   }
 
+  /** Ids loading or loaded (not forgotten, not failed). */
+  ids(): string[] {
+    return [...this.loads.keys()];
+  }
+
   /** True while `id` is loading or loaded (not forgotten, not failed). */
   has(id: string): boolean {
     return this.loads.has(id);
