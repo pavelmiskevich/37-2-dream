@@ -11,7 +11,8 @@ import type { Rng } from '../rng';
 import type { BeatRole } from './beats';
 import type { CameraMove, CutKind, DreamLength, FilmLook } from './film';
 
-type CameraKind = CameraMove['kind'];
+/** Moves the edit picks; `fall` is only ever the last height of a fall ending (ending.ts). */
+type CameraKind = Exclude<CameraMove['kind'], 'fall'>;
 
 const CAMERA_WEIGHTS: Readonly<Record<BeatRole, Readonly<Partial<Record<CameraKind, number>>>>> = {
   opening: { drift: 3, push: 2, still: 1, pull: 1 },

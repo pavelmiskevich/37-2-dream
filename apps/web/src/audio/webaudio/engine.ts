@@ -23,6 +23,7 @@ import {
   MonitorVoice,
   StingerVoice,
   GaspVoice,
+  WindVoice,
   VacuumVoice,
   VentilatorVoice,
   type Voice,
@@ -109,6 +110,8 @@ class WebAudioEngine implements AudioEngine {
   private readonly stinger: StingerVoice;
   /** The gasp of waking from a fall (#134), on the stinger's bus. */
   private readonly gasp: GaspVoice;
+  /** The wind of a fall (#137), on the stinger's bus. */
+  private readonly wind: WindVoice;
   private readonly stingerBus: GainNode;
   private readonly voiceLayer = new Map<SoundId, LayerName>();
   /** `sound.volume` of each sound. */
@@ -176,6 +179,7 @@ class WebAudioEngine implements AudioEngine {
     this.creak = new CreakVoice(env);
     this.stinger = new StingerVoice(env);
     this.gasp = new GaspVoice(env);
+    this.wind = new WindVoice(env);
     this.stingerBus = context.createGain();
     this.stingerBus.connect(this.limiter);
 
@@ -224,6 +228,12 @@ class WebAudioEngine implements AudioEngine {
       case 'gasp':
         this.gasp.play(event.strength ?? 1, this.stingerBus);
         break;
+      case 'wind.start':
+        this.wind.start(this.stingerBus);
+        break;
+      case 'wind.stop':
+        this.wind.stop();
+        break;
       case 'layer.volume':
         this.volumes[event.layer] = clamp01(event.value);
         this.applyMix();
@@ -268,6 +278,7 @@ class WebAudioEngine implements AudioEngine {
   dispose(fade = 0.3): void {
     if (this.disposed) return;
     for (const sound of SOUNDS) this.stop(sound, fade);
+    this.wind.stop();
     for (const sample of [...this.samplePlays.keys()]) this.stopSample(sample, fade);
     this.disposed = true;
     if (this.timer !== null) clearInterval(this.timer);

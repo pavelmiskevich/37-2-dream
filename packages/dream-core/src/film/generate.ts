@@ -25,7 +25,7 @@ import { ENGINE_VERSION } from '../version';
 import { filmLengthMs, planBeats, scareCount, tensionAt, type Beat, type BeatRole } from './beats';
 import { createCaster } from './cast';
 import { FALL_ENDING, fallCamera, planEnding } from './ending';
-import type { DreamFilm, DreamLength, GenerateFilm, Shot } from './film';
+import type { DreamFilm, DreamLength, GenerateFilm, Shot, SoundCue } from './film';
 import type { LibraryManifest } from './library';
 import { cameraFor, cutFor, lookFor, parallaxFor } from './look';
 import { planSound, type TimedShot } from './sound';
@@ -146,7 +146,9 @@ export const generateFilm: GenerateFilm = (seed: DreamSeed, length: DreamLength,
 
   // How the dream ends: the planned reason and temperature (D-020).
   const awakening = generateAwakeningParams([], filmSharedRng(seed, 'awakening'));
-  const { sounds, intrusions } = planSound(beats, planned, totalMs, profile, awakening.reason, filmRng(seed, length, 'sound'));
+  const soundPlan = planSound(beats, planned, totalMs, profile, awakening.reason, filmRng(seed, length, 'sound'));
+  const { intrusions } = soundPlan;
+  const sounds = ending === 'fall' ? withFallWind(soundPlan.sounds, (planned[planned.length - 1] as TimedShot).start, totalMs) : soundPlan.sounds;
 
   return {
     engineVersion: ENGINE_VERSION,
@@ -161,6 +163,22 @@ export const generateFilm: GenerateFilm = (seed: DreamSeed, length: DreamLength,
     ending,
   };
 };
+
+/**
+ * The wind of the fall (#137): from the start of the last height the mix
+ * ducks and the wind rises; at the cut it stops dead with the film.
+ */
+function withFallWind(sounds: readonly SoundCue[], fromMs: number, totalMs: number): SoundCue[] {
+  const at = (ms: number) => Math.round(ms) / 1000;
+  const cues: SoundCue[] = [
+    ...sounds,
+    { at: at(fromMs), sound: 'silence', action: 'start', params: { depth: FALL_ENDING.duck } },
+    { at: at(fromMs), sound: 'fall_wind', action: 'start' },
+    { at: at(totalMs), sound: 'fall_wind', action: 'stop' },
+  ];
+  // Stable: cues of one moment keep their order.
+  return cues.map((cue, i) => [cue, i] as const).sort(([a, i], [b, j]) => a.at - b.at || i - j).map(([cue]) => cue);
+}
 
 /**
  * Lengthens the last shot of a fall ending to `FALL_ENDING.lastMs` with time

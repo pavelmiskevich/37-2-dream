@@ -19,7 +19,8 @@ export const DREAM_LENGTH_SECONDS = {
 
 /** Camera motion over one shot, in frame-relative units. */
 export interface CameraMove {
-  kind: 'still' | 'push' | 'pull' | 'drift' | 'sway';
+  /** `fall`: the camera drops into the frame, faster and faster, shaking and tumbling (#137). */
+  kind: 'still' | 'push' | 'pull' | 'drift' | 'sway' | 'fall';
   /** Zoom at the start and end of the shot; 1 shows the whole frame. */
   zoomFrom: number;
   zoomTo: number;
@@ -72,6 +73,7 @@ export const FILM_SOUNDS = [
   'swing_creak',
   'stinger',
   'silence',
+  'fall_wind',
 ] as const;
 export type FilmSound = (typeof FILM_SOUNDS)[number];
 

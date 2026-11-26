@@ -16,5 +16,8 @@
  *   fall in the library, some dreams end in a fall — the last shots of the
  *   climax are heights with a camera falling in and a hard cut. Every film
  *   gains the field; films that end quietly are otherwise the same.
+ * - 11 — the last height of a fall is the fall itself (#137): a `fall` camera
+ *   that drops into the frame, the mix ducked under the wind of the fall
+ *   (`fall_wind`). Only films that end in a fall change.
  */
-export const ENGINE_VERSION = 10;
+export const ENGINE_VERSION = 11;

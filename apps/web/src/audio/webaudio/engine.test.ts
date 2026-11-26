@@ -158,6 +158,26 @@ describe('audio engine routing', () => {
     expect(ctx.nodes.length).toBe(silent);
   });
 
+  it('blows the wind of a fall on the stinger bus, once, and cuts it on stop (#137)', () => {
+    const before = ctx.nodes.length;
+    engine.handle({ type: 'wind.start' });
+    const sources = ctx.nodes.slice(before).filter((node) => node.kind === 'buffer-source');
+    expect(sources).toHaveLength(2);
+    for (const source of sources) {
+      const path = downstream(source);
+      expect(path.has(ctx.destination)).toBe(true);
+      expect(path.has(muffle)).toBe(false);
+    }
+    const again = ctx.nodes.length;
+    engine.handle({ type: 'wind.start' });
+    expect(ctx.nodes.length).toBe(again);
+    engine.handle({ type: 'wind.stop' });
+    engine.handle({ type: 'wind.stop' });
+    const restart = ctx.nodes.length;
+    engine.handle({ type: 'wind.start' });
+    expect(ctx.nodes.length).toBeGreaterThan(restart);
+  });
+
   it('sends the mix through the muffle into the limiter', () => {
     expect(limiter.outputs.has(ctx.destination)).toBe(true);
     expect(muffle).toBeDefined();

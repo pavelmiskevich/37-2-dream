@@ -452,8 +452,9 @@ ComfyUI выгрузит модель кадров и сам, но она ост
 
 ## 6. Список клипов (16)
 
-Общие правила промптов: камера неподвижна, движение одно и медленное, людей и
-лица не показывать крупно. Промпт вставлять целиком, по-английски.
+Общие правила промптов: камера неподвижна (кроме клипов падения), движение
+одно и медленное, людей и лица не показывать крупно. Промпт вставлять
+целиком, по-английски.
 
 Первая партия принята: качели, женщина с пылесосом, дверь (закрывается, а не
 открывается — оставлено так), варенье с ложки, бельё, пыль в луче, кнопки
@@ -464,9 +465,16 @@ ComfyUI выгрузит модель кадров и сам, но она ост
 **Если движения нет** с двух-трёх seed — не мучить дальше: значит, модель
 не видит в кадре, чему двигаться. Пропустить и написать мне.
 
-### Падение с высоты
+### Падение с высоты — первыми
 
-**1. `clip-roof-edge-toes`** — пальцы на краю крыши, вниз падает камешек
+Единственное исключение из общих правил: здесь **камера движется** — срывается
+с края и падает вниз. Неподвижный кадр с наездом падения не передаёт (#137);
+настоящее падение даст только видео. Клип годится, если в нём видно само
+падение: камера уходит за край и летит вниз, всё смазывается. Если камера
+стоит на месте или плавно наезжает — seed +10; не вышло с трёх seed —
+пропустить и написать мне.
+
+**1. `clip-fall-roof-plunge`** — камера срывается с края крыши и летит вниз во двор
 
 - Кадр: `fall-roof-edge-yard` —
   <https://github.com/pavelmiskevich/37-2-dream/raw/main/apps/web/public/library/stills/fall-roof-edge-yard.webp>
@@ -474,32 +482,32 @@ ComfyUI выгрузит модель кадров и сам, но она ост
 - Промпт:
 
   ```text
-  Static camera, no camera movement. From the edge of a flat roof high above a Soviet courtyard at dusk. The bare toes at the very edge slowly curl and shift a little forward, and a small pebble rolls off the edge and falls down towards the tiny courtyard far below. The buildings and the courtyard stay completely still. Realistic 35mm film footage, heavy film grain, muted desaturated colors, quiet, uneasy and dread-filled dream atmosphere.
+  First-person view from the edge of the flat roof of a nine-storey Soviet apartment block, bare toes at the edge. The camera suddenly tips forward over the edge and falls straight down along the facade towards the courtyard, faster and faster, the rows of windows streaking past upwards, the swing and the asphalt rushing up at the camera. Realistic 35mm film footage, heavy film grain, strong motion blur, muted desaturated colors, terrifying dream atmosphere.
   ```
 
-**2. `clip-balcony-slipper-falls`** — тапок соскальзывает с перил и падает
+**2. `clip-fall-stairwell-drop`** — камера падает в пролёт лестницы
 
-- Кадр: `fall-balcony-no-railing` —
-  <https://github.com/pavelmiskevich/37-2-dream/raw/main/apps/web/public/library/stills/fall-balcony-no-railing.webp>
+- Кадр: `fall-stairwell-well-down` —
+  <https://github.com/pavelmiskevich/37-2-dream/raw/main/apps/web/public/library/stills/fall-stairwell-well-down.webp>
 - Seed: `391002`
 - Промпт:
 
   ```text
-  Static camera, no camera movement. A high balcony over a foggy street at night. One of the slippers standing on the balcony railing slowly tips over the edge and falls down into the fog far below. The street lamps and the buildings stay completely still. Realistic 35mm film footage, heavy film grain, muted desaturated colors, quiet, uneasy and unsettling dream atmosphere.
+  First-person view looking down a flight of stairs in a Soviet stairwell. The camera suddenly pitches forward and falls down the stairwell, tumbling, the railings and the steps streaking past, the tiled floor far below rushing up at the camera. Realistic 35mm film footage, heavy film grain, strong motion blur, muted desaturated colors, terrifying dream atmosphere.
   ```
 
-**3. `clip-jam-jar-rim-sway`** — человек на краю банки качается
+**3. `clip-fall-balcony-drop`** — камера падает с балкона в туман
 
-- Кадр: `fall-jam-jar-rim` —
-  <https://github.com/pavelmiskevich/37-2-dream/raw/main/apps/web/public/library/stills/fall-jam-jar-rim.webp>
+- Кадр: `fall-balcony-no-railing` —
+  <https://github.com/pavelmiskevich/37-2-dream/raw/main/apps/web/public/library/stills/fall-balcony-no-railing.webp>
 - Seed: `391003`
 - Промпт:
 
   ```text
-  Static camera, no camera movement. A man standing on the rim of a gigantic jam jar in a round courtyard, seen from above and behind. He slowly sways forward and back as if about to fall in, and the dark jam below ripples slightly. The walls, the furniture and the jar stay completely still. Realistic 35mm film footage, heavy film grain, muted desaturated colors, quiet, uneasy and dread-filled dream atmosphere.
+  First-person view from a high balcony of a Soviet apartment block at night over a foggy street. The camera tips over the railing and falls down past the balconies of the lower floors, faster and faster, the street lamps in the fog rushing up at the camera. Realistic 35mm film footage, heavy film grain, strong motion blur, muted desaturated colors, terrifying dream atmosphere.
   ```
 
-**4. `clip-elevator-hole-cables`** — кабели в провале пола медленно уползают вниз
+**4. `clip-fall-elevator-drop`** — камера проваливается сквозь пол лифта в шахту
 
 - Кадр: `fall-elevator-no-floor` —
   <https://github.com/pavelmiskevich/37-2-dream/raw/main/apps/web/public/library/stills/fall-elevator-no-floor.webp>
@@ -507,7 +515,7 @@ ComfyUI выгрузит модель кадров и сам, но она ост
 - Промпт:
 
   ```text
-  Static camera, no camera movement. Inside an old Soviet elevator cabin with a hole in the floor. The tangled cables hanging into the hole slowly slide down and disappear into the darkness below, and the red 37 on the display flickers once. The walls and the cabin stay completely still. Realistic 35mm film footage, heavy film grain, muted desaturated colors, quiet, uneasy and unsettling dream atmosphere.
+  Inside an old Soviet elevator cabin with a hole in the floor. The camera drops through the hole into the dark elevator shaft and falls, the greasy cables and the thin lit outlines of the landing doors flashing past upwards, faster and faster. Realistic 35mm film footage, heavy film grain, strong motion blur, muted desaturated colors, terrifying dream atmosphere.
   ```
 
 ### Аппарат ИВЛ — вместо неподвижного коридора

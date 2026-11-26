@@ -21,6 +21,13 @@ export const HANDHELD = { pan: 0.03, roll: 0.006 } as const;
 /** `sway` kind: a slow pendulum, as if the camera hung on the swing. */
 export const PENDULUM = { period: 3.6, pan: 0.07, roll: 0.018, zoom: 0.025 } as const;
 
+/**
+ * `fall` kind (#137): the camera drops into the frame faster and faster —
+ * the zoom is mostly spent in the last moments — while the shake grows to
+ * `shake`× the hand-held one and the camera starts to tumble (`roll`, radians).
+ */
+export const FALL = { power: 2.6, shake: 5, roll: 0.16 } as const;
+
 /** Progress eased for each kind of move. */
 export function moveEase(kind: CameraMove['kind'], progress: number): number {
   const p = clamp01(progress);
@@ -34,6 +41,8 @@ export function moveEase(kind: CameraMove['kind'], progress: number): number {
     case 'drift':
     case 'sway':
       return p;
+    case 'fall':
+      return p ** FALL.power;
   }
 }
 
@@ -50,11 +59,16 @@ export function cameraAt(move: CameraMove, progress: number, time: number, phase
 
   const sway = clamp01(move.sway);
   if (sway > 0) {
+    // Falling, the hand-held wobble grows into a shake, and faster.
+    const shake = move.kind === 'fall' ? 1 + (FALL.shake - 1) * e : 1;
+    const speed = move.kind === 'fall' ? 1 + 6 * e : 1;
     // Three incommensurate wobbles: a hand never repeats itself.
-    panX += sway * HANDHELD.pan * valueNoise(time * 0.45 + phase, 1);
-    panY += sway * HANDHELD.pan * valueNoise(time * 0.38 + phase, 2);
-    roll += sway * HANDHELD.roll * valueNoise(time * 0.3 + phase, 3);
+    panX += sway * shake * HANDHELD.pan * valueNoise(time * 0.45 * speed + phase, 1);
+    panY += sway * shake * HANDHELD.pan * valueNoise(time * 0.38 * speed + phase, 2);
+    roll += sway * shake * HANDHELD.roll * valueNoise(time * 0.3 * speed + phase, 3);
   }
+  // The body turns over as it falls, one way or the other.
+  if (move.kind === 'fall') roll += (valueNoise(phase, 4) < 0 ? -1 : 1) * FALL.roll * e;
   if (move.kind === 'sway') {
     const swing = Math.sin(((time / PENDULUM.period) * 2 + phase) * Math.PI);
     panX += PENDULUM.pan * swing;
