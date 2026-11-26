@@ -41,9 +41,18 @@ export function clipPlayback(shotDuration: number, clipDuration: number): { rate
   return { rate, loop: shotDuration * rate > clipDuration + 1e-6 };
 }
 
-/** Where in the clip the picture should be `local` seconds into the shot. */
-export function clipTime(local: number, clipDuration: number, playback: { rate: number; loop: boolean }): number {
-  const t = Math.max(0, local) * playback.rate;
+/**
+ * Where in its clip a shot starts, seconds: the edit's `clipFrom` (#141),
+ * pulled back if the file turns out a little shorter than the manifest says.
+ */
+export function clipStart(clipFrom: number | undefined, shotDuration: number, clipDuration: number): number {
+  if (!(clipFrom !== undefined && clipFrom > 0) || !(clipDuration > 0)) return 0;
+  return Math.min(clipFrom, Math.max(0, clipDuration - shotDuration));
+}
+
+/** Where in the clip the picture should be `local` seconds into the shot that starts `from` seconds into it. */
+export function clipTime(local: number, clipDuration: number, playback: { rate: number; loop: boolean }, from = 0): number {
+  const t = from + Math.max(0, local) * playback.rate;
   if (!(clipDuration > 0)) return t;
   return playback.loop ? t % clipDuration : Math.min(t, clipDuration);
 }

@@ -1,9 +1,9 @@
-import type { DreamFilm, LibraryManifest, SoundCue } from '@dream/core';
+import type { DreamFilm, LibraryManifest, Shot, SoundCue } from '@dream/core';
 import type { AudioEngine } from '../audio';
 import { AssetCache, type LoadedAsset } from './assets';
 import { audioClock, performanceClock, type PlayerClock } from './clock';
 import { frameAt, type FrameState } from './frame';
-import { assetWindow, clipPlayback, clipTime } from './preload';
+import { assetWindow, clipPlayback, clipStart, clipTime } from './preload';
 import { FilmRenderer } from './renderer';
 import { cueEvents, dueCues, expandCues } from './sound';
 import { planFilm, shotAt, type FilmPlan, type PlayerSettings } from './timeline';
@@ -82,6 +82,8 @@ export class FilmPlayer {
   private pausedAt: number | null = null;
   private windowShot = -1;
   private activeVideo: HTMLVideoElement | null = null;
+  /** Clips already sought to the start of an upcoming shot, by that shot's index. */
+  private readonly cued = new WeakMap<HTMLVideoElement, number>();
   private lastFrameMs = 0;
   private finish: (() => void) | null = null;
   private fail: ((error: unknown) => void) | null = null;
@@ -237,7 +239,8 @@ export class FilmPlayer {
       // The shot is black while its file is missing; ask again (the cache paces the retries).
       void this.assets.request(at.shot.assetId);
     }
-    this.syncVideo(loaded, at?.local ?? 0, at?.shot.duration ?? 0, held);
+    this.syncVideo(loaded, at?.local ?? 0, at?.shot, held);
+    if (at) this.cueNextClip(film.shots[at.index + 1]);
 
     const frame = frameAt(
       film,
@@ -269,16 +272,17 @@ export class FilmPlayer {
   }
 
   /** Plays the clip of the shot on screen in step with the film clock; pauses any other. */
-  private syncVideo(loaded: LoadedAsset | undefined, local: number, shotDuration: number, held: boolean): void {
+  private syncVideo(loaded: LoadedAsset | undefined, local: number, shot: Shot | undefined, held: boolean): void {
     const video = loaded?.video ?? null;
     if (video !== this.activeVideo) {
       this.activeVideo?.pause();
       this.activeVideo = video;
     }
-    if (!video || !loaded) return;
-    const clipDuration = Number.isFinite(video.duration) && video.duration > 0 ? video.duration : (loaded.asset.duration ?? 0);
-    const playback = clipPlayback(shotDuration, clipDuration);
-    const expected = clipTime(local, clipDuration, playback);
+    if (!video || !loaded || !shot) return;
+    const clipDuration = videoDuration(video, loaded);
+    const from = clipStart(shot.clipFrom, shot.duration, clipDuration);
+    const playback = clipPlayback(shot.duration, clipDuration - from);
+    const expected = clipTime(local, clipDuration, playback, from);
     video.loop = playback.loop;
     if (video.playbackRate !== playback.rate) video.playbackRate = playback.rate;
     if (held) {
@@ -291,4 +295,21 @@ export class FilmPlayer {
     if (Math.abs(drift) > 0.3 && !video.seeking) video.currentTime = expected;
     if (video.paused) void video.play().catch(() => {});
   }
+
+  /** Seeks the clip of the next shot to where that shot starts in it, so the cut lands on the right frame (#141). */
+  private cueNextClip(next: Shot | undefined): void {
+    if (!next) return;
+    const loaded = this.assets.get(next.assetId);
+    const video = loaded?.video ?? null;
+    if (!video || !loaded || video === this.activeVideo || video.seeking) return;
+    const from = clipStart(next.clipFrom, next.duration, videoDuration(video, loaded));
+    // Once per shot: a browser that lands the seek a little off is not asked again every frame.
+    if (this.cued.get(video) === next.index) return;
+    this.cued.set(video, next.index);
+    if (Math.abs(video.currentTime - from) > 0.05) video.currentTime = from;
+  }
+}
+
+function videoDuration(video: HTMLVideoElement, loaded: LoadedAsset): number {
+  return Number.isFinite(video.duration) && video.duration > 0 ? video.duration : (loaded.asset.duration ?? 0);
 }
