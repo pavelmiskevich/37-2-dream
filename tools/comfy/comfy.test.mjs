@@ -202,6 +202,27 @@ describe('into the library', () => {
     assert.deepEqual(Object.keys(asset.generation), Object.keys(swing.generation));
   });
 
+  it('gives a drop clip its own tags over those of the still (#151)', () => {
+    const job = clipJobs(clips, [parseTarget('clip-drop-bed-gives-way')], libraryIds)[0];
+    const from = library.assets.find((a) => a.id === job.from);
+    const asset = clipAsset(job, from, { width: 1280, height: 720, duration: 5 });
+    assert.deepEqual(asset.tags, { ...from.tags, motifs: ['fall'], mood: 'dread' });
+    assert.deepEqual(from.tags.motifs, []);
+  });
+
+  it('uses only tags of the dictionary in clip overrides', () => {
+    const dictionary = readFileSync(join(REPO, 'packages/dream-core/src/film/library.ts'), 'utf8');
+    const list = (name) => new Set([...dictionary.match(new RegExp(`${name} = \\[([^\\]]*)\\]`))[1].matchAll(/'([a-z_]+)'/g)].map((m) => m[1]));
+    const allowed = { location: list('LOCATION_TAGS'), people: list('PEOPLE_TAGS'), mood: list('MOOD_TAGS'), time: list('TIME_TAGS') };
+    const motifs = list('MOTIF_TAGS');
+    for (const clip of clips.clips.filter((c) => c.tags)) {
+      for (const [key, value] of Object.entries(clip.tags)) {
+        if (key === 'motifs') for (const motif of value) assert.ok(motifs.has(motif), `${clip.id}: ${motif}`);
+        else assert.ok(allowed[key]?.has(value), `${clip.id}: ${key}=${value}`);
+      }
+    }
+  });
+
   it('writes still entries like generate.py', () => {
     const job = stillJobs(catalog, [parseTarget('yard-day-dandelions@1320105')], libraryIds)[0];
     const scene = catalog.scenes.find((s) => s.id === job.id);

@@ -228,6 +228,7 @@ async function fetchOnce(client, opts) {
       seed: job.seed,
       prompt: job.prompt,
       ...(job.from ? { from: job.from } : {}),
+      ...(job.tags ? { tags: job.tags } : {}),
       model: job.model,
       license: job.license,
       promptId: job.promptId,

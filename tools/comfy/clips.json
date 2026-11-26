@@ -114,6 +114,84 @@
       "from": "kitchen-fridge-thermometers",
       "seed": 391016,
       "prompt": "Static camera, no camera movement. An old fridge standing open in a dark kitchen, its shelves full of thermometers. The light inside the fridge flickers and the glass thermometers glint, then the fridge door slowly swings a little towards closing. The kitchen stays completely still. Realistic 35mm film footage, heavy film grain, muted desaturated colors, quiet, uneasy and unsettling dream atmosphere."
+    },
+    {
+      "id": "clip-drop-bed-gives-way",
+      "about": "пол под кроватью проваливается, рывок вниз в темноту",
+      "from": "bedroom-night-carpet",
+      "seed": 392001,
+      "tags": {
+        "motifs": [
+          "fall"
+        ],
+        "mood": "dread"
+      },
+      "prompt": "A dark Soviet bedroom at night in cold moonlight, a patterned carpet on the wall. For the first second everything is completely still. Then suddenly, without any warning, the floor gives way and the camera drops straight down into black emptiness, the room shooting upwards and vanishing above in one violent jolt, falling faster and faster into darkness. Realistic 35mm film footage, heavy film grain, strong motion blur, muted desaturated colors, sudden terrifying dream atmosphere."
+    },
+    {
+      "id": "clip-drop-stairs-step-crumbles",
+      "about": "ступенька крошится под ногой, камера срывается в пустоту",
+      "from": "stairs-down",
+      "seed": 392002,
+      "tags": {
+        "motifs": [
+          "fall"
+        ],
+        "mood": "dread"
+      },
+      "prompt": "First-person view standing on an endless concrete staircase without railings that goes down into darkness. For the first second nothing moves. Then suddenly the step under the camera crumbles and the camera drops sharply off the side of the staircase into the dark void, the steps whipping upwards past the camera in one violent jolt, falling fast. Realistic 35mm film footage, heavy film grain, strong motion blur, muted desaturated colors, sudden terrifying dream atmosphere."
+    },
+    {
+      "id": "clip-drop-elevator-snaps",
+      "about": "лифт срывается: рывок, лампа гаснет, свободное падение",
+      "from": "elevator-cabin",
+      "seed": 392003,
+      "tags": {
+        "motifs": [
+          "fall"
+        ],
+        "mood": "dread"
+      },
+      "prompt": "Inside a cramped old Soviet elevator cabin with wood-grain panels and a button panel. For the first second everything is still. Then the cabin suddenly drops: a violent jolt shakes the whole picture, the lamp flickers and goes dark, the camera is thrown up towards the ceiling, the walls shudder and rattle as the cabin falls freely down the shaft, heavy shaking. Realistic 35mm film footage, heavy film grain, strong motion blur, muted desaturated colors, sudden terrifying dream atmosphere."
+    },
+    {
+      "id": "clip-drop-roof-edge-breaks",
+      "about": "край крыши обламывается, камера головой вниз вдоль фасада",
+      "from": "fall-courtyard-roof-night",
+      "seed": 392004,
+      "tags": {
+        "motifs": [
+          "fall"
+        ],
+        "mood": "dread"
+      },
+      "prompt": "Steep view from the roof edge of a nine-storey Soviet apartment block at night down into a narrow courtyard. For the first second the camera hangs completely still. Then the concrete edge breaks off under the camera and it drops instantly, headfirst straight down the dark facade, the lit windows streaking upwards in long smears, the wet asphalt and the street lamp rushing at the camera within a second, violent shaking. Realistic 35mm film footage, heavy film grain, strong motion blur, muted desaturated colors, sudden terrifying dream atmosphere."
+    },
+    {
+      "id": "clip-drop-window-ledge",
+      "about": "подоконник девятого этажа ломается, двор несётся навстречу",
+      "from": "fall-yard-window-straight-down",
+      "seed": 392005,
+      "tags": {
+        "motifs": [
+          "fall"
+        ],
+        "mood": "dread"
+      },
+      "prompt": "Top-down view from the window ledge of the ninth floor of a Soviet apartment block at night, straight down to the courtyard. For the first second nothing moves. Then suddenly the ledge gives way and the camera falls straight down, the walls streaking past, the courtyard rushing up at the camera at terrifying speed in one violent jolt. Realistic 35mm film footage, heavy film grain, strong motion blur, muted desaturated colors, sudden terrifying dream atmosphere."
+    },
+    {
+      "id": "clip-drop-jam-jar-slip",
+      "about": "нога соскальзывает с края банки, падение в варенье",
+      "from": "fall-jam-jar-rim",
+      "seed": 392006,
+      "tags": {
+        "motifs": [
+          "fall"
+        ],
+        "mood": "dread"
+      },
+      "prompt": "Standing on the glass rim of a gigantic jam jar the size of a building, looking down inside at dark jam far below. For the first second everything is still. Then the camera suddenly slips off the glass rim and drops straight down inside the jar, the glass walls streaking upwards, the dark glistening jam rushing up at the camera in one violent jolt. Realistic 35mm film footage, heavy film grain, strong motion blur, muted desaturated colors, sudden terrifying dream atmosphere."
     }
   ]
 }
