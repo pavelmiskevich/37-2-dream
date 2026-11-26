@@ -1,5 +1,5 @@
 {
-  "engineVersion": 14,
+  "engineVersion": 15,
   "seed": "DREAM-8F72-A19C-37B2",
   "length": "long",
   "duration": 162.6,
@@ -1632,7 +1632,7 @@
     },
     {
       "index": 52,
-      "assetId": "scare-monitor",
+      "assetId": "scare-vacuum-woman",
       "start": 148.591,
       "duration": 0.139,
       "camera": {
@@ -1649,7 +1649,7 @@
         ],
         "sway": 0.421
       },
-      "parallax": 0,
+      "parallax": 0.178,
       "look": {
         "grain": 0.674,
         "flicker": 0.412,

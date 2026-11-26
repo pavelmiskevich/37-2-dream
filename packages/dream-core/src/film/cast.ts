@@ -307,7 +307,10 @@ export function createCaster(assets: readonly LibraryAsset[], profile: DreamProf
     pick({ shotIndex, role, ms, motif }) {
       if (role === 'scare' && scares.length > 0) {
         // A scare is an insert: it does not move the edit to another location.
-        const asset = choose(scares, shotIndex, role) ?? relaxed(scares, role);
+        // Each scare of a dream is a new one while the library has any left (#75).
+        const fresh = scares.filter((asset) => !uses.has(asset.id));
+        const pool = fresh.length > 0 ? fresh : scares;
+        const asset = choose(pool, shotIndex, role) ?? relaxed(pool, role);
         remember(asset, shotIndex);
         return asset;
       }
