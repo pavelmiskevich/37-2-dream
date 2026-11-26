@@ -23,5 +23,9 @@
  *   (#141): its shot takes time from the shots after it in its beat, and the
  *   shot says where in the clip it starts (`clipFrom`). Films that cast a clip
  *   change; films over a library without clips stay the same.
+ * - 13 — a dream keeps to a few of the library's locations (#77, D-040):
+ *   4–5 for a short film, 5–6 for a long one, leaned by the profile, more
+ *   when they have too few frames; a frame shown four times is all but
+ *   retired. Films over a library with more locations than that change.
  */
-export const ENGINE_VERSION = 12;
+export const ENGINE_VERSION = 13;
