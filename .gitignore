@@ -22,3 +22,5 @@ tools/depth/.cache/
 __pycache__/
 *.py[cod]
 .pytest_cache/
+# Generation on the PC (tools/comfy): results and queue record
+tools/comfy/out/
