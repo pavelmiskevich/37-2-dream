@@ -27,5 +27,10 @@
  *   4–5 for a short film, 5–6 for a long one, leaned by the profile, more
  *   when they have too few frames; a frame shown four times is all but
  *   retired. Films over a library with more locations than that change.
+ * - 14 — a dream has a sound of its own (#78, D-041): one bed or two of the
+ *   three (a second likelier in a long dream), leaned by the profile and by
+ *   the sources it shows; a hospital corridor alone no longer starts the
+ *   monitor; a false alarm sounds with what the dream has. Every film's
+ *   sound changes.
  */
-export const ENGINE_VERSION = 13;
+export const ENGINE_VERSION = 14;

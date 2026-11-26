@@ -28,8 +28,8 @@ import type { DreamProfile } from '../profile';
 import type { Rng } from '../rng';
 import type { AwakeningReason, DreamMotif } from '../scenes';
 import { tensionAt, type Beat } from './beats';
-import type { FilmIntrusion, FilmSound, SoundCue } from './film';
-import type { LibraryAsset, LocationTag, MotifTag } from './library';
+import type { DreamLength, FilmIntrusion, FilmSound, SoundCue } from './film';
+import type { LibraryAsset, MotifTag } from './library';
 
 /** A shot as the sound planner sees it: integer ms and its asset. */
 export interface TimedShot {
@@ -43,27 +43,37 @@ export interface TimedShot {
 const BEDS = ['monitor', 'ventilator', 'vacuum'] as const satisfies readonly (FilmSound & DreamMotif)[];
 type Bed = (typeof BEDS)[number];
 
-const BED_SOURCES: Readonly<Record<Bed, { motifs: readonly MotifTag[]; locations: readonly LocationTag[] }>> = {
-  monitor: { motifs: ['monitor'], locations: ['hospital_corridor'] },
-  ventilator: { motifs: ['ventilator'], locations: [] },
-  vacuum: { motifs: ['vacuum_woman'], locations: [] },
+/** What shows the source of a bed: a frame with its motif (a hospital corridor alone is not a monitor, #78). */
+const BED_SOURCES: Readonly<Record<Bed, readonly MotifTag[]>> = {
+  monitor: ['monitor'],
+  ventilator: ['ventilator'],
+  vacuum: ['vacuum_woman'],
 };
 
-/** Chance a bed sounds although no shot shows its source, by profile. */
-function bedChance(bed: Bed, profile: DreamProfile): number {
+/**
+ * Every dream has a sound of its own (#78, D-041): one bed or two, not all
+ * three. A second bed is likelier in a long dream; which beds, the profile
+ * decides, and a bed whose source the dream shows pulls `shownPull` times
+ * harder.
+ */
+export const DREAM_BEDS = {
+  secondChance: { short: 0.35, long: 0.7 },
+  shownPull: 4,
+} as const satisfies { secondChance: Record<DreamLength, number>; shownPull: number };
+
+/** How strongly the profile pulls a bed into the dream. */
+function bedPull(bed: Bed, profile: DreamProfile): number {
   switch (bed) {
     case 'monitor':
-      return lerp(0.15, 0.9, profile.medicalIntensity);
+      return lerp(0.15, 1, profile.medicalIntensity);
     case 'ventilator':
-      return lerp(0.1, 0.8, profile.medicalIntensity);
+      return lerp(0.1, 0.9, profile.medicalIntensity);
     case 'vacuum':
-      return lerp(0.3, 0.95, profile.domesticIntensity);
+      return lerp(0.3, 1, profile.domesticIntensity);
   }
 }
 
-const shows = (shot: TimedShot, bed: Bed): boolean =>
-  BED_SOURCES[bed].motifs.some((motif) => shot.asset.tags.motifs.includes(motif)) ||
-  BED_SOURCES[bed].locations.includes(shot.asset.tags.location);
+const shows = (shot: TimedShot, bed: Bed): boolean => BED_SOURCES[bed].some((motif) => shot.asset.tags.motifs.includes(motif));
 
 /** A long beat updates the mix about this often, ms. */
 const MIX_STEP_MS = 4000;
@@ -83,6 +93,7 @@ export function planSound(
   totalMs: number,
   profile: DreamProfile,
   reason: AwakeningReason,
+  length: DreamLength,
   rng: Rng,
 ): FilmSoundPlan {
   const cues: { at: number; order: number; cue: Omit<SoundCue, 'at'> }[] = [];
@@ -115,18 +126,32 @@ export function planSound(
   const silent = (ms: number): { from: number; to: number } | undefined =>
     silences.find((window) => ms >= window.from && ms < window.to);
 
+  // The dream's own beds (#78): one or two, weighted without replacement
+  // (Efraimidis–Spirakis, the largest keys win).
+  const firstShown = new Map<Bed, TimedShot | undefined>(BEDS.map((bed) => [bed, shots.find((shot) => !shot.scare && shows(shot, bed))]));
+  const count = rng.next() < DREAM_BEDS.secondChance[length] ? 2 : 1;
+  const ownBeds = new Set(
+    BEDS.map((bed) => {
+      const pull = bedPull(bed, profile) * (firstShown.get(bed) ? DREAM_BEDS.shownPull : 1);
+      return { bed, key: Math.log(1 - rng.next()) / pull };
+    })
+      .sort((a, b) => b.key - a.key)
+      .slice(0, count)
+      .map(({ bed }) => bed),
+  );
+
   // Beds start a little before the first shot that shows their source, or on
   // a calm beat of the first half when the source is never shown; never in a
   // silence, which would swallow their first moment.
   const bedStart = new Map<Bed, number>();
   for (const bed of BEDS) {
     const lead = rng.range(300, 2000);
-    const roll = rng.next();
     const beatRoll = rng.next();
-    const shown = shots.find((shot) => !shot.scare && shows(shot, bed));
+    if (!ownBeds.has(bed)) continue;
+    const shown = firstShown.get(bed);
     let start: number | undefined;
     if (shown) start = shown.start - lead;
-    else if (roll < bedChance(bed, profile)) {
+    else {
       const early = calmBeats.filter((b) => b.start < totalMs * 0.6);
       const beat = early[Math.floor(beatRoll * early.length)];
       if (beat) start = beat.start - lead * 0.5;
@@ -205,16 +230,32 @@ export function planSound(
       cue(beat.start, 'breath', 'start', { volume: 0.4, rate: lerp(0.5, 0.9, beat.tensionTo) });
     }
     if (beat.role === 'false_alarm') {
-      // Misdirection: a short hush, then something harmless and loud.
-      const monitorOn = (bedStart.get('monitor') ?? Infinity) < beat.start;
-      const creak = rng.next() < 0.5 || !monitorOn;
+      // Misdirection: a short hush, then something harmless and loud — one of
+      // the dream's own sounds (#78): the swing's creak when the swing is in
+      // the dream, a lone beep of its monitor, a roar of its vacuum. With none
+      // of them, a lone beep out of nowhere — the microwave, as the journal
+      // will tell.
+      const roll = rng.next();
+      const pitch = rng.range(0.2, 0.4);
+      const roar = rng.range(400, 800);
+      const on = (bed: Bed) => (bedStart.get(bed) ?? Infinity) < beat.start;
+      const options: ('creak' | 'monitor' | 'vacuum')[] = [];
+      if (swingRuns.length > 0) options.push('creak');
+      if (on('monitor')) options.push('monitor');
+      if (on('vacuum')) options.push('vacuum');
+      const pick = options[Math.floor(roll * options.length)] ?? 'beep';
       cue(beat.start - hush, 'silence', 'start', { depth: 0.7 });
       cue(beat.start, 'silence', 'stop');
-      if (creak) {
-        cue(beat.start, 'swing_creak', 'hit', { strength: 1, pitch: rng.range(0.2, 0.4) });
+      if (pick === 'creak') {
+        cue(beat.start, 'swing_creak', 'hit', { strength: 1, pitch });
         heard(beat.start, 'swing_creak');
-      } else {
+      } else if (pick === 'monitor' || pick === 'beep') {
         cue(beat.start, 'monitor', 'hit', { volume: 1 });
+        if (pick === 'beep') heard(beat.start, 'monitor');
+      } else {
+        // The vacuum lunges at full strength for a moment, then settles back.
+        cue(beat.start, 'vacuum', 'set', { volume: 1, turbine: 1 });
+        cue(beat.start + roar, 'vacuum', 'set', bedParams('vacuum', beat.start + roar));
       }
     }
     if (beat.role === 'scare') {

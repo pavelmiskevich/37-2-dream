@@ -178,7 +178,7 @@ export const generateFilm: GenerateFilm = (seed: DreamSeed, length: DreamLength,
 
   // How the dream ends: the planned reason and temperature (D-020).
   const awakening = generateAwakeningParams([], filmSharedRng(seed, 'awakening'));
-  const soundPlan = planSound(beats, planned, totalMs, profile, awakening.reason, filmRng(seed, length, 'sound'));
+  const soundPlan = planSound(beats, planned, totalMs, profile, awakening.reason, length, filmRng(seed, length, 'sound'));
   const { intrusions } = soundPlan;
   const sounds = ending === 'fall' ? withFallWind(soundPlan.sounds, (planned[planned.length - 1] as TimedShot).start, totalMs) : soundPlan.sounds;
 

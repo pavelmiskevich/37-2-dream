@@ -1,5 +1,5 @@
 {
-  "engineVersion": 13,
+  "engineVersion": 14,
   "seed": "DREAM-C0DE-BEEF-0451",
   "length": "long",
   "duration": 162,
@@ -2464,21 +2464,12 @@
       }
     },
     {
-      "at": 10.123,
+      "at": 10.23,
       "sound": "hum",
       "action": "set",
       "params": {
         "volume": 0.335,
         "muffle": 0
-      }
-    },
-    {
-      "at": 13.577,
-      "sound": "vacuum",
-      "action": "start",
-      "params": {
-        "volume": 0.3,
-        "turbine": 0
       }
     },
     {
@@ -2491,11 +2482,11 @@
       }
     },
     {
-      "at": 14.003,
+      "at": 14.108,
       "sound": "vacuum",
-      "action": "set",
+      "action": "start",
       "params": {
-        "volume": 0.302,
+        "volume": 0.3,
         "turbine": 0
       }
     },
@@ -2513,26 +2504,26 @@
       "sound": "vacuum",
       "action": "set",
       "params": {
-        "volume": 0.316,
-        "turbine": 0.003
+        "volume": 0.314,
+        "turbine": 0.002
       }
     },
     {
-      "at": 17.877,
+      "at": 17.529,
       "sound": "swing_creak",
       "action": "hit",
       "params": {
-        "strength": 0.661,
-        "pitch": 0.628
+        "strength": 0.654,
+        "pitch": 0.471
       }
     },
     {
-      "at": 19.606,
+      "at": 19.075,
       "sound": "swing_creak",
       "action": "hit",
       "params": {
-        "strength": 0.695,
-        "pitch": 0.628
+        "strength": 0.684,
+        "pitch": 0.471
       }
     },
     {
@@ -2550,15 +2541,15 @@
     },
     {
       "at": 21.02,
-      "sound": "swing_creak",
-      "action": "hit",
+      "sound": "vacuum",
+      "action": "set",
       "params": {
-        "strength": 1,
-        "pitch": 0.363
+        "volume": 1,
+        "turbine": 1
       }
     },
     {
-      "at": 21.576,
+      "at": 21.395,
       "sound": "hum",
       "action": "set",
       "params": {
@@ -2567,16 +2558,25 @@
       }
     },
     {
-      "at": 21.576,
+      "at": 21.395,
       "sound": "vacuum",
       "action": "set",
       "params": {
-        "volume": 0.333,
-        "turbine": 0.01
+        "volume": 0.331,
+        "turbine": 0.009
       }
     },
     {
-      "at": 25.91,
+      "at": 21.585,
+      "sound": "vacuum",
+      "action": "set",
+      "params": {
+        "volume": 0.33,
+        "turbine": 0.008
+      }
+    },
+    {
+      "at": 26.193,
       "sound": "hum",
       "action": "set",
       "params": {
@@ -2585,21 +2585,12 @@
       }
     },
     {
-      "at": 25.91,
+      "at": 26.193,
       "sound": "vacuum",
       "action": "set",
       "params": {
-        "volume": 0.352,
-        "turbine": 0.019
-      }
-    },
-    {
-      "at": 27.107,
-      "sound": "monitor",
-      "action": "start",
-      "params": {
-        "volume": 0.465,
-        "tempo": 0.256
+        "volume": 0.35,
+        "turbine": 0.018
       }
     },
     {
@@ -2613,29 +2604,11 @@
     },
     {
       "at": 30.549,
-      "sound": "monitor",
-      "action": "set",
-      "params": {
-        "volume": 0.529,
-        "tempo": 0.398
-      }
-    },
-    {
-      "at": 30.549,
       "sound": "vacuum",
       "action": "set",
       "params": {
-        "volume": 0.369,
-        "turbine": 0.03
-      }
-    },
-    {
-      "at": 31.818,
-      "sound": "ventilator",
-      "action": "start",
-      "params": {
-        "volume": 0.48,
-        "rate": 0.515
+        "volume": 0.367,
+        "turbine": 0.029
       }
     },
     {
@@ -2657,11 +2630,11 @@
       "action": "hit",
       "params": {
         "strength": 1,
-        "pitch": 0.212
+        "pitch": 0.36
       }
     },
     {
-      "at": 35.257,
+      "at": 35.341,
       "sound": "hum",
       "action": "set",
       "params": {
@@ -2670,34 +2643,16 @@
       }
     },
     {
-      "at": 35.257,
-      "sound": "monitor",
-      "action": "set",
-      "params": {
-        "volume": 0.412,
-        "tempo": 0.138
-      }
-    },
-    {
-      "at": 35.257,
-      "sound": "ventilator",
-      "action": "set",
-      "params": {
-        "volume": 0.355,
-        "rate": 0.297
-      }
-    },
-    {
-      "at": 35.257,
+      "at": 35.341,
       "sound": "vacuum",
       "action": "set",
       "params": {
-        "volume": 0.388,
-        "turbine": 0.046
+        "volume": 0.386,
+        "turbine": 0.044
       }
     },
     {
-      "at": 40.093,
+      "at": 39.592,
       "sound": "hum",
       "action": "set",
       "params": {
@@ -2706,30 +2661,12 @@
       }
     },
     {
-      "at": 40.093,
-      "sound": "monitor",
-      "action": "set",
-      "params": {
-        "volume": 0.466,
-        "tempo": 0.257
-      }
-    },
-    {
-      "at": 40.093,
-      "sound": "ventilator",
-      "action": "set",
-      "params": {
-        "volume": 0.403,
-        "rate": 0.38
-      }
-    },
-    {
-      "at": 40.093,
+      "at": 39.592,
       "sound": "vacuum",
       "action": "set",
       "params": {
-        "volume": 0.408,
-        "turbine": 0.062
+        "volume": 0.406,
+        "turbine": 0.061
       }
     },
     {
@@ -2743,29 +2680,11 @@
     },
     {
       "at": 43.59,
-      "sound": "monitor",
-      "action": "set",
-      "params": {
-        "volume": 0.518,
-        "tempo": 0.374
-      }
-    },
-    {
-      "at": 43.59,
-      "sound": "ventilator",
-      "action": "set",
-      "params": {
-        "volume": 0.45,
-        "rate": 0.462
-      }
-    },
-    {
-      "at": 43.59,
       "sound": "vacuum",
       "action": "set",
       "params": {
-        "volume": 0.421,
-        "turbine": 0.076
+        "volume": 0.42,
+        "turbine": 0.074
       }
     },
     {
@@ -2779,42 +2698,33 @@
     },
     {
       "at": 47.008,
-      "sound": "monitor",
-      "action": "set",
-      "params": {
-        "volume": 0.571,
-        "tempo": 0.491
-      }
-    },
-    {
-      "at": 47.008,
-      "sound": "ventilator",
-      "action": "set",
-      "params": {
-        "volume": 0.496,
-        "rate": 0.544
-      }
-    },
-    {
-      "at": 47.008,
       "sound": "vacuum",
       "action": "set",
       "params": {
-        "volume": 0.435,
-        "turbine": 0.09
+        "volume": 0.433,
+        "turbine": 0.088
       }
     },
     {
-      "at": 48.661,
+      "at": 48.984,
       "sound": "swing_creak",
       "action": "hit",
       "params": {
-        "strength": 0.729,
-        "pitch": 0.534
+        "strength": 0.735,
+        "pitch": 0.528
       }
     },
     {
-      "at": 49.848,
+      "at": 50.144,
+      "sound": "swing_creak",
+      "action": "hit",
+      "params": {
+        "strength": 0.759,
+        "pitch": 0.528
+      }
+    },
+    {
+      "at": 50.195,
       "sound": "hum",
       "action": "set",
       "params": {
@@ -2823,39 +2733,12 @@
       }
     },
     {
-      "at": 49.848,
-      "sound": "monitor",
-      "action": "set",
-      "params": {
-        "volume": 0.624,
-        "tempo": 0.608
-      }
-    },
-    {
-      "at": 49.848,
-      "sound": "ventilator",
-      "action": "set",
-      "params": {
-        "volume": 0.543,
-        "rate": 0.626
-      }
-    },
-    {
-      "at": 49.848,
+      "at": 50.195,
       "sound": "vacuum",
       "action": "set",
       "params": {
-        "volume": 0.449,
-        "turbine": 0.105
-      }
-    },
-    {
-      "at": 49.852,
-      "sound": "swing_creak",
-      "action": "hit",
-      "params": {
-        "strength": 0.753,
-        "pitch": 0.534
+        "volume": 0.447,
+        "turbine": 0.103
       }
     },
     {
@@ -2882,14 +2765,24 @@
     },
     {
       "at": 54.711,
-      "sound": "monitor",
-      "action": "hit",
+      "sound": "vacuum",
+      "action": "set",
       "params": {
-        "volume": 1
+        "volume": 1,
+        "turbine": 1
       }
     },
     {
-      "at": 55.452,
+      "at": 55.389,
+      "sound": "vacuum",
+      "action": "set",
+      "params": {
+        "volume": 0.467,
+        "turbine": 0.127
+      }
+    },
+    {
+      "at": 55.435,
       "sound": "hum",
       "action": "set",
       "params": {
@@ -2898,30 +2791,12 @@
       }
     },
     {
-      "at": 55.452,
-      "sound": "monitor",
-      "action": "set",
-      "params": {
-        "volume": 0.433,
-        "tempo": 0.185
-      }
-    },
-    {
-      "at": 55.452,
-      "sound": "ventilator",
-      "action": "set",
-      "params": {
-        "volume": 0.374,
-        "rate": 0.33
-      }
-    },
-    {
-      "at": 55.452,
+      "at": 55.435,
       "sound": "vacuum",
       "action": "set",
       "params": {
-        "volume": 0.47,
-        "turbine": 0.13
+        "volume": 0.469,
+        "turbine": 0.128
       }
     },
     {
@@ -2938,7 +2813,7 @@
       }
     },
     {
-      "at": 59.053,
+      "at": 58.724,
       "sound": "hum",
       "action": "set",
       "params": {
@@ -2947,30 +2822,12 @@
       }
     },
     {
-      "at": 59.053,
-      "sound": "monitor",
-      "action": "set",
-      "params": {
-        "volume": 0.56,
-        "tempo": 0.466
-      }
-    },
-    {
-      "at": 59.053,
-      "sound": "ventilator",
-      "action": "set",
-      "params": {
-        "volume": 0.486,
-        "rate": 0.526
-      }
-    },
-    {
-      "at": 59.053,
+      "at": 58.724,
       "sound": "vacuum",
       "action": "set",
       "params": {
-        "volume": 0.485,
-        "turbine": 0.149
+        "volume": 0.483,
+        "turbine": 0.147
       }
     },
     {
@@ -2987,7 +2844,7 @@
       }
     },
     {
-      "at": 64.049,
+      "at": 64.139,
       "sound": "hum",
       "action": "set",
       "params": {
@@ -2996,39 +2853,21 @@
       }
     },
     {
-      "at": 64.049,
-      "sound": "monitor",
-      "action": "set",
-      "params": {
-        "volume": 0.492,
-        "tempo": 0.315
-      }
-    },
-    {
-      "at": 64.049,
-      "sound": "ventilator",
-      "action": "set",
-      "params": {
-        "volume": 0.426,
-        "rate": 0.421
-      }
-    },
-    {
-      "at": 64.049,
+      "at": 64.139,
       "sound": "vacuum",
       "action": "set",
       "params": {
-        "volume": 0.506,
-        "turbine": 0.177
+        "volume": 0.505,
+        "turbine": 0.175
       }
     },
     {
-      "at": 66.814,
+      "at": 66.9,
       "sound": "swing_creak",
       "action": "hit",
       "params": {
-        "strength": 0.663,
-        "pitch": 0.608
+        "strength": 0.666,
+        "pitch": 0.403
       }
     },
     {
@@ -3042,47 +2881,20 @@
     },
     {
       "at": 67.657,
-      "sound": "monitor",
-      "action": "set",
-      "params": {
-        "volume": 0.568,
-        "tempo": 0.485
-      }
-    },
-    {
-      "at": 67.657,
-      "sound": "ventilator",
-      "action": "set",
-      "params": {
-        "volume": 0.494,
-        "rate": 0.54
-      }
-    },
-    {
-      "at": 67.657,
       "sound": "vacuum",
       "action": "set",
       "params": {
-        "volume": 0.519,
-        "turbine": 0.194
+        "volume": 0.517,
+        "turbine": 0.192
       }
     },
     {
-      "at": 67.951,
+      "at": 68.029,
       "sound": "swing_creak",
       "action": "hit",
       "params": {
-        "strength": 0.701,
-        "pitch": 0.608
-      }
-    },
-    {
-      "at": 69.08,
-      "sound": "swing_creak",
-      "action": "hit",
-      "params": {
-        "strength": 0.739,
-        "pitch": 0.608
+        "strength": 0.704,
+        "pitch": 0.403
       }
     },
     {
@@ -3100,14 +2912,15 @@
     },
     {
       "at": 70.687,
-      "sound": "monitor",
+      "sound": "swing_creak",
       "action": "hit",
       "params": {
-        "volume": 1
+        "strength": 1,
+        "pitch": 0.213
       }
     },
     {
-      "at": 70.786,
+      "at": 70.69,
       "sound": "hum",
       "action": "set",
       "params": {
@@ -3116,30 +2929,12 @@
       }
     },
     {
-      "at": 70.786,
-      "sound": "monitor",
-      "action": "set",
-      "params": {
-        "volume": 0.45,
-        "tempo": 0.222
-      }
-    },
-    {
-      "at": 70.786,
-      "sound": "ventilator",
-      "action": "set",
-      "params": {
-        "volume": 0.389,
-        "rate": 0.355
-      }
-    },
-    {
-      "at": 70.786,
+      "at": 70.69,
       "sound": "vacuum",
       "action": "set",
       "params": {
-        "volume": 0.533,
-        "turbine": 0.216
+        "volume": 0.532,
+        "turbine": 0.214
       }
     },
     {
@@ -3153,33 +2948,15 @@
     },
     {
       "at": 74.361,
-      "sound": "monitor",
-      "action": "set",
-      "params": {
-        "volume": 0.441,
-        "tempo": 0.202
-      }
-    },
-    {
-      "at": 74.361,
-      "sound": "ventilator",
-      "action": "set",
-      "params": {
-        "volume": 0.381,
-        "rate": 0.341
-      }
-    },
-    {
-      "at": 74.361,
       "sound": "vacuum",
       "action": "set",
       "params": {
-        "volume": 0.546,
-        "turbine": 0.234
+        "volume": 0.544,
+        "turbine": 0.232
       }
     },
     {
-      "at": 76.863,
+      "at": 77.363,
       "sound": "hum",
       "action": "set",
       "params": {
@@ -3188,30 +2965,12 @@
       }
     },
     {
-      "at": 76.863,
-      "sound": "monitor",
-      "action": "set",
-      "params": {
-        "volume": 0.505,
-        "tempo": 0.345
-      }
-    },
-    {
-      "at": 76.863,
-      "sound": "ventilator",
-      "action": "set",
-      "params": {
-        "volume": 0.438,
-        "rate": 0.442
-      }
-    },
-    {
-      "at": 76.863,
+      "at": 77.363,
       "sound": "vacuum",
       "action": "set",
       "params": {
-        "volume": 0.558,
-        "turbine": 0.254
+        "volume": 0.557,
+        "turbine": 0.252
       }
     },
     {
@@ -3225,33 +2984,15 @@
     },
     {
       "at": 82.265,
-      "sound": "monitor",
-      "action": "set",
-      "params": {
-        "volume": 0.584,
-        "tempo": 0.52
-      }
-    },
-    {
-      "at": 82.265,
-      "sound": "ventilator",
-      "action": "set",
-      "params": {
-        "volume": 0.508,
-        "rate": 0.564
-      }
-    },
-    {
-      "at": 82.265,
       "sound": "vacuum",
       "action": "set",
       "params": {
-        "volume": 0.578,
-        "turbine": 0.285
+        "volume": 0.577,
+        "turbine": 0.283
       }
     },
     {
-      "at": 86.998,
+      "at": 86.884,
       "sound": "hum",
       "action": "set",
       "params": {
@@ -3260,30 +3001,12 @@
       }
     },
     {
-      "at": 86.998,
-      "sound": "monitor",
-      "action": "set",
-      "params": {
-        "volume": 0.662,
-        "tempo": 0.694
-      }
-    },
-    {
-      "at": 86.998,
-      "sound": "ventilator",
-      "action": "set",
-      "params": {
-        "volume": 0.578,
-        "rate": 0.686
-      }
-    },
-    {
-      "at": 86.998,
+      "at": 86.884,
       "sound": "vacuum",
       "action": "set",
       "params": {
-        "volume": 0.597,
-        "turbine": 0.318
+        "volume": 0.596,
+        "turbine": 0.316
       }
     },
     {
@@ -3306,29 +3029,11 @@
     },
     {
       "at": 90.603,
-      "sound": "monitor",
-      "action": "set",
-      "params": {
-        "volume": 0.703,
-        "tempo": 0.784
-      }
-    },
-    {
-      "at": 90.603,
-      "sound": "ventilator",
-      "action": "set",
-      "params": {
-        "volume": 0.614,
-        "rate": 0.749
-      }
-    },
-    {
-      "at": 90.603,
       "sound": "vacuum",
       "action": "set",
       "params": {
-        "volume": 0.611,
-        "turbine": 0.342
+        "volume": 0.61,
+        "turbine": 0.341
       }
     },
     {
@@ -3346,14 +3051,15 @@
     },
     {
       "at": 94.123,
-      "sound": "monitor",
+      "sound": "swing_creak",
       "action": "hit",
       "params": {
-        "volume": 1
+        "strength": 1,
+        "pitch": 0.279
       }
     },
     {
-      "at": 94.497,
+      "at": 94.349,
       "sound": "hum",
       "action": "set",
       "params": {
@@ -3362,30 +3068,12 @@
       }
     },
     {
-      "at": 94.497,
-      "sound": "monitor",
-      "action": "set",
-      "params": {
-        "volume": 0.475,
-        "tempo": 0.277
-      }
-    },
-    {
-      "at": 94.497,
-      "sound": "ventilator",
-      "action": "set",
-      "params": {
-        "volume": 0.411,
-        "rate": 0.394
-      }
-    },
-    {
-      "at": 94.497,
+      "at": 94.349,
       "sound": "vacuum",
       "action": "set",
       "params": {
-        "volume": 0.628,
-        "turbine": 0.372
+        "volume": 0.627,
+        "turbine": 0.37
       }
     },
     {
@@ -3402,42 +3090,6 @@
       }
     },
     {
-      "at": 97.044,
-      "sound": "hum",
-      "action": "set",
-      "params": {
-        "volume": 0.5,
-        "muffle": 0.6
-      }
-    },
-    {
-      "at": 97.044,
-      "sound": "monitor",
-      "action": "set",
-      "params": {
-        "volume": 0.6,
-        "tempo": 0.555
-      }
-    },
-    {
-      "at": 97.044,
-      "sound": "ventilator",
-      "action": "set",
-      "params": {
-        "volume": 0.522,
-        "rate": 0.589
-      }
-    },
-    {
-      "at": 97.044,
-      "sound": "vacuum",
-      "action": "set",
-      "params": {
-        "volume": 0.639,
-        "turbine": 0.392
-      }
-    },
-    {
       "at": 97.153,
       "sound": "silence",
       "action": "stop"
@@ -3451,7 +3103,25 @@
       }
     },
     {
-      "at": 101.434,
+      "at": 97.388,
+      "sound": "hum",
+      "action": "set",
+      "params": {
+        "volume": 0.5,
+        "muffle": 0.6
+      }
+    },
+    {
+      "at": 97.388,
+      "sound": "vacuum",
+      "action": "set",
+      "params": {
+        "volume": 0.638,
+        "turbine": 0.39
+      }
+    },
+    {
+      "at": 101.163,
       "sound": "hum",
       "action": "set",
       "params": {
@@ -3460,30 +3130,12 @@
       }
     },
     {
-      "at": 101.434,
-      "sound": "monitor",
-      "action": "set",
-      "params": {
-        "volume": 0.53,
-        "tempo": 0.401
-      }
-    },
-    {
-      "at": 101.434,
-      "sound": "ventilator",
-      "action": "set",
-      "params": {
-        "volume": 0.46,
-        "rate": 0.481
-      }
-    },
-    {
-      "at": 101.434,
+      "at": 101.163,
       "sound": "vacuum",
       "action": "set",
       "params": {
-        "volume": 0.655,
-        "turbine": 0.423
+        "volume": 0.654,
+        "turbine": 0.421
       }
     },
     {
@@ -3497,29 +3149,11 @@
     },
     {
       "at": 105.344,
-      "sound": "monitor",
-      "action": "set",
-      "params": {
-        "volume": 0.584,
-        "tempo": 0.519
-      }
-    },
-    {
-      "at": 105.344,
-      "sound": "ventilator",
-      "action": "set",
-      "params": {
-        "volume": 0.508,
-        "rate": 0.563
-      }
-    },
-    {
-      "at": 105.344,
       "sound": "vacuum",
       "action": "set",
       "params": {
-        "volume": 0.671,
-        "turbine": 0.453
+        "volume": 0.67,
+        "turbine": 0.452
       }
     },
     {
@@ -3533,29 +3167,11 @@
     },
     {
       "at": 109.251,
-      "sound": "monitor",
-      "action": "set",
-      "params": {
-        "volume": 0.637,
-        "tempo": 0.637
-      }
-    },
-    {
-      "at": 109.251,
-      "sound": "ventilator",
-      "action": "set",
-      "params": {
-        "volume": 0.555,
-        "rate": 0.646
-      }
-    },
-    {
-      "at": 109.251,
       "sound": "vacuum",
       "action": "set",
       "params": {
-        "volume": 0.687,
-        "turbine": 0.484
+        "volume": 0.686,
+        "turbine": 0.483
       }
     },
     {
@@ -3582,15 +3198,15 @@
     },
     {
       "at": 113.159,
-      "sound": "swing_creak",
-      "action": "hit",
+      "sound": "vacuum",
+      "action": "set",
       "params": {
-        "strength": 1,
-        "pitch": 0.339
+        "volume": 1,
+        "turbine": 1
       }
     },
     {
-      "at": 113.72,
+      "at": 113.458,
       "sound": "hum",
       "action": "set",
       "params": {
@@ -3599,30 +3215,21 @@
       }
     },
     {
-      "at": 113.72,
-      "sound": "monitor",
-      "action": "set",
-      "params": {
-        "volume": 0.495,
-        "tempo": 0.322
-      }
-    },
-    {
-      "at": 113.72,
-      "sound": "ventilator",
-      "action": "set",
-      "params": {
-        "volume": 0.429,
-        "rate": 0.425
-      }
-    },
-    {
-      "at": 113.72,
+      "at": 113.458,
       "sound": "vacuum",
       "action": "set",
       "params": {
-        "volume": 0.706,
-        "turbine": 0.523
+        "volume": 0.705,
+        "turbine": 0.522
+      }
+    },
+    {
+      "at": 113.767,
+      "sound": "vacuum",
+      "action": "set",
+      "params": {
+        "volume": 0.704,
+        "turbine": 0.52
       }
     },
     {
@@ -3635,7 +3242,7 @@
       }
     },
     {
-      "at": 118.743,
+      "at": 118.835,
       "sound": "hum",
       "action": "set",
       "params": {
@@ -3644,30 +3251,12 @@
       }
     },
     {
-      "at": 118.743,
-      "sound": "monitor",
-      "action": "set",
-      "params": {
-        "volume": 0.549,
-        "tempo": 0.443
-      }
-    },
-    {
-      "at": 118.743,
-      "sound": "ventilator",
-      "action": "set",
-      "params": {
-        "volume": 0.477,
-        "rate": 0.51
-      }
-    },
-    {
-      "at": 118.743,
+      "at": 118.835,
       "sound": "vacuum",
       "action": "set",
       "params": {
         "volume": 0.727,
-        "turbine": 0.568
+        "turbine": 0.567
       }
     },
     {
@@ -3681,29 +3270,11 @@
     },
     {
       "at": 123.185,
-      "sound": "monitor",
-      "action": "set",
-      "params": {
-        "volume": 0.627,
-        "tempo": 0.616
-      }
-    },
-    {
-      "at": 123.185,
-      "sound": "ventilator",
-      "action": "set",
-      "params": {
-        "volume": 0.546,
-        "rate": 0.631
-      }
-    },
-    {
-      "at": 123.185,
       "sound": "vacuum",
       "action": "set",
       "params": {
         "volume": 0.743,
-        "turbine": 0.602
+        "turbine": 0.601
       }
     },
     {
@@ -3725,11 +3296,11 @@
       "action": "hit",
       "params": {
         "strength": 1,
-        "pitch": 0.213
+        "pitch": 0.393
       }
     },
     {
-      "at": 127.294,
+      "at": 127.353,
       "sound": "hum",
       "action": "set",
       "params": {
@@ -3738,34 +3309,16 @@
       }
     },
     {
-      "at": 127.294,
-      "sound": "monitor",
-      "action": "set",
-      "params": {
-        "volume": 0.509,
-        "tempo": 0.354
-      }
-    },
-    {
-      "at": 127.294,
-      "sound": "ventilator",
-      "action": "set",
-      "params": {
-        "volume": 0.442,
-        "rate": 0.448
-      }
-    },
-    {
-      "at": 127.294,
+      "at": 127.353,
       "sound": "vacuum",
       "action": "set",
       "params": {
         "volume": 0.761,
-        "turbine": 0.643
+        "turbine": 0.642
       }
     },
     {
-      "at": 131.759,
+      "at": 131.812,
       "sound": "hum",
       "action": "set",
       "params": {
@@ -3774,30 +3327,12 @@
       }
     },
     {
-      "at": 131.759,
-      "sound": "monitor",
-      "action": "set",
-      "params": {
-        "volume": 0.563,
-        "tempo": 0.474
-      }
-    },
-    {
-      "at": 131.759,
-      "sound": "ventilator",
-      "action": "set",
-      "params": {
-        "volume": 0.49,
-        "rate": 0.532
-      }
-    },
-    {
-      "at": 131.759,
+      "at": 131.812,
       "sound": "vacuum",
       "action": "set",
       "params": {
         "volume": 0.779,
-        "turbine": 0.683
+        "turbine": 0.682
       }
     },
     {
@@ -3811,29 +3346,11 @@
     },
     {
       "at": 135.947,
-      "sound": "monitor",
-      "action": "set",
-      "params": {
-        "volume": 0.616,
-        "tempo": 0.592
-      }
-    },
-    {
-      "at": 135.947,
-      "sound": "ventilator",
-      "action": "set",
-      "params": {
-        "volume": 0.537,
-        "rate": 0.614
-      }
-    },
-    {
-      "at": 135.947,
       "sound": "vacuum",
       "action": "set",
       "params": {
-        "volume": 0.795,
-        "turbine": 0.718
+        "volume": 0.794,
+        "turbine": 0.717
       }
     },
     {
@@ -3847,29 +3364,11 @@
     },
     {
       "at": 139.75,
-      "sound": "monitor",
-      "action": "set",
-      "params": {
-        "volume": 0.669,
-        "tempo": 0.709
-      }
-    },
-    {
-      "at": 139.75,
-      "sound": "ventilator",
-      "action": "set",
-      "params": {
-        "volume": 0.584,
-        "rate": 0.697
-      }
-    },
-    {
-      "at": 139.75,
       "sound": "vacuum",
       "action": "set",
       "params": {
         "volume": 0.81,
-        "turbine": 0.754
+        "turbine": 0.753
       }
     },
     {
@@ -3905,14 +3404,15 @@
     },
     {
       "at": 143.554,
-      "sound": "monitor",
+      "sound": "swing_creak",
       "action": "hit",
       "params": {
-        "volume": 1
+        "strength": 1,
+        "pitch": 0.33
       }
     },
     {
-      "at": 144.118,
+      "at": 144.229,
       "sound": "hum",
       "action": "set",
       "params": {
@@ -3921,34 +3421,16 @@
       }
     },
     {
-      "at": 144.118,
-      "sound": "monitor",
-      "action": "set",
-      "params": {
-        "volume": 0.527,
-        "tempo": 0.394
-      }
-    },
-    {
-      "at": 144.118,
-      "sound": "ventilator",
-      "action": "set",
-      "params": {
-        "volume": 0.458,
-        "rate": 0.476
-      }
-    },
-    {
-      "at": 144.118,
+      "at": 144.229,
       "sound": "vacuum",
       "action": "set",
       "params": {
         "volume": 0.829,
-        "turbine": 0.8
+        "turbine": 0.799
       }
     },
     {
-      "at": 150.097,
+      "at": 149.761,
       "sound": "hum",
       "action": "set",
       "params": {
@@ -3957,30 +3439,12 @@
       }
     },
     {
-      "at": 150.097,
-      "sound": "monitor",
-      "action": "set",
-      "params": {
-        "volume": 0.705,
-        "tempo": 0.788
-      }
-    },
-    {
-      "at": 150.097,
-      "sound": "ventilator",
-      "action": "set",
-      "params": {
-        "volume": 0.615,
-        "rate": 0.752
-      }
-    },
-    {
-      "at": 150.097,
+      "at": 149.761,
       "sound": "vacuum",
       "action": "set",
       "params": {
         "volume": 0.853,
-        "turbine": 0.858
+        "turbine": 0.857
       }
     },
     {
@@ -3994,28 +3458,10 @@
     },
     {
       "at": 154.211,
-      "sound": "monitor",
-      "action": "set",
-      "params": {
-        "volume": 0.736,
-        "tempo": 0.859
-      }
-    },
-    {
-      "at": 154.211,
-      "sound": "ventilator",
-      "action": "set",
-      "params": {
-        "volume": 0.643,
-        "rate": 0.801
-      }
-    },
-    {
-      "at": 154.211,
       "sound": "vacuum",
       "action": "set",
       "params": {
-        "volume": 0.869,
+        "volume": 0.868,
         "turbine": 0.897
       }
     },
@@ -4048,24 +3494,6 @@
     },
     {
       "at": 158.106,
-      "sound": "monitor",
-      "action": "set",
-      "params": {
-        "volume": 0.768,
-        "tempo": 0.929
-      }
-    },
-    {
-      "at": 158.106,
-      "sound": "ventilator",
-      "action": "set",
-      "params": {
-        "volume": 0.672,
-        "rate": 0.851
-      }
-    },
-    {
-      "at": 158.106,
       "sound": "vacuum",
       "action": "set",
       "params": {
@@ -4080,16 +3508,6 @@
     },
     {
       "at": 162,
-      "sound": "monitor",
-      "action": "stop"
-    },
-    {
-      "at": 162,
-      "sound": "ventilator",
-      "action": "stop"
-    },
-    {
-      "at": 162,
       "sound": "vacuum",
       "action": "stop"
     }
@@ -4097,23 +3515,11 @@
   "intrusions": [
     {
       "motif": "vacuum",
-      "at": 13.577
+      "at": 14.108
     },
     {
       "motif": "swing_creak",
-      "at": 17.877
-    },
-    {
-      "motif": "swing_creak",
-      "at": 21.02
-    },
-    {
-      "motif": "monitor",
-      "at": 27.107
-    },
-    {
-      "motif": "ventilator",
-      "at": 31.818
+      "at": 17.529
     },
     {
       "motif": "swing_creak",
@@ -4121,19 +3527,23 @@
     },
     {
       "motif": "swing_creak",
-      "at": 48.661
+      "at": 48.984
     },
     {
       "motif": "swing_creak",
-      "at": 66.814
+      "at": 66.9
+    },
+    {
+      "motif": "swing_creak",
+      "at": 70.687
+    },
+    {
+      "motif": "swing_creak",
+      "at": 94.123
     },
     {
       "motif": "swing_creak",
       "at": 112.25
-    },
-    {
-      "motif": "swing_creak",
-      "at": 113.159
     },
     {
       "motif": "swing_creak",
@@ -4142,6 +3552,10 @@
     {
       "motif": "swing_creak",
       "at": 141.404
+    },
+    {
+      "motif": "swing_creak",
+      "at": 143.554
     },
     {
       "motif": "swing_creak",

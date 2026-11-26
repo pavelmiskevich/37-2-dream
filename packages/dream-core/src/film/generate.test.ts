@@ -241,7 +241,9 @@ describe.each(LENGTHS)('generateFilm: structure of %s films', { timeout: SLOW },
       });
       for (const bed of ['monitor', 'ventilator', 'vacuum'] as const) {
         const started = film.sounds.some((c) => c.sound === bed && c.action === 'start');
-        expect(film.intrusions.some((x) => x.motif === bed)).toBe(started);
+        // A lone beep of a false alarm is the monitor too, bed or not (#78).
+        const beeped = bed === 'monitor' && film.sounds.some((c) => c.sound === 'monitor' && c.action === 'hit');
+        expect(film.intrusions.some((x) => x.motif === bed)).toBe(started || beeped);
       }
     }
   });

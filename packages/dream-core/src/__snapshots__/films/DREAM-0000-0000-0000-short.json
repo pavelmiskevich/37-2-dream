@@ -1,5 +1,5 @@
 {
-  "engineVersion": 13,
+  "engineVersion": 14,
   "seed": "DREAM-0000-0000-0000",
   "length": "short",
   "duration": 37,
@@ -739,39 +739,30 @@
       }
     },
     {
-      "at": 1.833,
+      "at": 2.359,
       "sound": "swing_creak",
       "action": "hit",
       "params": {
-        "strength": 0.471,
-        "pitch": 0.496
+        "strength": 0.477,
+        "pitch": 0.602
       }
     },
     {
-      "at": 2.996,
+      "at": 4.12,
       "sound": "swing_creak",
       "action": "hit",
       "params": {
-        "strength": 0.483,
-        "pitch": 0.496
+        "strength": 0.495,
+        "pitch": 0.602
       }
     },
     {
-      "at": 4.538,
+      "at": 4.697,
       "sound": "hum",
       "action": "set",
       "params": {
         "volume": 0.327,
         "muffle": 0
-      }
-    },
-    {
-      "at": 4.757,
-      "sound": "swing_creak",
-      "action": "hit",
-      "params": {
-        "strength": 0.501,
-        "pitch": 0.496
       }
     },
     {
@@ -784,7 +775,7 @@
       }
     },
     {
-      "at": 10.441,
+      "at": 8.935,
       "sound": "vacuum",
       "action": "start",
       "params": {
@@ -793,7 +784,7 @@
       }
     },
     {
-      "at": 11.105,
+      "at": 11.284,
       "sound": "hum",
       "action": "set",
       "params": {
@@ -802,12 +793,12 @@
       }
     },
     {
-      "at": 11.105,
+      "at": 11.284,
       "sound": "vacuum",
       "action": "set",
       "params": {
-        "volume": 0.321,
-        "turbine": 0.004
+        "volume": 0.352,
+        "turbine": 0.019
       }
     },
     {
@@ -842,7 +833,7 @@
       }
     },
     {
-      "at": 16.205,
+      "at": 16.079,
       "sound": "hum",
       "action": "set",
       "params": {
@@ -851,12 +842,12 @@
       }
     },
     {
-      "at": 16.205,
+      "at": 16.079,
       "sound": "vacuum",
       "action": "set",
       "params": {
-        "volume": 0.432,
-        "turbine": 0.085
+        "volume": 0.457,
+        "turbine": 0.113
       }
     },
     {
@@ -873,33 +864,6 @@
       }
     },
     {
-      "at": 17.832,
-      "sound": "hum",
-      "action": "set",
-      "params": {
-        "volume": 0.435,
-        "muffle": 0.6
-      }
-    },
-    {
-      "at": 17.832,
-      "sound": "vacuum",
-      "action": "set",
-      "params": {
-        "volume": 0.471,
-        "turbine": 0.13
-      }
-    },
-    {
-      "at": 17.833,
-      "sound": "ventilator",
-      "action": "start",
-      "params": {
-        "volume": 0.7,
-        "rate": 0.9
-      }
-    },
-    {
       "at": 17.833,
       "sound": "silence",
       "action": "stop"
@@ -913,6 +877,24 @@
       }
     },
     {
+      "at": 17.948,
+      "sound": "hum",
+      "action": "set",
+      "params": {
+        "volume": 0.435,
+        "muffle": 0.6
+      }
+    },
+    {
+      "at": 17.948,
+      "sound": "vacuum",
+      "action": "set",
+      "params": {
+        "volume": 0.494,
+        "turbine": 0.159
+      }
+    },
+    {
       "at": 19.799,
       "sound": "swing_creak",
       "action": "hit",
@@ -922,7 +904,7 @@
       }
     },
     {
-      "at": 20.521,
+      "at": 20.344,
       "sound": "hum",
       "action": "set",
       "params": {
@@ -931,21 +913,12 @@
       }
     },
     {
-      "at": 20.521,
-      "sound": "ventilator",
-      "action": "set",
-      "params": {
-        "volume": 0.421,
-        "rate": 0.411
-      }
-    },
-    {
-      "at": 20.521,
+      "at": 20.344,
       "sound": "vacuum",
       "action": "set",
       "params": {
-        "volume": 0.53,
-        "turbine": 0.208
+        "volume": 0.549,
+        "turbine": 0.237
       }
     },
     {
@@ -990,15 +963,15 @@
     },
     {
       "at": 25.647,
-      "sound": "swing_creak",
-      "action": "hit",
+      "sound": "vacuum",
+      "action": "set",
       "params": {
-        "strength": 1,
-        "pitch": 0.352
+        "volume": 1,
+        "turbine": 1
       }
     },
     {
-      "at": 26.075,
+      "at": 26,
       "sound": "hum",
       "action": "set",
       "params": {
@@ -1007,25 +980,25 @@
       }
     },
     {
-      "at": 26.075,
-      "sound": "ventilator",
-      "action": "set",
-      "params": {
-        "volume": 0.405,
-        "rate": 0.383
-      }
-    },
-    {
-      "at": 26.075,
+      "at": 26,
       "sound": "vacuum",
       "action": "set",
       "params": {
-        "volume": 0.659,
-        "turbine": 0.424
+        "volume": 0.672,
+        "turbine": 0.449
       }
     },
     {
-      "at": 30.055,
+      "at": 26.369,
+      "sound": "vacuum",
+      "action": "set",
+      "params": {
+        "volume": 0.673,
+        "turbine": 0.45
+      }
+    },
+    {
+      "at": 30.098,
       "sound": "hum",
       "action": "set",
       "params": {
@@ -1034,29 +1007,12 @@
       }
     },
     {
-      "at": 30.055,
-      "sound": "ventilator",
-      "action": "set",
-      "params": {
-        "volume": 0.541,
-        "rate": 0.621
-      }
-    },
-    {
-      "at": 30.055,
+      "at": 30.098,
       "sound": "vacuum",
       "action": "set",
       "params": {
-        "volume": 0.751,
-        "turbine": 0.611
-      }
-    },
-    {
-      "at": 33.402,
-      "sound": "kitchen",
-      "action": "start",
-      "params": {
-        "volume": 0.3
+        "volume": 0.759,
+        "turbine": 0.628
       }
     },
     {
@@ -1070,30 +1026,24 @@
     },
     {
       "at": 33.696,
-      "sound": "ventilator",
-      "action": "set",
-      "params": {
-        "volume": 0.596,
-        "rate": 0.717
-      }
-    },
-    {
-      "at": 33.696,
       "sound": "vacuum",
       "action": "set",
       "params": {
-        "volume": 0.825,
-        "turbine": 0.78
+        "volume": 0.829,
+        "turbine": 0.79
+      }
+    },
+    {
+      "at": 34.399,
+      "sound": "kitchen",
+      "action": "start",
+      "params": {
+        "volume": 0.3
       }
     },
     {
       "at": 37,
       "sound": "hum",
-      "action": "stop"
-    },
-    {
-      "at": 37,
-      "sound": "ventilator",
       "action": "stop"
     },
     {
@@ -1105,27 +1055,19 @@
   "intrusions": [
     {
       "motif": "swing_creak",
-      "at": 1.833
+      "at": 2.359
     },
     {
       "motif": "vacuum",
-      "at": 10.441
+      "at": 8.935
     },
     {
       "motif": "swing_creak",
       "at": 15.68
     },
     {
-      "motif": "ventilator",
-      "at": 17.833
-    },
-    {
       "motif": "swing_creak",
       "at": 19.799
-    },
-    {
-      "motif": "swing_creak",
-      "at": 25.647
     }
   ],
   "awakening": {
