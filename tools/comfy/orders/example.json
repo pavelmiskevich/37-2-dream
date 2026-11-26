@@ -1,0 +1,8 @@
+{
+  "name": "example",
+  "note": "Пример заказа: два кадра, по два варианта клипа падения. Заказы кладёт сюда Claude Code; кроме этого файла они вне git.",
+  "url": "http://100.105.208.82:8188",
+  "stills": ["yard-day-dandelions", "fall-bed-over-drop@1300105"],
+  "clips": ["clip-fall-roof-plunge"],
+  "variants": { "stills": 1, "clips": 2 }
+}

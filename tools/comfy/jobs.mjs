@@ -90,3 +90,61 @@ export function resultName(job) {
 export function readQueue(path) {
   return existsSync(path) ? readJson(path) : { jobs: [] };
 }
+
+/**
+ * An order for `run` (tools/comfy/AGENT.md):
+ *
+ *   { "name": "batch2-falls",                       results go to tools/comfy/out/<name>/
+ *     "note": "what it is for",                     optional, copied into the report
+ *     "url": "http://100.105.208.82:8188",          optional
+ *     "stills": "missing" | ["id", "id@seed", …],   optional
+ *     "clips":  "missing" | ["id", "id@seed", …],   optional
+ *     "variants": { "stills": 1, "clips": 2 } }     optional, seeds per job
+ */
+export function parseOrder(data) {
+  const fail = (message) => {
+    throw new Error(`Bad order: ${message}`);
+  };
+  if (!data || typeof data !== 'object') fail('not an object');
+  if (typeof data.name !== 'string' || !/^[a-z0-9][a-z0-9-]*$/.test(data.name)) fail('"name" must be like batch2-falls');
+  for (const key of ['stills', 'clips']) {
+    const value = data[key];
+    if (value === undefined || value === 'missing') continue;
+    if (!Array.isArray(value) || value.length === 0) fail(`"${key}" must be "missing" or a non-empty list of ids`);
+    value.forEach(parseTarget);
+  }
+  if (data.stills === undefined && data.clips === undefined) fail('nothing to do: no "stills" and no "clips"');
+  if (data.url !== undefined && (typeof data.url !== 'string' || !/^http:\/\/[^/]+$/.test(data.url))) fail('"url" must be like http://host:port');
+  const variants = { stills: data.variants?.stills ?? 1, clips: data.variants?.clips ?? 1 };
+  for (const [key, n] of Object.entries(variants)) {
+    if (!Number.isInteger(n) || n < 1 || n > 10) fail(`"variants.${key}" must be 1…10`);
+  }
+  return { name: data.name, note: data.note, url: data.url, stills: data.stills, clips: data.clips, variants };
+}
+
+const STATE_WORDS = { fetched: 'готово', queued: 'ещё на компьютере', error: 'ошибка', lost: 'пропало' };
+
+/** The order's report for the owner and the reviewer, Markdown. */
+export function orderReport(order, record, out) {
+  const counts = {};
+  for (const job of record.jobs) counts[job.state] = (counts[job.state] ?? 0) + 1;
+  const lines = [
+    `# Заказ ${order.name}`,
+    '',
+    ...(order.note ? [order.note, ''] : []),
+    `Папка: \`${out}\``,
+    '',
+    `Всего ${record.jobs.length}: ${Object.entries(counts).map(([state, n]) => `${STATE_WORDS[state] ?? state} — ${n}`).join(', ')}.`,
+    '',
+    '| Что | id | seed | Состояние | Файл | Ошибка |',
+    '|---|---|---|---|---|---|',
+  ];
+  for (const job of record.jobs) {
+    const kind = job.kind === 'clip' ? `клип из \`${job.from}\`` : 'кадр';
+    const files = (job.files ?? []).map((f) => `\`${f}\``).join(', ');
+    const error = (job.error ?? '').replace(/\|/g, '/').replace(/\s+/g, ' ');
+    lines.push(`| ${kind} | \`${job.id}\` | ${job.seed} | ${STATE_WORDS[job.state] ?? job.state} | ${files} | ${error} |`);
+  }
+  lines.push('', 'Результаты не в библиотеке: их смотрит и переносит Claude Code (`import`) после проверки.', '');
+  return lines.join('\n');
+}

@@ -9,7 +9,9 @@ RTX 5070 Ti и забирает готовые файлы. Сеть — Tailscal
 
 | Файл | Что делает |
 |---|---|
-| `comfy.mjs` | Командная строка: `check`, `queue`, `status`, `fetch`, `free`, `import` |
+| `comfy.mjs` | Командная строка: `check`, `run`, `queue`, `status`, `fetch`, `free`, `import` |
+| `AGENT.md` | Инструкция исполнителю — лёгкой модели, которая выполняет заказ (`run`) |
+| `orders/` | Заказы для `run`. В git лежит только `example.json`, остальные — локальные |
 | `api.mjs` | Маршруты сервера ComfyUI: `/prompt`, `/history`, `/upload/image`, `/view`, `/queue`, `/free`, `/system_stats`, `/models` |
 | `workflows.mjs` | Подставляет промпт, seed, размер и имя файла в граф. Узлы ищутся по типу и связям, а не по номерам |
 | `workflows/still.json` | Граф Z-Image-Turbo — экспорт API из ComfyUI владельца (шаблон «Z-Image-Turbo: Text to Image») |
@@ -27,15 +29,25 @@ RTX 5070 Ti и забирает готовые файлы. Сеть — Tailscal
 
 1. **Tailscale** на компьютере и ноутбуке, вход в одну сеть. Компьютер —
    `desktop-jtmbpel`, `100.105.208.82`.
-2. **ComfyUI слушает сеть.** ComfyUI Desktop: Settings → **Server-Config** →
-   **Host** `0.0.0.0` (было `127.0.0.1`). Порт — **Port**, по умолчанию 8000.
-   Затем перезапустить ComfyUI. Переносная версия запускается с
-   `--listen 0.0.0.0 --port 8188`.
+2. **ComfyUI слушает сеть**, а не только сам компьютер. Проверка в PowerShell
+   на компьютере: `netstat -ano | findstr :8188`. Если в строке
+   `LISTENING` стоит `127.0.0.1:8188`, сервер слушает только сам компьютер;
+   нужно `0.0.0.0:8188`. Как это включить:
+   - **ComfyUI Desktop**: Settings → **Server-Config** → **Host** `0.0.0.0`,
+     затем перезапуск. Если раздела не видно, найдите поиском по настройкам
+     слово `listen` или `host`;
+   - **переносная версия** (`ComfyUI_windows_portable`): в
+     `run_nvidia_gpu.bat` дописать в конец строки запуска `--listen 0.0.0.0`;
+   - **установка из git** (`python main.py`): запускать
+     `python main.py --listen 0.0.0.0`.
+
+   Порт по умолчанию — 8188 (у Desktop бывает 8000; тогда `--url` или поле
+   `url` в заказе).
 3. **Брандмауэр Windows** — порт открыт только для адресов Tailscale
    (PowerShell от администратора):
 
    ```powershell
-   New-NetFirewallRule -DisplayName "ComfyUI (Tailscale)" -Direction Inbound -Protocol TCP -LocalPort 8000 -RemoteAddress 100.64.0.0/10 -Action Allow
+   New-NetFirewallRule -DisplayName "ComfyUI (Tailscale)" -Direction Inbound -Protocol TCP -LocalPort 8188 -RemoteAddress 100.64.0.0/10 -Action Allow
    ```
 
 4. **Модели** скачаны: разделы 3.1 и 5.1 `docs/desktop.md`. Проверка —
@@ -45,7 +57,39 @@ RTX 5070 Ti и забирает готовые файлы. Сеть — Tailscal
 У ComfyUI нет пароля. Сервер виден только внутри сети Tailscale, и так должно
 остаться: без Tailscale Funnel и без проброса порта на роутере.
 
-## Запуск (на ноутбуке)
+## Заказ для лёгкой модели
+
+Чтобы не тратить на ожидание очереди дорогую модель, генерацию выполняет
+исполнитель — лёгкая модель (например, Claude Haiku в Claude Code или
+Codex). Порядок:
+
+1. **Claude Code** пишет заказ `tools/comfy/orders/<имя>.json` (формат — в
+   `example.json` и в `parseOrder` в `jobs.mjs`): какие кадры и клипы, по
+   сколько seed.
+2. **Исполнитель** читает [AGENT.md](AGENT.md) и повторяет одну команду,
+   пока она не скажет «готово»:
+
+   ```sh
+   node tools/comfy/comfy.mjs run tools/comfy/orders/<имя>.json
+   ```
+
+   `run` проверяет сервер и модели, ставит кадры, ждёт их, выгружает модель,
+   ставит клипы, ждёт и скачивает всё в `tools/comfy/out/<имя>/`, где пишет
+   `report.md`. Каждый запуск длится не дольше 9 минут (`--max-minutes`).
+   Повторный запуск продолжает с того же места: что уже стоит в очереди,
+   записано в `queue.json`. Упавшее задание ставится ещё один раз.
+
+   Коды выхода: `0` — всё готово, `1` — готово, но часть заданий упала
+   дважды, `2` — не закончено, запустить снова, `3` — остановка (нет связи,
+   нет моделей, ошибка в заказе).
+3. **Claude Code** смотрит результаты, показывает владельцу и переносит
+   принятое в библиотеку (`import`).
+
+В Claude Code исполнителя удобно запускать так: `claude --model haiku`, затем
+`/comfy-order batch2` (команда лежит в `.claude/commands/comfy-order.md`).
+Для другой модели: «Прочитай tools/comfy/AGENT.md и выполни заказ batch2».
+
+## Запуск вручную (на ноутбуке)
 
 ```sh
 node tools/comfy/comfy.mjs check                       # сервер, видеокарта, файлы моделей
@@ -60,8 +104,8 @@ node tools/comfy/comfy.mjs import yard-day-dandelions_1320104 clip-fall-roof-plu
 
 | Параметр | По умолчанию | Смысл |
 |---|---|---|
-| `--url` | `COMFY_URL` или `http://100.105.208.82:8000` | Адрес ComfyUI |
-| `--out` | `tools/comfy/out` (вне git) | Результаты на отбор и запись очереди |
+| `--url` | `COMFY_URL`, поле `url` заказа или `http://100.105.208.82:8188` | Адрес ComfyUI |
+| `--out` | `tools/comfy/out`, у `run` — `tools/comfy/out/<имя заказа>` (вне git) | Результаты на отбор, запись очереди, отчёт |
 | `--library` | `apps/web/public/library` | Корень библиотеки |
 | `--variants N` | 1 | Сколько seed на задание: кадры +1, клипы +10, как при ручных повторах |
 | `--force` | — | Поставить заново то, что уже стоит в очереди |
