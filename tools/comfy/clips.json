@@ -1,0 +1,119 @@
+{
+  "version": 1,
+  "model": "Wan-AI/Wan2.2-TI2V-5B",
+  "license": "Apache-2.0",
+  "clips": [
+    {
+      "id": "clip-fall-roof-plunge",
+      "about": "камера срывается с края крыши и летит вниз во двор",
+      "from": "fall-roof-edge-yard",
+      "seed": 391001,
+      "prompt": "First-person view from the edge of the flat roof of a nine-storey Soviet apartment block, bare toes at the edge. The camera suddenly tips forward over the edge and falls straight down along the facade towards the courtyard, faster and faster, the rows of windows streaking past upwards, the swing and the asphalt rushing up at the camera. Realistic 35mm film footage, heavy film grain, strong motion blur, muted desaturated colors, terrifying dream atmosphere."
+    },
+    {
+      "id": "clip-fall-stairwell-drop",
+      "about": "камера падает в пролёт лестницы",
+      "from": "fall-stairwell-well-down",
+      "seed": 391002,
+      "prompt": "First-person view looking down a flight of stairs in a Soviet stairwell. The camera suddenly pitches forward and falls down the stairwell, tumbling, the railings and the steps streaking past, the tiled floor far below rushing up at the camera. Realistic 35mm film footage, heavy film grain, strong motion blur, muted desaturated colors, terrifying dream atmosphere."
+    },
+    {
+      "id": "clip-fall-balcony-drop",
+      "about": "камера падает с балкона в туман",
+      "from": "fall-balcony-no-railing",
+      "seed": 391003,
+      "prompt": "First-person view from a high balcony of a Soviet apartment block at night over a foggy street. The camera tips over the railing and falls down past the balconies of the lower floors, faster and faster, the street lamps in the fog rushing up at the camera. Realistic 35mm film footage, heavy film grain, strong motion blur, muted desaturated colors, terrifying dream atmosphere."
+    },
+    {
+      "id": "clip-fall-elevator-drop",
+      "about": "камера проваливается сквозь пол лифта в шахту",
+      "from": "fall-elevator-no-floor",
+      "seed": 391004,
+      "prompt": "Inside an old Soviet elevator cabin with a hole in the floor. The camera drops through the hole into the dark elevator shaft and falls, the greasy cables and the thin lit outlines of the landing doors flashing past upwards, faster and faster. Realistic 35mm film footage, heavy film grain, strong motion blur, muted desaturated colors, terrifying dream atmosphere."
+    },
+    {
+      "id": "clip-bedroom-ventilator-bellows",
+      "about": "меха аппарата у кровати сжимаются и разжимаются",
+      "from": "bedroom-ventilator-snore",
+      "seed": 391005,
+      "prompt": "Static camera, no camera movement. A sleeping man in a bed connected by a tube to a large machine with accordion bellows. The bellows of the machine slowly expand and contract in a steady rhythm like breathing, the tube moves slightly with each breath, and the man's chest rises and falls. Nothing else in the room moves. Realistic 35mm film footage, heavy film grain, muted desaturated colors, quiet, uneasy and unsettling dream atmosphere."
+    },
+    {
+      "id": "clip-hospital-lamps-go-out",
+      "about": "лампы в коридоре гаснут одна за другой",
+      "from": "hospital-corridor-ventilator",
+      "seed": 391006,
+      "prompt": "Static camera, no camera movement. An empty hospital corridor with pale blue tiles and a row of fluorescent lamps on the ceiling. The farthest lamp flickers and goes dark, then the next one, and the next, the darkness slowly coming down the corridor towards the camera, then all lamps light up again at once. The walls, the floor and the machine stay completely still. Realistic 35mm film footage, heavy film grain, muted desaturated colors, quiet, uneasy and dread-filled dream atmosphere."
+    },
+    {
+      "id": "clip-yard-snow-falling",
+      "about": "во дворе начинается снег",
+      "from": "yard-day-snow",
+      "seed": 391007,
+      "prompt": "Static camera, no camera movement. A snowy Soviet courtyard with a swing and benches in daylight. Soft snow begins to fall slowly over the empty courtyard and the swing sways very slightly. The buildings stay completely still. Realistic 35mm film footage, heavy film grain, muted desaturated colors, quiet and calm but strange dream atmosphere."
+    },
+    {
+      "id": "clip-kitchen-curtain-breeze",
+      "about": "тюль на кухне колышется",
+      "from": "kitchen-window-jam-curtain",
+      "seed": 391008,
+      "prompt": "Static camera, no camera movement. An open kitchen window in an old Soviet apartment, a jar of jam on the sill. The net curtain slowly billows inwards and outwards in a light breeze. The jar, the window frame and the courtyard outside stay completely still. Realistic 35mm film footage, heavy film grain, muted desaturated colors, quiet and calm but strange dream atmosphere."
+    },
+    {
+      "id": "clip-microwave-heartbeat",
+      "about": "по окну микроволновки бежит пульс",
+      "from": "kitchen-microwave-monitor",
+      "seed": 391009,
+      "prompt": "Static camera, no camera movement. A dark kitchen with an old microwave oven on the counter. The green heartbeat line on the microwave door slowly runs from left to right like a hospital monitor and the green digits flicker. The plate of food and the kitchen stay completely still. Realistic 35mm film footage, heavy film grain, muted desaturated colors, quiet, uneasy and unsettling dream atmosphere."
+    },
+    {
+      "id": "clip-stairs-coats-sway",
+      "about": "пальто на перилах качаются, будто кто-то прошёл",
+      "from": "stairs-coats-railing",
+      "seed": 391010,
+      "prompt": "Static camera, no camera movement. A Soviet stairwell with many coats hanging along the stair railing. The coats sway slightly one after another from the bottom of the stairs to the top, as if someone invisible walked up past them. The stairs, the walls and the lamp stay completely still. Realistic 35mm film footage, heavy film grain, muted desaturated colors, quiet, uneasy and unsettling dream atmosphere."
+    },
+    {
+      "id": "clip-yard-pigeons-turn",
+      "about": "голуби на ограде разом поворачивают головы",
+      "from": "yard-night-pigeons-window",
+      "seed": 391011,
+      "prompt": "Static camera, no camera movement. A row of pigeons sitting on a low fence in front of a Soviet apartment block at night. All the pigeons slowly turn their heads towards the camera at the same moment and then stay completely still. The building, the street lamp and the windows do not move. Realistic 35mm film footage, heavy film grain, muted desaturated colors, quiet, uneasy and unsettling dream atmosphere."
+    },
+    {
+      "id": "clip-elevator-mirror-figure",
+      "about": "фигура в зеркале лифта поднимает голову",
+      "from": "elevator-mirror-37",
+      "seed": 391012,
+      "prompt": "Static camera, no camera movement. Inside an old Soviet elevator cabin with a cracked mirror on the back wall. The hooded figure reflected in the mirror slowly raises its head, while the cabin in front of the mirror stays empty. The lamp and the 37 on the display stay still. Realistic 35mm film footage, heavy film grain, muted desaturated colors, quiet, uneasy and dread-filled dream atmosphere."
+    },
+    {
+      "id": "clip-jam-flood-spread",
+      "about": "варенье растекается по столу и капает",
+      "from": "jam-jar-kitchen-flood",
+      "seed": 391013,
+      "prompt": "Static camera, no camera movement. A tipped-over jar of dark jam on a kitchen table. The jam slowly spreads across the table from the jar and starts to drip over the edge. The kitchen and the chairs stay completely still. Realistic 35mm film footage, heavy film grain, muted desaturated colors, quiet, uneasy and unsettling dream atmosphere."
+    },
+    {
+      "id": "clip-stairwell-vacuum-hose",
+      "about": "шланг пылесоса сползает по ступеньке",
+      "from": "stairwell-vacuum-sound",
+      "seed": 391014,
+      "prompt": "Static camera, no camera movement. A dark stairwell, a vacuum cleaner hose lying down the stairs from a woman standing at the top. The hose twitches and slowly slides down one step like a living thing. The woman's legs and the stairs stay completely still. Realistic 35mm film footage, heavy film grain, muted desaturated colors, quiet, uneasy and dread-filled dream atmosphere."
+    },
+    {
+      "id": "clip-thermometer-door-light",
+      "about": "дальняя дверь коридора приоткрывается, полоска света",
+      "from": "thermometer-corridor-doors",
+      "seed": 391015,
+      "prompt": "Static camera, no camera movement. A long pale corridor with numbered doors and thermometers on the walls. The farthest door slowly opens a little, letting a strip of light out onto the floor, then the light goes out. Nothing else moves. Realistic 35mm film footage, heavy film grain, muted desaturated colors, quiet, uneasy and unsettling dream atmosphere."
+    },
+    {
+      "id": "clip-fridge-light-flicker",
+      "about": "свет в открытом холодильнике мигает",
+      "from": "kitchen-fridge-thermometers",
+      "seed": 391016,
+      "prompt": "Static camera, no camera movement. An old fridge standing open in a dark kitchen, its shelves full of thermometers. The light inside the fridge flickers and the glass thermometers glint, then the fridge door slowly swings a little towards closing. The kitchen stays completely still. Realistic 35mm film footage, heavy film grain, muted desaturated colors, quiet, uneasy and unsettling dream atmosphere."
+    }
+  ]
+}

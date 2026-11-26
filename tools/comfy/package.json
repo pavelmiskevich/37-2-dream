@@ -1,0 +1,13 @@
+{
+  "name": "@dream/comfy-tool",
+  "private": true,
+  "type": "module",
+  "description": "Stills and clips of the dream library on the PC's ComfyUI over Tailscale (#147). Not part of the pnpm workspace or the web build.",
+  "engines": {
+    "node": ">=24"
+  },
+  "scripts": {
+    "comfy": "node comfy.mjs",
+    "test": "node --test"
+  }
+}
