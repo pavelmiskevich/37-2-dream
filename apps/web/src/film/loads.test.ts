@@ -55,6 +55,17 @@ describe('RetryingLoads', () => {
     expect(source.calls('x')).toBe(5);
   });
 
+  it('lists the loads in flight and done, not the failed or forgotten ones', async () => {
+    const source = flaky(1);
+    const loads = new RetryingLoads((id) => (id === 'bad' ? source.load(id) : new Promise<string>(() => {})), { now: () => 0 });
+    void loads.request('a');
+    void loads.request('b');
+    await loads.request('bad');
+    expect(loads.ids()).toEqual(['a', 'b']);
+    loads.forget('a');
+    expect(loads.ids()).toEqual(['b']);
+  });
+
   it('loads a forgotten asset anew, even right after a failure', async () => {
     const source = flaky(1);
     const loads = new RetryingLoads(source.load, { now: () => 0 });

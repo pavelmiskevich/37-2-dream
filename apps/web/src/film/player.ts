@@ -81,6 +81,8 @@ export class FilmPlayer {
   /** Film time the playback is paused at, or null. */
   private pausedAt: number | null = null;
   private windowShot = -1;
+  /** The last shot that waited for its file, so it counts as one miss. */
+  private missedShot = -1;
   private activeVideo: HTMLVideoElement | null = null;
   /** Clips already sought to the start of an upcoming shot, by that shot's index. */
   private readonly cued = new WeakMap<HTMLVideoElement, number>();
@@ -235,7 +237,9 @@ export class FilmPlayer {
     }
     const loaded = at ? this.assets.get(at.shot.assetId) : undefined;
     if (at && !loaded && time < film.duration) {
-      this.stats.misses++;
+      // One miss per shot that had to wait, not one per frame of waiting (#81).
+      if (this.missedShot !== at.index) this.stats.misses++;
+      this.missedShot = at.index;
       // The shot is black while its file is missing; ask again (the cache paces the retries).
       void this.assets.request(at.shot.assetId);
     }

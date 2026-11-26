@@ -50,13 +50,16 @@ async function loadVideo(url: string): Promise<HTMLVideoElement> {
   video.preload = 'auto';
   video.src = url;
   await new Promise<void>((resolve, reject) => {
-    const timer = setTimeout(() => reject(new Error(`Clip timed out: ${url}`)), CLIP_TIMEOUT_MS);
+    const timer = setTimeout(() => done(new Error(`Clip timed out: ${url}`)), CLIP_TIMEOUT_MS);
     const done = (error?: Error) => {
       clearTimeout(timer);
       video.removeEventListener('loadeddata', ok);
       video.removeEventListener('error', fail);
-      if (error) reject(error);
-      else resolve();
+      if (error) {
+        // A clip that failed stops loading too: no element is left fetching in the background.
+        unloadVideo(video);
+        reject(error);
+      } else resolve();
     };
     const ok = () => done();
     const fail = () => done(new Error(`Clip failed to load: ${url}`));
@@ -88,7 +91,8 @@ export class AssetCache {
     this.index = assetIndex(manifest);
     this.loading = new RetryingLoads((id) => this.load(id), {
       onError: (id, error) => {
-        if (!this.disposed) console.warn(`Film asset "${id}" is not available (yet)`, error);
+        // An asset dropped from the window while loading is not a failure.
+        if (!this.disposed && !(error instanceof ReleasedWhileLoading)) console.warn(`Film asset "${id}" is not available (yet)`, error);
       },
     });
   }
@@ -106,15 +110,19 @@ export class AssetCache {
     return this.loading.request(id);
   }
 
-  /** Keeps `ids` loaded (requesting the missing ones, in order) and releases everything else. */
+  /**
+   * Keeps `ids` loaded (requesting the missing ones, in order) and releases
+   * everything else; a load still on its way that is no longer wanted is
+   * dropped, and released the moment it arrives.
+   */
   keep(ids: readonly string[]): void {
     for (const id of ids) void this.request(id);
     for (const [id, loaded] of this.ready) {
       if (ids.includes(id)) continue;
       this.release(loaded);
       this.ready.delete(id);
-      this.loading.forget(id);
     }
+    for (const id of this.loading.ids()) if (!ids.includes(id)) this.loading.forget(id);
   }
 
   dispose(): void {
@@ -153,7 +161,7 @@ export class AssetCache {
     }
     if (this.disposed || !this.loading.has(id)) {
       this.release(loaded);
-      throw new Error(`Asset "${id}" was released while loading`);
+      throw new ReleasedWhileLoading(id);
     }
     this.prepare(loaded.texture);
     if (loaded.depth) this.prepare(loaded.depth);
@@ -164,12 +172,21 @@ export class AssetCache {
   private release(loaded: LoadedAsset): void {
     loaded.texture.dispose();
     loaded.depth?.dispose();
-    if (loaded.video) {
-      loaded.video.pause();
-      loaded.video.removeAttribute('src');
-      loaded.video.load();
-    }
+    if (loaded.video) unloadVideo(loaded.video);
   }
+}
+
+class ReleasedWhileLoading extends Error {
+  constructor(id: string) {
+    super(`Asset "${id}" was released while loading`);
+    this.name = 'ReleasedWhileLoading';
+  }
+}
+
+function unloadVideo(video: HTMLVideoElement): void {
+  video.pause();
+  video.removeAttribute('src');
+  video.load();
 }
 
 /** Fetches `library.json` from a library root. */
