@@ -610,7 +610,7 @@
     {
       "id": "fall-yard-window-straight-down",
       "priority": 1,
-      "tags": { "location": "yard", "motifs": ["fall"], "people": "none", "mood": "dread", "time": "night" },
+      "tags": { "location": "yard", "motifs": ["fall"], "people": "none", "mood": "uneasy", "time": "night" },
       "seed": 1320101,
       "scene": "Top-down view straight down from the window ledge of the ninth floor of a Soviet apartment block at night, the sheer facade with rows of dark windows dropping away below, the courtyard tiny and far down with one lit street lamp and a swing, two hands gripping the edge of the window sill at the bottom of the frame"
     },
@@ -624,7 +624,7 @@
     {
       "id": "fall-elevator-roof-shaft",
       "priority": 2,
-      "tags": { "location": "elevator", "motifs": ["fall"], "people": "none", "mood": "dread", "time": "interior" },
+      "tags": { "location": "elevator", "motifs": ["fall"], "people": "distant", "mood": "uneasy", "time": "dusk" },
       "seed": 1320103,
       "scene": "Standing on the roof of an old elevator cabin inside a dark shaft, looking straight down past its edge into a shaft that goes down for dozens of floors, greasy cables, thin lines of light around the closed landing doors fading far below"
     },
@@ -812,6 +812,27 @@
       "tags": { "location": "elevator", "motifs": [], "people": "none", "mood": "uneasy", "time": "interior" },
       "seed": 1320129,
       "scene": "Above the closed doors of an old elevator on a dim landing, a mechanical floor indicator where every number reads 37, the call button glowing red, scratched paint on the doors"
+    },
+    {
+      "id": "fall-courtyard-canyon-dusk",
+      "priority": 1,
+      "tags": { "location": "yard", "motifs": ["fall"], "people": "none", "mood": "dread", "time": "dusk" },
+      "seed": 1370101,
+      "scene": "Bird's-eye view looking straight down the sheer concrete wall of a nine-storey Soviet panel apartment block from the edge of its roof, the rows of windows and balconies converging in steep perspective down to a tiny courtyard far below with a swing, a sandbox and parked cars, dizzying vertigo, dusk"
+    },
+    {
+      "id": "fall-stairwell-well-spiral",
+      "priority": 1,
+      "tags": { "location": "stairs", "motifs": ["fall"], "people": "distant", "mood": "dread", "time": "interior" },
+      "seed": 1370102,
+      "scene": "Looking straight down the stairwell well of a nine-storey Soviet apartment block from the top floor, the square spiral of painted railings and worn wooden handrails shrinking floor after floor to a tiny dimly lit tiled floor far below, dizzying vertigo, dim bulbs on the landings"
+    },
+    {
+      "id": "fall-courtyard-roof-night",
+      "priority": 1,
+      "tags": { "location": "yard", "motifs": ["fall"], "people": "none", "mood": "uneasy", "time": "night" },
+      "seed": 1370105,
+      "scene": "Steep high-angle view from the roof edge of a nine-storey Soviet panel apartment block at night, looking down into a narrow courtyard between tall blocks, the dark walls with a few lit windows converging far down to the tiny wet asphalt lit by a single street lamp, an empty swing, dizzying depth, fog"
     }
   ]
 }

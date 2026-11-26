@@ -2082,6 +2082,126 @@
         "seed": 390105,
         "source": "local-desktop, from still bedroom-spider-ceiling"
       }
+    },
+    {
+      "id": "fall-yard-window-straight-down",
+      "kind": "still",
+      "file": "stills/fall-yard-window-straight-down.webp",
+      "depth": "depth/fall-yard-window-straight-down.png",
+      "width": 1280,
+      "height": 720,
+      "tags": {
+        "location": "yard",
+        "motifs": [
+          "fall"
+        ],
+        "people": "none",
+        "mood": "uneasy",
+        "time": "night"
+      },
+      "generation": {
+        "model": "Tongyi-MAI/Z-Image-Turbo",
+        "license": "Apache-2.0",
+        "prompt": "Top-down view straight down from the window ledge of the ninth floor of a Soviet apartment block at night, the sheer facade with rows of dark windows dropping away below, the courtyard tiny and far down with one lit street lamp and a swing, two hands gripping the edge of the window sill at the bottom of the frame. Realistic 35mm film photograph, heavy film grain, muted desaturated colors, faces hidden in shadow, Russia in the 1990s, Soviet-era interiors and courtyards, the logic of a dream, quiet, uneasy and unsettling atmosphere.",
+        "seed": 1320101,
+        "source": "hf-space:mcp-tools/Z-Image-Turbo"
+      }
+    },
+    {
+      "id": "fall-elevator-roof-shaft",
+      "kind": "still",
+      "file": "stills/fall-elevator-roof-shaft.webp",
+      "depth": "depth/fall-elevator-roof-shaft.png",
+      "width": 1280,
+      "height": 720,
+      "tags": {
+        "location": "elevator",
+        "motifs": [
+          "fall"
+        ],
+        "people": "distant",
+        "mood": "uneasy",
+        "time": "dusk"
+      },
+      "generation": {
+        "model": "Tongyi-MAI/Z-Image-Turbo",
+        "license": "Apache-2.0",
+        "prompt": "Standing on the roof of an old elevator cabin inside a dark shaft, looking straight down past its edge into a shaft that goes down for dozens of floors, greasy cables, thin lines of light around the closed landing doors fading far below. Realistic 35mm film photograph, heavy film grain, muted desaturated colors, faces hidden in shadow, Russia in the 1990s, Soviet-era interiors and courtyards, the logic of a dream, quiet, uneasy and unsettling atmosphere.",
+        "seed": 1320103,
+        "source": "hf-space:mcp-tools/Z-Image-Turbo"
+      }
+    },
+    {
+      "id": "fall-courtyard-canyon-dusk",
+      "kind": "still",
+      "file": "stills/fall-courtyard-canyon-dusk.webp",
+      "depth": "depth/fall-courtyard-canyon-dusk.png",
+      "width": 1280,
+      "height": 720,
+      "tags": {
+        "location": "yard",
+        "motifs": [
+          "fall"
+        ],
+        "people": "none",
+        "mood": "dread",
+        "time": "dusk"
+      },
+      "generation": {
+        "model": "Tongyi-MAI/Z-Image-Turbo",
+        "license": "Apache-2.0",
+        "prompt": "Bird's-eye view looking straight down the sheer concrete wall of a nine-storey Soviet panel apartment block from the edge of its roof, the rows of windows and balconies converging in steep perspective down to a tiny courtyard far below with a swing, a sandbox and parked cars, dizzying vertigo, dusk. Realistic 35mm film photograph, heavy film grain, muted desaturated colors, faces hidden in shadow, Russia in the 1990s, Soviet-era interiors and courtyards, the logic of a dream, quiet, uneasy and unsettling atmosphere.",
+        "seed": 1370101,
+        "source": "hf-space:mcp-tools/Z-Image-Turbo"
+      }
+    },
+    {
+      "id": "fall-stairwell-well-spiral",
+      "kind": "still",
+      "file": "stills/fall-stairwell-well-spiral.webp",
+      "depth": "depth/fall-stairwell-well-spiral.png",
+      "width": 1280,
+      "height": 720,
+      "tags": {
+        "location": "stairs",
+        "motifs": [
+          "fall"
+        ],
+        "people": "distant",
+        "mood": "dread",
+        "time": "interior"
+      },
+      "generation": {
+        "model": "Tongyi-MAI/Z-Image-Turbo",
+        "license": "Apache-2.0",
+        "prompt": "Looking straight down the stairwell well of a nine-storey Soviet apartment block from the top floor, the square spiral of painted railings and worn wooden handrails shrinking floor after floor to a tiny dimly lit tiled floor far below, dizzying vertigo, dim bulbs on the landings. Realistic 35mm film photograph, heavy film grain, muted desaturated colors, faces hidden in shadow, Russia in the 1990s, Soviet-era interiors and courtyards, the logic of a dream, quiet, uneasy and unsettling atmosphere.",
+        "seed": 1370102,
+        "source": "hf-space:mcp-tools/Z-Image-Turbo"
+      }
+    },
+    {
+      "id": "fall-courtyard-roof-night",
+      "kind": "still",
+      "file": "stills/fall-courtyard-roof-night.webp",
+      "depth": "depth/fall-courtyard-roof-night.png",
+      "width": 1280,
+      "height": 720,
+      "tags": {
+        "location": "yard",
+        "motifs": [
+          "fall"
+        ],
+        "people": "none",
+        "mood": "uneasy",
+        "time": "night"
+      },
+      "generation": {
+        "model": "Tongyi-MAI/Z-Image-Turbo",
+        "license": "Apache-2.0",
+        "prompt": "Steep high-angle view from the roof edge of a nine-storey Soviet panel apartment block at night, looking down into a narrow courtyard between tall blocks, the dark walls with a few lit windows converging far down to the tiny wet asphalt lit by a single street lamp, an empty swing, dizzying depth, fog. Realistic 35mm film photograph, heavy film grain, muted desaturated colors, faces hidden in shadow, Russia in the 1990s, Soviet-era interiors and courtyards, the logic of a dream, quiet, uneasy and unsettling atmosphere.",
+        "seed": 1370105,
+        "source": "hf-space:mcp-tools/Z-Image-Turbo"
+      }
     }
   ]
 }
