@@ -447,7 +447,7 @@ ComfyUI выгрузит модель кадров и сам, но она ост
 затем `391021`) и запустить снова. Движение слишком слабое или слишком
 резкое — напишите мне, я поправлю промпт.
 
-## 6. Список клипов (22)
+## 6. Список клипов (42)
 
 Общие правила промптов: камера неподвижна (кроме клипов падения), движение
 одно и медленное, людей и лица не показывать крупно. Промпт вставлять
@@ -725,6 +725,236 @@ ComfyUI выгрузит модель кадров и сам, но она ост
 
   ```text
   Standing on the glass rim of a gigantic jam jar the size of a building, looking down inside at dark jam far below. For the first second everything is still. Then the camera suddenly slips off the glass rim and drops straight down inside the jar, the glass walls streaking upwards, the dark glistening jam rushing up at the camera in one violent jolt. Realistic 35mm film footage, heavy film grain, strong motion blur, muted desaturated colors, sudden terrifying dream atmosphere.
+  ```
+
+### Третья партия: падения с первой секунды (#153)
+
+То же резкое падение, но рывок — в первые полсекунды: во второй партии он
+часто приходил только на 2–3 с, и начало приходилось обрезать.
+
+**23. `clip-drop-canyon-roof-tips`** — с крыши над колодцем двора — внезапно вниз вдоль стены
+
+- Кадр: `fall-courtyard-canyon-dusk` —
+  <https://github.com/pavelmiskevich/37-2-dream/raw/main/apps/web/public/library/stills/fall-courtyard-canyon-dusk.webp>
+- Seed: `393001`
+- Промпт:
+
+  ```text
+  Looking straight down the sheer concrete wall of a nine-storey Soviet apartment block from the edge of its roof at dusk, a tiny courtyard with a swing far below. For half a second nothing moves. Then the camera suddenly pitches forward over the edge and plunges straight down along the wall, the windows and balconies streaking upwards, the courtyard rushing up at the camera in one violent jolt. Realistic 35mm film footage, heavy film grain, strong motion blur, muted desaturated colors, sudden terrifying dream atmosphere.
+  ```
+
+**24. `clip-drop-stairwell-spiral`** — срыв в лестничный пролёт с последнего этажа
+
+- Кадр: `fall-stairwell-well-spiral` —
+  <https://github.com/pavelmiskevich/37-2-dream/raw/main/apps/web/public/library/stills/fall-stairwell-well-spiral.webp>
+- Seed: `393002`
+- Промпт:
+
+  ```text
+  Looking straight down the stairwell well of a nine-storey Soviet apartment block from the top floor, the square spiral of railings shrinking to a tiny tiled floor far below. For half a second nothing moves. Then the camera suddenly drops into the well and falls straight down, the railings and handrails whipping upwards past the camera floor after floor, the tiled floor rushing up in one violent jolt. Realistic 35mm film footage, heavy film grain, strong motion blur, muted desaturated colors, sudden terrifying dream atmosphere.
+  ```
+
+**25. `clip-drop-elevator-roof-shaft`** — крыша кабины уходит из-под ног, падение в шахту
+
+- Кадр: `fall-elevator-roof-shaft` —
+  <https://github.com/pavelmiskevich/37-2-dream/raw/main/apps/web/public/library/stills/fall-elevator-roof-shaft.webp>
+- Seed: `393003`
+- Промпт:
+
+  ```text
+  Standing on the roof of an old elevator cabin inside a dark shaft, looking down past its edge into the shaft. For half a second nothing moves. Then the cabin lurches violently and the camera slips off its edge and falls straight down the shaft, the greasy cables and the thin lit outlines of the landing doors whipping upwards past the camera, faster and faster, in one violent jolt. Realistic 35mm film footage, heavy film grain, strong motion blur, muted desaturated colors, sudden terrifying dream atmosphere.
+  ```
+
+**26. `clip-drop-stairs-37`** — ступенька исчезает, падение мимо площадок «37»
+
+- Кадр: `stairs-down-37` —
+  <https://github.com/pavelmiskevich/37-2-dream/raw/main/apps/web/public/library/stills/stairs-down-37.webp>
+- Seed: `393004`
+- Промпт:
+
+  ```text
+  A narrow Soviet staircase going down, the floor number 37 painted on the wall of every landing, darkness further down. For half a second nothing moves. Then the step under the camera vanishes and the camera drops straight down through the staircase, the landings with the number 37 flashing upwards past the camera one after another, faster and faster, into darkness, in one violent jolt. Realistic 35mm film footage, heavy film grain, strong motion blur, muted desaturated colors, sudden terrifying dream atmosphere.
+  ```
+
+### Третья партия: тихие (#153)
+
+Кадры библиотеки, у которых ещё не было клипа. Одно медленное движение,
+камера неподвижна.
+
+**27. `clip-yard-window-light-out`** — единственное горящее окно гаснет, силуэт остаётся
+
+- Кадр: `yard-night-window-silhouette` —
+  <https://github.com/pavelmiskevich/37-2-dream/raw/main/apps/web/public/library/stills/yard-night-window-silhouette.webp>
+- Seed: `393005`
+- Промпт:
+
+  ```text
+  Static camera, no camera movement. A Soviet nine-storey apartment block at night seen from the courtyard, all windows dark except one yellow lit window high up with a motionless human silhouette in it. The light drizzle falls slowly. Then the lit window slowly fades out and the dark silhouette is still faintly visible standing in the dark window. Nothing else moves. Realistic 35mm film footage, heavy film grain, muted desaturated colors, quiet, uneasy and unsettling dream atmosphere.
+  ```
+
+**28. `clip-thermometer-mercury-rises`** — ртуть во всех градусниках коридора медленно ползёт вверх
+
+- Кадр: `thermometer-corridor-endless` —
+  <https://github.com/pavelmiskevich/37-2-dream/raw/main/apps/web/public/library/stills/thermometer-corridor-endless.webp>
+- Seed: `393006`
+- Промпт:
+
+  ```text
+  Static camera, no camera movement. An endless narrow corridor with pale green walls, hundreds of old glass mercury thermometers hanging in rows on both walls. The silver mercury in all the thermometers slowly creeps upwards at the same time, and the dim ceiling lamps at the far end go out one by one towards the camera. Nothing else moves. Realistic 35mm film footage, heavy film grain, muted desaturated colors, quiet, uneasy and unsettling dream atmosphere.
+  ```
+
+**29. `clip-jam-inside-lid-closes`** — внутри варенья: круг света над головой медленно закрывается крышкой
+
+- Кадр: `jam-jar-inside` —
+  <https://github.com/pavelmiskevich/37-2-dream/raw/main/apps/web/public/library/stills/jam-jar-inside.webp>
+- Seed: `393007`
+- Промпт:
+
+  ```text
+  Static camera, no camera movement. Submerged inside thick dark red cherry jam, whole cherries suspended around the camera, the round mouth of the jar far above as a pale circle of light. The cherries drift very slowly, and a lid slowly slides over the mouth of the jar above, the circle of light shrinking to a thin crescent and then darkness. Realistic 35mm film footage, heavy film grain, muted desaturated colors, quiet, uneasy and unsettling dream atmosphere.
+  ```
+
+**30. `clip-bedroom-monitor-pulse`** — зелёная линия монитора у кровати бьётся, одеяло дышит
+
+- Кадр: `bedroom-monitor` —
+  <https://github.com/pavelmiskevich/37-2-dream/raw/main/apps/web/public/library/stills/bedroom-monitor.webp>
+- Seed: `393008`
+- Промпт:
+
+  ```text
+  Static camera, no camera movement. A dark Soviet-era bedroom at night, a sleeping figure in bed as a dark silhouette under the blanket, an old heart monitor on the bedside table glowing green. The green pulse line on the monitor beats steadily, its glow pulsing on the wall and the pillow, and the blanket slowly rises and falls with breathing. Nothing else moves. Realistic 35mm film footage, heavy film grain, muted desaturated colors, quiet, uneasy and unsettling dream atmosphere.
+  ```
+
+**31. `clip-kitchen-fridge-door-closes`** — дверца холодильника сама медленно закрывается, кухня гаснет
+
+- Кадр: `kitchen-night-fridge` —
+  <https://github.com/pavelmiskevich/37-2-dream/raw/main/apps/web/public/library/stills/kitchen-night-fridge.webp>
+- Seed: `393009`
+- Промпт:
+
+  ```text
+  Static camera, no camera movement. A cramped Soviet-era kitchen at night, the old white refrigerator door standing wide open, its pale yellow light the only light in the room. The refrigerator door slowly swings shut by itself, the strip of yellow light on the linoleum narrowing until the kitchen is almost dark. Nobody is in the room. Realistic 35mm film footage, heavy film grain, muted desaturated colors, quiet, uneasy and unsettling dream atmosphere.
+  ```
+
+**32. `clip-hospital-gurney-rolls`** — пустая каталка сама медленно катится к камере
+
+- Кадр: `hospital-corridor-gurney` —
+  <https://github.com/pavelmiskevich/37-2-dream/raw/main/apps/web/public/library/stills/hospital-corridor-gurney.webp>
+- Seed: `393010`
+- Промпт:
+
+  ```text
+  Static camera, no camera movement. An empty hospital corridor at night, a metal gurney with a white sheet standing alone in the middle, a fluorescent tube flickering overhead. The gurney slowly starts to roll by itself towards the camera, its wheels turning, the sheet trembling slightly, while the fluorescent light flickers. Nobody is in the corridor. Realistic 35mm film footage, heavy film grain, muted desaturated colors, quiet, uneasy and unsettling dream atmosphere.
+  ```
+
+**33. `clip-stairwell-spider-descends`** — паук в углу подъезда медленно спускается на нити
+
+- Кадр: `stairwell-spider-web` —
+  <https://github.com/pavelmiskevich/37-2-dream/raw/main/apps/web/public/library/stills/stairwell-spider-web.webp>
+- Seed: `393011`
+- Промпт:
+
+  ```text
+  Static camera, no camera movement. A huge black spider the size of a cat in a thick dusty web in the upper corner of a Soviet apartment stairwell, a single dim bulb below. The spider slowly lowers itself down on a thick thread towards the steps, its long legs moving one by one. Nothing else moves. Realistic 35mm film footage, heavy film grain, muted desaturated colors, quiet, uneasy and unsettling dream atmosphere.
+  ```
+
+**34. `clip-hospital-snake-crawls`** — змея медленно ползёт поперёк больничного коридора
+
+- Кадр: `hospital-corridor-snake` —
+  <https://github.com/pavelmiskevich/37-2-dream/raw/main/apps/web/public/library/stills/hospital-corridor-snake.webp>
+- Seed: `393012`
+- Промпт:
+
+  ```text
+  Static camera, no camera movement. A long empty hospital corridor at night, a long dark snake on the worn linoleum floor, flickering fluorescent tubes. The snake slowly slithers across the floor of the corridor in smooth curves, its scales catching the flickering light. Nothing else moves. Realistic 35mm film footage, heavy film grain, muted desaturated colors, quiet, uneasy and unsettling dream atmosphere.
+  ```
+
+**35. `clip-kitchen-snake-sink-rises`** — змея медленно поднимается из раковины, капает кран
+
+- Кадр: `kitchen-snake-sink` —
+  <https://github.com/pavelmiskevich/37-2-dream/raw/main/apps/web/public/library/stills/kitchen-snake-sink.webp>
+- Seed: `393013`
+- Промпт:
+
+  ```text
+  Static camera, no camera movement. A cramped Soviet-era kitchen at night lit by a weak bulb, a thick snake coiled inside the old enamel sink among unwashed dishes. The snake slowly raises its head higher over the edge of the sink and sways, flicking its tongue, while the tap drips. Nothing else moves. Realistic 35mm film footage, heavy film grain, muted desaturated colors, quiet, uneasy and unsettling dream atmosphere.
+  ```
+
+**36. `clip-bedroom-spheres-swell`** — огромные шары медленно распирают спальню
+
+- Кадр: `bedroom-giant-spheres` —
+  <https://github.com/pavelmiskevich/37-2-dream/raw/main/apps/web/public/library/stills/bedroom-giant-spheres.webp>
+- Seed: `393014`
+- Промпт:
+
+  ```text
+  Static camera, no camera movement. A small Soviet-era bedroom at night filled by three enormous smooth grey spheres pressing against the walls and the ceiling, a tiny man in pajamas standing beside them. The spheres slowly swell even bigger, pressing harder against the walls and ceiling, fine dust and flakes of plaster trickling down. The man does not move. Realistic 35mm film footage, heavy film grain, muted desaturated colors, quiet, uneasy and unsettling dream atmosphere.
+  ```
+
+**37. `clip-yard-cube-tips`** — гигантский куб на ребре медленно кренится
+
+- Кадр: `yard-giant-cubes` —
+  <https://github.com/pavelmiskevich/37-2-dream/raw/main/apps/web/public/library/stills/yard-giant-cubes.webp>
+- Seed: `393015`
+- Промпт:
+
+  ```text
+  Static camera, no camera movement. Three gigantic plain grey concrete cubes in an empty Soviet courtyard at dusk, one of them balanced on its edge, a tiny man far below looking up. The balanced cube slowly, very slowly tilts further over its edge, as if about to fall, then stops. The man and the other cubes do not move. Realistic 35mm film footage, heavy film grain, muted desaturated colors, quiet, uneasy and unsettling dream atmosphere.
+  ```
+
+**38. `clip-elevator-shaft-light-rises`** — в пустой шахте полоска света снизу медленно поднимается
+
+- Кадр: `elevator-shaft-open` —
+  <https://github.com/pavelmiskevich/37-2-dream/raw/main/apps/web/public/library/stills/elevator-shaft-open.webp>
+- Seed: `393016`
+- Промпт:
+
+  ```text
+  Static camera, no camera movement. Elevator doors standing half open on a dark landing onto an empty shaft with no cabin, greasy cables hanging in the dark, a thin strip of yellow light far below. The cables slowly start to move and sway, and the strip of yellow light far below slowly rises up the shaft towards the open doors, as if something is coming up. Realistic 35mm film footage, heavy film grain, muted desaturated colors, quiet, uneasy and unsettling dream atmosphere.
+  ```
+
+**39. `clip-thermometer-nurse-turns`** — медсестра в конце коридора опускает градусник и медленно оборачивается
+
+- Кадр: `thermometer-corridor-nurse` —
+  <https://github.com/pavelmiskevich/37-2-dream/raw/main/apps/web/public/library/stills/thermometer-corridor-nurse.webp>
+- Seed: `393017`
+- Промпт:
+
+  ```text
+  Static camera, no camera movement. A nurse in a white cap seen from behind at the far end of a corridor lined with thermometers in glass cases, holding one thermometer up to the lamp. She slowly lowers the thermometer and begins to turn her head towards the camera, her face staying in deep shadow, her long shadow moving on the linoleum. Realistic 35mm film footage, heavy film grain, muted desaturated colors, quiet, uneasy and unsettling dream atmosphere.
+  ```
+
+**40. `clip-yard-will-papers-wind`** — ветер медленно гонит листы завещания по двору
+
+- Кадр: `yard-dusk-will-papers` —
+  <https://github.com/pavelmiskevich/37-2-dream/raw/main/apps/web/public/library/stills/yard-dusk-will-papers.webp>
+- Seed: `393018`
+- Промпт:
+
+  ```text
+  Static camera, no camera movement. Typewritten sheets of a last will scattered across the wet asphalt of a Soviet courtyard at dusk, panel blocks behind in blue twilight. A slow wind lifts the sheets one by one and drags them across the asphalt, one sheet flattening against the bench. The buildings stay completely still. Realistic 35mm film footage, heavy film grain, muted desaturated colors, quiet, uneasy and unsettling dream atmosphere.
+  ```
+
+**41. `clip-stairs-up-bulbs-die`** — лампочки бесконечной лестницы гаснут снизу вверх
+
+- Кадр: `stairs-up-endless` —
+  <https://github.com/pavelmiskevich/37-2-dream/raw/main/apps/web/public/library/stills/stairs-up-endless.webp>
+- Seed: `393019`
+- Промпт:
+
+  ```text
+  Static camera, no camera movement. Looking straight up through the narrow gap between the flights of an endless Soviet stairwell, railings spiralling upward, weak bare bulbs on each landing. The bulbs slowly go out one after another from the bottom upwards, the darkness climbing up the stairwell. Nothing else moves. Realistic 35mm film footage, heavy film grain, muted desaturated colors, quiet, uneasy and unsettling dream atmosphere.
+  ```
+
+**42. `clip-hospital-will-pages-turn`** — на посту медсестры страницы завещания перелистываются сами
+
+- Кадр: `hospital-will-papers` —
+  <https://github.com/pavelmiskevich/37-2-dream/raw/main/apps/web/public/library/stills/hospital-will-papers.webp>
+- Seed: `393020`
+- Промпт:
+
+  ```text
+  Static camera, no camera movement. A nurse's desk in an empty hospital corridor at night, a typed last will under a desk lamp, a fountain pen and a rubber stamp. The pages of the will slowly turn over by themselves one by one, and the desk lamp flickers. Nobody is there. Realistic 35mm film footage, heavy film grain, muted desaturated colors, quiet, uneasy and unsettling dream atmosphere.
   ```
 
 ## 7. Как отдать результат
