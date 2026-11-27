@@ -5154,6 +5154,1278 @@
         "seed": 391037,
         "source": "local-desktop, from still yard-day-snow"
       }
+    },
+    {
+      "id": "clip-drop-canyon-roof-tips",
+      "kind": "clip",
+      "file": "clips/clip-drop-canyon-roof-tips.mp4",
+      "width": 1280,
+      "height": 720,
+      "duration": 2.417,
+      "tags": {
+        "location": "yard",
+        "motifs": [
+          "fall"
+        ],
+        "people": "none",
+        "mood": "dread",
+        "time": "dusk"
+      },
+      "generation": {
+        "model": "Wan-AI/Wan2.2-TI2V-5B",
+        "license": "Apache-2.0",
+        "prompt": "Looking straight down the sheer concrete wall of a nine-storey Soviet apartment block from the edge of its roof at dusk, a tiny courtyard with a swing far below. For half a second nothing moves. Then the camera suddenly pitches forward over the edge and plunges straight down along the wall, the windows and balconies streaking upwards, the courtyard rushing up at the camera in one violent jolt. Realistic 35mm film footage, heavy film grain, strong motion blur, muted desaturated colors, sudden terrifying dream atmosphere.",
+        "seed": 393001,
+        "source": "local-desktop, from still fall-courtyard-canyon-dusk, from 2.6 s"
+      }
+    },
+    {
+      "id": "clip-drop-canyon-roof-tips-2",
+      "kind": "clip",
+      "file": "clips/clip-drop-canyon-roof-tips-2.mp4",
+      "width": 1280,
+      "height": 720,
+      "duration": 2.417,
+      "tags": {
+        "location": "yard",
+        "motifs": [
+          "fall"
+        ],
+        "people": "none",
+        "mood": "dread",
+        "time": "dusk"
+      },
+      "generation": {
+        "model": "Wan-AI/Wan2.2-TI2V-5B",
+        "license": "Apache-2.0",
+        "prompt": "Looking straight down the sheer concrete wall of a nine-storey Soviet apartment block from the edge of its roof at dusk, a tiny courtyard with a swing far below. For half a second nothing moves. Then the camera suddenly pitches forward over the edge and plunges straight down along the wall, the windows and balconies streaking upwards, the courtyard rushing up at the camera in one violent jolt. Realistic 35mm film footage, heavy film grain, strong motion blur, muted desaturated colors, sudden terrifying dream atmosphere.",
+        "seed": 393031,
+        "source": "local-desktop, from still fall-courtyard-canyon-dusk, from 2.6 s"
+      }
+    },
+    {
+      "id": "clip-drop-canyon-roof-tips-3",
+      "kind": "clip",
+      "file": "clips/clip-drop-canyon-roof-tips-3.mp4",
+      "width": 1280,
+      "height": 720,
+      "duration": 2.417,
+      "tags": {
+        "location": "yard",
+        "motifs": [
+          "fall"
+        ],
+        "people": "none",
+        "mood": "dread",
+        "time": "dusk"
+      },
+      "generation": {
+        "model": "Wan-AI/Wan2.2-TI2V-5B",
+        "license": "Apache-2.0",
+        "prompt": "Looking straight down the sheer concrete wall of a nine-storey Soviet apartment block from the edge of its roof at dusk, a tiny courtyard with a swing far below. For half a second nothing moves. Then the camera suddenly pitches forward over the edge and plunges straight down along the wall, the windows and balconies streaking upwards, the courtyard rushing up at the camera in one violent jolt. Realistic 35mm film footage, heavy film grain, strong motion blur, muted desaturated colors, sudden terrifying dream atmosphere.",
+        "seed": 393011,
+        "source": "local-desktop, from still fall-courtyard-canyon-dusk, from 2.6 s"
+      }
+    },
+    {
+      "id": "clip-drop-elevator-roof-shaft",
+      "kind": "clip",
+      "file": "clips/clip-drop-elevator-roof-shaft.mp4",
+      "width": 1280,
+      "height": 720,
+      "duration": 4.333,
+      "tags": {
+        "location": "elevator",
+        "motifs": [
+          "fall"
+        ],
+        "people": "distant",
+        "mood": "dread",
+        "time": "dusk"
+      },
+      "generation": {
+        "model": "Wan-AI/Wan2.2-TI2V-5B",
+        "license": "Apache-2.0",
+        "prompt": "Standing on the roof of an old elevator cabin inside a dark shaft, looking down past its edge into the shaft. For half a second nothing moves. Then the cabin lurches violently and the camera slips off its edge and falls straight down the shaft, the greasy cables and the thin lit outlines of the landing doors whipping upwards past the camera, faster and faster, in one violent jolt. Realistic 35mm film footage, heavy film grain, strong motion blur, muted desaturated colors, sudden terrifying dream atmosphere.",
+        "seed": 393003,
+        "source": "local-desktop, from still fall-elevator-roof-shaft, from 0.7 s"
+      }
+    },
+    {
+      "id": "clip-drop-elevator-roof-shaft-2",
+      "kind": "clip",
+      "file": "clips/clip-drop-elevator-roof-shaft-2.mp4",
+      "width": 1280,
+      "height": 720,
+      "duration": 3.333,
+      "tags": {
+        "location": "elevator",
+        "motifs": [
+          "fall"
+        ],
+        "people": "distant",
+        "mood": "dread",
+        "time": "dusk"
+      },
+      "generation": {
+        "model": "Wan-AI/Wan2.2-TI2V-5B",
+        "license": "Apache-2.0",
+        "prompt": "Standing on the roof of an old elevator cabin inside a dark shaft, looking down past its edge into the shaft. For half a second nothing moves. Then the cabin lurches violently and the camera slips off its edge and falls straight down the shaft, the greasy cables and the thin lit outlines of the landing doors whipping upwards past the camera, faster and faster, in one violent jolt. Realistic 35mm film footage, heavy film grain, strong motion blur, muted desaturated colors, sudden terrifying dream atmosphere.",
+        "seed": 393033,
+        "source": "local-desktop, from still fall-elevator-roof-shaft, from 1.7 s"
+      }
+    },
+    {
+      "id": "clip-drop-elevator-roof-shaft-3",
+      "kind": "clip",
+      "file": "clips/clip-drop-elevator-roof-shaft-3.mp4",
+      "width": 1280,
+      "height": 720,
+      "duration": 4.333,
+      "tags": {
+        "location": "elevator",
+        "motifs": [
+          "fall"
+        ],
+        "people": "distant",
+        "mood": "dread",
+        "time": "dusk"
+      },
+      "generation": {
+        "model": "Wan-AI/Wan2.2-TI2V-5B",
+        "license": "Apache-2.0",
+        "prompt": "Standing on the roof of an old elevator cabin inside a dark shaft, looking down past its edge into the shaft. For half a second nothing moves. Then the cabin lurches violently and the camera slips off its edge and falls straight down the shaft, the greasy cables and the thin lit outlines of the landing doors whipping upwards past the camera, faster and faster, in one violent jolt. Realistic 35mm film footage, heavy film grain, strong motion blur, muted desaturated colors, sudden terrifying dream atmosphere.",
+        "seed": 393013,
+        "source": "local-desktop, from still fall-elevator-roof-shaft, from 0.7 s"
+      }
+    },
+    {
+      "id": "clip-drop-elevator-roof-shaft-4",
+      "kind": "clip",
+      "file": "clips/clip-drop-elevator-roof-shaft-4.mp4",
+      "width": 1280,
+      "height": 720,
+      "duration": 3.208,
+      "tags": {
+        "location": "elevator",
+        "motifs": [
+          "fall"
+        ],
+        "people": "distant",
+        "mood": "dread",
+        "time": "dusk"
+      },
+      "generation": {
+        "model": "Wan-AI/Wan2.2-TI2V-5B",
+        "license": "Apache-2.0",
+        "prompt": "Standing on the roof of an old elevator cabin inside a dark shaft, looking down past its edge into the shaft. For half a second nothing moves. Then the cabin lurches violently and the camera slips off its edge and falls straight down the shaft, the greasy cables and the thin lit outlines of the landing doors whipping upwards past the camera, faster and faster, in one violent jolt. Realistic 35mm film footage, heavy film grain, strong motion blur, muted desaturated colors, sudden terrifying dream atmosphere.",
+        "seed": 393023,
+        "source": "local-desktop, from still fall-elevator-roof-shaft, from 1.8 s"
+      }
+    },
+    {
+      "id": "clip-drop-stairs-37",
+      "kind": "clip",
+      "file": "clips/clip-drop-stairs-37.mp4",
+      "width": 1280,
+      "height": 720,
+      "duration": 2.833,
+      "tags": {
+        "location": "stairs",
+        "motifs": [
+          "fall"
+        ],
+        "people": "none",
+        "mood": "dread",
+        "time": "interior"
+      },
+      "generation": {
+        "model": "Wan-AI/Wan2.2-TI2V-5B",
+        "license": "Apache-2.0",
+        "prompt": "A narrow Soviet staircase going down, the floor number 37 painted on the wall of every landing, darkness further down. For half a second nothing moves. Then the step under the camera vanishes and the camera drops straight down through the staircase, the landings with the number 37 flashing upwards past the camera one after another, faster and faster, into darkness, in one violent jolt. Realistic 35mm film footage, heavy film grain, strong motion blur, muted desaturated colors, sudden terrifying dream atmosphere.",
+        "seed": 393034,
+        "source": "local-desktop, from still stairs-down-37, from 2.2 s"
+      }
+    },
+    {
+      "id": "clip-drop-stairs-37-2",
+      "kind": "clip",
+      "file": "clips/clip-drop-stairs-37-2.mp4",
+      "width": 1280,
+      "height": 720,
+      "duration": 2.417,
+      "tags": {
+        "location": "stairs",
+        "motifs": [
+          "fall"
+        ],
+        "people": "none",
+        "mood": "dread",
+        "time": "interior"
+      },
+      "generation": {
+        "model": "Wan-AI/Wan2.2-TI2V-5B",
+        "license": "Apache-2.0",
+        "prompt": "A narrow Soviet staircase going down, the floor number 37 painted on the wall of every landing, darkness further down. For half a second nothing moves. Then the step under the camera vanishes and the camera drops straight down through the staircase, the landings with the number 37 flashing upwards past the camera one after another, faster and faster, into darkness, in one violent jolt. Realistic 35mm film footage, heavy film grain, strong motion blur, muted desaturated colors, sudden terrifying dream atmosphere.",
+        "seed": 393004,
+        "source": "local-desktop, from still stairs-down-37, from 2.6 s"
+      }
+    },
+    {
+      "id": "clip-drop-stairwell-spiral",
+      "kind": "clip",
+      "file": "clips/clip-drop-stairwell-spiral.mp4",
+      "width": 1280,
+      "height": 720,
+      "duration": 3.333,
+      "tags": {
+        "location": "stairs",
+        "motifs": [
+          "fall"
+        ],
+        "people": "distant",
+        "mood": "dread",
+        "time": "interior"
+      },
+      "generation": {
+        "model": "Wan-AI/Wan2.2-TI2V-5B",
+        "license": "Apache-2.0",
+        "prompt": "Looking straight down the stairwell well of a nine-storey Soviet apartment block from the top floor, the square spiral of railings shrinking to a tiny tiled floor far below. For half a second nothing moves. Then the camera suddenly drops into the well and falls straight down, the railings and handrails whipping upwards past the camera floor after floor, the tiled floor rushing up in one violent jolt. Realistic 35mm film footage, heavy film grain, strong motion blur, muted desaturated colors, sudden terrifying dream atmosphere.",
+        "seed": 393012,
+        "source": "local-desktop, from still fall-stairwell-well-spiral, from 1.7 s"
+      }
+    },
+    {
+      "id": "clip-drop-stairwell-spiral-2",
+      "kind": "clip",
+      "file": "clips/clip-drop-stairwell-spiral-2.mp4",
+      "width": 1280,
+      "height": 720,
+      "duration": 2.417,
+      "tags": {
+        "location": "stairs",
+        "motifs": [
+          "fall"
+        ],
+        "people": "distant",
+        "mood": "dread",
+        "time": "interior"
+      },
+      "generation": {
+        "model": "Wan-AI/Wan2.2-TI2V-5B",
+        "license": "Apache-2.0",
+        "prompt": "Looking straight down the stairwell well of a nine-storey Soviet apartment block from the top floor, the square spiral of railings shrinking to a tiny tiled floor far below. For half a second nothing moves. Then the camera suddenly drops into the well and falls straight down, the railings and handrails whipping upwards past the camera floor after floor, the tiled floor rushing up in one violent jolt. Realistic 35mm film footage, heavy film grain, strong motion blur, muted desaturated colors, sudden terrifying dream atmosphere.",
+        "seed": 393032,
+        "source": "local-desktop, from still fall-stairwell-well-spiral, from 2.6 s"
+      }
+    },
+    {
+      "id": "clip-drop-stairwell-spiral-3",
+      "kind": "clip",
+      "file": "clips/clip-drop-stairwell-spiral-3.mp4",
+      "width": 1280,
+      "height": 720,
+      "duration": 2.042,
+      "tags": {
+        "location": "stairs",
+        "motifs": [
+          "fall"
+        ],
+        "people": "distant",
+        "mood": "dread",
+        "time": "interior"
+      },
+      "generation": {
+        "model": "Wan-AI/Wan2.2-TI2V-5B",
+        "license": "Apache-2.0",
+        "prompt": "Looking straight down the stairwell well of a nine-storey Soviet apartment block from the top floor, the square spiral of railings shrinking to a tiny tiled floor far below. For half a second nothing moves. Then the camera suddenly drops into the well and falls straight down, the railings and handrails whipping upwards past the camera floor after floor, the tiled floor rushing up in one violent jolt. Realistic 35mm film footage, heavy film grain, strong motion blur, muted desaturated colors, sudden terrifying dream atmosphere.",
+        "seed": 393002,
+        "source": "local-desktop, from still fall-stairwell-well-spiral, from 3 s"
+      }
+    },
+    {
+      "id": "clip-bedroom-monitor-pulse",
+      "kind": "clip",
+      "file": "clips/clip-bedroom-monitor-pulse.mp4",
+      "width": 1280,
+      "height": 720,
+      "duration": 5.042,
+      "tags": {
+        "location": "bedroom",
+        "motifs": [
+          "monitor"
+        ],
+        "people": "distant",
+        "mood": "dread",
+        "time": "night"
+      },
+      "generation": {
+        "model": "Wan-AI/Wan2.2-TI2V-5B",
+        "license": "Apache-2.0",
+        "prompt": "Static camera, no camera movement. A dark Soviet-era bedroom at night, a sleeping figure in bed as a dark silhouette under the blanket, an old heart monitor on the bedside table glowing green. The green pulse line on the monitor beats steadily, its glow pulsing on the wall and the pillow, and the blanket slowly rises and falls with breathing. Nothing else moves. Realistic 35mm film footage, heavy film grain, muted desaturated colors, quiet, uneasy and unsettling dream atmosphere.",
+        "seed": 393008,
+        "source": "local-desktop, from still bedroom-monitor"
+      }
+    },
+    {
+      "id": "clip-bedroom-monitor-pulse-2",
+      "kind": "clip",
+      "file": "clips/clip-bedroom-monitor-pulse-2.mp4",
+      "width": 1280,
+      "height": 720,
+      "duration": 5.042,
+      "tags": {
+        "location": "bedroom",
+        "motifs": [
+          "monitor"
+        ],
+        "people": "distant",
+        "mood": "dread",
+        "time": "night"
+      },
+      "generation": {
+        "model": "Wan-AI/Wan2.2-TI2V-5B",
+        "license": "Apache-2.0",
+        "prompt": "Static camera, no camera movement. A dark Soviet-era bedroom at night, a sleeping figure in bed as a dark silhouette under the blanket, an old heart monitor on the bedside table glowing green. The green pulse line on the monitor beats steadily, its glow pulsing on the wall and the pillow, and the blanket slowly rises and falls with breathing. Nothing else moves. Realistic 35mm film footage, heavy film grain, muted desaturated colors, quiet, uneasy and unsettling dream atmosphere.",
+        "seed": 393028,
+        "source": "local-desktop, from still bedroom-monitor"
+      }
+    },
+    {
+      "id": "clip-bedroom-spheres-swell",
+      "kind": "clip",
+      "file": "clips/clip-bedroom-spheres-swell.mp4",
+      "width": 1280,
+      "height": 720,
+      "duration": 5.042,
+      "tags": {
+        "location": "bedroom",
+        "motifs": [
+          "giant_shapes"
+        ],
+        "people": "distant",
+        "mood": "dread",
+        "time": "night"
+      },
+      "generation": {
+        "model": "Wan-AI/Wan2.2-TI2V-5B",
+        "license": "Apache-2.0",
+        "prompt": "Static camera, no camera movement. A small Soviet-era bedroom at night filled by three enormous smooth grey spheres pressing against the walls and the ceiling, a tiny man in pajamas standing beside them. The spheres slowly swell even bigger, pressing harder against the walls and ceiling, fine dust and flakes of plaster trickling down. The man does not move. Realistic 35mm film footage, heavy film grain, muted desaturated colors, quiet, uneasy and unsettling dream atmosphere.",
+        "seed": 393034,
+        "source": "local-desktop, from still bedroom-giant-spheres"
+      }
+    },
+    {
+      "id": "clip-bedroom-spheres-swell-2",
+      "kind": "clip",
+      "file": "clips/clip-bedroom-spheres-swell-2.mp4",
+      "width": 1280,
+      "height": 720,
+      "duration": 5.042,
+      "tags": {
+        "location": "bedroom",
+        "motifs": [
+          "giant_shapes"
+        ],
+        "people": "distant",
+        "mood": "dread",
+        "time": "night"
+      },
+      "generation": {
+        "model": "Wan-AI/Wan2.2-TI2V-5B",
+        "license": "Apache-2.0",
+        "prompt": "Static camera, no camera movement. A small Soviet-era bedroom at night filled by three enormous smooth grey spheres pressing against the walls and the ceiling, a tiny man in pajamas standing beside them. The spheres slowly swell even bigger, pressing harder against the walls and ceiling, fine dust and flakes of plaster trickling down. The man does not move. Realistic 35mm film footage, heavy film grain, muted desaturated colors, quiet, uneasy and unsettling dream atmosphere.",
+        "seed": 393014,
+        "source": "local-desktop, from still bedroom-giant-spheres"
+      }
+    },
+    {
+      "id": "clip-bedroom-spheres-swell-3",
+      "kind": "clip",
+      "file": "clips/clip-bedroom-spheres-swell-3.mp4",
+      "width": 1280,
+      "height": 720,
+      "duration": 5.042,
+      "tags": {
+        "location": "bedroom",
+        "motifs": [
+          "giant_shapes"
+        ],
+        "people": "distant",
+        "mood": "dread",
+        "time": "night"
+      },
+      "generation": {
+        "model": "Wan-AI/Wan2.2-TI2V-5B",
+        "license": "Apache-2.0",
+        "prompt": "Static camera, no camera movement. A small Soviet-era bedroom at night filled by three enormous smooth grey spheres pressing against the walls and the ceiling, a tiny man in pajamas standing beside them. The spheres slowly swell even bigger, pressing harder against the walls and ceiling, fine dust and flakes of plaster trickling down. The man does not move. Realistic 35mm film footage, heavy film grain, muted desaturated colors, quiet, uneasy and unsettling dream atmosphere.",
+        "seed": 393024,
+        "source": "local-desktop, from still bedroom-giant-spheres"
+      }
+    },
+    {
+      "id": "clip-bedroom-spheres-swell-4",
+      "kind": "clip",
+      "file": "clips/clip-bedroom-spheres-swell-4.mp4",
+      "width": 1280,
+      "height": 720,
+      "duration": 5.042,
+      "tags": {
+        "location": "bedroom",
+        "motifs": [
+          "giant_shapes"
+        ],
+        "people": "distant",
+        "mood": "dread",
+        "time": "night"
+      },
+      "generation": {
+        "model": "Wan-AI/Wan2.2-TI2V-5B",
+        "license": "Apache-2.0",
+        "prompt": "Static camera, no camera movement. A small Soviet-era bedroom at night filled by three enormous smooth grey spheres pressing against the walls and the ceiling, a tiny man in pajamas standing beside them. The spheres slowly swell even bigger, pressing harder against the walls and ceiling, fine dust and flakes of plaster trickling down. The man does not move. Realistic 35mm film footage, heavy film grain, muted desaturated colors, quiet, uneasy and unsettling dream atmosphere.",
+        "seed": 393044,
+        "source": "local-desktop, from still bedroom-giant-spheres"
+      }
+    },
+    {
+      "id": "clip-elevator-shaft-light-rises",
+      "kind": "clip",
+      "file": "clips/clip-elevator-shaft-light-rises.mp4",
+      "width": 1280,
+      "height": 720,
+      "duration": 5.042,
+      "tags": {
+        "location": "elevator",
+        "motifs": [],
+        "people": "none",
+        "mood": "dread",
+        "time": "interior"
+      },
+      "generation": {
+        "model": "Wan-AI/Wan2.2-TI2V-5B",
+        "license": "Apache-2.0",
+        "prompt": "Static camera, no camera movement. Elevator doors standing half open on a dark landing onto an empty shaft with no cabin, greasy cables hanging in the dark, a thin strip of yellow light far below. The cables slowly start to move and sway, and the strip of yellow light far below slowly rises up the shaft towards the open doors, as if something is coming up. Realistic 35mm film footage, heavy film grain, muted desaturated colors, quiet, uneasy and unsettling dream atmosphere.",
+        "seed": 393046,
+        "source": "local-desktop, from still elevator-shaft-open"
+      }
+    },
+    {
+      "id": "clip-elevator-shaft-light-rises-2",
+      "kind": "clip",
+      "file": "clips/clip-elevator-shaft-light-rises-2.mp4",
+      "width": 1280,
+      "height": 720,
+      "duration": 5.042,
+      "tags": {
+        "location": "elevator",
+        "motifs": [],
+        "people": "none",
+        "mood": "dread",
+        "time": "interior"
+      },
+      "generation": {
+        "model": "Wan-AI/Wan2.2-TI2V-5B",
+        "license": "Apache-2.0",
+        "prompt": "Static camera, no camera movement. Elevator doors standing half open on a dark landing onto an empty shaft with no cabin, greasy cables hanging in the dark, a thin strip of yellow light far below. The cables slowly start to move and sway, and the strip of yellow light far below slowly rises up the shaft towards the open doors, as if something is coming up. Realistic 35mm film footage, heavy film grain, muted desaturated colors, quiet, uneasy and unsettling dream atmosphere.",
+        "seed": 393036,
+        "source": "local-desktop, from still elevator-shaft-open"
+      }
+    },
+    {
+      "id": "clip-elevator-shaft-light-rises-3",
+      "kind": "clip",
+      "file": "clips/clip-elevator-shaft-light-rises-3.mp4",
+      "width": 1280,
+      "height": 720,
+      "duration": 5.042,
+      "tags": {
+        "location": "elevator",
+        "motifs": [],
+        "people": "none",
+        "mood": "dread",
+        "time": "interior"
+      },
+      "generation": {
+        "model": "Wan-AI/Wan2.2-TI2V-5B",
+        "license": "Apache-2.0",
+        "prompt": "Static camera, no camera movement. Elevator doors standing half open on a dark landing onto an empty shaft with no cabin, greasy cables hanging in the dark, a thin strip of yellow light far below. The cables slowly start to move and sway, and the strip of yellow light far below slowly rises up the shaft towards the open doors, as if something is coming up. Realistic 35mm film footage, heavy film grain, muted desaturated colors, quiet, uneasy and unsettling dream atmosphere.",
+        "seed": 393016,
+        "source": "local-desktop, from still elevator-shaft-open"
+      }
+    },
+    {
+      "id": "clip-hospital-gurney-rolls",
+      "kind": "clip",
+      "file": "clips/clip-hospital-gurney-rolls.mp4",
+      "width": 1280,
+      "height": 720,
+      "duration": 5.042,
+      "tags": {
+        "location": "hospital_corridor",
+        "motifs": [
+          "monitor"
+        ],
+        "people": "none",
+        "mood": "dread",
+        "time": "night"
+      },
+      "generation": {
+        "model": "Wan-AI/Wan2.2-TI2V-5B",
+        "license": "Apache-2.0",
+        "prompt": "Static camera, no camera movement. An empty hospital corridor at night, a metal gurney with a white sheet standing alone in the middle, a fluorescent tube flickering overhead. The gurney slowly starts to roll by itself towards the camera, its wheels turning, the sheet trembling slightly, while the fluorescent light flickers. Nobody is in the corridor. Realistic 35mm film footage, heavy film grain, muted desaturated colors, quiet, uneasy and unsettling dream atmosphere.",
+        "seed": 393040,
+        "source": "local-desktop, from still hospital-corridor-gurney"
+      }
+    },
+    {
+      "id": "clip-hospital-gurney-rolls-2",
+      "kind": "clip",
+      "file": "clips/clip-hospital-gurney-rolls-2.mp4",
+      "width": 1280,
+      "height": 720,
+      "duration": 5.042,
+      "tags": {
+        "location": "hospital_corridor",
+        "motifs": [
+          "monitor"
+        ],
+        "people": "none",
+        "mood": "dread",
+        "time": "night"
+      },
+      "generation": {
+        "model": "Wan-AI/Wan2.2-TI2V-5B",
+        "license": "Apache-2.0",
+        "prompt": "Static camera, no camera movement. An empty hospital corridor at night, a metal gurney with a white sheet standing alone in the middle, a fluorescent tube flickering overhead. The gurney slowly starts to roll by itself towards the camera, its wheels turning, the sheet trembling slightly, while the fluorescent light flickers. Nobody is in the corridor. Realistic 35mm film footage, heavy film grain, muted desaturated colors, quiet, uneasy and unsettling dream atmosphere.",
+        "seed": 393010,
+        "source": "local-desktop, from still hospital-corridor-gurney"
+      }
+    },
+    {
+      "id": "clip-hospital-gurney-rolls-3",
+      "kind": "clip",
+      "file": "clips/clip-hospital-gurney-rolls-3.mp4",
+      "width": 1280,
+      "height": 720,
+      "duration": 5.042,
+      "tags": {
+        "location": "hospital_corridor",
+        "motifs": [
+          "monitor"
+        ],
+        "people": "none",
+        "mood": "dread",
+        "time": "night"
+      },
+      "generation": {
+        "model": "Wan-AI/Wan2.2-TI2V-5B",
+        "license": "Apache-2.0",
+        "prompt": "Static camera, no camera movement. An empty hospital corridor at night, a metal gurney with a white sheet standing alone in the middle, a fluorescent tube flickering overhead. The gurney slowly starts to roll by itself towards the camera, its wheels turning, the sheet trembling slightly, while the fluorescent light flickers. Nobody is in the corridor. Realistic 35mm film footage, heavy film grain, muted desaturated colors, quiet, uneasy and unsettling dream atmosphere.",
+        "seed": 393030,
+        "source": "local-desktop, from still hospital-corridor-gurney"
+      }
+    },
+    {
+      "id": "clip-hospital-snake-crawls",
+      "kind": "clip",
+      "file": "clips/clip-hospital-snake-crawls.mp4",
+      "width": 1280,
+      "height": 720,
+      "duration": 5.042,
+      "tags": {
+        "location": "hospital_corridor",
+        "motifs": [
+          "snake"
+        ],
+        "people": "none",
+        "mood": "dread",
+        "time": "night"
+      },
+      "generation": {
+        "model": "Wan-AI/Wan2.2-TI2V-5B",
+        "license": "Apache-2.0",
+        "prompt": "Static camera, no camera movement. A long empty hospital corridor at night, a long dark snake on the worn linoleum floor, flickering fluorescent tubes. The snake slowly slithers across the floor of the corridor in smooth curves, its scales catching the flickering light. Nothing else moves. Realistic 35mm film footage, heavy film grain, muted desaturated colors, quiet, uneasy and unsettling dream atmosphere.",
+        "seed": 393022,
+        "source": "local-desktop, from still hospital-corridor-snake"
+      }
+    },
+    {
+      "id": "clip-hospital-snake-crawls-2",
+      "kind": "clip",
+      "file": "clips/clip-hospital-snake-crawls-2.mp4",
+      "width": 1280,
+      "height": 720,
+      "duration": 5.042,
+      "tags": {
+        "location": "hospital_corridor",
+        "motifs": [
+          "snake"
+        ],
+        "people": "none",
+        "mood": "dread",
+        "time": "night"
+      },
+      "generation": {
+        "model": "Wan-AI/Wan2.2-TI2V-5B",
+        "license": "Apache-2.0",
+        "prompt": "Static camera, no camera movement. A long empty hospital corridor at night, a long dark snake on the worn linoleum floor, flickering fluorescent tubes. The snake slowly slithers across the floor of the corridor in smooth curves, its scales catching the flickering light. Nothing else moves. Realistic 35mm film footage, heavy film grain, muted desaturated colors, quiet, uneasy and unsettling dream atmosphere.",
+        "seed": 393012,
+        "source": "local-desktop, from still hospital-corridor-snake"
+      }
+    },
+    {
+      "id": "clip-hospital-snake-crawls-3",
+      "kind": "clip",
+      "file": "clips/clip-hospital-snake-crawls-3.mp4",
+      "width": 1280,
+      "height": 720,
+      "duration": 5.042,
+      "tags": {
+        "location": "hospital_corridor",
+        "motifs": [
+          "snake"
+        ],
+        "people": "none",
+        "mood": "dread",
+        "time": "night"
+      },
+      "generation": {
+        "model": "Wan-AI/Wan2.2-TI2V-5B",
+        "license": "Apache-2.0",
+        "prompt": "Static camera, no camera movement. A long empty hospital corridor at night, a long dark snake on the worn linoleum floor, flickering fluorescent tubes. The snake slowly slithers across the floor of the corridor in smooth curves, its scales catching the flickering light. Nothing else moves. Realistic 35mm film footage, heavy film grain, muted desaturated colors, quiet, uneasy and unsettling dream atmosphere.",
+        "seed": 393032,
+        "source": "local-desktop, from still hospital-corridor-snake"
+      }
+    },
+    {
+      "id": "clip-hospital-will-pages-turn",
+      "kind": "clip",
+      "file": "clips/clip-hospital-will-pages-turn.mp4",
+      "width": 1280,
+      "height": 720,
+      "duration": 5.042,
+      "tags": {
+        "location": "hospital_corridor",
+        "motifs": [
+          "will_papers"
+        ],
+        "people": "none",
+        "mood": "dread",
+        "time": "night"
+      },
+      "generation": {
+        "model": "Wan-AI/Wan2.2-TI2V-5B",
+        "license": "Apache-2.0",
+        "prompt": "Static camera, no camera movement. A nurse's desk in an empty hospital corridor at night, a typed last will under a desk lamp, a fountain pen and a rubber stamp. The pages of the will slowly turn over by themselves one by one, and the desk lamp flickers. Nobody is there. Realistic 35mm film footage, heavy film grain, muted desaturated colors, quiet, uneasy and unsettling dream atmosphere.",
+        "seed": 393030,
+        "source": "local-desktop, from still hospital-will-papers"
+      }
+    },
+    {
+      "id": "clip-hospital-will-pages-turn-2",
+      "kind": "clip",
+      "file": "clips/clip-hospital-will-pages-turn-2.mp4",
+      "width": 1280,
+      "height": 720,
+      "duration": 5.042,
+      "tags": {
+        "location": "hospital_corridor",
+        "motifs": [
+          "will_papers"
+        ],
+        "people": "none",
+        "mood": "dread",
+        "time": "night"
+      },
+      "generation": {
+        "model": "Wan-AI/Wan2.2-TI2V-5B",
+        "license": "Apache-2.0",
+        "prompt": "Static camera, no camera movement. A nurse's desk in an empty hospital corridor at night, a typed last will under a desk lamp, a fountain pen and a rubber stamp. The pages of the will slowly turn over by themselves one by one, and the desk lamp flickers. Nobody is there. Realistic 35mm film footage, heavy film grain, muted desaturated colors, quiet, uneasy and unsettling dream atmosphere.",
+        "seed": 393050,
+        "source": "local-desktop, from still hospital-will-papers"
+      }
+    },
+    {
+      "id": "clip-jam-inside-lid-closes",
+      "kind": "clip",
+      "file": "clips/clip-jam-inside-lid-closes.mp4",
+      "width": 1280,
+      "height": 720,
+      "duration": 5.042,
+      "tags": {
+        "location": "jam_jar",
+        "motifs": [],
+        "people": "none",
+        "mood": "dread",
+        "time": "interior"
+      },
+      "generation": {
+        "model": "Wan-AI/Wan2.2-TI2V-5B",
+        "license": "Apache-2.0",
+        "prompt": "Static camera, no camera movement. Submerged inside thick dark red cherry jam, whole cherries suspended around the camera, the round mouth of the jar far above as a pale circle of light. The cherries drift very slowly, and a lid slowly slides over the mouth of the jar above, the circle of light shrinking to a thin crescent and then darkness. Realistic 35mm film footage, heavy film grain, muted desaturated colors, quiet, uneasy and unsettling dream atmosphere.",
+        "seed": 393017,
+        "source": "local-desktop, from still jam-jar-inside"
+      }
+    },
+    {
+      "id": "clip-jam-inside-lid-closes-2",
+      "kind": "clip",
+      "file": "clips/clip-jam-inside-lid-closes-2.mp4",
+      "width": 1280,
+      "height": 720,
+      "duration": 5.042,
+      "tags": {
+        "location": "jam_jar",
+        "motifs": [],
+        "people": "none",
+        "mood": "dread",
+        "time": "interior"
+      },
+      "generation": {
+        "model": "Wan-AI/Wan2.2-TI2V-5B",
+        "license": "Apache-2.0",
+        "prompt": "Static camera, no camera movement. Submerged inside thick dark red cherry jam, whole cherries suspended around the camera, the round mouth of the jar far above as a pale circle of light. The cherries drift very slowly, and a lid slowly slides over the mouth of the jar above, the circle of light shrinking to a thin crescent and then darkness. Realistic 35mm film footage, heavy film grain, muted desaturated colors, quiet, uneasy and unsettling dream atmosphere.",
+        "seed": 393007,
+        "source": "local-desktop, from still jam-jar-inside"
+      }
+    },
+    {
+      "id": "clip-jam-inside-lid-closes-3",
+      "kind": "clip",
+      "file": "clips/clip-jam-inside-lid-closes-3.mp4",
+      "width": 1280,
+      "height": 720,
+      "duration": 5.042,
+      "tags": {
+        "location": "jam_jar",
+        "motifs": [],
+        "people": "none",
+        "mood": "dread",
+        "time": "interior"
+      },
+      "generation": {
+        "model": "Wan-AI/Wan2.2-TI2V-5B",
+        "license": "Apache-2.0",
+        "prompt": "Static camera, no camera movement. Submerged inside thick dark red cherry jam, whole cherries suspended around the camera, the round mouth of the jar far above as a pale circle of light. The cherries drift very slowly, and a lid slowly slides over the mouth of the jar above, the circle of light shrinking to a thin crescent and then darkness. Realistic 35mm film footage, heavy film grain, muted desaturated colors, quiet, uneasy and unsettling dream atmosphere.",
+        "seed": 393027,
+        "source": "local-desktop, from still jam-jar-inside"
+      }
+    },
+    {
+      "id": "clip-jam-inside-lid-closes-4",
+      "kind": "clip",
+      "file": "clips/clip-jam-inside-lid-closes-4.mp4",
+      "width": 1280,
+      "height": 720,
+      "duration": 5.042,
+      "tags": {
+        "location": "jam_jar",
+        "motifs": [],
+        "people": "none",
+        "mood": "dread",
+        "time": "interior"
+      },
+      "generation": {
+        "model": "Wan-AI/Wan2.2-TI2V-5B",
+        "license": "Apache-2.0",
+        "prompt": "Static camera, no camera movement. Submerged inside thick dark red cherry jam, whole cherries suspended around the camera, the round mouth of the jar far above as a pale circle of light. The cherries drift very slowly, and a lid slowly slides over the mouth of the jar above, the circle of light shrinking to a thin crescent and then darkness. Realistic 35mm film footage, heavy film grain, muted desaturated colors, quiet, uneasy and unsettling dream atmosphere.",
+        "seed": 393037,
+        "source": "local-desktop, from still jam-jar-inside"
+      }
+    },
+    {
+      "id": "clip-kitchen-fridge-door-closes",
+      "kind": "clip",
+      "file": "clips/clip-kitchen-fridge-door-closes.mp4",
+      "width": 1280,
+      "height": 720,
+      "duration": 5.042,
+      "tags": {
+        "location": "kitchen",
+        "motifs": [],
+        "people": "none",
+        "mood": "uneasy",
+        "time": "night"
+      },
+      "generation": {
+        "model": "Wan-AI/Wan2.2-TI2V-5B",
+        "license": "Apache-2.0",
+        "prompt": "Static camera, no camera movement. A cramped Soviet-era kitchen at night, the old white refrigerator door standing wide open, its pale yellow light the only light in the room. The refrigerator door slowly swings shut by itself, the strip of yellow light on the linoleum narrowing until the kitchen is almost dark. Nobody is in the room. Realistic 35mm film footage, heavy film grain, muted desaturated colors, quiet, uneasy and unsettling dream atmosphere.",
+        "seed": 393039,
+        "source": "local-desktop, from still kitchen-night-fridge"
+      }
+    },
+    {
+      "id": "clip-kitchen-fridge-door-closes-2",
+      "kind": "clip",
+      "file": "clips/clip-kitchen-fridge-door-closes-2.mp4",
+      "width": 1280,
+      "height": 720,
+      "duration": 5.042,
+      "tags": {
+        "location": "kitchen",
+        "motifs": [],
+        "people": "none",
+        "mood": "uneasy",
+        "time": "night"
+      },
+      "generation": {
+        "model": "Wan-AI/Wan2.2-TI2V-5B",
+        "license": "Apache-2.0",
+        "prompt": "Static camera, no camera movement. A cramped Soviet-era kitchen at night, the old white refrigerator door standing wide open, its pale yellow light the only light in the room. The refrigerator door slowly swings shut by itself, the strip of yellow light on the linoleum narrowing until the kitchen is almost dark. Nobody is in the room. Realistic 35mm film footage, heavy film grain, muted desaturated colors, quiet, uneasy and unsettling dream atmosphere.",
+        "seed": 393009,
+        "source": "local-desktop, from still kitchen-night-fridge"
+      }
+    },
+    {
+      "id": "clip-kitchen-fridge-door-closes-3",
+      "kind": "clip",
+      "file": "clips/clip-kitchen-fridge-door-closes-3.mp4",
+      "width": 1280,
+      "height": 720,
+      "duration": 5.042,
+      "tags": {
+        "location": "kitchen",
+        "motifs": [],
+        "people": "none",
+        "mood": "uneasy",
+        "time": "night"
+      },
+      "generation": {
+        "model": "Wan-AI/Wan2.2-TI2V-5B",
+        "license": "Apache-2.0",
+        "prompt": "Static camera, no camera movement. A cramped Soviet-era kitchen at night, the old white refrigerator door standing wide open, its pale yellow light the only light in the room. The refrigerator door slowly swings shut by itself, the strip of yellow light on the linoleum narrowing until the kitchen is almost dark. Nobody is in the room. Realistic 35mm film footage, heavy film grain, muted desaturated colors, quiet, uneasy and unsettling dream atmosphere.",
+        "seed": 393019,
+        "source": "local-desktop, from still kitchen-night-fridge"
+      }
+    },
+    {
+      "id": "clip-kitchen-snake-sink-rises",
+      "kind": "clip",
+      "file": "clips/clip-kitchen-snake-sink-rises.mp4",
+      "width": 1280,
+      "height": 720,
+      "duration": 5.042,
+      "tags": {
+        "location": "kitchen",
+        "motifs": [
+          "snake"
+        ],
+        "people": "none",
+        "mood": "dread",
+        "time": "night"
+      },
+      "generation": {
+        "model": "Wan-AI/Wan2.2-TI2V-5B",
+        "license": "Apache-2.0",
+        "prompt": "Static camera, no camera movement. A cramped Soviet-era kitchen at night lit by a weak bulb, a thick snake coiled inside the old enamel sink among unwashed dishes. The snake slowly raises its head higher over the edge of the sink and sways, flicking its tongue, while the tap drips. Nothing else moves. Realistic 35mm film footage, heavy film grain, muted desaturated colors, quiet, uneasy and unsettling dream atmosphere.",
+        "seed": 393013,
+        "source": "local-desktop, from still kitchen-snake-sink"
+      }
+    },
+    {
+      "id": "clip-kitchen-snake-sink-rises-2",
+      "kind": "clip",
+      "file": "clips/clip-kitchen-snake-sink-rises-2.mp4",
+      "width": 1280,
+      "height": 720,
+      "duration": 5.042,
+      "tags": {
+        "location": "kitchen",
+        "motifs": [
+          "snake"
+        ],
+        "people": "none",
+        "mood": "dread",
+        "time": "night"
+      },
+      "generation": {
+        "model": "Wan-AI/Wan2.2-TI2V-5B",
+        "license": "Apache-2.0",
+        "prompt": "Static camera, no camera movement. A cramped Soviet-era kitchen at night lit by a weak bulb, a thick snake coiled inside the old enamel sink among unwashed dishes. The snake slowly raises its head higher over the edge of the sink and sways, flicking its tongue, while the tap drips. Nothing else moves. Realistic 35mm film footage, heavy film grain, muted desaturated colors, quiet, uneasy and unsettling dream atmosphere.",
+        "seed": 393023,
+        "source": "local-desktop, from still kitchen-snake-sink"
+      }
+    },
+    {
+      "id": "clip-kitchen-snake-sink-rises-3",
+      "kind": "clip",
+      "file": "clips/clip-kitchen-snake-sink-rises-3.mp4",
+      "width": 1280,
+      "height": 720,
+      "duration": 5.042,
+      "tags": {
+        "location": "kitchen",
+        "motifs": [
+          "snake"
+        ],
+        "people": "none",
+        "mood": "dread",
+        "time": "night"
+      },
+      "generation": {
+        "model": "Wan-AI/Wan2.2-TI2V-5B",
+        "license": "Apache-2.0",
+        "prompt": "Static camera, no camera movement. A cramped Soviet-era kitchen at night lit by a weak bulb, a thick snake coiled inside the old enamel sink among unwashed dishes. The snake slowly raises its head higher over the edge of the sink and sways, flicking its tongue, while the tap drips. Nothing else moves. Realistic 35mm film footage, heavy film grain, muted desaturated colors, quiet, uneasy and unsettling dream atmosphere.",
+        "seed": 393033,
+        "source": "local-desktop, from still kitchen-snake-sink"
+      }
+    },
+    {
+      "id": "clip-kitchen-snake-sink-rises-4",
+      "kind": "clip",
+      "file": "clips/clip-kitchen-snake-sink-rises-4.mp4",
+      "width": 1280,
+      "height": 720,
+      "duration": 5.042,
+      "tags": {
+        "location": "kitchen",
+        "motifs": [
+          "snake"
+        ],
+        "people": "none",
+        "mood": "dread",
+        "time": "night"
+      },
+      "generation": {
+        "model": "Wan-AI/Wan2.2-TI2V-5B",
+        "license": "Apache-2.0",
+        "prompt": "Static camera, no camera movement. A cramped Soviet-era kitchen at night lit by a weak bulb, a thick snake coiled inside the old enamel sink among unwashed dishes. The snake slowly raises its head higher over the edge of the sink and sways, flicking its tongue, while the tap drips. Nothing else moves. Realistic 35mm film footage, heavy film grain, muted desaturated colors, quiet, uneasy and unsettling dream atmosphere.",
+        "seed": 393043,
+        "source": "local-desktop, from still kitchen-snake-sink"
+      }
+    },
+    {
+      "id": "clip-stairs-up-bulbs-die",
+      "kind": "clip",
+      "file": "clips/clip-stairs-up-bulbs-die.mp4",
+      "width": 1280,
+      "height": 720,
+      "duration": 5.042,
+      "tags": {
+        "location": "stairs",
+        "motifs": [],
+        "people": "none",
+        "mood": "uneasy",
+        "time": "interior"
+      },
+      "generation": {
+        "model": "Wan-AI/Wan2.2-TI2V-5B",
+        "license": "Apache-2.0",
+        "prompt": "Static camera, no camera movement. Looking straight up through the narrow gap between the flights of an endless Soviet stairwell, railings spiralling upward, weak bare bulbs on each landing. The bulbs slowly go out one after another from the bottom upwards, the darkness climbing up the stairwell. Nothing else moves. Realistic 35mm film footage, heavy film grain, muted desaturated colors, quiet, uneasy and unsettling dream atmosphere.",
+        "seed": 393039,
+        "source": "local-desktop, from still stairs-up-endless"
+      }
+    },
+    {
+      "id": "clip-stairwell-spider-descends",
+      "kind": "clip",
+      "file": "clips/clip-stairwell-spider-descends.mp4",
+      "width": 1280,
+      "height": 720,
+      "duration": 5.042,
+      "tags": {
+        "location": "stairwell",
+        "motifs": [
+          "spider"
+        ],
+        "people": "none",
+        "mood": "uneasy",
+        "time": "night"
+      },
+      "generation": {
+        "model": "Wan-AI/Wan2.2-TI2V-5B",
+        "license": "Apache-2.0",
+        "prompt": "Static camera, no camera movement. A huge black spider the size of a cat in a thick dusty web in the upper corner of a Soviet apartment stairwell, a single dim bulb below. The spider slowly lowers itself down on a thick thread towards the steps, its long legs moving one by one. Nothing else moves. Realistic 35mm film footage, heavy film grain, muted desaturated colors, quiet, uneasy and unsettling dream atmosphere.",
+        "seed": 393021,
+        "source": "local-desktop, from still stairwell-spider-web"
+      }
+    },
+    {
+      "id": "clip-stairwell-spider-descends-2",
+      "kind": "clip",
+      "file": "clips/clip-stairwell-spider-descends-2.mp4",
+      "width": 1280,
+      "height": 720,
+      "duration": 5.042,
+      "tags": {
+        "location": "stairwell",
+        "motifs": [
+          "spider"
+        ],
+        "people": "none",
+        "mood": "uneasy",
+        "time": "night"
+      },
+      "generation": {
+        "model": "Wan-AI/Wan2.2-TI2V-5B",
+        "license": "Apache-2.0",
+        "prompt": "Static camera, no camera movement. A huge black spider the size of a cat in a thick dusty web in the upper corner of a Soviet apartment stairwell, a single dim bulb below. The spider slowly lowers itself down on a thick thread towards the steps, its long legs moving one by one. Nothing else moves. Realistic 35mm film footage, heavy film grain, muted desaturated colors, quiet, uneasy and unsettling dream atmosphere.",
+        "seed": 393031,
+        "source": "local-desktop, from still stairwell-spider-web"
+      }
+    },
+    {
+      "id": "clip-stairwell-spider-descends-3",
+      "kind": "clip",
+      "file": "clips/clip-stairwell-spider-descends-3.mp4",
+      "width": 1280,
+      "height": 720,
+      "duration": 5.042,
+      "tags": {
+        "location": "stairwell",
+        "motifs": [
+          "spider"
+        ],
+        "people": "none",
+        "mood": "uneasy",
+        "time": "night"
+      },
+      "generation": {
+        "model": "Wan-AI/Wan2.2-TI2V-5B",
+        "license": "Apache-2.0",
+        "prompt": "Static camera, no camera movement. A huge black spider the size of a cat in a thick dusty web in the upper corner of a Soviet apartment stairwell, a single dim bulb below. The spider slowly lowers itself down on a thick thread towards the steps, its long legs moving one by one. Nothing else moves. Realistic 35mm film footage, heavy film grain, muted desaturated colors, quiet, uneasy and unsettling dream atmosphere.",
+        "seed": 393011,
+        "source": "local-desktop, from still stairwell-spider-web"
+      }
+    },
+    {
+      "id": "clip-thermometer-mercury-rises",
+      "kind": "clip",
+      "file": "clips/clip-thermometer-mercury-rises.mp4",
+      "width": 1280,
+      "height": 720,
+      "duration": 5.042,
+      "tags": {
+        "location": "thermometer_corridor",
+        "motifs": [
+          "thermometer"
+        ],
+        "people": "none",
+        "mood": "dread",
+        "time": "interior"
+      },
+      "generation": {
+        "model": "Wan-AI/Wan2.2-TI2V-5B",
+        "license": "Apache-2.0",
+        "prompt": "Static camera, no camera movement. An endless narrow corridor with pale green walls, hundreds of old glass mercury thermometers hanging in rows on both walls. The silver mercury in all the thermometers slowly creeps upwards at the same time, and the dim ceiling lamps at the far end go out one by one towards the camera. Nothing else moves. Realistic 35mm film footage, heavy film grain, muted desaturated colors, quiet, uneasy and unsettling dream atmosphere.",
+        "seed": 393006,
+        "source": "local-desktop, from still thermometer-corridor-endless"
+      }
+    },
+    {
+      "id": "clip-thermometer-nurse-turns",
+      "kind": "clip",
+      "file": "clips/clip-thermometer-nurse-turns.mp4",
+      "width": 1280,
+      "height": 720,
+      "duration": 5.042,
+      "tags": {
+        "location": "thermometer_corridor",
+        "motifs": [
+          "thermometer"
+        ],
+        "people": "distant",
+        "mood": "uneasy",
+        "time": "interior"
+      },
+      "generation": {
+        "model": "Wan-AI/Wan2.2-TI2V-5B",
+        "license": "Apache-2.0",
+        "prompt": "Static camera, no camera movement. A nurse in a white cap seen from behind at the far end of a corridor lined with thermometers in glass cases, holding one thermometer up to the lamp. She slowly lowers the thermometer and begins to turn her head towards the camera, her face staying in deep shadow, her long shadow moving on the linoleum. Realistic 35mm film footage, heavy film grain, muted desaturated colors, quiet, uneasy and unsettling dream atmosphere.",
+        "seed": 393037,
+        "source": "local-desktop, from still thermometer-corridor-nurse"
+      }
+    },
+    {
+      "id": "clip-thermometer-nurse-turns-2",
+      "kind": "clip",
+      "file": "clips/clip-thermometer-nurse-turns-2.mp4",
+      "width": 1280,
+      "height": 720,
+      "duration": 5.042,
+      "tags": {
+        "location": "thermometer_corridor",
+        "motifs": [
+          "thermometer"
+        ],
+        "people": "distant",
+        "mood": "uneasy",
+        "time": "interior"
+      },
+      "generation": {
+        "model": "Wan-AI/Wan2.2-TI2V-5B",
+        "license": "Apache-2.0",
+        "prompt": "Static camera, no camera movement. A nurse in a white cap seen from behind at the far end of a corridor lined with thermometers in glass cases, holding one thermometer up to the lamp. She slowly lowers the thermometer and begins to turn her head towards the camera, her face staying in deep shadow, her long shadow moving on the linoleum. Realistic 35mm film footage, heavy film grain, muted desaturated colors, quiet, uneasy and unsettling dream atmosphere.",
+        "seed": 393047,
+        "source": "local-desktop, from still thermometer-corridor-nurse"
+      }
+    },
+    {
+      "id": "clip-thermometer-nurse-turns-3",
+      "kind": "clip",
+      "file": "clips/clip-thermometer-nurse-turns-3.mp4",
+      "width": 1280,
+      "height": 720,
+      "duration": 5.042,
+      "tags": {
+        "location": "thermometer_corridor",
+        "motifs": [
+          "thermometer"
+        ],
+        "people": "distant",
+        "mood": "uneasy",
+        "time": "interior"
+      },
+      "generation": {
+        "model": "Wan-AI/Wan2.2-TI2V-5B",
+        "license": "Apache-2.0",
+        "prompt": "Static camera, no camera movement. A nurse in a white cap seen from behind at the far end of a corridor lined with thermometers in glass cases, holding one thermometer up to the lamp. She slowly lowers the thermometer and begins to turn her head towards the camera, her face staying in deep shadow, her long shadow moving on the linoleum. Realistic 35mm film footage, heavy film grain, muted desaturated colors, quiet, uneasy and unsettling dream atmosphere.",
+        "seed": 393027,
+        "source": "local-desktop, from still thermometer-corridor-nurse"
+      }
+    },
+    {
+      "id": "clip-yard-cube-tips",
+      "kind": "clip",
+      "file": "clips/clip-yard-cube-tips.mp4",
+      "width": 1280,
+      "height": 720,
+      "duration": 5.042,
+      "tags": {
+        "location": "yard",
+        "motifs": [
+          "giant_shapes"
+        ],
+        "people": "distant",
+        "mood": "dread",
+        "time": "dusk"
+      },
+      "generation": {
+        "model": "Wan-AI/Wan2.2-TI2V-5B",
+        "license": "Apache-2.0",
+        "prompt": "Static camera, no camera movement. Three gigantic plain grey concrete cubes in an empty Soviet courtyard at dusk, one of them balanced on its edge, a tiny man far below looking up. The balanced cube slowly, very slowly tilts further over its edge, as if about to fall, then stops. The man and the other cubes do not move. Realistic 35mm film footage, heavy film grain, muted desaturated colors, quiet, uneasy and unsettling dream atmosphere.",
+        "seed": 393015,
+        "source": "local-desktop, from still yard-giant-cubes"
+      }
+    },
+    {
+      "id": "clip-yard-cube-tips-2",
+      "kind": "clip",
+      "file": "clips/clip-yard-cube-tips-2.mp4",
+      "width": 1280,
+      "height": 720,
+      "duration": 5.042,
+      "tags": {
+        "location": "yard",
+        "motifs": [
+          "giant_shapes"
+        ],
+        "people": "distant",
+        "mood": "dread",
+        "time": "dusk"
+      },
+      "generation": {
+        "model": "Wan-AI/Wan2.2-TI2V-5B",
+        "license": "Apache-2.0",
+        "prompt": "Static camera, no camera movement. Three gigantic plain grey concrete cubes in an empty Soviet courtyard at dusk, one of them balanced on its edge, a tiny man far below looking up. The balanced cube slowly, very slowly tilts further over its edge, as if about to fall, then stops. The man and the other cubes do not move. Realistic 35mm film footage, heavy film grain, muted desaturated colors, quiet, uneasy and unsettling dream atmosphere.",
+        "seed": 393025,
+        "source": "local-desktop, from still yard-giant-cubes"
+      }
+    },
+    {
+      "id": "clip-yard-will-papers-wind",
+      "kind": "clip",
+      "file": "clips/clip-yard-will-papers-wind.mp4",
+      "width": 1280,
+      "height": 720,
+      "duration": 5.042,
+      "tags": {
+        "location": "yard",
+        "motifs": [
+          "will_papers"
+        ],
+        "people": "none",
+        "mood": "uneasy",
+        "time": "dusk"
+      },
+      "generation": {
+        "model": "Wan-AI/Wan2.2-TI2V-5B",
+        "license": "Apache-2.0",
+        "prompt": "Static camera, no camera movement. Typewritten sheets of a last will scattered across the wet asphalt of a Soviet courtyard at dusk, panel blocks behind in blue twilight. A slow wind lifts the sheets one by one and drags them across the asphalt, one sheet flattening against the bench. The buildings stay completely still. Realistic 35mm film footage, heavy film grain, muted desaturated colors, quiet, uneasy and unsettling dream atmosphere.",
+        "seed": 393028,
+        "source": "local-desktop, from still yard-dusk-will-papers"
+      }
+    },
+    {
+      "id": "clip-yard-will-papers-wind-2",
+      "kind": "clip",
+      "file": "clips/clip-yard-will-papers-wind-2.mp4",
+      "width": 1280,
+      "height": 720,
+      "duration": 5.042,
+      "tags": {
+        "location": "yard",
+        "motifs": [
+          "will_papers"
+        ],
+        "people": "none",
+        "mood": "uneasy",
+        "time": "dusk"
+      },
+      "generation": {
+        "model": "Wan-AI/Wan2.2-TI2V-5B",
+        "license": "Apache-2.0",
+        "prompt": "Static camera, no camera movement. Typewritten sheets of a last will scattered across the wet asphalt of a Soviet courtyard at dusk, panel blocks behind in blue twilight. A slow wind lifts the sheets one by one and drags them across the asphalt, one sheet flattening against the bench. The buildings stay completely still. Realistic 35mm film footage, heavy film grain, muted desaturated colors, quiet, uneasy and unsettling dream atmosphere.",
+        "seed": 393018,
+        "source": "local-desktop, from still yard-dusk-will-papers"
+      }
+    },
+    {
+      "id": "clip-yard-will-papers-wind-3",
+      "kind": "clip",
+      "file": "clips/clip-yard-will-papers-wind-3.mp4",
+      "width": 1280,
+      "height": 720,
+      "duration": 5.042,
+      "tags": {
+        "location": "yard",
+        "motifs": [
+          "will_papers"
+        ],
+        "people": "none",
+        "mood": "uneasy",
+        "time": "dusk"
+      },
+      "generation": {
+        "model": "Wan-AI/Wan2.2-TI2V-5B",
+        "license": "Apache-2.0",
+        "prompt": "Static camera, no camera movement. Typewritten sheets of a last will scattered across the wet asphalt of a Soviet courtyard at dusk, panel blocks behind in blue twilight. A slow wind lifts the sheets one by one and drags them across the asphalt, one sheet flattening against the bench. The buildings stay completely still. Realistic 35mm film footage, heavy film grain, muted desaturated colors, quiet, uneasy and unsettling dream atmosphere.",
+        "seed": 393038,
+        "source": "local-desktop, from still yard-dusk-will-papers"
+      }
+    },
+    {
+      "id": "clip-yard-window-light-out",
+      "kind": "clip",
+      "file": "clips/clip-yard-window-light-out.mp4",
+      "width": 1280,
+      "height": 720,
+      "duration": 5.042,
+      "tags": {
+        "location": "yard",
+        "motifs": [],
+        "people": "distant",
+        "mood": "dread",
+        "time": "night"
+      },
+      "generation": {
+        "model": "Wan-AI/Wan2.2-TI2V-5B",
+        "license": "Apache-2.0",
+        "prompt": "Static camera, no camera movement. A Soviet nine-storey apartment block at night seen from the courtyard, all windows dark except one yellow lit window high up with a motionless human silhouette in it. The light drizzle falls slowly. Then the lit window slowly fades out and the dark silhouette is still faintly visible standing in the dark window. Nothing else moves. Realistic 35mm film footage, heavy film grain, muted desaturated colors, quiet, uneasy and unsettling dream atmosphere.",
+        "seed": 393025,
+        "source": "local-desktop, from still yard-night-window-silhouette"
+      }
     }
   ]
 }
