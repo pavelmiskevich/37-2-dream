@@ -54,11 +54,18 @@ export function convertStill(src, dst) {
   return probe(dst);
 }
 
-/** MP4 from ComfyUI → library MP4 (D-036). */
-export function convertClip(src, dst) {
+/**
+ * MP4 from ComfyUI → library MP4 (D-036). `from` (seconds) cuts the start off:
+ * a sudden fall whose jolt comes late begins just before it (#155).
+ */
+export function convertClip(src, dst, { from = 0 } = {}) {
   const size = probe(src);
+  if (!(from >= 0) || (size.duration > 0 && from >= size.duration - 1)) {
+    throw new Error(`${src}: cannot start at ${from} s of ${size.duration} s`);
+  }
   execFileSync(FFMPEG, [
     '-v', 'error', '-y', '-i', src,
+    ...(from > 0 ? ['-ss', String(from)] : []),
     '-vf', scaleFilter(size),
     '-an', '-map_metadata', '-1', '-c:v', 'libx264', '-crf', String(CLIP_CRF), '-preset', 'slow',
     '-pix_fmt', 'yuv420p', '-movflags', '+faststart',
@@ -90,7 +97,7 @@ export function stillAsset(job, scene, { width, height }) {
  * The library entry of an accepted clip; tags from the still it was made from
  * (D-036), with the clip's own tags from the catalog over them (#151).
  */
-export function clipAsset(job, still, { width, height, duration }) {
+export function clipAsset(job, still, { width, height, duration }, from = 0) {
   return {
     id: job.id,
     kind: 'clip',
@@ -104,7 +111,7 @@ export function clipAsset(job, still, { width, height, duration }) {
       license: job.license,
       prompt: job.prompt,
       seed: job.seed,
-      source: `local-desktop, from still ${job.from}`,
+      source: `local-desktop, from still ${job.from}${from > 0 ? `, from ${from} s` : ''}`,
     },
   };
 }
@@ -131,4 +138,28 @@ export function setCatalogSeed(text, id, seed) {
   const field = /"seed": \d+/;
   if (!field.test(block)) throw new Error(`Scene "${id}" has no "seed" field to update`);
   return text.slice(0, start) + block.replace(field, `"seed": ${seed}`) + text.slice(end);
+}
+
+/**
+ * The catalog text with a variant of scene `id`: the same scene under `variantId`
+ * with its own seed, right after it (#155). A library still must match a
+ * catalog scene, so a second accepted seed of one scene needs a scene of its own.
+ */
+export function addCatalogVariant(text, id, variantId, seed) {
+  const at = text.indexOf(`"id": "${id}"`);
+  if (at < 0) throw new Error(`No scene "${id}" in the catalog`);
+  if (text.includes(`"id": "${variantId}"`)) throw new Error(`Scene "${variantId}" is already in the catalog`);
+  const start = text.lastIndexOf('{', at);
+  let depth = 0;
+  let end = start;
+  for (; end < text.length; end++) {
+    if (text[end] === '{') depth++;
+    else if (text[end] === '}' && --depth === 0) break;
+  }
+  const block = text.slice(start, end + 1);
+  const indent = text.slice(text.lastIndexOf('\n', start) + 1, start);
+  const variant = block.replace(`"id": "${id}"`, `"id": "${variantId}"`);
+  if (!/"seed": \d+/.test(variant)) throw new Error(`Scene "${id}" has no "seed" field to copy`);
+  const copy = variant.replace(/"seed": \d+/, `"seed": ${seed}`);
+  return `${text.slice(0, end + 1)},\n${indent}${copy}${text.slice(end + 1)}`;
 }

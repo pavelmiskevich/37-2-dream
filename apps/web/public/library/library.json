@@ -2202,6 +2202,2958 @@
         "seed": 1370105,
         "source": "hf-space:mcp-tools/Z-Image-Turbo"
       }
+    },
+    {
+      "id": "bedroom-night-tv-static",
+      "kind": "still",
+      "file": "stills/bedroom-night-tv-static.webp",
+      "depth": "depth/bedroom-night-tv-static.png",
+      "width": 1280,
+      "height": 720,
+      "tags": {
+        "location": "bedroom",
+        "motifs": [],
+        "people": "none",
+        "mood": "uneasy",
+        "time": "night"
+      },
+      "generation": {
+        "model": "Tongyi-MAI/Z-Image-Turbo",
+        "license": "Apache-2.0",
+        "prompt": "An old Soviet television on a lacquered cabinet in a dark bedroom showing grey static, its glow on the rumpled bed and the carpet on the wall, the wall clock stopped at seven past three. Realistic 35mm film photograph, heavy film grain, muted desaturated colors, faces hidden in shadow, Russia in the 1990s, Soviet-era interiors and courtyards, the logic of a dream, quiet, uneasy and unsettling atmosphere.",
+        "seed": 1320126,
+        "source": "local-desktop"
+      }
+    },
+    {
+      "id": "bedroom-night-wardrobe-ajar",
+      "kind": "still",
+      "file": "stills/bedroom-night-wardrobe-ajar.webp",
+      "depth": "depth/bedroom-night-wardrobe-ajar.png",
+      "width": 1280,
+      "height": 720,
+      "tags": {
+        "location": "bedroom",
+        "motifs": [],
+        "people": "none",
+        "mood": "dread",
+        "time": "night"
+      },
+      "generation": {
+        "model": "Tongyi-MAI/Z-Image-Turbo",
+        "license": "Apache-2.0",
+        "prompt": "A dark Soviet bedroom at night, a tall wooden wardrobe with its door slightly ajar, total darkness inside the gap, a coat sleeve hanging out, faint light from the window across the floor. Realistic 35mm film photograph, heavy film grain, muted desaturated colors, faces hidden in shadow, Russia in the 1990s, Soviet-era interiors and courtyards, the logic of a dream, quiet, uneasy and unsettling atmosphere.",
+        "seed": 1320125,
+        "source": "local-desktop"
+      }
+    },
+    {
+      "id": "elevator-doors-snow-yard",
+      "kind": "still",
+      "file": "stills/elevator-doors-snow-yard.webp",
+      "depth": "depth/elevator-doors-snow-yard.png",
+      "width": 1280,
+      "height": 720,
+      "tags": {
+        "location": "elevator",
+        "motifs": [],
+        "people": "none",
+        "mood": "uneasy",
+        "time": "day"
+      },
+      "generation": {
+        "model": "Tongyi-MAI/Z-Image-Turbo",
+        "license": "Apache-2.0",
+        "prompt": "The doors of an old Soviet elevator open not onto a landing but onto a snowy courtyard in daylight, snow drifting into the cabin onto the scratched floor, the button panel glowing. Realistic 35mm film photograph, heavy film grain, muted desaturated colors, faces hidden in shadow, Russia in the 1990s, Soviet-era interiors and courtyards, the logic of a dream, quiet, uneasy and unsettling atmosphere.",
+        "seed": 1320128,
+        "source": "local-desktop"
+      }
+    },
+    {
+      "id": "elevator-indicator-37",
+      "kind": "still",
+      "file": "stills/elevator-indicator-37.webp",
+      "depth": "depth/elevator-indicator-37.png",
+      "width": 1280,
+      "height": 720,
+      "tags": {
+        "location": "elevator",
+        "motifs": [],
+        "people": "none",
+        "mood": "uneasy",
+        "time": "interior"
+      },
+      "generation": {
+        "model": "Tongyi-MAI/Z-Image-Turbo",
+        "license": "Apache-2.0",
+        "prompt": "Above the closed doors of an old elevator on a dim landing, a mechanical floor indicator where every number reads 37, the call button glowing red, scratched paint on the doors. Realistic 35mm film photograph, heavy film grain, muted desaturated colors, faces hidden in shadow, Russia in the 1990s, Soviet-era interiors and courtyards, the logic of a dream, quiet, uneasy and unsettling atmosphere.",
+        "seed": 1320129,
+        "source": "local-desktop"
+      }
+    },
+    {
+      "id": "fall-bed-over-drop",
+      "kind": "still",
+      "file": "stills/fall-bed-over-drop.webp",
+      "depth": "depth/fall-bed-over-drop.png",
+      "width": 1280,
+      "height": 720,
+      "tags": {
+        "location": "bedroom",
+        "motifs": [
+          "fall"
+        ],
+        "people": "none",
+        "mood": "dread",
+        "time": "night"
+      },
+      "generation": {
+        "model": "Tongyi-MAI/Z-Image-Turbo",
+        "license": "Apache-2.0",
+        "prompt": "High-angle view of a bedroom on the top floor of a nine-storey Soviet apartment block at night whose outer wall is missing, the floor ends in a broken concrete edge right past the foot of the bed, rumpled white sheets hang over the edge, beyond it a sheer drop down the facade to a dark courtyard with tiny street lamps far below, a bedside lamp still on. Realistic 35mm film photograph, heavy film grain, muted desaturated colors, faces hidden in shadow, Russia in the 1990s, Soviet-era interiors and courtyards, the logic of a dream, quiet, uneasy and unsettling atmosphere.",
+        "seed": 1300104,
+        "source": "local-desktop"
+      }
+    },
+    {
+      "id": "fall-bed-over-drop-2",
+      "kind": "still",
+      "file": "stills/fall-bed-over-drop-2.webp",
+      "depth": "depth/fall-bed-over-drop-2.png",
+      "width": 1280,
+      "height": 720,
+      "tags": {
+        "location": "bedroom",
+        "motifs": [
+          "fall"
+        ],
+        "people": "none",
+        "mood": "dread",
+        "time": "night"
+      },
+      "generation": {
+        "model": "Tongyi-MAI/Z-Image-Turbo",
+        "license": "Apache-2.0",
+        "prompt": "High-angle view of a bedroom on the top floor of a nine-storey Soviet apartment block at night whose outer wall is missing, the floor ends in a broken concrete edge right past the foot of the bed, rumpled white sheets hang over the edge, beyond it a sheer drop down the facade to a dark courtyard with tiny street lamps far below, a bedside lamp still on. Realistic 35mm film photograph, heavy film grain, muted desaturated colors, faces hidden in shadow, Russia in the 1990s, Soviet-era interiors and courtyards, the logic of a dream, quiet, uneasy and unsettling atmosphere.",
+        "seed": 1300105,
+        "source": "local-desktop"
+      }
+    },
+    {
+      "id": "fall-hospital-corridor-edge",
+      "kind": "still",
+      "file": "stills/fall-hospital-corridor-edge.webp",
+      "depth": "depth/fall-hospital-corridor-edge.png",
+      "width": 1280,
+      "height": 720,
+      "tags": {
+        "location": "hospital_corridor",
+        "motifs": [
+          "fall"
+        ],
+        "people": "none",
+        "mood": "dread",
+        "time": "night"
+      },
+      "generation": {
+        "model": "Tongyi-MAI/Z-Image-Turbo",
+        "license": "Apache-2.0",
+        "prompt": "An empty hospital corridor with pale tiles and humming fluorescent lamps that ends abruptly mid-air, the floor tiles broken off at an edge, beyond it a deep night drop down the side of a tall hospital building to street lamps far below, a wheelchair standing at the edge. Realistic 35mm film photograph, heavy film grain, muted desaturated colors, faces hidden in shadow, Russia in the 1990s, Soviet-era interiors and courtyards, the logic of a dream, quiet, uneasy and unsettling atmosphere.",
+        "seed": 1300107,
+        "source": "local-desktop"
+      }
+    },
+    {
+      "id": "fall-stairs-missing-flight",
+      "kind": "still",
+      "file": "stills/fall-stairs-missing-flight.webp",
+      "depth": "depth/fall-stairs-missing-flight.png",
+      "width": 1280,
+      "height": 720,
+      "tags": {
+        "location": "stairs",
+        "motifs": [
+          "fall"
+        ],
+        "people": "none",
+        "mood": "dread",
+        "time": "interior"
+      },
+      "generation": {
+        "model": "Tongyi-MAI/Z-Image-Turbo",
+        "license": "Apache-2.0",
+        "prompt": "A flight of worn concrete stairs in a Soviet stairwell that breaks off in mid-air halfway down, the missing steps leave a gap over a deep dark drop of many floors, the handrail goes on alone into the darkness, a single bare bulb above. Realistic 35mm film photograph, heavy film grain, muted desaturated colors, faces hidden in shadow, Russia in the 1990s, Soviet-era interiors and courtyards, the logic of a dream, quiet, uneasy and unsettling atmosphere.",
+        "seed": 1320102,
+        "source": "local-desktop"
+      }
+    },
+    {
+      "id": "hospital-corridor-day-plants",
+      "kind": "still",
+      "file": "stills/hospital-corridor-day-plants.webp",
+      "depth": "depth/hospital-corridor-day-plants.png",
+      "width": 1280,
+      "height": 720,
+      "tags": {
+        "location": "hospital_corridor",
+        "motifs": [],
+        "people": "none",
+        "mood": "calm",
+        "time": "day"
+      },
+      "generation": {
+        "model": "Tongyi-MAI/Z-Image-Turbo",
+        "license": "Apache-2.0",
+        "prompt": "A quiet hospital corridor in the afternoon, tall windows throwing sunlight on the linoleum, potted ficus plants and a row of empty chairs, a round wall clock, nobody around. Realistic 35mm film photograph, heavy film grain, muted desaturated colors, faces hidden in shadow, Russia in the 1990s, Soviet-era interiors and courtyards, the logic of a dream, quiet, uneasy and unsettling atmosphere.",
+        "seed": 1320107,
+        "source": "local-desktop"
+      }
+    },
+    {
+      "id": "hospital-gurney-sheet",
+      "kind": "still",
+      "file": "stills/hospital-gurney-sheet.webp",
+      "depth": "depth/hospital-gurney-sheet.png",
+      "width": 1280,
+      "height": 720,
+      "tags": {
+        "location": "hospital_corridor",
+        "motifs": [],
+        "people": "distant",
+        "mood": "dread",
+        "time": "night"
+      },
+      "generation": {
+        "model": "Tongyi-MAI/Z-Image-Turbo",
+        "license": "Apache-2.0",
+        "prompt": "A gurney in a dim hospital corridor at night with a figure fully covered by a white sheet, one bare foot showing with a paper tag tied to the toe that reads 37.2, a fluorescent lamp above. Realistic 35mm film photograph, heavy film grain, muted desaturated colors, faces hidden in shadow, Russia in the 1990s, Soviet-era interiors and courtyards, the logic of a dream, quiet, uneasy and unsettling atmosphere.",
+        "seed": 1320119,
+        "source": "local-desktop"
+      }
+    },
+    {
+      "id": "hospital-nurse-station-night",
+      "kind": "still",
+      "file": "stills/hospital-nurse-station-night.webp",
+      "depth": "depth/hospital-nurse-station-night.png",
+      "width": 1280,
+      "height": 720,
+      "tags": {
+        "location": "hospital_corridor",
+        "motifs": [
+          "monitor"
+        ],
+        "people": "none",
+        "mood": "dread",
+        "time": "night"
+      },
+      "generation": {
+        "model": "Tongyi-MAI/Z-Image-Turbo",
+        "license": "Apache-2.0",
+        "prompt": "An empty nurses' station in a hospital corridor at night, a desk lamp on, a telephone receiver off the hook hanging by its cord, an old monitor showing a flat green line, a cup of tea still steaming. Realistic 35mm film photograph, heavy film grain, muted desaturated colors, faces hidden in shadow, Russia in the 1990s, Soviet-era interiors and courtyards, the logic of a dream, quiet, uneasy and unsettling atmosphere.",
+        "seed": 1320117,
+        "source": "local-desktop"
+      }
+    },
+    {
+      "id": "jam-jar-pantry-rooms",
+      "kind": "still",
+      "file": "stills/jam-jar-pantry-rooms.webp",
+      "depth": "depth/jam-jar-pantry-rooms.png",
+      "width": 1280,
+      "height": 720,
+      "tags": {
+        "location": "jam_jar",
+        "motifs": [],
+        "people": "none",
+        "mood": "uneasy",
+        "time": "interior"
+      },
+      "generation": {
+        "model": "Tongyi-MAI/Z-Image-Turbo",
+        "license": "Apache-2.0",
+        "prompt": "Long shelves in a dark pantry lined with jam jars, inside each jar a tiny lit room: a bedroom, a hospital ward, a stairwell, all slowly sinking in dark jam. Realistic 35mm film photograph, heavy film grain, muted desaturated colors, faces hidden in shadow, Russia in the 1990s, Soviet-era interiors and courtyards, the logic of a dream, quiet, uneasy and unsettling atmosphere.",
+        "seed": 1320124,
+        "source": "local-desktop"
+      }
+    },
+    {
+      "id": "jam-jar-swing-inside",
+      "kind": "still",
+      "file": "stills/jam-jar-swing-inside.webp",
+      "depth": "depth/jam-jar-swing-inside.png",
+      "width": 1280,
+      "height": 720,
+      "tags": {
+        "location": "jam_jar",
+        "motifs": [
+          "swing"
+        ],
+        "people": "none",
+        "mood": "uneasy",
+        "time": "interior"
+      },
+      "generation": {
+        "model": "Tongyi-MAI/Z-Image-Turbo",
+        "license": "Apache-2.0",
+        "prompt": "A small swing set standing inside a large glass jam jar on a kitchen windowsill, half sunk in dark cherry jam, the courtyard visible through the glass and the window behind. Realistic 35mm film photograph, heavy film grain, muted desaturated colors, faces hidden in shadow, Russia in the 1990s, Soviet-era interiors and courtyards, the logic of a dream, quiet, uneasy and unsettling atmosphere.",
+        "seed": 1320122,
+        "source": "local-desktop"
+      }
+    },
+    {
+      "id": "jam-jar-wasp-giant",
+      "kind": "still",
+      "file": "stills/jam-jar-wasp-giant.webp",
+      "depth": "depth/jam-jar-wasp-giant.png",
+      "width": 1280,
+      "height": 720,
+      "tags": {
+        "location": "jam_jar",
+        "motifs": [
+          "giant_shapes"
+        ],
+        "people": "none",
+        "mood": "dread",
+        "time": "interior"
+      },
+      "generation": {
+        "model": "Tongyi-MAI/Z-Image-Turbo",
+        "license": "Apache-2.0",
+        "prompt": "A giant wasp the size of a dog trapped inside an enormous jam jar in a dim pantry, its wings stuck in the jam, the lid screwed on, shelves of jars all around. Realistic 35mm film photograph, heavy film grain, muted desaturated colors, faces hidden in shadow, Russia in the 1990s, Soviet-era interiors and courtyards, the logic of a dream, quiet, uneasy and unsettling atmosphere.",
+        "seed": 1320122,
+        "source": "local-desktop"
+      }
+    },
+    {
+      "id": "kitchen-day-tea-glass",
+      "kind": "still",
+      "file": "stills/kitchen-day-tea-glass.webp",
+      "depth": "depth/kitchen-day-tea-glass.png",
+      "width": 1280,
+      "height": 720,
+      "tags": {
+        "location": "kitchen",
+        "motifs": [],
+        "people": "none",
+        "mood": "calm",
+        "time": "day"
+      },
+      "generation": {
+        "model": "Tongyi-MAI/Z-Image-Turbo",
+        "license": "Apache-2.0",
+        "prompt": "A glass of tea in a metal holder on an oilcloth table in an old Soviet kitchen in the morning, thin steam rising, a sugar bowl and a plate of bread, sunlight on the tiles, a small radio on the windowsill. Realistic 35mm film photograph, heavy film grain, muted desaturated colors, faces hidden in shadow, Russia in the 1990s, Soviet-era interiors and courtyards, the logic of a dream, quiet, uneasy and unsettling atmosphere.",
+        "seed": 1320105,
+        "source": "local-desktop"
+      }
+    },
+    {
+      "id": "kitchen-dusk-table-set",
+      "kind": "still",
+      "file": "stills/kitchen-dusk-table-set.webp",
+      "depth": "depth/kitchen-dusk-table-set.png",
+      "width": 1280,
+      "height": 720,
+      "tags": {
+        "location": "kitchen",
+        "motifs": [],
+        "people": "none",
+        "mood": "uneasy",
+        "time": "dusk"
+      },
+      "generation": {
+        "model": "Tongyi-MAI/Z-Image-Turbo",
+        "license": "Apache-2.0",
+        "prompt": "A kitchen table in an old Soviet apartment at dusk set for many guests, plates of food, glasses of compote and a jar of jam, every chair empty, the light from the window fading. Realistic 35mm film photograph, heavy film grain, muted desaturated colors, faces hidden in shadow, Russia in the 1990s, Soviet-era interiors and courtyards, the logic of a dream, quiet, uneasy and unsettling atmosphere.",
+        "seed": 1320126,
+        "source": "local-desktop"
+      }
+    },
+    {
+      "id": "kitchen-night-gas-stove",
+      "kind": "still",
+      "file": "stills/kitchen-night-gas-stove.webp",
+      "depth": "depth/kitchen-night-gas-stove.png",
+      "width": 1280,
+      "height": 720,
+      "tags": {
+        "location": "kitchen",
+        "motifs": [],
+        "people": "none",
+        "mood": "uneasy",
+        "time": "night"
+      },
+      "generation": {
+        "model": "Tongyi-MAI/Z-Image-Turbo",
+        "license": "Apache-2.0",
+        "prompt": "All four burners of an old gas stove burning with blue flames in a dark Soviet kitchen at night, no pots on them, nobody there, the window reflecting the flames. Realistic 35mm film photograph, heavy film grain, muted desaturated colors, faces hidden in shadow, Russia in the 1990s, Soviet-era interiors and courtyards, the logic of a dream, quiet, uneasy and unsettling atmosphere.",
+        "seed": 1320128,
+        "source": "local-desktop"
+      }
+    },
+    {
+      "id": "scare-bedroom-wardrobe-face",
+      "kind": "still",
+      "file": "stills/scare-bedroom-wardrobe-face.webp",
+      "depth": "depth/scare-bedroom-wardrobe-face.png",
+      "width": 1280,
+      "height": 720,
+      "tags": {
+        "location": "bedroom",
+        "motifs": [],
+        "people": "face",
+        "mood": "scare",
+        "time": "night"
+      },
+      "generation": {
+        "model": "Tongyi-MAI/Z-Image-Turbo",
+        "license": "Apache-2.0",
+        "prompt": "A grey face with black eyes suddenly peering out of the gap of a dark wardrobe door right next to the camera in a bedroom at night, long thin fingers on the edge of the door. Realistic 35mm film photograph, heavy film grain, harsh direct flash, muted desaturated colors, Russia in the 1990s, the logic of a dream, sudden shocking moment.",
+        "seed": 1320108,
+        "source": "local-desktop"
+      }
+    },
+    {
+      "id": "scare-elevator-door-figure",
+      "kind": "still",
+      "file": "stills/scare-elevator-door-figure.webp",
+      "depth": "depth/scare-elevator-door-figure.png",
+      "width": 1280,
+      "height": 720,
+      "tags": {
+        "location": "elevator",
+        "motifs": [],
+        "people": "face",
+        "mood": "scare",
+        "time": "night"
+      },
+      "generation": {
+        "model": "Tongyi-MAI/Z-Image-Turbo",
+        "license": "Apache-2.0",
+        "prompt": "The doors of an old elevator open onto a tall figure standing right in the doorway, a dark coat, a grey face lit by the flash, eyes black, the landing pitch dark behind it. Realistic 35mm film photograph, heavy film grain, harsh direct flash, muted desaturated colors, Russia in the 1990s, the logic of a dream, sudden shocking moment.",
+        "seed": 1320109,
+        "source": "local-desktop"
+      }
+    },
+    {
+      "id": "scare-fall-ground-rushing",
+      "kind": "still",
+      "file": "stills/scare-fall-ground-rushing.webp",
+      "depth": "depth/scare-fall-ground-rushing.png",
+      "width": 1280,
+      "height": 720,
+      "tags": {
+        "location": "yard",
+        "motifs": [
+          "fall"
+        ],
+        "people": "none",
+        "mood": "scare",
+        "time": "day"
+      },
+      "generation": {
+        "model": "Tongyi-MAI/Z-Image-Turbo",
+        "license": "Apache-2.0",
+        "prompt": "Extreme vertigo, a view straight down while falling from the ninth floor, the concrete wall and windows of a Soviet apartment block streaking past in heavy motion blur at the edges of the frame, the courtyard asphalt with a tiny swing far below rushing up at the camera, no people. Realistic 35mm film photograph, heavy film grain, harsh direct flash, muted desaturated colors, Russia in the 1990s, the logic of a dream, sudden shocking moment.",
+        "seed": 1300109,
+        "source": "local-desktop"
+      }
+    },
+    {
+      "id": "scare-stairs-hands-railing",
+      "kind": "still",
+      "file": "stills/scare-stairs-hands-railing.webp",
+      "depth": "depth/scare-stairs-hands-railing.png",
+      "width": 1280,
+      "height": 720,
+      "tags": {
+        "location": "stairs",
+        "motifs": [],
+        "people": "face",
+        "mood": "scare",
+        "time": "night"
+      },
+      "generation": {
+        "model": "Tongyi-MAI/Z-Image-Turbo",
+        "license": "Apache-2.0",
+        "prompt": "Dozens of pale hands suddenly reaching through the bars of a stairwell railing towards the camera in a pitch-dark stairwell. Realistic 35mm film photograph, heavy film grain, harsh direct flash, muted desaturated colors, Russia in the 1990s, the logic of a dream, sudden shocking moment.",
+        "seed": 1320111,
+        "source": "local-desktop"
+      }
+    },
+    {
+      "id": "stairs-day-cat-window",
+      "kind": "still",
+      "file": "stills/stairs-day-cat-window.webp",
+      "depth": "depth/stairs-day-cat-window.png",
+      "width": 1280,
+      "height": 720,
+      "tags": {
+        "location": "stairs",
+        "motifs": [],
+        "people": "none",
+        "mood": "calm",
+        "time": "day"
+      },
+      "generation": {
+        "model": "Tongyi-MAI/Z-Image-Turbo",
+        "license": "Apache-2.0",
+        "prompt": "A tabby cat asleep on the wide windowsill of a stairwell landing in the afternoon sun, a potted aloe beside it, dust in the light, the worn stairs going up. Realistic 35mm film photograph, heavy film grain, muted desaturated colors, faces hidden in shadow, Russia in the 1990s, Soviet-era interiors and courtyards, the logic of a dream, quiet, uneasy and unsettling atmosphere.",
+        "seed": 1320106,
+        "source": "local-desktop"
+      }
+    },
+    {
+      "id": "stairs-water-flowing",
+      "kind": "still",
+      "file": "stills/stairs-water-flowing.webp",
+      "depth": "depth/stairs-water-flowing.png",
+      "width": 1280,
+      "height": 720,
+      "tags": {
+        "location": "stairs",
+        "motifs": [],
+        "people": "none",
+        "mood": "uneasy",
+        "time": "interior"
+      },
+      "generation": {
+        "model": "Tongyi-MAI/Z-Image-Turbo",
+        "license": "Apache-2.0",
+        "prompt": "Water flowing steadily down the worn concrete stairs of a Soviet stairwell like a quiet stream, a bare bulb reflected in it, a single slipper floating down, walls painted green. Realistic 35mm film photograph, heavy film grain, muted desaturated colors, faces hidden in shadow, Russia in the 1990s, Soviet-era interiors and courtyards, the logic of a dream, quiet, uneasy and unsettling atmosphere.",
+        "seed": 1320116,
+        "source": "local-desktop"
+      }
+    },
+    {
+      "id": "stairwell-night-padded-doors",
+      "kind": "still",
+      "file": "stills/stairwell-night-padded-doors.webp",
+      "depth": "depth/stairwell-night-padded-doors.png",
+      "width": 1280,
+      "height": 720,
+      "tags": {
+        "location": "stairwell",
+        "motifs": [],
+        "people": "none",
+        "mood": "dread",
+        "time": "night"
+      },
+      "generation": {
+        "model": "Tongyi-MAI/Z-Image-Turbo",
+        "license": "Apache-2.0",
+        "prompt": "A dim stairwell landing at night with four apartment doors upholstered in quilted brown leatherette, every door numbered 37, one slightly open with a thin line of yellow light, a worn doormat. Realistic 35mm film photograph, heavy film grain, muted desaturated colors, faces hidden in shadow, Russia in the 1990s, Soviet-era interiors and courtyards, the logic of a dream, quiet, uneasy and unsettling atmosphere.",
+        "seed": 1320115,
+        "source": "local-desktop"
+      }
+    },
+    {
+      "id": "thermometer-corridor-bath",
+      "kind": "still",
+      "file": "stills/thermometer-corridor-bath.webp",
+      "depth": "depth/thermometer-corridor-bath.png",
+      "width": 1280,
+      "height": 720,
+      "tags": {
+        "location": "thermometer_corridor",
+        "motifs": [
+          "thermometer"
+        ],
+        "people": "none",
+        "mood": "uneasy",
+        "time": "interior"
+      },
+      "generation": {
+        "model": "Tongyi-MAI/Z-Image-Turbo",
+        "license": "Apache-2.0",
+        "prompt": "A cast-iron bathtub standing in the middle of a long corridor lined with thermometers, filled to the brim with silver mercury, a towel hanging over its edge. Realistic 35mm film photograph, heavy film grain, muted desaturated colors, faces hidden in shadow, Russia in the 1990s, Soviet-era interiors and courtyards, the logic of a dream, quiet, uneasy and unsettling atmosphere.",
+        "seed": 1320120,
+        "source": "local-desktop"
+      }
+    },
+    {
+      "id": "thermometer-corridor-snow",
+      "kind": "still",
+      "file": "stills/thermometer-corridor-snow.webp",
+      "depth": "depth/thermometer-corridor-snow.png",
+      "width": 1280,
+      "height": 720,
+      "tags": {
+        "location": "thermometer_corridor",
+        "motifs": [
+          "thermometer"
+        ],
+        "people": "none",
+        "mood": "uneasy",
+        "time": "interior"
+      },
+      "generation": {
+        "model": "Tongyi-MAI/Z-Image-Turbo",
+        "license": "Apache-2.0",
+        "prompt": "A long corridor lined with wall thermometers where snow is falling from the ceiling and lies on the floor in drifts, the mercury of every thermometer at 37.2, a single path of footprints through the snow. Realistic 35mm film photograph, heavy film grain, muted desaturated colors, faces hidden in shadow, Russia in the 1990s, Soviet-era interiors and courtyards, the logic of a dream, quiet, uneasy and unsettling atmosphere.",
+        "seed": 1320119,
+        "source": "local-desktop"
+      }
+    },
+    {
+      "id": "yard-day-dandelions",
+      "kind": "still",
+      "file": "stills/yard-day-dandelions.webp",
+      "depth": "depth/yard-day-dandelions.png",
+      "width": 1280,
+      "height": 720,
+      "tags": {
+        "location": "yard",
+        "motifs": [],
+        "people": "none",
+        "mood": "calm",
+        "time": "day"
+      },
+      "generation": {
+        "model": "Tongyi-MAI/Z-Image-Turbo",
+        "license": "Apache-2.0",
+        "prompt": "A quiet Soviet courtyard on a warm late morning, dandelions in the long grass, a sandbox with a forgotten red bucket, laundry on a line, sunlight on the panel facades, nobody around. Realistic 35mm film photograph, heavy film grain, muted desaturated colors, faces hidden in shadow, Russia in the 1990s, Soviet-era interiors and courtyards, the logic of a dream, quiet, uneasy and unsettling atmosphere.",
+        "seed": 1320104,
+        "source": "local-desktop"
+      }
+    },
+    {
+      "id": "yard-day-garages-fog",
+      "kind": "still",
+      "file": "stills/yard-day-garages-fog.webp",
+      "depth": "depth/yard-day-garages-fog.png",
+      "width": 1280,
+      "height": 720,
+      "tags": {
+        "location": "yard",
+        "motifs": [],
+        "people": "none",
+        "mood": "uneasy",
+        "time": "day"
+      },
+      "generation": {
+        "model": "Tongyi-MAI/Z-Image-Turbo",
+        "license": "Apache-2.0",
+        "prompt": "A row of rusty metal garages behind Soviet apartment blocks in thick fog, one garage door open onto darkness, a child's bicycle lying on the wet ground, crows on the roofs. Realistic 35mm film photograph, heavy film grain, muted desaturated colors, faces hidden in shadow, Russia in the 1990s, Soviet-era interiors and courtyards, the logic of a dream, quiet, uneasy and unsettling atmosphere.",
+        "seed": 1320114,
+        "source": "local-desktop"
+      }
+    },
+    {
+      "id": "yard-dusk-carpet-beating",
+      "kind": "still",
+      "file": "stills/yard-dusk-carpet-beating.webp",
+      "depth": "depth/yard-dusk-carpet-beating.png",
+      "width": 1280,
+      "height": 720,
+      "tags": {
+        "location": "yard",
+        "motifs": [],
+        "people": "distant",
+        "mood": "uneasy",
+        "time": "dusk"
+      },
+      "generation": {
+        "model": "Tongyi-MAI/Z-Image-Turbo",
+        "license": "Apache-2.0",
+        "prompt": "A patterned carpet hung over a metal carpet-beating frame in a Soviet courtyard at dusk, a distant woman in a headscarf standing beside it with a beater raised, frozen mid-motion, lit windows behind. Realistic 35mm film photograph, heavy film grain, muted desaturated colors, faces hidden in shadow, Russia in the 1990s, Soviet-era interiors and courtyards, the logic of a dream, quiet, uneasy and unsettling atmosphere.",
+        "seed": 1320113,
+        "source": "local-desktop"
+      }
+    },
+    {
+      "id": "yard-night-snow-footprints",
+      "kind": "still",
+      "file": "stills/yard-night-snow-footprints.webp",
+      "depth": "depth/yard-night-snow-footprints.png",
+      "width": 1280,
+      "height": 720,
+      "tags": {
+        "location": "yard",
+        "motifs": [
+          "swing"
+        ],
+        "people": "none",
+        "mood": "uneasy",
+        "time": "night"
+      },
+      "generation": {
+        "model": "Tongyi-MAI/Z-Image-Turbo",
+        "license": "Apache-2.0",
+        "prompt": "A snowy Soviet courtyard at night under a single street lamp, a line of bare footprints in the fresh snow leads to the swing and stops there, the swing seat empty and slightly swaying, no one around. Realistic 35mm film photograph, heavy film grain, muted desaturated colors, faces hidden in shadow, Russia in the 1990s, Soviet-era interiors and courtyards, the logic of a dream, quiet, uneasy and unsettling atmosphere.",
+        "seed": 1320111,
+        "source": "local-desktop"
+      }
+    },
+    {
+      "id": "stairwell-chalk-thermometers",
+      "kind": "still",
+      "file": "stills/stairwell-chalk-thermometers.webp",
+      "depth": "depth/stairwell-chalk-thermometers.png",
+      "width": 1280,
+      "height": 720,
+      "tags": {
+        "location": "stairwell",
+        "motifs": [
+          "thermometer"
+        ],
+        "people": "none",
+        "mood": "uneasy",
+        "time": "day"
+      },
+      "generation": {
+        "model": "Tongyi-MAI/Z-Image-Turbo",
+        "license": "Apache-2.0",
+        "prompt": "Children's chalk drawings covering the floor and walls of a stairwell landing: dozens of thermometers all showing 37.2, a stick figure lying in a bed, a piece of chalk left on the step. Realistic 35mm film photograph, heavy film grain, muted desaturated colors, faces hidden in shadow, Russia in the 1990s, Soviet-era interiors and courtyards, the logic of a dream, quiet, uneasy and unsettling atmosphere.",
+        "seed": 1320115,
+        "source": "local-desktop"
+      }
+    },
+    {
+      "id": "stairwell-chalk-thermometers-2",
+      "kind": "still",
+      "file": "stills/stairwell-chalk-thermometers-2.webp",
+      "depth": "depth/stairwell-chalk-thermometers-2.png",
+      "width": 1280,
+      "height": 720,
+      "tags": {
+        "location": "stairwell",
+        "motifs": [
+          "thermometer"
+        ],
+        "people": "none",
+        "mood": "uneasy",
+        "time": "day"
+      },
+      "generation": {
+        "model": "Tongyi-MAI/Z-Image-Turbo",
+        "license": "Apache-2.0",
+        "prompt": "Children's chalk drawings covering the floor and walls of a stairwell landing: dozens of thermometers all showing 37.2, a stick figure lying in a bed, a piece of chalk left on the step. Realistic 35mm film photograph, heavy film grain, muted desaturated colors, faces hidden in shadow, Russia in the 1990s, Soviet-era interiors and courtyards, the logic of a dream, quiet, uneasy and unsettling atmosphere.",
+        "seed": 1320116,
+        "source": "local-desktop"
+      }
+    },
+    {
+      "id": "bedroom-chalk-wall-thermometer",
+      "kind": "still",
+      "file": "stills/bedroom-chalk-wall-thermometer.webp",
+      "depth": "depth/bedroom-chalk-wall-thermometer.png",
+      "width": 1280,
+      "height": 720,
+      "tags": {
+        "location": "bedroom",
+        "motifs": [
+          "thermometer"
+        ],
+        "people": "none",
+        "mood": "uneasy",
+        "time": "night"
+      },
+      "generation": {
+        "model": "Tongyi-MAI/Z-Image-Turbo",
+        "license": "Apache-2.0",
+        "prompt": "A child's bedroom in a Soviet apartment at night, the wallpaper above the rumpled empty bed covered in children's chalk and crayon drawings: a thermometer taller than the house, a sun with the number 37.2, a small figure in bed with a huge glass of tea, a dim bedside lamp. Realistic 35mm film photograph, heavy film grain, muted desaturated colors, faces hidden in shadow, Russia in the 1990s, Soviet-era interiors and courtyards, the logic of a dream, quiet, uneasy and unsettling atmosphere.",
+        "seed": 1380106,
+        "source": "local-desktop"
+      }
+    },
+    {
+      "id": "bedroom-chalk-wall-thermometer-2",
+      "kind": "still",
+      "file": "stills/bedroom-chalk-wall-thermometer-2.webp",
+      "depth": "depth/bedroom-chalk-wall-thermometer-2.png",
+      "width": 1280,
+      "height": 720,
+      "tags": {
+        "location": "bedroom",
+        "motifs": [
+          "thermometer"
+        ],
+        "people": "none",
+        "mood": "uneasy",
+        "time": "night"
+      },
+      "generation": {
+        "model": "Tongyi-MAI/Z-Image-Turbo",
+        "license": "Apache-2.0",
+        "prompt": "A child's bedroom in a Soviet apartment at night, the wallpaper above the rumpled empty bed covered in children's chalk and crayon drawings: a thermometer taller than the house, a sun with the number 37.2, a small figure in bed with a huge glass of tea, a dim bedside lamp. Realistic 35mm film photograph, heavy film grain, muted desaturated colors, faces hidden in shadow, Russia in the 1990s, Soviet-era interiors and courtyards, the logic of a dream, quiet, uneasy and unsettling atmosphere.",
+        "seed": 1380107,
+        "source": "local-desktop"
+      }
+    },
+    {
+      "id": "bedroom-chalk-wall-thermometer-3",
+      "kind": "still",
+      "file": "stills/bedroom-chalk-wall-thermometer-3.webp",
+      "depth": "depth/bedroom-chalk-wall-thermometer-3.png",
+      "width": 1280,
+      "height": 720,
+      "tags": {
+        "location": "bedroom",
+        "motifs": [
+          "thermometer"
+        ],
+        "people": "none",
+        "mood": "uneasy",
+        "time": "night"
+      },
+      "generation": {
+        "model": "Tongyi-MAI/Z-Image-Turbo",
+        "license": "Apache-2.0",
+        "prompt": "A child's bedroom in a Soviet apartment at night, the wallpaper above the rumpled empty bed covered in children's chalk and crayon drawings: a thermometer taller than the house, a sun with the number 37.2, a small figure in bed with a huge glass of tea, a dim bedside lamp. Realistic 35mm film photograph, heavy film grain, muted desaturated colors, faces hidden in shadow, Russia in the 1990s, Soviet-era interiors and courtyards, the logic of a dream, quiet, uneasy and unsettling atmosphere.",
+        "seed": 1380108,
+        "source": "local-desktop"
+      }
+    },
+    {
+      "id": "elevator-chalk-walls-buttons",
+      "kind": "still",
+      "file": "stills/elevator-chalk-walls-buttons.webp",
+      "depth": "depth/elevator-chalk-walls-buttons.png",
+      "width": 1280,
+      "height": 720,
+      "tags": {
+        "location": "elevator",
+        "motifs": [],
+        "people": "none",
+        "mood": "uneasy",
+        "time": "interior"
+      },
+      "generation": {
+        "model": "Tongyi-MAI/Z-Image-Turbo",
+        "license": "Apache-2.0",
+        "prompt": "The scratched walls of an old Soviet elevator cabin covered in a child's chalk drawings: a column of buttons drawn up to the ceiling numbered to 37, a tiny figure riding in a tiny elevator, the number 37.2, a dim lamp, the real control panel with burnt plastic buttons. Realistic 35mm film photograph, heavy film grain, muted desaturated colors, faces hidden in shadow, Russia in the 1990s, Soviet-era interiors and courtyards, the logic of a dream, quiet, uneasy and unsettling atmosphere.",
+        "seed": 1380109,
+        "source": "local-desktop"
+      }
+    },
+    {
+      "id": "elevator-chalk-walls-buttons-2",
+      "kind": "still",
+      "file": "stills/elevator-chalk-walls-buttons-2.webp",
+      "depth": "depth/elevator-chalk-walls-buttons-2.png",
+      "width": 1280,
+      "height": 720,
+      "tags": {
+        "location": "elevator",
+        "motifs": [],
+        "people": "none",
+        "mood": "uneasy",
+        "time": "interior"
+      },
+      "generation": {
+        "model": "Tongyi-MAI/Z-Image-Turbo",
+        "license": "Apache-2.0",
+        "prompt": "The scratched walls of an old Soviet elevator cabin covered in a child's chalk drawings: a column of buttons drawn up to the ceiling numbered to 37, a tiny figure riding in a tiny elevator, the number 37.2, a dim lamp, the real control panel with burnt plastic buttons. Realistic 35mm film photograph, heavy film grain, muted desaturated colors, faces hidden in shadow, Russia in the 1990s, Soviet-era interiors and courtyards, the logic of a dream, quiet, uneasy and unsettling atmosphere.",
+        "seed": 1380110,
+        "source": "local-desktop"
+      }
+    },
+    {
+      "id": "elevator-chalk-walls-buttons-3",
+      "kind": "still",
+      "file": "stills/elevator-chalk-walls-buttons-3.webp",
+      "depth": "depth/elevator-chalk-walls-buttons-3.png",
+      "width": 1280,
+      "height": 720,
+      "tags": {
+        "location": "elevator",
+        "motifs": [],
+        "people": "none",
+        "mood": "uneasy",
+        "time": "interior"
+      },
+      "generation": {
+        "model": "Tongyi-MAI/Z-Image-Turbo",
+        "license": "Apache-2.0",
+        "prompt": "The scratched walls of an old Soviet elevator cabin covered in a child's chalk drawings: a column of buttons drawn up to the ceiling numbered to 37, a tiny figure riding in a tiny elevator, the number 37.2, a dim lamp, the real control panel with burnt plastic buttons. Realistic 35mm film photograph, heavy film grain, muted desaturated colors, faces hidden in shadow, Russia in the 1990s, Soviet-era interiors and courtyards, the logic of a dream, quiet, uneasy and unsettling atmosphere.",
+        "seed": 1380111,
+        "source": "local-desktop"
+      }
+    },
+    {
+      "id": "hospital-chalk-floor-ventilator",
+      "kind": "still",
+      "file": "stills/hospital-chalk-floor-ventilator.webp",
+      "depth": "depth/hospital-chalk-floor-ventilator.png",
+      "width": 1280,
+      "height": 720,
+      "tags": {
+        "location": "hospital_corridor",
+        "motifs": [
+          "ventilator",
+          "monitor"
+        ],
+        "people": "none",
+        "mood": "dread",
+        "time": "night"
+      },
+      "generation": {
+        "model": "Tongyi-MAI/Z-Image-Turbo",
+        "license": "Apache-2.0",
+        "prompt": "Children's chalk drawings on the pale tiled floor of an empty hospital corridor at night: a smiling breathing machine with a long tube, a heartbeat line running along the tiles to a closed door, a stick figure in a bed, 37.2 written beside it, humming fluorescent lamps, a piece of chalk on the floor. Realistic 35mm film photograph, heavy film grain, muted desaturated colors, faces hidden in shadow, Russia in the 1990s, Soviet-era interiors and courtyards, the logic of a dream, quiet, uneasy and unsettling atmosphere.",
+        "seed": 1380108,
+        "source": "local-desktop"
+      }
+    },
+    {
+      "id": "hospital-chalk-floor-ventilator-2",
+      "kind": "still",
+      "file": "stills/hospital-chalk-floor-ventilator-2.webp",
+      "depth": "depth/hospital-chalk-floor-ventilator-2.png",
+      "width": 1280,
+      "height": 720,
+      "tags": {
+        "location": "hospital_corridor",
+        "motifs": [
+          "ventilator",
+          "monitor"
+        ],
+        "people": "none",
+        "mood": "dread",
+        "time": "night"
+      },
+      "generation": {
+        "model": "Tongyi-MAI/Z-Image-Turbo",
+        "license": "Apache-2.0",
+        "prompt": "Children's chalk drawings on the pale tiled floor of an empty hospital corridor at night: a smiling breathing machine with a long tube, a heartbeat line running along the tiles to a closed door, a stick figure in a bed, 37.2 written beside it, humming fluorescent lamps, a piece of chalk on the floor. Realistic 35mm film photograph, heavy film grain, muted desaturated colors, faces hidden in shadow, Russia in the 1990s, Soviet-era interiors and courtyards, the logic of a dream, quiet, uneasy and unsettling atmosphere.",
+        "seed": 1380109,
+        "source": "local-desktop"
+      }
+    },
+    {
+      "id": "hospital-chalk-floor-ventilator-3",
+      "kind": "still",
+      "file": "stills/hospital-chalk-floor-ventilator-3.webp",
+      "depth": "depth/hospital-chalk-floor-ventilator-3.png",
+      "width": 1280,
+      "height": 720,
+      "tags": {
+        "location": "hospital_corridor",
+        "motifs": [
+          "ventilator",
+          "monitor"
+        ],
+        "people": "none",
+        "mood": "dread",
+        "time": "night"
+      },
+      "generation": {
+        "model": "Tongyi-MAI/Z-Image-Turbo",
+        "license": "Apache-2.0",
+        "prompt": "Children's chalk drawings on the pale tiled floor of an empty hospital corridor at night: a smiling breathing machine with a long tube, a heartbeat line running along the tiles to a closed door, a stick figure in a bed, 37.2 written beside it, humming fluorescent lamps, a piece of chalk on the floor. Realistic 35mm film photograph, heavy film grain, muted desaturated colors, faces hidden in shadow, Russia in the 1990s, Soviet-era interiors and courtyards, the logic of a dream, quiet, uneasy and unsettling atmosphere.",
+        "seed": 1380110,
+        "source": "local-desktop"
+      }
+    },
+    {
+      "id": "kitchen-chalk-jam-jars",
+      "kind": "still",
+      "file": "stills/kitchen-chalk-jam-jars.webp",
+      "depth": "depth/kitchen-chalk-jam-jars.png",
+      "width": 1280,
+      "height": 720,
+      "tags": {
+        "location": "kitchen",
+        "motifs": [],
+        "people": "none",
+        "mood": "uneasy",
+        "time": "day"
+      },
+      "generation": {
+        "model": "Tongyi-MAI/Z-Image-Turbo",
+        "license": "Apache-2.0",
+        "prompt": "A Soviet kitchen door painted dark green and covered in children's chalk drawings of jars of jam with tiny houses, swings and people inside them, a spoon as big as a tree, the number 37.2 on every jar, a real jar of dark jam on the kitchen table in front, daylight from the window. Realistic 35mm film photograph, heavy film grain, muted desaturated colors, faces hidden in shadow, Russia in the 1990s, Soviet-era interiors and courtyards, the logic of a dream, quiet, uneasy and unsettling atmosphere.",
+        "seed": 1380107,
+        "source": "local-desktop"
+      }
+    },
+    {
+      "id": "kitchen-chalk-jam-jars-2",
+      "kind": "still",
+      "file": "stills/kitchen-chalk-jam-jars-2.webp",
+      "depth": "depth/kitchen-chalk-jam-jars-2.png",
+      "width": 1280,
+      "height": 720,
+      "tags": {
+        "location": "kitchen",
+        "motifs": [],
+        "people": "none",
+        "mood": "uneasy",
+        "time": "day"
+      },
+      "generation": {
+        "model": "Tongyi-MAI/Z-Image-Turbo",
+        "license": "Apache-2.0",
+        "prompt": "A Soviet kitchen door painted dark green and covered in children's chalk drawings of jars of jam with tiny houses, swings and people inside them, a spoon as big as a tree, the number 37.2 on every jar, a real jar of dark jam on the kitchen table in front, daylight from the window. Realistic 35mm film photograph, heavy film grain, muted desaturated colors, faces hidden in shadow, Russia in the 1990s, Soviet-era interiors and courtyards, the logic of a dream, quiet, uneasy and unsettling atmosphere.",
+        "seed": 1380108,
+        "source": "local-desktop"
+      }
+    },
+    {
+      "id": "kitchen-chalk-jam-jars-3",
+      "kind": "still",
+      "file": "stills/kitchen-chalk-jam-jars-3.webp",
+      "depth": "depth/kitchen-chalk-jam-jars-3.png",
+      "width": 1280,
+      "height": 720,
+      "tags": {
+        "location": "kitchen",
+        "motifs": [],
+        "people": "none",
+        "mood": "uneasy",
+        "time": "day"
+      },
+      "generation": {
+        "model": "Tongyi-MAI/Z-Image-Turbo",
+        "license": "Apache-2.0",
+        "prompt": "A Soviet kitchen door painted dark green and covered in children's chalk drawings of jars of jam with tiny houses, swings and people inside them, a spoon as big as a tree, the number 37.2 on every jar, a real jar of dark jam on the kitchen table in front, daylight from the window. Realistic 35mm film photograph, heavy film grain, muted desaturated colors, faces hidden in shadow, Russia in the 1990s, Soviet-era interiors and courtyards, the logic of a dream, quiet, uneasy and unsettling atmosphere.",
+        "seed": 1380109,
+        "source": "local-desktop"
+      }
+    },
+    {
+      "id": "stairs-chalk-vacuum-woman",
+      "kind": "still",
+      "file": "stills/stairs-chalk-vacuum-woman.webp",
+      "depth": "depth/stairs-chalk-vacuum-woman.png",
+      "width": 1280,
+      "height": 720,
+      "tags": {
+        "location": "stairs",
+        "motifs": [
+          "vacuum_woman"
+        ],
+        "people": "none",
+        "mood": "uneasy",
+        "time": "interior"
+      },
+      "generation": {
+        "model": "Tongyi-MAI/Z-Image-Turbo",
+        "license": "Apache-2.0",
+        "prompt": "A child's chalk drawing on the green painted wall of a Soviet staircase: a very tall woman with a vacuum cleaner whose long hose winds up the wall along the stairs and into the darkness, small chalk thermometers and the number 37.2 around her, real worn concrete steps, a piece of chalk on the step. Realistic 35mm film photograph, heavy film grain, muted desaturated colors, faces hidden in shadow, Russia in the 1990s, Soviet-era interiors and courtyards, the logic of a dream, quiet, uneasy and unsettling atmosphere.",
+        "seed": 1380104,
+        "source": "local-desktop"
+      }
+    },
+    {
+      "id": "stairs-chalk-vacuum-woman-2",
+      "kind": "still",
+      "file": "stills/stairs-chalk-vacuum-woman-2.webp",
+      "depth": "depth/stairs-chalk-vacuum-woman-2.png",
+      "width": 1280,
+      "height": 720,
+      "tags": {
+        "location": "stairs",
+        "motifs": [
+          "vacuum_woman"
+        ],
+        "people": "none",
+        "mood": "uneasy",
+        "time": "interior"
+      },
+      "generation": {
+        "model": "Tongyi-MAI/Z-Image-Turbo",
+        "license": "Apache-2.0",
+        "prompt": "A child's chalk drawing on the green painted wall of a Soviet staircase: a very tall woman with a vacuum cleaner whose long hose winds up the wall along the stairs and into the darkness, small chalk thermometers and the number 37.2 around her, real worn concrete steps, a piece of chalk on the step. Realistic 35mm film photograph, heavy film grain, muted desaturated colors, faces hidden in shadow, Russia in the 1990s, Soviet-era interiors and courtyards, the logic of a dream, quiet, uneasy and unsettling atmosphere.",
+        "seed": 1380105,
+        "source": "local-desktop"
+      }
+    },
+    {
+      "id": "stairs-chalk-vacuum-woman-3",
+      "kind": "still",
+      "file": "stills/stairs-chalk-vacuum-woman-3.webp",
+      "depth": "depth/stairs-chalk-vacuum-woman-3.png",
+      "width": 1280,
+      "height": 720,
+      "tags": {
+        "location": "stairs",
+        "motifs": [
+          "vacuum_woman"
+        ],
+        "people": "none",
+        "mood": "uneasy",
+        "time": "interior"
+      },
+      "generation": {
+        "model": "Tongyi-MAI/Z-Image-Turbo",
+        "license": "Apache-2.0",
+        "prompt": "A child's chalk drawing on the green painted wall of a Soviet staircase: a very tall woman with a vacuum cleaner whose long hose winds up the wall along the stairs and into the darkness, small chalk thermometers and the number 37.2 around her, real worn concrete steps, a piece of chalk on the step. Realistic 35mm film photograph, heavy film grain, muted desaturated colors, faces hidden in shadow, Russia in the 1990s, Soviet-era interiors and courtyards, the logic of a dream, quiet, uneasy and unsettling atmosphere.",
+        "seed": 1380106,
+        "source": "local-desktop"
+      }
+    },
+    {
+      "id": "stairwell-chalk-door-figure",
+      "kind": "still",
+      "file": "stills/stairwell-chalk-door-figure.webp",
+      "depth": "depth/stairwell-chalk-door-figure.png",
+      "width": 1280,
+      "height": 720,
+      "tags": {
+        "location": "stairwell",
+        "motifs": [],
+        "people": "none",
+        "mood": "dread",
+        "time": "night"
+      },
+      "generation": {
+        "model": "Tongyi-MAI/Z-Image-Turbo",
+        "license": "Apache-2.0",
+        "prompt": "A padded leatherette apartment door on a dim Soviet stairwell landing at night, covered in a child's chalk drawing of a very tall thin figure with long arms standing as if behind the door, the number 37.2 written many times around it, a doormat, a bare bulb, a piece of chalk on the floor. Realistic 35mm film photograph, heavy film grain, muted desaturated colors, faces hidden in shadow, Russia in the 1990s, Soviet-era interiors and courtyards, the logic of a dream, quiet, uneasy and unsettling atmosphere.",
+        "seed": 1380105,
+        "source": "local-desktop"
+      }
+    },
+    {
+      "id": "stairwell-chalk-door-figure-2",
+      "kind": "still",
+      "file": "stills/stairwell-chalk-door-figure-2.webp",
+      "depth": "depth/stairwell-chalk-door-figure-2.png",
+      "width": 1280,
+      "height": 720,
+      "tags": {
+        "location": "stairwell",
+        "motifs": [],
+        "people": "none",
+        "mood": "dread",
+        "time": "night"
+      },
+      "generation": {
+        "model": "Tongyi-MAI/Z-Image-Turbo",
+        "license": "Apache-2.0",
+        "prompt": "A padded leatherette apartment door on a dim Soviet stairwell landing at night, covered in a child's chalk drawing of a very tall thin figure with long arms standing as if behind the door, the number 37.2 written many times around it, a doormat, a bare bulb, a piece of chalk on the floor. Realistic 35mm film photograph, heavy film grain, muted desaturated colors, faces hidden in shadow, Russia in the 1990s, Soviet-era interiors and courtyards, the logic of a dream, quiet, uneasy and unsettling atmosphere.",
+        "seed": 1380106,
+        "source": "local-desktop"
+      }
+    },
+    {
+      "id": "stairwell-chalk-door-figure-3",
+      "kind": "still",
+      "file": "stills/stairwell-chalk-door-figure-3.webp",
+      "depth": "depth/stairwell-chalk-door-figure-3.png",
+      "width": 1280,
+      "height": 720,
+      "tags": {
+        "location": "stairwell",
+        "motifs": [],
+        "people": "none",
+        "mood": "dread",
+        "time": "night"
+      },
+      "generation": {
+        "model": "Tongyi-MAI/Z-Image-Turbo",
+        "license": "Apache-2.0",
+        "prompt": "A padded leatherette apartment door on a dim Soviet stairwell landing at night, covered in a child's chalk drawing of a very tall thin figure with long arms standing as if behind the door, the number 37.2 written many times around it, a doormat, a bare bulb, a piece of chalk on the floor. Realistic 35mm film photograph, heavy film grain, muted desaturated colors, faces hidden in shadow, Russia in the 1990s, Soviet-era interiors and courtyards, the logic of a dream, quiet, uneasy and unsettling atmosphere.",
+        "seed": 1380107,
+        "source": "local-desktop"
+      }
+    },
+    {
+      "id": "thermometer-corridor-chalk-hopscotch",
+      "kind": "still",
+      "file": "stills/thermometer-corridor-chalk-hopscotch.webp",
+      "depth": "depth/thermometer-corridor-chalk-hopscotch.png",
+      "width": 1280,
+      "height": 720,
+      "tags": {
+        "location": "thermometer_corridor",
+        "motifs": [
+          "thermometer"
+        ],
+        "people": "none",
+        "mood": "uneasy",
+        "time": "interior"
+      },
+      "generation": {
+        "model": "Tongyi-MAI/Z-Image-Turbo",
+        "license": "Apache-2.0",
+        "prompt": "An endless narrow corridor with pale green walls lined with old glass thermometers, a children's chalk hopscotch drawn along its whole floor into the darkness, every square with a chalk thermometer showing 37.2, a single piece of chalk lying on the first square, dim yellow ceiling lamps. Realistic 35mm film photograph, heavy film grain, muted desaturated colors, faces hidden in shadow, Russia in the 1990s, Soviet-era interiors and courtyards, the logic of a dream, quiet, uneasy and unsettling atmosphere.",
+        "seed": 1380110,
+        "source": "local-desktop"
+      }
+    },
+    {
+      "id": "thermometer-corridor-chalk-hopscotch-2",
+      "kind": "still",
+      "file": "stills/thermometer-corridor-chalk-hopscotch-2.webp",
+      "depth": "depth/thermometer-corridor-chalk-hopscotch-2.png",
+      "width": 1280,
+      "height": 720,
+      "tags": {
+        "location": "thermometer_corridor",
+        "motifs": [
+          "thermometer"
+        ],
+        "people": "none",
+        "mood": "uneasy",
+        "time": "interior"
+      },
+      "generation": {
+        "model": "Tongyi-MAI/Z-Image-Turbo",
+        "license": "Apache-2.0",
+        "prompt": "An endless narrow corridor with pale green walls lined with old glass thermometers, a children's chalk hopscotch drawn along its whole floor into the darkness, every square with a chalk thermometer showing 37.2, a single piece of chalk lying on the first square, dim yellow ceiling lamps. Realistic 35mm film photograph, heavy film grain, muted desaturated colors, faces hidden in shadow, Russia in the 1990s, Soviet-era interiors and courtyards, the logic of a dream, quiet, uneasy and unsettling atmosphere.",
+        "seed": 1380111,
+        "source": "local-desktop"
+      }
+    },
+    {
+      "id": "thermometer-corridor-chalk-hopscotch-3",
+      "kind": "still",
+      "file": "stills/thermometer-corridor-chalk-hopscotch-3.webp",
+      "depth": "depth/thermometer-corridor-chalk-hopscotch-3.png",
+      "width": 1280,
+      "height": 720,
+      "tags": {
+        "location": "thermometer_corridor",
+        "motifs": [
+          "thermometer"
+        ],
+        "people": "none",
+        "mood": "uneasy",
+        "time": "interior"
+      },
+      "generation": {
+        "model": "Tongyi-MAI/Z-Image-Turbo",
+        "license": "Apache-2.0",
+        "prompt": "An endless narrow corridor with pale green walls lined with old glass thermometers, a children's chalk hopscotch drawn along its whole floor into the darkness, every square with a chalk thermometer showing 37.2, a single piece of chalk lying on the first square, dim yellow ceiling lamps. Realistic 35mm film photograph, heavy film grain, muted desaturated colors, faces hidden in shadow, Russia in the 1990s, Soviet-era interiors and courtyards, the logic of a dream, quiet, uneasy and unsettling atmosphere.",
+        "seed": 1380112,
+        "source": "local-desktop"
+      }
+    },
+    {
+      "id": "yard-chalk-hopscotch-fever",
+      "kind": "still",
+      "file": "stills/yard-chalk-hopscotch-fever.webp",
+      "depth": "depth/yard-chalk-hopscotch-fever.png",
+      "width": 1280,
+      "height": 720,
+      "tags": {
+        "location": "yard",
+        "motifs": [
+          "thermometer"
+        ],
+        "people": "none",
+        "mood": "uneasy",
+        "time": "dusk"
+      },
+      "generation": {
+        "model": "Tongyi-MAI/Z-Image-Turbo",
+        "license": "Apache-2.0",
+        "prompt": "A long children's hopscotch drawn in chalk on the wet asphalt of a Soviet courtyard at dusk, its squares numbered 36.6, 36.9, 37.0, 37.1, 37.2, the last square drawn as a bed with a small figure lying in it, the hopscotch leading to the dark entrance of an apartment block, a forgotten piece of chalk. Realistic 35mm film photograph, heavy film grain, muted desaturated colors, faces hidden in shadow, Russia in the 1990s, Soviet-era interiors and courtyards, the logic of a dream, quiet, uneasy and unsettling atmosphere.",
+        "seed": 1380102,
+        "source": "local-desktop"
+      }
+    },
+    {
+      "id": "yard-chalk-hopscotch-fever-2",
+      "kind": "still",
+      "file": "stills/yard-chalk-hopscotch-fever-2.webp",
+      "depth": "depth/yard-chalk-hopscotch-fever-2.png",
+      "width": 1280,
+      "height": 720,
+      "tags": {
+        "location": "yard",
+        "motifs": [
+          "thermometer"
+        ],
+        "people": "none",
+        "mood": "uneasy",
+        "time": "dusk"
+      },
+      "generation": {
+        "model": "Tongyi-MAI/Z-Image-Turbo",
+        "license": "Apache-2.0",
+        "prompt": "A long children's hopscotch drawn in chalk on the wet asphalt of a Soviet courtyard at dusk, its squares numbered 36.6, 36.9, 37.0, 37.1, 37.2, the last square drawn as a bed with a small figure lying in it, the hopscotch leading to the dark entrance of an apartment block, a forgotten piece of chalk. Realistic 35mm film photograph, heavy film grain, muted desaturated colors, faces hidden in shadow, Russia in the 1990s, Soviet-era interiors and courtyards, the logic of a dream, quiet, uneasy and unsettling atmosphere.",
+        "seed": 1380103,
+        "source": "local-desktop"
+      }
+    },
+    {
+      "id": "yard-chalk-hopscotch-fever-3",
+      "kind": "still",
+      "file": "stills/yard-chalk-hopscotch-fever-3.webp",
+      "depth": "depth/yard-chalk-hopscotch-fever-3.png",
+      "width": 1280,
+      "height": 720,
+      "tags": {
+        "location": "yard",
+        "motifs": [
+          "thermometer"
+        ],
+        "people": "none",
+        "mood": "uneasy",
+        "time": "dusk"
+      },
+      "generation": {
+        "model": "Tongyi-MAI/Z-Image-Turbo",
+        "license": "Apache-2.0",
+        "prompt": "A long children's hopscotch drawn in chalk on the wet asphalt of a Soviet courtyard at dusk, its squares numbered 36.6, 36.9, 37.0, 37.1, 37.2, the last square drawn as a bed with a small figure lying in it, the hopscotch leading to the dark entrance of an apartment block, a forgotten piece of chalk. Realistic 35mm film photograph, heavy film grain, muted desaturated colors, faces hidden in shadow, Russia in the 1990s, Soviet-era interiors and courtyards, the logic of a dream, quiet, uneasy and unsettling atmosphere.",
+        "seed": 1380104,
+        "source": "local-desktop"
+      }
+    },
+    {
+      "id": "yard-chalk-outline-night",
+      "kind": "still",
+      "file": "stills/yard-chalk-outline-night.webp",
+      "depth": "depth/yard-chalk-outline-night.png",
+      "width": 1280,
+      "height": 720,
+      "tags": {
+        "location": "yard",
+        "motifs": [],
+        "people": "none",
+        "mood": "dread",
+        "time": "night"
+      },
+      "generation": {
+        "model": "Tongyi-MAI/Z-Image-Turbo",
+        "license": "Apache-2.0",
+        "prompt": "A child's chalk outline of a small figure lying on the asphalt at the foot of a tall Soviet apartment block at night, drawn around with little hearts, stars and the number 37.2, a chalk arrow drawn on the wall pointing up to the roof, a single street lamp, pieces of chalk scattered nearby. Realistic 35mm film photograph, heavy film grain, muted desaturated colors, faces hidden in shadow, Russia in the 1990s, Soviet-era interiors and courtyards, the logic of a dream, quiet, uneasy and unsettling atmosphere.",
+        "seed": 1380103,
+        "source": "local-desktop"
+      }
+    },
+    {
+      "id": "yard-chalk-outline-night-2",
+      "kind": "still",
+      "file": "stills/yard-chalk-outline-night-2.webp",
+      "depth": "depth/yard-chalk-outline-night-2.png",
+      "width": 1280,
+      "height": 720,
+      "tags": {
+        "location": "yard",
+        "motifs": [],
+        "people": "none",
+        "mood": "dread",
+        "time": "night"
+      },
+      "generation": {
+        "model": "Tongyi-MAI/Z-Image-Turbo",
+        "license": "Apache-2.0",
+        "prompt": "A child's chalk outline of a small figure lying on the asphalt at the foot of a tall Soviet apartment block at night, drawn around with little hearts, stars and the number 37.2, a chalk arrow drawn on the wall pointing up to the roof, a single street lamp, pieces of chalk scattered nearby. Realistic 35mm film photograph, heavy film grain, muted desaturated colors, faces hidden in shadow, Russia in the 1990s, Soviet-era interiors and courtyards, the logic of a dream, quiet, uneasy and unsettling atmosphere.",
+        "seed": 1380104,
+        "source": "local-desktop"
+      }
+    },
+    {
+      "id": "yard-chalk-outline-night-3",
+      "kind": "still",
+      "file": "stills/yard-chalk-outline-night-3.webp",
+      "depth": "depth/yard-chalk-outline-night-3.png",
+      "width": 1280,
+      "height": 720,
+      "tags": {
+        "location": "yard",
+        "motifs": [],
+        "people": "none",
+        "mood": "dread",
+        "time": "night"
+      },
+      "generation": {
+        "model": "Tongyi-MAI/Z-Image-Turbo",
+        "license": "Apache-2.0",
+        "prompt": "A child's chalk outline of a small figure lying on the asphalt at the foot of a tall Soviet apartment block at night, drawn around with little hearts, stars and the number 37.2, a chalk arrow drawn on the wall pointing up to the roof, a single street lamp, pieces of chalk scattered nearby. Realistic 35mm film photograph, heavy film grain, muted desaturated colors, faces hidden in shadow, Russia in the 1990s, Soviet-era interiors and courtyards, the logic of a dream, quiet, uneasy and unsettling atmosphere.",
+        "seed": 1380105,
+        "source": "local-desktop"
+      }
+    },
+    {
+      "id": "yard-chalk-swing-asphalt",
+      "kind": "still",
+      "file": "stills/yard-chalk-swing-asphalt.webp",
+      "depth": "depth/yard-chalk-swing-asphalt.png",
+      "width": 1280,
+      "height": 720,
+      "tags": {
+        "location": "yard",
+        "motifs": [
+          "swing",
+          "thermometer"
+        ],
+        "people": "none",
+        "mood": "uneasy",
+        "time": "day"
+      },
+      "generation": {
+        "model": "Tongyi-MAI/Z-Image-Turbo",
+        "license": "Apache-2.0",
+        "prompt": "Children's chalk drawings covering the asphalt of an empty Soviet courtyard: a huge swing drawn in white chalk with a stick figure in pyjamas flying off it into a sky full of thermometers, 37.2 written again and again in pink and blue chalk, the real empty swing standing still in the background, pieces of chalk left on the ground. Realistic 35mm film photograph, heavy film grain, muted desaturated colors, faces hidden in shadow, Russia in the 1990s, Soviet-era interiors and courtyards, the logic of a dream, quiet, uneasy and unsettling atmosphere.",
+        "seed": 1380101,
+        "source": "local-desktop"
+      }
+    },
+    {
+      "id": "yard-chalk-swing-asphalt-2",
+      "kind": "still",
+      "file": "stills/yard-chalk-swing-asphalt-2.webp",
+      "depth": "depth/yard-chalk-swing-asphalt-2.png",
+      "width": 1280,
+      "height": 720,
+      "tags": {
+        "location": "yard",
+        "motifs": [
+          "swing",
+          "thermometer"
+        ],
+        "people": "none",
+        "mood": "uneasy",
+        "time": "day"
+      },
+      "generation": {
+        "model": "Tongyi-MAI/Z-Image-Turbo",
+        "license": "Apache-2.0",
+        "prompt": "Children's chalk drawings covering the asphalt of an empty Soviet courtyard: a huge swing drawn in white chalk with a stick figure in pyjamas flying off it into a sky full of thermometers, 37.2 written again and again in pink and blue chalk, the real empty swing standing still in the background, pieces of chalk left on the ground. Realistic 35mm film photograph, heavy film grain, muted desaturated colors, faces hidden in shadow, Russia in the 1990s, Soviet-era interiors and courtyards, the logic of a dream, quiet, uneasy and unsettling atmosphere.",
+        "seed": 1380102,
+        "source": "local-desktop"
+      }
+    },
+    {
+      "id": "yard-chalk-swing-asphalt-3",
+      "kind": "still",
+      "file": "stills/yard-chalk-swing-asphalt-3.webp",
+      "depth": "depth/yard-chalk-swing-asphalt-3.png",
+      "width": 1280,
+      "height": 720,
+      "tags": {
+        "location": "yard",
+        "motifs": [
+          "swing",
+          "thermometer"
+        ],
+        "people": "none",
+        "mood": "uneasy",
+        "time": "day"
+      },
+      "generation": {
+        "model": "Tongyi-MAI/Z-Image-Turbo",
+        "license": "Apache-2.0",
+        "prompt": "Children's chalk drawings covering the asphalt of an empty Soviet courtyard: a huge swing drawn in white chalk with a stick figure in pyjamas flying off it into a sky full of thermometers, 37.2 written again and again in pink and blue chalk, the real empty swing standing still in the background, pieces of chalk left on the ground. Realistic 35mm film photograph, heavy film grain, muted desaturated colors, faces hidden in shadow, Russia in the 1990s, Soviet-era interiors and courtyards, the logic of a dream, quiet, uneasy and unsettling atmosphere.",
+        "seed": 1380103,
+        "source": "local-desktop"
+      }
+    },
+    {
+      "id": "clip-drop-bed-gives-way",
+      "kind": "clip",
+      "file": "clips/clip-drop-bed-gives-way.mp4",
+      "width": 1280,
+      "height": 720,
+      "duration": 3.542,
+      "tags": {
+        "location": "bedroom",
+        "motifs": [
+          "fall"
+        ],
+        "people": "none",
+        "mood": "dread",
+        "time": "night"
+      },
+      "generation": {
+        "model": "Wan-AI/Wan2.2-TI2V-5B",
+        "license": "Apache-2.0",
+        "prompt": "A dark Soviet bedroom at night in cold moonlight, a patterned carpet on the wall. For the first second everything is completely still. Then suddenly, without any warning, the floor gives way and the camera drops straight down into black emptiness, the room shooting upwards and vanishing above in one violent jolt, falling faster and faster into darkness. Realistic 35mm film footage, heavy film grain, strong motion blur, muted desaturated colors, sudden terrifying dream atmosphere.",
+        "seed": 392001,
+        "source": "local-desktop, from still bedroom-night-carpet, from 1.5 s"
+      }
+    },
+    {
+      "id": "clip-drop-bed-gives-way-2",
+      "kind": "clip",
+      "file": "clips/clip-drop-bed-gives-way-2.mp4",
+      "width": 1280,
+      "height": 720,
+      "duration": 3.042,
+      "tags": {
+        "location": "bedroom",
+        "motifs": [
+          "fall"
+        ],
+        "people": "none",
+        "mood": "dread",
+        "time": "night"
+      },
+      "generation": {
+        "model": "Wan-AI/Wan2.2-TI2V-5B",
+        "license": "Apache-2.0",
+        "prompt": "A dark Soviet bedroom at night in cold moonlight, a patterned carpet on the wall. For the first second everything is completely still. Then suddenly, without any warning, the floor gives way and the camera drops straight down into black emptiness, the room shooting upwards and vanishing above in one violent jolt, falling faster and faster into darkness. Realistic 35mm film footage, heavy film grain, strong motion blur, muted desaturated colors, sudden terrifying dream atmosphere.",
+        "seed": 392011,
+        "source": "local-desktop, from still bedroom-night-carpet, from 2 s"
+      }
+    },
+    {
+      "id": "clip-drop-bed-gives-way-3",
+      "kind": "clip",
+      "file": "clips/clip-drop-bed-gives-way-3.mp4",
+      "width": 1280,
+      "height": 720,
+      "duration": 2.917,
+      "tags": {
+        "location": "bedroom",
+        "motifs": [
+          "fall"
+        ],
+        "people": "none",
+        "mood": "dread",
+        "time": "night"
+      },
+      "generation": {
+        "model": "Wan-AI/Wan2.2-TI2V-5B",
+        "license": "Apache-2.0",
+        "prompt": "A dark Soviet bedroom at night in cold moonlight, a patterned carpet on the wall. For the first second everything is completely still. Then suddenly, without any warning, the floor gives way and the camera drops straight down into black emptiness, the room shooting upwards and vanishing above in one violent jolt, falling faster and faster into darkness. Realistic 35mm film footage, heavy film grain, strong motion blur, muted desaturated colors, sudden terrifying dream atmosphere.",
+        "seed": 392021,
+        "source": "local-desktop, from still bedroom-night-carpet, from 2.1 s"
+      }
+    },
+    {
+      "id": "clip-drop-bed-gives-way-4",
+      "kind": "clip",
+      "file": "clips/clip-drop-bed-gives-way-4.mp4",
+      "width": 1280,
+      "height": 720,
+      "duration": 5.042,
+      "tags": {
+        "location": "bedroom",
+        "motifs": [
+          "fall"
+        ],
+        "people": "none",
+        "mood": "dread",
+        "time": "night"
+      },
+      "generation": {
+        "model": "Wan-AI/Wan2.2-TI2V-5B",
+        "license": "Apache-2.0",
+        "prompt": "A dark Soviet bedroom at night in cold moonlight, a patterned carpet on the wall. For the first second everything is completely still. Then suddenly, without any warning, the floor gives way and the camera drops straight down into black emptiness, the room shooting upwards and vanishing above in one violent jolt, falling faster and faster into darkness. Realistic 35mm film footage, heavy film grain, strong motion blur, muted desaturated colors, sudden terrifying dream atmosphere.",
+        "seed": 392031,
+        "source": "local-desktop, from still bedroom-night-carpet"
+      }
+    },
+    {
+      "id": "clip-drop-elevator-snaps",
+      "kind": "clip",
+      "file": "clips/clip-drop-elevator-snaps.mp4",
+      "width": 1280,
+      "height": 720,
+      "duration": 3.417,
+      "tags": {
+        "location": "elevator",
+        "motifs": [
+          "fall"
+        ],
+        "people": "none",
+        "mood": "dread",
+        "time": "interior"
+      },
+      "generation": {
+        "model": "Wan-AI/Wan2.2-TI2V-5B",
+        "license": "Apache-2.0",
+        "prompt": "Inside a cramped old Soviet elevator cabin with wood-grain panels and a button panel. For the first second everything is still. Then the cabin suddenly drops: a violent jolt shakes the whole picture, the lamp flickers and goes dark, the camera is thrown up towards the ceiling, the walls shudder and rattle as the cabin falls freely down the shaft, heavy shaking. Realistic 35mm film footage, heavy film grain, strong motion blur, muted desaturated colors, sudden terrifying dream atmosphere.",
+        "seed": 392003,
+        "source": "local-desktop, from still elevator-cabin, from 1.6 s"
+      }
+    },
+    {
+      "id": "clip-drop-elevator-snaps-2",
+      "kind": "clip",
+      "file": "clips/clip-drop-elevator-snaps-2.mp4",
+      "width": 1280,
+      "height": 720,
+      "duration": 4.333,
+      "tags": {
+        "location": "elevator",
+        "motifs": [
+          "fall"
+        ],
+        "people": "none",
+        "mood": "dread",
+        "time": "interior"
+      },
+      "generation": {
+        "model": "Wan-AI/Wan2.2-TI2V-5B",
+        "license": "Apache-2.0",
+        "prompt": "Inside a cramped old Soviet elevator cabin with wood-grain panels and a button panel. For the first second everything is still. Then the cabin suddenly drops: a violent jolt shakes the whole picture, the lamp flickers and goes dark, the camera is thrown up towards the ceiling, the walls shudder and rattle as the cabin falls freely down the shaft, heavy shaking. Realistic 35mm film footage, heavy film grain, strong motion blur, muted desaturated colors, sudden terrifying dream atmosphere.",
+        "seed": 392013,
+        "source": "local-desktop, from still elevator-cabin, from 0.7 s"
+      }
+    },
+    {
+      "id": "clip-drop-elevator-snaps-3",
+      "kind": "clip",
+      "file": "clips/clip-drop-elevator-snaps-3.mp4",
+      "width": 1280,
+      "height": 720,
+      "duration": 3.042,
+      "tags": {
+        "location": "elevator",
+        "motifs": [
+          "fall"
+        ],
+        "people": "none",
+        "mood": "dread",
+        "time": "interior"
+      },
+      "generation": {
+        "model": "Wan-AI/Wan2.2-TI2V-5B",
+        "license": "Apache-2.0",
+        "prompt": "Inside a cramped old Soviet elevator cabin with wood-grain panels and a button panel. For the first second everything is still. Then the cabin suddenly drops: a violent jolt shakes the whole picture, the lamp flickers and goes dark, the camera is thrown up towards the ceiling, the walls shudder and rattle as the cabin falls freely down the shaft, heavy shaking. Realistic 35mm film footage, heavy film grain, strong motion blur, muted desaturated colors, sudden terrifying dream atmosphere.",
+        "seed": 392033,
+        "source": "local-desktop, from still elevator-cabin, from 2 s"
+      }
+    },
+    {
+      "id": "clip-drop-jam-jar-slip",
+      "kind": "clip",
+      "file": "clips/clip-drop-jam-jar-slip.mp4",
+      "width": 1280,
+      "height": 720,
+      "duration": 4.333,
+      "tags": {
+        "location": "jam_jar",
+        "motifs": [
+          "fall"
+        ],
+        "people": "distant",
+        "mood": "dread",
+        "time": "interior"
+      },
+      "generation": {
+        "model": "Wan-AI/Wan2.2-TI2V-5B",
+        "license": "Apache-2.0",
+        "prompt": "Standing on the glass rim of a gigantic jam jar the size of a building, looking down inside at dark jam far below. For the first second everything is still. Then the camera suddenly slips off the glass rim and drops straight down inside the jar, the glass walls streaking upwards, the dark glistening jam rushing up at the camera in one violent jolt. Realistic 35mm film footage, heavy film grain, strong motion blur, muted desaturated colors, sudden terrifying dream atmosphere.",
+        "seed": 392006,
+        "source": "local-desktop, from still fall-jam-jar-rim, from 0.7 s"
+      }
+    },
+    {
+      "id": "clip-drop-jam-jar-slip-2",
+      "kind": "clip",
+      "file": "clips/clip-drop-jam-jar-slip-2.mp4",
+      "width": 1280,
+      "height": 720,
+      "duration": 3.542,
+      "tags": {
+        "location": "jam_jar",
+        "motifs": [
+          "fall"
+        ],
+        "people": "distant",
+        "mood": "dread",
+        "time": "interior"
+      },
+      "generation": {
+        "model": "Wan-AI/Wan2.2-TI2V-5B",
+        "license": "Apache-2.0",
+        "prompt": "Standing on the glass rim of a gigantic jam jar the size of a building, looking down inside at dark jam far below. For the first second everything is still. Then the camera suddenly slips off the glass rim and drops straight down inside the jar, the glass walls streaking upwards, the dark glistening jam rushing up at the camera in one violent jolt. Realistic 35mm film footage, heavy film grain, strong motion blur, muted desaturated colors, sudden terrifying dream atmosphere.",
+        "seed": 392036,
+        "source": "local-desktop, from still fall-jam-jar-rim, from 1.5 s"
+      }
+    },
+    {
+      "id": "clip-drop-jam-jar-slip-3",
+      "kind": "clip",
+      "file": "clips/clip-drop-jam-jar-slip-3.mp4",
+      "width": 1280,
+      "height": 720,
+      "duration": 3.208,
+      "tags": {
+        "location": "jam_jar",
+        "motifs": [
+          "fall"
+        ],
+        "people": "distant",
+        "mood": "dread",
+        "time": "interior"
+      },
+      "generation": {
+        "model": "Wan-AI/Wan2.2-TI2V-5B",
+        "license": "Apache-2.0",
+        "prompt": "Standing on the glass rim of a gigantic jam jar the size of a building, looking down inside at dark jam far below. For the first second everything is still. Then the camera suddenly slips off the glass rim and drops straight down inside the jar, the glass walls streaking upwards, the dark glistening jam rushing up at the camera in one violent jolt. Realistic 35mm film footage, heavy film grain, strong motion blur, muted desaturated colors, sudden terrifying dream atmosphere.",
+        "seed": 392016,
+        "source": "local-desktop, from still fall-jam-jar-rim, from 1.8 s"
+      }
+    },
+    {
+      "id": "clip-drop-jam-jar-slip-4",
+      "kind": "clip",
+      "file": "clips/clip-drop-jam-jar-slip-4.mp4",
+      "width": 1280,
+      "height": 720,
+      "duration": 2.625,
+      "tags": {
+        "location": "jam_jar",
+        "motifs": [
+          "fall"
+        ],
+        "people": "distant",
+        "mood": "dread",
+        "time": "interior"
+      },
+      "generation": {
+        "model": "Wan-AI/Wan2.2-TI2V-5B",
+        "license": "Apache-2.0",
+        "prompt": "Standing on the glass rim of a gigantic jam jar the size of a building, looking down inside at dark jam far below. For the first second everything is still. Then the camera suddenly slips off the glass rim and drops straight down inside the jar, the glass walls streaking upwards, the dark glistening jam rushing up at the camera in one violent jolt. Realistic 35mm film footage, heavy film grain, strong motion blur, muted desaturated colors, sudden terrifying dream atmosphere.",
+        "seed": 392026,
+        "source": "local-desktop, from still fall-jam-jar-rim, from 2.4 s"
+      }
+    },
+    {
+      "id": "clip-drop-roof-edge-breaks",
+      "kind": "clip",
+      "file": "clips/clip-drop-roof-edge-breaks.mp4",
+      "width": 1280,
+      "height": 720,
+      "duration": 3.708,
+      "tags": {
+        "location": "yard",
+        "motifs": [
+          "fall"
+        ],
+        "people": "none",
+        "mood": "dread",
+        "time": "night"
+      },
+      "generation": {
+        "model": "Wan-AI/Wan2.2-TI2V-5B",
+        "license": "Apache-2.0",
+        "prompt": "Steep view from the roof edge of a nine-storey Soviet apartment block at night down into a narrow courtyard. For the first second the camera hangs completely still. Then the concrete edge breaks off under the camera and it drops instantly, headfirst straight down the dark facade, the lit windows streaking upwards in long smears, the wet asphalt and the street lamp rushing at the camera within a second, violent shaking. Realistic 35mm film footage, heavy film grain, strong motion blur, muted desaturated colors, sudden terrifying dream atmosphere.",
+        "seed": 392034,
+        "source": "local-desktop, from still fall-courtyard-roof-night, from 1.3 s"
+      }
+    },
+    {
+      "id": "clip-drop-roof-edge-breaks-2",
+      "kind": "clip",
+      "file": "clips/clip-drop-roof-edge-breaks-2.mp4",
+      "width": 1280,
+      "height": 720,
+      "duration": 3.417,
+      "tags": {
+        "location": "yard",
+        "motifs": [
+          "fall"
+        ],
+        "people": "none",
+        "mood": "dread",
+        "time": "night"
+      },
+      "generation": {
+        "model": "Wan-AI/Wan2.2-TI2V-5B",
+        "license": "Apache-2.0",
+        "prompt": "Steep view from the roof edge of a nine-storey Soviet apartment block at night down into a narrow courtyard. For the first second the camera hangs completely still. Then the concrete edge breaks off under the camera and it drops instantly, headfirst straight down the dark facade, the lit windows streaking upwards in long smears, the wet asphalt and the street lamp rushing at the camera within a second, violent shaking. Realistic 35mm film footage, heavy film grain, strong motion blur, muted desaturated colors, sudden terrifying dream atmosphere.",
+        "seed": 392014,
+        "source": "local-desktop, from still fall-courtyard-roof-night, from 1.6 s"
+      }
+    },
+    {
+      "id": "clip-drop-stairs-step-crumbles",
+      "kind": "clip",
+      "file": "clips/clip-drop-stairs-step-crumbles.mp4",
+      "width": 1280,
+      "height": 720,
+      "duration": 2.833,
+      "tags": {
+        "location": "stairs",
+        "motifs": [
+          "fall"
+        ],
+        "people": "none",
+        "mood": "dread",
+        "time": "interior"
+      },
+      "generation": {
+        "model": "Wan-AI/Wan2.2-TI2V-5B",
+        "license": "Apache-2.0",
+        "prompt": "First-person view standing on an endless concrete staircase without railings that goes down into darkness. For the first second nothing moves. Then suddenly the step under the camera crumbles and the camera drops sharply off the side of the staircase into the dark void, the steps whipping upwards past the camera in one violent jolt, falling fast. Realistic 35mm film footage, heavy film grain, strong motion blur, muted desaturated colors, sudden terrifying dream atmosphere.",
+        "seed": 392012,
+        "source": "local-desktop, from still stairs-down, from 2.2 s"
+      }
+    },
+    {
+      "id": "clip-drop-stairs-step-crumbles-2",
+      "kind": "clip",
+      "file": "clips/clip-drop-stairs-step-crumbles-2.mp4",
+      "width": 1280,
+      "height": 720,
+      "duration": 3.625,
+      "tags": {
+        "location": "stairs",
+        "motifs": [
+          "fall"
+        ],
+        "people": "none",
+        "mood": "dread",
+        "time": "interior"
+      },
+      "generation": {
+        "model": "Wan-AI/Wan2.2-TI2V-5B",
+        "license": "Apache-2.0",
+        "prompt": "First-person view standing on an endless concrete staircase without railings that goes down into darkness. For the first second nothing moves. Then suddenly the step under the camera crumbles and the camera drops sharply off the side of the staircase into the dark void, the steps whipping upwards past the camera in one violent jolt, falling fast. Realistic 35mm film footage, heavy film grain, strong motion blur, muted desaturated colors, sudden terrifying dream atmosphere.",
+        "seed": 392032,
+        "source": "local-desktop, from still stairs-down, from 1.4 s"
+      }
+    },
+    {
+      "id": "clip-drop-stairs-step-crumbles-3",
+      "kind": "clip",
+      "file": "clips/clip-drop-stairs-step-crumbles-3.mp4",
+      "width": 1280,
+      "height": 720,
+      "duration": 2.833,
+      "tags": {
+        "location": "stairs",
+        "motifs": [
+          "fall"
+        ],
+        "people": "none",
+        "mood": "dread",
+        "time": "interior"
+      },
+      "generation": {
+        "model": "Wan-AI/Wan2.2-TI2V-5B",
+        "license": "Apache-2.0",
+        "prompt": "First-person view standing on an endless concrete staircase without railings that goes down into darkness. For the first second nothing moves. Then suddenly the step under the camera crumbles and the camera drops sharply off the side of the staircase into the dark void, the steps whipping upwards past the camera in one violent jolt, falling fast. Realistic 35mm film footage, heavy film grain, strong motion blur, muted desaturated colors, sudden terrifying dream atmosphere.",
+        "seed": 392002,
+        "source": "local-desktop, from still stairs-down, from 2.2 s"
+      }
+    },
+    {
+      "id": "clip-drop-window-ledge",
+      "kind": "clip",
+      "file": "clips/clip-drop-window-ledge.mp4",
+      "width": 1280,
+      "height": 720,
+      "duration": 2.625,
+      "tags": {
+        "location": "yard",
+        "motifs": [
+          "fall"
+        ],
+        "people": "none",
+        "mood": "dread",
+        "time": "night"
+      },
+      "generation": {
+        "model": "Wan-AI/Wan2.2-TI2V-5B",
+        "license": "Apache-2.0",
+        "prompt": "Top-down view from the window ledge of the ninth floor of a Soviet apartment block at night, straight down to the courtyard. For the first second nothing moves. Then suddenly the ledge gives way and the camera falls straight down, the walls streaking past, the courtyard rushing up at the camera at terrifying speed in one violent jolt. Realistic 35mm film footage, heavy film grain, strong motion blur, muted desaturated colors, sudden terrifying dream atmosphere.",
+        "seed": 392015,
+        "source": "local-desktop, from still fall-yard-window-straight-down, from 2.4 s"
+      }
+    },
+    {
+      "id": "clip-drop-window-ledge-2",
+      "kind": "clip",
+      "file": "clips/clip-drop-window-ledge-2.mp4",
+      "width": 1280,
+      "height": 720,
+      "duration": 3.833,
+      "tags": {
+        "location": "yard",
+        "motifs": [
+          "fall"
+        ],
+        "people": "none",
+        "mood": "dread",
+        "time": "night"
+      },
+      "generation": {
+        "model": "Wan-AI/Wan2.2-TI2V-5B",
+        "license": "Apache-2.0",
+        "prompt": "Top-down view from the window ledge of the ninth floor of a Soviet apartment block at night, straight down to the courtyard. For the first second nothing moves. Then suddenly the ledge gives way and the camera falls straight down, the walls streaking past, the courtyard rushing up at the camera at terrifying speed in one violent jolt. Realistic 35mm film footage, heavy film grain, strong motion blur, muted desaturated colors, sudden terrifying dream atmosphere.",
+        "seed": 392005,
+        "source": "local-desktop, from still fall-yard-window-straight-down, from 1.2 s"
+      }
+    },
+    {
+      "id": "clip-drop-window-ledge-3",
+      "kind": "clip",
+      "file": "clips/clip-drop-window-ledge-3.mp4",
+      "width": 1280,
+      "height": 720,
+      "duration": 3.042,
+      "tags": {
+        "location": "yard",
+        "motifs": [
+          "fall"
+        ],
+        "people": "none",
+        "mood": "dread",
+        "time": "night"
+      },
+      "generation": {
+        "model": "Wan-AI/Wan2.2-TI2V-5B",
+        "license": "Apache-2.0",
+        "prompt": "Top-down view from the window ledge of the ninth floor of a Soviet apartment block at night, straight down to the courtyard. For the first second nothing moves. Then suddenly the ledge gives way and the camera falls straight down, the walls streaking past, the courtyard rushing up at the camera at terrifying speed in one violent jolt. Realistic 35mm film footage, heavy film grain, strong motion blur, muted desaturated colors, sudden terrifying dream atmosphere.",
+        "seed": 392035,
+        "source": "local-desktop, from still fall-yard-window-straight-down, from 2 s"
+      }
+    },
+    {
+      "id": "clip-drop-window-ledge-4",
+      "kind": "clip",
+      "file": "clips/clip-drop-window-ledge-4.mp4",
+      "width": 1280,
+      "height": 720,
+      "duration": 2.625,
+      "tags": {
+        "location": "yard",
+        "motifs": [
+          "fall"
+        ],
+        "people": "none",
+        "mood": "dread",
+        "time": "night"
+      },
+      "generation": {
+        "model": "Wan-AI/Wan2.2-TI2V-5B",
+        "license": "Apache-2.0",
+        "prompt": "Top-down view from the window ledge of the ninth floor of a Soviet apartment block at night, straight down to the courtyard. For the first second nothing moves. Then suddenly the ledge gives way and the camera falls straight down, the walls streaking past, the courtyard rushing up at the camera at terrifying speed in one violent jolt. Realistic 35mm film footage, heavy film grain, strong motion blur, muted desaturated colors, sudden terrifying dream atmosphere.",
+        "seed": 392025,
+        "source": "local-desktop, from still fall-yard-window-straight-down, from 2.4 s"
+      }
+    },
+    {
+      "id": "clip-fall-balcony-drop",
+      "kind": "clip",
+      "file": "clips/clip-fall-balcony-drop.mp4",
+      "width": 1280,
+      "height": 720,
+      "duration": 5.042,
+      "tags": {
+        "location": "yard",
+        "motifs": [
+          "fall"
+        ],
+        "people": "none",
+        "mood": "uneasy",
+        "time": "night"
+      },
+      "generation": {
+        "model": "Wan-AI/Wan2.2-TI2V-5B",
+        "license": "Apache-2.0",
+        "prompt": "First-person view from a high balcony of a Soviet apartment block at night over a foggy street. The camera tips over the railing and falls down past the balconies of the lower floors, faster and faster, the street lamps in the fog rushing up at the camera. Realistic 35mm film footage, heavy film grain, strong motion blur, muted desaturated colors, terrifying dream atmosphere.",
+        "seed": 391003,
+        "source": "local-desktop, from still fall-balcony-no-railing"
+      }
+    },
+    {
+      "id": "clip-fall-balcony-drop-2",
+      "kind": "clip",
+      "file": "clips/clip-fall-balcony-drop-2.mp4",
+      "width": 1280,
+      "height": 720,
+      "duration": 5.042,
+      "tags": {
+        "location": "yard",
+        "motifs": [
+          "fall"
+        ],
+        "people": "none",
+        "mood": "uneasy",
+        "time": "night"
+      },
+      "generation": {
+        "model": "Wan-AI/Wan2.2-TI2V-5B",
+        "license": "Apache-2.0",
+        "prompt": "First-person view from a high balcony of a Soviet apartment block at night over a foggy street. The camera tips over the railing and falls down past the balconies of the lower floors, faster and faster, the street lamps in the fog rushing up at the camera. Realistic 35mm film footage, heavy film grain, strong motion blur, muted desaturated colors, terrifying dream atmosphere.",
+        "seed": 391013,
+        "source": "local-desktop, from still fall-balcony-no-railing"
+      }
+    },
+    {
+      "id": "clip-fall-balcony-drop-3",
+      "kind": "clip",
+      "file": "clips/clip-fall-balcony-drop-3.mp4",
+      "width": 1280,
+      "height": 720,
+      "duration": 5.042,
+      "tags": {
+        "location": "yard",
+        "motifs": [
+          "fall"
+        ],
+        "people": "none",
+        "mood": "uneasy",
+        "time": "night"
+      },
+      "generation": {
+        "model": "Wan-AI/Wan2.2-TI2V-5B",
+        "license": "Apache-2.0",
+        "prompt": "First-person view from a high balcony of a Soviet apartment block at night over a foggy street. The camera tips over the railing and falls down past the balconies of the lower floors, faster and faster, the street lamps in the fog rushing up at the camera. Realistic 35mm film footage, heavy film grain, strong motion blur, muted desaturated colors, terrifying dream atmosphere.",
+        "seed": 391023,
+        "source": "local-desktop, from still fall-balcony-no-railing"
+      }
+    },
+    {
+      "id": "clip-fall-elevator-drop",
+      "kind": "clip",
+      "file": "clips/clip-fall-elevator-drop.mp4",
+      "width": 1280,
+      "height": 720,
+      "duration": 5.042,
+      "tags": {
+        "location": "elevator",
+        "motifs": [
+          "fall"
+        ],
+        "people": "none",
+        "mood": "uneasy",
+        "time": "interior"
+      },
+      "generation": {
+        "model": "Wan-AI/Wan2.2-TI2V-5B",
+        "license": "Apache-2.0",
+        "prompt": "Inside an old Soviet elevator cabin with a hole in the floor. The camera drops through the hole into the dark elevator shaft and falls, the greasy cables and the thin lit outlines of the landing doors flashing past upwards, faster and faster. Realistic 35mm film footage, heavy film grain, strong motion blur, muted desaturated colors, terrifying dream atmosphere.",
+        "seed": 391014,
+        "source": "local-desktop, from still fall-elevator-no-floor"
+      }
+    },
+    {
+      "id": "clip-fall-elevator-drop-2",
+      "kind": "clip",
+      "file": "clips/clip-fall-elevator-drop-2.mp4",
+      "width": 1280,
+      "height": 720,
+      "duration": 5.042,
+      "tags": {
+        "location": "elevator",
+        "motifs": [
+          "fall"
+        ],
+        "people": "none",
+        "mood": "uneasy",
+        "time": "interior"
+      },
+      "generation": {
+        "model": "Wan-AI/Wan2.2-TI2V-5B",
+        "license": "Apache-2.0",
+        "prompt": "Inside an old Soviet elevator cabin with a hole in the floor. The camera drops through the hole into the dark elevator shaft and falls, the greasy cables and the thin lit outlines of the landing doors flashing past upwards, faster and faster. Realistic 35mm film footage, heavy film grain, strong motion blur, muted desaturated colors, terrifying dream atmosphere.",
+        "seed": 391024,
+        "source": "local-desktop, from still fall-elevator-no-floor"
+      }
+    },
+    {
+      "id": "clip-fall-roof-plunge",
+      "kind": "clip",
+      "file": "clips/clip-fall-roof-plunge.mp4",
+      "width": 1280,
+      "height": 720,
+      "duration": 5.042,
+      "tags": {
+        "location": "yard",
+        "motifs": [
+          "fall"
+        ],
+        "people": "none",
+        "mood": "dread",
+        "time": "dusk"
+      },
+      "generation": {
+        "model": "Wan-AI/Wan2.2-TI2V-5B",
+        "license": "Apache-2.0",
+        "prompt": "First-person view from the edge of the flat roof of a nine-storey Soviet apartment block, bare toes at the edge. The camera suddenly tips forward over the edge and falls straight down along the facade towards the courtyard, faster and faster, the rows of windows streaking past upwards, the swing and the asphalt rushing up at the camera. Realistic 35mm film footage, heavy film grain, strong motion blur, muted desaturated colors, terrifying dream atmosphere.",
+        "seed": 391001,
+        "source": "local-desktop, from still fall-roof-edge-yard"
+      }
+    },
+    {
+      "id": "clip-fall-roof-plunge-2",
+      "kind": "clip",
+      "file": "clips/clip-fall-roof-plunge-2.mp4",
+      "width": 1280,
+      "height": 720,
+      "duration": 5.042,
+      "tags": {
+        "location": "yard",
+        "motifs": [
+          "fall"
+        ],
+        "people": "none",
+        "mood": "dread",
+        "time": "dusk"
+      },
+      "generation": {
+        "model": "Wan-AI/Wan2.2-TI2V-5B",
+        "license": "Apache-2.0",
+        "prompt": "First-person view from the edge of the flat roof of a nine-storey Soviet apartment block, bare toes at the edge. The camera suddenly tips forward over the edge and falls straight down along the facade towards the courtyard, faster and faster, the rows of windows streaking past upwards, the swing and the asphalt rushing up at the camera. Realistic 35mm film footage, heavy film grain, strong motion blur, muted desaturated colors, terrifying dream atmosphere.",
+        "seed": 391021,
+        "source": "local-desktop, from still fall-roof-edge-yard"
+      }
+    },
+    {
+      "id": "clip-fall-stairwell-drop",
+      "kind": "clip",
+      "file": "clips/clip-fall-stairwell-drop.mp4",
+      "width": 1280,
+      "height": 720,
+      "duration": 5.042,
+      "tags": {
+        "location": "stairs",
+        "motifs": [
+          "fall"
+        ],
+        "people": "none",
+        "mood": "uneasy",
+        "time": "interior"
+      },
+      "generation": {
+        "model": "Wan-AI/Wan2.2-TI2V-5B",
+        "license": "Apache-2.0",
+        "prompt": "First-person view looking down a flight of stairs in a Soviet stairwell. The camera suddenly pitches forward and falls down the stairwell, tumbling, the railings and the steps streaking past, the tiled floor far below rushing up at the camera. Realistic 35mm film footage, heavy film grain, strong motion blur, muted desaturated colors, terrifying dream atmosphere.",
+        "seed": 391002,
+        "source": "local-desktop, from still fall-stairwell-well-down"
+      }
+    },
+    {
+      "id": "clip-fall-stairwell-drop-2",
+      "kind": "clip",
+      "file": "clips/clip-fall-stairwell-drop-2.mp4",
+      "width": 1280,
+      "height": 720,
+      "duration": 5.042,
+      "tags": {
+        "location": "stairs",
+        "motifs": [
+          "fall"
+        ],
+        "people": "none",
+        "mood": "uneasy",
+        "time": "interior"
+      },
+      "generation": {
+        "model": "Wan-AI/Wan2.2-TI2V-5B",
+        "license": "Apache-2.0",
+        "prompt": "First-person view looking down a flight of stairs in a Soviet stairwell. The camera suddenly pitches forward and falls down the stairwell, tumbling, the railings and the steps streaking past, the tiled floor far below rushing up at the camera. Realistic 35mm film footage, heavy film grain, strong motion blur, muted desaturated colors, terrifying dream atmosphere.",
+        "seed": 391012,
+        "source": "local-desktop, from still fall-stairwell-well-down"
+      }
+    },
+    {
+      "id": "clip-fall-roof-plunge-3",
+      "kind": "clip",
+      "file": "clips/clip-fall-roof-plunge-3.mp4",
+      "width": 1280,
+      "height": 720,
+      "duration": 5.042,
+      "tags": {
+        "location": "yard",
+        "motifs": [
+          "fall"
+        ],
+        "people": "none",
+        "mood": "dread",
+        "time": "dusk"
+      },
+      "generation": {
+        "model": "Wan-AI/Wan2.2-TI2V-5B",
+        "license": "Apache-2.0",
+        "prompt": "First-person view from the edge of the flat roof of a nine-storey Soviet apartment block, bare toes at the edge. The camera suddenly tips forward over the edge and falls straight down along the facade towards the courtyard, faster and faster, the rows of windows streaking past upwards, the swing and the asphalt rushing up at the camera. Realistic 35mm film footage, heavy film grain, strong motion blur, muted desaturated colors, terrifying dream atmosphere.",
+        "seed": 391031,
+        "source": "local-desktop, from still fall-roof-edge-yard"
+      }
+    },
+    {
+      "id": "clip-fall-roof-plunge-4",
+      "kind": "clip",
+      "file": "clips/clip-fall-roof-plunge-4.mp4",
+      "width": 1280,
+      "height": 720,
+      "duration": 5.042,
+      "tags": {
+        "location": "yard",
+        "motifs": [
+          "fall"
+        ],
+        "people": "none",
+        "mood": "dread",
+        "time": "dusk"
+      },
+      "generation": {
+        "model": "Wan-AI/Wan2.2-TI2V-5B",
+        "license": "Apache-2.0",
+        "prompt": "First-person view from the edge of the flat roof of a nine-storey Soviet apartment block, bare toes at the edge. The camera suddenly tips forward over the edge and falls straight down along the facade towards the courtyard, faster and faster, the rows of windows streaking past upwards, the swing and the asphalt rushing up at the camera. Realistic 35mm film footage, heavy film grain, strong motion blur, muted desaturated colors, terrifying dream atmosphere.",
+        "seed": 391041,
+        "source": "local-desktop, from still fall-roof-edge-yard"
+      }
+    },
+    {
+      "id": "clip-fall-roof-plunge-5",
+      "kind": "clip",
+      "file": "clips/clip-fall-roof-plunge-5.mp4",
+      "width": 1280,
+      "height": 720,
+      "duration": 5.042,
+      "tags": {
+        "location": "yard",
+        "motifs": [
+          "fall"
+        ],
+        "people": "none",
+        "mood": "dread",
+        "time": "dusk"
+      },
+      "generation": {
+        "model": "Wan-AI/Wan2.2-TI2V-5B",
+        "license": "Apache-2.0",
+        "prompt": "First-person view from the edge of the flat roof of a nine-storey Soviet apartment block, bare toes at the edge. The camera suddenly tips forward over the edge and falls straight down along the facade towards the courtyard, faster and faster, the rows of windows streaking past upwards, the swing and the asphalt rushing up at the camera. Realistic 35mm film footage, heavy film grain, strong motion blur, muted desaturated colors, terrifying dream atmosphere.",
+        "seed": 391051,
+        "source": "local-desktop, from still fall-roof-edge-yard"
+      }
+    },
+    {
+      "id": "clip-fall-roof-plunge-6",
+      "kind": "clip",
+      "file": "clips/clip-fall-roof-plunge-6.mp4",
+      "width": 1280,
+      "height": 720,
+      "duration": 5.042,
+      "tags": {
+        "location": "yard",
+        "motifs": [
+          "fall"
+        ],
+        "people": "none",
+        "mood": "dread",
+        "time": "dusk"
+      },
+      "generation": {
+        "model": "Wan-AI/Wan2.2-TI2V-5B",
+        "license": "Apache-2.0",
+        "prompt": "First-person view from the edge of the flat roof of a nine-storey Soviet apartment block, bare toes at the edge. The camera suddenly tips forward over the edge and falls straight down along the facade towards the courtyard, faster and faster, the rows of windows streaking past upwards, the swing and the asphalt rushing up at the camera. Realistic 35mm film footage, heavy film grain, strong motion blur, muted desaturated colors, terrifying dream atmosphere.",
+        "seed": 391061,
+        "source": "local-desktop, from still fall-roof-edge-yard"
+      }
+    },
+    {
+      "id": "clip-bedroom-ventilator-bellows",
+      "kind": "clip",
+      "file": "clips/clip-bedroom-ventilator-bellows.mp4",
+      "width": 1280,
+      "height": 720,
+      "duration": 5.042,
+      "tags": {
+        "location": "bedroom",
+        "motifs": [
+          "ventilator"
+        ],
+        "people": "distant",
+        "mood": "dread",
+        "time": "night"
+      },
+      "generation": {
+        "model": "Wan-AI/Wan2.2-TI2V-5B",
+        "license": "Apache-2.0",
+        "prompt": "Static camera, no camera movement. A sleeping man in a bed connected by a tube to a large machine with accordion bellows. The bellows of the machine slowly expand and contract in a steady rhythm like breathing, the tube moves slightly with each breath, and the man's chest rises and falls. Nothing else in the room moves. Realistic 35mm film footage, heavy film grain, muted desaturated colors, quiet, uneasy and unsettling dream atmosphere.",
+        "seed": 391005,
+        "source": "local-desktop, from still bedroom-ventilator-snore"
+      }
+    },
+    {
+      "id": "clip-bedroom-ventilator-bellows-2",
+      "kind": "clip",
+      "file": "clips/clip-bedroom-ventilator-bellows-2.mp4",
+      "width": 1280,
+      "height": 720,
+      "duration": 5.042,
+      "tags": {
+        "location": "bedroom",
+        "motifs": [
+          "ventilator"
+        ],
+        "people": "distant",
+        "mood": "dread",
+        "time": "night"
+      },
+      "generation": {
+        "model": "Wan-AI/Wan2.2-TI2V-5B",
+        "license": "Apache-2.0",
+        "prompt": "Static camera, no camera movement. A sleeping man in a bed connected by a tube to a large machine with accordion bellows. The bellows of the machine slowly expand and contract in a steady rhythm like breathing, the tube moves slightly with each breath, and the man's chest rises and falls. Nothing else in the room moves. Realistic 35mm film footage, heavy film grain, muted desaturated colors, quiet, uneasy and unsettling dream atmosphere.",
+        "seed": 391015,
+        "source": "local-desktop, from still bedroom-ventilator-snore"
+      }
+    },
+    {
+      "id": "clip-bedroom-ventilator-bellows-3",
+      "kind": "clip",
+      "file": "clips/clip-bedroom-ventilator-bellows-3.mp4",
+      "width": 1280,
+      "height": 720,
+      "duration": 5.042,
+      "tags": {
+        "location": "bedroom",
+        "motifs": [
+          "ventilator"
+        ],
+        "people": "distant",
+        "mood": "dread",
+        "time": "night"
+      },
+      "generation": {
+        "model": "Wan-AI/Wan2.2-TI2V-5B",
+        "license": "Apache-2.0",
+        "prompt": "Static camera, no camera movement. A sleeping man in a bed connected by a tube to a large machine with accordion bellows. The bellows of the machine slowly expand and contract in a steady rhythm like breathing, the tube moves slightly with each breath, and the man's chest rises and falls. Nothing else in the room moves. Realistic 35mm film footage, heavy film grain, muted desaturated colors, quiet, uneasy and unsettling dream atmosphere.",
+        "seed": 391025,
+        "source": "local-desktop, from still bedroom-ventilator-snore"
+      }
+    },
+    {
+      "id": "clip-bedroom-ventilator-bellows-4",
+      "kind": "clip",
+      "file": "clips/clip-bedroom-ventilator-bellows-4.mp4",
+      "width": 1280,
+      "height": 720,
+      "duration": 5.042,
+      "tags": {
+        "location": "bedroom",
+        "motifs": [
+          "ventilator"
+        ],
+        "people": "distant",
+        "mood": "dread",
+        "time": "night"
+      },
+      "generation": {
+        "model": "Wan-AI/Wan2.2-TI2V-5B",
+        "license": "Apache-2.0",
+        "prompt": "Static camera, no camera movement. A sleeping man in a bed connected by a tube to a large machine with accordion bellows. The bellows of the machine slowly expand and contract in a steady rhythm like breathing, the tube moves slightly with each breath, and the man's chest rises and falls. Nothing else in the room moves. Realistic 35mm film footage, heavy film grain, muted desaturated colors, quiet, uneasy and unsettling dream atmosphere.",
+        "seed": 391035,
+        "source": "local-desktop, from still bedroom-ventilator-snore"
+      }
+    },
+    {
+      "id": "clip-elevator-mirror-figure",
+      "kind": "clip",
+      "file": "clips/clip-elevator-mirror-figure.mp4",
+      "width": 1280,
+      "height": 720,
+      "duration": 5.042,
+      "tags": {
+        "location": "elevator",
+        "motifs": [],
+        "people": "distant",
+        "mood": "uneasy",
+        "time": "interior"
+      },
+      "generation": {
+        "model": "Wan-AI/Wan2.2-TI2V-5B",
+        "license": "Apache-2.0",
+        "prompt": "Static camera, no camera movement. Inside an old Soviet elevator cabin with a cracked mirror on the back wall. The hooded figure reflected in the mirror slowly raises its head, while the cabin in front of the mirror stays empty. The lamp and the 37 on the display stay still. Realistic 35mm film footage, heavy film grain, muted desaturated colors, quiet, uneasy and dread-filled dream atmosphere.",
+        "seed": 391012,
+        "source": "local-desktop, from still elevator-mirror-37"
+      }
+    },
+    {
+      "id": "clip-elevator-mirror-figure-2",
+      "kind": "clip",
+      "file": "clips/clip-elevator-mirror-figure-2.mp4",
+      "width": 1280,
+      "height": 720,
+      "duration": 5.042,
+      "tags": {
+        "location": "elevator",
+        "motifs": [],
+        "people": "distant",
+        "mood": "uneasy",
+        "time": "interior"
+      },
+      "generation": {
+        "model": "Wan-AI/Wan2.2-TI2V-5B",
+        "license": "Apache-2.0",
+        "prompt": "Static camera, no camera movement. Inside an old Soviet elevator cabin with a cracked mirror on the back wall. The hooded figure reflected in the mirror slowly raises its head, while the cabin in front of the mirror stays empty. The lamp and the 37 on the display stay still. Realistic 35mm film footage, heavy film grain, muted desaturated colors, quiet, uneasy and dread-filled dream atmosphere.",
+        "seed": 391022,
+        "source": "local-desktop, from still elevator-mirror-37"
+      }
+    },
+    {
+      "id": "clip-elevator-mirror-figure-3",
+      "kind": "clip",
+      "file": "clips/clip-elevator-mirror-figure-3.mp4",
+      "width": 1280,
+      "height": 720,
+      "duration": 5.042,
+      "tags": {
+        "location": "elevator",
+        "motifs": [],
+        "people": "distant",
+        "mood": "uneasy",
+        "time": "interior"
+      },
+      "generation": {
+        "model": "Wan-AI/Wan2.2-TI2V-5B",
+        "license": "Apache-2.0",
+        "prompt": "Static camera, no camera movement. Inside an old Soviet elevator cabin with a cracked mirror on the back wall. The hooded figure reflected in the mirror slowly raises its head, while the cabin in front of the mirror stays empty. The lamp and the 37 on the display stay still. Realistic 35mm film footage, heavy film grain, muted desaturated colors, quiet, uneasy and dread-filled dream atmosphere.",
+        "seed": 391032,
+        "source": "local-desktop, from still elevator-mirror-37"
+      }
+    },
+    {
+      "id": "clip-fridge-light-flicker",
+      "kind": "clip",
+      "file": "clips/clip-fridge-light-flicker.mp4",
+      "width": 1280,
+      "height": 720,
+      "duration": 5.042,
+      "tags": {
+        "location": "kitchen",
+        "motifs": [
+          "thermometer"
+        ],
+        "people": "none",
+        "mood": "uneasy",
+        "time": "night"
+      },
+      "generation": {
+        "model": "Wan-AI/Wan2.2-TI2V-5B",
+        "license": "Apache-2.0",
+        "prompt": "Static camera, no camera movement. An old fridge standing open in a dark kitchen, its shelves full of thermometers. The light inside the fridge flickers and the glass thermometers glint, then the fridge door slowly swings a little towards closing. The kitchen stays completely still. Realistic 35mm film footage, heavy film grain, muted desaturated colors, quiet, uneasy and unsettling dream atmosphere.",
+        "seed": 391016,
+        "source": "local-desktop, from still kitchen-fridge-thermometers"
+      }
+    },
+    {
+      "id": "clip-fridge-light-flicker-2",
+      "kind": "clip",
+      "file": "clips/clip-fridge-light-flicker-2.mp4",
+      "width": 1280,
+      "height": 720,
+      "duration": 5.042,
+      "tags": {
+        "location": "kitchen",
+        "motifs": [
+          "thermometer"
+        ],
+        "people": "none",
+        "mood": "uneasy",
+        "time": "night"
+      },
+      "generation": {
+        "model": "Wan-AI/Wan2.2-TI2V-5B",
+        "license": "Apache-2.0",
+        "prompt": "Static camera, no camera movement. An old fridge standing open in a dark kitchen, its shelves full of thermometers. The light inside the fridge flickers and the glass thermometers glint, then the fridge door slowly swings a little towards closing. The kitchen stays completely still. Realistic 35mm film footage, heavy film grain, muted desaturated colors, quiet, uneasy and unsettling dream atmosphere.",
+        "seed": 391026,
+        "source": "local-desktop, from still kitchen-fridge-thermometers"
+      }
+    },
+    {
+      "id": "clip-fridge-light-flicker-3",
+      "kind": "clip",
+      "file": "clips/clip-fridge-light-flicker-3.mp4",
+      "width": 1280,
+      "height": 720,
+      "duration": 5.042,
+      "tags": {
+        "location": "kitchen",
+        "motifs": [
+          "thermometer"
+        ],
+        "people": "none",
+        "mood": "uneasy",
+        "time": "night"
+      },
+      "generation": {
+        "model": "Wan-AI/Wan2.2-TI2V-5B",
+        "license": "Apache-2.0",
+        "prompt": "Static camera, no camera movement. An old fridge standing open in a dark kitchen, its shelves full of thermometers. The light inside the fridge flickers and the glass thermometers glint, then the fridge door slowly swings a little towards closing. The kitchen stays completely still. Realistic 35mm film footage, heavy film grain, muted desaturated colors, quiet, uneasy and unsettling dream atmosphere.",
+        "seed": 391036,
+        "source": "local-desktop, from still kitchen-fridge-thermometers"
+      }
+    },
+    {
+      "id": "clip-fridge-light-flicker-4",
+      "kind": "clip",
+      "file": "clips/clip-fridge-light-flicker-4.mp4",
+      "width": 1280,
+      "height": 720,
+      "duration": 5.042,
+      "tags": {
+        "location": "kitchen",
+        "motifs": [
+          "thermometer"
+        ],
+        "people": "none",
+        "mood": "uneasy",
+        "time": "night"
+      },
+      "generation": {
+        "model": "Wan-AI/Wan2.2-TI2V-5B",
+        "license": "Apache-2.0",
+        "prompt": "Static camera, no camera movement. An old fridge standing open in a dark kitchen, its shelves full of thermometers. The light inside the fridge flickers and the glass thermometers glint, then the fridge door slowly swings a little towards closing. The kitchen stays completely still. Realistic 35mm film footage, heavy film grain, muted desaturated colors, quiet, uneasy and unsettling dream atmosphere.",
+        "seed": 391046,
+        "source": "local-desktop, from still kitchen-fridge-thermometers"
+      }
+    },
+    {
+      "id": "clip-jam-flood-spread",
+      "kind": "clip",
+      "file": "clips/clip-jam-flood-spread.mp4",
+      "width": 1280,
+      "height": 720,
+      "duration": 5.042,
+      "tags": {
+        "location": "jam_jar",
+        "motifs": [],
+        "people": "none",
+        "mood": "dread",
+        "time": "night"
+      },
+      "generation": {
+        "model": "Wan-AI/Wan2.2-TI2V-5B",
+        "license": "Apache-2.0",
+        "prompt": "Static camera, no camera movement. A tipped-over jar of dark jam on a kitchen table. The jam slowly spreads across the table from the jar and starts to drip over the edge. The kitchen and the chairs stay completely still. Realistic 35mm film footage, heavy film grain, muted desaturated colors, quiet, uneasy and unsettling dream atmosphere.",
+        "seed": 391013,
+        "source": "local-desktop, from still jam-jar-kitchen-flood"
+      }
+    },
+    {
+      "id": "clip-jam-flood-spread-2",
+      "kind": "clip",
+      "file": "clips/clip-jam-flood-spread-2.mp4",
+      "width": 1280,
+      "height": 720,
+      "duration": 5.042,
+      "tags": {
+        "location": "jam_jar",
+        "motifs": [],
+        "people": "none",
+        "mood": "dread",
+        "time": "night"
+      },
+      "generation": {
+        "model": "Wan-AI/Wan2.2-TI2V-5B",
+        "license": "Apache-2.0",
+        "prompt": "Static camera, no camera movement. A tipped-over jar of dark jam on a kitchen table. The jam slowly spreads across the table from the jar and starts to drip over the edge. The kitchen and the chairs stay completely still. Realistic 35mm film footage, heavy film grain, muted desaturated colors, quiet, uneasy and unsettling dream atmosphere.",
+        "seed": 391023,
+        "source": "local-desktop, from still jam-jar-kitchen-flood"
+      }
+    },
+    {
+      "id": "clip-jam-flood-spread-3",
+      "kind": "clip",
+      "file": "clips/clip-jam-flood-spread-3.mp4",
+      "width": 1280,
+      "height": 720,
+      "duration": 5.042,
+      "tags": {
+        "location": "jam_jar",
+        "motifs": [],
+        "people": "none",
+        "mood": "dread",
+        "time": "night"
+      },
+      "generation": {
+        "model": "Wan-AI/Wan2.2-TI2V-5B",
+        "license": "Apache-2.0",
+        "prompt": "Static camera, no camera movement. A tipped-over jar of dark jam on a kitchen table. The jam slowly spreads across the table from the jar and starts to drip over the edge. The kitchen and the chairs stay completely still. Realistic 35mm film footage, heavy film grain, muted desaturated colors, quiet, uneasy and unsettling dream atmosphere.",
+        "seed": 391033,
+        "source": "local-desktop, from still jam-jar-kitchen-flood"
+      }
+    },
+    {
+      "id": "clip-kitchen-curtain-breeze",
+      "kind": "clip",
+      "file": "clips/clip-kitchen-curtain-breeze.mp4",
+      "width": 1280,
+      "height": 720,
+      "duration": 5.042,
+      "tags": {
+        "location": "kitchen",
+        "motifs": [],
+        "people": "none",
+        "mood": "uneasy",
+        "time": "day"
+      },
+      "generation": {
+        "model": "Wan-AI/Wan2.2-TI2V-5B",
+        "license": "Apache-2.0",
+        "prompt": "Static camera, no camera movement. An open kitchen window in an old Soviet apartment, a jar of jam on the sill. The net curtain slowly billows inwards and outwards in a light breeze. The jar, the window frame and the courtyard outside stay completely still. Realistic 35mm film footage, heavy film grain, muted desaturated colors, quiet and calm but strange dream atmosphere.",
+        "seed": 391028,
+        "source": "local-desktop, from still kitchen-window-jam-curtain"
+      }
+    },
+    {
+      "id": "clip-microwave-heartbeat",
+      "kind": "clip",
+      "file": "clips/clip-microwave-heartbeat.mp4",
+      "width": 1280,
+      "height": 720,
+      "duration": 5.042,
+      "tags": {
+        "location": "kitchen",
+        "motifs": [
+          "monitor"
+        ],
+        "people": "none",
+        "mood": "uneasy",
+        "time": "night"
+      },
+      "generation": {
+        "model": "Wan-AI/Wan2.2-TI2V-5B",
+        "license": "Apache-2.0",
+        "prompt": "Static camera, no camera movement. A dark kitchen with an old microwave oven on the counter. The green heartbeat line on the microwave door slowly runs from left to right like a hospital monitor and the green digits flicker. The plate of food and the kitchen stay completely still. Realistic 35mm film footage, heavy film grain, muted desaturated colors, quiet, uneasy and unsettling dream atmosphere.",
+        "seed": 391009,
+        "source": "local-desktop, from still kitchen-microwave-monitor"
+      }
+    },
+    {
+      "id": "clip-microwave-heartbeat-2",
+      "kind": "clip",
+      "file": "clips/clip-microwave-heartbeat-2.mp4",
+      "width": 1280,
+      "height": 720,
+      "duration": 5.042,
+      "tags": {
+        "location": "kitchen",
+        "motifs": [
+          "monitor"
+        ],
+        "people": "none",
+        "mood": "uneasy",
+        "time": "night"
+      },
+      "generation": {
+        "model": "Wan-AI/Wan2.2-TI2V-5B",
+        "license": "Apache-2.0",
+        "prompt": "Static camera, no camera movement. A dark kitchen with an old microwave oven on the counter. The green heartbeat line on the microwave door slowly runs from left to right like a hospital monitor and the green digits flicker. The plate of food and the kitchen stay completely still. Realistic 35mm film footage, heavy film grain, muted desaturated colors, quiet, uneasy and unsettling dream atmosphere.",
+        "seed": 391029,
+        "source": "local-desktop, from still kitchen-microwave-monitor"
+      }
+    },
+    {
+      "id": "clip-microwave-heartbeat-3",
+      "kind": "clip",
+      "file": "clips/clip-microwave-heartbeat-3.mp4",
+      "width": 1280,
+      "height": 720,
+      "duration": 5.042,
+      "tags": {
+        "location": "kitchen",
+        "motifs": [
+          "monitor"
+        ],
+        "people": "none",
+        "mood": "uneasy",
+        "time": "night"
+      },
+      "generation": {
+        "model": "Wan-AI/Wan2.2-TI2V-5B",
+        "license": "Apache-2.0",
+        "prompt": "Static camera, no camera movement. A dark kitchen with an old microwave oven on the counter. The green heartbeat line on the microwave door slowly runs from left to right like a hospital monitor and the green digits flicker. The plate of food and the kitchen stay completely still. Realistic 35mm film footage, heavy film grain, muted desaturated colors, quiet, uneasy and unsettling dream atmosphere.",
+        "seed": 391039,
+        "source": "local-desktop, from still kitchen-microwave-monitor"
+      }
+    },
+    {
+      "id": "clip-stairs-coats-sway",
+      "kind": "clip",
+      "file": "clips/clip-stairs-coats-sway.mp4",
+      "width": 1280,
+      "height": 720,
+      "duration": 5.042,
+      "tags": {
+        "location": "stairs",
+        "motifs": [],
+        "people": "none",
+        "mood": "uneasy",
+        "time": "interior"
+      },
+      "generation": {
+        "model": "Wan-AI/Wan2.2-TI2V-5B",
+        "license": "Apache-2.0",
+        "prompt": "Static camera, no camera movement. A Soviet stairwell with many coats hanging along the stair railing. The coats sway slightly one after another from the bottom of the stairs to the top, as if someone invisible walked up past them. The stairs, the walls and the lamp stay completely still. Realistic 35mm film footage, heavy film grain, muted desaturated colors, quiet, uneasy and unsettling dream atmosphere.",
+        "seed": 391010,
+        "source": "local-desktop, from still stairs-coats-railing"
+      }
+    },
+    {
+      "id": "clip-stairwell-vacuum-hose",
+      "kind": "clip",
+      "file": "clips/clip-stairwell-vacuum-hose.mp4",
+      "width": 1280,
+      "height": 720,
+      "duration": 5.042,
+      "tags": {
+        "location": "stairwell",
+        "motifs": [
+          "vacuum_woman"
+        ],
+        "people": "distant",
+        "mood": "dread",
+        "time": "interior"
+      },
+      "generation": {
+        "model": "Wan-AI/Wan2.2-TI2V-5B",
+        "license": "Apache-2.0",
+        "prompt": "Static camera, no camera movement. A dark stairwell, a vacuum cleaner hose lying down the stairs from a woman standing at the top. The hose twitches and slowly slides down one step like a living thing. The woman's legs and the stairs stay completely still. Realistic 35mm film footage, heavy film grain, muted desaturated colors, quiet, uneasy and dread-filled dream atmosphere.",
+        "seed": 391024,
+        "source": "local-desktop, from still stairwell-vacuum-sound"
+      }
+    },
+    {
+      "id": "clip-stairwell-vacuum-hose-2",
+      "kind": "clip",
+      "file": "clips/clip-stairwell-vacuum-hose-2.mp4",
+      "width": 1280,
+      "height": 720,
+      "duration": 5.042,
+      "tags": {
+        "location": "stairwell",
+        "motifs": [
+          "vacuum_woman"
+        ],
+        "people": "distant",
+        "mood": "dread",
+        "time": "interior"
+      },
+      "generation": {
+        "model": "Wan-AI/Wan2.2-TI2V-5B",
+        "license": "Apache-2.0",
+        "prompt": "Static camera, no camera movement. A dark stairwell, a vacuum cleaner hose lying down the stairs from a woman standing at the top. The hose twitches and slowly slides down one step like a living thing. The woman's legs and the stairs stay completely still. Realistic 35mm film footage, heavy film grain, muted desaturated colors, quiet, uneasy and dread-filled dream atmosphere.",
+        "seed": 391034,
+        "source": "local-desktop, from still stairwell-vacuum-sound"
+      }
+    },
+    {
+      "id": "clip-stairwell-vacuum-hose-3",
+      "kind": "clip",
+      "file": "clips/clip-stairwell-vacuum-hose-3.mp4",
+      "width": 1280,
+      "height": 720,
+      "duration": 5.042,
+      "tags": {
+        "location": "stairwell",
+        "motifs": [
+          "vacuum_woman"
+        ],
+        "people": "distant",
+        "mood": "dread",
+        "time": "interior"
+      },
+      "generation": {
+        "model": "Wan-AI/Wan2.2-TI2V-5B",
+        "license": "Apache-2.0",
+        "prompt": "Static camera, no camera movement. A dark stairwell, a vacuum cleaner hose lying down the stairs from a woman standing at the top. The hose twitches and slowly slides down one step like a living thing. The woman's legs and the stairs stay completely still. Realistic 35mm film footage, heavy film grain, muted desaturated colors, quiet, uneasy and dread-filled dream atmosphere.",
+        "seed": 391044,
+        "source": "local-desktop, from still stairwell-vacuum-sound"
+      }
+    },
+    {
+      "id": "clip-thermometer-door-light",
+      "kind": "clip",
+      "file": "clips/clip-thermometer-door-light.mp4",
+      "width": 1280,
+      "height": 720,
+      "duration": 5.042,
+      "tags": {
+        "location": "thermometer_corridor",
+        "motifs": [
+          "thermometer"
+        ],
+        "people": "none",
+        "mood": "uneasy",
+        "time": "interior"
+      },
+      "generation": {
+        "model": "Wan-AI/Wan2.2-TI2V-5B",
+        "license": "Apache-2.0",
+        "prompt": "Static camera, no camera movement. A long pale corridor with numbered doors and thermometers on the walls. The farthest door slowly opens a little, letting a strip of light out onto the floor, then the light goes out. Nothing else moves. Realistic 35mm film footage, heavy film grain, muted desaturated colors, quiet, uneasy and unsettling dream atmosphere.",
+        "seed": 391015,
+        "source": "local-desktop, from still thermometer-corridor-doors"
+      }
+    },
+    {
+      "id": "clip-thermometer-door-light-2",
+      "kind": "clip",
+      "file": "clips/clip-thermometer-door-light-2.mp4",
+      "width": 1280,
+      "height": 720,
+      "duration": 5.042,
+      "tags": {
+        "location": "thermometer_corridor",
+        "motifs": [
+          "thermometer"
+        ],
+        "people": "none",
+        "mood": "uneasy",
+        "time": "interior"
+      },
+      "generation": {
+        "model": "Wan-AI/Wan2.2-TI2V-5B",
+        "license": "Apache-2.0",
+        "prompt": "Static camera, no camera movement. A long pale corridor with numbered doors and thermometers on the walls. The farthest door slowly opens a little, letting a strip of light out onto the floor, then the light goes out. Nothing else moves. Realistic 35mm film footage, heavy film grain, muted desaturated colors, quiet, uneasy and unsettling dream atmosphere.",
+        "seed": 391025,
+        "source": "local-desktop, from still thermometer-corridor-doors"
+      }
+    },
+    {
+      "id": "clip-thermometer-door-light-3",
+      "kind": "clip",
+      "file": "clips/clip-thermometer-door-light-3.mp4",
+      "width": 1280,
+      "height": 720,
+      "duration": 5.042,
+      "tags": {
+        "location": "thermometer_corridor",
+        "motifs": [
+          "thermometer"
+        ],
+        "people": "none",
+        "mood": "uneasy",
+        "time": "interior"
+      },
+      "generation": {
+        "model": "Wan-AI/Wan2.2-TI2V-5B",
+        "license": "Apache-2.0",
+        "prompt": "Static camera, no camera movement. A long pale corridor with numbered doors and thermometers on the walls. The farthest door slowly opens a little, letting a strip of light out onto the floor, then the light goes out. Nothing else moves. Realistic 35mm film footage, heavy film grain, muted desaturated colors, quiet, uneasy and unsettling dream atmosphere.",
+        "seed": 391045,
+        "source": "local-desktop, from still thermometer-corridor-doors"
+      }
+    },
+    {
+      "id": "clip-yard-pigeons-turn",
+      "kind": "clip",
+      "file": "clips/clip-yard-pigeons-turn.mp4",
+      "width": 1280,
+      "height": 720,
+      "duration": 5.042,
+      "tags": {
+        "location": "yard",
+        "motifs": [
+          "pigeons"
+        ],
+        "people": "none",
+        "mood": "uneasy",
+        "time": "night"
+      },
+      "generation": {
+        "model": "Wan-AI/Wan2.2-TI2V-5B",
+        "license": "Apache-2.0",
+        "prompt": "Static camera, no camera movement. A row of pigeons sitting on a low fence in front of a Soviet apartment block at night. All the pigeons slowly turn their heads towards the camera at the same moment and then stay completely still. The building, the street lamp and the windows do not move. Realistic 35mm film footage, heavy film grain, muted desaturated colors, quiet, uneasy and unsettling dream atmosphere.",
+        "seed": 391021,
+        "source": "local-desktop, from still yard-night-pigeons-window"
+      }
+    },
+    {
+      "id": "clip-yard-pigeons-turn-2",
+      "kind": "clip",
+      "file": "clips/clip-yard-pigeons-turn-2.mp4",
+      "width": 1280,
+      "height": 720,
+      "duration": 5.042,
+      "tags": {
+        "location": "yard",
+        "motifs": [
+          "pigeons"
+        ],
+        "people": "none",
+        "mood": "uneasy",
+        "time": "night"
+      },
+      "generation": {
+        "model": "Wan-AI/Wan2.2-TI2V-5B",
+        "license": "Apache-2.0",
+        "prompt": "Static camera, no camera movement. A row of pigeons sitting on a low fence in front of a Soviet apartment block at night. All the pigeons slowly turn their heads towards the camera at the same moment and then stay completely still. The building, the street lamp and the windows do not move. Realistic 35mm film footage, heavy film grain, muted desaturated colors, quiet, uneasy and unsettling dream atmosphere.",
+        "seed": 391031,
+        "source": "local-desktop, from still yard-night-pigeons-window"
+      }
+    },
+    {
+      "id": "clip-yard-pigeons-turn-3",
+      "kind": "clip",
+      "file": "clips/clip-yard-pigeons-turn-3.mp4",
+      "width": 1280,
+      "height": 720,
+      "duration": 5.042,
+      "tags": {
+        "location": "yard",
+        "motifs": [
+          "pigeons"
+        ],
+        "people": "none",
+        "mood": "uneasy",
+        "time": "night"
+      },
+      "generation": {
+        "model": "Wan-AI/Wan2.2-TI2V-5B",
+        "license": "Apache-2.0",
+        "prompt": "Static camera, no camera movement. A row of pigeons sitting on a low fence in front of a Soviet apartment block at night. All the pigeons slowly turn their heads towards the camera at the same moment and then stay completely still. The building, the street lamp and the windows do not move. Realistic 35mm film footage, heavy film grain, muted desaturated colors, quiet, uneasy and unsettling dream atmosphere.",
+        "seed": 391041,
+        "source": "local-desktop, from still yard-night-pigeons-window"
+      }
+    },
+    {
+      "id": "clip-yard-snow-falling",
+      "kind": "clip",
+      "file": "clips/clip-yard-snow-falling.mp4",
+      "width": 1280,
+      "height": 720,
+      "duration": 5.042,
+      "tags": {
+        "location": "yard",
+        "motifs": [
+          "swing"
+        ],
+        "people": "none",
+        "mood": "calm",
+        "time": "day"
+      },
+      "generation": {
+        "model": "Wan-AI/Wan2.2-TI2V-5B",
+        "license": "Apache-2.0",
+        "prompt": "Static camera, no camera movement. A snowy Soviet courtyard with a swing and benches in daylight. Soft snow begins to fall slowly over the empty courtyard and the swing sways very slightly. The buildings stay completely still. Realistic 35mm film footage, heavy film grain, muted desaturated colors, quiet and calm but strange dream atmosphere.",
+        "seed": 391007,
+        "source": "local-desktop, from still yard-day-snow"
+      }
+    },
+    {
+      "id": "clip-yard-snow-falling-2",
+      "kind": "clip",
+      "file": "clips/clip-yard-snow-falling-2.mp4",
+      "width": 1280,
+      "height": 720,
+      "duration": 5.042,
+      "tags": {
+        "location": "yard",
+        "motifs": [
+          "swing"
+        ],
+        "people": "none",
+        "mood": "calm",
+        "time": "day"
+      },
+      "generation": {
+        "model": "Wan-AI/Wan2.2-TI2V-5B",
+        "license": "Apache-2.0",
+        "prompt": "Static camera, no camera movement. A snowy Soviet courtyard with a swing and benches in daylight. Soft snow begins to fall slowly over the empty courtyard and the swing sways very slightly. The buildings stay completely still. Realistic 35mm film footage, heavy film grain, muted desaturated colors, quiet and calm but strange dream atmosphere.",
+        "seed": 391017,
+        "source": "local-desktop, from still yard-day-snow"
+      }
+    },
+    {
+      "id": "clip-yard-snow-falling-3",
+      "kind": "clip",
+      "file": "clips/clip-yard-snow-falling-3.mp4",
+      "width": 1280,
+      "height": 720,
+      "duration": 5.042,
+      "tags": {
+        "location": "yard",
+        "motifs": [
+          "swing"
+        ],
+        "people": "none",
+        "mood": "calm",
+        "time": "day"
+      },
+      "generation": {
+        "model": "Wan-AI/Wan2.2-TI2V-5B",
+        "license": "Apache-2.0",
+        "prompt": "Static camera, no camera movement. A snowy Soviet courtyard with a swing and benches in daylight. Soft snow begins to fall slowly over the empty courtyard and the swing sways very slightly. The buildings stay completely still. Realistic 35mm film footage, heavy film grain, muted desaturated colors, quiet and calm but strange dream atmosphere.",
+        "seed": 391037,
+        "source": "local-desktop, from still yard-day-snow"
+      }
     }
   ]
 }

@@ -150,3 +150,19 @@ export function orderReport(order, record, out) {
   lines.push('', 'Результаты не в библиотеке: их смотрит и переносит Claude Code (`import`) после проверки.', '');
   return lines.join('\n');
 }
+
+/**
+ * An import target: a result name or path, with `:seconds` after it to cut a
+ * clip's start off (#155): `clip-drop-window-ledge_392015:2.25`.
+ */
+export function parseImportTarget(target) {
+  const match = /^(.*?):(\d+(?:\.\d+)?)$/.exec(target);
+  if (!match) return { path: target, from: 0 };
+  return { path: match[1], from: Number(match[2]) };
+}
+
+/** The library id of the `n`-th accepted seed of one catalog id (#155): `id`, `id-2`, `id-3`… */
+export function variantId(id, n) {
+  if (!Number.isInteger(n) || n < 1) throw new Error(`variant ${n} of ${id}`);
+  return n === 1 ? id : `${id}-${n}`;
+}
