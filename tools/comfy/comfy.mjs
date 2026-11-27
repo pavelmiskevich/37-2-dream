@@ -11,7 +11,11 @@
  *   node tools/comfy/comfy.mjs status                    what is queued, running, done
  *   node tools/comfy/comfy.mjs fetch [--wait]            download finished results to --out
  *   node tools/comfy/comfy.mjs free                      unload models (between stills and clips)
- *   node tools/comfy/comfy.mjs import <id_seed>…         accepted results into the library
+ *   node tools/comfy/comfy.mjs import <id_seed[:from]>…  accepted results into the library
+ *
+ * import: several seeds of one id become variants — the first keeps the id, the
+ * next ones get -2, -3… (a still variant gets its own catalog scene); `:2.5`
+ * after a clip cuts its first 2.5 s off.
  *
  * Options: --url (or COMFY_URL), --out, --library, --variants N (seeds per job:
  * +1 for stills, +10 for clips), --force (queue again what is already queued),
@@ -28,15 +32,17 @@ import {
   clipJobs,
   orderReport,
   parseOrder,
+  parseImportTarget,
   parseTarget,
   readJson,
   readQueue,
   resultName,
   stillJobs,
+  variantId,
   withVariants,
   writeJsonAtomic,
 } from './jobs.mjs';
-import { clipAsset, convertClip, convertStill, setCatalogSeed, stillAsset, upsertAsset } from './library.mjs';
+import { addCatalogVariant, clipAsset, convertClip, convertStill, setCatalogSeed, stillAsset, upsertAsset } from './library.mjs';
 import { buildClip, buildStill, modelFiles, readWorkflow } from './workflows.mjs';
 
 const HERE = dirname(fileURLToPath(import.meta.url));
@@ -332,26 +338,34 @@ function importResults(opts) {
   const catalogBefore = readFileSync(STILL_CATALOG, 'utf8');
   let catalogText = catalogBefore;
   const stills = [];
+  const taken = new Map();
   for (const target of opts.positionals) {
-    const name = basename(target).replace(/(-\d+)?\.(png|mp4|webm|json)$/i, '');
-    const sidecar = join(target.includes('/') || target.includes('\\') ? dirname(target) : opts.out, `${name}.json`);
+    const { path, from } = parseImportTarget(target);
+    const name = basename(path).replace(/(-\d+)?\.(png|mp4|webm|json)$/i, '');
+    const sidecar = join(path.includes('/') || path.includes('\\') ? dirname(path) : opts.out, `${name}.json`);
     if (!existsSync(sidecar)) throw new Error(`No ${sidecar}: fetch the result first`);
     const job = readJson(sidecar);
     const source = join(dirname(sidecar), job.files[0]);
+    const n = (taken.get(job.id) ?? 0) + 1;
+    taken.set(job.id, n);
+    const id = variantId(job.id, n);
     if (job.kind === 'still') {
+      if (from > 0) throw new Error(`${target}: only a clip can be cut`);
       const scene = catalog.scenes.find((s) => s.id === job.id);
       if (!scene) throw new Error(`No still "${job.id}" in the catalog`);
-      const size = convertStill(source, join(opts.library, 'stills', `${job.id}.webp`));
-      manifest = upsertAsset(manifest, stillAsset(job, scene, size));
-      if (scene.seed !== job.seed) catalogText = setCatalogSeed(catalogText, job.id, job.seed);
-      stills.push(job.id);
+      const size = convertStill(source, join(opts.library, 'stills', `${id}.webp`));
+      manifest = upsertAsset(manifest, stillAsset({ ...job, id }, scene, size));
+      const own = id === job.id ? scene : catalog.scenes.find((s) => s.id === id);
+      if (!own) catalogText = addCatalogVariant(catalogText, job.id, id, job.seed);
+      else if (own.seed !== job.seed) catalogText = setCatalogSeed(catalogText, id, job.seed);
+      stills.push(id);
     } else {
       const still = manifest.assets.find((a) => a.id === job.from);
       if (!still) throw new Error(`Clip ${job.id}: no still "${job.from}" in the library`);
-      const size = convertClip(source, join(opts.library, 'clips', `${job.id}.mp4`));
-      manifest = upsertAsset(manifest, clipAsset(job, still, size));
+      const size = convertClip(source, join(opts.library, 'clips', `${id}.mp4`), { from });
+      manifest = upsertAsset(manifest, clipAsset({ ...job, id }, still, size, from));
     }
-    console.log(`imported ${job.kind} ${job.id} (seed ${job.seed})`);
+    console.log(`imported ${job.kind} ${id} (seed ${job.seed}${from > 0 ? `, from ${from} s` : ''})`);
   }
   writeJsonAtomic(manifestPath, manifest);
   if (catalogText !== catalogBefore) writeFileSync(STILL_CATALOG, catalogText);

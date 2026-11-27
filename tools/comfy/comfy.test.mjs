@@ -4,8 +4,8 @@ import { dirname, join, resolve } from 'node:path';
 import { describe, it } from 'node:test';
 import { fileURLToPath } from 'node:url';
 import { ComfyClient, ComfyError, entryState, outputFiles } from './api.mjs';
-import { clipJobs, parseTarget, readJson, stillJobs, stillPrompt, withVariants } from './jobs.mjs';
-import { clipAsset, crop169, setCatalogSeed, stillAsset, upsertAsset } from './library.mjs';
+import { clipJobs, parseImportTarget, parseTarget, readJson, stillJobs, stillPrompt, variantId, withVariants } from './jobs.mjs';
+import { addCatalogVariant, clipAsset, crop169, setCatalogSeed, stillAsset, upsertAsset } from './library.mjs';
 import { buildClip, buildStill, modelFiles, only, readWorkflow } from './workflows.mjs';
 
 const HERE = dirname(fileURLToPath(import.meta.url));
@@ -72,10 +72,11 @@ describe('jobs', () => {
   });
 
   it('queues every still the library lacks, with its catalog seed', () => {
-    const jobs = stillJobs(catalog, [], libraryIds);
-    assert.ok(jobs.length > 0);
+    const lacking = new Set([...libraryIds].filter((id) => id !== 'yard-day-dandelions' && id !== 'fall-bed-over-drop-2'));
+    const jobs = stillJobs(catalog, [], lacking);
+    assert.deepEqual(jobs.map((job) => job.id).sort(), ['fall-bed-over-drop-2', 'yard-day-dandelions']);
     for (const job of jobs) {
-      assert.ok(!libraryIds.has(job.id));
+      assert.ok(!lacking.has(job.id));
       assert.ok(Number.isSafeInteger(job.seed), job.id);
       assert.equal(job.model, 'Tongyi-MAI/Z-Image-Turbo');
     }
@@ -92,7 +93,8 @@ describe('jobs', () => {
       assert.equal(library.assets.find((a) => a.id === c.from)?.kind, 'still', `${c.id} from ${c.from}`);
       assert.ok(c.prompt.length > 100, c.id);
     }
-    const jobs = clipJobs(clips, [], libraryIds);
+    const jobs = clipJobs(clips, [], new Set([...libraryIds].filter((id) => !id.startsWith('clip-'))));
+    assert.equal(jobs.length, clips.clips.length);
     assert.equal(jobs[0].id, 'clip-fall-roof-plunge');
     assert.equal(jobs[0].from, 'fall-roof-edge-yard');
     assert.equal(jobs[0].model, 'Wan-AI/Wan2.2-TI2V-5B');
@@ -200,6 +202,35 @@ describe('into the library', () => {
     const swing = library.assets.find((a) => a.id === 'clip-yard-swing-alone');
     assert.deepEqual(Object.keys(asset), Object.keys(swing));
     assert.deepEqual(Object.keys(asset.generation), Object.keys(swing.generation));
+  });
+
+  it('names variants of one id and reads the cut of a clip (#155)', () => {
+    assert.equal(variantId('clip-drop-window-ledge', 1), 'clip-drop-window-ledge');
+    assert.equal(variantId('clip-drop-window-ledge', 3), 'clip-drop-window-ledge-3');
+    assert.deepEqual(parseImportTarget('clip-drop-window-ledge_392015:2.25'), { path: 'clip-drop-window-ledge_392015', from: 2.25 });
+    assert.deepEqual(parseImportTarget('C:\\out\\batch2-main\\yard-chalk-swing-asphalt_1380101'), {
+      path: 'C:\\out\\batch2-main\\yard-chalk-swing-asphalt_1380101',
+      from: 0,
+    });
+    const job = clipJobs(clips, [parseTarget('clip-drop-window-ledge@392015')], libraryIds)[0];
+    const from = library.assets.find((a) => a.id === job.from);
+    const asset = clipAsset({ ...job, id: 'clip-drop-window-ledge-2' }, from, { width: 1280, height: 720, duration: 2.6 }, 2.4);
+    assert.equal(asset.file, 'clips/clip-drop-window-ledge-2.mp4');
+    assert.equal(asset.generation.source, 'local-desktop, from still fall-yard-window-straight-down, from 2.4 s');
+  });
+
+  it('adds a still variant to the catalog as a scene of its own (#155)', () => {
+    const text = readFileSync(join(REPO, 'tools/generation/prompts.json'), 'utf8');
+    const next = addCatalogVariant(text, 'yard-chalk-swing-asphalt', 'yard-chalk-swing-asphalt-9', 1380111);
+    const before = JSON.parse(text).scenes;
+    const after = JSON.parse(next).scenes;
+    const at = after.findIndex((s) => s.id === 'yard-chalk-swing-asphalt');
+    assert.equal(after.length, before.length + 1);
+    assert.deepEqual(after[at + 1], { ...after[at], id: 'yard-chalk-swing-asphalt-9', seed: 1380111 });
+    assert.equal(stillPrompt(after[at + 1], catalog.style), stillPrompt(after[at], catalog.style));
+    assert.throws(() => addCatalogVariant(next, 'yard-chalk-swing-asphalt', 'yard-chalk-swing-asphalt-9', 1));
+    const last = before.at(-1).id;
+    assert.equal(JSON.parse(addCatalogVariant(text, last, `${last}-2`, 5)).scenes.at(-1).id, `${last}-2`);
   });
 
   it('gives a drop clip its own tags over those of the still (#151)', () => {
