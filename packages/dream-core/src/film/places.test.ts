@@ -5,7 +5,7 @@ import { profileRng } from '../streams';
 import { testSeeds } from '../test-utils';
 import { MAX_USES, castFrames } from './cast';
 import { generateFilm } from './generate';
-import { LOCATION_TAGS, type LibraryAsset, type LibraryManifest, type LocationTag } from './library';
+import { LOCATION_TAGS, isWakingFrame, subjectsOf, type LibraryAsset, type LibraryManifest, type LocationTag } from './library';
 import { DREAM_PLACES, planPlaces } from './places';
 import { filmRng } from './streams';
 import { TEST_LIBRARY } from './test-library';
@@ -99,5 +99,57 @@ describe('a dream in its places (#77)', () => {
       for (const shot of film.shots) if (!shot.scare) uses.set(shot.assetId, (uses.get(shot.assetId) ?? 0) + 1);
       expect(Math.max(...uses.values())).toBeLessThanOrEqual(MAX_USES);
     }
+  });
+});
+
+/** The wide library where every frame and scare has two more variants of its subject (#155). */
+const VARIED: LibraryManifest = {
+  version: 1,
+  assets: WIDE.assets.flatMap((asset) =>
+    isWakingFrame(asset) ? [asset] : [asset, ...[2, 3].map((n): LibraryAsset => ({ ...asset, id: `${asset.id}-${n}` }))],
+  ),
+};
+
+describe('variants of one subject (#158)', () => {
+  const subjects = subjectsOf(VARIED.assets);
+  const subjectOf = (id: string): string => subjects.get(id)!;
+  const films = seeds.flatMap((seed) => [generateFilm(seed, 'short', VARIED), generateFilm(seed, 'long', VARIED)]);
+
+  it('knows a variant only by an asset of the same kind without the suffix', () => {
+    const still = (id: string, kind: 'still' | 'clip' = 'still'): LibraryAsset => ({ ...TEST_LIBRARY.assets[0]!, id, kind });
+    const known = subjectsOf([still('stairs-down-37'), still('yard-swing'), still('yard-swing-2'), still('yard-swing-3', 'clip'), still('clip-a-2', 'clip')]);
+    expect(Object.fromEntries(known)).toEqual({
+      'stairs-down-37': 'stairs-down-37',
+      'yard-swing': 'yard-swing',
+      'yard-swing-2': 'yard-swing',
+      'yard-swing-3': 'yard-swing-3',
+      'clip-a-2': 'clip-a-2',
+    });
+  });
+
+  it('shows no subject more than MAX_USES times, whichever variants it takes', () => {
+    for (const film of films) {
+      const uses = new Map<string, number>();
+      for (const shot of film.shots) if (!shot.scare) uses.set(subjectOf(shot.assetId), (uses.get(subjectOf(shot.assetId)) ?? 0) + 1);
+      expect(Math.max(...uses.values())).toBeLessThanOrEqual(MAX_USES);
+    }
+  });
+
+  it('never cuts from a subject to another variant of it', () => {
+    for (const film of films) {
+      const shots = film.shots.filter((shot) => !shot.scare);
+      for (let i = 1; i < shots.length; i++) expect(subjectOf(shots[i]!.assetId)).not.toBe(subjectOf(shots[i - 1]!.assetId));
+    }
+  });
+
+  it('makes every scare a new subject while the library has any left (#75)', () => {
+    const library = new Set(VARIED.assets.filter((asset) => asset.tags.mood === 'scare').map((asset) => subjectOf(asset.id))).size;
+    let several = 0;
+    for (const film of films) {
+      const scares = film.shots.filter((shot) => shot.scare).map((shot) => subjectOf(shot.assetId));
+      if (scares.length > 1) several++;
+      expect(new Set(scares).size).toBe(Math.min(scares.length, library));
+    }
+    expect(several).toBeGreaterThan(0);
   });
 });

@@ -94,3 +94,19 @@ export function isWakingFrame(asset: LibraryAsset): boolean {
   const { location, time, mood } = asset.tags;
   return asset.kind === 'still' && location === 'bedroom' && time === 'day' && mood !== 'scare';
 }
+
+/**
+ * The subject of each asset (#158): variants of one subject are `x`, `x-2`,
+ * `x-3`… (#155). `x-2` is a variant of `x` only when the library has an asset
+ * `x` of the same kind, so `stairs-down-37` stays its own subject. The edit
+ * counts a subject once for repeats, cooldown and fresh scares.
+ */
+export function subjectsOf(assets: readonly LibraryAsset[]): Map<string, string> {
+  const kinds = new Map(assets.map((asset) => [asset.id, asset.kind]));
+  const subjects = new Map<string, string>();
+  for (const asset of assets) {
+    const base = /^(.+)-\d+$/.exec(asset.id)?.[1];
+    subjects.set(asset.id, base !== undefined && kinds.get(base) === asset.kind ? base : asset.id);
+  }
+  return subjects;
+}

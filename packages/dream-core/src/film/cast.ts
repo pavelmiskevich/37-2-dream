@@ -21,14 +21,15 @@
  * The edit stays in a location for a few shots, then jumps; a location left
  * recently is avoided, so every film wanders the library differently. It
  * wanders only the dream's own places (places.ts, #77), and a frame shown
- * `MAX_USES` times is all but retired.
+ * `MAX_USES` times is all but retired. Variants of one subject (`x`, `x-2`…,
+ * #155) count as one frame for all of that (#158).
  */
 import { pickFromCatalog, weightedPick, type CatalogItem } from '../catalog';
 import { clamp, lerp } from '../math';
 import type { DreamProfile, ProfileIntensityKey } from '../profile';
 import type { Rng } from '../rng';
 import type { BeatRole } from './beats';
-import { isWakingFrame, type LibraryAsset, type LocationTag, type MoodTag, type MotifTag, type PeopleTag } from './library';
+import { isWakingFrame, subjectsOf, type LibraryAsset, type LocationTag, type MoodTag, type MotifTag, type PeopleTag } from './library';
 
 type Leaning = 'medical' | 'soviet' | 'domestic' | 'physics' | 'absurd';
 
@@ -223,6 +224,11 @@ export function createCaster(assets: readonly LibraryAsset[], profile: DreamProf
   for (const asset of scares) items.set(asset, { id: asset.id, baseWeight: 1, rarity: 0, cooldownScenes: scareCooldown });
   const byId = new Map(assets.map((asset) => [asset.id, asset]));
   if (byId.size !== assets.length) throw new RangeError('generateFilm: asset ids in the library are not unique.');
+  // Variants of one subject share their uses and their cooldown (#158).
+  const subjects = subjectsOf(assets);
+  const subject = (asset: LibraryAsset): string => subjects.get(asset.id) as string;
+  const family = new Map<string, string[]>();
+  for (const [id, of] of subjects) family.set(of, [...(family.get(of) ?? []), id]);
 
   // What depends only on the film, the role or the pair of assets is computed once.
   const fixedWeight = new Map<BeatRole, Map<LibraryAsset, number>>();
@@ -262,7 +268,7 @@ export function createCaster(assets: readonly LibraryAsset[], profile: DreamProf
     let w = fixed(asset, role) * compatible(asset);
     if (prev && prev.tags.time === asset.tags.time) w *= 1.3;
     if (asset.tags.location !== prev?.tags.location && recentLocations.includes(asset.tags.location)) w *= 0.15;
-    const used = uses.get(asset.id);
+    const used = uses.get(subject(asset));
     if (used === undefined) return w;
     // A frame seen `MAX_USES` times is all but retired: the dream has others (#77).
     return w * 0.7 ** used * (used >= MAX_USES ? 0.02 : 1);
@@ -277,15 +283,15 @@ export function createCaster(assets: readonly LibraryAsset[], profile: DreamProf
     return picked && byId.get(picked.id);
   };
 
-  /** Last resort for a tiny library: anything but the previous shot's asset. */
+  /** Last resort for a tiny library: anything but the previous shot's subject. */
   const relaxed = (pool: readonly LibraryAsset[], role: BeatRole): LibraryAsset => {
-    const others = pool.filter((asset) => asset.id !== prev?.id);
+    const others = pool.filter((asset) => !prev || subject(asset) !== subject(prev));
     return weightedPick(others.length > 0 ? others : pool, (asset) => weight(asset, role) || 1e-6, rng);
   };
 
   const remember = (asset: LibraryAsset, shotIndex: number): void => {
-    lastUsed.set(asset.id, shotIndex);
-    uses.set(asset.id, (uses.get(asset.id) ?? 0) + 1);
+    for (const id of family.get(subject(asset)) as string[]) lastUsed.set(id, shotIndex);
+    uses.set(subject(asset), (uses.get(subject(asset)) ?? 0) + 1);
   };
 
   /** The edit moves on to `asset`: location run, recent locations, cooldown. */
@@ -308,7 +314,7 @@ export function createCaster(assets: readonly LibraryAsset[], profile: DreamProf
       if (role === 'scare' && scares.length > 0) {
         // A scare is an insert: it does not move the edit to another location.
         // Each scare of a dream is a new one while the library has any left (#75).
-        const fresh = scares.filter((asset) => !uses.has(asset.id));
+        const fresh = scares.filter((asset) => !uses.has(subject(asset)));
         const pool = fresh.length > 0 ? fresh : scares;
         const asset = choose(pool, shotIndex, role) ?? relaxed(pool, role);
         remember(asset, shotIndex);

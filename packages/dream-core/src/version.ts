@@ -35,5 +35,10 @@
  * - 15 — every scare of a dream is a new frame while the library has any
  *   left (#75): a long dream no longer shows the same scare twice. Films
  *   with more than one scare may change.
+ * - 16 — variants of one subject (`x`, `x-2`, `x-3`…, #155) are one frame to
+ *   the edit (#158): they share the cooldown, the count of a frame's shows
+ *   and a scare's freshness, so a dream no longer cuts between variants of
+ *   one subject. Films over a library with such variants change; films over
+ *   one without them stay the same.
  */
-export const ENGINE_VERSION = 15;
+export const ENGINE_VERSION = 16;
